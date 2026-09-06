@@ -1,0 +1,6 @@
+{
+  "seed": 7,
+  "training_examples": 24,
+  "ridge": 0.2,
+  "representation": "matched"
+}

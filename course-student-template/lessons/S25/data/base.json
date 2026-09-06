@@ -1,0 +1,19 @@
+{
+  "kind": "bandit",
+  "reward_probabilities": [
+    0.25,
+    0.4,
+    0.65
+  ],
+  "changed_probabilities": [
+    0.7,
+    0.4,
+    0.2
+  ],
+  "source": {
+    "type": "synthetic",
+    "generator": "scripts/build_example_data.py",
+    "seed": 426,
+    "limitation": "仅供教学，不支持对真实人群或线上效果作推断"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "seed": 7,
+  "gamma": 0.9,
+  "tolerance": 1e-08
+}

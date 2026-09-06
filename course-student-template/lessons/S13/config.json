@@ -1,0 +1,7 @@
+{
+  "seed": 7,
+  "hidden": 12,
+  "steps": 260,
+  "learning_rate": 0.25,
+  "l2": 0.0
+}

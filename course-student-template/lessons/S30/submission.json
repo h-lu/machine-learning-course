@@ -1,0 +1,9 @@
+{
+  "lesson_id": "S30",
+  "status": "template",
+  "run": "python3 lessons/S30/analysis.py",
+  "report": "lessons/S30/update.md",
+  "artifacts": [
+    "lessons/S30/artifacts/summary.json"
+  ]
+}

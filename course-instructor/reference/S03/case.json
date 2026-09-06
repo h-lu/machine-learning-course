@@ -1,0 +1,9 @@
+{
+  "lesson": "S03",
+  "purpose": "按用户留出评估数据",
+  "config_patch": {
+    "split_strategy": "group",
+    "train_fraction": 0.6
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

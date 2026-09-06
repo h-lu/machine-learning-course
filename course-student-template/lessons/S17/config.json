@@ -1,0 +1,9 @@
+{
+  "seed": 7,
+  "causal": true,
+  "temperature": 1.0,
+  "swap_positions": [
+    0,
+    2
+  ]
+}

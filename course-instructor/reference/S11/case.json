@@ -1,0 +1,9 @@
+{
+  "lesson": "S11",
+  "purpose": "改簇数并检查未标准化距离",
+  "config_patch": {
+    "k": 4,
+    "standardize": false
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

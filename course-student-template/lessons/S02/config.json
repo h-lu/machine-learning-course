@@ -1,0 +1,5 @@
+{
+  "seed": 7,
+  "observation_day": 10,
+  "agreement_threshold": 0.8
+}

@@ -1,0 +1,6 @@
+{
+  "seed": 7,
+  "top_k": 2,
+  "minimum_similarity": 0.6,
+  "active_only": true
+}

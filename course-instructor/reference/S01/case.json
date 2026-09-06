@@ -1,0 +1,9 @@
+{
+  "lesson": "S01",
+  "purpose": "改变阈值与漏报代价",
+  "config_patch": {
+    "threshold": 0.7,
+    "false_negative_cost": 2.0
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

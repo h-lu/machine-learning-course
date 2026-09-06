@@ -1,0 +1,9 @@
+{
+  "lesson": "S22",
+  "purpose": "只返回一条且允许旧版本",
+  "config_patch": {
+    "top_k": 1,
+    "active_only": false
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

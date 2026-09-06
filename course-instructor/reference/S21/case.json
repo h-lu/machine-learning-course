@@ -1,0 +1,8 @@
+{
+  "lesson": "S21",
+  "purpose": "另一份已有候选输出表",
+  "config_patch": {
+    "candidate": "structured"
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

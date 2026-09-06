@@ -1,0 +1,8 @@
+{
+  "lesson": "S02",
+  "purpose": "提前标签观察截止日期",
+  "config_patch": {
+    "observation_day": 4
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

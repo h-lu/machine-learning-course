@@ -1,0 +1,9 @@
+{
+  "lesson": "S13",
+  "purpose": "较窄网络与较少训练步数",
+  "config_patch": {
+    "hidden": 6,
+    "steps": 180
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

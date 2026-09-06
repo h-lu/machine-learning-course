@@ -1,0 +1,9 @@
+{
+  "lesson": "S24",
+  "purpose": "关键词过滤的误拒与漏过",
+  "config_patch": {
+    "candidate": "keyword",
+    "max_request_chars": 20
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

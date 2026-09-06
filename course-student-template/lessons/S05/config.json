@@ -1,0 +1,6 @@
+{
+  "seed": 7,
+  "threshold": 0.5,
+  "capacity": 15,
+  "false_negative_cost": 4.0
+}

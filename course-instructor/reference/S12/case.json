@@ -1,0 +1,9 @@
+{
+  "lesson": "S12",
+  "purpose": "保留全维度，检查重构误差消失的含义",
+  "config_patch": {
+    "components": 2,
+    "review_capacity": 5
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

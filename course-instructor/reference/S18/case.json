@@ -1,0 +1,9 @@
+{
+  "lesson": "S18",
+  "purpose": "移除因果遮罩并核对一次输出头更新",
+  "config_patch": {
+    "causal": false,
+    "learning_rate": 0.1
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

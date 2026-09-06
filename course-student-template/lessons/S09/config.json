@@ -1,0 +1,5 @@
+{
+  "seed": 7,
+  "max_depth": 3,
+  "min_leaf": 5
+}

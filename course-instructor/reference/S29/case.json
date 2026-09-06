@@ -1,0 +1,9 @@
+{
+  "lesson": "S29",
+  "purpose": "较严格的试运行行动标准",
+  "config_patch": {
+    "max_mae": 0.5,
+    "drift_threshold": 0.5
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

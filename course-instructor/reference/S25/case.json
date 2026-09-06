@@ -1,0 +1,10 @@
+{
+  "lesson": "S25",
+  "purpose": "较强探索与较短交互预算",
+  "config_patch": {
+    "epsilon": 0.3,
+    "steps": 200,
+    "runs": 8
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

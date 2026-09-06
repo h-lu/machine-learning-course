@@ -1,0 +1,9 @@
+{
+  "lesson": "S09",
+  "purpose": "更浅的树与更大叶节点",
+  "config_patch": {
+    "max_depth": 2,
+    "min_leaf": 8
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

@@ -1,0 +1,6 @@
+{
+  "seed": 7,
+  "epsilon": 0.1,
+  "steps": 300,
+  "runs": 12
+}

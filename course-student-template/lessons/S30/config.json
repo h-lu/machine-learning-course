@@ -1,0 +1,6 @@
+{
+  "seed": 7,
+  "training_fraction": 0.7,
+  "ridge": 1.0,
+  "underestimate_cost": 3.0
+}

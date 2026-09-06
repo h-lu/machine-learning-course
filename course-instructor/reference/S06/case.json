@@ -1,0 +1,8 @@
+{
+  "lesson": "S06",
+  "purpose": "只从训练行估计均值填补",
+  "config_patch": {
+    "imputation": "mean"
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

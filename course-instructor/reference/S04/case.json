@@ -1,0 +1,9 @@
+{
+  "lesson": "S04",
+  "purpose": "改变低估代价并上调预测",
+  "config_patch": {
+    "underestimate_cost": 5.0,
+    "prediction_shift": 1.5
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

@@ -1,0 +1,9 @@
+{
+  "lesson": "S16",
+  "purpose": "与目标不匹配的固定表示",
+  "config_patch": {
+    "training_examples": 16,
+    "representation": "mismatched"
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

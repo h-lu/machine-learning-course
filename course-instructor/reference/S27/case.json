@@ -1,0 +1,8 @@
+{
+  "lesson": "S27",
+  "purpose": "不同折扣下独立计算Bellman残差",
+  "config_patch": {
+    "gamma": 0.75
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

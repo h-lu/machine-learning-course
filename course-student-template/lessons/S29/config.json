@@ -1,0 +1,5 @@
+{
+  "seed": 7,
+  "max_mae": 1.0,
+  "drift_threshold": 1.0
+}

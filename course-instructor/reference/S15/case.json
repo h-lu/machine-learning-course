@@ -1,0 +1,9 @@
+{
+  "lesson": "S15",
+  "purpose": "改变平移幅度与分类头训练预算",
+  "config_patch": {
+    "shift_pixels": 1,
+    "steps": 120
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

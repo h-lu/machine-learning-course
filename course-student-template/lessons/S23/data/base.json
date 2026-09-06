@@ -1,0 +1,159 @@
+{
+  "kind": "corpus",
+  "documents": [
+    {
+      "id": "loan-current",
+      "title": "借书",
+      "text": "本科生可以借书三十天。",
+      "version": "2026-09",
+      "active": true,
+      "vector": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "loan-old",
+      "title": "借书",
+      "text": "本科生可以借书十四天。",
+      "version": "2025-09",
+      "active": false,
+      "vector": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "room",
+      "title": "教室",
+      "text": "研讨室最多容纳六人，需提前一天预约。",
+      "version": "2026-09",
+      "active": true,
+      "vector": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "account",
+      "title": "账号",
+      "text": "忘记密码须本人前往服务台验证身份。",
+      "version": "2026-09",
+      "active": true,
+      "vector": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "food",
+      "title": "餐饮",
+      "text": "教学楼禁止带有气味的热食，饮水不受限制。",
+      "version": "2026-09",
+      "active": true,
+      "vector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "renewal",
+      "title": "续借",
+      "text": "图书未被他人预约时，可以续借一次。",
+      "version": "2026-09",
+      "active": true,
+      "vector": [
+        0.8,
+        0,
+        0.2,
+        0
+      ]
+    },
+    {
+      "id": "wifi",
+      "title": "网络",
+      "text": "访客网络账号有效期为一天。",
+      "version": "2026-09",
+      "active": true,
+      "vector": [
+        0,
+        0.1,
+        0.9,
+        0
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "id": "q1",
+      "query": "书籍能留多久",
+      "vector": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "relevant": [
+        "loan-current"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "q2",
+      "query": "房间能坐几个人",
+      "vector": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "relevant": [
+        "room"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "q3",
+      "query": "我忘记了登录口令",
+      "vector": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "relevant": [
+        "account"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "q4",
+      "query": "下周奖学金发多少",
+      "vector": [
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ],
+      "relevant": [],
+      "answerable": false
+    }
+  ],
+  "vector_source": "人工四维主题向量，对应图书/房间/账号/餐饮；不具有预训练语义模型的泛化能力",
+  "source": {
+    "type": "synthetic",
+    "generator": "scripts/build_example_data.py",
+    "seed": 424,
+    "limitation": "仅供教学，不支持对真实人群或线上效果作推断"
+  }
+}

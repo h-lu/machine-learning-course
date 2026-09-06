@@ -1,0 +1,9 @@
+{
+  "lesson": "S28",
+  "purpose": "更少训练和更强奖励诱导，独立起点评估",
+  "config_patch": {
+    "episodes": 140,
+    "bonus_reward": 0.4
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

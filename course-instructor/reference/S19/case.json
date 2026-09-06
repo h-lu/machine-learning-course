@@ -1,0 +1,9 @@
+{
+  "lesson": "S19",
+  "purpose": "加入词表外字符并改变上下文长度",
+  "config_patch": {
+    "text": "图书馆借书🧭",
+    "context_length": 4
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

@@ -1,0 +1,10 @@
+{
+  "lesson": "S20",
+  "purpose": "更集中的解码分布",
+  "config_patch": {
+    "temperature": 0.6,
+    "top_k": 2,
+    "top_p": 0.8
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

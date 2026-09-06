@@ -1,0 +1,8 @@
+{
+  "seed": 7,
+  "episodes": 220,
+  "alpha": 0.2,
+  "epsilon": 0.2,
+  "gamma": 0.9,
+  "bonus_reward": 0.2
+}

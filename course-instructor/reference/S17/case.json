@@ -1,0 +1,9 @@
+{
+  "lesson": "S17",
+  "purpose": "无遮罩注意力权重的独立矩阵计算",
+  "config_patch": {
+    "causal": false,
+    "temperature": 0.6
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

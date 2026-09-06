@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-check"
+version = "2.0.0"
+description = "Read-only structure checks and concept questions for an open ML course"
+requires-python = ">=3.10"
+
+[project.scripts]
+ml-check = "ml_check.checker:run_cli"
+
+[tool.setuptools.packages.find]
+include = ["ml_check*", "app*"]
+
+[tool.setuptools.package-data]
+app = ["question_bank/*.json"]

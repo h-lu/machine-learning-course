@@ -1,0 +1,601 @@
+{
+  "time": "2026-09-06T09:28:09.450255+00:00",
+  "environment": {
+    "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+    "prefix": "/tmp/ml-course-clean-20260906",
+    "base_prefix": "/usr",
+    "numpy": "2.5.2",
+    "numpy_path": "/tmp/ml-course-clean-20260906/lib/python3.14/site-packages/numpy/__init__.py"
+  },
+  "notes": "独立venv；NumPy从预先下载的wheel离线安装；新源码副本不含Git、缓存和旧产物；数值库单线程。未模拟8GB机器或禁用操作系统网络。",
+  "lesson_runs": [
+    {
+      "lesson": "C01",
+      "exit_code": 0,
+      "seconds": 0.0544,
+      "max_rss_kib": 39032,
+      "result_sha256": "2ec02f3746fb6683783f17c0a617e1a34d5479b0adf8db40c9515809a5aa7c6e",
+      "metrics": {
+        "row_count": 180,
+        "train_rows": 120,
+        "evaluation_rows": 60,
+        "duplicate_ids": 0,
+        "n": 60,
+        "tp": 0,
+        "fp": 0,
+        "fn": 30,
+        "tn": 30,
+        "accuracy": 0.5,
+        "precision": null,
+        "recall": 0.0,
+        "brier": 0.5,
+        "log_loss": 10.3616329185
+      },
+      "input_hash": "af6c41e12a6d48433fc0744615dfdd35571cbfa4c3a4519185fdd2f0fc33b2c0"
+    },
+    {
+      "lesson": "C02",
+      "exit_code": 0,
+      "seconds": 0.0519,
+      "max_rss_kib": 41020,
+      "result_sha256": "859b6c54e54736766237c04675b9f9d5ba835bd3de8702cfd1eef5eb97b07b6c",
+      "metrics": {
+        "mae": 0.7236009585,
+        "rmse": 0.8584703374,
+        "asymmetric_loss": 1.0879131597,
+        "n": 60
+      },
+      "input_hash": "984865f93f743e09249f9f87987f437c963e73a9bb3e0665952e360223ef9634"
+    },
+    {
+      "lesson": "S01",
+      "exit_code": 0,
+      "seconds": 0.0552,
+      "max_rss_kib": 39244,
+      "result_sha256": "3757594c09a4fc5babde64279adb80f6427c26dee4d378cd10ab532355fb9cac",
+      "metrics": {
+        "n": 60,
+        "tp": 24,
+        "fp": 5,
+        "fn": 6,
+        "tn": 25,
+        "accuracy": 0.8166666667,
+        "precision": 0.8275862069,
+        "recall": 0.8,
+        "brier": 0.1429007611,
+        "log_loss": 0.4373783745,
+        "cost": 29.0
+      },
+      "input_hash": "428c864bd28e689f82417b51caa6c53d40061bad8ef41fc019b142cd200a964f"
+    },
+    {
+      "lesson": "S02",
+      "exit_code": 0,
+      "seconds": 0.058,
+      "max_rss_kib": 38376,
+      "result_sha256": "9579ab747340234b8869378da6bac3e339c11d5d16bd1c225b0fa66fff082083",
+      "metrics": {
+        "visible_labels": 62,
+        "total_rows": 180,
+        "coverage": 0.3444444444,
+        "positive_rate": 0.4677419355,
+        "proxy_accuracy_visible": 0.8548387097,
+        "annotator_agreement": 0.8888888889,
+        "agreement_meets_setting": true
+      },
+      "input_hash": "86e5eaf85df55c9d2a42e406e125b302be8852d0c5a4c97d173866824ae1658f"
+    },
+    {
+      "lesson": "S03",
+      "exit_code": 0,
+      "seconds": 0.0612,
+      "max_rss_kib": 43916,
+      "result_sha256": "aef210b78f0d590abad724596607ff3f68a5412752261b0ba2f1beef46a95a45",
+      "metrics": {
+        "mae": 2.5976063553,
+        "rmse": 2.8552601088,
+        "asymmetric_loss": 5.1921804029,
+        "n": 54,
+        "train_n": 126,
+        "shared_users": 12
+      },
+      "input_hash": "4844c9d9f3acac80acb05dc744673a3051e47a38f09edc31bc197630e3028487"
+    },
+    {
+      "lesson": "S04",
+      "exit_code": 0,
+      "seconds": 0.0554,
+      "max_rss_kib": 40636,
+      "result_sha256": "f81be187cee02300a92c854fe578575a82faf7c12bdd749a0dba0e27a39d5dfd",
+      "metrics": {
+        "mae": 0.2498875016,
+        "rmse": 0.3045486858,
+        "asymmetric_loss": 0.468650849,
+        "n": 60
+      },
+      "input_hash": "716cbeb4656441851e9e7cafa76c8487c5b6ed2166d66308f4d02f7cc8126ef5"
+    },
+    {
+      "lesson": "S05",
+      "exit_code": 0,
+      "seconds": 0.0568,
+      "max_rss_kib": 40176,
+      "result_sha256": "749ac296107dd5e583c0ef6a9b325ed33ec0336f22dbed68d641b6cd48f6b761",
+      "metrics": {
+        "n": 60,
+        "tp": 30,
+        "fp": 5,
+        "fn": 9,
+        "tn": 16,
+        "accuracy": 0.7666666667,
+        "precision": 0.8571428571,
+        "recall": 0.7692307692,
+        "brier": 0.1587939382,
+        "log_loss": 0.4921371241,
+        "cost": 41.0
+      },
+      "input_hash": "4efc51a1e3f5cbbc5f3bb7b39ec63438839c4af250cf98bc6a22fad3705038ab"
+    },
+    {
+      "lesson": "S06",
+      "exit_code": 0,
+      "seconds": 0.0585,
+      "max_rss_kib": 42132,
+      "result_sha256": "567b32acf96b9b6b98775f805a6f3091eb463ba01f7b496367dd9ed6cc388a7b",
+      "metrics": {
+        "mae": 1.8171253561,
+        "rmse": 1.9412071093,
+        "asymmetric_loss": 3.5984985059,
+        "n": 60
+      },
+      "input_hash": "71d7e61c55ced559b5aab16fa7576450c8ca16cbae86fae4f399184a8316d815"
+    },
+    {
+      "lesson": "S07",
+      "exit_code": 0,
+      "seconds": 0.0543,
+      "max_rss_kib": 40984,
+      "result_sha256": "a7872c4292b0db4639a7df44cfdf942d79d4a6a27659f13b6d215e8eb0a6ee93",
+      "metrics": {
+        "mae": 0.3138134181,
+        "rmse": 0.3956186444,
+        "asymmetric_loss": 0.5443296206,
+        "n": 60
+      },
+      "input_hash": "b4242a5df0d3bf1823b8f41369221241f11550dfab0ef2461688cbd3c19c74bd"
+    },
+    {
+      "lesson": "S08",
+      "exit_code": 0,
+      "seconds": 0.0539,
+      "max_rss_kib": 40164,
+      "result_sha256": "98275f602b9c65896bf66a8a72533334efc40fff5320996a135b759f625d8280",
+      "metrics": {
+        "n": 60,
+        "tp": 25,
+        "fp": 12,
+        "fn": 6,
+        "tn": 17,
+        "accuracy": 0.7,
+        "precision": 0.6756756757,
+        "recall": 0.8064516129,
+        "brier": 0.1932731948,
+        "log_loss": 0.5670467407
+      },
+      "input_hash": "fe897da7b724b2e6472d2efb07f20cca4700517ce3d147eeb18a08ed5d7a4389"
+    },
+    {
+      "lesson": "S09",
+      "exit_code": 0,
+      "seconds": 0.0693,
+      "max_rss_kib": 40456,
+      "result_sha256": "5a42841c69164de4b264cadeeff2b4a4c229b191aa5c51d4ded71d8c4a852948",
+      "metrics": {
+        "n": 60,
+        "tp": 29,
+        "fp": 16,
+        "fn": 2,
+        "tn": 13,
+        "accuracy": 0.7,
+        "precision": 0.6444444444,
+        "recall": 0.935483871,
+        "brier": 0.1824917695,
+        "log_loss": 0.8295255494
+      },
+      "input_hash": "5397c4e987cb075fe087c33cc61847d58350b367ab085e4545ca4cbe94785395"
+    },
+    {
+      "lesson": "S10",
+      "exit_code": 0,
+      "seconds": 0.0738,
+      "max_rss_kib": 42504,
+      "result_sha256": "4219c545e0dd909497694f566e91863d807d37118a5b186383f7c13d57c71463",
+      "metrics": {
+        "n": 60,
+        "tp": 17,
+        "fp": 5,
+        "fn": 15,
+        "tn": 23,
+        "accuracy": 0.6666666667,
+        "precision": 0.7727272727,
+        "recall": 0.53125,
+        "brier": 0.2290493293,
+        "log_loss": 0.6612981584
+      },
+      "input_hash": "df474c6bfb8935e5f7d1a93dd4030dc7e6aab2f34ffb6974f436c9da8f2d55f8"
+    },
+    {
+      "lesson": "S11",
+      "exit_code": 0,
+      "seconds": 0.0568,
+      "max_rss_kib": 42500,
+      "result_sha256": "c99173fd12c33bcafefe3f73be2f46aadb0b67420f9d91f27cd8692c72011e91",
+      "metrics": {
+        "inertia": 154.3847976463,
+        "cluster_sizes": [
+          60,
+          61,
+          59
+        ]
+      },
+      "input_hash": "a0d1537178d6378a61adceb2878b01e2de34df58f851900d2ccb0f84a261a3a8"
+    },
+    {
+      "lesson": "S12",
+      "exit_code": 0,
+      "seconds": 0.0545,
+      "max_rss_kib": 41308,
+      "result_sha256": "c52ffc80ec98f47269a6262c937438e86ec5f3812cbf42c418d67a2334f91a9b",
+      "metrics": {
+        "mean_reconstruction_error": 0.456779046,
+        "explained_variance_ratio": 0.5386380425
+      },
+      "input_hash": "cf5d75d0d41d5939d637eda7b3a34de11cdd9415a64a3c074baafdbbd053e706"
+    },
+    {
+      "lesson": "S13",
+      "exit_code": 0,
+      "seconds": 0.0663,
+      "max_rss_kib": 41968,
+      "result_sha256": "fe67d4798719f4f310c52c7089c547a6ae02ffa9c54c4a746e15a02c3d44b340",
+      "metrics": {
+        "n": 60,
+        "tp": 21,
+        "fp": 7,
+        "fn": 1,
+        "tn": 31,
+        "accuracy": 0.8666666667,
+        "precision": 0.75,
+        "recall": 0.9545454545,
+        "brier": 0.0877117578,
+        "log_loss": 0.2904041804
+      },
+      "input_hash": "381bd754379de3606c35a26bd1c6e138c5a04e16f9768cfe2dcc5566ee4d2ec0"
+    },
+    {
+      "lesson": "S14",
+      "exit_code": 0,
+      "seconds": 0.0699,
+      "max_rss_kib": 42616,
+      "result_sha256": "c35e700f1f2bbb418797108d108c6ed378177fc0c9bdd184e39752bf2a723b02",
+      "metrics": {
+        "n": 60,
+        "tp": 25,
+        "fp": 1,
+        "fn": 4,
+        "tn": 30,
+        "accuracy": 0.9166666667,
+        "precision": 0.9615384615,
+        "recall": 0.8620689655,
+        "brier": 0.1419400905,
+        "log_loss": 0.4626414794
+      },
+      "input_hash": "6d8959e0949f494b2d6b6538bbea3101b11a8d0d739cc77d92230532b8c4e1bd"
+    },
+    {
+      "lesson": "S15",
+      "exit_code": 0,
+      "seconds": 0.0659,
+      "max_rss_kib": 42752,
+      "result_sha256": "d20d84df34aea057db9410be8f649b077f472aaf6e123429cd11ecfb2c2ff60d",
+      "metrics": {
+        "n": 32,
+        "tp": 16,
+        "fp": 0,
+        "fn": 0,
+        "tn": 16,
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "brier": 0.0002366117,
+        "log_loss": 0.0151097654
+      },
+      "input_hash": "7db75f99bd4e46a0ebd8fe35bb0d4de8221560d9e8306e11652f31ce32264916"
+    },
+    {
+      "lesson": "S16",
+      "exit_code": 0,
+      "seconds": 0.0585,
+      "max_rss_kib": 43140,
+      "result_sha256": "4c5af512ede93738f20a09a68ad2bcfcc25620e1b856dd988bd83ef145bebce9",
+      "metrics": {
+        "n": 40,
+        "tp": 22,
+        "fp": 4,
+        "fn": 0,
+        "tn": 14,
+        "accuracy": 0.9,
+        "precision": 0.8461538462,
+        "recall": 1.0,
+        "brier": 0.0832594914,
+        "log_loss": 0.280938179
+      },
+      "input_hash": "089b753c41634a0ba19dd10341b43024078efe340342733a72c9e5c393d98887"
+    },
+    {
+      "lesson": "S17",
+      "exit_code": 0,
+      "seconds": 0.0542,
+      "max_rss_kib": 39876,
+      "result_sha256": "eb0dc1e397e7ce0bd85edd7e2ad286dba72ff2bbc4ab7916a5f16ca75cc61b88",
+      "metrics": {
+        "row_sum_max_error": 0.0,
+        "future_attention_mass": 0.0,
+        "output_norm": 1.7166864971
+      },
+      "input_hash": "4003604a3cd1c8a31aa4a05642845a58a0ed47d45055c50a34c2b2fc74351409"
+    },
+    {
+      "lesson": "S18",
+      "exit_code": 0,
+      "seconds": 0.0586,
+      "max_rss_kib": 42348,
+      "result_sha256": "420651a1977ba9304a2e9f5039ab1d80c44f745480ebafae53465a5717f3336c",
+      "metrics": {
+        "next_token_loss_before": 1.3379058906,
+        "next_token_loss_after": 1.3183286918,
+        "trainable_head_parameters": 16
+      },
+      "input_hash": "7f1a64b6a162b49719e66f4c82bbca7230c1d06275d76c8eab62b222dad3ad27"
+    },
+    {
+      "lesson": "S19",
+      "exit_code": 0,
+      "seconds": 0.052,
+      "max_rss_kib": 39064,
+      "result_sha256": "b4007dc47d540ea099d5e04cbc53a403f7bc8817d27af3485236211ea305fdc1",
+      "metrics": {
+        "tokens": 3,
+        "unknown_tokens": 0,
+        "used_context_tokens": 3,
+        "next_token_log_loss": 0.5563610747,
+        "perplexity": 1.7443135109
+      },
+      "input_hash": "72acbb40e708d1c3216460263578e5de22ef5b3485e23dbdab96216efd658c33"
+    },
+    {
+      "lesson": "S20",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "max_rss_kib": 42092,
+      "result_sha256": "bb5b1e353b4b35a34f1eddaf8b804012f7999017ca535628c58b9c33b7359f44",
+      "metrics": {
+        "samples": 40,
+        "unique_sequences": 34,
+        "mean_generated_length": 8.85,
+        "end_token_rate": 0.575,
+        "adjacent_repeat_rate": 0.02375
+      },
+      "input_hash": "489737903101e39fbdec0879e73037c9fa2621c7014ceac45ee37103d93f9068"
+    },
+    {
+      "lesson": "S21",
+      "exit_code": 0,
+      "seconds": 0.0537,
+      "max_rss_kib": 38804,
+      "result_sha256": "26e39707f2eada5f406aba81f6d4bc9a51c4b43e9f89de9a12de7840f95d2737",
+      "metrics": {
+        "n": 6,
+        "correct": 5,
+        "accuracy": 0.8333333333,
+        "invalid_outputs": 0,
+        "weighted_error": 0.1666666667
+      },
+      "input_hash": "70a7596f97d501a4a54a97c2b0ee6532ab73728ee0d52ccd6b1065f159c8f260"
+    },
+    {
+      "lesson": "S22",
+      "exit_code": 0,
+      "seconds": 0.054,
+      "max_rss_kib": 39192,
+      "result_sha256": "a451236eb9a6df441827a425bbaee70cde4316aedf6e76224f226f3311595c2b",
+      "metrics": {
+        "query_count": 4,
+        "mean_recall_answerable": 1.0,
+        "mean_precision": 0.375
+      },
+      "input_hash": "5cc697b9cbb065e9185356ee8373c6a103070fea46d85038e1d8c45c203ad78c"
+    },
+    {
+      "lesson": "S23",
+      "exit_code": 0,
+      "seconds": 0.0505,
+      "max_rss_kib": 39448,
+      "result_sha256": "3129da41b6117500dc72c9f53e67778919c02b310361b5f60fcfd6f92342dbd0",
+      "metrics": {
+        "n": 4,
+        "correct": 3,
+        "accuracy": 0.75,
+        "abstentions": 0,
+        "unsupported_answers": 1,
+        "unanswerable_rejection_rate": 0.0
+      },
+      "input_hash": "4d3526d23860a49ba92c64fce4f98f226bddeb55192f602b5b573ecb6f6da63d"
+    },
+    {
+      "lesson": "S24",
+      "exit_code": 0,
+      "seconds": 0.0535,
+      "max_rss_kib": 39072,
+      "result_sha256": "20d26e053510b11b8c845073a2231620c7f7afbe6dd9ea9df5016b384ee8bd56",
+      "metrics": {
+        "n": 5,
+        "unsafe_actions_allowed": 0,
+        "safe_requests_blocked": 0,
+        "correct": 5
+      },
+      "input_hash": "3fdfc2bbc22a6294b6710c8dbaa4510c5773abf7ae249499211c4cd36afbcbe5"
+    },
+    {
+      "lesson": "S25",
+      "exit_code": 0,
+      "seconds": 0.0867,
+      "max_rss_kib": 41632,
+      "result_sha256": "6f4c72cf01125b147c8f3c94a03850b3e0470a56fad0bc1013a55159d52d47c4",
+      "metrics": {
+        "mean_reward": 183.6666666667,
+        "reward_std": 12.6776268372,
+        "mean_pseudo_regret": 14.2458333333,
+        "mean_action_counts": [
+          27.75,
+          12.5833333333,
+          259.6666666667
+        ],
+        "runs": 12,
+        "steps": 300
+      },
+      "input_hash": "91be7578fc3404034a946d6f6b935e6b130aed6df03ebc3746b9ffe51089dbaf"
+    },
+    {
+      "lesson": "S26",
+      "exit_code": 0,
+      "seconds": 0.0544,
+      "max_rss_kib": 38976,
+      "result_sha256": "bf39c39b3f0f637f52bd65daa54d9f8923c68d01f848aa6eac3ee835086f360f",
+      "metrics": {
+        "discounted_return": 0.426686,
+        "goal_reached": true,
+        "hazard_reached": false,
+        "steps": 6,
+        "truncated": false
+      },
+      "input_hash": "0b9db3b6dc9767cf17dad089873541f219e6f1564a6b1150ab9111c5d4d6d793"
+    },
+    {
+      "lesson": "S27",
+      "exit_code": 0,
+      "seconds": 0.0589,
+      "max_rss_kib": 38652,
+      "result_sha256": "6ad824e4f20029430be1e84a9e27d9d7ca7667f7531843c37aca5b8eb6c7708c",
+      "metrics": {
+        "discounted_return": 0.426686,
+        "goal_reached": true,
+        "hazard_reached": false,
+        "steps": 6,
+        "truncated": false,
+        "bellman_residual": 0.0,
+        "iterations": 7,
+        "start_value": 0.426686
+      },
+      "input_hash": "f5b01e0245b24e99e6aececf6fd77886a603def0a5bfae1ff74bf67bfc1eac5e"
+    },
+    {
+      "lesson": "S28",
+      "exit_code": 0,
+      "seconds": 0.1182,
+      "max_rss_kib": 41368,
+      "result_sha256": "ed34842faf1907f4084acc89c07f8a4e881e24bbc46e7afba268faf005d05be5",
+      "metrics": {
+        "evaluation_runs": 25,
+        "goal_rate": 1.0,
+        "mean_return": 0.726292384,
+        "truncation_rate": 0.0
+      },
+      "input_hash": "752c98e0ff9a2c1f5bee00f96130851808069e1108e6fb87f86fadaa16f5b182"
+    },
+    {
+      "lesson": "S29",
+      "exit_code": 0,
+      "seconds": 0.0547,
+      "max_rss_kib": 40908,
+      "result_sha256": "87a89372755a935ce575ae7602d6a83465a70242e8a5de13042fbbb7060eec28",
+      "metrics": {
+        "mae": 0.3114454448,
+        "rmse": 0.388686918,
+        "asymmetric_loss": 0.4575801222,
+        "n": 60
+      },
+      "input_hash": "aecea1480428921a28b24ab40ee628e18266b71726dc032be4e7e08acf69b805"
+    },
+    {
+      "lesson": "S30",
+      "exit_code": 0,
+      "seconds": 0.0585,
+      "max_rss_kib": 43384,
+      "result_sha256": "1eb916d9a4b199e42515548214becec75445cbd2c03a118e61664a9af87667b1",
+      "metrics": {
+        "mae": 0.2866573507,
+        "rmse": 0.3784205994,
+        "asymmetric_loss": 0.560744652,
+        "n": 60
+      },
+      "input_hash": "aaffd8aa004f412d9aee9e59e498c3d8c6a6381dc1a70aa92eea5dad00a7f1f7"
+    }
+  ],
+  "maximum_seconds": 0.1182,
+  "total_lesson_seconds": 1.9505,
+  "suite_exit_code": 0,
+  "suite": {
+    "time": "2026-09-06T09:28:09.424413+00:00",
+    "python": "3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]",
+    "executable": "/tmp/ml-course-clean-20260906/bin/python",
+    "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+    "cpu_threads": 32,
+    "notes": "作者本机；限制数值库为单线程。不是普通学生电脑试教，也未执行未知学生代码。",
+    "checks": [
+      {
+        "name": "题库同步",
+        "exit_code": 0,
+        "seconds": 0.019,
+        "output": "已汇集 32 课、128 题。\n"
+      },
+      {
+        "name": "学生实验测试",
+        "exit_code": 0,
+        "seconds": 0.895,
+        "output": "test_changed_data_changes_actual_metrics_in_every_lesson (test_runtime.CompleteLessonCoverage.test_changed_data_changes_actual_metrics_in_every_lesson) ... ok\ntest_cli_accepts_separate_input_and_output_paths (test_runtime.CompleteLessonCoverage.test_cli_accepts_separate_input_and_output_paths) ... ok\ntest_every_lesson_produces_numerical_results_and_real_stress (test_runtime.CompleteLessonCoverage.test_every_lesson_produces_numerical_results_and_real_stress) ... ok\ntest_input_errors_are_visible (test_runtime.CompleteLessonCoverage.test_input_errors_are_visible) ... ok\ntest_network_curves_include_training_and_validation (test_runtime.CompleteLessonCoverage.test_network_curves_include_training_and_validation) ... ok\ntest_policy_evaluation_and_transfer_use_comparable_data (test_runtime.CompleteLessonCoverage.test_policy_evaluation_and_transfer_use_comparable_data) ... ok\ntest_results_are_deterministic (test_runtime.CompleteLessonCoverage.test_results_are_deterministic) ... ok\ntest_saved_sampling_sequences_reproduce_all_aggregate_metrics (test_runtime.CompleteLessonCoverage.test_saved_sampling_sequences_reproduce_all_aggregate_metrics) ... ok\ntest_sequence_width_and_vocabulary_validation (test_runtime.CompleteLessonCoverage.test_sequence_width_and_vocabulary_validation) ... ok\ntest_unmasked_attention_is_permutation_equivariant (test_runtime.CompleteLessonCoverage.test_unmasked_attention_is_permutation_equivariant) ... ok\ntest_attention_mask_blocks_future_inputs (test_runtime.MathematicalChecks.test_attention_mask_blocks_future_inputs) ... ok\ntest_confusion_counts_and_denominators (test_runtime.MathematicalChecks.test_confusion_counts_and_denominators) ... ok\ntest_kmeans_assignments_use_final_centres (test_runtime.MathematicalChecks.test_kmeans_assignments_use_final_centres) ... ok\ntest_linear_fit_recovers_known_relation (test_runtime.MathematicalChecks.test_linear_fit_recovers_known_relation) ... ok\ntest_regression_tail_and_asymmetric_loss (test_runtime.MathematicalChecks.test_regression_tail_and_asymmetric_loss) ... ok\ntest_sampling_normalizes_after_filtering (test_runtime.MathematicalChecks.test_sampling_normalizes_after_filtering) ... ok\ntest_terminal_reward_has_no_future_bootstrap (test_runtime.MathematicalChecks.test_terminal_reward_has_no_future_bootstrap) ... ok\ntest_transformer_residual_path_still_respects_causality (test_runtime.MathematicalChecks.test_transformer_residual_path_still_respects_causality) ... ok\ntest_value_iteration_reports_failure_to_converge (test_runtime.MathematicalChecks.test_value_iteration_reports_failure_to_converge) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.829s\n\nOK\n"
+      },
+      {
+        "name": "32课教师参考覆盖",
+        "exit_code": 0,
+        "seconds": 0.195,
+        "output": "{\n  \"status\": \"passed\",\n  \"lessons\": 32,\n  \"independent_checks\": 48,\n  \"elapsed_seconds\": 0.1368,\n  \"scope\": \"验证32个工具变体及数值性质，不评价学生是否选择相同模型或采用结论\",\n  \"results\": [\n    {\n      \"lesson\": \"C01\",\n      \"variant\": \"加入重复记录并删除标签字段\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"独立构造重复记录和缺失字段\"\n      ],\n      \"metrics\": {\n        \"row_count\": 181,\n        \"train_rows\": 120,\n        \"evaluation_rows\": 61,\n        \"duplicate_ids\": 1,\n        \"n\": 61,\n        \"tp\": 0,\n        \"fp\": 0,\n        \"fn\": 30,\n        \"tn\": 31,\n        \"accuracy\": 0.5081967213,\n        \"precision\": null,\n        \"recall\": 0.0,\n        \"brier\": 0.4918032787,\n        \"log_loss\": 10.1917700837\n      }\n    },\n    {\n      \"lesson\": \"C02\",\n      \"variant\": \"改用第二列特征，独立核对线性系数\",\n      \"checks\": [\n        \"真实结果/预测逐条重算回归损失\",\n        \"用另一线性代数入口lstsq核对系数\"\n      ],\n      \"metrics\": {\n        \"mae\": 1.4001912245,\n        \"rmse\": 1.7322474747,\n        \"asymmetric_loss\": 2.0169333567,\n        \"n\": 60\n      }\n    },\n    {\n      \"lesson\": \"S01\",\n      \"variant\": \"改变阈值与漏报代价\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"替换错误代价后独立计算总损失\"\n      ],\n      \"metrics\": {\n        \"n\": 60,\n        \"tp\": 10,\n        \"fp\": 2,\n        \"fn\": 20,\n        \"tn\": 28,\n        \"accuracy\": 0.6333333333,\n        \"precision\": 0.8333333333,\n        \"recall\": 0.3333333333,\n        \"brier\": 0.1429007611,\n        \"log_loss\": 0.4373783745,\n        \"cost\": 42.0\n      }\n    },\n    {\n      \"lesson\": \"S02\",\n      \"variant\": \"提前标签观察截止日期\",\n      \"checks\": [\n        \"直接扫描记录核对观察截止日期与标注一致率\"\n      ],\n      \"metrics\": {\n        \"visible_labels\": 10,\n        \"total_rows\": 180,\n        \"coverage\": 0.0555555556,\n        \"positive_rate\": 0.0,\n        \"proxy_accuracy_visible\": 0.8,\n        \"annotator_agreement\": 0.8888888889,\n        \"agreement_meets_setting\": true\n      }\n    },\n    {\n      \"lesson\": \"S03\",\n      \"variant\": \"按用户留出评估数据\",\n      \"checks\": [\n        \"分组切分用户不重叠，事后标签特征泄漏被数值展示\"\n      ],\n      \"metrics\": {\n        \"mae\": 2.1573056156,\n        \"rmse\": 2.5447514387,\n        \"asymmetric_loss\": 4.2491028813,\n        \"n\": 75,\n        \"train_n\": 105,\n        \"shared_users\": 0\n      }\n    },\n    {\n      \"lesson\": \"S04\",\n      \"variant\": \"改变低估代价并上调预测\",\n      \"checks\": [\n        \"真实结果/预测逐条重算回归损失\",\n        \"独立极端结果导致尾部误差增加\"\n      ],\n      \"metrics\": {\n        \"mae\": 1.5311241542,\n        \"rmse\": 1.5608082408,\n        \"asymmetric_loss\": 1.5311241542,\n        \"n\": 60\n      }\n    },\n    {\n      \"lesson\": \"S05\",\n      \"variant\": \"减少复核容量并改变阈值\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"独立排序核对名额及分箱计数守恒\"\n      ],\n      \"metrics\": {\n        \"n\": 60,\n        \"tp\": 21,\n        \"fp\": 2,\n        \"fn\": 18,\n        \"tn\": 19,\n        \"accuracy\": 0.6666666667,\n        \"precision\": 0.9130434783,\n        \"recall\": 0.5384615385,\n        \"brier\": 0.1587939382,\n        \"log_loss\": 0.4921371241,\n        \"cost\": 74.0\n      }\n    },\n    {\n      \"lesson\": \"S06\",\n      \"variant\": \"只从训练行估计均值填补\",\n      \"checks\": [\n        \"真实结果/预测逐条重算回归损失\",\n        \"仅从训练行重算缺失填补值\"\n      ],\n      \"metrics\": {\n        \"mae\": 1.8201409592,\n        \"rmse\": 1.9432693387,\n        \"asymmetric_loss\": 3.6029636313,\n        \"n\": 60\n      }\n    },\n    {\n      \"lesson\": \"S07\",\n      \"variant\": \"有正则化的线性解及不同外推距离\",\n      \"checks\": [\n        \"真实结果/预测逐条重算回归损失\",\n        \"独立解正规方程核对ridge系数\"\n      ],\n      \"metrics\": {\n        \"mae\": 0.3192053377,\n        \"rmse\": 0.4035731487,\n        \"asymmetric_loss\": 0.5563406896,\n        \"n\": 60\n      }\n    },\n    {\n      \"lesson\": \"S08\",\n      \"variant\": \"加强正则化并改变行动阈值\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"概率模型真实优化轨迹与有限损失\"\n      ],\n      \"metrics\": {\n        \"n\": 60,\n        \"tp\": 8,\n        \"fp\": 1,\n        \"fn\": 23,\n        \"tn\": 28,\n        \"accuracy\": 0.6,\n        \"precision\": 0.8888888889,\n        \"recall\": 0.2580645161,\n        \"brier\": 0.1989915985,\n        \"log_loss\": 0.5839047382\n      }\n    },\n    {\n      \"lesson\": \"S09\",\n      \"variant\": \"更浅的树与更大叶节点\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"独立遍历树核对深度与训练行守恒\"\n      ],\n      \"metrics\": {\n        \"n\": 60,\n        \"tp\": 29,\n        \"fp\": 16,\n        \"fn\": 2,\n        \"tn\": 13,\n        \"accuracy\": 0.7,\n        \"precision\": 0.6444444444,\n        \"recall\": 0.935483871,\n        \"brier\": 0.1975546628,\n        \"log_loss\": 0.5625058828\n      }\n    },\n    {\n      \"lesson\": \"S10\",\n      \"variant\": \"不同集成规模和弱学习器深度\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"不同集成规模的实际模型数量与操作数估算\"\n      ],\n      \"metrics\": {\n        \"n\": 60,\n        \"tp\": 17,\n        \"fp\": 6,\n        \"fn\": 15,\n        \"tn\": 22,\n        \"accuracy\": 0.65,\n        \"precision\": 0.7391304348,\n        \"recall\": 0.53125,\n        \"brier\": 0.2114341186,\n        \"log_loss\": 0.6119112137\n      }\n    },\n    {\n      \"lesson\": \"S11\",\n      \"variant\": \"改簇数并检查未标准化距离\",\n      \"checks\": [\n        \"从原始数据和最终中心独立计算簇内平方和\"\n      ],\n      \"metrics\": {\n        \"inertia\": 134.8109662712,\n        \"cluster_sizes\": [\n          46,\n          53,\n          29,\n          52\n        ]\n      }\n    },\n    {\n      \"lesson\": \"S12\",\n      \"variant\": \"保留全维度，检查重构误差消失的含义\",\n      \"checks\": [\n        \"主成分正交性与重构记录数量\"\n      ],\n      \"metrics\": {\n        \"mean_reconstruction_error\": 0.0,\n        \"explained_variance_ratio\": 1.0\n      }\n    },\n    {\n      \"lesson\": \"S13\",\n      \"variant\": \"较窄网络与较少训练步数\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"训练/验证两条曲线与最终预测相符\"\n      ],\n      \"metrics\": {\n        \"n\": 60,\n        \"tp\": 6,\n        \"fp\": 2,\n        \"fn\": 16,\n        \"tn\": 36,\n        \"accuracy\": 0.7,\n        \"precision\": 0.75,\n        \"recall\": 0.2727272727,\n        \"brier\": 0.225320433,\n        \"log_loss\": 0.6430118316\n      }\n    },\n    {\n      \"lesson\": \"S14\",\n      \"variant\": \"改变学习率进行优化失败诊断\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"训练/验证两条曲线与最终预测相符\"\n      ],\n      \"metrics\": {\n        \"n\": 60,\n        \"tp\": 25,\n        \"fp\": 1,\n        \"fn\": 4,\n        \"tn\": 30,\n        \"accuracy\": 0.9166666667,\n        \"precision\": 0.9615384615,\n        \"recall\": 0.8620689655,\n        \"brier\": 0.0881770619,\n        \"log_loss\": 0.3141647149\n      }\n    },\n    {\n      \"lesson\": \"S15\",\n      \"variant\": \"改变平移幅度与分类头训练预算\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"手工点乘一个卷积窗口核对真实卷积运算\"\n      ],\n      \"metrics\": {\n        \"n\": 32,\n        \"tp\": 16,\n        \"fp\": 0,\n        \"fn\": 0,\n        \"tn\": 16,\n        \"accuracy\": 1.0,\n        \"precision\": 1.0,\n        \"recall\": 1.0,\n        \"brier\": 0.0005251576,\n        \"log_loss\": 0.0227106578\n      }\n    },\n    {\n      \"lesson\": \"S16\",\n      \"variant\": \"与目标不匹配的固定表示\",\n      \"checks\": [\n        \"真实标签/概率逐条重算混淆计数和Brier\",\n        \"替换表示路线后的训练样本数量与能力声明\"\n      ],\n      \"metrics\": {\n        \"n\": 40,\n        \"tp\": 22,\n        \"fp\": 18,\n        \"fn\": 0,\n        \"tn\": 0,\n        \"accuracy\": 0.55,\n        \"precision\": 0.55,\n        \"recall\": 1.0,\n        \"brier\": 0.2734481601,\n        \"log_loss\": 0.7517186144\n      }\n    },\n    {\n      \"lesson\": \"S17\",\n      \"variant\": \"无遮罩注意力权重的独立矩阵计算\",\n      \"checks\": [\n        \"独立计算无遮罩softmax注意力全部权重\"\n      ],\n      \"metrics\": {\n        \"row_sum_max_error\": 0.0,\n        \"future_attention_mass\": 1.3522925347,\n        \"output_norm\": 1.507211558\n      }\n    },\n    {\n      \"lesson\": \"S18\",\n      \"variant\": \"移除因果遮罩并核对一次输出头更新\",\n      \"checks\": [\n        \"独立交叉熵及关闭遮罩后的未来信息效应\"\n      ],\n      \"metrics\": {\n        \"next_token_loss_before\": 1.3320995349,\n        \"next_token_loss_after\": 1.3038480703,\n        \"trainable_head_parameters\": 16\n      }\n    },\n    {\n      \"lesson\": \"S19\",\n      \"variant\": \"加入词表外字符并改变上下文长度\",\n      \"checks\": [\n        \"已知词表外字符与困惑度指数关系\"\n      ],\n      \"metrics\": {\n        \"tokens\": 4,\n        \"unknown_tokens\": 1,\n        \"used_context_tokens\": 4,\n        \"next_token_log_loss\": 1.480990914,\n        \"perplexity\": 4.3973008695\n      }\n    },\n    {\n      \"lesson\": \"S20\",\n      \"variant\": \"更集中的解码分布\",\n      \"checks\": [\n        \"改变解码配置后的概率支持集和归一化\"\n      ],\n      \"metrics\": {\n        \"samples\": 40,\n        \"unique_sequences\": 17,\n        \"mean_generated_length\": 12.0,\n        \"end_token_rate\": 0.0,\n        \"adjacent_repeat_rate\": 0.0\n      }\n    },\n    {\n      \"lesson\": \"S21\",\n      \"variant\": \"另一份已有候选输出表\",\n      \"checks\": [\n        \"逐条重新计数候选响应，不替未执行提示编造结果\"\n      ],\n      \"metrics\": {\n        \"n\": 6,\n        \"correct\": 6,\n        \"accuracy\": 1.0,\n        \"invalid_outputs\": 0,\n        \"weighted_error\": 0.0\n      }\n    },\n    {\n      \"lesson\": \"S22\",\n      \"variant\": \"只返回一条且允许旧版本\",\n      \"checks\": [\n        \"候选文档数量及查询分母\"\n      ],\n      \"metrics\": {\n        \"query_count\": 4,\n        \"mean_recall_answerable\": 1.0,\n        \"mean_precision\": 0.75\n      }\n    },\n    {\n      \"lesson\": \"S23\",\n      \"variant\": \"提高抽取式回答的拒答阈值\",\n      \"checks\": [\n        \"逐条引用必须对应原始文档正文\"\n      ],\n      \"metrics\": {\n        \"n\": 4,\n        \"correct\": 4,\n        \"accuracy\": 1.0,\n        \"abstentions\": 1,\n        \"unsupported_answers\": 0,\n        \"unanswerable_rejection_rate\": 1.0\n      }\n    },\n    {\n      \"lesson\": \"S24\",\n      \"variant\": \"关键词过滤的误拒与漏过\",\n      \"checks\": [\n        \"直接重算危险动作通过与正常请求误拒\"\n      ],\n      \"metrics\": {\n        \"n\": 5,\n        \"unsafe_actions_allowed\": 1,\n        \"safe_requests_blocked\": 1,\n        \"correct\": 3\n      }\n    },\n    {\n      \"lesson\": \"S25\",\n      \"variant\": \"较强探索与较短交互预算\",\n      \"checks\": [\n        \"仿真动作数量守恒与回报范围\"\n      ],\n      \"metrics\": {\n        \"mean_reward\": 116.125,\n        \"reward_std\": 8.2224920188,\n        \"mean_pseudo_regret\": 14.85625,\n        \"mean_action_counts\": [\n          25.5,\n          18.625,\n          155.875\n        ],\n        \"runs\": 8,\n        \"steps\": 200\n      }\n    },\n    {\n      \"lesson\": \"S26\",\n      \"variant\": \"不同路线与折扣\",\n      \"checks\": [\n        \"从轨迹奖励独立求折扣回报\"\n      ],\n      \"metrics\": {\n        \"discounted_return\": -0.014464,\n        \"goal_reached\": true,\n        \"hazard_reached\": false,\n        \"steps\": 6,\n        \"truncated\": false\n      }\n    },\n    {\n      \"lesson\": \"S27\",\n      \"variant\": \"不同折扣下独立计算Bellman残差\",\n      \"checks\": [\n        \"独立实现环境转移计算全部状态Bellman残差\"\n      ],\n      \"metrics\": {\n        \"discounted_return\": 0.1152734375,\n        \"goal_reached\": true,\n        \"hazard_reached\": false,\n        \"steps\": 6,\n        \"truncated\": false,\n        \"bellman_residual\": 0.0,\n        \"iterations\": 7,\n        \"start_value\": 0.1152734375\n      }\n    },\n    {\n      \"lesson\": \"S28\",\n      \"variant\": \"更少训练和更强奖励诱导，独立起点评估\",\n      \"checks\": [\n        \"冻结策略在独立种子选择的新起点评估，逐次重算成功率\"\n      ],\n      \"metrics\": {\n        \"evaluation_runs\": 25,\n        \"goal_rate\": 1.0,\n        \"mean_return\": 0.726292384,\n        \"truncation_rate\": 0.0\n      }\n    },\n    {\n      \"lesson\": \"S29\",\n      \"variant\": \"较严格的试运行行动标准\",\n      \"checks\": [\n        \"真实结果/预测逐条重算回归损失\",\n        \"缺输入字段拒绝与不预填上线结论\"\n      ],\n      \"metrics\": {\n        \"mae\": 0.3114454448,\n        \"rmse\": 0.388686918,\n        \"asymmetric_loss\": 0.4575801222,\n        \"n\": 60\n      }\n    },\n    {\n      \"lesson\": \"S30\",\n      \"variant\": \"不同资源和代价下的同分母迁移比较\",\n      \"checks\": [\n        \"真实结果/预测逐条重算回归损失\",\n        \"原模型与更新模型在同一批保留数据比较\"\n      ],\n      \"metrics\": {\n        \"mae\": 0.2952076788,\n        \"rmse\": 0.3852549237,\n        \"asymmetric_loss\": 0.8325028181,\n        \"n\": 60\n      }\n    }\n  ]\n}\n"
+      },
+      {
+        "name": "检查器与API测试",
+        "exit_code": 0,
+        "seconds": 0.559,
+        "output": "test_actual_http_read (test_app.Questions.test_actual_http_read) ... 127.0.0.1 - - [06/Sep/2026 17:28:08] \"GET /ml-check/api/lessons/S23 HTTP/1.1\" 200 -\nok\ntest_all_32_lessons_have_four_valid_questions (test_app.Questions.test_all_32_lessons_have_four_valid_questions) ... ok\ntest_legacy_paths_and_case_insensitive_ids (test_app.Questions.test_legacy_paths_and_case_insensitive_ids) ... ok\ntest_no_duplicate_question_prompts_across_lessons (test_app.Questions.test_no_duplicate_question_prompts_across_lessons) ... ok\ntest_question_get_does_not_publish_teacher_answers (test_app.Questions.test_question_get_does_not_publish_teacher_answers) ... ok\ntest_unknown_routes_and_lesson_return_404 (test_app.Questions.test_unknown_routes_and_lesson_return_404) ... ok\ntest_broken_link_fails (test_checker.PlanningChecks.test_broken_link_fails) ... ok\ntest_duplicate_or_missing_lesson_fails (test_checker.PlanningChecks.test_duplicate_or_missing_lesson_fails) ... ok\ntest_exact_32_lessons (test_checker.PlanningChecks.test_exact_32_lessons) ... ok\ntest_old_student_wording_fails (test_checker.PlanningChecks.test_old_student_wording_fails) ... ok\ntest_syntax_error_fails_without_importing_script (test_checker.PlanningChecks.test_syntax_error_fails_without_importing_script) ... ok\ntest_completed_submission_requires_task_and_artifact (test_checker.SubmissionChecks.test_completed_submission_requires_task_and_artifact) ... ok\ntest_does_not_execute_submitted_commands (test_checker.SubmissionChecks.test_does_not_execute_submitted_commands) ... ok\ntest_full_repo_accepts_replacement_of_default_entry_and_data_layout (test_checker.SubmissionChecks.test_full_repo_accepts_replacement_of_default_entry_and_data_layout) ... ok\ntest_independent_run_report_and_csv_are_accepted (test_checker.SubmissionChecks.test_independent_run_report_and_csv_are_accepted) ... ok\ntest_nonfinite_json_is_rejected (test_checker.SubmissionChecks.test_nonfinite_json_is_rejected) ... ok\ntest_opposite_decisions_and_arbitrary_metrics_are_accepted (test_checker.SubmissionChecks.test_opposite_decisions_and_arbitrary_metrics_are_accepted) ... ok\ntest_report_cannot_escape_repo (test_checker.SubmissionChecks.test_report_cannot_escape_repo) ... ok\ntest_symlink_cannot_escape_repo (test_checker.SubmissionChecks.test_symlink_cannot_escape_repo) ... ok\ntest_template_does_not_claim_completion (test_checker.SubmissionChecks.test_template_does_not_claim_completion) ... ok\ntest_wrong_field_types_report_errors (test_checker.SubmissionChecks.test_wrong_field_types_report_errors) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.517s\n\nOK\n"
+      },
+      {
+        "name": "student严格检查",
+        "exit_code": 0,
+        "seconds": 0.056,
+        "output": "{\n  \"root\": \"/tmp/ml-course-source-joxkv30p/course-student-template\",\n  \"profile\": \"student\",\n  \"issues\": [],\n  \"stats\": {\n    \"lessons\": 32,\n    \"template\": 32\n  }\n}\n"
+      },
+      {
+        "name": "instructor严格检查",
+        "exit_code": 0,
+        "seconds": 0.031,
+        "output": "{\n  \"root\": \"/tmp/ml-course-source-joxkv30p/course-instructor\",\n  \"profile\": \"instructor\",\n  \"issues\": [],\n  \"stats\": {\n    \"lessons\": 32\n  }\n}\n"
+      },
+      {
+        "name": "planning严格检查",
+        "exit_code": 0,
+        "seconds": 0.024,
+        "output": "{\n  \"root\": \"/tmp/ml-course-source-joxkv30p/machine-learning-course\",\n  \"profile\": \"planning\",\n  \"issues\": [],\n  \"stats\": {\n    \"lessons\": 32\n  }\n}\n"
+      }
+    ]
+  },
+  "source_sha256": "fb04f54ef9710f32adc451d75d793d3f8e88c10d99ce9963be5391381fea7e25"
+}

@@ -1,0 +1,8 @@
+{
+  "lesson": "S23",
+  "purpose": "提高抽取式回答的拒答阈值",
+  "config_patch": {
+    "minimum_similarity": 0.75
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

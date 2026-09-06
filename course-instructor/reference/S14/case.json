@@ -1,0 +1,9 @@
+{
+  "lesson": "S14",
+  "purpose": "改变学习率进行优化失败诊断",
+  "config_patch": {
+    "learning_rate": 0.4,
+    "comparison_learning_rate": 12.0
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "sequence",
+  "tokens": [
+    "借",
+    "书",
+    "需",
+    "证"
+  ],
+  "vectors": [
+    [
+      1,
+      0,
+      0.2,
+      0
+    ],
+    [
+      0.7,
+      0.4,
+      0,
+      0.1
+    ],
+    [
+      0,
+      1,
+      0.3,
+      0
+    ],
+    [
+      0.1,
+      0.8,
+      0,
+      0.5
+    ]
+  ],
+  "next_token_targets": [
+    1,
+    2,
+    3,
+    0
+  ],
+  "source": {
+    "type": "synthetic",
+    "generator": "scripts/build_example_data.py",
+    "seed": 418,
+    "limitation": "仅供教学，不支持对真实人群或线上效果作推断"
+  }
+}

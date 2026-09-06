@@ -1,0 +1,9 @@
+{
+  "lesson": "S26",
+  "purpose": "不同路线与折扣",
+  "config_patch": {
+    "gamma": 0.6,
+    "policy": "down_then_right"
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

@@ -1,0 +1,5 @@
+{
+  "seed": 7,
+  "split_strategy": "time",
+  "train_fraction": 0.7
+}

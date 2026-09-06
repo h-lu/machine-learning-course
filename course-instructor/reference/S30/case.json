@@ -1,0 +1,10 @@
+{
+  "lesson": "S30",
+  "purpose": "不同资源和代价下的同分母迁移比较",
+  "config_patch": {
+    "training_fraction": 0.5,
+    "ridge": 2.0,
+    "underestimate_cost": 5.0
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}

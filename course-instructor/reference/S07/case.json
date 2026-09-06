@@ -1,0 +1,9 @@
+{
+  "lesson": "S07",
+  "purpose": "有正则化的线性解及不同外推距离",
+  "config_patch": {
+    "ridge": 2.0,
+    "extrapolation_distance": 3.0
+  },
+  "scope": "教师工具核对案例，不是学生必须采用的方案"
+}
