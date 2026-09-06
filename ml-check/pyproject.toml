@@ -15,4 +15,4 @@ ml-check = "ml_check.checker:run_cli"
 include = ["ml_check*", "app*"]
 
 [tool.setuptools.package-data]
-app = ["question_bank/*.json"]
+app = ["question_bank/*.json", "static/*.css"]

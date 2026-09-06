@@ -7,7 +7,7 @@
 | [GitHub：h-lu/machine-learning-course](https://github.com/h-lu/machine-learning-course) | 32 课完整材料、128 道题和运行工具，公开 |
 | [Gitea：course-student-template](https://hblu.top/gitea/machine-learning-2026/course-student-template) | 学生课包、数据和实验工具 |
 | [Gitea：course-instructor](https://hblu.top/gitea/machine-learning-2026/course-instructor) | 教师运行单、参考分析和题目答案 |
-| [Gitea：ml-check](https://hblu.top/gitea/machine-learning-2026/ml-check) | 格式检查与概念题读取代码 |
+| [Gitea：ml-check](https://hblu.top/gitea/machine-learning-2026/ml-check) | 格式检查与在线概念练习代码 |
 
 ## 发布办法
 
@@ -18,7 +18,7 @@
 
 公开仓库中的教师答案不嵌入学生任务目录。学生应先作判断，再用 AI 和参考材料学习；项目仍按自己的实验、检查与理由评价。
 
-本次发布指课程仓库及模板。`ml-check` 的读取服务源码一同发布，但仓库推送不表示登录、答题存储或生产服务已部署。
+课程仓库发布后，已于 2026-09-06 将概念练习服务部署到 [hblu.top/ml-check](https://hblu.top/ml-check)。覆盖 32 课、128 题，提供 A/B 两轮答题和提交后的解释；无需登录，不保存个人答题记录。服务器配置见 `ml-check/deploy/README.md`。
 
 ## 2026-09-06 发布记录
 
@@ -33,3 +33,7 @@ GitHub 公开仓库已创建，完整课程已推送到 `main`。从公开 HTTPS
 | ml-check | `master` | [`eba461dd8a45`](https://hblu.top/gitea/machine-learning-2026/ml-check/commit/eba461dd8a45bff26caea36aa12429e5a5d5bb85) | 保留原私有设置 |
 
 服务器上的默认分支提交与本地一致；三个仓库的 452 个已跟踪文件也逐文件与 GitHub 发布包比较一致。Gitea 各仓保留 `archive/pre-redesign-2026-09-06` 标签，指向重建前版本；没有强制推送或改写旧历史。
+
+## 在线服务验收
+
+新增页面与表单测试覆盖所有 32 课的 A/B 两轮、正确和错误回答、缺失答案、无效课次、静态样式和 HEAD 请求。全部 25 项检查器/HTTP 测试通过，课程整体严格验收通过。公网浏览器已实测首页、课次选择、提交与解释显示；Docker 健康检查和 HTTPS 入口正常。
