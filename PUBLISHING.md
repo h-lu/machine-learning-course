@@ -19,3 +19,17 @@
 公开仓库中的教师答案不嵌入学生任务目录。学生应先作判断，再用 AI 和参考材料学习；项目仍按自己的实验、检查与理由评价。
 
 本次发布指课程仓库及模板。`ml-check` 的读取服务源码一同发布，但仓库推送不表示登录、答题存储或生产服务已部署。
+
+## 2026-09-06 发布记录
+
+GitHub 公开仓库已创建，完整课程已推送到 `main`。从公开 HTTPS 地址重新克隆后，学生 19 项测试、检查器与 API 的 21 项测试、32 课教师参考覆盖及三个材料目录的严格检查全部通过。
+
+本次课程内容初始提交为 [`38c117d26924`](https://github.com/h-lu/machine-learning-course/commit/38c117d26924a1e975550d2c16b6d5047c0a1fff)；后续提交补充发布记录。
+
+| Gitea 仓库 | 默认分支 | 已核对的提交 | 可见性 |
+|---|---|---|---|
+| course-student-template | `main` | [`70d0eb9dbc69`](https://hblu.top/gitea/machine-learning-2026/course-student-template/commit/70d0eb9dbc691f5af8b6bf59d2ba7cd6b2f377fd) | 公开，保留模板标记 |
+| course-instructor | `main` | [`988f21e532ed`](https://hblu.top/gitea/machine-learning-2026/course-instructor/commit/988f21e532ed72b92c44c7ac0835de2eaa5d1d41) | 保留原私有设置 |
+| ml-check | `master` | [`eba461dd8a45`](https://hblu.top/gitea/machine-learning-2026/ml-check/commit/eba461dd8a45bff26caea36aa12429e5a5d5bb85) | 保留原私有设置 |
+
+服务器上的默认分支提交与本地一致；三个仓库的 452 个已跟踪文件也逐文件与 GitHub 发布包比较一致。Gitea 各仓保留 `archive/pre-redesign-2026-09-06` 标签，指向重建前版本；没有强制推送或改写旧历史。
