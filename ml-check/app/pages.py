@@ -1,4 +1,4 @@
-"""Server-rendered concept practice. Responses are evaluated without account storage."""
+"""Server-rendered concept practice with anonymous completion receipts."""
 from html import escape as e
 
 BASE = '/ml-check'
@@ -38,7 +38,7 @@ def phase_tabs(lesson, phase):
         for p, label in [('A', 'A 轮 · 先作判断'), ('B', 'B 轮 · 换个场景')]) + '</nav>'
 
 
-def lesson_page(lesson, phase='A', answers=None):
+def lesson_page(lesson, phase='A', answers=None, receipt=None):
     questions = [q for q in lesson['questions'] if q['phase'] == phase]
     body = f'<a class="back" href="{BASE}/">← 全部课次</a><div class="lesson-header"><div class="eyebrow">{e(lesson["lesson_id"])} · {e(lesson["module"])}</div><h1>{e(lesson["title"])}</h1><p>先选择你认为合理的答案，提交后核对解释。每轮两道题。</p></div>'
     body += phase_tabs(lesson, phase)
@@ -46,6 +46,9 @@ def lesson_page(lesson, phase='A', answers=None):
         correct = sum(answers[q['id']] == q['answer'] for q in questions)
         heading = '这轮判断都与题目依据一致' if correct == len(questions) else f'有 {len(questions)-correct} 道题值得再想一想'
         body += f'<section class="feedback-banner" role="status"><div class="eyebrow">已核对 {len(questions)} 道题</div><h2>{heading}</h2><p>看看下面的解释，再判断原来的理由是否需要修改。</p></section>'
+        if receipt:
+            rid = e(receipt['receipt_id'])
+            body += f'<p class="receipt" role="status">已生成完成凭据：<a href="{BASE}/api/receipts/{rid}">{rid}</a>。它只记录课次、轮次、得分和提交时间，不包含你的答案。</p>'
     body += f'<form method="post" action="{BASE}/lessons/{e(lesson["lesson_id"])}/check"><input type="hidden" name="phase" value="{phase}">'
     for number, q in enumerate(questions, 1):
         body += f'<fieldset class="question"><legend><span class="question-number">{number:02}</span>{e(q["prompt"])}</legend><div class="options">'
@@ -58,7 +61,7 @@ def lesson_page(lesson, phase='A', answers=None):
             matched = answers[q['id']] == q['answer']
             body += f'<div class="explanation {"matched" if matched else "rethink"}"><strong>{"你的判断有依据" if matched else "重新看看这个条件"} · 参考选项 {"ABCD"[q["answer"]]}</strong><p>{e(q["explanation"])}</p></div>'
         body += '</fieldset>'
-    body += '<div class="submit-row"><button type="submit">' + ('再次核对' if answers is not None else '提交并查看解释') + '</button><span>不计项目分，也不保存个人答题记录。</span></div></form>'
+    body += '<div class="submit-row"><button type="submit">' + ('再次核对' if answers is not None else '提交并查看解释') + '</button><span>练习不直接计项目分；提交会生成匿名完成凭据。</span></div></form>'
     if answers is not None:
         if phase == 'A':
             body += f'<section class="next-step"><h2>弄懂疑惑，再换一个场景</h2><p>请 AI 用一个不同的小例子解释你仍不理解的地方，或者回到本课学习卡核对。不要只记住选项字母。</p><a class="button" href="{BASE}/lessons/{e(lesson["lesson_id"])}?phase=B">开始 B 轮 →</a></section>'

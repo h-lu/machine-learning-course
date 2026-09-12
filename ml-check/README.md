@@ -19,7 +19,7 @@ python3 -m unittest discover -s tests -v
 
 ## 在线概念练习
 
-访问 **https://hblu.top/ml-check**，选择课次后完成 A/B 两轮练习。每轮提交后显示参考选项与解释，可以重新选择再核对。无需登录，不保存个人答题记录，也不计项目成绩。
+访问 **https://hblu.top/ml-check**，选择课次后完成 A/B 两轮练习。每轮提交后显示参考选项与解释，并生成一个匿名完成凭据。凭据只含课次、A/B 轮次、得分、提交时间和答案哈希，不含姓名、账号或答案；它可作为教师课末记录的辅助证据，不能代替对项目报告的阅读。练习不直接计项目成绩。
 
 ## 概念题
 
@@ -29,7 +29,9 @@ python3 -m unittest discover -s tests -v
 python3 -m app.main --port 8896
 ```
 
-接口保留 `GET /ml-check/healthz`、`GET /ml-check/api/lessons` 和 `GET /ml-check/api/lessons/{lesson_id}`。页面入口为 `GET /ml-check/`，答题页面为 `GET /ml-check/lessons/{lesson_id}?phase=A`（或 B），核对提交为 `POST /ml-check/lessons/{lesson_id}/check`。读取接口不会提前返回参考答案；提交后页面显示本轮解释。
+接口保留 `GET /ml-check/healthz`、`GET /ml-check/api/lessons` 和 `GET /ml-check/api/lessons/{lesson_id}`。页面入口为 `GET /ml-check/`，答题页面为 `GET /ml-check/lessons/{lesson_id}?phase=A`（或 B），核对提交为 `POST /ml-check/lessons/{lesson_id}/check`。提交后可通过 `GET /ml-check/api/receipts/{receipt_id}` 读取凭据。读取接口不会提前返回参考答案；凭据 API 也不会返回答案。
+
+本地服务默认将凭据保存在内存；部署时用 `ML_CHECK_DB=/data/ml-check.sqlite3`（或 `python3 -m app.main --db /data/ml-check.sqlite3`）启用 SQLite 持久化。容器的数据卷只保存这些匿名凭据，教师仍须把凭据与自己的课堂记录对应，不能据此自动给项目评分。
 
 ## 与旧版的关系
 

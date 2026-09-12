@@ -19,6 +19,7 @@ def main():
         ("题库同步", ROOT, [py, "tools/sync_question_bank.py"]),
         ("学生实验测试", ROOT / "course-student-template", [py, "-m", "unittest", "discover", "-s", "tests", "-v"]),
         ("32课教师参考覆盖", ROOT / "course-instructor", [py, "scripts/validate_reference_coverage.py"]),
+        ("教师状态汇总测试", ROOT / "course-instructor", [py, "-m", "unittest", "discover", "-s", "scripts", "-p", "test_*.py", "-v"]),
         ("检查器与API测试", ROOT / "ml-check", [py, "-m", "unittest", "discover", "-s", "tests", "-v"]),
     ]
     for profile, repo in [("student", "course-student-template"), ("instructor", "course-instructor"), ("planning", "machine-learning-course")]:

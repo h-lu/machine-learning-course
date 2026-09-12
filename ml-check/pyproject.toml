@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ml-check"
 version = "2.0.0"
-description = "Read-only structure checks and concept questions for an open ML course"
+description = "Structure checks and anonymous concept-practice receipts for an open ML course"
 requires-python = ">=3.10"
 
 [project.scripts]

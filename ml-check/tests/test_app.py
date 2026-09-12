@@ -4,7 +4,7 @@ import unittest
 from http.server import ThreadingHTTPServer
 from urllib.request import urlopen
 
-from app.main import load_bank, make_handler, response
+from app.main import ReceiptStore, load_bank, make_handler, response
 from ml_check.checker import LESSONS, Report, check_question_set
 from pathlib import Path
 
@@ -55,6 +55,20 @@ class Questions(unittest.TestCase):
             server.shutdown()
             server.server_close()
             thread.join(timeout=5)
+
+    def test_receipt_store_keeps_metadata_without_answers(self):
+        lesson = self.bank["lessons"][0]
+        questions = [q for q in lesson["questions"] if q["phase"] == "A"]
+        store = ReceiptStore(":memory:")
+        receipt = store.add(lesson["lesson_id"], "A", {q["id"]: 0 for q in questions}, questions)
+        fetched = store.get(receipt["receipt_id"])
+        self.assertEqual(fetched["lesson_id"], lesson["lesson_id"])
+        self.assertEqual(fetched["total"], 2)
+        self.assertNotIn("answers", fetched)
+
+    def test_receipt_api_returns_404_for_unknown_id(self):
+        status, payload = response("/ml-check/api/receipts/does-not-exist", self.bank, ReceiptStore(":memory:"))
+        self.assertEqual(status, 404)
 
 
 if __name__ == "__main__":

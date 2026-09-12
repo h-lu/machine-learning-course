@@ -2,7 +2,7 @@
 
 课程以 16 周、32 次课组织。知识进度从任务和评估到经典学习、深度学习、语言应用、强化学习与实际使用。每课的主题来自公开总表，学生必须用该课的概念完成一次可以检查的实验。
 
-重建参考了[统计课的设计标准](https://github.com/h-lu/statistics-course/blob/main/instructor-guide/COURSE_DESIGN_STANDARD.md)和[第 04 课](https://github.com/h-lu/statistics-course/blob/main/student-template/lesson-04/README.md)：将真正影响结果的选择放进必做任务，用证据评价竞争方案。这里重新设计机器学习问题和实验，不继承其评分比例或全部文案。
+重建参考了[统计课的设计标准](https://github.com/h-lu/statistics-course/blob/main/instructor-guide/COURSE_DESIGN_STANDARD.md)和[第 04 课](https://github.com/h-lu/statistics-course/blob/main/student-template/lesson-04/README.md)：将真正影响结果的选择放进必做任务，用证据评价竞争方案。这里重新设计机器学习问题和实验，同时采用统计课已验证的评分结构：课堂项目完成 25 分、代表作品质量 25 分；文案和题目仍按机器学习内容编写。
 
 ## 教师规定什么
 

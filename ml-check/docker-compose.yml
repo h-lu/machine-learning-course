@@ -7,6 +7,10 @@ services:
     ports:
       - "127.0.0.1:8896:8000"
     read_only: true
+    environment:
+      ML_CHECK_DB: /data/ml-check.sqlite3
+    volumes:
+      - ml-check-data:/data
     cap_drop: [ALL]
     security_opt: [no-new-privileges:true]
     mem_limit: 128m
@@ -17,3 +21,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+volumes:
+  ml-check-data:

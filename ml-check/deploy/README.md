@@ -2,7 +2,7 @@
 
 入口：https://hblu.top/ml-check
 
-2026-09-06 部署于服务器 `/home/ubuntu/ml-check`。容器 `machine-learning-ml-check` 只绑定主机 `127.0.0.1:8896`，由现有 `hblu-nginx-proxy` 提供 HTTPS。容器非 root、文件系统只读，自动随 Docker 重启，题库随镜像发布，无需数据库。
+部署于服务器 `/home/ubuntu/ml-check`。容器 `machine-learning-ml-check` 只绑定主机 `127.0.0.1:8896`，由现有 `hblu-nginx-proxy` 提供 HTTPS。容器非 root、文件系统只读，`/data` 使用 Docker 数据卷保存匿名 A/B 完成凭据，自动随 Docker 重启，题库随镜像发布。
 
 ## 更新
 
@@ -29,4 +29,4 @@ curl --fail https://hblu.top/ml-check/healthz
 
 首页应显示 32 课、128 题；选择一课，提交两道 A 轮题，确认解释出现，再进入 B 轮。健康接口报告题库版本 `ml-v2-open-2026-09-06`。题库读取 API 保持原路径和字段。
 
-服务只即时核对选择，不保存姓名、账号或个人答题记录。常规访问日志包含请求路径，不记录表单内容；日志限制为 3 个 10 MB 文件。
+服务不要求登录，不保存姓名或账号。提交会保存匿名凭据（课次、轮次、得分、时间和答案哈希），通过凭据 URL 可读取；答案本身不入库。常规访问日志包含请求路径，不记录表单内容；日志限制为 3 个 10 MB 文件。凭据仅供课末完成情况核对，项目分数仍按教师评分规则和提交快照评定。

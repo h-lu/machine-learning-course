@@ -18,7 +18,7 @@
 
 学习卡逐课给出有数字的最小例子、必要概念、具体误区和判断题。每课有独立情境的 A/B 概念练习。AI 可以协助完成全部代码；学生需要选择用途、检查计算并解释结果带来的修订，不要求上交完整对话。
 
-这部分借鉴了[统计课的设计标准](https://github.com/h-lu/statistics-course/blob/main/instructor-guide/COURSE_DESIGN_STANDARD.md)与[第 04 课任务](https://github.com/h-lu/statistics-course/blob/main/student-template/lesson-04/README.md)中把实质选择放入必做项目的做法。没有照搬其评分比例、业务场景或统一文案。
+这部分借鉴了[统计课的设计标准](https://github.com/h-lu/statistics-course/blob/main/instructor-guide/COURSE_DESIGN_STANDARD.md)与[第 04 课任务](https://github.com/h-lu/statistics-course/blob/main/student-template/lesson-04/README.md)中把实质选择放入必做项目的做法。本次将其评分结构迁移到机器学习课：平时 50 分按课堂项目完成与代表作品质量分开记录；业务场景、课程内容和学生文案仍按本课需要编写。
 
 ## 实验与检查的作用
 
@@ -38,7 +38,7 @@
 | 任务与提交字段 | 改为第 2 版：任务字段精简、提交入口与路径可替换；旧 JSON 字段并非全部兼容 |
 | 检查命令 | 保留 `--repo`、`--profile`、`--expected-count`、`--strict`、`--json` |
 | HTTP 路径 | 保留健康检查和课次读取路径；返回题目结构为第 2 版，学生响应不含答案 |
-| 服务启动 | 本地读取服务改用标准库，启动为 `python3 -m app.main`；未迁移远程服务 |
+| 服务启动 | 本地读取服务继续使用标准库，启动为 `python3 -m app.main`；新增匿名 A/B 完成凭据，可用 SQLite 持久化，部署配置见 `ml-check/deploy/README.md` |
 | 旧自动发布与文案生成 | 完整保存在归档中，新材料不使用旧五课限定流程 |
 
 四个本地仓库的重建工作分支为 `codex/open-course-redesign`。重建完成后，课程作者要求将完整材料（包括教师参考与题目答案）公开到 GitHub，并更新 hblu.top 上的 Gitea 课程仓库。发布位置和验证记录见 [发布记录](PUBLISHING.md)。本机完整归档继续保留，公开发布包不包含旧版压缩快照或嵌套 Git 数据库。
@@ -47,7 +47,7 @@
 
 统一入口为 `python3 tools/validate_course.py`。它检查题库同步、学生测试、32 课教师参考覆盖、检查器与 API 测试，以及学生、教师、规划三个仓库的严格模式。结果见 [自动验收记录](validation/latest.json)；独立环境验证见 [干净环境重跑](validation/clean_environment.json)。
 
-本轮最终结果：学生 19 项测试、检查器与 API 的 21 项测试全部通过；教师覆盖 32 个变体、48 项独立核算通过；三个材料仓库的严格检查均为零问题。128 道概念题已同步，学生可见旧术语扫描与本地链接检查通过。
+本轮最终结果：学生 19 项测试、检查器与 API 的 27 项测试全部通过；教师覆盖 32 个变体、48 项独立核算通过；三个材料仓库的严格检查均为零问题。128 道概念题已同步，学生可见旧术语扫描与本地链接检查通过。
 
 独立环境使用 Python 3.14.4、NumPy 2.5.2。NumPy 从预先下载的安装包离线安装，没有借用系统依赖。复制源码时排除旧输出和缓存，32 个命令逐一重跑共约 1.95 秒，最慢约 0.12 秒，进程峰值内存最高约 43 MiB。这里测量的是作者本机上的微型起步实验，不包含环境安装、学生编程、阅读或分析时间。
 
