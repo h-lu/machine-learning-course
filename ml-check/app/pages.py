@@ -37,7 +37,7 @@ def home(bank):
         body += f'<section class="module"><h3><span>{index:02}</span>{e(name)}</h3><div class="cards">'
         for lesson in rows:
             id = lesson['lesson_id']
-            body += f'<a class="card" href="{BASE}/lessons/{e(id)}"><span class="lesson-id">{e(id)}</span><h4>{e(lesson["title"])}</h4><span class="card-bottom">A 轮 5 题 · B 轮 5 题 <span aria-hidden="true">↗</span></span></a>'
+            body += f'<a class="card" href="{BASE}/lessons/{e(id)}"><span class="lesson-id">{e(id)}</span><h4>{e(id)} · {e(lesson["title"])}</h4><span class="card-bottom">A 轮 5 题 · B 轮 5 题 <span aria-hidden="true">↗</span></span></a>'
         body += '</div></section>'
     return layout('选择一课开始', body)
 
@@ -51,7 +51,7 @@ def phase_tabs(lesson, phase):
 
 def lesson_page(lesson, phase='A', answers=None, receipt=None):
     questions = [q for q in lesson['questions'] if q['phase'] == phase]
-    body = f'<a class="back" href="{BASE}/">← 全部课次</a><div class="lesson-header"><div class="eyebrow">{e(lesson["lesson_id"])} · {e(lesson["module"])}</div><h1>{e(lesson["title"])}</h1><p>先选择你认为合理的答案，提交后核对解释。每轮五道题。</p></div>'
+    body = f'<a class="back" href="{BASE}/">← 全部课次</a><div class="lesson-header"><div class="eyebrow">{e(lesson["lesson_id"])} · {e(lesson["module"])}</div><h1>{e(lesson["lesson_id"])} · {e(lesson["title"])}</h1><p>先选择你认为合理的答案，提交后核对解释。每轮五道题。</p></div>'
     body += phase_tabs(lesson, phase)
     if answers is not None:
         correct = sum(answers[q['id']] == q['answer'] for q in questions)

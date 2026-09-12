@@ -7,7 +7,7 @@
       <div>
         <span class="eyebrow">教师控制</span>
         <h1>当前阶段：{{ phase_labels[session.phase] }}</h1>
-        <p class="teacher-context">{{ session.title }} · 场次 #{{ session.id }} · 创建于 {{ format_timestamp(session.created_at) }}{% if viewing_history %} · 历史场次只读{% endif %}</p>
+        <p class="teacher-context">{{ session.lesson_id }} · {{ session.title }} · 场次 #{{ session.id }} · 创建于 {{ format_timestamp(session.created_at) }}{% if viewing_history %} · 历史场次只读{% endif %}</p>
       </div>
       <div class="teacher-actions">
         <a class="secondary-button" href="{{ base_path }}/teacher">刷新数据</a>
@@ -22,7 +22,7 @@
       <label for="lesson-id">选择课次</label>
       <select id="lesson-id" name="lesson_id" required>
         {% for bank in question_banks %}
-          <option value="{{ bank.lesson_id }}" {% if bank.lesson_id == session.lesson_id %}selected{% endif %}>{{ bank.title }}</option>
+          <option value="{{ bank.lesson_id }}" {% if bank.lesson_id == session.lesson_id %}selected{% endif %}>{{ bank.lesson_id }} · {{ bank.title }}</option>
         {% endfor %}
       </select>
       <button class="secondary-button" type="submit">新建本课自查（暂不开放）</button>
@@ -64,7 +64,7 @@
       {% for saved_session in session_history %}
         <div class="session-row {% if saved_session.id == session.id %}current{% endif %}">
           <span>#{{ saved_session.id }}</span>
-          <strong>{{ saved_session.title }}</strong>
+          <strong>{{ saved_session.lesson_id }} · {{ saved_session.title }}</strong>
           <span>{{ phase_labels[saved_session.phase] }}</span>
           <time datetime="{{ saved_session.created_at }}">{{ format_timestamp(saved_session.created_at) }}</time>
           <a href="{{ base_path }}/teacher?session_id={{ saved_session.id }}">查看</a>

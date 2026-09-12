@@ -11,7 +11,7 @@
     data-phase-ends-at="{{ session.phase_ends_at or '' }}"
   >
     <span class="status-badge"><i></i>{{ phase_labels[session.phase] }}</span>
-    <h1>{{ title }}</h1>
+    <h1>{{ session.lesson_id }} · {{ title }}</h1>
     <p>{{ message }}</p>
     <a class="secondary-button" href="{{ base_path }}/current">刷新状态</a>
   </section>
