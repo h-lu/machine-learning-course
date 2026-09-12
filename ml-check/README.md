@@ -19,22 +19,22 @@ python3 -m unittest discover -s tests -v
 
 ## 在线概念练习
 
-访问 **https://hblu.top/ml-check**，选择课次后完成 A/B 两轮练习。每轮提交后显示参考选项与解释，并生成一个匿名完成凭据。凭据只含课次、A/B 轮次、得分、提交时间和答案哈希，不含姓名、账号或答案；它可作为教师课末记录的辅助证据，不能代替对项目报告的阅读。练习不直接计项目成绩。
+访问 **https://hblu.top/ml-check**，使用 Gitea 账号登录。教师在 `/ml-check/teacher` 创建场次并切换 A、学习、B 阶段；学生在 `/ml-check/current` 作答并查看解释。教师页面提供场次进度、统计和 CSV 导出，概念练习结果用于形成性评价，不直接替代项目报告评分。
 
 ## 概念题
 
 32 课各有 A、B 两阶段，每阶段两题，共 128 题。先判断，再用 AI 学习，最后换场景检验理解。题库由教师仓的 `lessons/ID/questions.json` 汇集，版本为 `ml-v2-open-2026-09-06`。题目答案与解释保留在教师/服务文件中；学生读取接口只返回题干与选项。
 
 ```bash
-python3 -m app.main --port 8896
+uvicorn app.main:app --host 0.0.0.0 --port 8896
 ```
 
 接口保留 `GET /ml-check/healthz`、`GET /ml-check/api/lessons` 和 `GET /ml-check/api/lessons/{lesson_id}`。页面入口为 `GET /ml-check/`，答题页面为 `GET /ml-check/lessons/{lesson_id}?phase=A`（或 B），核对提交为 `POST /ml-check/lessons/{lesson_id}/check`。提交后可通过 `GET /ml-check/api/receipts/{receipt_id}` 读取凭据。读取接口不会提前返回参考答案；凭据 API 也不会返回答案。
 
-本地服务默认将凭据保存在内存；部署时用 `ML_CHECK_DB=/data/ml-check.sqlite3`（或 `python3 -m app.main --db /data/ml-check.sqlite3`）启用 SQLite 持久化。容器的数据卷只保存这些匿名凭据，教师仍须把凭据与自己的课堂记录对应，不能据此自动给项目评分。
+本地服务通过 `DATABASE_PATH` 配置 SQLite；部署时使用 `/data/ml-check.sqlite3`。生产环境还需设置 `SESSION_SECRET`、Gitea OAuth 客户端和 `TEACHER_LOGINS`，示例见 `.env.example`。旧匿名凭据 API 保留兼容，但新场次数据均按账号和场次持久化。
 
 ## 与旧版的关系
 
 课次编号、检查命令的主要选项、HTTP 路径和 `contract.json`、`submission.json` 等文件名保留。任务字段精简为自然语言说明；提交清单允许学生更换运行入口与报告路径。JSON 内容为第 2 版接口，不能将旧前端直接视为兼容。
 
-旧服务依赖 FastAPI，新练习服务使用标准库；启动命令已改变。题目响应改为明确的 A/B 题目列表，默认不含答案。旧代码与完整配置在总工作区的归档中。2026-09-06 已部署新的独立练习服务，运行方式见 [部署说明](deploy/README.md)。
+服务现使用 FastAPI、Session 和 Gitea OAuth，页面与 statistics-course 的 stat-check 保持一致；匿名 API 和旧答题路径继续可用。运行方式见 [部署说明](deploy/README.md)。
