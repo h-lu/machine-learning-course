@@ -54,7 +54,10 @@ class LessonBank:
             a, b = a_rows[i - 1], b_rows[i - 1]
             rows.append({'concept_id': cid,
                          'title': f'{a["id"]} · {_short_topic(a["prompt"])}',
-                         'tutor_context': f'A 版问题：{a["prompt"]}；B 版变式：{b["prompt"]}',
+                         # The learning phase intentionally exposes only the
+                         # A-version context.  The paired B question remains
+                         # private until the teacher opens the B phase.
+                         'tutor_context': f'A 版问题：{a["prompt"]}',
                          'pair': {'a': a, 'b': b}})
         return rows
     def item(self, concept_id):
