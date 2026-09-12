@@ -96,16 +96,21 @@ def check_submission(folder: Path, report: Report) -> None:
     if not isinstance(task, dict) or not isinstance(sub, dict):
         report.add(folder, "schema", "任务说明与提交清单应为 JSON 对象。")
         return
+    # V2 student templates use numeric lesson-* directories and the `lesson`
+    # field; accept legacy C/S directories and lesson_id for existing clones.
+    expected = folder.name
     for obj, path in [(task, task_path), (sub, sub_path)]:
-        if obj.get("lesson_id") != folder.name:
-            report.add(path, "lesson_id", "课次编号应与目录相同。")
+        value = obj.get("lesson", obj.get("lesson_id"))
+        if value != expected:
+            report.add(path, "lesson", "课次编号应与目录相同。")
     for key in TASK_FIELDS:
         if not isinstance(task.get(key), str):
             report.add(task_path, "task", f"任务说明需要文字字段 {key}。")
     status = sub.get("status")
-    if status not in ("template", "in_progress", "complete"):
-        report.add(sub_path, "status", "状态应为 template、in_progress 或 complete。")
-    if not isinstance(sub.get("run"), str) or not sub["run"].strip():
+    if status not in ("template", "not_started", "in_progress", "complete"):
+        report.add(sub_path, "status", "状态应为 not_started、in_progress 或 complete。")
+    run = sub.get("run")
+    if not ((isinstance(run, str) and run.strip()) or (isinstance(run, list) and run and all(isinstance(x, str) and x for x in run))):
         report.add(sub_path, "run", "请填写从仓库根目录运行项目的命令。工具不会执行这条命令。")
     report_file = local_path(sub.get("report"), report, sub_path)
     if report_file is not None:
@@ -169,7 +174,7 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> R
     root = root.resolve()
     if profile == "auto":
         profile = "planning" if (root / "COURSE_MAP.md").exists() else (
-            "student" if (root / "lessons/C01/contract.json").exists() else "instructor")
+            "student" if (root / "lesson-01/contract.json").exists() or (root / "lessons/C01/contract.json").exists() else "instructor")
     report = Report(root, profile)
     if not root.is_dir():
         report.add(root, "missing", "仓库目录不存在。")
@@ -183,10 +188,12 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> R
                 report.add(path, "lesson_set", "总表必须按顺序恰好列出 C01、C02 和 S01–S30。")
             report.stats["lessons"] = len(ids)
     else:
-        folders = sorted(p for p in (root / "lessons").glob("*") if p.is_dir())
+        lesson_root = root / "lesson-01" if (root / "lesson-01").is_dir() else root / "lessons"
+        folders = sorted(p for p in ((root.glob("lesson-*") if lesson_root == root / "lesson-01" else lesson_root.glob("*"))) if p.is_dir())
         ids = [p.name for p in folders]
-        if ids != LESSONS or len(ids) != expected_count:
-            report.add(root / "lessons", "lesson_set", "目录应恰好包含 C01、C02 和 S01–S30，共 32 课。")
+        expected_ids = [f"lesson-{i:02d}" for i in range(1, 33)] if lesson_root.name == "lesson-01" else LESSONS
+        if ids != expected_ids or len(ids) != expected_count:
+            report.add(lesson_root, "lesson_set", "目录应按顺序包含 32 个 lesson-01…lesson-32 课次。")
         report.stats["lessons"] = len(folders)
         for folder in folders:
             if profile == "student":
@@ -195,8 +202,10 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> R
                 submission = read_json(folder / "submission.json", report)
                 is_template = isinstance(submission, dict) and submission.get("status") == "template"
                 if is_template:
-                    for name in ["analysis.py", "config.json", "data/base.json", "data/DATA.md", "update.md"]:
+                    for name in ["analysis.py", "config.json", "data/base.json", "data/DATA.md"]:
                         required(folder / name, report)
+                    if not (folder / "report.md").exists() and not (folder / "update.md").exists():
+                        required(folder / "report.md", report)
                 path = folder / "README.md"
                 if path.exists():
                     headings = re.findall(r"^##\s+(.+)$", path.read_text(), re.M)

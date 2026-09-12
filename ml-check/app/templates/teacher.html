@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}教师控制 · 机器学习概念自查{% endblock %}
+{% block phase_bar %}{% include "_phase_bar.html" %}{% endblock %}
+{% block content %}
+  <section class="teacher-panel" data-auto-reload="15000">
+    <div class="teacher-heading">
+      <div>
+        <span class="eyebrow">教师控制</span>
+        <h1>当前阶段：{{ phase_labels[session.phase] }}</h1>
+        <p class="teacher-context">{{ session.title }} · 场次 #{{ session.id }} · 创建于 {{ format_timestamp(session.created_at) }}{% if viewing_history %} · 历史场次只读{% endif %}</p>
+      </div>
+      <div class="teacher-actions">
+        <a class="secondary-button" href="{{ base_path }}/teacher">刷新数据</a>
+        <a class="secondary-button" href="{{ base_path }}/teacher/export.csv?session_id={{ session.id }}">导出 CSV</a>
+      </div>
+    </div>
+    {% if not viewing_history %}
+    <section class="teacher-section">
+      <h2>创建新场次</h2>
+      <form method="post" action="{{ base_path }}/teacher/session" class="session-controls" onsubmit="return confirm('创建新场次后，学生将跟随新场次。确定继续吗？');">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label for="lesson-id">选择课次</label>
+      <select id="lesson-id" name="lesson_id" required>
+        {% for bank in question_banks %}
+          <option value="{{ bank.lesson_id }}" {% if bank.lesson_id == session.lesson_id %}selected{% endif %}>{{ bank.title }}</option>
+        {% endfor %}
+      </select>
+      <button class="secondary-button" type="submit">新建本课自查（暂不开放）</button>
+      </form>
+      <p class="teacher-note">新场次创建后暂不开放答题；旧场次及答题记录继续保留。</p>
+    </section>
+    <section class="teacher-section">
+      <h2>当前阶段控制</h2>
+      <form method="post" action="{{ base_path }}/teacher/phase" class="phase-controls">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <input type="hidden" name="session_id" value="{{ session.id }}">
+      {% for phase in phases %}
+        <button name="phase" value="{{ phase }}" class="{% if session.phase == phase %}current{% endif %}" type="submit">{{ phase_labels[phase] }}</button>
+      {% endfor %}
+      </form>
+    </section>
+    {% endif %}
+    <section class="teacher-section">
+      <h2>统计概览</h2>
+    <div class="metric-grid">
+      <article><span>已登录学生</span><strong>{{ summary.students }}</strong></article>
+      <article><span>A 版完成</span><strong>{{ summary.completed.a }}</strong></article>
+      <article><span>学习完成</span><strong>{{ summary.completed.learn }}</strong></article>
+      <article><span>B 版完成</span><strong>{{ summary.completed.b }}</strong></article>
+    </div>
+    <div class="concept-summary">
+      <div class="summary-header"><span>概念</span><span>A 正确率</span><span>B 正确率</span></div>
+      {% for concept in concepts %}
+        <div class="summary-row">
+          <strong>{{ concept.title }}</strong>
+          <span>{% if concept.a is none %}—{% else %}{{ concept.a }}%{% endif %}</span>
+          <span>{% if concept.b is none %}—{% else %}{{ concept.b }}%{% endif %}</span>
+        </div>
+      {% endfor %}
+    </div>
+    </section>
+    <section class="session-history">
+      <h2>最近场次</h2>
+      {% for saved_session in session_history %}
+        <div class="session-row {% if saved_session.id == session.id %}current{% endif %}">
+          <span>#{{ saved_session.id }}</span>
+          <strong>{{ saved_session.title }}</strong>
+          <span>{{ phase_labels[saved_session.phase] }}</span>
+          <time datetime="{{ saved_session.created_at }}">{{ format_timestamp(saved_session.created_at) }}</time>
+          <a href="{{ base_path }}/teacher?session_id={{ saved_session.id }}">查看</a>
+          <a href="{{ base_path }}/teacher/export.csv?session_id={{ saved_session.id }}">导出</a>
+          {% if saved_session.phase == 'closed' %}
+            <form method="post" action="{{ base_path }}/teacher/session/delete" class="inline-form">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <input type="hidden" name="session_id" value="{{ saved_session.id }}">
+              <button type="submit" class="danger-button">删除</button>
+            </form>
+            <form method="post" action="{{ base_path }}/teacher/session/delete" class="inline-form" onsubmit="return confirm('将永久删除该场次及全部学生答题记录，确定继续吗？');">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <input type="hidden" name="session_id" value="{{ saved_session.id }}">
+              <input type="hidden" name="force" value="true">
+              <button type="submit" class="danger-button force-danger">删除（含记录）</button>
+            </form>
+          {% elif saved_session.id == session.id and not viewing_history %}
+            <form method="post" action="{{ base_path }}/teacher/session/close-delete" class="inline-form" onsubmit="return confirm('关闭并删除当前场次？已有学生记录时删除会被拒绝。');">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <input type="hidden" name="session_id" value="{{ saved_session.id }}">
+              <button type="submit" class="danger-button">关闭并删除</button>
+            </form>
+            <form method="post" action="{{ base_path }}/teacher/session/close-delete" class="inline-form" onsubmit="return confirm('将关闭并永久删除当前场次及全部学生答题记录，确定继续吗？');">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <input type="hidden" name="session_id" value="{{ saved_session.id }}">
+              <input type="hidden" name="force" value="true">
+              <button type="submit" class="danger-button force-danger">关闭并删除（含记录）</button>
+            </form>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </section>
+    <p class="teacher-note">切换阶段会立即影响全班；系统不会自动切换，也不会清除已有答案。</p>
+  </section>
+{% endblock %}

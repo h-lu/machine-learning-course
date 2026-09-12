@@ -2,7 +2,7 @@
 
 入口：https://hblu.top/ml-check
 
-部署于服务器 `/home/ubuntu/ml-check`。容器 `machine-learning-ml-check` 只绑定主机 `127.0.0.1:8896`，由现有 `hblu-nginx-proxy` 提供 HTTPS。容器非 root、文件系统只读，`/data` 使用 Docker 数据卷保存匿名 A/B 完成凭据，自动随 Docker 重启，题库随镜像发布。
+部署于服务器 `/home/ubuntu/ml-check`。容器 `machine-learning-ml-check` 只绑定主机 `127.0.0.1:8896`，由现有 `hblu-nginx-proxy` 提供 HTTPS。容器非 root、文件系统只读，`/data` 使用服务器目录保存 SQLite 场次、答题和凭据数据，题库随镜像发布。登录、教师场次控制和统计页面与 statistics-course 的 stat-check 一致；OAuth 密钥只放在服务器 `.env`。
 
 ## 更新
 
@@ -27,6 +27,4 @@ curl --fail https://hblu.top/ml-check/healthz
 
 ## 检查
 
-首页应显示 32 课、128 题；选择一课，提交两道 A 轮题，确认解释出现，再进入 B 轮。健康接口报告题库版本 `ml-v2-open-2026-09-06`。题库读取 API 保持原路径和字段。
-
-服务不要求登录，不保存姓名或账号。提交会保存匿名凭据（课次、轮次、得分、时间和答案哈希），通过凭据 URL 可读取；答案本身不入库。常规访问日志包含请求路径，不记录表单内容；日志限制为 3 个 10 MB 文件。凭据仅供课末完成情况核对，项目分数仍按教师评分规则和提交快照评定。
+首页应显示 32 课；教师登录后可在 `/ml-check/teacher` 创建场次、切换 A/学习/B 阶段并导出 CSV，学生在 `/ml-check/current` 作答。健康接口报告题库版本 `ml-v2-open-2026-09-06`，旧题库读取 API 和匿名答题路径仍保留兼容。

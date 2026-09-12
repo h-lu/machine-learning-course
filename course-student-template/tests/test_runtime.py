@@ -32,8 +32,12 @@ from mlcourse.experiments import (
 IDS = ["C01", "C02"] + [f"S{i:02d}" for i in range(1, 31)]
 
 
+def lesson_dir(lesson):
+    number = int(lesson[1:]) if lesson.startswith("C") else int(lesson[1:]) + 2
+    return ROOT / f"lesson-{number:02d}"
+
 def load(lesson):
-    p = ROOT / "lessons" / lesson
+    p = lesson_dir(lesson)
     return json.loads((p / "data/base.json").read_text()), json.loads(
         (p / "config.json").read_text()
     )
@@ -302,7 +306,7 @@ class CompleteLessonCoverage(unittest.TestCase):
             subprocess.run(
                 [
                     sys.executable,
-                    str(ROOT / "lessons/S07/analysis.py"),
+                    str(ROOT / "lesson-09/analysis.py"),
                     "--data",
                     str(p / "data.json"),
                     "--config",

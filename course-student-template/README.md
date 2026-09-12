@@ -6,7 +6,7 @@
 
 ## 从哪里开始
 
-1. 第一次上课读 [环境准备](docs/GETTING_STARTED.md)，运行 C01 的入门示例。
+1. 第一次上课读 [环境准备](docs/GETTING_STARTED.md)，运行第 1 课（lesson-01）的入门示例。
 2. 在 [32 课入口](docs/LESSON_GUIDE.md) 找到当课，先读任务，再读学习卡中的例子。
 3. 决定自己的问题。可以沿用示例，也可以按 [选题办法](docs/PROJECT_CHOICES.md) 换数据或用途。
 4. 按当课步骤实验，再看 [提交说明](docs/SUBMISSION.md)。

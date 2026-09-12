@@ -1,16 +1,18 @@
 services:
   ml-check:
     build: .
-    image: ml-check:2026-09-06
+    image: ml-check:2026-09-12
     container_name: machine-learning-ml-check
     restart: unless-stopped
+    env_file:
+      - .env
     ports:
       - "127.0.0.1:8896:8000"
     read_only: true
     environment:
-      ML_CHECK_DB: /data/ml-check.sqlite3
+      DATABASE_PATH: /data/ml-check.sqlite3
     volumes:
-      - ml-check-data:/data
+      - ./data:/data
     cap_drop: [ALL]
     security_opt: [no-new-privileges:true]
     mem_limit: 128m
@@ -21,6 +23,3 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
-volumes:
-  ml-check-data:

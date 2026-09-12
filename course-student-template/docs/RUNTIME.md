@@ -4,8 +4,8 @@
 
 ```bash
 python3 -m pip install -r requirements.txt
-python3 lessons/S07/analysis.py --output artifacts/S07-demo
-python3 lessons/S07/analysis.py --config lessons/S07/config.json --data lessons/S07/data/base.json --output artifacts/S07-trial
+python3 lesson-09/analysis.py --output artifacts/S07-demo
+python3 lesson-09/analysis.py --config lesson-09/config.json --data lesson-09/data/base.json --output artifacts/S07-trial
 ```
 
 `--output` 是输出目录。程序在其中生成 `summary.json`；不传参数时写到本课 `artifacts/summary.json`。`--config` 和 `--data` 都接受一个 JSON 文件路径；相对路径从运行命令所在目录解释。默认读取本课 `config.json` 和 `data/base.json`。

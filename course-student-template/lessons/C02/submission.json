@@ -1,9 +1,0 @@
-{
-  "lesson_id": "C02",
-  "status": "template",
-  "run": "python3 lessons/C02/analysis.py",
-  "report": "lessons/C02/update.md",
-  "artifacts": [
-    "lessons/C02/artifacts/summary.json"
-  ]
-}

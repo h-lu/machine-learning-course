@@ -442,7 +442,8 @@ def main():
         parser.error("输出目录不是空目录；请选择另一个目录")
     notes = json.loads((ROOT / "scripts/parameter_notes.json").read_text())
     for index, lesson in enumerate(IDS):
-        directory = destination / "lessons" / lesson
+        number = int(lesson[1:]) if lesson.startswith("C") else int(lesson[1:]) + 2
+        directory = destination / f"lesson-{number:02d}"
         special_ids = {
             "S15",
             "S16",

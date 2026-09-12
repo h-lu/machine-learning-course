@@ -1,0 +1,12 @@
+{
+  "lesson": "lesson-01",
+  "status": "not_started",
+  "report": "lesson-01/report.md",
+  "artifacts": [
+    "lesson-01/artifacts/summary.json"
+  ],
+  "run": [
+    "python",
+    "lesson-01/analysis.py"
+  ]
+}

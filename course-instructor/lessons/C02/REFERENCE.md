@@ -5,7 +5,7 @@
 在包含学生仓库的工作目录运行：
 
 ```bash
-python3 course-student-template/lessons/C02/analysis.py --output /tmp/ml-reference-C02
+python3 course-student-template/lesson-02/analysis.py --output /tmp/ml-reference-C02
 ```
 
 查看 `/tmp/ml-reference-C02/summary.json`，同时核对学生的数据说明、原始记录与配置。默认实验为一种可重算的比较起点。教师应保存实际配置和数值，不能把这份文件的例子或一条预期关系直接写成已运行结果。
@@ -25,7 +25,7 @@ python3 course-student-template/lessons/C02/analysis.py --output /tmp/ml-referen
 3. 选择一个有实际理由的分组或错误情形，查看总体结论是否仍成立；不能只挑候选办法占优的组。
 4. 依据结果决定使用候选办法、继续保留基线或暂不使用，并在新的目录重跑主要结果。
 
-课堂核算可先使用[学习材料](../../../course-student-template/lessons/C02/LEARN.md)中的具体数字，再抽一条正式记录复核。核算时检查人数、单位、训练和评价资料的用途，以及输出是否真的回答学生选定的问题。相近数值允许因合理实现与随机条件有差异，不能按最后一位小数或默认模型评分。
+课堂核算可先使用[学习材料](../../../course-student-template/lesson-02/LEARN.md)中的具体数字，再抽一条正式记录复核。核算时检查人数、单位、训练和评价资料的用途，以及输出是否真的回答学生选定的问题。相近数值允许因合理实现与随机条件有差异，不能按最后一位小数或默认模型评分。
 
 ## 可接受但方向不同的分析
 

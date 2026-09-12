@@ -359,7 +359,8 @@ def main():
     started = time.perf_counter()
     reports = []
     for lesson in ([args.lesson] if args.lesson else IDS):
-        directory = args.student_template / "lessons" / lesson
+        number = int(lesson[1:]) if lesson.startswith("C") else int(lesson[1:]) + 2
+        directory = args.student_template / f"lesson-{number:02d}"
         data = json.loads((directory / "data/base.json").read_text())
         config = json.loads((directory / "config.json").read_text())
         case = json.loads((ROOT / "reference" / lesson / "case.json").read_text())

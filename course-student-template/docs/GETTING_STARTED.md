@@ -5,10 +5,10 @@
 ```bash
 python3 --version
 python3 -c "import numpy; print(numpy.__version__)"
-python3 lessons/C01/analysis.py
+python3 lesson-01/analysis.py
 ```
 
-打开 `lessons/C01/artifacts/summary.json`，对照 C01 学习卡核对一条计算。这个文件是程序输出，可以删除后重跑；你写的分析应放在 `update.md`，不要混进程序生成文件。
+打开 `lesson-01/artifacts/summary.json`，对照第 1 课学习卡核对一条计算。这个文件是程序输出，可以删除后重跑；你写的分析应放在 `report.md`，不要混进程序生成文件。
 
 如果课前尚未安装依赖，可以在联网时建立环境：
 

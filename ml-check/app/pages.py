@@ -4,6 +4,17 @@ from html import escape as e
 BASE = '/ml-check'
 
 
+def student_lesson_path(lesson_id: str) -> str:
+    """Map question-bank C/S identifiers to the public lesson-NN layout."""
+    if lesson_id.startswith('C') and lesson_id[1:].isdigit():
+        number = int(lesson_id[1:])
+    elif lesson_id.startswith('S') and lesson_id[1:].isdigit():
+        number = int(lesson_id[1:]) + 2
+    else:
+        return lesson_id
+    return f'lesson-{number:02d}'
+
+
 def layout(title, body):
     return f'''<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -66,7 +77,8 @@ def lesson_page(lesson, phase='A', answers=None, receipt=None):
         if phase == 'A':
             body += f'<section class="next-step"><h2>弄懂疑惑，再换一个场景</h2><p>请 AI 用一个不同的小例子解释你仍不理解的地方，或者回到本课学习卡核对。不要只记住选项字母。</p><a class="button" href="{BASE}/lessons/{e(lesson["lesson_id"])}?phase=B">开始 B 轮 →</a></section>'
         else:
-            body += f'<section class="next-step"><h2>把理解带回你的项目</h2><p>检查自己的数据、指标和建议是否也有类似问题。需要时修改原来的判断，并说明理由。</p><a class="button" href="https://github.com/h-lu/machine-learning-course/tree/main/course-student-template/lessons/{e(lesson["lesson_id"])}">返回本课项目 ↗</a></section>'
+            student_path = student_lesson_path(lesson["lesson_id"])
+            body += f'<section class="next-step"><h2>把理解带回你的项目</h2><p>检查自己的数据、指标和建议是否也有类似问题。需要时修改原来的判断，并说明理由。</p><a class="button" href="https://github.com/h-lu/machine-learning-course/tree/main/course-student-template/{e(student_path)}">返回本课项目 ↗</a></section>'
     return layout(lesson['title'], body)
 
 

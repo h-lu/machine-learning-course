@@ -1,207 +1,661 @@
-"""Small local HTTP service with anonymous A/B completion receipts.
-
-There is no login, grading session or submitted-code execution. Receipts are
-optional metadata for a teacher's classroom snapshot, never an automatic grade.
-"""
 from __future__ import annotations
 
-import argparse
-import hashlib
-import json
-import os
+import csv
+import io
+import secrets
 import sqlite3
-import threading
-import uuid
-from datetime import datetime, timezone
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from datetime import datetime
 from pathlib import Path
-from urllib.parse import urlsplit, parse_qs
+from urllib.parse import urlencode
+from zoneinfo import ZoneInfo
 
-from app import pages
+import httpx
+from fastapi import APIRouter, FastAPI, Form, HTTPException, Request
+from fastapi.responses import HTMLResponse, RedirectResponse, Response
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from starlette.middleware.sessions import SessionMiddleware
 
-BANK = Path(__file__).parent / "question_bank/lessons.json"
-
-
-def load_bank(path: Path = BANK) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def public_lesson(lesson: dict) -> dict:
-    # Allow-list fields: teacher answers/explanations never reach this GET API.
-    return {"lesson_id": lesson["lesson_id"], "title": lesson["title"],
-            "module": lesson["module"], "questions": [
-                {key: q[key] for key in ("id", "phase", "prompt", "options")}
-                for q in lesson["questions"]]}
+from . import db
+from .legacy import ReceiptStore, load_bank, make_handler, response
+from . import pages as legacy_pages
+from .config import Settings
+from .questions import CURRENT_BANKS, DEFAULT_BANK, bank_for_lesson
 
 
-def response(path: str, bank: dict, receipts=None) -> tuple[int, object]:
-    path = urlsplit(path).path.rstrip("/")
-    lessons = bank["lessons"]
-    if path == "/ml-check/healthz":
-        return 200, {"status": "ok", "lesson_count": len(lessons), "bank_version": bank["version"]}
-    if path == "/ml-check/api/lessons":
-        return 200, [{key: lesson[key] for key in ("lesson_id", "title", "module")} for lesson in lessons]
-    if path.startswith("/ml-check/api/receipts/") and receipts is not None:
-        receipt_id = path.rsplit("/", 1)[-1]
-        value = receipts.get(receipt_id)
-        return (200, value) if value is not None else (404, {"detail": "未找到该练习凭据。"})
-    prefix = "/ml-check/api/lessons/"
-    if path.startswith(prefix):
-        lesson_id = path[len(prefix):].upper()
-        for lesson in lessons:
-            if lesson["lesson_id"] == lesson_id:
-                return 200, public_lesson(lesson)
-    return 404, {"detail": "未找到该课次或接口。"}
+PHASE_LABELS = {
+    "closed": "尚未开始",
+    "a": "A 版基础题",
+    "learn": "AI 学习",
+    "b": "B 版变式题",
+    "result": "反馈",
+}
+CONFIDENCE_LABELS = {
+    "guess": "猜测",
+    "unsure": "不太确定",
+    "sure": "确定",
+}
 
 
-class ReceiptStore:
-    """Tiny append-only SQLite store for A/B completion evidence.
-
-    Receipts contain score metadata and a hash of answers, never the answer values.
-    The anonymous service deliberately does not claim that a receipt identifies a
-    student; teachers pair it with their own classroom record when needed.
-    """
-
-    def __init__(self, path: str | Path | None = None):
-        configured = path or os.getenv("ML_CHECK_DB", ":memory:")
-        self.path = str(configured)
-        if self.path != ":memory:":
-            Path(self.path).parent.mkdir(parents=True, exist_ok=True)
-        self.connection = sqlite3.connect(self.path, check_same_thread=False)
-        self.connection.row_factory = sqlite3.Row
-        self.lock = threading.Lock()
-        with self.connection:
-            self.connection.execute(
-                """CREATE TABLE IF NOT EXISTS receipts (
-                   id TEXT PRIMARY KEY, lesson_id TEXT NOT NULL, phase TEXT NOT NULL,
-                   correct INTEGER NOT NULL, total INTEGER NOT NULL,
-                   answer_sha256 TEXT NOT NULL, submitted_at TEXT NOT NULL)"""
-            )
-
-    def add(self, lesson_id: str, phase: str, answers: dict, questions: list[dict]) -> dict:
-        correct = sum(answers[q["id"]] == q["answer"] for q in questions)
-        answer_sha = hashlib.sha256(
-            json.dumps(answers, sort_keys=True, separators=(",", ":")).encode("utf-8")
-        ).hexdigest()
-        receipt = {
-            "receipt_id": uuid.uuid4().hex,
-            "lesson_id": lesson_id,
-            "phase": phase,
-            "correct": correct,
-            "total": len(questions),
-            "answer_sha256": answer_sha,
-            "submitted_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        }
-        with self.lock, self.connection:
-            self.connection.execute(
-                "INSERT INTO receipts VALUES (?, ?, ?, ?, ?, ?, ?)",
-                tuple(receipt.values()),
-            )
-        return receipt
-
-    def get(self, receipt_id: str) -> dict | None:
-        with self.lock:
-            row = self.connection.execute(
-                "SELECT id, lesson_id, phase, correct, total, answer_sha256, submitted_at FROM receipts WHERE id = ?",
-                (receipt_id,),
-            ).fetchone()
-        if row is None:
-            return None
-        return {"receipt_id": row["id"], **{key: row[key] for key in ("lesson_id", "phase", "correct", "total", "answer_sha256", "submitted_at")}}
-
-
-def make_handler(bank: dict, db_path: str | Path | None = None):
-    lessons = {lesson["lesson_id"]: lesson for lesson in bank["lessons"]}
-    receipts = ReceiptStore(db_path)
-
-    class Handler(BaseHTTPRequestHandler):
-        timeout = 15
-
-        def send_body(self, status, body, content_type="text/html; charset=utf-8"):
-            if isinstance(body, str):
-                body = body.encode("utf-8")
-            self.send_response(status)
-            self.send_header("Content-Type", content_type)
-            self.send_header("Content-Length", str(len(body)))
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Content-Security-Policy", "default-src 'none'; style-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'")
-            self.end_headers()
-            if self.command != "HEAD":
-                self.wfile.write(body)
-
-        def do_HEAD(self):
-            self.do_GET()
-
-        def do_GET(self):
-            url = urlsplit(self.path)
-            path = url.path.rstrip("/")
-            if path == "/ml-check":
-                return self.send_body(200, pages.home(bank))
-            if path == "/ml-check/assets/site.css":
-                return self.send_body(200, (Path(__file__).parent / "static/site.css").read_bytes(), "text/css; charset=utf-8")
-            prefix = "/ml-check/lessons/"
-            if path.startswith(prefix):
-                lesson = lessons.get(path[len(prefix):].upper())
-                if lesson is None:
-                    return self.send_body(404, pages.error_page("未找到该课次。"))
-                try:
-                    query = parse_qs(url.query, max_num_fields=16)
-                    phase = query.get("phase", ["A"])
-                    if len(phase) != 1 or phase[0] not in ("A", "B"):
-                        raise ValueError("phase")
-                except ValueError:
-                    return self.send_body(400, pages.error_page("请选择 A 轮或 B 轮练习。"))
-                return self.send_body(200, pages.lesson_page(lesson, phase[0]))
-            status, payload = response(self.path, bank, receipts)
-            self.send_body(status, json.dumps(payload, ensure_ascii=False), "application/json; charset=utf-8")
-
-        def do_POST(self):
-            path = urlsplit(self.path).path.rstrip("/")
-            parts = path.split("/")
-            lesson = lessons.get(parts[3].upper()) if len(parts) == 5 and parts[1:3] == ["ml-check", "lessons"] and parts[4] == "check" else None
-            if lesson is None:
-                return self.send_body(404, pages.error_page("未找到该课次。"))
-            try:
-                length = int(self.headers.get("Content-Length", "0"))
-                if not 0 < length <= 8192 or self.headers.get("Transfer-Encoding"):
-                    raise ValueError("length")
-                if self.headers.get_content_type() != "application/x-www-form-urlencoded":
-                    raise ValueError("type")
-                form = parse_qs(self.rfile.read(length).decode("utf-8"), max_num_fields=16)
-                phase_values = form.get("phase", [])
-                if len(phase_values) != 1 or phase_values[0] not in ("A", "B"):
-                    raise ValueError("phase")
-                phase = phase_values[0]
-                questions = [q for q in lesson["questions"] if q["phase"] == phase]
-                answers = {}
-                for question in questions:
-                    values = form.get(question["id"], [])
-                    if len(values) != 1 or values[0] not in ("0", "1", "2", "3"):
-                        raise ValueError("answer")
-                    answers[question["id"]] = int(values[0])
-            except (ValueError, UnicodeError):
-                return self.send_body(400, pages.error_page("请为本轮每道题选择一个选项后再提交。"))
-            receipt = receipts.add(lesson["lesson_id"], phase, answers, questions)
-            self.send_body(200, pages.lesson_page(lesson, phase, answers, receipt))
-    return Handler
-
-
-def main(argv=None):
-    parser = argparse.ArgumentParser(description="概念练习服务；记录匿名 A/B 完成凭据，不执行学生代码。")
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=8896)
-    parser.add_argument("--db", default=os.getenv("ML_CHECK_DB", ":memory:"), help="SQLite 路径；默认生产路径可由 ML_CHECK_DB 覆盖")
-    args = parser.parse_args(argv)
-    server = ThreadingHTTPServer((args.host, args.port), make_handler(load_bank(), args.db))
-    print(f"概念练习服务：http://{args.host}:{args.port}/ml-check", flush=True)
+def format_timestamp(value: object) -> str:
+    if not value:
+        return "—"
     try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        server.server_close()
+        shanghai = datetime.fromisoformat(str(value)).astimezone(ZoneInfo("Asia/Shanghai"))
+        return shanghai.strftime("%Y-%m-%d %H:%M 上海时间")
+    except ValueError:
+        return str(value)
 
 
-if __name__ == "__main__":
-    main()
+def empty_session() -> dict[str, object]:
+    return {
+        "id": 0,
+        "lesson_id": "—",
+        "title": "尚未创建场次",
+        "phase": "closed",
+        "phase_ends_at": None,
+        "created_at": None,
+    }
+
+
+def create_app(settings: Settings | None = None) -> FastAPI:
+    settings = settings or Settings.from_env()
+    db.initialize(
+        settings.database_path, DEFAULT_BANK.lesson_id, DEFAULT_BANK.title
+    )
+
+    app = FastAPI(title="ML Check", docs_url=None, redoc_url=None)
+    app.state.settings = settings
+    app.add_middleware(
+        SessionMiddleware,
+        secret_key=settings.session_secret,
+        session_cookie="mlcheck_session",
+        path=settings.base_path,
+        same_site="lax",
+        https_only=settings.secure_cookie,
+        max_age=60 * 60 * 10,
+    )
+
+    app_dir = Path(__file__).parent
+    app.mount(
+        f"{settings.base_path}/static",
+        StaticFiles(directory=app_dir / "static"),
+        name="static",
+    )
+    templates = Jinja2Templates(directory=app_dir / "templates")
+    router = APIRouter(prefix=settings.base_path)
+
+    def ensure_csrf(request: Request) -> str:
+        token = request.session.get("csrf_token")
+        if not token:
+            token = secrets.token_urlsafe(24)
+            request.session["csrf_token"] = token
+        return str(token)
+
+    def verify_csrf(request: Request, token: str) -> None:
+        expected = request.session.get("csrf_token")
+        if not expected or not secrets.compare_digest(str(expected), token):
+            raise HTTPException(status_code=403, detail="页面已过期，请刷新后重试")
+
+    def current_user(request: Request):
+        user_id = request.session.get("user_id")
+        if not user_id:
+            return None
+        return db.get_user(settings.database_path, int(user_id))
+
+    def require_user(request: Request):
+        user = current_user(request)
+        if user is None:
+            raise HTTPException(status_code=401, detail="请先登录")
+        return user
+
+    def require_teacher(request: Request):
+        user = require_user(request)
+        if user["role"] != "teacher":
+            raise HTTPException(status_code=403, detail="仅教师可访问")
+        return user
+
+    def bank_for_session(session):
+        try:
+            return bank_for_lesson(str(session["lesson_id"]))
+        except LookupError as error:
+            raise HTTPException(
+                status_code=500,
+                detail="当前场次对应的题库不存在，请联系教师",
+            ) from error
+
+    def phase_expired(session) -> bool:
+        raw_deadline = session["phase_ends_at"]
+        if not raw_deadline:
+            return False
+        return datetime.fromisoformat(str(raw_deadline)) <= db.utc_now()
+
+    def render(request: Request, name: str, **context) -> HTMLResponse:
+        payload = {
+            "request": request,
+            "base_path": settings.base_path,
+            "csrf_token": ensure_csrf(request),
+            "user": current_user(request),
+            "phase_labels": PHASE_LABELS,
+            "format_timestamp": format_timestamp,
+            **context,
+        }
+        return templates.TemplateResponse(
+            request=request, name=name, context=payload
+        )
+
+    @app.middleware("http")
+    async def security_headers(request: Request, call_next):
+        response = await call_next(request)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "SAMEORIGIN"
+        response.headers["Referrer-Policy"] = "same-origin"
+        return response
+
+    @router.get("/healthz")
+    def healthz() -> dict[str, object]:
+        session = db.current_session(settings.database_path)
+        if session is not None:
+            bank_for_session(session)
+        return {
+            "status": "ok",
+            "lesson_count": len(CURRENT_BANKS),
+            "bank_version": "ml-v2-open-2026-09-06",
+        }
+
+    @router.get("/", response_class=HTMLResponse)
+    def home(request: Request):
+        user = current_user(request)
+        if user is None:
+            return render(request, "login.html", oauth_ready=bool(settings.gitea_client_id))
+        destination = "teacher" if user["role"] == "teacher" else "current"
+        return RedirectResponse(
+            f"{settings.base_path}/{destination}", status_code=303
+        )
+
+    @router.get("/login")
+    def login(request: Request):
+        if not settings.gitea_client_id or not settings.gitea_client_secret:
+            raise HTTPException(status_code=503, detail="Gitea 登录尚未配置")
+        state = secrets.token_urlsafe(32)
+        request.session["oauth_state"] = state
+        query = urlencode(
+            {
+                "client_id": settings.gitea_client_id,
+                "redirect_uri": f"{settings.public_base_url}/auth/callback",
+                "response_type": "code",
+                "scope": "read:user",
+                "state": state,
+            }
+        )
+        return RedirectResponse(
+            f"{settings.gitea_base_url}/login/oauth/authorize?{query}",
+            status_code=302,
+        )
+
+    @router.get("/auth/callback")
+    async def oauth_callback(request: Request, code: str, state: str):
+        expected = request.session.pop("oauth_state", None)
+        if not expected or not secrets.compare_digest(str(expected), state):
+            raise HTTPException(status_code=400, detail="登录状态无效，请重新登录")
+        redirect_uri = f"{settings.public_base_url}/auth/callback"
+        async with httpx.AsyncClient(timeout=10) as client:
+            token_response = await client.post(
+                f"{settings.gitea_base_url}/login/oauth/access_token",
+                data={
+                    "client_id": settings.gitea_client_id,
+                    "client_secret": settings.gitea_client_secret,
+                    "code": code,
+                    "grant_type": "authorization_code",
+                    "redirect_uri": redirect_uri,
+                },
+                headers={"Accept": "application/json"},
+            )
+            if token_response.is_error:
+                # Authorization codes are single-use. A browser retry or a
+                # stale callback should return to the login page instead of
+                # exposing an Internal Server Error.
+                return RedirectResponse(
+                    f"{settings.base_path}/?oauth_error=retry", status_code=303
+                )
+            access_token = token_response.json().get("access_token")
+            if not access_token:
+                raise HTTPException(status_code=502, detail="Gitea 未返回访问令牌")
+            user_response = await client.get(
+                f"{settings.gitea_base_url}/api/v1/user",
+                headers={"Authorization": f"token {access_token}"},
+            )
+            user_response.raise_for_status()
+            profile = user_response.json()
+        login_name = str(profile["login"])
+        display_name = str(profile.get("full_name") or login_name)
+        role = (
+            "teacher"
+            if login_name.casefold() in settings.teacher_logins
+            else "student"
+        )
+        user = db.upsert_user(
+            settings.database_path,
+            gitea_id=int(profile["id"]),
+            login=login_name,
+            display_name=display_name,
+            role=role,
+        )
+        request.session.clear()
+        request.session["user_id"] = int(user["id"])
+        return RedirectResponse(f"{settings.base_path}/", status_code=303)
+
+    @router.post("/logout")
+    def logout(request: Request, csrf_token: str = Form(...)):
+        verify_csrf(request, csrf_token)
+        request.session.clear()
+        return RedirectResponse(f"{settings.base_path}/", status_code=303)
+
+    @router.get("/current", response_class=HTMLResponse, name="student_current")
+    def student_current(request: Request):
+        user = require_user(request)
+        session = db.current_session(settings.database_path)
+        if session is None:
+            return render(
+                request,
+                "waiting.html",
+                session=empty_session(),
+                title="尚未创建自查场次",
+                message="请等待教师创建本节课的自查场次。",
+            )
+        bank = bank_for_session(session)
+        phase = str(session["phase"])
+        if phase in {"a", "learn", "b"} and phase_expired(session):
+            return render(
+                request,
+                "waiting.html",
+                session=session,
+                title=f"{PHASE_LABELS[phase]}计时已结束",
+                message="本阶段不再接受提交，请等待教师开放下一阶段。",
+            )
+        if phase in {"a", "b"}:
+            existing = {
+                row["concept_id"]
+                for row in db.responses_for_user(
+                    settings.database_path, int(session["id"]), int(user["id"])
+                )
+                if row["phase"] == phase
+            }
+            next_concept = next(
+                (concept for concept in bank.concept_ids if concept not in existing),
+                None,
+            )
+            if next_concept:
+                item = bank.item(next_concept)
+                return render(
+                    request,
+                    "attempt.html",
+                    session=session,
+                    phase=phase,
+                    item=item,
+                    question=bank.question(next_concept, phase),
+                    question_number=len(existing) + 1,
+                    question_total=len(bank.items),
+                    confidence_labels=CONFIDENCE_LABELS,
+                )
+            return render(
+                request,
+                "waiting.html",
+                session=session,
+                title=f"{PHASE_LABELS[phase]}已完成",
+                message="答案已经锁定，请等待教师开放下一阶段。",
+            )
+        if phase == "learn":
+            return render(
+                request,
+                "learn.html",
+                session=session,
+                items=bank.items,
+                completed=db.learning_complete(
+                    settings.database_path, int(session["id"]), int(user["id"])
+                ),
+            )
+        if phase == "result":
+            rows = db.responses_for_user(
+                settings.database_path, int(session["id"]), int(user["id"])
+            )
+            response_map = {
+                (row["concept_id"], row["phase"]): row for row in rows
+            }
+            results = []
+            for item in bank.items:
+                concept_id = str(item["concept_id"])
+                results.append(
+                    {
+                        "title": item["title"],
+                        "a": response_map.get((concept_id, "a")),
+                        "b": response_map.get((concept_id, "b")),
+                        "explanation": item["pair"]["b"]["explanation"],
+                    }
+                )
+            return render(
+                request, "result.html", session=session, results=results
+            )
+        return render(
+            request,
+            "waiting.html",
+            session=session,
+            title="本节自查尚未开始",
+            message="教师开放 A 版后，页面会自动更新；也可以点击下方按钮刷新。",
+        )
+
+    @router.get("/state")
+    def student_state(request: Request) -> dict[str, str | int | None]:
+        require_user(request)
+        session = db.current_session(settings.database_path)
+        if session is None:
+            return {"session_id": None, "phase": "closed", "phase_ends_at": None}
+        bank_for_session(session)
+        return {
+            "session_id": int(session["id"]),
+            "phase": str(session["phase"]),
+            "phase_ends_at": session["phase_ends_at"],
+        }
+
+    @router.post("/answer")
+    def submit_answer(
+        request: Request,
+        csrf_token: str = Form(...),
+        session_id: int = Form(...),
+        concept_id: str = Form(...),
+        phase: str = Form(...),
+        option_id: str = Form(...),
+        confidence: str = Form(...),
+    ):
+        verify_csrf(request, csrf_token)
+        user = require_user(request)
+        session = db.current_session(settings.database_path)
+        if session is None:
+            raise HTTPException(status_code=409, detail="当前没有开放的自查场次")
+        if session_id != int(session["id"]):
+            raise HTTPException(status_code=409, detail="当前场次已经变化")
+        bank = bank_for_session(session)
+        if phase not in {"a", "b"} or session["phase"] != phase:
+            raise HTTPException(status_code=409, detail="当前阶段已经变化")
+        if phase_expired(session):
+            raise HTTPException(status_code=409, detail="本阶段计时已经结束")
+        if concept_id not in bank.concept_ids:
+            raise HTTPException(status_code=400, detail="题目不存在")
+        question = bank.question(concept_id, phase)
+        valid_options = {str(option["id"]) for option in question["options"]}
+        if option_id not in valid_options or confidence not in CONFIDENCE_LABELS:
+            raise HTTPException(status_code=400, detail="答案不完整")
+        try:
+            db.save_response(
+                settings.database_path,
+                session_id=int(session["id"]),
+                user_id=int(user["id"]),
+                concept_id=concept_id,
+                phase=phase,
+                option_id=option_id,
+                confidence=confidence,
+                correct=option_id == str(question["answer"]),
+            )
+        except sqlite3.IntegrityError as error:
+            raise HTTPException(status_code=409, detail="本题已经提交并锁定") from error
+        return RedirectResponse(f"{settings.base_path}/current", status_code=303)
+
+    @router.post("/learn/complete")
+    def complete_learning(
+        request: Request,
+        csrf_token: str = Form(...),
+        session_id: int = Form(...),
+    ):
+        verify_csrf(request, csrf_token)
+        user = require_user(request)
+        session = db.current_session(settings.database_path)
+        if session is None:
+            raise HTTPException(status_code=409, detail="当前没有开放的自查场次")
+        if session_id != int(session["id"]):
+            raise HTTPException(status_code=409, detail="当前场次已经变化")
+        bank_for_session(session)
+        if session["phase"] != "learn":
+            raise HTTPException(status_code=409, detail="当前不是学习阶段")
+        if phase_expired(session):
+            raise HTTPException(status_code=409, detail="学习阶段计时已经结束")
+        db.mark_learning_complete(
+            settings.database_path, int(session["id"]), int(user["id"])
+        )
+        return RedirectResponse(f"{settings.base_path}/current", status_code=303)
+
+    @router.get("/teacher", response_class=HTMLResponse, name="teacher_dashboard")
+    def teacher_dashboard(request: Request, session_id: int | None = None):
+        require_teacher(request)
+        current = db.current_session(settings.database_path)
+        if current is None:
+            return render(
+                request,
+                "teacher.html",
+                session=empty_session(),
+                no_session=True,
+                summary={"students": 0, "completed": {"a": 0, "learn": 0, "b": 0}, "aggregates": []},
+                concepts=[],
+                phases=("closed", "a", "learn", "b", "result"),
+                question_banks=CURRENT_BANKS,
+                session_history=[],
+                viewing_history=False,
+                current_session_id=None,
+            )
+        session = current if session_id is None else db.get_session(settings.database_path, session_id)
+        if session is None:
+            raise HTTPException(status_code=404, detail="场次不存在")
+        bank = bank_for_session(session)
+        summary = db.dashboard_summary(
+            settings.database_path, int(session["id"]), len(bank.items)
+        )
+        aggregate_map = {
+            (row["concept_id"], row["phase"]): row
+            for row in summary["aggregates"]
+        }
+        concepts = []
+        for item in bank.items:
+            concept = {"title": item["title"], "a": None, "b": None}
+            for phase in ("a", "b"):
+                row = aggregate_map.get((item["concept_id"], phase))
+                if row and row["answered"]:
+                    concept[phase] = round(
+                        100 * row["correct_count"] / row["answered"]
+                    )
+            concepts.append(concept)
+        return render(
+            request,
+            "teacher.html",
+            session=session,
+            summary=summary,
+            concepts=concepts,
+            phases=("closed", "a", "learn", "b", "result"),
+            question_banks=CURRENT_BANKS,
+            session_history=db.session_history(settings.database_path),
+            viewing_history=session_id is not None and int(session["id"]) != int(current["id"]),
+            current_session_id=int(current["id"]),
+            no_session=False,
+        )
+
+    @router.post("/teacher/session")
+    def teacher_create_session(
+        request: Request,
+        csrf_token: str = Form(...),
+        lesson_id: str = Form(...),
+    ):
+        verify_csrf(request, csrf_token)
+        require_teacher(request)
+        try:
+            bank = bank_for_lesson(lesson_id)
+        except LookupError as error:
+            raise HTTPException(status_code=400, detail="所选课次不存在") from error
+        db.create_session(settings.database_path, bank.lesson_id, bank.title)
+        return RedirectResponse(f"{settings.base_path}/teacher", status_code=303)
+
+    @router.post("/teacher/session/delete")
+    def teacher_delete_session(
+        request: Request,
+        csrf_token: str = Form(...),
+        session_id: int = Form(...),
+        force: bool = Form(False),
+    ):
+        verify_csrf(request, csrf_token)
+        require_teacher(request)
+        error = db.delete_session(settings.database_path, session_id, force=force)
+        if error:
+            raise HTTPException(status_code=409, detail=error)
+        return RedirectResponse(f"{settings.base_path}/teacher", status_code=303)
+
+    @router.post("/teacher/session/close-delete")
+    def teacher_close_delete_session(
+        request: Request,
+        csrf_token: str = Form(...),
+        session_id: int = Form(...),
+        force: bool = Form(False),
+    ):
+        verify_csrf(request, csrf_token)
+        require_teacher(request)
+        session = db.current_session(settings.database_path)
+        if session is None:
+            raise HTTPException(status_code=409, detail="当前没有场次")
+        if session_id != int(session["id"]):
+            raise HTTPException(status_code=409, detail="只能关闭并删除当前场次")
+        if session["phase"] != "closed":
+            db.set_phase(settings.database_path, session_id, "closed", None)
+        error = db.delete_session(settings.database_path, session_id, force=force)
+        if error:
+            raise HTTPException(status_code=409, detail=error)
+        return RedirectResponse(f"{settings.base_path}/teacher", status_code=303)
+
+    @router.post("/teacher/phase")
+    def teacher_phase(
+        request: Request,
+        csrf_token: str = Form(...),
+        session_id: int = Form(...),
+        phase: str = Form(...),
+    ):
+        verify_csrf(request, csrf_token)
+        require_teacher(request)
+        if phase not in PHASE_LABELS:
+            raise HTTPException(status_code=400, detail="未知阶段")
+        session = db.current_session(settings.database_path)
+        if session is None:
+            raise HTTPException(status_code=409, detail="请先创建自查场次")
+        if session_id != int(session["id"]):
+            raise HTTPException(status_code=409, detail="当前场次已经变化")
+        bank = bank_for_session(session)
+        durations = {
+            "a": bank.durations["attempt_a"],
+            "learn": bank.durations["learn"],
+            "b": bank.durations["attempt_b"],
+        }
+        db.set_phase(
+            settings.database_path,
+            int(session["id"]),
+            phase,
+            durations.get(phase),
+        )
+        return RedirectResponse(f"{settings.base_path}/teacher", status_code=303)
+
+    @router.get("/teacher/export.csv")
+    def teacher_export(request: Request, session_id: int | None = None):
+        require_teacher(request)
+        if session_id is None:
+            session = db.current_session(settings.database_path)
+            if session is None:
+                raise HTTPException(status_code=404, detail="当前没有场次")
+        else:
+            session = db.get_session(settings.database_path, session_id)
+            if session is None:
+                raise HTTPException(status_code=404, detail="场次不存在")
+        output = io.StringIO()
+        writer = csv.writer(output)
+        writer.writerow(
+            ["gitea_login", "name", "a_count", "a_correct", "learned", "b_count", "b_correct"]
+        )
+        for row in db.export_rows(settings.database_path, int(session["id"])):
+            writer.writerow(
+                [
+                    row["login"],
+                    row["display_name"],
+                    row["a_count"],
+                    row["a_correct"],
+                    row["learned"],
+                    row["b_count"],
+                    row["b_correct"],
+                ]
+            )
+        return Response(
+            content="\ufeff" + output.getvalue(),
+            media_type="text/csv; charset=utf-8",
+            headers={"Content-Disposition": "attachment; filename=ml-check.csv"},
+        )
+
+    if settings.testing:
+
+        @router.get("/test-login")
+        def test_login(request: Request, login: str = "student1", role: str = "student"):
+            if role not in {"student", "teacher"}:
+                raise HTTPException(status_code=400)
+            numeric_id = 900000 + sum(ord(char) for char in login)
+            user = db.upsert_user(
+                settings.database_path,
+                gitea_id=numeric_id,
+                login=login,
+                display_name=login,
+                role=role,
+            )
+            request.session.clear()
+            request.session["user_id"] = int(user["id"])
+            return RedirectResponse(f"{settings.base_path}/", status_code=303)
+
+    @router.get("/lessons/{lesson_id}", response_class=HTMLResponse)
+    def legacy_lesson(request: Request, lesson_id: str, phase: str = "A"):
+        bank = load_bank()
+        lesson = next((x for x in bank["lessons"] if x["lesson_id"] == lesson_id.upper()), None)
+        if lesson is None or phase not in ("A", "B"):
+            return HTMLResponse(legacy_pages.error_page("未找到该课次或练习轮次。"), status_code=404)
+        return HTMLResponse(legacy_pages.lesson_page(lesson, phase))
+
+    @router.post("/lessons/{lesson_id}/check", response_class=HTMLResponse)
+    async def legacy_check(request: Request, lesson_id: str):
+        bank = load_bank(); lesson = next((x for x in bank["lessons"] if x["lesson_id"] == lesson_id.upper()), None)
+        if lesson is None: return HTMLResponse(legacy_pages.error_page("未找到该课次。"), status_code=404)
+        form = await request.form(); phase = str(form.get("phase", ""))
+        questions = [q for q in lesson["questions"] if q["phase"] == phase]
+        if phase not in ("A", "B") or any(q["id"] not in form for q in questions):
+            return HTMLResponse(legacy_pages.error_page("请为本轮每道题选择一个选项后再提交。"), status_code=400)
+        try: answers = {q["id"]: int(str(form[q["id"]])) for q in questions}
+        except (ValueError, TypeError): return HTMLResponse(legacy_pages.error_page("答案格式不正确。"), status_code=400)
+        if any(v not in range(4) for v in answers.values()): return HTMLResponse(legacy_pages.error_page("答案格式不正确。"), status_code=400)
+        store = ReceiptStore(getattr(request.app.state.settings, "database_path", None))
+        receipt = store.add(lesson["lesson_id"], phase, answers, questions)
+        return HTMLResponse(legacy_pages.lesson_page(lesson, phase, answers, receipt))
+
+    @router.get("/api/receipts/{receipt_id}")
+    def api_receipt(request: Request, receipt_id: str):
+        path = getattr(request.app.state.settings, "database_path", None)
+        value = ReceiptStore(path).get(receipt_id)
+        if value is None: raise HTTPException(status_code=404, detail="未找到该练习凭据。")
+        return value
+
+    @router.get("/api/lessons")
+    def api_lessons():
+        return [{"lesson_id": b.lesson_id, "title": b.title, "module": b.module} for b in CURRENT_BANKS]
+
+    @router.get("/api/lessons/{lesson_id}")
+    def api_lesson(lesson_id: str):
+        try: bank = bank_for_lesson(lesson_id)
+        except LookupError: raise HTTPException(status_code=404, detail="未找到该课次或接口。")
+        return {"lesson_id": bank.lesson_id, "title": bank.title, "module": bank.module,
+                "questions": [{k:q[k] for k in ("id","phase","prompt","options")} for q in bank.questions]}
+
+    app.include_router(router)
+    return app
+
+
+try:
+    app = create_app()
+except RuntimeError:
+    # Keep legacy imports usable without production secrets; deployment must set SESSION_SECRET.
+    _settings = Settings(database_path="/tmp/ml-check-fallback.sqlite3", session_secret="test-secret", gitea_base_url="https://hblu.top/gitea", gitea_client_id="", gitea_client_secret="", public_base_url="https://hblu.top/ml-check", teacher_logins=frozenset(), base_path="/ml-check", secure_cookie=False, testing=True)
+    app = create_app(_settings)

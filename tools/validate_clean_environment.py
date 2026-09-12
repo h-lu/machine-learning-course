@@ -32,9 +32,11 @@ def main():
         for name in ["course-student-template", "course-instructor", "machine-learning-course", "ml-check", "tools"]:
             shutil.copytree(ROOT / name, copy / name, ignore=shutil.ignore_patterns(".git", "__pycache__", ".pytest_cache", ".venv", "artifacts", "build", "*.egg-info"))
         student = copy / "course-student-template"
-        assert not list(student.glob("lessons/*/artifacts/summary.json"))
+        assert not list(student.glob("lesson-*/artifacts/summary.json"))
         for lesson in LESSONS:
-            cmd = [py, f"lessons/{lesson}/analysis.py"]
+            number = int(lesson[1:]) if lesson.startswith("C") else int(lesson[1:]) + 2
+            folder = f"lesson-{number:02d}"
+            cmd = [py, f"{folder}/analysis.py"]
             usage = copy / "process-usage.txt"
             measured = Path("/usr/bin/time").exists()
             if measured:
@@ -46,7 +48,7 @@ def main():
             if proc.returncode:
                 record["output"] = proc.stdout + proc.stderr
             else:
-                result = json.loads((student / "lessons" / lesson / "artifacts/summary.json").read_text())
+                result = json.loads((student / folder / "artifacts/summary.json").read_text())
                 record["result_sha256"] = hashlib.sha256(json.dumps(result, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
                 record["metrics"] = result["metrics"]
                 record["input_hash"] = result["provenance"]["data_sha256"]

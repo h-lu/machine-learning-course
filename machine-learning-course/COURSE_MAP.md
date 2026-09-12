@@ -17,38 +17,38 @@
 
 | 课次 | 要回答的问题 | 需要学会的概念 | 必做中由你决定 | 最小实验与成果 |
 |---|---|---|---|---|
-| C01 | [让别人重跑你的第一次预测](../course-student-template/lessons/C01/README.md) | 数据、特征和标签；环境与重复运行 | 选一项日常预测，决定一行数据代表什么 | 读取小表格、作出简单预测并核对一行 |
-| C02 | [一个分数够不够支持使用](../course-student-template/lessons/C02/README.md) | 基线；训练与测试；分组误差 | 选择结果用来提醒、排序还是预估数量 | 比较简单预测和学习模型，检查一组失败 |
-| S01 | [这件事值得交给模型吗](../course-student-template/lessons/S01/README.md) | 任务说明；无模型基线；预测时已有信息 | 自选需求，允许规则、模型或暂时不做 | 比较规则与模型，说明差异能否改变行动 |
-| S02 | [记录下来的结果就是好标签吗](../course-student-template/lessons/S02/README.md) | 代理标签；标注分歧；选择偏差 | 决定怎样定义目标、处理未知与延迟结果 | 审查标签，比较不同处理办法的影响 |
-| S03 | [怎样测试才像将来的使用](../course-student-template/lessons/S03/README.md) | 时间切分；分组切分；数据泄漏 | 决定要预测未来、陌生用户还是相似样本 | 比较两种切分，解释哪个更接近用途 |
-| S04 | [预测错多少，要看结果用来做什么](../course-student-template/lessons/S04/README.md) | 绝对与平方误差；非对称损失；残差 | 自定高估和低估的后果与主指标 | 比较预测办法，核对总误差及一种特殊情况 |
-| S05 | [复核名额应该给谁](../course-student-template/lessons/S05/README.md) | 精确率与召回率；阈值；容量 | 决定优先少漏报、少误报还是控制工作量 | 比较两种复核办法，并检查容量变化 |
-| S06 | [换一批数据，处理流程还能用吗](../course-student-template/lessons/S06/README.md) | 拟合与转换；缺失；未知类别 | 决定怎样处理缺失与新类别并解释代价 | 构建处理流程，在新输入上检查结果 |
-| S07 | [直线能支持哪一种预测](../course-student-template/lessons/S07/README.md) | 最小二乘；残差；外推 | 选目标与特征，决定在哪个区间使用 | 拟合直线，与简单办法比较并检查区间外输入 |
-| S08 | [风险概率应该怎样使用](../course-student-template/lessons/S08/README.md) | 逻辑回归；概率损失；校准 | 决定概率用于排序、提醒还是资源安排 | 训练概率模型，区分概率质量与行动效果 |
-| S09 | [一棵树能否成为可执行的规则](../course-student-template/lessons/S09/README.md) | 分裂；树深；训练与验证差距 | 选树的复杂程度与规则应覆盖的人群 | 比较不同大小的树，检查边界附近的输入 |
-| S10 | [多一点性能值得多大成本](../course-student-template/lessons/S10/README.md) | 集成；抽样；性能与计算成本 | 选择比较对象及可接受的等待或特征成本 | 比较单模型与集成，写出成本能否接受 |
-| S11 | [分成几组之后，准备怎样做](../course-student-template/lessons/S11/README.md) | 距离与尺度；聚类；稳定性 | 决定按什么相似性分组、分组后怎样行动 | 改变尺度或数据，检查分组是否仍有用 |
-| S12 | [没有故障标签，先检查哪些记录](../course-student-template/lessons/S12/README.md) | 主成分；重构误差；复核队列 | 决定复核名额及何种异常值得关注 | 构建异常候选队列，检查正常但少见的记录 |
-| S13 | [这次任务需要神经网络吗](../course-student-template/lessons/S13/README.md) | 张量；激活；反向传播 | 选择表示、网络大小与是否值得训练 | 训练微型网络，与线性基线比较并检查错误 |
-| S14 | [训练没有变好，应该先改什么](../course-student-template/lessons/S14/README.md) | 学习率；欠拟合与过拟合；控制变量 | 自选故障假设、实验顺序与停止条件 | 改变一个因素，用曲线检验而非猜测原因 |
-| S15 | [图像换个样子，还能认出来吗](../course-student-template/lessons/S15/README.md) | 卷积；权重共享；图像扰动 | 自选图像用途及应保持标签的变化 | 运行小型卷积实验，检查一种自设计扰动 |
-| S16 | [借来的表示，适合我的数据吗](../course-student-template/lessons/S16/README.md) | 表示学习；固定表示；负迁移 | 决定原始特征或已有表示更适合什么用途 | 比较表示，检查新数据与原数据的差异 |
-| S17 | [一段话中，该看哪些信息](../course-student-template/lessons/S17/README.md) | 查询、键和值；注意力；遮罩 | 选择聚合任务与可读取的信息 | 计算短序列注意力，改变顺序或干扰项 |
-| S18 | [微型 Transformer 怎样猜下一个词元](../course-student-template/lessons/S18/README.md) | 因果遮罩；残差；前馈层 | 选择要检验的层或信息可见性假设 | 追踪前向计算和一次训练更新，检查未来信息 |
-| S19 | [一句话怎样变成词元和概率](../course-student-template/lessons/S19/README.md) | 分词；上下文；概率与困惑度 | 选择文本类型、长度限制与异常文本 | 检查分词与概率，解释无法据此断定什么 |
-| S20 | [同一个模型，怎样选择输出](../course-student-template/lessons/S20/README.md) | 温度；截断采样；随机性 | 决定输出任务要稳定、覆盖还是多样 | 比较解码设置，核对任务指标与重复实验 |
-| S21 | [提示改好了，还是只记住了例子](../course-student-template/lessons/S21/README.md) | 开发与最后测试；输出格式；错误分类 | 自写提示假设与任务评价办法 | 检验提示候选；缓存外新提示另需运行证据 |
-| S22 | [资料很多，怎样找到有用的一段](../course-student-template/lessons/S22/README.md) | 文本表示；相似度；切分与检索 | 自选查询用途、切分办法与相关性标准 | 建立小型索引，检查一次查错或查漏 |
-| S23 | [有了引用，回答就可信吗](../course-student-template/lessons/S23/README.md) | 证据支持；可回答性；拒答 | 决定何种证据足够、缺资料时怎样回答 | 逐项核对检索与回答，测试缺证据的请求 |
-| S24 | [哪些请求可以交给语言模型](../course-student-template/lessons/S24/README.md) | 权限；指令注入；应用测试 | 选择应用职责、允许动作和人工处理条件 | 测试请求与资料中的干扰，作出试用建议 |
-| S25 | [先试一试，还是继续选最好的一项](../course-student-template/lessons/S25/README.md) | 探索与利用；累计回报；遗憾 | 决定探索预算及收益变化时怎样应对 | 模拟选择策略，比较多次运行与条件变化 |
-| S26 | [怎样把连续决策写成一个环境](../course-student-template/lessons/S26/README.md) | 状态；转移；奖励；马尔可夫假设 | 自选流程，决定状态中必须记住什么 | 运行小环境，找出状态遗漏或奖励漏洞 |
-| S27 | [知道规则后，怎样规划下一步](../course-student-template/lessons/S27/README.md) | 长期回报；贝尔曼递推；价值迭代 | 选择奖励、折扣与值得等待的程度 | 求策略并改变一个假设，解释策略为何改变 |
-| S28 | [不知道转移规律，怎样从尝试中学习](../course-student-template/lessons/S28/README.md) | 时序差分；Q 学习；探索和评估分离 | 选择训练预算、探索办法与评估环境 | 从交互学习策略，在新随机种子或环境中比较 |
-| S29 | [模型运行后，什么时候需要处理](../course-student-template/lessons/S29/README.md) | 输入检查；漂移；延迟标签；恢复旧版本 | 选择监测对象、处理时机与人工工作量 | 检查历史与新批次，测试报警或恢复流程 |
-| S30 | [换一个场景，原来的方案还能用吗](../course-student-template/lessons/S30/README.md) | 问题迁移；重新评价；使用说明 | 任选前作与新使用者，重定用途与评价 | 迁移一件作品，用新证据说明继续、修改或停止 |
+| C01 | [让别人重跑你的第一次预测](../course-student-template/lesson-01/README.md) | 数据、特征和标签；环境与重复运行 | 选一项日常预测，决定一行数据代表什么 | 读取小表格、作出简单预测并核对一行 |
+| C02 | [一个分数够不够支持使用](../course-student-template/lesson-02/README.md) | 基线；训练与测试；分组误差 | 选择结果用来提醒、排序还是预估数量 | 比较简单预测和学习模型，检查一组失败 |
+| S01 | [这件事值得交给模型吗](../course-student-template/lesson-03/README.md) | 任务说明；无模型基线；预测时已有信息 | 自选需求，允许规则、模型或暂时不做 | 比较规则与模型，说明差异能否改变行动 |
+| S02 | [记录下来的结果就是好标签吗](../course-student-template/lesson-04/README.md) | 代理标签；标注分歧；选择偏差 | 决定怎样定义目标、处理未知与延迟结果 | 审查标签，比较不同处理办法的影响 |
+| S03 | [怎样测试才像将来的使用](../course-student-template/lesson-05/README.md) | 时间切分；分组切分；数据泄漏 | 决定要预测未来、陌生用户还是相似样本 | 比较两种切分，解释哪个更接近用途 |
+| S04 | [预测错多少，要看结果用来做什么](../course-student-template/lesson-06/README.md) | 绝对与平方误差；非对称损失；残差 | 自定高估和低估的后果与主指标 | 比较预测办法，核对总误差及一种特殊情况 |
+| S05 | [复核名额应该给谁](../course-student-template/lesson-07/README.md) | 精确率与召回率；阈值；容量 | 决定优先少漏报、少误报还是控制工作量 | 比较两种复核办法，并检查容量变化 |
+| S06 | [换一批数据，处理流程还能用吗](../course-student-template/lesson-08/README.md) | 拟合与转换；缺失；未知类别 | 决定怎样处理缺失与新类别并解释代价 | 构建处理流程，在新输入上检查结果 |
+| S07 | [直线能支持哪一种预测](../course-student-template/lesson-09/README.md) | 最小二乘；残差；外推 | 选目标与特征，决定在哪个区间使用 | 拟合直线，与简单办法比较并检查区间外输入 |
+| S08 | [风险概率应该怎样使用](../course-student-template/lesson-10/README.md) | 逻辑回归；概率损失；校准 | 决定概率用于排序、提醒还是资源安排 | 训练概率模型，区分概率质量与行动效果 |
+| S09 | [一棵树能否成为可执行的规则](../course-student-template/lesson-11/README.md) | 分裂；树深；训练与验证差距 | 选树的复杂程度与规则应覆盖的人群 | 比较不同大小的树，检查边界附近的输入 |
+| S10 | [多一点性能值得多大成本](../course-student-template/lesson-12/README.md) | 集成；抽样；性能与计算成本 | 选择比较对象及可接受的等待或特征成本 | 比较单模型与集成，写出成本能否接受 |
+| S11 | [分成几组之后，准备怎样做](../course-student-template/lesson-13/README.md) | 距离与尺度；聚类；稳定性 | 决定按什么相似性分组、分组后怎样行动 | 改变尺度或数据，检查分组是否仍有用 |
+| S12 | [没有故障标签，先检查哪些记录](../course-student-template/lesson-14/README.md) | 主成分；重构误差；复核队列 | 决定复核名额及何种异常值得关注 | 构建异常候选队列，检查正常但少见的记录 |
+| S13 | [这次任务需要神经网络吗](../course-student-template/lesson-15/README.md) | 张量；激活；反向传播 | 选择表示、网络大小与是否值得训练 | 训练微型网络，与线性基线比较并检查错误 |
+| S14 | [训练没有变好，应该先改什么](../course-student-template/lesson-16/README.md) | 学习率；欠拟合与过拟合；控制变量 | 自选故障假设、实验顺序与停止条件 | 改变一个因素，用曲线检验而非猜测原因 |
+| S15 | [图像换个样子，还能认出来吗](../course-student-template/lesson-17/README.md) | 卷积；权重共享；图像扰动 | 自选图像用途及应保持标签的变化 | 运行小型卷积实验，检查一种自设计扰动 |
+| S16 | [借来的表示，适合我的数据吗](../course-student-template/lesson-18/README.md) | 表示学习；固定表示；负迁移 | 决定原始特征或已有表示更适合什么用途 | 比较表示，检查新数据与原数据的差异 |
+| S17 | [一段话中，该看哪些信息](../course-student-template/lesson-19/README.md) | 查询、键和值；注意力；遮罩 | 选择聚合任务与可读取的信息 | 计算短序列注意力，改变顺序或干扰项 |
+| S18 | [微型 Transformer 怎样猜下一个词元](../course-student-template/lesson-20/README.md) | 因果遮罩；残差；前馈层 | 选择要检验的层或信息可见性假设 | 追踪前向计算和一次训练更新，检查未来信息 |
+| S19 | [一句话怎样变成词元和概率](../course-student-template/lesson-21/README.md) | 分词；上下文；概率与困惑度 | 选择文本类型、长度限制与异常文本 | 检查分词与概率，解释无法据此断定什么 |
+| S20 | [同一个模型，怎样选择输出](../course-student-template/lesson-22/README.md) | 温度；截断采样；随机性 | 决定输出任务要稳定、覆盖还是多样 | 比较解码设置，核对任务指标与重复实验 |
+| S21 | [提示改好了，还是只记住了例子](../course-student-template/lesson-23/README.md) | 开发与最后测试；输出格式；错误分类 | 自写提示假设与任务评价办法 | 检验提示候选；缓存外新提示另需运行证据 |
+| S22 | [资料很多，怎样找到有用的一段](../course-student-template/lesson-24/README.md) | 文本表示；相似度；切分与检索 | 自选查询用途、切分办法与相关性标准 | 建立小型索引，检查一次查错或查漏 |
+| S23 | [有了引用，回答就可信吗](../course-student-template/lesson-25/README.md) | 证据支持；可回答性；拒答 | 决定何种证据足够、缺资料时怎样回答 | 逐项核对检索与回答，测试缺证据的请求 |
+| S24 | [哪些请求可以交给语言模型](../course-student-template/lesson-26/README.md) | 权限；指令注入；应用测试 | 选择应用职责、允许动作和人工处理条件 | 测试请求与资料中的干扰，作出试用建议 |
+| S25 | [先试一试，还是继续选最好的一项](../course-student-template/lesson-27/README.md) | 探索与利用；累计回报；遗憾 | 决定探索预算及收益变化时怎样应对 | 模拟选择策略，比较多次运行与条件变化 |
+| S26 | [怎样把连续决策写成一个环境](../course-student-template/lesson-28/README.md) | 状态；转移；奖励；马尔可夫假设 | 自选流程，决定状态中必须记住什么 | 运行小环境，找出状态遗漏或奖励漏洞 |
+| S27 | [知道规则后，怎样规划下一步](../course-student-template/lesson-29/README.md) | 长期回报；贝尔曼递推；价值迭代 | 选择奖励、折扣与值得等待的程度 | 求策略并改变一个假设，解释策略为何改变 |
+| S28 | [不知道转移规律，怎样从尝试中学习](../course-student-template/lesson-30/README.md) | 时序差分；Q 学习；探索和评估分离 | 选择训练预算、探索办法与评估环境 | 从交互学习策略，在新随机种子或环境中比较 |
+| S29 | [模型运行后，什么时候需要处理](../course-student-template/lesson-31/README.md) | 输入检查；漂移；延迟标签；恢复旧版本 | 选择监测对象、处理时机与人工工作量 | 检查历史与新批次，测试报警或恢复流程 |
+| S30 | [换一个场景，原来的方案还能用吗](../course-student-template/lesson-32/README.md) | 问题迁移；重新评价；使用说明 | 任选前作与新使用者，重定用途与评价 | 迁移一件作品，用新证据说明继续、修改或停止 |
 
 ## 每次 90 分钟怎样使用
 

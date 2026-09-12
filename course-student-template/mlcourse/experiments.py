@@ -1566,3 +1566,8 @@ EXPERIMENTS = {
     "C02": c02,
     **{f"S{i:02d}": globals()[f"s{i:02d}"] for i in range(1, 31)},
 }
+# Public student layout uses lesson-01..lesson-32; retain legacy keys for compatibility.
+EXPERIMENTS.update({
+    f"lesson-{i:02d}": EXPERIMENTS[("C" if i <= 2 else "S") + (f"{i:02d}" if i <= 2 else f"{i-2:02d}")]
+    for i in range(1, 33)
+})

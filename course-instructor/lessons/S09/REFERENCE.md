@@ -5,7 +5,7 @@
 在包含学生仓库的工作目录运行：
 
 ```bash
-python3 course-student-template/lessons/S09/analysis.py --output /tmp/ml-reference-S09
+python3 course-student-template/lesson-11/analysis.py --output /tmp/ml-reference-S09
 ```
 
 查看 `/tmp/ml-reference-S09/summary.json`，同时核对学生的数据说明、原始记录与配置。默认实验为一种可重算的比较起点。教师应保存实际配置和数值，不能把这份文件的例子或一条预期关系直接写成已运行结果。
@@ -25,7 +25,7 @@ python3 course-student-template/lessons/S09/analysis.py --output /tmp/ml-referen
 3. 选一条具体记录沿树逐步解释，核对每项输入在使用时可得。
 4. 改变少量训练记录或轻微改变输入，检查重要分支是否稳定；据结果决定简化、限用或采用。
 
-课堂核算可先使用[学习材料](../../../course-student-template/lessons/S09/LEARN.md)中的具体数字，再抽一条正式记录复核。核算时检查人数、单位、训练和评价资料的用途，以及输出是否真的回答学生选定的问题。相近数值允许因合理实现与随机条件有差异，不能按最后一位小数或默认模型评分。
+课堂核算可先使用[学习材料](../../../course-student-template/lesson-11/LEARN.md)中的具体数字，再抽一条正式记录复核。核算时检查人数、单位、训练和评价资料的用途，以及输出是否真的回答学生选定的问题。相近数值允许因合理实现与随机条件有差异，不能按最后一位小数或默认模型评分。
 
 ## 可接受但方向不同的分析
 
