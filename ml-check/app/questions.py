@@ -52,7 +52,9 @@ class LessonBank:
             if i > len(a_rows) or i > len(b_rows):
                 continue
             a, b = a_rows[i - 1], b_rows[i - 1]
-            rows.append({'concept_id': cid, 'title': f'概念 {i}', 'tutor_context': '结合本课项目，说明这个概念何时有用、何时可能误导。',
+            rows.append({'concept_id': cid,
+                         'title': f'{a["id"]} · {_short_topic(a["prompt"])}',
+                         'tutor_context': f'A 版问题：{a["prompt"]}；B 版变式：{b["prompt"]}',
                          'pair': {'a': a, 'b': b}})
         return rows
     def item(self, concept_id):
@@ -68,6 +70,11 @@ class LessonBank:
                 'options':[{'id':str(i), 'text':x} for i,x in enumerate(q['options'])],
                 'answer':str(q['answer']), 'explanation':q['explanation'],
                 'prompt': q['prompt']}
+
+def _short_topic(prompt: str) -> str:
+    """Create a readable topic label from the actual question text."""
+    text = re.sub(r"^在[“\"「]|[？?。！!]$", "", str(prompt)).strip()
+    return text if len(text) <= 28 else text[:28] + "…"
 
 ROOT = Path(__file__).parent / 'question_bank/lessons.json'
 BANK_VERSION = 'ml-v3-2026-09-12'
