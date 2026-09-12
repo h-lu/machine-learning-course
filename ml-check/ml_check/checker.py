@@ -139,8 +139,8 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
         report.add(path, "questions", "题目课次与目录不一致。")
         return
     questions = value.get("questions")
-    if not isinstance(questions, list) or len(questions) != 4:
-        report.add(path, "questions", "每课需要 A、B 各两道概念题。")
+    if not isinstance(questions, list) or len(questions) != 10:
+        report.add(path, "questions", "每课需要 A、B 各五道概念题。")
         return
     seen, phases = set(), []
     for q in questions:
@@ -153,6 +153,12 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
         if isinstance(qid, str):
             seen.add(qid)
         phases.append(q.get("phase"))
+        if isinstance(qid, str) and not re.fullmatch(r"(?:C\d{2}|S\d{2})-[AB]-0[1-5]", qid):
+            report.add(path, "questions", "题目编号必须使用 Lxx-A-01 或 Lxx-B-01 格式。")
+        elif isinstance(qid, str):
+            parts = qid.split("-")
+            if parts[0] != lesson_id or q.get("phase") != parts[1] or not 1 <= int(parts[2]) <= 5:
+                report.add(path, "questions", "题目编号必须与课次、阶段和题号一致。")
         options = q.get("options")
         if not isinstance(options, list) or len(options) != 4 or any(not isinstance(x, str) or not x.strip() for x in options):
             report.add(path, "questions", "每题应有四个非空选项。")
@@ -166,8 +172,8 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
             prose = " ".join([str(q.get("prompt", "")), *(str(x) for x in options)] if isinstance(options, list) else [str(q.get("prompt", ""))])
             if word in prose:
                 report.add(path, "wording", f"学生题干/选项请替换旧说法：{word}")
-    if phases.count("A") != 2 or phases.count("B") != 2:
-        report.add(path, "questions", "A、B 两阶段各需两题。")
+    if phases.count("A") != 5 or phases.count("B") != 5:
+        report.add(path, "questions", "A、B 两阶段各需五题。")
 
 
 def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> Report:

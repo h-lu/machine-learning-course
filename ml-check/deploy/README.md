@@ -27,4 +27,4 @@ curl --fail https://hblu.top/ml-check/healthz
 
 ## 检查
 
-首页应显示 32 课；教师登录后可在 `/ml-check/teacher` 创建场次、切换 A/学习/B 阶段并导出 CSV，学生在 `/ml-check/current` 作答。健康接口报告题库版本 `ml-v2-open-2026-09-06`，旧题库读取 API 和匿名答题路径仍保留兼容。
+首页应显示 32 课；教师登录后可在 `/ml-check/teacher` 创建场次、切换 A/学习/B 阶段并导出 CSV，学生在 `/ml-check/current` 作答。每课 A/B 各 5 题，健康接口报告题库版本 `ml-v3-2026-09-12`，旧题库读取 API 和匿名答题路径仍保留兼容。

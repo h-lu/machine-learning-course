@@ -31,13 +31,13 @@ def home(bank):
     for lesson in lessons:
         groups.setdefault(lesson['module'], []).append(lesson)
     body = f'''<section class="hero"><div class="eyebrow">学习从一个自己的判断开始</div><h1>先想一想，<br>再检查为什么。</h1><p class="lead">用一个短问题检查理解，再把概念带到不同情境。<br>选一课开始，不必追求一次全对。</p><div class="facts"><span><b>{len(lessons)}</b> 次课</span><span><b>{count}</b> 道概念题</span><span><b>A / B</b> 两轮练习</span></div></section>
-<section class="how" aria-label="练习顺序"><div><span class="step">01</span><h2>先作判断</h2><p>完成 A 轮两道题，想清楚选它的理由。</p></div><div><span class="step">02</span><h2>核对与学习</h2><p>阅读解释，用 AI 或学习卡弄懂疑惑。</p></div><div><span class="step">03</span><h2>换个场景再试</h2><p>完成 B 轮，看看同一个概念能否用在新问题上。</p></div></section>
+<section class="how" aria-label="练习顺序"><div><span class="step">01</span><h2>先作判断</h2><p>完成 A 轮五道题，想清楚选它的理由。</p></div><div><span class="step">02</span><h2>核对与学习</h2><p>阅读解释，用 AI 或学习卡弄懂疑惑。</p></div><div><span class="step">03</span><h2>换个场景再试</h2><p>完成 B 轮五道题，看看同一个概念能否用在新问题上。</p></div></section>
 <div class="section-heading"><div><div class="eyebrow">32 次课的学习路径</div><h2>从今天的课开始</h2></div><a href="https://github.com/h-lu/machine-learning-course/tree/main/course-student-template">查看项目任务 ↗</a></div>'''
     for index, (name, rows) in enumerate(groups.items(), 1):
         body += f'<section class="module"><h3><span>{index:02}</span>{e(name)}</h3><div class="cards">'
         for lesson in rows:
             id = lesson['lesson_id']
-            body += f'<a class="card" href="{BASE}/lessons/{e(id)}"><span class="lesson-id">{e(id)}</span><h4>{e(lesson["title"])}</h4><span class="card-bottom">A 轮 2 题 · B 轮 2 题 <span aria-hidden="true">↗</span></span></a>'
+            body += f'<a class="card" href="{BASE}/lessons/{e(id)}"><span class="lesson-id">{e(id)}</span><h4>{e(lesson["title"])}</h4><span class="card-bottom">A 轮 5 题 · B 轮 5 题 <span aria-hidden="true">↗</span></span></a>'
         body += '</div></section>'
     return layout('选择一课开始', body)
 
@@ -51,7 +51,7 @@ def phase_tabs(lesson, phase):
 
 def lesson_page(lesson, phase='A', answers=None, receipt=None):
     questions = [q for q in lesson['questions'] if q['phase'] == phase]
-    body = f'<a class="back" href="{BASE}/">← 全部课次</a><div class="lesson-header"><div class="eyebrow">{e(lesson["lesson_id"])} · {e(lesson["module"])}</div><h1>{e(lesson["title"])}</h1><p>先选择你认为合理的答案，提交后核对解释。每轮两道题。</p></div>'
+    body = f'<a class="back" href="{BASE}/">← 全部课次</a><div class="lesson-header"><div class="eyebrow">{e(lesson["lesson_id"])} · {e(lesson["module"])}</div><h1>{e(lesson["title"])}</h1><p>先选择你认为合理的答案，提交后核对解释。每轮五道题。</p></div>'
     body += phase_tabs(lesson, phase)
     if answers is not None:
         correct = sum(answers[q['id']] == q['answer'] for q in questions)
@@ -62,7 +62,7 @@ def lesson_page(lesson, phase='A', answers=None, receipt=None):
             body += f'<p class="receipt" role="status">已生成完成凭据：<a href="{BASE}/api/receipts/{rid}">{rid}</a>。它只记录课次、轮次、得分和提交时间，不包含你的答案。</p>'
     body += f'<form method="post" action="{BASE}/lessons/{e(lesson["lesson_id"])}/check"><input type="hidden" name="phase" value="{phase}">'
     for number, q in enumerate(questions, 1):
-        body += f'<fieldset class="question"><legend><span class="question-number">{number:02}</span>{e(q["prompt"])}</legend><div class="options">'
+        body += f'<fieldset class="question"><legend><span class="question-number">{e(q["id"])} · {number:02}</span>{e(q["prompt"])}</legend><div class="options">'
         for i, option in enumerate(q['options']):
             selected = answers is not None and answers[q['id']] == i
             mark = 'checked' if selected else ''

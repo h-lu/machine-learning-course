@@ -20,7 +20,7 @@ from . import db
 from .legacy import ReceiptStore, load_bank, make_handler, response
 from . import pages as legacy_pages
 from .config import Settings
-from .questions import CURRENT_BANKS, DEFAULT_BANK, bank_for_lesson
+from .questions import BANK_VERSION, CURRENT_BANKS, DEFAULT_BANK, bank_for_lesson
 
 
 PHASE_LABELS = {
@@ -160,7 +160,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return {
             "status": "ok",
             "lesson_count": len(CURRENT_BANKS),
-            "bank_version": "ml-v2-open-2026-09-06",
+            "bank_version": BANK_VERSION,
         }
 
     @router.get("/", response_class=HTMLResponse)

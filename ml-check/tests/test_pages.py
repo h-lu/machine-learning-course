@@ -54,7 +54,7 @@ class PracticePages(unittest.TestCase):
                 with self.fetch(path + '/check', data) as r:
                     body = r.read().decode()
                     self.assertIn('这轮判断都与题目依据一致', body)
-                    self.assertEqual(body.count('参考选项'), 2)
+                    self.assertEqual(body.count('参考选项'), 5)
                 data[questions[0]['id']] = (questions[0]['answer'] + 1) % 4
                 with self.fetch(path + '/check', data) as r:
                     self.assertIn('有 1 道题值得再想一想', r.read().decode())

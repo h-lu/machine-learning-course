@@ -14,7 +14,7 @@ class Questions(unittest.TestCase):
     def setUpClass(cls):
         cls.bank = load_bank()
 
-    def test_all_32_lessons_have_four_valid_questions(self):
+    def test_all_32_lessons_have_ten_valid_questions(self):
         self.assertEqual([x["lesson_id"] for x in self.bank["lessons"]], LESSONS)
         for lesson in self.bank["lessons"]:
             report = Report(Path.cwd(), "instructor")
@@ -63,7 +63,7 @@ class Questions(unittest.TestCase):
         receipt = store.add(lesson["lesson_id"], "A", {q["id"]: 0 for q in questions}, questions)
         fetched = store.get(receipt["receipt_id"])
         self.assertEqual(fetched["lesson_id"], lesson["lesson_id"])
-        self.assertEqual(fetched["total"], 2)
+        self.assertEqual(fetched["total"], 5)
         self.assertNotIn("answers", fetched)
 
     def test_receipt_api_returns_404_for_unknown_id(self):
