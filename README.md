@@ -1,16 +1,35 @@
-# 现代机器学习：从问题到可检验的作品
+# 现代机器学习课程
 
-16 周，32 次课。每次课学习一种理解数据或模型的办法，并用它完成一个小项目。你可以使用 AI 写代码、计算和整理表达；你需要说清自己要解决什么问题，为什么这样比较，以及结果能支持什么行动。
+这是面向 AI 时代的项目制机器学习课程资料库。课程按 16 周、32 次课组织，学生可以使用 AI 完成编程、计算、分析与写作，但需要对问题定义、评价方式、结果依据和适用范围负责。
 
-课程允许不同的作品：预测工具、数据检查程序、检索系统、图像实验、决策模拟器，或一份说明暂时不应使用模型的实验报告。每种作品都要有能运行的程序、具体的检查和有根据的结论。
+## 目录
 
-- [32 课学习地图](machine-learning-course/COURSE_MAP.md)：每课学什么、可以决定什么、做出什么。
-- [学生入口](course-student-template/README.md)：环境准备、课次材料和提交方法。
-- [教师入口](course-instructor/README.md)：课堂组织、参考分析和评价。
-- [课程检查工具](ml-check/README.md)：文档和提交格式检查、概念练习接口。
-- [本次重建设计与验收](REDESIGN_NOTES.md)：为什么重建、做了哪些验证、还有哪些教学假设需要试教。
-- [旧版归档](archives/2026-09-06-before-redesign/README.md)：重建前完整文件、Git 历史和校验信息。
+- `course-instructor/`：教师课程标准、32 课设计、运行手册、知识自查题库与参考材料。
+- `course-student-template/`：完整 32 课学生模板；实际 Gitea 学生仓库按教学进度逐课使用。
+- `ml-check/`：课末机器学习知识自查服务，支持 Gitea 登录、A 版基础题、AI 学习、B 版变式题和教师统计。
+- `machine-learning-course/`：课程地图、发布说明和整体规划入口。
 
-四个目录各有明确用途。`machine-learning-course` 放课程规划；学生材料在 `course-student-template`；教师参考与题目答案在 `course-instructor`；检查服务在 `ml-check`。本地后三个目录是独立 Git 仓库；GitHub 以普通目录汇集完整公开源文件。学生模板不嵌入教师答案。
+## 课程设计入口
 
-发布入口：[GitHub 完整课程](https://github.com/h-lu/machine-learning-course) · [Gitea 学生模板](https://hblu.top/gitea/machine-learning-2026/course-student-template) · [Gitea 教师材料](https://hblu.top/gitea/machine-learning-2026/course-instructor) · [Gitea 检查器](https://hblu.top/gitea/machine-learning-2026/ml-check)。仓库版本与验证结果见 [发布记录](PUBLISHING.md)。
+- [32 课学习地图](machine-learning-course/COURSE_MAP.md)
+- [教师课程设计标准](course-instructor/COURSE_DESIGN.md)
+- [教师评分标准](course-instructor/GRADING.md)
+- [学生项目模板](course-student-template/README.md)
+- [学生成果与评分说明](course-student-template/docs/ASSESSMENT.md)
+- [知识自查设计](course-instructor/knowledge-check/DESIGN.md)
+
+## 本地运行检查
+
+```bash
+python3 tools/validate_course.py
+PYTHONPATH=ml-check pytest -q ml-check/tests
+```
+
+生产环境的服务入口是 [ml-check](https://hblu.top/ml-check)，教师页面为 [ml-check/teacher](https://hblu.top/ml-check/teacher)。生产凭据和数据库不放入 Git；部署说明见 [ml-check/deploy/README.md](ml-check/deploy/README.md)。
+
+## 发布仓库
+
+- [GitHub 完整课程](https://github.com/h-lu/machine-learning-course)
+- [Gitea 学生模板](https://hblu.top/gitea/machine-learning-2026/course-student-template)
+- [Gitea 教师材料](https://hblu.top/gitea/machine-learning-2026/course-instructor)
+- [Gitea ml-check](https://hblu.top/gitea/machine-learning-2026/ml-check)
