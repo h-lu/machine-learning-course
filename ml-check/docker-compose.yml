@@ -1,7 +1,7 @@
 services:
   ml-check:
     build: .
-    image: ml-check:2026-09-12
+    image: ml-check:2026-09-14
     container_name: machine-learning-ml-check
     restart: unless-stopped
     env_file:

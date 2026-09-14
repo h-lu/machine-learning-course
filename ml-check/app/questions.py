@@ -10,6 +10,7 @@ class LessonBank:
     title: str
     module: str
     questions: list[dict]
+    concepts: list[dict]
     durations: dict
 
     def __post_init__(self):
@@ -31,6 +32,28 @@ class LessonBank:
             normalized.append(row)
         self.questions = normalized
 
+        if len(self.concepts) != 5:
+            raise ValueError(f"{self.lesson_id} must define five concepts")
+        concept_ids = [str(item.get("concept_id", "")) for item in self.concepts]
+        if len(concept_ids) != len(set(concept_ids)):
+            raise ValueError(f"{self.lesson_id} contains duplicate concept ids")
+        for item in self.concepts:
+            if not all(str(item.get(key, "")).strip() for key in ("concept_id", "title", "tutor_context")):
+                raise ValueError(f"{self.lesson_id} contains empty concept text")
+        question_concepts = {
+            str(question.get("concept_id", "")) for question in self.questions
+        }
+        if question_concepts != set(concept_ids):
+            raise ValueError(f"{self.lesson_id} questions do not match its concepts")
+        for concept_id in concept_ids:
+            phases = [
+                str(question.get("phase", "")).upper()
+                for question in self.questions
+                if str(question.get("concept_id", "")) == concept_id
+            ]
+            if sorted(phases) != ["A", "B"]:
+                raise ValueError(f"{self.lesson_id} concept {concept_id} needs one A and one B question")
+
     def _by_phase(self, phase: str) -> list[dict]:
         rows = [q for q in self.questions if str(q.get("phase", "")).upper() == phase.upper()]
         def number(q):
@@ -40,26 +63,23 @@ class LessonBank:
 
     @property
     def concept_ids(self):
-        # One concept is represented by one A/B pair.  Use the explicit
-        # question numbers so five-question banks do not depend on suffix
-        # matching or list order.
-        return [f"{self.lesson_id}-{i:02d}" for i, _ in enumerate(self._by_phase("A"), 1)]
+        return [str(item["concept_id"]) for item in self.concepts]
     @property
     def items(self):
-        rows = []
-        a_rows, b_rows = self._by_phase("A"), self._by_phase("B")
-        for i, cid in enumerate(self.concept_ids, 1):
-            if i > len(a_rows) or i > len(b_rows):
-                continue
-            a, b = a_rows[i - 1], b_rows[i - 1]
-            rows.append({'concept_id': cid,
-                         'title': f'{a["id"]} · {_short_topic(a["prompt"])}',
-                         # The learning phase intentionally exposes only the
-                         # A-version context.  The paired B question remains
-                         # private until the teacher opens the B phase.
-                         'tutor_context': f'A 版问题：{a["prompt"]}',
-                         'pair': {'a': a, 'b': b}})
-        return rows
+        questions = {
+            (str(question["concept_id"]), str(question["phase"]).lower()): question
+            for question in self.questions
+        }
+        return [
+            {
+                **item,
+                "pair": {
+                    phase: questions[(str(item["concept_id"]), phase)]
+                    for phase in ("a", "b")
+                },
+            }
+            for item in self.concepts
+        ]
     def item(self, concept_id):
         return next(item for item in self.items if item["concept_id"] == concept_id)
 
@@ -74,18 +94,13 @@ class LessonBank:
                 'answer':str(q['answer']), 'explanation':q['explanation'],
                 'prompt': q['prompt']}
 
-def _short_topic(prompt: str) -> str:
-    """Create a readable topic label from the actual question text."""
-    text = re.sub(r"^在[“\"「]|[？?。！!]$", "", str(prompt)).strip()
-    return text if len(text) <= 28 else text[:28] + "…"
-
 ROOT = Path(__file__).parent / 'question_bank/lessons.json'
-BANK_VERSION = 'ml-v3-2026-09-12'
+BANK_VERSION = 'ml-v4-2026-09-14'
 def _load():
     raw=json.loads(ROOT.read_text(encoding='utf-8'))
     banks=[]
     for l in raw['lessons']:
-        banks.append(LessonBank(l['lesson_id'],l['title'],l.get('module',''),l['questions'], {'attempt_a':600,'learn':900,'attempt_b':600}))
+        banks.append(LessonBank(l['lesson_id'],l['title'],l.get('module',''),l['questions'],l['concepts'], {'attempt_a':600,'learn':900,'attempt_b':600}))
     return banks
 CURRENT_BANKS = _load(); DEFAULT_BANK=CURRENT_BANKS[0]
 def bank_for_lesson(lesson_id):

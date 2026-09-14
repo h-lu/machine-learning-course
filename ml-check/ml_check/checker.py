@@ -138,11 +138,34 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
     if not isinstance(value, dict) or value.get("lesson_id") != lesson_id:
         report.add(path, "questions", "题目课次与目录不一致。")
         return
+    concepts = value.get("concepts")
+    expected_concept_ids = [f"{lesson_id}-{index:02d}" for index in range(1, 6)]
+    if not isinstance(concepts, list) or len(concepts) != 5:
+        report.add(path, "concepts", "每课需要独立定义五个知识点，供 A、AI 学习和 B 三阶段共同使用。")
+        concepts = []
+    concept_ids = []
+    for index, concept in enumerate(concepts, 1):
+        if not isinstance(concept, dict):
+            report.add(path, "concepts", "每个知识点应为对象。")
+            continue
+        concept_id = concept.get("concept_id")
+        concept_ids.append(concept_id)
+        if concept_id != f"{lesson_id}-{index:02d}":
+            report.add(path, "concepts", "知识点编号应按课次写成 Lxx-01 至 Lxx-05。")
+        for key in ("title", "tutor_context"):
+            if not isinstance(concept.get(key), str) or not concept[key].strip():
+                report.add(path, "concepts", f"知识点缺少非空字段 {key}。")
+        title = str(concept.get("title", ""))
+        if re.fullmatch(r"(?:知识点|概念)\s*\d+", title):
+            report.add(path, "concepts", "知识点标题必须写出具体内容，不能使用“概念 1”之类占位名。")
+    if concept_ids and concept_ids != expected_concept_ids:
+        report.add(path, "concepts", "五个知识点必须按编号顺序排列且不能重复。")
+
     questions = value.get("questions")
     if not isinstance(questions, list) or len(questions) != 10:
         report.add(path, "questions", "每课需要 A、B 各五道概念题。")
         return
-    seen, phases = set(), []
+    seen, phases, question_concepts = set(), [], []
     for q in questions:
         if not isinstance(q, dict):
             report.add(path, "questions", "每道题应为对象。")
@@ -153,6 +176,7 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
         if isinstance(qid, str):
             seen.add(qid)
         phases.append(q.get("phase"))
+        question_concepts.append(q.get("concept_id"))
         if isinstance(qid, str) and not re.fullmatch(r"(?:C\d{2}|S\d{2})-[AB]-0[1-5]", qid):
             report.add(path, "questions", "题目编号必须使用 Lxx-A-01 或 Lxx-B-01 格式。")
         elif isinstance(qid, str):
@@ -174,6 +198,9 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
                 report.add(path, "wording", f"学生题干/选项请替换旧说法：{word}")
     if phases.count("A") != 5 or phases.count("B") != 5:
         report.add(path, "questions", "A、B 两阶段各需五题。")
+    for concept_id in expected_concept_ids:
+        if question_concepts.count(concept_id) != 2:
+            report.add(path, "questions", f"知识点 {concept_id} 必须恰好有一道 A 题和一道 B 题。")
 
 
 def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> Report:

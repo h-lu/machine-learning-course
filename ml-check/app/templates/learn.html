@@ -14,7 +14,7 @@
     <div class="section-heading">
       <span class="eyebrow">借助 AI 理解概念</span>
       <h1>选择一个仍有疑问的概念，用例子加深理解。</h1>
-      <p>本阶段暂不显示 A 版答案。可以将下方提问复制给常用的 AI，也可以提出自己的问题。</p>
+      <p>本阶段只显示本课知识点，不显示或复述 A、B 版题目。可以将下方提问复制给常用的 AI，也可以提出自己的问题。</p>
     </div>
     <div class="concept-grid">
       {% for item in items %}
@@ -22,7 +22,7 @@
           <h2>{{ item.title }}</h2>
           <p>{{ item.tutor_context }}</p>
           <div class="prompt-box">
-            <code>不要替我回答测验题。请解释下面 A 版问题背后的概念：{{ item.tutor_context }}。用一个不同情境举例，指出常见混淆，最后问我一个问题，先不要公布答案，也不要猜测或透露 B 版题目。</code>
+            <code>不要替我回答测验题。请解释“{{ item.title }}”：{{ item.tutor_context }} 请用一个不同于测验题的情境举例，指出常见混淆，最后问我一个问题，先不要公布答案。</code>
             <button type="button" class="copy-button" data-copy>复制</button>
           </div>
         </article>

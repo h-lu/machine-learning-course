@@ -5,6 +5,7 @@ from http.server import ThreadingHTTPServer
 from urllib.request import urlopen
 
 from app.main import ReceiptStore, load_bank, make_handler, response
+from app.questions import CURRENT_BANKS
 from ml_check.checker import LESSONS, Report, check_question_set
 from pathlib import Path
 
@@ -24,6 +25,32 @@ class Questions(unittest.TestCase):
     def test_no_duplicate_question_prompts_across_lessons(self):
         prompts = [q["prompt"] for lesson in self.bank["lessons"] for q in lesson["questions"]]
         self.assertEqual(len(prompts), len(set(prompts)))
+
+    def test_every_lesson_defines_five_named_concepts_and_ab_pairs(self):
+        self.assertEqual(len(CURRENT_BANKS), 32)
+        for bank in CURRENT_BANKS:
+            self.assertEqual(len(bank.items), 5)
+            self.assertEqual(
+                bank.concept_ids,
+                [f"{bank.lesson_id}-{index:02d}" for index in range(1, 6)],
+            )
+            for item in bank.items:
+                self.assertFalse(item["title"].startswith(("概念", "知识点")))
+                self.assertEqual(set(item["pair"]), {"a", "b"})
+                self.assertNotEqual(item["tutor_context"], item["pair"]["a"]["prompt"])
+                self.assertNotIn(item["pair"]["a"]["prompt"], item["tutor_context"])
+                for phase in ("a", "b"):
+                    self.assertEqual(
+                        item["pair"][phase]["concept_id"], item["concept_id"]
+                    )
+
+    def test_ai_learning_template_never_renders_ab_question_text(self):
+        template = (Path(__file__).parents[1] / "app/templates/learn.html").read_text(encoding="utf-8")
+        self.assertNotIn("pair.a", template)
+        self.assertNotIn("pair.b", template)
+        self.assertNotIn("A 版问题", template)
+        self.assertIn("item.title", template)
+        self.assertIn("item.tutor_context", template)
 
     def test_question_get_does_not_publish_teacher_answers(self):
         for lesson in LESSONS:
