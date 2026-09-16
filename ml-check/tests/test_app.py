@@ -26,6 +26,17 @@ class Questions(unittest.TestCase):
         prompts = [q["prompt"] for lesson in self.bank["lessons"] for q in lesson["questions"]]
         self.assertEqual(len(prompts), len(set(prompts)))
 
+    def test_question_wording_contains_a_beginner_context(self):
+        """题干应交代场景和要做的判断，避免只剩下概念名词。"""
+        questions = [q for lesson in self.bank["lessons"] for q in lesson["questions"]]
+        for question in questions:
+            prompt = question["prompt"]
+            self.assertGreaterEqual(len(prompt), 70, question["id"])
+            self.assertIn("场景", prompt, question["id"])
+            self.assertIn("请", prompt, question["id"])
+            self.assertNotIn("学习“", prompt, question["id"])
+            self.assertNotIn("哪项说明正确", prompt, question["id"])
+
     def test_every_lesson_defines_five_named_concepts_and_ab_pairs(self):
         self.assertEqual(len(CURRENT_BANKS), 32)
         for bank in CURRENT_BANKS:

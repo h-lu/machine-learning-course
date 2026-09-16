@@ -95,7 +95,7 @@ class LessonBank:
                 'prompt': q['prompt']}
 
 ROOT = Path(__file__).parent / 'question_bank/lessons.json'
-BANK_VERSION = 'ml-v4-2026-09-14'
+BANK_VERSION = 'ml-v5-2026-09-16'
 def _load():
     raw=json.loads(ROOT.read_text(encoding='utf-8'))
     banks=[]
