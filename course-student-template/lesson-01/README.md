@@ -67,7 +67,7 @@ python3 lesson-01/analysis.py
 打开结果文件，先看这几处：
 
 - `data.rows`：程序读到了多少行数据；
-- `metrics`：程序在评价资料上算出的数字；
+- `metrics`：程序在检查数据上算出的数字；
 - `comparison`：换一种简单预测办法后，数字怎样变化；
 - `stress_test`：输入缺少一项时，程序是否拒绝了它；
 - `provenance`：实际用了哪个数据文件、配置文件和运行环境。
@@ -99,7 +99,7 @@ python3 lesson-01/analysis.py --output artifacts/C01-demo
 
 请提交以下内容：
 
-- `contract.json`：填好的任务、使用者、数据、检查数字、资料划分和预计结果；
+- `contract.json`：填好的任务、使用者、数据、检查数字、数据划分和预计结果；
 - `report.md`：手算过程、程序输出、错误输入、第一次建议和修改后的建议；
 - `analysis.py`、`config.json`：实际运行的程序和设置；
 - `artifacts/` 中支持报告的 `summary.json` 或其他结果文件；
@@ -119,7 +119,7 @@ python3 lesson-01/analysis.py --output artifacts/C01-demo
 
 ### 提高任务（Upgrade）：比较两个简单办法
 
-增加一个合理的简单预测办法，例如比较历史平均值和“沿用最近一次结果”。用同一批评价资料比较，并解释两种错误对用途的影响。
+增加一个合理的简单预测办法，例如比较历史平均值和“沿用最近一次结果”。用同一批检查数据比较，并解释两种错误对用途的影响。
 
 ### 换数据重测（Transfer）：换一份数据或场景再跑一次
 
