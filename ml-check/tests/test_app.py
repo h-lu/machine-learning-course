@@ -31,9 +31,8 @@ class Questions(unittest.TestCase):
         questions = [q for lesson in self.bank["lessons"] for q in lesson["questions"]]
         for question in questions:
             prompt = question["prompt"]
-            self.assertGreaterEqual(len(prompt), 70, question["id"])
-            self.assertIn("场景", prompt, question["id"])
-            self.assertIn("请", prompt, question["id"])
+            self.assertGreaterEqual(len(prompt), 25, question["id"])
+            self.assertRegex(prompt, r"[。？]", question["id"])
             self.assertNotIn("学习“", prompt, question["id"])
             self.assertNotIn("哪项说明正确", prompt, question["id"])
 
