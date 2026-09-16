@@ -25,7 +25,7 @@
 - S19 一句话怎样变成词元和概率：[运行单](lessons/S19/RUNBOOK.md) · [参考分析](lessons/S19/REFERENCE.md) · [概念题](lessons/S19/questions.json)
 - S20 同一个模型，怎样选择输出：[运行单](lessons/S20/RUNBOOK.md) · [参考分析](lessons/S20/REFERENCE.md) · [概念题](lessons/S20/questions.json)
 - S21 提示改好了，还是只记住了例子：[运行单](lessons/S21/RUNBOOK.md) · [参考分析](lessons/S21/REFERENCE.md) · [概念题](lessons/S21/questions.json)
-- S22 资料很多，怎样找到有用的一段：[运行单](lessons/S22/RUNBOOK.md) · [参考分析](lessons/S22/REFERENCE.md) · [概念题](lessons/S22/questions.json)
+- S22 数据很多，怎样找到有用的一段：[运行单](lessons/S22/RUNBOOK.md) · [参考分析](lessons/S22/REFERENCE.md) · [概念题](lessons/S22/questions.json)
 - S23 有了引用，回答就可信吗：[运行单](lessons/S23/RUNBOOK.md) · [参考分析](lessons/S23/REFERENCE.md) · [概念题](lessons/S23/questions.json)
 - S24 哪些请求可以交给语言模型：[运行单](lessons/S24/RUNBOOK.md) · [参考分析](lessons/S24/REFERENCE.md) · [概念题](lessons/S24/questions.json)
 - S25 先试一试，还是继续选最好的一项：[运行单](lessons/S25/RUNBOOK.md) · [参考分析](lessons/S25/REFERENCE.md) · [概念题](lessons/S25/questions.json)

@@ -30,7 +30,7 @@ python scripts/course.py run 01
 | 9 | [17 图像换个样子，还能认出来吗](lesson-17/README.md) · [18 借来的表示，适合我的数据吗](lesson-18/README.md) |
 | 10 | [19 一段话中，该看哪些信息](lesson-19/README.md) · [20 微型 Transformer 怎样猜下一个词元](lesson-20/README.md) |
 | 11 | [21 一句话怎样变成词元和概率](lesson-21/README.md) · [22 同一个模型，怎样选择输出](lesson-22/README.md) |
-| 12 | [23 提示改好了，还是只记住了例子](lesson-23/README.md) · [24 资料很多，怎样找到有用的一段](lesson-24/README.md) |
+| 12 | [23 提示改好了，还是只记住了例子](lesson-23/README.md) · [24 数据很多，怎样找到有用的一段](lesson-24/README.md) |
 | 13 | [25 有了引用，回答就可信吗](lesson-25/README.md) · [26 哪些请求可以交给语言模型](lesson-26/README.md) |
 | 14 | [27 先试一试，还是继续选最好的一项](lesson-27/README.md) · [28 怎样把连续决策写成一个环境](lesson-28/README.md) |
 | 15 | [29 知道规则后，怎样规划下一步](lesson-29/README.md) · [30 不知道转移规律，怎样从尝试中学习](lesson-30/README.md) |
