@@ -4,7 +4,7 @@
 
 排队取餐时，同学想知道大约还要等几分钟。本课用“前面有多少人”作输入，运行一条简单预测规则，再核对一个具体结果。数据由课程人工编写，不是真实食堂记录。
 
-你可以让 AI 帮助读代码、写代码和提出改法。需要提交程序、运行结果和简短报告；仅有 AI 给出的代码或解释不等于运行成功。遇到错误时，先读报错中的字段名，再对照数据说明；环境故障可以请教师协助，不因此扣分。
+**如果你是第一次接触机器学习，先记住一条主线：一行数据 → 输入特征 → 规则给出预测 → 和真实结果比较。**本课不要求你先会算法、JSON 或命令行。遇到不懂的词先看 [LEARN.md](LEARN.md) 或 [课程术语表](../docs/TERMINOLOGY.md)。\n\n你可以让 AI 帮助读代码、写代码和提出改法。需要提交程序、运行结果和简短报告；仅有 AI 给出的代码或解释不等于运行成功。遇到错误时，先读报错中的字段名，再对照数据说明；环境故障可以请教师协助，不因此扣分。
 
 ## 本课要学会什么
 
@@ -24,20 +24,20 @@
 
 ## 完成步骤
 
-以下命令都在学生仓库根目录运行，即能看到 `lesson-01` 和 `scripts` 的目录。电脑使用 `python3` 时，将命令中的 `python` 换为 `python3`。
+以下命令都在**学生仓库根目录**运行，也就是你能同时看到 `lesson-01`、`lesson-02` 和 `scripts` 的目录。如果不知道自己在哪里，可先运行 `pwd`（Windows PowerShell 用 `Get-Location`）。电脑使用 `python3` 时，将命令中的 `python` 换为 `python3`。
 
-**先运行原始例子。**
+**第 1 步：先运行原始例子。**
 
 ```bash
 python scripts/course.py start 01
 python scripts/course.py run 01
 ```
 
-程序读取 `lesson-01/data/base.json` 和 `lesson-01/config.json`，生成 `lesson-01/artifacts/summary.json` 与 `predictions.csv`。CSV 是表格文本，直接用编辑器也能看。JSON 用字段名保存配置或结果，文件含义见 [数据说明](data/DATA.md)。
+程序读取 `lesson-01/data/base.json` 和 `lesson-01/config.json`，生成 `lesson-01/artifacts/summary.json` 与 `predictions.csv`。**先打开 `predictions.csv`**：它每一行是一条样本和预测。`summary.json` 保存配置和汇总结果，暂时不用读懂所有字段。CSV 是常见的表格文本格式；JSON 是用字段名保存结构化信息的文本格式，本课只需要会找到指定字段，不要求学习 JSON 语法。文件含义见 [数据说明](data/DATA.md)。
 
-**核对一条结果。**在 CSV 中找到 `train-03`：前面有 2 人，实际等了 4 分钟。默认规则是“预计分钟数 = 1 + 2 × 排队人数”，所以预测为 5，绝对误差为 1 分钟。手算后对照文件；不要只看程序是否退出成功。
+**第 2 步：核对一条结果。**在 CSV 中找到 `train-03`：前面有 2 人，实际等了 4 分钟。默认规则是“预计分钟数 = 1 + 2 × 排队人数”，所以预测为 5，绝对误差为 1 分钟。手算后对照文件；不要只看程序是否退出成功。
 
-**选择一个会影响结果的改动。**例如，先考虑每人需要 1.5 分钟而不是 2 分钟，预计哪些预测会改变。复制 `config.json` 为 `config-trial.json`，只修改 `rule_slope`，保留其他字段，然后运行：
+**第 3 步：选择一个会影响结果的改动。**例如，先考虑每人需要 1.5 分钟而不是 2 分钟，预计哪些预测会改变。复制 `config.json` 为 `config-trial.json`，只修改 `rule_slope`，保留其他字段，然后运行：
 
 ```bash
 python lesson-01/analysis.py --config lesson-01/config-trial.json --output lesson-01/artifacts/trial
@@ -45,9 +45,9 @@ python lesson-01/analysis.py --config lesson-01/config-trial.json --output lesso
 
 这只是可选起点，不要求所有人改同一个参数。可以改变固定等待时间、换数据，或借助 AI 改写规则；说明理由，再运行和核对。不要把改过代码却未运行的数字写进报告。
 
-**自己设计一条检查。**在配置副本中把 `stress_queue` 改成一个你选择的人数，再运行。`stress_test` 显示这个输入的预测；没有实际等待时间时，不能计算误差，也不能据此说预测准确。负数、缺失值等无效输入会报错，可记录报错及原因。
+**第 4 步：自己设计一条检查。**在配置副本中把 `stress_queue` 改成一个你选择的人数，再运行。`stress_test`（额外输入检查）显示这个输入的预测；没有实际等待时间时，不能计算误差，也不能据此说预测准确。负数、缺失值等无效输入会报错，可记录报错及原因。
 
-**整理并重跑。**选定本课保留的规则，将对应参数写回 `config.json`，再次运行 `python scripts/course.py run 01`。在 `report.md` 说明用途、核对过程、自设计检查和局限；在 `contract.json` 的六个文字字段填写任务说明。C01 的 `split_plan` 可写“本课只核对给定样本，C02 再区分训练集、验证集和测试集”。
+**第 5 步：整理并重跑。**选定本课保留的规则，将对应参数写回 `config.json`，再次运行 `python scripts/course.py run 01`。在 `report.md` 说明用途、核对过程、自设计检查和局限；在 `contract.json` 填写任务说明。这里的 `contract.json` 只是课程提交用的任务说明文件，不是新的机器学习概念；按文件中的字段逐项填写即可。C01 的 `split_plan` 可写“本课只核对给定样本，C02 再区分训练集、验证集和测试集”。
 
 完成实际工作后，将 `submission.json` 的 `status` 改为 `complete`，不要修改课次字段。默认清单已经列出报告、两份结果文件和运行命令。运行 `python scripts/course.py check 01` 检查提交文件，再按 [提交步骤](../docs/WORKFLOW.md)提交。文件检查通过不代表内容自动合格。
 
@@ -55,7 +55,7 @@ python lesson-01/analysis.py --config lesson-01/config-trial.json --output lesso
 
 提交可运行程序和配置、程序生成的 `summary.json` 与 `predictions.csv`，以及自己的报告和已填写的任务说明。报告至少讲清一行数据的含义、一条预测怎样算出、你做了什么选择、自己检查了什么，以及现在还不能得出什么结论。
 
-本课先完成最小流程和核对；第 02 课沿用这一问题加入模型比较。默认结果的 `example_only` 表示起步示例，不是作业完成证明；不要手改这个字段来冒充完成。C01 不计平时分，但要完成入门练习。
+本课先完成最小流程和核对；第 02 课沿用这一问题加入模型比较。结果中的 `status: "example_only"` 只是程序标记，意思是“这是起步示例，不是完成证明”；不要手改它。C01 不计平时分，但要完成入门练习。
 
 ## 不同起点怎么做
 
