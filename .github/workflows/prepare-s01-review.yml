@@ -1,0 +1,25 @@
+name: Materialize reviewed S01 text
+on:
+  push:
+    branches: ["course/s01-focused-review"]
+permissions:
+  contents: write
+jobs:
+  apply-reviewed-text:
+    if: github.repository == 'h-lu/machine-learning-course' && startsWith(github.event.head_commit.message, 'build: materialize S01 reviewed files')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require the unchanged feature branch
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: test "$(git ls-remote origin refs/heads/course/s01-focused-review | cut -f1)" = "$EXPECTED_HEAD"
+      - name: Apply checksum-verified text without running course code
+        run: python3 .review-s01-transfer/apply.py
+      - name: Commit only reviewed course files to the feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'course: audit third lesson instructions, practice and concept checks'
+          git push origin HEAD:refs/heads/course/s01-focused-review
