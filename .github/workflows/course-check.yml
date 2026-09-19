@@ -1,7 +1,7 @@
 name: Course checks
 on:
   push:
-    branches: ["course/intro-c01-c02", "course/foundations-s01-s06"]
+    branches: ["main", "course/intro-c01-c02", "course/foundations-s01-s06"]
   pull_request:
 permissions:
   contents: read
