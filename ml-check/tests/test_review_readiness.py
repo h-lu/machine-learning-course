@@ -24,7 +24,7 @@ class ReviewReadiness(unittest.TestCase):
         self.assertEqual(bank.questions, source['questions'])
         self.assertEqual(bank.concepts, source['concepts'])
         self.assertEqual(source['content_version'], 's07-guided-review-2026-09-19')
-        self.assertEqual(BANK_VERSION, 'ml-v10-s01-review-2026-09-19')
+        self.assertEqual(BANK_VERSION, 'ml-v11-s01-s02-review-2026-09-20')
 
     def test_s07_pairs_remain_bound_to_the_same_concept(self):
         bank = bank_for_lesson('S07')

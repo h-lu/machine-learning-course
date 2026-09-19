@@ -27,8 +27,8 @@ class FoundationBank(unittest.TestCase):
             self.assertEqual(bank.questions, source['questions'])
             self.assertEqual(bank.concepts, source['concepts'])
             self.assertEqual(bank.durations, source['durations'])
-            self.assertEqual(source['content_version'],
-                             's01-focused-review-2026-09-19' if lesson == 'S01' else 'foundations-2026-09-19')
+            expected_version = ('s01-focused-review-2026-09-19' if lesson == 'S01' else 's02-focused-review-2026-09-20' if lesson == 'S02' else 'foundations-2026-09-19')
+            self.assertEqual(source['content_version'], expected_version)
 
     def test_five_concepts_have_one_a_and_one_distinct_b(self):
         prompts=[]

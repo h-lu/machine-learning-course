@@ -236,11 +236,14 @@ def s02(data, config):
         visible = r["id"] in available_ids
         reviewed = visible and r["review_minutes"] is not None
         records.append(dict(id=r["id"], period=r["period"], queue_length=r["queue_length"], visible=visible,
+                            site=r["site"], day=r["day"], available_day=r["available_day"],
                             observed_minutes=r["wait_minutes"] if visible else None, proxy_minutes=r["proxy_minutes"],
                             review_minutes=r["review_minutes"] if reviewed else None,
+                            proxy_absolute_error=abs(r["proxy_minutes"]-r["wait_minutes"]) if visible else None,
+                            review_absolute_difference=abs(r["wait_minutes"]-r["review_minutes"]) if reviewed else None,
                             disagreement=abs(r["wait_minutes"]-r["review_minutes"]) > tolerance if reviewed else None))
     return output("available_only", reports, rows, records, "推迟观察截止日，重新统计实际收到的标签", audit(later),
-                  visible_ids=sorted(available_ids), observation_day=day, later_day=later,
+                  visible_ids=sorted(available_ids), observation_day=day, later_day=later, disagreement_minutes=tolerance,
                   note="填零仅为错误示范；代理标签的全体平均不是全体真实等待时间；没有调用 AI 标注服务。")
 
 
@@ -440,6 +443,25 @@ def s06(data, config):
 EXPERIMENTS = {f"S{i:02d}": globals()[f"s{i:02d}"] for i in range(1, 7)}
 
 
+def label_audit_console_summary(result):
+    """S02 只展示标签统计；配对规则改变时让学生能看到变化。"""
+    d, m = result["details"], result["metrics"]
+    def number(value):
+        return "未定义" if value is None else f"{value:.6g}"
+    agreement = "未定义（没有配对）" if m["agreement"] is None else f"{100*m['agreement']:.6g}%"
+    later = result["stress_test"]["metrics"]
+    return "\n".join([
+        f"S02 标签检查：固定 {m['total_rows']} 条已发生记录；主截止日为第 {d['observation_day']} 天结束。",
+        f"已收到 {m['n']}/{m['total_rows']} 条；标签覆盖率 {100*m['coverage']:.6g}%；未知 {m['unknown_labels']} 条。",
+        f"已知标签均值 = {number(m['mean_minutes'])} 分钟；均值分母为 {m['n']}，不是全部记录数。",
+        f"两份标注可比较 {m['review_pairs']} 对；差异 > {d['disagreement_minutes']:.6g} 分钟才标记，分歧 {m['disagreements']} 对；一致比例 {agreement}。",
+        f"代理 MAE = {number(m['proxy_mae_observed'])} 分钟，只比较当前已收到的参照标签。",
+        "填零是错误示范；全部代理值的均值不是全部实际等待均值。先从 records.csv 核对一行，再读 comparison.csv。",
+        f"额外截止日第 {d['later_day']} 天：已收到 {later['n']}/{later['total_rows']} 条；已知均值 {number(later['mean_minutes'])} 分钟。",
+        "日期控制哪些标签可见；分歧容差只改变标记，不修改原值。没有配对不等于全部正确；本例没有调用 AI 服务。",
+    ])
+
+
 def console_summary(result):
     """给初学者的最小结果导航，不代写结论。"""
     d = result["details"]
@@ -459,6 +481,8 @@ def console_summary(result):
         lines.append("先从 records.csv 找指定方法的一行，再读 comparison.csv；其他指标按需查数据说明。")
         lines.append(d["note"])
         return "\n".join(lines)
+    if d.get("primary_method") == "available_only":
+        return label_audit_console_summary(result)
     lines = ["比较结果（不是自动推荐）："]
     for r in d["tables"]["comparison"]:
         parts = [r["method_name"]]

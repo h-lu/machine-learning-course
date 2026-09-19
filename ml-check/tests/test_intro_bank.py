@@ -20,7 +20,7 @@ class IntroBank(unittest.TestCase):
     def test_both_loaders_use_the_same_bank_and_version(self):
         raw = load_bank()
         self.assertEqual(raw["version"], BANK_VERSION)
-        self.assertEqual(BANK_VERSION, "ml-v10-s01-review-2026-09-19")
+        self.assertEqual(BANK_VERSION, "ml-v11-s01-s02-review-2026-09-20")
         for bank, source in zip(CURRENT_BANKS, raw["lessons"]):
             self.assertEqual(bank.lesson_id, source["lesson_id"])
             self.assertEqual(bank.questions, source["questions"])

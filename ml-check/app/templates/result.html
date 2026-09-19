@@ -20,7 +20,15 @@
         <article class="result-row">
           <div>
             <h2>{{ result.title }}</h2>
-            <p>{{ result.explanation }}</p>
+            {% for phase_label, answer, question in [("A", result.a, result.a_question), ("B", result.b, result.b_question)] %}
+              <details class="answer-review">
+                <summary>{{ phase_label }} 版：查看题目与解析</summary>
+                <p>{{ question.prompt }}</p>
+                <p>你的选择：{% if answer %}{% for option in question.options %}{% if option.id == answer.option_id %}{{ option.text }}{% endif %}{% endfor %}{% else %}未作答{% endif %}</p>
+                <p>参考选项：{% for option in question.options %}{% if option.id == question.answer %}{{ option.text }}{% endif %}{% endfor %}</p>
+                <p>{{ question.explanation }}</p>
+              </details>
+            {% endfor %}
           </div>
           <div class="result-badges">
             <span class="{% if result.a and result.a.correct %}correct{% elif result.a %}incorrect{% endif %}">A：{% if not result.a %}未完成{% elif result.a.correct %}正确{% else %}需复习{% endif %}</span>
