@@ -1,0 +1,30 @@
+name: Prepare reviewed foundations sources
+on:
+  push:
+    branches: ["course/foundations-s01-s06"]
+    paths:
+      - ".github/foundations-transfer/**"
+      - ".github/workflows/prepare-foundations.yml"
+      - "tools/prepare_foundations_sources.py"
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.repository == 'h-lu/machine-learning-course' && github.ref == 'refs/heads/course/foundations-s01-s06'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify and materialize source without executing course code
+        run: python tools/prepare_foundations_sources.py
+      - name: Commit verified files only to the feature branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'course: rewrite S01-S06 student lessons, experiments, references and questions'
+          git push origin HEAD:refs/heads/course/foundations-s01-s06
