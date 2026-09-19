@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import argparse
+import csv
 import hashlib
 import json
 import os
@@ -38,7 +39,7 @@ def source_hashes():
     directory = Path(__file__).resolve().parent
     return {
         f"mlcourse/{name}": hashlib.sha256((directory / name).read_bytes()).hexdigest()
-        for name in ("runtime.py", "mathops.py", "experiments.py")
+        for name in ("runtime.py", "mathops.py", "experiments.py", "intro.py")
     }
 
 
@@ -87,10 +88,15 @@ def main(lesson_directory):
         "--data", type=Path, default=lesson_directory / "data/base.json"
     )
     parser.add_argument("--output", type=Path, default=lesson_directory / "artifacts")
+    parser.add_argument("--split", choices=["validation", "test"], help="仅 C02 使用：选择验证集或测试集")
     args = parser.parse_args()
     try:
         data = json.loads(args.data.read_text(encoding="utf-8"))
         config = json.loads(args.config.read_text(encoding="utf-8"))
+        if args.split:
+            if lesson_directory.name not in {"C02", "lesson-02"}:
+                raise ValueError("--split 只用于 C02 / lesson-02")
+            config["evaluation_split"] = args.split
         result = run_experiment(lesson_directory.name, data, config)
         result["provenance"].update(
             {
@@ -111,6 +117,14 @@ def main(lesson_directory):
             json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
             encoding="utf-8",
         )
+        records = result["details"].get("predictions")
+        if records and isinstance(records[0], dict):
+            with (args.output / "predictions.csv").open("w", encoding="utf-8", newline="") as stream:
+                writer = csv.DictWriter(stream, fieldnames=list(records[0]))
+                writer.writeheader()
+                writer.writerows(records)
+            print("逐条预测：", args.output / "predictions.csv")
+            print("评价数据：", result["details"]["evaluation_split"], "；MAE：", result["metrics"]["mae"], "分钟")
         print(f"{lesson_directory.name}: 示例实验已运行，结果写入 {path}")
     except (ValueError, KeyError, TypeError, IndexError, OSError) as error:
         parser.exit(

@@ -2,13 +2,18 @@
 
 from pathlib import Path
 import json
+import sys
+import shutil
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from mlcourse.intro import example_data, example_config
+
 IDS = ["C01", "C02"] + [f"S{i:02d}" for i in range(1, 31)]
 CONFIG = {
-    "C01": {"seed": 7, "missing_field": "x2"},
-    "C02": {"seed": 7, "feature": "x1"},
+    "C01": example_config("C01"),
+    "C02": example_config("C02"),
     "S01": {"seed": 7, "threshold": 0.5, "false_negative_cost": 4.0},
     "S02": {"seed": 7, "observation_day": 10, "agreement_threshold": 0.8},
     "S03": {"seed": 7, "split_strategy": "time", "train_fraction": 0.7},
@@ -393,8 +398,8 @@ def special(lesson, index):
 
 
 DESCRIPTIONS = {
-    "C01": "检查数据、字段和一个多数类基线。",
-    "C02": "将一列特征的线性回归与训练集均值进行比较。",
+    "C01": "运行取餐等待时间规则，核对样本、预测与输入。",
+    "C02": "沿用取餐问题，比较均值基线、线性回归与人工规则。",
     "S01": "比较规则、多数类预测，并计算误报和漏报会带来的后果。",
     "S02": "比较真实标签、代理标签、两位标注者与观察截止日期。",
     "S03": "同一份有时间变化和重复用户的数据，比较随机、时间及用户切分。",
@@ -444,6 +449,12 @@ def main():
     for index, lesson in enumerate(IDS):
         number = int(lesson[1:]) if lesson.startswith("C") else int(lesson[1:]) + 2
         directory = destination / f"lesson-{number:02d}"
+        if lesson in {"C01", "C02"}:
+            write(directory / "data/base.json", example_data(lesson))
+            write(directory / "config.json", example_config(lesson))
+            for relative in ("data/DATA.md", "analysis.py"):
+                shutil.copyfile(ROOT / f"lesson-{number:02d}" / relative, directory / relative)
+            continue
         special_ids = {
             "S15",
             "S16",
@@ -513,7 +524,7 @@ def main():
             doc += "\n原模型和适配后的模型都在新批次的后半评估，参看old_on_adaptation_holdout与adapted_on_first_half_of_new_batch，避免比较不同分母。\n"
         (directory / "data/DATA.md").write_text(doc)
         (directory / "analysis.py").write_text(
-            '''"""本课可替换的起步入口；默认输出仅为示例实验。"""\nfrom pathlib import Path\nimport sys\nROOT=Path(__file__).resolve().parents[2]\nsys.path.insert(0,str(ROOT))\nfrom mlcourse.runtime import main\nif __name__ == "__main__":\n    main(Path(__file__).resolve().parent)\n'''
+            '''"""本课可替换的起步入口；默认输出仅为示例实验。"""\nfrom pathlib import Path\nimport sys\nROOT=Path(__file__).resolve().parents[1]\nsys.path.insert(0,str(ROOT))\nfrom mlcourse.runtime import main\nif __name__ == "__main__":\n    main(Path(__file__).resolve().parent)\n'''
         )
 
 

@@ -22,6 +22,12 @@ class LessonBank:
         keeps old local copies readable while the API and pages expose the
         canonical identifiers.
         """
+        if not isinstance(self.durations, dict):
+            raise ValueError(f"{self.lesson_id} durations must be an object")
+        for key in ("attempt_a", "learn", "attempt_b"):
+            value = self.durations.get(key)
+            if type(value) is not int or not 1 <= value <= 3600:
+                raise ValueError(f"{self.lesson_id} invalid phase duration: {key}")
         normalized = []
         for q in self.questions:
             row = dict(q)
@@ -95,12 +101,12 @@ class LessonBank:
                 'prompt': q['prompt']}
 
 ROOT = Path(__file__).parent / 'question_bank/lessons.json'
-BANK_VERSION = 'ml-v6-2026-09-16'
+BANK_VERSION = json.loads(ROOT.read_text(encoding='utf-8'))['version']
 def _load():
     raw=json.loads(ROOT.read_text(encoding='utf-8'))
     banks=[]
     for l in raw['lessons']:
-        banks.append(LessonBank(l['lesson_id'],l['title'],l.get('module',''),l['questions'],l['concepts'], {'attempt_a':600,'learn':900,'attempt_b':600}))
+        banks.append(LessonBank(l['lesson_id'],l['title'],l.get('module',''),l['questions'],l['concepts'], l.get('durations', {'attempt_a':600,'learn':900,'attempt_b':600})))
     return banks
 CURRENT_BANKS = _load(); DEFAULT_BANK=CURRENT_BANKS[0]
 def bank_for_lesson(lesson_id):

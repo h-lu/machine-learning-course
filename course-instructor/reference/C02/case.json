@@ -1,8 +1,9 @@
 {
   "lesson": "C02",
-  "purpose": "改用第二列特征，独立核对线性系数",
+  "purpose": "在测试集独立核对基线、回归和分组误差",
   "config_patch": {
-    "feature": "x2"
+    "evaluation_split": "test",
+    "stress_queue": 12
   },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "scope": "教师数值核对案例，不规定学生结论"
 }

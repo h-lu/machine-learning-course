@@ -1,15 +1,15 @@
 # 教师逐课入口与重组对照
 
-**状态：规范已对齐，新课包待编写与验收。**现行入口仍使用[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)的课次含义；[新地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)是后续编写目标，不是下方旧文件已经更新的声明。
+**状态：C01–C02 成套候选课包已编写；S01–S30 新目标仍待改写。**除候选入门课外，其余现行入口仍使用[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)的课次含义；[新地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)是后续编写目标，不代表其余旧课次已经更新。
 
-本页分为现行入口和新目标复用对照。旧材料只作为机制或任务的候选起点，不等于可直接复制到同编号新课。当前全部新目标均待课包验收；本轮不切换学生任务、代码、题库或成绩。
+本页分为现行入口和新目标复用对照。旧材料只作为机制或任务的候选起点，不等于可直接复制到同编号新课。本分支的 C01–C02 链接指向新版候选材料，其余课次保留原内容；课堂是否切换以 [入门课发布记录](releases/intro-2026-09-19.md) 和班级版本安排为准，不改变历史成绩。
 
-## 现行 32 课入口
+## 32 课材料入口（入门课为候选版本）
 
-以下标题与相对链接保留原课次含义。正式发布新批次时才成套更新相应入口，并在发布记录中保留旧版本。教师运行单组织课堂，参考分析解释多条路线，概念题帮助发现误解。
+以下 C01–C02 为本分支候选课包入口；S01–S30 保留原课次含义。旧 C01–C02 可从固定教学基线查看，不覆盖历史版本。教师运行单组织课堂，参考分析解释多条路线，概念题帮助发现误解。
 
-- C01 让别人重跑你的第一次预测：[运行单](lessons/C01/RUNBOOK.md) · [参考分析](lessons/C01/REFERENCE.md) · [概念题](lessons/C01/questions.json)
-- C02 一个分数够不够支持使用：[运行单](lessons/C02/RUNBOOK.md) · [参考分析](lessons/C02/REFERENCE.md) · [概念题](lessons/C02/questions.json)
+- C01 怎样把一个想法变成可运行的作品（候选）：[运行单](lessons/C01/RUNBOOK.md) · [参考分析](lessons/C01/REFERENCE.md) · [概念题](lessons/C01/questions.json)
+- C02 一个结果能说明方案有用吗（候选）：[运行单](lessons/C02/RUNBOOK.md) · [参考分析](lessons/C02/REFERENCE.md) · [概念题](lessons/C02/questions.json)
 - S01 这件事值得交给模型吗：[运行单](lessons/S01/RUNBOOK.md) · [参考分析](lessons/S01/REFERENCE.md) · [概念题](lessons/S01/questions.json)
 - S02 记录下来的结果就是好标签吗：[运行单](lessons/S02/RUNBOOK.md) · [参考分析](lessons/S02/REFERENCE.md) · [概念题](lessons/S02/questions.json)
 - S03 怎样测试才像将来的使用：[运行单](lessons/S03/RUNBOOK.md) · [参考分析](lessons/S03/REFERENCE.md) · [概念题](lessons/S03/questions.json)
@@ -98,3 +98,7 @@
 优先交付入门 C01–C02，不以一次重写 32 份标题替代完整小批次。新 S05、S13、S15、S17–S24 等目标不能只靠旧文件拼接；所需资源不足时暂缓切换。每次发布按班级明确实际材料提交、题库版本和前置支持，不能将相同编号的新旧模块任意拼接。
 
 编写方法见[课程设计](COURSE_DESIGN.md)，切换与服务版本限制见[发布说明](RELEASE.md)，计分继续使用[评分规则](GRADING.md)。
+
+## C01–C02 本批进展
+
+两课现有学生任务、学习卡、8/18 条人工数据、规则与回归实验、教师运行单与参考、每课五知识点及 A/B 题已一起改写。新实验与数据划分由候选课包的测试覆盖，发布限制见 [入门课记录](releases/intro-2026-09-19.md)。本页旧材料候选编号指固定教学基线，不表示当前同编号文件仍保存旧内容。

@@ -44,3 +44,9 @@ python3 scripts/build_example_data.py --output /tmp/ml-example-data
 ```
 
 这个目录包含重建的数据、配置和入口样例；运行仍需完整学生仓库中的 `mlcourse/`，它不是独立安装包。
+
+## C01–C02 入门案例
+
+C01–C02 使用 `mlcourse/intro.py` 中的取餐等待时间案例，公共运行入口和文件名不变。C01 的规则参数人为设定；C02 的均值基线与一元线性回归只使用训练集，默认在验证集上评价。只有 C02 接受 `--split validation` 或 `--split test`，也可在配置中选择；测试集不用于选择方案。
+
+两课额外生成 `predictions.csv`，逐条保存特征、真实值、预测值与绝对误差。默认提交清单列出 JSON 和 CSV，当前配置与清单命令应能重新生成主要结果。模型的主要数值显示在 `summary.json`，学习所需术语见 [术语表](TERMINOLOGY.md)。

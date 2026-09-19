@@ -42,48 +42,8 @@ def prediction_details(y, p):
     return {"actual": np.asarray(y).tolist(), "prediction": np.asarray(p).tolist()}
 
 
-def c01(d, c):
-    rows = d["rows"]
-    labels = matrix(rows, ["label"]).ravel()
-    tr, te = split(rows)
-    p = np.full(te.sum(), float(labels[tr].mean() >= 0.5))
-    broken = dict(rows[0])
-    broken.pop(c["missing_field"], None)
-    missing = [
-        field for field in ["id", "x1", "x2", "label", "split"] if field not in broken
-    ]
-    return outcome(
-        {
-            "row_count": len(rows),
-            "train_rows": int(tr.sum()),
-            "evaluation_rows": int(te.sum()),
-            "duplicate_ids": len(rows) - len({r["id"] for r in rows}),
-            **classification(labels[te], p),
-        },
-        {"predict_positive": classification(labels[te], np.ones(te.sum()))},
-        "移除第一行中的一个必需字段",
-        {"missing_fields": missing, "rejected": bool(missing)},
-        prediction_details(labels[te], p),
-    )
-
-
-def c02(d, c):
-    rows, x, y, _, tr, te = table(d)
-    field = c["feature"]
-    if field not in {"x1", "x2"}:
-        raise ValueError("feature只能选择已有的x1或x2；新增特征请修改程序")
-    x = x[:, [0 if field == "x1" else 1]]
-    w = fit_linear(x[tr], y[tr])
-    p = predict_linear(x[te], w)
-    baseline = np.full(te.sum(), y[tr].mean())
-    shifted = x[te] + 2
-    return outcome(
-        regression(y[te], p),
-        {"training_mean": regression(y[te], baseline)},
-        "评估特征整体增加2，真实结果暂保持原值，检查输入错误",
-        regression(y[te], predict_linear(shifted, w)),
-        {**prediction_details(y[te], p), "coefficients": w.tolist()},
-    )
+# C01–C02 使用新的连续回归案例；S01–S30 的实现保持不变。
+from .intro import c01, c02
 
 
 def s01(d, c):

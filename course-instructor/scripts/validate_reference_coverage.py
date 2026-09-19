@@ -62,18 +62,24 @@ def specific_checks(lesson, data, config, result):
     stress = result["stress_test"]["metrics"]
     checks = []
     rows = data.get("rows", [])
-    if lesson == "C01":
-        check(m["row_count"] == len(rows), "记录数量")
-        check(m["duplicate_ids"] == 1, "重复行确实被识别")
-        check(stress["missing_fields"] == ["label"], "删标签测试")
-        checks += ["独立构造重复记录和缺失字段"]
-    elif lesson == "C02":
+    if lesson in {"C01", "C02"}:
         train = [r for r in rows if r["split"] == "train"]
-        x = np.array([[1, r[config["feature"]]] for r in train])
-        y = np.array([r["target"] for r in train])
-        w = np.linalg.lstsq(x, y, rcond=None)[0]
-        np.testing.assert_allclose(detail["coefficients"], w, atol=1e-8)
-        checks += ["用另一线性代数入口lstsq核对系数"]
+        check(set(detail["train_ids"]).isdisjoint(detail["evaluation_ids"]) or lesson == "C01", "训练评价分开")
+        for name, coefficients in detail["model_coefficients"].items():
+            if name == "linear":
+                x = np.array([[1, r["queue_length"]] for r in train])
+                y = np.array([r["wait_minutes"] for r in train])
+                np.testing.assert_allclose(coefficients, np.linalg.lstsq(x, y, rcond=None)[0], atol=1e-8)
+            elif name == "baseline":
+                close(coefficients[0], sum(r["wait_minutes"] for r in train) / len(train), "基线只用训练标签")
+            else:
+                np.testing.assert_allclose(coefficients, [config["rule_intercept"], config["rule_slope"]])
+        check(stress["actual"] is None and stress["mae"] is None, "未知真实值不能评价误差")
+        for group, models in detail["by_period"].items():
+            selected = [r for r in detail["predictions"] if r["period"] == group]
+            for name, report in models.items():
+                close(report["mae"], sum(abs(r[f"prediction_{name}"] - r["actual"]) for r in selected) / len(selected), "分组MAE独立核算")
+        checks += ["独立核算参数、训练评价分离、分组MAE和无标签输入"]
     elif lesson == "S01":
         close(m["cost"], m["fp"] + config["false_negative_cost"] * m["fn"], "代价")
         checks += ["替换错误代价后独立计算总损失"]
