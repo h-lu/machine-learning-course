@@ -1,21 +1,21 @@
 # 教师逐课入口与重组对照
 
-**状态：C01–C02 成套候选课包已编写；S01–S30 新目标仍待改写。**除候选入门课外，其余现行入口仍使用[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)的课次含义；[新地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)是后续编写目标，不代表其余旧课次已经更新。
+**状态：C01–C02 与 S01–S06 成套候选课包已编写；S07–S30 新目标仍待改写。**除上述候选课包外，其余现行入口仍使用[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)的课次含义；[新地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)是后续编写目标，不代表其余旧课次已经更新。
 
-本页分为现行入口和新目标复用对照。旧材料只作为机制或任务的候选起点，不等于可直接复制到同编号新课。本分支的 C01–C02 链接指向新版候选材料，其余课次保留原内容；课堂是否切换以 [入门课发布记录](releases/intro-2026-09-19.md) 和班级版本安排为准，不改变历史成绩。
+本页分为现行入口和新目标复用对照。旧材料只作为机制或任务的候选起点，不等于可直接复制到同编号新课。本分支的 C01–C02 与 S01–S06 链接指向新版候选材料，S07–S30 保留原内容；课堂是否切换以 [入门课发布记录](releases/intro-2026-09-19.md) 和班级版本安排为准，不改变历史成绩。
 
-## 32 课材料入口（入门课为候选版本）
+## 32 课材料入口（前八课为候选版本）
 
-以下 C01–C02 为本分支候选课包入口；S01–S30 保留原课次含义。旧 C01–C02 可从固定教学基线查看，不覆盖历史版本。教师运行单组织课堂，参考分析解释多条路线，概念题帮助发现误解。
+以下 C01–C02 与 S01–S06 为本分支候选课包入口；S07–S30 保留原课次含义。旧课包 可从固定教学基线查看，不覆盖历史版本。教师运行单组织课堂，参考分析解释多条路线，概念题帮助发现误解。
 
 - C01 怎样把一个想法变成可运行的作品（候选）：[运行单](lessons/C01/RUNBOOK.md) · [参考分析](lessons/C01/REFERENCE.md) · [概念题](lessons/C01/questions.json)
 - C02 一个结果能说明方案有用吗（候选）：[运行单](lessons/C02/RUNBOOK.md) · [参考分析](lessons/C02/REFERENCE.md) · [概念题](lessons/C02/questions.json)
-- S01 这件事值得交给模型吗：[运行单](lessons/S01/RUNBOOK.md) · [参考分析](lessons/S01/REFERENCE.md) · [概念题](lessons/S01/questions.json)
-- S02 记录下来的结果就是好标签吗：[运行单](lessons/S02/RUNBOOK.md) · [参考分析](lessons/S02/REFERENCE.md) · [概念题](lessons/S02/questions.json)
-- S03 怎样测试才像将来的使用：[运行单](lessons/S03/RUNBOOK.md) · [参考分析](lessons/S03/REFERENCE.md) · [概念题](lessons/S03/questions.json)
-- S04 预测错多少，要看结果用来做什么：[运行单](lessons/S04/RUNBOOK.md) · [参考分析](lessons/S04/REFERENCE.md) · [概念题](lessons/S04/questions.json)
-- S05 复核名额应该给谁：[运行单](lessons/S05/RUNBOOK.md) · [参考分析](lessons/S05/REFERENCE.md) · [概念题](lessons/S05/questions.json)
-- S06 换一批数据，处理流程还能用吗：[运行单](lessons/S06/RUNBOOK.md) · [参考分析](lessons/S06/REFERENCE.md) · [概念题](lessons/S06/questions.json)
+- S01 怎样把模糊需求变成可研究的问题（候选）：[运行单](lessons/S01/RUNBOOK.md) · [参考分析](lessons/S01/REFERENCE.md) · [概念题](lessons/S01/questions.json)
+- S02 这份数据和标签代表谁、代表什么（候选）：[运行单](lessons/S02/RUNBOOK.md) · [参考分析](lessons/S02/REFERENCE.md) · [概念题](lessons/S02/questions.json)
+- S03 怎样比较才接近未来使用（候选）：[运行单](lessons/S03/RUNBOOK.md) · [参考分析](lessons/S03/REFERENCE.md) · [概念题](lessons/S03/questions.json)
+- S04 什么算做好了，失败会造成什么后果（候选）：[运行单](lessons/S04/RUNBOOK.md) · [参考分析](lessons/S04/REFERENCE.md) · [概念题](lessons/S04/questions.json)
+- S05 还缺哪些数据，哪些记录值得补（候选）：[运行单](lessons/S05/RUNBOOK.md) · [参考分析](lessons/S05/REFERENCE.md) · [概念题](lessons/S05/questions.json)
+- S06 一次小实验能否改变最初的问题（候选）：[运行单](lessons/S06/RUNBOOK.md) · [参考分析](lessons/S06/REFERENCE.md) · [概念题](lessons/S06/questions.json)
 - S07 直线能支持哪一种预测：[运行单](lessons/S07/RUNBOOK.md) · [参考分析](lessons/S07/REFERENCE.md) · [概念题](lessons/S07/questions.json)
 - S08 风险概率应该怎样使用：[运行单](lessons/S08/RUNBOOK.md) · [参考分析](lessons/S08/REFERENCE.md) · [概念题](lessons/S08/questions.json)
 - S09 一棵树能否成为可执行的规则：[运行单](lessons/S09/RUNBOOK.md) · [参考分析](lessons/S09/REFERENCE.md) · [概念题](lessons/S09/questions.json)
@@ -43,7 +43,7 @@
 
 ## 新目标与旧材料的复用候选
 
-“目标课次”均指新地图；“旧课次”均指上方教学基线。表中的匹配依据是内容与机制，不表示代码、题目或完整教学目标已经兼容。空缺能力必须补实验和理解检查，不能只换标题；下列 32 项目前都未作为新课包发布。
+“目标课次”均指新地图；“旧课次”均指固定提交 84aa171 中的历史材料，而不是本分支当前同编号文件。表中的匹配依据是内容与机制，不表示代码、题目或完整教学目标已经兼容。空缺能力必须补实验和理解检查，不能只换标题；下列 32 项目前都未作为新课包发布。
 
 | 目标课次 | 新目标（与目标地图一致） | 可参考的旧课次 | 必须补齐或重新核对的内容 |
 |---|---|---|---|
@@ -102,3 +102,7 @@
 ## C01–C02 本批进展
 
 两课现有学生任务、学习卡、8/18 条人工数据、规则与回归实验、教师运行单与参考、每课五知识点及 A/B 题已一起改写。新实验与数据划分由候选课包的测试覆盖，发布限制见 [入门课记录](releases/intro-2026-09-19.md)。本页旧材料候选编号指固定教学基线，不表示当前同编号文件仍保存旧内容。
+
+## S01–S06 本批进展
+
+六课的任务、LEARN、数据/配置、实验、教师参考、五知识点及 A/B 题已成套重写，仍待实际学生试读和班级启用。数据版本、前置知识、独立核算与部署边界见 [模块记录](releases/foundations-2026-09-19.md)。表中旧材料候选用于追溯，不是旧题已经适配的证明。

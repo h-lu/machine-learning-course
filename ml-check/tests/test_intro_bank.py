@@ -20,7 +20,7 @@ class IntroBank(unittest.TestCase):
     def test_both_loaders_use_the_same_bank_and_version(self):
         raw = load_bank()
         self.assertEqual(raw["version"], BANK_VERSION)
-        self.assertEqual(BANK_VERSION, "ml-v7-intro-2026-09-19")
+        self.assertEqual(BANK_VERSION, "ml-v8-foundations-2026-09-19")
         for bank, source in zip(CURRENT_BANKS, raw["lessons"]):
             self.assertEqual(bank.lesson_id, source["lesson_id"])
             self.assertEqual(bank.questions, source["questions"])
@@ -41,11 +41,11 @@ class IntroBank(unittest.TestCase):
                 for phase in ("a", "b"):
                     self.assertNotIn(item["pair"][phase]["prompt"], item["tutor_context"])
 
-    def test_intro_phases_fit_fifteen_minutes_and_other_lessons_keep_durations(self):
-        for bank in CURRENT_BANKS[:2]:
+    def test_first_eight_phases_fit_fifteen_minutes_and_other_lessons_keep_durations(self):
+        for bank in CURRENT_BANKS[:8]:
             self.assertEqual(bank.durations, {"attempt_a": 240, "learn": 300, "attempt_b": 240})
             self.assertEqual(sum(bank.durations.values()) + 120, 900)
-        for bank in CURRENT_BANKS[2:]:
+        for bank in CURRENT_BANKS[8:]:
             self.assertEqual(bank.durations, {"attempt_a": 600, "learn": 900, "attempt_b": 600})
 
     def test_invalid_phase_duration_is_rejected(self):

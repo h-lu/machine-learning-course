@@ -9,6 +9,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from mlcourse.intro import example_data, example_config
+from mlcourse.foundations_data import example_data as foundation_data, CONFIGS as FOUNDATION_CONFIGS
 
 IDS = ["C01", "C02"] + [f"S{i:02d}" for i in range(1, 31)]
 CONFIG = {
@@ -82,6 +83,7 @@ CONFIG = {
         "underestimate_cost": 3.0,
     },
 }
+CONFIG.update(FOUNDATION_CONFIGS)
 
 
 def write(path, value):
@@ -449,6 +451,13 @@ def main():
     for index, lesson in enumerate(IDS):
         number = int(lesson[1:]) if lesson.startswith("C") else int(lesson[1:]) + 2
         directory = destination / f"lesson-{number:02d}"
+        if lesson in FOUNDATION_CONFIGS:
+            write(directory / "data/base.json", foundation_data(lesson))
+            write(directory / "config.json", FOUNDATION_CONFIGS[lesson])
+            (directory / "data").mkdir(exist_ok=True)
+            shutil.copyfile(ROOT / f"lesson-{index+1:02d}/data/DATA.md", directory / "data/DATA.md")
+            shutil.copyfile(ROOT / f"lesson-{index+1:02d}/analysis.py", directory / "analysis.py")
+            continue
         if lesson in {"C01", "C02"}:
             write(directory / "data/base.json", example_data(lesson))
             write(directory / "config.json", example_config(lesson))

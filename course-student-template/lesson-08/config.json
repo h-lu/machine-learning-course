@@ -1,4 +1,6 @@
 {
   "seed": 7,
-  "imputation": "median"
+  "evaluation_split": "validation",
+  "change": "imputation",
+  "stress_queue_shift": 3
 }

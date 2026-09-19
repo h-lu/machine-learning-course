@@ -2,7 +2,7 @@
 
 完整 GitHub 仓库公开课程规划、学生材料、教师参考、答案和工具；Gitea 保留学生模板、教师材料与检查服务的独立仓库及历史。学生目录不嵌入教师答案，成绩依据学生自己的任务、实验与解释。
 
-**C01–C02 已完成成套候选材料，尚未正式启用或部署；S01–S30 新目标仍待编写。**进展、验证范围和切换限制见 [入门课发布记录](releases/intro-2026-09-19.md)。新目标见[课程地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)，重组任务与当前课次入口见[教师索引](LESSON_INDEX.md)。现行教学内容基线为 `84aa1710803f006cf781590126cafcd494bf5515`，规划合并提交为 `699abe0ea392635a5adaa9b243cf95b3886d6918`。二者是内容参照，不代替各班实际采用版本的记录。
+**C01–C02 与 S01–S06 已有成套候选材料，尚未正式启用或部署；S07–S30 新目标仍待编写。**进展、验证范围和切换限制见 [入门课发布记录](releases/intro-2026-09-19.md)。新目标见[课程地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)，重组任务与当前课次入口见[教师索引](LESSON_INDEX.md)。现行教学内容基线为 `84aa1710803f006cf781590126cafcd494bf5515`，规划合并提交为 `699abe0ea392635a5adaa9b243cf95b3886d6918`。二者是内容参照，不代替各班实际采用版本的记录。
 
 ## 区分三类变更
 
@@ -65,4 +65,8 @@ PYTHONPATH=ml-check pytest -q ml-check/tests
 
 保留原课次提交与 `v2-lNN-final` 等标签，不覆盖历史提交，不追溯改变已经完成的作业要求。GitHub 与 Gitea 更新继续保留历史并采用可快进方式；生产凭据、数据库和学生记录不提交到公开仓库。仓库导出不含嵌套 `.git`、本机环境、临时产物与完整旧压缩包。
 
-概念服务的生产运行按 `ml-check/deploy/README.md` 另行配置和验收。本批入门候选不部署服务、不改数据库，也不代表 32 课已完成重写。
+概念服务的生产运行按 `ml-check/deploy/README.md` 另行配置和验收。本批入门与问题评价模块候选不部署服务、不改数据库，也不代表 32 课已完成重写。
+
+## 本分支新增问题与评价模块
+
+S01–S06 对应 `lesson-03` 至 `lesson-08`，候选题库为 `ml-v8-foundations-2026-09-19`。它在保留 C01–C02 的基础上新增六课的内容重写，S07–S30 题目仍保留原内容。详见 [模块发布记录](releases/foundations-2026-09-19.md)。不得用这个题库原地解释旧 S01–S06 场次；并行授课仍须隔离实例、数据库和入口。

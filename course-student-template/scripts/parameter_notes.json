@@ -14,34 +14,52 @@
     "evaluation_split": "C01 使用 train；C02 开发时使用 validation，方案确定后使用 test。"
   },
   "S01": {
-    "seed": "随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。",
-    "threshold": "概率达到这个值时判为正类；它会改变误报、漏报和实际行动。",
-    "false_negative_cost": "一次漏报相当于多少次误报的损失；误报代价固定为1。"
+    "seed": "固定随机划分或抽样；本课无随机步骤时不改变结果；默认 `7`",
+    "evaluation_split": "指定 validation 或 test；默认只评价验证集；默认 `validation`",
+    "primary_model": "主要汇总对象：baseline=均值基线，rule=人工规则，linear=线性回归；报告可得出不采用的结论；默认 `linear`",
+    "rule_intercept": "人工规则固定分钟数，默认 1；默认 `1.0`",
+    "rule_slope": "规则中每多 1 人增加的分钟数，默认 2；默认 `2.0`",
+    "alert_minutes": "预测达到多少分钟时提醒；包含恰好等于阈值；默认 `8.0`",
+    "stress_queue": "没有真实标签的新人数，只作输入检查；默认 `10`"
   },
   "S02": {
-    "seed": "随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。",
-    "observation_day": "截至第几天，只把这一天之前已经出现的标签用于观察。",
-    "agreement_threshold": "你暂定的标注一致率要求；达到它也不保证标签有意义。"
+    "seed": "固定随机划分或抽样；本课无随机步骤时不改变结果；默认 `7`",
+    "observation_day": "统计截止到第几天已上传的标签；默认 `4`",
+    "later_day": "用来比较的更晚截止日，不得早于 observation_day；默认 `7`",
+    "disagreement_minutes": "两份已知标注相差超过多少分钟才记为分歧；等于容差不算超过；默认 `2.0`"
   },
   "S03": {
-    "seed": "随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。",
-    "split_strategy": "如何分训练与评估数据：random为随机行，time为先后时间，group为不同用户。",
-    "train_fraction": "希望进入训练部分的数据比例；时间和用户切分按对应值分界，实际行数会受重复值影响。"
+    "seed": "固定随机划分或抽样；本课无随机步骤时不改变结果；默认 `7`",
+    "evaluation_split": "指定 validation 或 test；默认只评价验证集；默认 `validation`",
+    "split_strategy": "主要划分：time=时间，group=按窗口，random=随机；默认 `time`",
+    "train_through_day": "时间方案训练到第几天；默认 4；默认 `4`",
+    "validation_through_day": "开发数据的最晚日期，默认 6；不能把保留测试日期纳入开发；默认 `6`"
   },
   "S04": {
-    "seed": "随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。",
-    "underestimate_cost": "低估一个单位的代价；高估一个单位的代价固定为1。",
-    "prediction_shift": "统一给模型预测加上多少，用于比较保守或宽松的预测方案。"
+    "seed": "固定随机划分或抽样；本课无随机步骤时不改变结果；默认 `7`",
+    "evaluation_split": "指定 validation 或 test；默认只评价验证集；默认 `validation`",
+    "primary_model": "主要汇总：baseline、linear 或 buffered；不是自动推荐；默认 `linear`",
+    "buffer_minutes": "在回归预测上增加的分钟数，不重新拟合模型；默认 `4.0`",
+    "underestimate_weight": "低估的权重，至少为 1；高估权重固定为 1；默认 `3.0`",
+    "long_wait_minutes": "实际等待达到此值为正类（需要提醒）；默认 `8.0`",
+    "alert_threshold": "预测达到此值才进入提醒候选，单位分钟；默认 `8.0`",
+    "capacity": "实际可提醒的名额，0 到评价样本数之间的整数；默认 `2`",
+    "stress_capacity": "保持预测不变，用来检查另一种容量；默认 `1`"
   },
   "S05": {
-    "seed": "随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。",
-    "threshold": "概率达到这个值时判为正类；它会改变误报、漏报和实际行动。",
-    "capacity": "最多选择多少条评估记录进行复核；本例按概率排序，分数相同时保留原数据顺序。",
-    "false_negative_cost": "一次漏报相当于多少次误报的损失；误报代价固定为1。"
+    "seed": "固定随机划分或抽样；本课无随机步骤时不改变结果；默认 `7`",
+    "evaluation_split": "指定 validation 或 test；默认只评价验证集；默认 `validation`",
+    "budget": "每种补充办法新增相同数量的样本，不超过候选池大小；默认 `4`",
+    "target_period": "定向抽样优先补午间还是晚间；默认 `晚间`",
+    "primary_strategy": "主要汇总：no_addition/random_sample/group_first/synthetic；默认 `group_first`",
+    "synthetic_offset": "在原模型生成的标签上加多少分钟，默认 0；这是人为假设，不是新观察；默认 `0.0`",
+    "stress_period": "预算不变，改为优先补另一时段的检查；默认 `午间`"
   },
   "S06": {
-    "seed": "随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。",
-    "imputation": "从训练记录估计缺失填补值：mean为均值，median为中位数。"
+    "seed": "固定随机划分或抽样；本课无随机步骤时不改变结果；默认 `7`",
+    "evaluation_split": "指定 validation 或 test；默认只评价验证集；默认 `validation`",
+    "change": "imputation=只改填补；period_feature=只加晚间特征，填补仍为 0；默认 `imputation`",
+    "stress_queue_shift": "只给已知人数加多少人，模拟记录错误；模型不重训；默认 `3`"
   },
   "S07": {
     "seed": "随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。",

@@ -1,6 +1,9 @@
 {
   "seed": 7,
-  "threshold": 0.5,
-  "capacity": 15,
-  "false_negative_cost": 4.0
+  "evaluation_split": "validation",
+  "budget": 4,
+  "target_period": "晚间",
+  "primary_strategy": "group_first",
+  "synthetic_offset": 0.0,
+  "stress_period": "午间"
 }

@@ -8,7 +8,7 @@
 
 [课程说明](machine-learning-course/README.md)与[32 课目标地图](machine-learning-course/COURSE_MAP.md)定义新目标；本文件规定怎样编写和验收。[教师设计](course-instructor/COURSE_DESIGN.md)将目标落实到课堂，[教师索引](course-instructor/LESSON_INDEX.md)区分现行课包和重组任务，[发布说明](course-instructor/RELEASE.md)规定切换条件。这些文件出现分歧时，应在同一变更中消除分歧，不能任选一个执行。
 
-**当前仍是过渡期。**尚未切换的课堂和 S01–S30 逐课材料对应[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)；新目标地图对应规划合并提交 `699abe0`。C01–C02 的成套候选课包及状态见 [入门课发布记录](course-instructor/releases/intro-2026-09-19.md)，合并候选材料不自动切换生产场次。新旧编号相同不代表内容相同。没有明确发布的新课包继续按原材料授课，不将旧题库完成情况当作新目标达成。
+**当前仍是过渡期。**尚未切换的课堂和 S07–S30 逐课材料对应[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)；新目标地图对应规划合并提交 `699abe0`。C01–C02 的成套候选课包及状态见 [入门课发布记录](course-instructor/releases/intro-2026-09-19.md)；S01–S06 也已成套重写，状态见 [问题与评价模块记录](course-instructor/releases/foundations-2026-09-19.md)。候选材料不自动切换生产场次。新旧编号相同不代表内容相同。没有明确发布的新课包继续按原材料授课，不将旧题库完成情况当作新目标达成。
 
 课程保持 16 周、32 次课、每次 90 分钟。两次入门课后为五个六课模块：问题与评价，学习、表示与泛化，预训练模型复用，模型、工具与人的协作，反馈、使用与迁移。每课完成一个小实验；五个正式模块各至少有一次同一作品的原方案与修订候选比较，允许依据新证据保留原方案。
 

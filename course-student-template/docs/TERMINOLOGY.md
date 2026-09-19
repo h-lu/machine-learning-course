@@ -33,3 +33,22 @@ C01 先学习样本、特征、标签、预测、训练和可复现性。C02 再
 ## 查阅来源
 
 术语可对照 [Google 机器学习术语表](https://developers.google.com/machine-learning/glossary)；训练、验证和测试的区别可对照 [scikit-learn 交叉验证说明](https://scikit-learn.org/stable/modules/cross_validation.html)，数据泄漏可对照 [scikit-learn 常见错误](https://scikit-learn.org/stable/common_pitfalls.html)。不需要为了读术语安装这些工具。
+
+## S01–S06 用到的补充术语
+
+这些词随课使用，不是另一张需要预先背诵的清单。
+
+| 通用术语 | 通俗解释 | 例子 |
+|---|---|---|
+| 代理标签（proxy label） | 用与目标相关的另一个量代替目标标签 | 用规则估计分钟数代替真实等待；两者是否接近要核对 |
+| 标注分歧（annotation disagreement） | 不同标注对同一样本给出不同结果 | 两人计时相差三分钟，先核对起止点 |
+| 选择偏差（selection bias） | 被记录或进入统计的样本可能不能代表目标人群 | 只收到空闲窗口的标签，就推断全部窗口 |
+| 时间划分（time-based split） | 按先后日期安排训练和评价 | 早期记录训练，较晚记录评价未来使用 |
+| 分组划分（group-based split） | 按人、设备或窗口等对象分开数据 | 新窗口用途下，训练和验证窗口不重叠 |
+| 误报／漏报（false positive / false negative） | 把不需要提醒的样本提醒了／把需要提醒的样本漏掉了 | 必须先定义“需要提醒”的真实标准 |
+| 合成数据（synthetic data） | 用程序或模型生成的数据 | 原回归模型给新人数生成分钟数；不是新增真实观察 |
+| 缺失值填补（imputation） | 用明确规则替代没有记录的输入值 | 用训练集已知人数的均值替代缺失人数 |
+| 指示变量（indicator variable） | 用 0/1 表示一个条件是否成立 | 晚间为 1，午间为 0，是特征，不是预测标签 |
+| 流水线（pipeline） | 将预处理与模型连接成一致的计算步骤 | 训练集学填补值，训练和新输入都沿用该值 |
+
+标签覆盖率在 S02 专指“截止日已知标签数 ÷ 待统计样本数”。它是本次审查的统计量，不是模型准确率。社区术语可继续对照上面的官方术语表与 scikit-learn 文档。

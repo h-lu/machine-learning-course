@@ -10,6 +10,7 @@ import platform
 from pathlib import Path
 import numpy as np
 from .experiments import EXPERIMENTS
+from .foundations import console_summary as foundations_console_summary
 
 
 def convert(value):
@@ -39,7 +40,7 @@ def source_hashes():
     directory = Path(__file__).resolve().parent
     return {
         f"mlcourse/{name}": hashlib.sha256((directory / name).read_bytes()).hexdigest()
-        for name in ("runtime.py", "mathops.py", "experiments.py", "intro.py")
+        for name in ("runtime.py", "mathops.py", "experiments.py", "intro.py", "foundations.py", "foundations_data.py")
     }
 
 
@@ -132,14 +133,14 @@ def main(lesson_directory):
         "--data", type=Path, default=lesson_directory / "data/base.json"
     )
     parser.add_argument("--output", type=Path, default=lesson_directory / "artifacts")
-    parser.add_argument("--split", choices=["validation", "test"], help="仅 C02 使用：选择验证集或测试集")
+    parser.add_argument("--split", choices=["validation", "test"], help="C02、S01、S03–S06：选择验证集或测试集；S02 使用观察截止日")
     args = parser.parse_args()
     try:
         data = read_input_json(args.data)
         config = read_input_json(args.config)
         if args.split:
-            if lesson_directory.name not in {"C02", "lesson-02"}:
-                raise ValueError("--split 只用于 C02 / lesson-02")
+            if lesson_directory.name not in {"C02", "lesson-02", "S01", "S03", "S04", "S05", "S06", "lesson-03", "lesson-05", "lesson-06", "lesson-07", "lesson-08"}:
+                raise ValueError("本课不支持 --split；S02 请使用 observation_day 调整标签观察截止日")
             config["evaluation_split"] = args.split
         result = run_experiment(lesson_directory.name, data, config)
         result["provenance"].update(
@@ -172,6 +173,19 @@ def main(lesson_directory):
                 print(intro_console_summary(result))
             else:
                 print("评价数据：", result["details"]["evaluation_split"], "；MAE：", result["metrics"]["mae"], "分钟")
+        tables = result["details"].get("tables", {})
+        for name, table in tables.items():
+            if not table:
+                continue
+            fields = list(dict.fromkeys(key for record in table for key in record))
+            csv_path = args.output / f"{name}.csv"
+            with csv_path.open("w", encoding="utf-8", newline="") as stream:
+                writer = csv.DictWriter(stream, fieldnames=fields)
+                writer.writeheader()
+                writer.writerows(table)
+            print(f"表格：{csv_path}")
+        if tables:
+            print(foundations_console_summary(result))
         print(f"{lesson_directory.name}: 示例实验已运行，结果写入 {path}")
     except (ValueError, KeyError, TypeError, IndexError, OSError) as error:
         parser.exit(

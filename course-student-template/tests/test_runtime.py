@@ -161,15 +161,12 @@ class CompleteLessonCoverage(unittest.TestCase):
             with self.subTest(lesson=lesson):
                 original, c = self.examples[lesson]
                 d = copy.deepcopy(original)
-                if lesson in {"C01", "C02"}:
+                if lesson in {"C01", "C02", "S01", "S02", "S03", "S04", "S05", "S06"}:
                     d["rows"][0]["wait_minutes"] += 10
-                elif lesson in {"S03", "S04", "S06", "S07", "S29", "S30"}:
+                elif lesson in {"S07", "S29", "S30"}:
                     d["rows"][0]["target"] += 10
-                elif lesson in {"S01", "S05", "S08", "S09", "S10", "S13", "S14"}:
+                elif lesson in {"S08", "S09", "S10", "S13", "S14"}:
                     d["rows"][0]["label"] = 1 - d["rows"][0]["label"]
-                elif lesson == "S02":
-                    for row in d["rows"]:
-                        row["available_day"] = 0
                 elif lesson in {"S11", "S12"}:
                     d["rows"][0]["x1"] += 20
                 elif lesson == "S15":

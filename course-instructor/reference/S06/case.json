@@ -1,8 +1,7 @@
 {
-  "lesson": "S06",
-  "purpose": "只从训练行估计均值填补",
+  "purpose": "S06 非默认配置下独立核算与证据检查",
   "config_patch": {
-    "imputation": "mean"
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+    "change": "period_feature",
+    "stress_queue_shift": 2
+  }
 }
