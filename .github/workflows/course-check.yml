@@ -9,26 +9,35 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.12"]
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
       - name: Preserve the exact reviewed source
         run: git archive --format=tar HEAD | gzip > /tmp/course-source.tar.gz
       - uses: actions/upload-artifact@v4
         with:
-          name: course-source-${{ github.sha }}
+          name: course-source-${{ github.sha }}-py${{ matrix.python }}
           path: /tmp/course-source.tar.gz
           retention-days: 3
       - name: Install test dependencies
         run: python3 -m pip install -r course-student-template/requirements.txt -r ml-check/requirements.txt pytest
       - name: Validate course materials and experiments
         run: python3 tools/validate_course.py
+      - name: Require a synchronized question bank
+        run: git diff --exit-code -- ml-check/app/question_bank/lessons.json
       - name: Validate service tests
         run: PYTHONPATH=ml-check python3 -m pytest -q ml-check/tests
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: course-validation-${{ github.sha }}
+          name: course-validation-${{ github.sha }}-py${{ matrix.python }}
           path: validation/latest.json
           retention-days: 7
