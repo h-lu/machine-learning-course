@@ -65,7 +65,7 @@ python -m json.tool lesson-01/contract.json
 
 完成实验、报告和任务说明后，在 `submission.json` 中只将 `"status": "in_progress"` 改为 `"status": "complete"`。两课默认清单都列出本课 `artifacts/summary.json` 和 `artifacts/predictions.csv`。其他文件位置未改时，保留默认路径和 `run` 命令。不要修改结果文件里的 `example_only`。
 
-运行当课 `check` 后，仍需将文件提交到个人仓库。**`artifacts/` 默认被 Git 忽略，仅执行 `git add lesson-01` 会漏掉结果。**下面的 `git add -f` 是明确选中需要提交的结果，不是把所有临时文件都加入仓库。
+运行当课 `check` 后，仍需将文件提交到个人仓库。**`artifacts/` 默认被 Git 忽略，仅执行 `git add lesson-01` 会漏掉结果**。下面的 `git add -f` 是明确选中需要提交的结果，不是把所有临时文件都加入仓库。
 
 第 01 课第一次提交，在学生仓库根目录依次运行：
 

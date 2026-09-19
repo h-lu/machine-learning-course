@@ -1,6 +1,6 @@
 # 教师逐课入口与重组对照
 
-**状态：C01–C02 与 S01–S06 成套候选课包已编写；S07–S30 新目标仍待改写。**除上述候选课包外，其余现行入口仍使用[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)的课次含义；[新地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)是后续编写目标，不代表其余旧课次已经更新。
+**状态：C01–C02 与 S01–S06 成套候选课包已编写；S07–S30 新目标仍待改写**。除上述候选课包外，其余现行入口仍使用[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)的课次含义；[新地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)是后续编写目标，不代表其余旧课次已经更新。
 
 本页分为现行入口和新目标复用对照。旧材料只作为机制或任务的候选起点，不等于可直接复制到同编号新课。本分支的 C01–C02 与 S01–S06 链接指向新版候选材料，S07–S30 保留原内容；课堂是否切换以 [入门课发布记录](releases/intro-2026-09-19.md) 和班级版本安排为准，不改变历史成绩。
 

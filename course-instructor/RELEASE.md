@@ -2,7 +2,7 @@
 
 完整 GitHub 仓库公开课程规划、学生材料、教师参考、答案和工具；Gitea 保留学生模板、教师材料与检查服务的独立仓库及历史。学生目录不嵌入教师答案，成绩依据学生自己的任务、实验与解释。
 
-**C01–C02 与 S01–S06 已有成套候选材料，尚未正式启用或部署；S07–S30 新目标仍待编写。**进展、验证范围和切换限制见 [入门课发布记录](releases/intro-2026-09-19.md)。新目标见[课程地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)，重组任务与当前课次入口见[教师索引](LESSON_INDEX.md)。现行教学内容基线为 `84aa1710803f006cf781590126cafcd494bf5515`，规划合并提交为 `699abe0ea392635a5adaa9b243cf95b3886d6918`。二者是内容参照，不代替各班实际采用版本的记录。
+**C01–C02 与 S01–S06 已有成套候选材料，尚未正式启用或部署；S07–S30 新目标仍待编写**。进展、验证范围和切换限制见 [入门课发布记录](releases/intro-2026-09-19.md)。新目标见[课程地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)，重组任务与当前课次入口见[教师索引](LESSON_INDEX.md)。现行教学内容基线为 `84aa1710803f006cf781590126cafcd494bf5515`，规划合并提交为 `699abe0ea392635a5adaa9b243cf95b3886d6918`。二者是内容参照，不代替各班实际采用版本的记录。
 
 ## 区分三类变更
 

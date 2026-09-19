@@ -2,7 +2,7 @@
 
 课程目标是让学生掌握借助 AI 提出问题、构建方案、获得证据和持续改进所需要的知识。教师用必要关系、小实验与实质选择组织课堂，不按模型名单逐一讲解，也不让学生只负责检查 AI 输出。
 
-**过渡状态：C01–C02 与 S01–S06 已有成套候选课包，课堂与生产尚未自动切换。**本分支继续落实学生任务、实验、教师参考与题库，成绩权重和提交接口不变。现行课次含义见[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)。
+**过渡状态：C01–C02 与 S01–S06 已有成套候选课包，课堂与生产尚未自动切换**。本分支继续落实学生任务、实验、教师参考与题库，成绩权重和提交接口不变。现行课次含义见[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)。
 
 ## 备课入口
 

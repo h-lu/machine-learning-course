@@ -2,7 +2,7 @@
 
 这份地图围绕一个目标组织知识：学生掌握借助 AI 提出问题、构建方案、获得证据和持续改进的方法。课程既训练创造方案，也训练判断依据；不把算法覆盖数量、模型大小或 AI 输出量当作学习目标。
 
-**状态：C01–C02 与 S01–S06 已有成套候选材料；S07–S30 的新目标仍待实现。**本地图和 [课程说明](README.md) 给出整体重组方向；入门课与问题评价模块的任务、代码和题库已在本分支同步，评分权重与提交接口不变。下表是后续材料重组的依据，不是现有 `lesson-01` 至 `lesson-32` 已实现内容的声明。当前任务与运行入口请从 [学生仓库](../course-student-template/README.md) 查阅；相同编号不能被当成新旧内容的一一对应。在新模块正式发布前，课堂要求仍按已发布材料执行；原课次含义见[当前教学基线（84aa171）](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)。
+**状态：C01–C02 与 S01–S06 已有成套候选材料；S07–S30 的新目标仍待实现**。本地图和 [课程说明](README.md) 给出整体重组方向；入门课与问题评价模块的任务、代码和题库已在本分支同步，评分权重与提交接口不变。下表是后续材料重组的依据，不是现有 `lesson-01` 至 `lesson-32` 已实现内容的声明。当前任务与运行入口请从 [学生仓库](../course-student-template/README.md) 查阅；相同编号不能被当成新旧内容的一一对应。在新模块正式发布前，课堂要求仍按已发布材料执行；原课次含义见[当前教学基线（84aa171）](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)。
 
 ## 怎样选择知识与掌握程度
 
