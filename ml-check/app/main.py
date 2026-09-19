@@ -331,6 +331,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                         "a": response_map.get((concept_id, "a")),
                         "b": response_map.get((concept_id, "b")),
                         "explanation": item["pair"]["b"]["explanation"],
+                        # Feedback only: keep A and B separately so an A error can be reviewed.
+                        "a_question": bank.question(concept_id, "a"),
+                        "b_question": bank.question(concept_id, "b"),
                     }
                 )
             return render(
