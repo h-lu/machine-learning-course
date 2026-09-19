@@ -14,6 +14,8 @@ python --version
 
 Python 需要 3.10 或以上。若使用 `python3`，把下文命令中的 `python` 换成 `python3`。额外依赖写入仓库根目录的 `requirements.txt`。
 
+第 01、02 课的逐步操作、任务字段解释和对应提交命令见 [第一次运行指南](FIRST_RUN.md)。下面的第 03 课命令仅是其他课次的示例，不要原样用于入门课。
+
 ## 每课的流程
 
 从仓库根目录执行（以下以第 3 课为例）：
@@ -46,13 +48,17 @@ python scripts/course.py run 03
 python scripts/course.py check 03
 git status
 git add lesson-03 requirements.txt
+git add -f lesson-03/artifacts/evidence.csv
+git diff --cached --name-only
 git commit -m "完成第03课机器学习项目"
 git push
 git tag v2-l03-final
 git push origin v2-l03-final
 ```
 
-`ml-check` 和 Gitea Actions 会检查目录、字段、运行命令和结果是否可重现；它不会替你选择模型或判断结论是否适合使用。自动检查会在临时副本中移除列出的结果文件，再运行程序重新生成；原提交不受影响。图表也应提交，但包含生成时间的文件不必列入逐字节比较清单。
+`artifacts/` 默认被忽略；上面的 `git add -f` 显式加入报告需要的结果。将 `evidence.csv` 换成当课实际文件，并在暂存列表里核对。只运行 `check` 不表示已上传。
+
+`ml-check` 只做材料结构检查，不执行提交命令；Gitea Actions 中的课程脚本会重跑已完成的项目。二者都不会替你选择模型或判断结论是否适合使用。自动检查会在临时副本中移除列出的结果文件，再运行程序重新生成；原提交不受影响。图表也应提交，但包含生成时间的文件不必列入逐字节比较清单。
 
 ## 补交与作品修订
 

@@ -24,14 +24,18 @@ C01 只包含 8 条训练样本，用来核对人工规则，不拟合模型。C
 | `evaluation_split` | C01 为 `train`；C02 默认 `validation`，方案确定后改为 `test` |
 | `seed` | 为兼容课程工具保留的随机种子字段；本例没有随机计算，修改它不会改变预测 |
 
+配置副本的保存和 JSON 标点规则见 [第一次运行指南](../../docs/FIRST_RUN.md)。结果文件夹重复使用时，同名文件会被新结果覆盖；不同试验应使用不同的 `--output`。报错后不要把旧文件当作新结果。
+
 线性回归和基线的参数由训练集计算，不由 `rule_intercept` 或 `rule_slope` 决定。参数副本可用 `--config` 指定；数据副本可用 `--data` 指定；`--output` 指定结果目录。相对路径从运行命令的目录解释。
 
 ## 结果文件
 
-`predictions.csv` 每行对应一条参加评价的样本。`prediction_rule` 是人工规则的预测；C02 还包含 `prediction_baseline`、`prediction_linear`，以及各自以 `absolute_error_` 开头的绝对误差列。单位均为分钟。
+`predictions.csv` 每行对应一条参加评价的样本。`prediction_rule` 是人工规则的预测；C02 还包含 `prediction_baseline`、`prediction_linear`，以及各自以 `absolute_error_` 开头的绝对误差列。预测值与误差的单位为分钟；`queue_length` 为人数，`id` 为样本编号，`period` 为时段。`actual` 对应输入数据中的 `wait_minutes`，仍是实际值，不是预测值。
 
-`summary.json` 汇总数据来源、配置、指标、比较、新输入检查和逐条结果。C01 的 `metrics` 对应规则，C02 对应线性回归。C02 的 `comparison` 包含基线和规则；`details.by_period` 保存分组结果及样本数。主要学习指标为 `mae`；兼容工具还计算 `rmse` 和低估加倍的 `asymmetric_loss`，这两项不作为本两课的掌握要求。
+`summary.json` 汇总数据来源、配置、指标、比较、新输入检查和逐条结果。C01 的 `metrics` 对应规则，C02 对应线性回归。C02 的 `comparison` 包含基线和规则；`details.by_period` 保存分组结果及样本数。C01 先读一条预测及其绝对误差，C02 再使用平均绝对误差 `mae`；兼容工具还计算 `rmse` 和低估加倍的 `asymmetric_loss`，这两项不作为本两课的掌握要求。
 
-`status=example_only` 表示起步实验，不替你写结论或完成作业。`provenance` 保存数据、配置和代码哈希以便复核，不证明数据来源真实。输入缺字段、重复编号、负人数、非整数人数或空数据会报错，不能把报错当作正常预测。
+`status=example_only` 表示起步实验，不替你写结论或完成作业。`provenance` 保存数据、配置和代码的哈希值（用于检查文件是否变化的标记）以便复核，不证明数据来源真实。输入缺字段、重复编号、负人数、非整数人数或空数据会报错，不能把报错当作正常预测。
 
-数据生成定义在 `mlcourse/intro.py` 的 `example_data`；`scripts/build_example_data.py --output` 可在新空目录重建，不覆盖当前项目。C01 与 C02 的训练标签经过人工安排，拟合直线恰好等于默认规则，这是教学选择，不是实际应用规律。
+新输入的 `actual` 与 `mae` 为 `null` 时，表示没有实际等待时间，不能计算误差，不是误差为零。`outside_training_range` 为 `true` 表示人数超出原样本的 0–3 人区间；它只是范围提醒，不是预测正确与否的判断。
+
+以下为拓展阅读，不是入门操作：数据生成定义在 `mlcourse/intro.py` 的 `example_data`；`scripts/build_example_data.py --output` 可在新空目录重建，不覆盖当前项目。C01 与 C02 的训练标签经过人工安排，拟合直线恰好等于默认规则，这是教学选择，不是实际应用规律。

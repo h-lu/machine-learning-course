@@ -41,10 +41,10 @@ def number(value, name: str) -> float:
     return float(value)
 
 
-def queue(value) -> float:
-    value = number(value, "queue_length（排队人数）")
+def queue(value, name: str = "queue_length（排队人数）") -> float:
+    value = number(value, name)
     if not value.is_integer():
-        raise ValueError("queue_length（排队人数）必须是整数")
+        raise ValueError(f"{name}必须是整数")
     return value
 
 
@@ -75,7 +75,7 @@ def validate(data: dict, config: dict) -> list[dict]:
             raise ValueError(f"配置缺少字段：{key}")
     number(config["rule_intercept"], "rule_intercept（规则的固定等待分钟数）")
     number(config["rule_slope"], "rule_slope（规则中每人增加的分钟数）")
-    queue(config["stress_queue"])
+    queue(config["stress_queue"], "stress_queue（新输入的排队人数）")
     return rows
 
 
