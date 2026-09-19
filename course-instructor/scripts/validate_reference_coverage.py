@@ -8,6 +8,7 @@ import sys
 import time
 from pathlib import Path
 import numpy as np
+from foundation_reference import verify as verify_foundations
 
 ROOT = Path(__file__).resolve().parents[1]
 IDS = ["C01", "C02"] + [f"S{i:02d}" for i in range(1, 31)]
@@ -57,62 +58,31 @@ def independent_predictions(result, config):
 
 
 def specific_checks(lesson, data, config, result):
+    if lesson in {f"S{i:02d}" for i in range(1, 7)}:
+        return verify_foundations(lesson, data, config, result)
     m = result["metrics"]
     detail = result["details"]
     stress = result["stress_test"]["metrics"]
     checks = []
     rows = data.get("rows", [])
-    if lesson == "C01":
-        check(m["row_count"] == len(rows), "记录数量")
-        check(m["duplicate_ids"] == 1, "重复行确实被识别")
-        check(stress["missing_fields"] == ["label"], "删标签测试")
-        checks += ["独立构造重复记录和缺失字段"]
-    elif lesson == "C02":
+    if lesson in {"C01", "C02"}:
         train = [r for r in rows if r["split"] == "train"]
-        x = np.array([[1, r[config["feature"]]] for r in train])
-        y = np.array([r["target"] for r in train])
-        w = np.linalg.lstsq(x, y, rcond=None)[0]
-        np.testing.assert_allclose(detail["coefficients"], w, atol=1e-8)
-        checks += ["用另一线性代数入口lstsq核对系数"]
-    elif lesson == "S01":
-        close(m["cost"], m["fp"] + config["false_negative_cost"] * m["fn"], "代价")
-        checks += ["替换错误代价后独立计算总损失"]
-    elif lesson == "S02":
-        visible = [r for r in rows if r["available_day"] <= config["observation_day"]]
-        check(m["visible_labels"] == len(visible), "观察截止日期计数")
-        close(
-            m["annotator_agreement"],
-            sum(r["label"] == r["annotator_b"] for r in rows) / len(rows),
-            "标注一致率",
-        )
-        checks += ["直接扫描记录核对观察截止日期与标注一致率"]
-    elif lesson == "S03":
-        train = set(detail["group"]["train_ids"])
-        evaluation = set(detail["group"]["evaluation_ids"])
-        check(not train & evaluation, "训练评估行重复")
-        check(m["shared_users"] == 0, "分组后用户泄漏")
-        check(stress["mae"] < 1e-6, "事后标签特征应暴露虚假高分")
-        checks += ["分组切分用户不重叠，事后标签特征泄漏被数值展示"]
-    elif lesson == "S04":
-        check(stress["rmse"] > m["rmse"], "极端结果未改变RMSE")
-        checks += ["独立极端结果导致尾部误差增加"]
-    elif lesson == "S05":
-        p = np.array(detail["prediction"])
-        indices = np.argsort(-p, kind="stable")[: config["capacity"]]
-        check(detail["selected_indices"] == indices.tolist(), "名额排序")
-        check(sum(b["n"] for b in detail["calibration"]) == len(p), "分箱分母")
-        checks += ["独立排序核对名额及分箱计数守恒"]
-    elif lesson == "S06":
-        x = np.array(
-            [
-                [r["x1"], np.nan if r["x2"] is None else r["x2"]]
-                for r in rows
-                if r["split"] == "train"
-            ]
-        )
-        expected = np.nanmean(x, axis=0)
-        np.testing.assert_allclose(detail["training_fill"], expected, atol=1e-8)
-        checks += ["仅从训练行重算缺失填补值"]
+        check(set(detail["train_ids"]).isdisjoint(detail["evaluation_ids"]) or lesson == "C01", "训练评价分开")
+        for name, coefficients in detail["model_coefficients"].items():
+            if name == "linear":
+                x = np.array([[1, r["queue_length"]] for r in train])
+                y = np.array([r["wait_minutes"] for r in train])
+                np.testing.assert_allclose(coefficients, np.linalg.lstsq(x, y, rcond=None)[0], atol=1e-8)
+            elif name == "baseline":
+                close(coefficients[0], sum(r["wait_minutes"] for r in train) / len(train), "基线只用训练标签")
+            else:
+                np.testing.assert_allclose(coefficients, [config["rule_intercept"], config["rule_slope"]])
+        check(stress["actual"] is None and stress["mae"] is None, "未知真实值不能评价误差")
+        for group, models in detail["by_period"].items():
+            selected = [r for r in detail["predictions"] if r["period"] == group]
+            for name, report in models.items():
+                close(report["mae"], sum(abs(r[f"prediction_{name}"] - r["actual"]) for r in selected) / len(selected), "分组MAE独立核算")
+        checks += ["独立核算参数、训练评价分离、分组MAE和无标签输入"]
     elif lesson == "S07":
         train = [r for r in rows if r["split"] == "train"]
         a = np.array([[1, r["x1"], r["x2"]] for r in train])

@@ -42,259 +42,20 @@ def prediction_details(y, p):
     return {"actual": np.asarray(y).tolist(), "prediction": np.asarray(p).tolist()}
 
 
-def c01(d, c):
-    rows = d["rows"]
-    labels = matrix(rows, ["label"]).ravel()
-    tr, te = split(rows)
-    p = np.full(te.sum(), float(labels[tr].mean() >= 0.5))
-    broken = dict(rows[0])
-    broken.pop(c["missing_field"], None)
-    missing = [
-        field for field in ["id", "x1", "x2", "label", "split"] if field not in broken
-    ]
-    return outcome(
-        {
-            "row_count": len(rows),
-            "train_rows": int(tr.sum()),
-            "evaluation_rows": int(te.sum()),
-            "duplicate_ids": len(rows) - len({r["id"] for r in rows}),
-            **classification(labels[te], p),
-        },
-        {"predict_positive": classification(labels[te], np.ones(te.sum()))},
-        "移除第一行中的一个必需字段",
-        {"missing_fields": missing, "rejected": bool(missing)},
-        prediction_details(labels[te], p),
-    )
+# C01–C02 使用新的连续回归案例；S01–S30 的实现保持不变。
+from .intro import c01, c02
 
 
-def c02(d, c):
-    rows, x, y, _, tr, te = table(d)
-    field = c["feature"]
-    if field not in {"x1", "x2"}:
-        raise ValueError("feature只能选择已有的x1或x2；新增特征请修改程序")
-    x = x[:, [0 if field == "x1" else 1]]
-    w = fit_linear(x[tr], y[tr])
-    p = predict_linear(x[te], w)
-    baseline = np.full(te.sum(), y[tr].mean())
-    shifted = x[te] + 2
-    return outcome(
-        regression(y[te], p),
-        {"training_mean": regression(y[te], baseline)},
-        "评估特征整体增加2，真实结果暂保持原值，检查输入错误",
-        regression(y[te], predict_linear(shifted, w)),
-        {**prediction_details(y[te], p), "coefficients": w.tolist()},
-    )
 
 
-def s01(d, c):
-    rows, x, _, y, tr, te = table(d)
-    score = matrix(rows, ["score"]).ravel()
-    p = score[te]
-    m = classification(y[te], p, c["threshold"])
-    m["cost"] = m["fp"] + c["false_negative_cost"] * m["fn"]
-    base = classification(y[te], np.full(te.sum(), y[tr].mean()))
-    base["cost"] = base["fp"] + c["false_negative_cost"] * base["fn"]
-    alternative = classification(y[te], 1 - p, c["threshold"])
-    return outcome(
-        m,
-        {"constant_probability": base},
-        "把概率方向反转，模拟标签意义被弄反",
-        alternative,
-        prediction_details(y[te], p),
-    )
 
 
-def s02(d, c):
-    rows = d["rows"]
-    a = matrix(rows, ["label", "proxy_label", "annotator_b", "available_day"])
-    truth, proxy, other, day = a.T
-    visible = day <= c["observation_day"]
-    later = day <= c["observation_day"] + 7
-
-    def report(mask):
-        return {
-            "visible_labels": int(mask.sum()),
-            "total_rows": len(mask),
-            "coverage": float(mask.mean()),
-            "positive_rate": float(truth[mask].mean()) if mask.any() else None,
-            "proxy_accuracy_visible": (
-                float((truth[mask] == proxy[mask]).mean()) if mask.any() else None
-            ),
-        }
-
-    m = report(visible)
-    m["annotator_agreement"] = float((truth == other).mean())
-    m["agreement_meets_setting"] = m["annotator_agreement"] >= c["agreement_threshold"]
-    return outcome(
-        m,
-        {"eventual_all_labels": report(np.ones(len(rows), dtype=bool))},
-        "把标签观察截止日期延后7天",
-        report(later),
-        {
-            "label_counts": {
-                "true_positive": int(truth.sum()),
-                "proxy_positive": int(proxy.sum()),
-            },
-            "visible_ids": [r["id"] for r, v in zip(rows, visible) if v],
-        },
-    )
 
 
-def s03(d, c):
-    rows, x, y, _, _, _ = table(d)
-    n = len(y)
-    fraction = float(c["train_fraction"])
-    if not 0.2 <= fraction <= 0.85:
-        raise ValueError("train_fraction应在0.2到0.85之间")
-    rng = np.random.default_rng(c["seed"])
-    order = rng.permutation(n)
-    random = np.zeros(n, dtype=bool)
-    random[order[: int(round(n * fraction))]] = True
-    time = np.array([r["time"] for r in rows])
-    group = np.array([r["user"] for r in rows])
-    strategies = {
-        "random": random,
-        "time": time < np.quantile(time, fraction),
-        "group": group < np.quantile(group, fraction),
-    }
-    if c["split_strategy"] not in strategies:
-        raise ValueError("split_strategy必须是random/time/group")
-    reports = {}
-    details = {}
-    for name, tr in strategies.items():
-        te = ~tr
-        w = fit_linear(x[tr], y[tr])
-        p = predict_linear(x[te], w)
-        reports[name] = {
-            **regression(y[te], p),
-            "train_n": int(tr.sum()),
-            "shared_users": len(set(group[tr]) & set(group[te])),
-        }
-        details[name] = {
-            **prediction_details(y[te], p),
-            "train_ids": [rows[i]["id"] for i in np.flatnonzero(tr)],
-            "evaluation_ids": [rows[i]["id"] for i in np.flatnonzero(te)],
-        }
-    selected = c["split_strategy"]
-    # This feature is unavailable at prediction time: show why it must be excluded.
-    tr = strategies[selected]
-    leak = np.column_stack([x, y])
-    pw = fit_linear(leak[tr], y[tr])
-    lp = predict_linear(leak[~tr], pw)
-    return outcome(
-        reports[selected],
-        reports,
-        "把事后才知道的真实结果当作输入，展示虚假的高分",
-        regression(y[~tr], lp),
-        details,
-    )
 
 
-def s04(d, c):
-    _, x, y, _, tr, te = table(d)
-    p = predict_linear(x[te], fit_linear(x[tr], y[tr])) + c["prediction_shift"]
-    cost = c["underestimate_cost"]
-    if cost <= 0:
-        raise ValueError("underestimate_cost必须为正")
-    extreme = y[te].copy()
-    extreme[0] += 15
-    return outcome(
-        regression(y[te], p, cost),
-        {"training_mean": regression(y[te], np.full(te.sum(), y[tr].mean()), cost)},
-        "给一条真实结果增加15，检验尾部误差影响",
-        regression(extreme, p, cost),
-        prediction_details(y[te], p),
-    )
 
 
-def s05(d, c):
-    rows, _, _, y, _, te = table(d)
-    p = matrix(rows, ["score"]).ravel()[te]
-    y = y[te]
-    k = int(c["capacity"])
-    if not 1 <= k <= len(y):
-        raise ValueError("capacity必须介于1和评估记录数之间")
-    m = classification(y, p, c["threshold"])
-    m["cost"] = m["fp"] + c["false_negative_cost"] * m["fn"]
-    selected = np.argsort(-p, kind="stable")[:k]
-    decision = np.zeros(len(y))
-    decision[selected] = 1
-    cap = classification(y, decision)
-    cap["selected"] = k
-    bins = []
-    for index in range(5):
-        mask = np.minimum((p * 5).astype(int), 4) == index
-        bins.append(
-            {
-                "lower": index / 5,
-                "upper": (index + 1) / 5,
-                "n": int(mask.sum()),
-                "mean_probability": float(p[mask].mean()) if mask.any() else None,
-                "positive_rate": float(y[mask].mean()) if mask.any() else None,
-            }
-        )
-    new = np.zeros(len(y))
-    new[np.argsort(-p, kind="stable")[: max(1, k // 2)]] = 1
-    groups = np.array([r["group"] for r in rows])[te]
-    slices = {
-        str(group): classification(
-            y[groups == group], p[groups == group], c["threshold"]
-        )
-        for group in np.unique(groups)
-    }
-    return outcome(
-        m,
-        {"capacity_policy": cap, "slices": slices},
-        "复核名额减半",
-        classification(y, new),
-        {
-            **prediction_details(y, p),
-            "calibration": bins,
-            "selected_indices": selected.tolist(),
-        },
-    )
-
-
-def s06(d, c):
-    rows = d["rows"]
-    tr, te = split(rows)
-    x = np.array([[r["x1"], np.nan if r["x2"] is None else r["x2"]] for r in rows])
-    y = matrix(rows, ["target"]).ravel()
-    if c["imputation"] not in {"mean", "median"}:
-        raise ValueError("imputation必须为mean或median")
-    reduce = np.nanmean if c["imputation"] == "mean" else np.nanmedian
-
-    def pipeline(fit_on_all):
-        reference = x if fit_on_all else x[tr]
-        fill = reduce(reference, axis=0)
-        if not np.isfinite(fill).all():
-            raise ValueError("训练列全部缺失，无法估计填补值")
-        completed = np.where(np.isnan(x), fill, x)
-        fit = completed if fit_on_all else completed[tr]
-        mean = fit.mean(axis=0)
-        scale = np.maximum(fit.std(axis=0), 1e-8)
-        z = (completed - mean) / scale
-        w = fit_linear(z[tr], y[tr], ridge=2)
-        p = predict_linear(z[te], w)
-        return regression(y[te], p), fill, mean, scale, p, w
-
-    m, fill, mean, scale, p, w = pipeline(False)
-    leaked, *_ = pipeline(True)
-    allmissing = np.tile(fill, (int(te.sum()), 1))
-    stress = predict_linear((allmissing - mean) / scale, w)
-    return outcome(
-        m,
-        {"whole_dataset_processing_for_diagnosis_only": leaked},
-        "评估输入的所有特征都缺失，使用训练填补值",
-        regression(y[te], stress),
-        {
-            **prediction_details(y[te], p),
-            "training_fill": fill.tolist(),
-            "training_mean": mean.tolist(),
-            "training_scale": scale.tolist(),
-            "missing_values": int(np.isnan(x).sum()),
-        },
-    )
 
 
 def s07(d, c):
@@ -1560,6 +1321,8 @@ def s30(d, c):
         },
     )
 
+
+from .foundations import s01, s02, s03, s04, s05, s06
 
 EXPERIMENTS = {
     "C01": c01,

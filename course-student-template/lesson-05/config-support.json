@@ -1,0 +1,7 @@
+{
+  "seed": 7,
+  "evaluation_split": "validation",
+  "split_strategy": "time",
+  "train_through_day": 3,
+  "validation_through_day": 6
+}

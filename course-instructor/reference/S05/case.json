@@ -1,9 +1,7 @@
 {
-  "lesson": "S05",
-  "purpose": "减少复核容量并改变阈值",
+  "purpose": "S05 非默认配置下独立核算与证据检查",
   "config_patch": {
-    "capacity": 7,
-    "threshold": 0.7
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+    "budget": 3,
+    "seed": 11
+  }
 }

@@ -1,9 +1,9 @@
 {
   "lesson": "C01",
-  "purpose": "加入重复记录并删除标签字段",
+  "purpose": "改变人工规则并检查无标签新输入",
   "config_patch": {
-    "missing_field": "label"
+    "rule_slope": 1.5,
+    "stress_queue": 12
   },
-  "scope": "教师工具核对案例，不是学生必须采用的方案",
-  "duplicate_first_row": true
+  "scope": "教师数值核对案例，不规定学生结论"
 }

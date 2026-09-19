@@ -1,0 +1,9 @@
+{
+  "seed": 7,
+  "evaluation_split": "validation",
+  "budget": 2,
+  "target_period": "晚间",
+  "primary_strategy": "group_first",
+  "synthetic_offset": 0.0,
+  "stress_period": "午间"
+}

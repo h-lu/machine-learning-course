@@ -1,4 +1,7 @@
 {
   "seed": 7,
-  "feature": "x1"
+  "rule_intercept": 1.0,
+  "rule_slope": 2.0,
+  "stress_queue": 10,
+  "evaluation_split": "validation"
 }

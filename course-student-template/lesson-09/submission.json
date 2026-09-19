@@ -3,7 +3,10 @@
   "status": "not_started",
   "report": "lesson-09/report.md",
   "artifacts": [
-    "lesson-09/artifacts/summary.json"
+    "lesson-09/artifacts/summary.json",
+    "lesson-09/artifacts/comparison.csv",
+    "lesson-09/artifacts/records.csv",
+    "lesson-09/artifacts/extrapolation.csv"
   ],
   "run": [
     "python",

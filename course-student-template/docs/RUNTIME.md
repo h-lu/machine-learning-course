@@ -44,3 +44,19 @@ python3 scripts/build_example_data.py --output /tmp/ml-example-data
 ```
 
 这个目录包含重建的数据、配置和入口样例；运行仍需完整学生仓库中的 `mlcourse/`，它不是独立安装包。
+
+## C01–C02 入门案例
+
+C01–C02 使用 `mlcourse/intro.py` 中的取餐等待时间案例，公共运行入口和文件名不变。C01 的规则参数人为设定；C02 的均值基线与一元线性回归只使用训练集，默认在验证集上评价。只有 C02 接受 `--split validation` 或 `--split test`，也可在配置中选择；测试集不用于选择方案。
+
+两课额外生成 `predictions.csv`，逐条保存特征、真实值、预测值与绝对误差。默认提交清单列出 JSON 和 CSV，当前配置与清单命令应能重新生成主要结果。模型的主要数值显示在 `summary.json`，学习所需术语见 [术语表](TERMINOLOGY.md)。
+
+## S01–S06 的结果表
+
+`lesson-03` 至 `lesson-08` 对应问题与评价模块。默认输出为 `summary.json`、`comparison.csv` 和 `records.csv`；S05 另有 `added_samples.csv`。终端显示方法名、单位与分母，JSON 保留模型参数、样本编号和分组检查。具体字段见各课 `data/DATA.md`。
+
+S01、S03–S06 支持 `--split validation` 或 `--split test`，只改变评价部分，模型和预处理仍只从训练数据学习。S03 先保留原测试编号，再在开发部分比较划分；不同划分评价的对象不同。S02 没有这个选项，用 `observation_day` 控制可见标签。
+
+每次修改配置或数据后使用新的 `--output` 目录，不复用旧输出充当新实验。默认结构中的 `metrics` 是为兼容工具保留的主方案指标，不是程序的采用建议。逐条表是长表：同一个样本在不同方法下各占一行。空白/`null` 表示未知或未定义，不表示零。
+
+输入、代码和配置哈希帮助复核文件变化，不证明数据真实。本模块的代理标签、采集池与合成标签都有明确模拟来源；数据生成和使用步骤见 [模块说明](FOUNDATIONS.md)。
