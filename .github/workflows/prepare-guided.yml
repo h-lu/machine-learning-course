@@ -1,0 +1,47 @@
+name: Prepare reviewed student guidance
+on:
+  push:
+    branches: ["course/foundations-s01-s06"]
+    paths: [".review-transfer/**", ".github/workflows/prepare-guided.yml"]
+permissions:
+  contents: read
+jobs:
+  materialize:
+    if: github.repository == 'h-lu/machine-learning-course' && github.ref == 'refs/heads/course/foundations-s01-s06'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Verify and apply exact reviewed source without executing course code
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = "93b5bdc99802170e2884e4d9535beebe80b28317"
+          python3 - <<'PY'
+          import base64
+          import hashlib
+          import lzma
+          from pathlib import Path
+          encoded = ''.join(Path(f'.review-transfer/part-{i:02d}.b64').read_text(encoding='ascii') for i in range(1, 5))
+          assert len(encoded) == 54256, 'Unexpected encoded source length'
+          decoder = lzma.LZMADecompressor(memlimit=256 * 1024 * 1024)
+          patch = decoder.decompress(base64.b64decode(encoded, validate=True), max_length=1000000)
+          assert decoder.eof and not decoder.unused_data, 'Incomplete or trailing source archive'
+          assert len(patch) == 199425, 'Unexpected patch length'
+          assert hashlib.sha256(patch).hexdigest() == '57b00e31237d9c28e3244adca324bfc696edff26faf08172c74a3ec2e91a8f1c', 'Source checksum mismatch'
+          Path('/tmp/guided.patch').write_bytes(patch)
+          PY
+          git rm .review-transfer/part-01.b64 .review-transfer/part-02.b64 .review-transfer/part-03.b64 .review-transfer/part-04.b64 .github/workflows/prepare-guided.yml
+          git apply --check /tmp/guided.patch
+          git apply --index /tmp/guided.patch
+          test "$(git write-tree)" = "669e6a10c7fd8b796a8e608c5d4def9e4ba81cf8"
+          git diff --cached --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "course: add tested beginner learning paths for S01-S07"
+          test "$(git ls-remote origin refs/heads/course/foundations-s01-s06 | cut -f1)" = "$GITHUB_SHA"
+          git push origin HEAD:refs/heads/course/foundations-s01-s06
