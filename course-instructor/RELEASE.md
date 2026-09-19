@@ -41,7 +41,7 @@ PYTHONPATH=ml-check pytest -q ml-check/tests
 
 ## 题库同步与当前服务限制
 
-题库源文件在 `lessons/ID/questions.json`。从教师目录执行 `python3 ../tools/sync_question_bank.py` 生成服务题库；修改概念和课次含义时还需审查 `ml-check/app/questions.py` 的题库版本及相关测试。同步脚本不是新旧版本隔离或生产部署工具。
+以下同步操作仅在包含 `tools/`、教师材料与 `ml-check/` 的完整工作区执行；独立 Gitea 教师仓库不能直接运行这些跨目录命令。题库源文件在 `lessons/ID/questions.json`。从完整工作区的教师目录执行 `python3 ../tools/sync_question_bank.py` 生成服务题库；修改概念和课次含义时还需审查 `ml-check/app/questions.py` 的题库版本及相关测试。同步脚本不是新旧版本隔离或生产部署工具。
 
 当前 `ml-check/app/questions.py` 加载单份 `question_bank/lessons.json`，按 `lesson_id` 查找。它没有按课程版本选择题库的接口，因此只在发布记录中写版本号，不能使同一服务同时支持同课号的新旧含义。
 
