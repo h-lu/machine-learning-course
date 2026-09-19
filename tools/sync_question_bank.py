@@ -27,7 +27,7 @@ def main():
         return 1
     target = ROOT / "ml-check/app/question_bank/lessons.json"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps({"version": "ml-v11-s02-review-2026-09-20", "lessons": lessons}, ensure_ascii=False, indent=2) + "\n")
+    target.write_text(json.dumps({"version": "ml-v11-s01-s02-review-2026-09-20", "lessons": lessons}, ensure_ascii=False, indent=2) + "\n")
     print(f"已汇集 {len(lessons)} 课、{sum(len(x['questions']) for x in lessons)} 题。")
     return 0
 

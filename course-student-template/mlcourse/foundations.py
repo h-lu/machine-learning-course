@@ -465,6 +465,22 @@ def label_audit_console_summary(result):
 def console_summary(result):
     """给初学者的最小结果导航，不代写结论。"""
     d = result["details"]
+    if result.get("lesson") in {"S01", "lesson-03"}:
+        split = {"validation": "验证集", "test": "测试集"}[d["evaluation_split"]]
+        lines = [f"S01：训练样本 {len(d['train_ids'])} 条；{split} {len(d['evaluation_ids'])} 条。",
+                 "比较结果（不是自动推荐）：MAE 单位为分钟，提醒依据预测值。"]
+        for row in d["tables"]["comparison"]:
+            value = "未定义" if row["mae"] is None else f"{row['mae']:.6g}"
+            lines.append(f"{row['method_name']}；样本数={row['n']}；MAE/分钟={value}；提醒数={row['alerts']}")
+        lines.append("alert: True=提醒，False=不提醒；MAE 空白或 null 不是 0。")
+        stress = result["stress_test"]["metrics"]
+        values = "；".join(f"{NAMES[name]}={value:.6g} 分钟"
+                          for name, value in stress["predictions"].items())
+        lines.append(f"新输入检查：{stress['queue_length']} 人；{values}。没有标签，不能计算误差。")
+        lines.append("这个新输入没有加入验证/测试集，不改变比较表中的样本数或 MAE。")
+        lines.append("先从 records.csv 找指定方法的一行，再读 comparison.csv；其他指标按需查数据说明。")
+        lines.append(d["note"])
+        return "\n".join(lines)
     if d.get("primary_method") == "available_only":
         return label_audit_console_summary(result)
     lines = ["比较结果（不是自动推荐）："]

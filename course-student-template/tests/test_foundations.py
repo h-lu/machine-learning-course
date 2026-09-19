@@ -185,9 +185,12 @@ class FoundationColdRead(unittest.TestCase):
     def test_all_readme_trial_json_and_commands_run_and_preserve_originals(self):
         for i in range(1,7):
             folder=f'lesson-{i+2:02d}';text=(self.root/folder/'README.md').read_text()
-            trial=json.loads(re.search(r'```json\n(.*?)\n```',text,re.S).group(1))
+            trial=(json.loads((self.root/folder/'config-support.json').read_text()) if i == 1
+                   else json.loads(re.search(r'```json\n(.*?)\n```',text,re.S).group(1)))
             self.cmd(sys.executable,'scripts/course.py','start',f'{i+2:02d}')
-            original=[f'{folder}/analysis.py','--output',f'{folder}/artifacts/original']
+            original=[f'{folder}/analysis.py']
+            if i == 1: original += ['--config', f'{folder}/config-start.json']
+            original += ['--output',f'{folder}/artifacts/original']
             if i == 2:
                 # S02 now supplies a fixed starting config, a date contrast, then a personal check.
                 original=[f'{folder}/analysis.py','--config',f'{folder}/config-start.json','--output',f'{folder}/artifacts/original']
@@ -195,7 +198,7 @@ class FoundationColdRead(unittest.TestCase):
             result=self.cmd(sys.executable,*original)
             self.assertIn('comparison.csv',result.stdout);self.assertIn('records.csv',result.stdout)
             old=(self.root/folder/'artifacts/original/records.csv').read_bytes()
-            config_name, output_name = ('config-mine.json', 'my-check') if i == 2 else ('config-trial.json', 'trial')
+            config_name, output_name = ('config-support.json', 'trial') if i == 1 else (('config-mine.json', 'my-check') if i == 2 else ('config-trial.json', 'trial'))
             if i == 2:
                 contrast=[f'{folder}/analysis.py','--config',f'{folder}/config-support.json','--output',f'{folder}/artifacts/trial']
                 self.assertIn('python '+' '.join(contrast),text)
@@ -204,7 +207,8 @@ class FoundationColdRead(unittest.TestCase):
                 self.assertEqual(dated['details']['observation_day'],7)
                 self.assertEqual(dated['metrics']['n'],7)
                 self.assertEqual(old,(self.root/folder/'artifacts/original/records.csv').read_bytes())
-            (self.root/folder/config_name).write_text(json.dumps(trial,ensure_ascii=False))
+            if i != 1:
+                (self.root/folder/config_name).write_text(json.dumps(trial,ensure_ascii=False))
             args=[f'{folder}/analysis.py','--config',f'{folder}/{config_name}','--output',f'{folder}/artifacts/{output_name}']
             self.assertIn('python '+' '.join(args),text);self.cmd(sys.executable,*args)
             self.assertEqual(old,(self.root/folder/'artifacts/original/records.csv').read_bytes())
