@@ -4,8 +4,10 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from datetime import datetime, timedelta, timezone
 
 from fastapi.testclient import TestClient
+from app import db
 from app.config import Settings
 from app.main import create_app
 from app.legacy import load_bank
@@ -51,6 +53,20 @@ class IntroBank(unittest.TestCase):
         for bad in (0, -1, True, "240", 4000):
             values = copy.deepcopy(bank.__dict__); values["durations"]["attempt_a"] = bad
             with self.assertRaises(ValueError): LessonBank(**values)
+
+    def test_phase_timing_uses_aware_utc_on_supported_python_versions(self):
+        self.assertEqual(db.utc_now().tzinfo, timezone.utc)
+        self.assertEqual(datetime.fromisoformat(db.iso_now()).utcoffset(), timedelta(0))
+        with tempfile.TemporaryDirectory() as temp:
+            path = str(Path(temp) / "time.sqlite3")
+            db.initialize(path, "C01", "入门检查")
+            session = db.current_session(path)
+            db.set_phase(path, session["id"], "a", CURRENT_BANKS[0].durations["attempt_a"])
+            updated = db.get_session(path, session["id"])
+            started = datetime.fromisoformat(updated["phase_started_at"])
+            ended = datetime.fromisoformat(updated["phase_ends_at"])
+            self.assertEqual(started.utcoffset(), timedelta(0))
+            self.assertEqual(ended - started, timedelta(seconds=240))
 
     def test_fastapi_health_and_public_intro_reads(self):
         with tempfile.TemporaryDirectory() as temp:
