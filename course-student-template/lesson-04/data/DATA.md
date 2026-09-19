@@ -1,6 +1,6 @@
 # S02 数据、参数和结果说明
 
-数据来源：人工教学数据，不代表真实人群、因果效果或 AI 能力。 available_day 是记录上传日期，不是等待了几天；代理值和复核值均人工编写，不是实际 AI 输出。
+数据由课程人工构造，用于练习本课方法。available_day 是记录上传日期，不是等待了几天；代理值和复核值均人工编写，不是实际 AI 输出。
 
 JSON 用带字段名的文本保存数据，顶层 `rows` 是样本列表，共 8 条。不要用课程文件中的人工数值说明真实食堂情况。
 
@@ -22,7 +22,7 @@ JSON 用带字段名的文本保存数据，顶层 `rows` 是样本列表，共 
 
 ## 参数怎样影响实验
 
-`config.json` 为默认配置，`config-trial.json` 是自己另存的副本。不要整份复制其他课的配置；未知字段会明确报错。
+`config.json` 用于最终重跑；`config-start.json` 保留入门起点；`config-support.json` 是已经准备好的单项对照。入门步骤见 [SUPPORT.md](../SUPPORT.md)。`config-trial.json` 或 `config-mine.json` 是自己的配置副本。不要整份复制其他课的配置；未知字段会明确报错。
 
 | 参数 | 含义 |
 |---|---|
@@ -33,11 +33,11 @@ JSON 用带字段名的文本保存数据，顶层 `rows` 是样本列表，共 
 
 ## 怎样读结果
 
-`comparison.csv` 一行一种方案；`method` 是程序代号，`method_name` 是中文名称，`n` 是该行统计使用的样本数。`records.csv` 保留逐条输入与输出。同一编号出现多次，是不同方法对同一条样本计算，不是新增独立样本。
+`comparison.csv` 一行一种方案；`method` 是程序代号，`method_name` 是中文名称，`n` 是该行统计使用的样本数。`records.csv` 每行对应一条原始样本，保留当前截止日是否收到标签及可见数值。
 
 本课不是训练模型，`records.csv` 使用 `observed_minutes`、`proxy_minutes` 和 `review_minutes` 区分已观察标签、代理估计与另一份复核值。`visible` 表示当前是否收到真实标签。CSV 空白和 JSON `null` 表示没有值，不能自行改为零。
 
-本课不预测新分钟数：逐条表使用 `visible`（截止日是否收到）、`observed_minutes`（已收到的真实标签）、`proxy_minutes`、`review_minutes` 和 `disagreement`。`n` 是该处理实际使用的标签数，不同处理的均值含义不同。`coverage` 分母是全部 8 条；`agreement` 分母只包括已知且有复核值的配对，不是所有记录。没有配对时保持为空。
+`disagreement` 表示两份已知标注是否超过指定容差；`True` 为是，`False` 为否。`n` 是该处理实际使用的标签数，不同处理的均值含义不同。`coverage` 分母是全部 8 条；`agreement` 分母只包括已知且有复核值的配对，不是所有记录。没有配对时保持为空。
 
 `summary.json` 保存完整结果和输入、配置、源码哈希；`metrics` 只是一份指定主要方案的汇总，不是自动推荐。`comparison` 保存其余方案；`stress_test` 是改变一个条件的检查。哈希帮助核对文件变化，不能证明来源真实。兼容输出中出现但本课未使用的指标不要求背诵。
 

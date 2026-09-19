@@ -1,0 +1,5 @@
+{
+  "seed": 7,
+  "ridge": 10.0,
+  "extrapolation_distance": 4.0
+}

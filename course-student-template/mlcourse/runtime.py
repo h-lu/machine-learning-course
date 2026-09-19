@@ -116,6 +116,31 @@ def intro_console_summary(result):
     return "\n".join(lines)
 
 
+def linear_reading_tables(data, result):
+    """S07 的阅读表：由既有结果导出，不重训、不改指标，不混淆人工外推标签。"""
+    train = [row for row in data["rows"] if row.get("split") == "train"]
+    evaluation = [row for row in data["rows"] if row.get("split") != "train"]
+    detail = result["details"]
+    baseline = sum(row["target"] for row in train) / len(train)
+    lower, upper = min(row["x1"] for row in train), max(row["x1"] for row in train)
+    records, extrapolation = [], []
+    weights = detail["coefficients"]
+    for row, actual, prediction, far, far_actual in zip(
+        evaluation, detail["actual"], detail["prediction"],
+        detail["extrapolation_x"], detail["extrapolation_actual"], strict=True
+    ):
+        records.append(dict(id=row["id"], x1=row["x1"], x2=row["x2"], group=row.get("group"),
+                            actual=actual, prediction=prediction, baseline_prediction=baseline,
+                            residual_actual_minus_prediction=actual-prediction,
+                            absolute_error=abs(actual-prediction)))
+        extrapolation.append(dict(id=row["id"], original_x1=row["x1"], shifted_x1=far[0], x2=far[1],
+                                  prediction=weights[0]+weights[1]*far[0]+weights[2]*far[1],
+                                  synthetic_target=far_actual, outside_training_x1=not lower <= far[0] <= upper))
+    comparison = [dict(method="linear", method_name="线性回归 / 岭回归", unit="无量纲", **result["metrics"]),
+                  dict(method="training_mean", method_name="训练均值基线", unit="无量纲", **result["comparison"]["training_mean"])]
+    return convert(dict(comparison=comparison, records=records, extrapolation=extrapolation))
+
+
 def read_input_json(path):
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -186,6 +211,17 @@ def main(lesson_directory):
             print(f"表格：{csv_path}")
         if tables:
             print(foundations_console_summary(result))
+        if lesson_directory.name in {"S07", "lesson-09"}:
+            for name, table in linear_reading_tables(data, result).items():
+                csv_path = args.output / f"{name}.csv"
+                with csv_path.open("w", encoding="utf-8", newline="") as stream:
+                    writer = csv.DictWriter(stream, fieldnames=list(table[0]))
+                    writer.writeheader()
+                    writer.writerows(table)
+                print(f"阅读表格：{csv_path}")
+            print("S07：特征与目标均无量纲；evaluation 用于开发评价，不是未见最终测试。")
+            print("先看 comparison.csv 的方法名和 MAE，再从 records.csv 核对真实值减预测值。")
+            print("extrapolation.csv 的 synthetic_target 是人工对照标签，不是实际观测。")
         print(f"{lesson_directory.name}: 示例实验已运行，结果写入 {path}")
     except (ValueError, KeyError, TypeError, IndexError, OSError) as error:
         parser.exit(

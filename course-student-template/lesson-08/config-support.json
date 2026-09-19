@@ -1,0 +1,6 @@
+{
+  "seed": 7,
+  "evaluation_split": "validation",
+  "change": "period_feature",
+  "stress_queue_shift": 3
+}
