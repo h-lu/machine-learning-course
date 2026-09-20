@@ -126,7 +126,9 @@ python scripts/course.py check 02
 
 ### 提高任务（Upgrade）：增加一个合理基线
 
-例如比较中位数基线。新方法仍只用训练集确定参数，在验证集上选择，不为增加模型数量而增加模型。
+请自己写一个小程序 `lesson-02/median_baseline.py`，只读取训练集标签，计算中位数，并对四条验证记录输出 `id`、`actual`、`prediction`、`absolute_error`。把它与现有三种方法放在同一批验证记录上比较，写出分母、单位和结果；程序不得读取验证标签来计算中位数，也不得查看测试集后再修改方法。若中位数与均值基线相同，要解释这是数据排序后的结果，不要把“增加方法”写成自动改进。
+
+程序从仓库根目录运行：`python lesson-02/median_baseline.py`，结果保存到 `lesson-02/artifacts/median-validation.csv`。至少保留读取的训练编号、计算出的中位数、四条验证编号和一列绝对误差，别人应能按你的命令重跑。
 
 ### 换数据重测（Transfer）：换一个时间预测任务
 
