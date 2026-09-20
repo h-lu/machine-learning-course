@@ -14,9 +14,15 @@
       "period": "午间",
       "site": "A",
       "day": 1,
+      "staff_count": 2,
+      "weather": "晴",
+      "event_flag": false,
       "available_day": 1,
       "proxy_minutes": 1,
-      "review_minutes": 1
+      "review_minutes": 1,
+      "record_source": "直接计时",
+      "review_source": "第二人复核",
+      "clock_quality": "完整"
     },
     {
       "id": "A02",
@@ -25,9 +31,15 @@
       "period": "午间",
       "site": "A",
       "day": 2,
+      "staff_count": 3,
+      "weather": "阴",
+      "event_flag": false,
       "available_day": 2,
       "proxy_minutes": 3,
-      "review_minutes": 3
+      "review_minutes": 3,
+      "record_source": "直接计时",
+      "review_source": "第二人复核",
+      "clock_quality": "完整"
     },
     {
       "id": "A03",
@@ -36,9 +48,15 @@
       "period": "午间",
       "site": "A",
       "day": 3,
+      "staff_count": 1,
+      "weather": "雨",
+      "event_flag": true,
       "available_day": 6,
       "proxy_minutes": 5,
-      "review_minutes": 5
+      "review_minutes": 5,
+      "record_source": "直接计时",
+      "review_source": "第二人复核",
+      "clock_quality": "完整"
     },
     {
       "id": "A04",
@@ -47,9 +65,15 @@
       "period": "午间",
       "site": "A",
       "day": 4,
+      "staff_count": 2,
+      "weather": "阴",
+      "event_flag": false,
       "available_day": 4,
       "proxy_minutes": 7,
-      "review_minutes": 10
+      "review_minutes": 10,
+      "record_source": "直接计时",
+      "review_source": "第二人复核",
+      "clock_quality": "完整"
     },
     {
       "id": "B01",
@@ -58,9 +82,15 @@
       "period": "晚间",
       "site": "B",
       "day": 1,
+      "staff_count": 3,
+      "weather": "晴",
+      "event_flag": false,
       "available_day": 5,
       "proxy_minutes": 3,
-      "review_minutes": 7
+      "review_minutes": 7,
+      "record_source": "直接计时",
+      "review_source": "第二人复核",
+      "clock_quality": "完整"
     },
     {
       "id": "B02",
@@ -69,9 +99,15 @@
       "period": "晚间",
       "site": "B",
       "day": 2,
+      "staff_count": 1,
+      "weather": "阴",
+      "event_flag": false,
       "available_day": 3,
       "proxy_minutes": 5,
-      "review_minutes": 9
+      "review_minutes": 9,
+      "record_source": "直接计时",
+      "review_source": "第二人复核",
+      "clock_quality": "完整"
     },
     {
       "id": "B03",
@@ -80,9 +116,15 @@
       "period": "晚间",
       "site": "B",
       "day": 3,
+      "staff_count": 2,
+      "weather": "雨",
+      "event_flag": true,
       "available_day": 7,
       "proxy_minutes": 7,
-      "review_minutes": 11
+      "review_minutes": 11,
+      "record_source": "直接计时",
+      "review_source": "第二人复核",
+      "clock_quality": "完整"
     },
     {
       "id": "B04",
@@ -91,9 +133,15 @@
       "period": "晚间",
       "site": "B",
       "day": 4,
+      "staff_count": 3,
+      "weather": "阴",
+      "event_flag": false,
       "available_day": null,
       "proxy_minutes": 1,
-      "review_minutes": null
+      "review_minutes": null,
+      "record_source": "直接计时",
+      "review_source": null,
+      "clock_quality": "完整"
     }
   ]
 }

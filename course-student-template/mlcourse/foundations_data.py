@@ -38,6 +38,9 @@ def core_rows() -> list[dict]:
             wait = 1 + 2 * queue + (0, 4, 6)[index] + (1 if day >= 5 else 0)
             rows.append(dict(id=f"{site}{day:02d}", queue_length=queue,
                              wait_minutes=wait, period=period, site=site, day=day,
+                             staff_count=((day + index) % 3) + 1,
+                             weather=("雨" if day in (3, 6) else "晴" if day % 2 else "阴"),
+                             event_flag=day in (3, 6),
                              split="train" if day <= 4 else "validation" if day <= 6 else "test"))
     return rows
 
@@ -62,6 +65,11 @@ def example_data(lesson: str) -> dict:
             r["available_day"] = available
             r["proxy_minutes"] = 1 + 2 * r["queue_length"]
             r["review_minutes"] = r["wait_minutes"] + (3 if r["id"] == "A04" else 0)
+            r["record_source"] = ["直接计时", "直接计时", "日志重建", "直接计时",
+                                   "日志重建", "直接计时", "日志重建", "未提供"][len(rows) - 8]
+            r["review_source"] = None if r["id"] == "B04" else "第二人复核"
+            r["clock_quality"] = ["完整", "完整", "缺开始时间", "完整",
+                                   "完整", "完整", "缺结束备注", "缺失"][len(rows) - 8]
             if available is None:
                 r["wait_minutes"] = r["review_minutes"] = None
         note = "available_day 是记录上传日期，不是等待了几天；代理值和复核值均人工编写，不是实际 AI 输出。"

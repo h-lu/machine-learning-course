@@ -11,9 +11,13 @@ def example_data(lesson: str) -> dict:
     """人工构造的取餐等候数据，不是真实食堂调查，也不使用随机采样。"""
     if lesson not in TITLES:
         raise ValueError("入门实验只支持 C01 和 C02")
+    staff = [2, 2, 1, 3, 1, 2, 2, 1]
+    modes = ["standard", "standard", "rush", "rush", "standard", "self_service", "self_service", "rush"]
+    rain = [False, False, True, False, False, True, False, True]
     rows = [
         dict(id=f"train-{i+1:02d}", queue_length=i % 4, wait_minutes=y,
-             period="午间" if i < 4 else "晚间", split="train")
+             period="午间" if i < 4 else "晚间", split="train",
+             staff_count=staff[i], service_mode=modes[i], rain=rain[i])
         for i, y in enumerate([2, 2, 4, 8, 0, 4, 6, 6])
     ]
     if lesson == "C02":
@@ -23,7 +27,11 @@ def example_data(lesson: str) -> dict:
                       (2, 4, "晚间"), (3, 4, "晚间")]),
         ]:
             rows.extend(dict(id=f"{split}-{i+1:02d}", queue_length=x, wait_minutes=y,
-                             period=p, split=split) for i, (x, y, p) in enumerate(samples))
+                             period=p, split=split,
+                             staff_count=[2, 1, 3, 2, 1, 2][i],
+                             service_mode=["standard", "rush", "standard", "rush", "self_service", "standard"][i],
+                             rain=[False, True, False, True, False, True][i])
+                         for i, (x, y, p) in enumerate(samples))
     return {"kind": "intro_waiting_time", "source": "人工构造的教学数据；单位为分钟；不代表真实食堂或学生。",
             "rows": rows}
 

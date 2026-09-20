@@ -103,3 +103,7 @@ MAE 的单位跟标签相同，这里是分钟；分母是参与评价的 6 条�
 先独立写下答案，再用程序输出、数据说明或 AI 核对理由。不要把纸面练习的答案写成已经运行的实验结果。
 
 需要查定义时，可以阅读 [Google 的问题定义说明](https://developers.google.com/machine-learning/problem-framing/problem) 和 [scikit-learn 的 MAE 定义](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)。这些链接帮助核对术语，不代表本课已经验证真实效果。
+
+## 11. 背景字段不等于模型特征
+
+本课还保存了工作人员人数、天气和预设忙碌日标记。它们没有进入默认模型；字段存在不等于模型使用。若要研究它们，必须先写清做预测时是否能提前知道，再用训练集、验证集重新比较。

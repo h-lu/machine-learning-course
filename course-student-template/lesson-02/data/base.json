@@ -7,126 +7,180 @@
       "queue_length": 0,
       "wait_minutes": 2,
       "period": "午间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 2,
+      "service_mode": "standard",
+      "rain": false
     },
     {
       "id": "train-02",
       "queue_length": 1,
       "wait_minutes": 2,
       "period": "午间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 2,
+      "service_mode": "standard",
+      "rain": false
     },
     {
       "id": "train-03",
       "queue_length": 2,
       "wait_minutes": 4,
       "period": "午间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 1,
+      "service_mode": "rush",
+      "rain": true
     },
     {
       "id": "train-04",
       "queue_length": 3,
       "wait_minutes": 8,
       "period": "午间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 3,
+      "service_mode": "rush",
+      "rain": false
     },
     {
       "id": "train-05",
       "queue_length": 0,
       "wait_minutes": 0,
       "period": "晚间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 1,
+      "service_mode": "standard",
+      "rain": false
     },
     {
       "id": "train-06",
       "queue_length": 1,
       "wait_minutes": 4,
       "period": "晚间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 2,
+      "service_mode": "self_service",
+      "rain": true
     },
     {
       "id": "train-07",
       "queue_length": 2,
       "wait_minutes": 6,
       "period": "晚间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 2,
+      "service_mode": "self_service",
+      "rain": false
     },
     {
       "id": "train-08",
       "queue_length": 3,
       "wait_minutes": 6,
       "period": "晚间",
-      "split": "train"
+      "split": "train",
+      "staff_count": 1,
+      "service_mode": "rush",
+      "rain": true
     },
     {
       "id": "validation-01",
       "queue_length": 0,
       "wait_minutes": 1,
       "period": "午间",
-      "split": "validation"
+      "split": "validation",
+      "staff_count": 2,
+      "service_mode": "standard",
+      "rain": false
     },
     {
       "id": "validation-02",
       "queue_length": 1,
       "wait_minutes": 3,
       "period": "午间",
-      "split": "validation"
+      "split": "validation",
+      "staff_count": 1,
+      "service_mode": "rush",
+      "rain": true
     },
     {
       "id": "validation-03",
       "queue_length": 2,
       "wait_minutes": 5,
       "period": "午间",
-      "split": "validation"
+      "split": "validation",
+      "staff_count": 3,
+      "service_mode": "standard",
+      "rain": false
     },
     {
       "id": "validation-04",
       "queue_length": 3,
       "wait_minutes": 4,
       "period": "晚间",
-      "split": "validation"
+      "split": "validation",
+      "staff_count": 2,
+      "service_mode": "rush",
+      "rain": true
     },
     {
       "id": "test-01",
       "queue_length": 0,
       "wait_minutes": 1,
       "period": "午间",
-      "split": "test"
+      "split": "test",
+      "staff_count": 2,
+      "service_mode": "standard",
+      "rain": false
     },
     {
       "id": "test-02",
       "queue_length": 1,
       "wait_minutes": 3,
       "period": "午间",
-      "split": "test"
+      "split": "test",
+      "staff_count": 1,
+      "service_mode": "rush",
+      "rain": true
     },
     {
       "id": "test-03",
       "queue_length": 2,
       "wait_minutes": 5,
       "period": "午间",
-      "split": "test"
+      "split": "test",
+      "staff_count": 3,
+      "service_mode": "standard",
+      "rain": false
     },
     {
       "id": "test-04",
       "queue_length": 3,
       "wait_minutes": 7,
       "period": "午间",
-      "split": "test"
+      "split": "test",
+      "staff_count": 2,
+      "service_mode": "rush",
+      "rain": true
     },
     {
       "id": "test-05",
       "queue_length": 2,
       "wait_minutes": 4,
       "period": "晚间",
-      "split": "test"
+      "split": "test",
+      "staff_count": 1,
+      "service_mode": "self_service",
+      "rain": false
     },
     {
       "id": "test-06",
       "queue_length": 3,
       "wait_minutes": 4,
       "period": "晚间",
-      "split": "test"
+      "split": "test",
+      "staff_count": 2,
+      "service_mode": "standard",
+      "rain": true
     }
   ]
 }

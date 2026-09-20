@@ -59,6 +59,8 @@ python scripts/course.py run 01
 
 终端显示“结果写入”后，先打开 `predictions.csv`。找 `id=train-03`，核对 `queue_length=2`、`actual=4`、`prediction_rule=5`、`absolute_error_rule=1`。单位分别是人和分钟。
 
+再回到 `data/base.json` 看同一行的 `staff_count`、`service_mode` 和 `rain`。这些是现场背景信息，默认规则没有使用它们。写一句预计：如果两条记录人数相同但背景条件不同，只看人数可能漏掉什么。
+
 ### 3. 只改一个参数做对照
 
 把 `config.json` 另存为 `lesson-01/config-trial.json`，使用下面的完整内容。这里仅把 `rule_slope` 从 2.0 改成 1.5：
