@@ -44,7 +44,11 @@ python lesson-04/analysis.py --config lesson-04/config-start.json --output lesso
 
 一致比例的分母是同时有两份标注的记录数。没有第二份标注的记录不算一致，也不算分歧。
 
-## 5. 只把观察日改为第 7 天
+## 5. 检查来源质量
+
+回到 `data/base.json` 看四条已知记录的 `record_source` 和 `clock_quality`。统计数字相同不代表来源质量相同；把一条需要复核的记录写入报告，并说明你要先查哪份原始记录。运行结果的 `records.csv` 也会保留这三列，方便把来源和统计数字对应起来。
+
+## 6. 只把观察日改为第 7 天
 
 先预计会新增哪些标签，再运行现成配置：
 
@@ -56,7 +60,7 @@ python lesson-04/analysis.py --config lesson-04/config-support.json --output les
 
 这是同一批 8 条经历在较晚截止日收到更多标签，不是第 7 天重新发生了 8 次排队，也不能说服务因此变慢。
 
-## 6. 做自己的单一检查
+## 7. 做自己的单一检查
 
 从 `config-start.json` 另存为 `config-mine.json`。只改 `disagreement_minutes` 或 `observation_day` 中的一项，先写预计，再运行：
 
@@ -69,9 +73,9 @@ python lesson-04/analysis.py --config lesson-04/config-mine.json --output lesson
 
 写一条具体复核计划，例如检查 A04 的加入队伍和取餐时间。计划尚未执行时必须写成“准备复核”，不能写成已经证实。
 
-## 7. 写报告并检查保存
+## 8. 写报告并检查保存
 
-报告至少包含：三个数的来源、均值与覆盖率手算、日期对照、自己的检查、复核计划和限制。填写 `contract.json`，把最后保留的设置写回 `config.json`，实际完成后把 `submission.json` 状态改为 `complete`。
+报告至少包含：三个数的来源、均值与覆盖率手算、日期对照、自己的检查、复核计划和限制。填写 `contract.json`；其中 `split_plan` 写“第 4 天起点、第 7 天对照和最后保留的截止日”，不是机器学习中的训练/验证/测试划分。把最后保留的设置写回 `config.json`，实际完成后把 `submission.json` 状态改为 `complete`。
 
 ```bash
 python scripts/course.py run 04
@@ -83,14 +87,10 @@ git diff --cached --name-only
 
 暂存清单应包含报告、任务说明、配置和报告引用的结果。以上命令只准备本地提交，不会自动上传。
 
-## 8. 卡住时怎么办
+## 9. 卡住时怎么办
 
 - 不知道先看什么：先看 `records.csv` 中 B02，再找四行 `visible=True`。
 - 均值或覆盖率不对：分别检查分母是 4 还是 8。
 - 日期改变后结果没变：检查实际使用的配置和输出目录。
 - JSON 报错：按行号、列号检查英文双引号、逗号和非负数值。
 - 软件暂时不能运行：保留报错，先完成第 1、3、4 节手算，并在报告标明“尚未运行”，修复后补跑。
-
-### 3.1 检查来源质量
-
-回到 `data/base.json` 看四条已知记录的 `record_source` 和 `clock_quality`。统计数字相同不代表来源质量相同；把一条需要复核的记录写入报告，并说明你要先查哪份原始记录。

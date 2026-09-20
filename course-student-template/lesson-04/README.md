@@ -8,6 +8,8 @@
 
 第一次接触缺失标签或标注复核时，直接按 [入门支持](SUPPORT.md) 完成。第一项任务只需辨认 B02 一行中的三个数。
 
+完成后要提交报告、最终配置以及起点、日期对照和个人检查生成的结果表。命令报错时先保留完整报错和已经生成的文件，再按 SUPPORT 的“卡住时怎么办”继续；不要手改结果表。
+
 ## 本课要学会什么
 
 | 概念 | 学完后你能做什么 |
@@ -102,7 +104,7 @@ python lesson-04/analysis.py --config lesson-04/config-mine.json --output lesson
 
 ### 6. 保存报告和提交文件
 
-报告需要说明标签来源、两个分母、日期对照、个人检查、具体复核建议和限制。填写 `contract.json` 六个字段，把最后保留的设置写回 `config.json`，实际完成后再把 `submission.json` 状态改为 `complete`。
+报告需要说明标签来源、两个分母、日期对照、个人检查、具体复核建议和限制。`contract.json` 的 `split_plan` 在本课不是训练/验证/测试划分，而是写清第 4 天起点、第 7 天日期对照和最后保留的观察截止日；`metric` 写均值、标签覆盖率和标注分歧怎样计算。填写六个字段，把最后保留的设置写回 `config.json`，实际完成后再把 `submission.json` 状态改为 `complete`。
 
 ```bash
 python scripts/course.py run 04

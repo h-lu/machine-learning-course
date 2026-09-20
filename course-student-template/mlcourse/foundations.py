@@ -237,6 +237,8 @@ def s02(data, config):
         reviewed = visible and r["review_minutes"] is not None
         records.append(dict(id=r["id"], period=r["period"], queue_length=r["queue_length"], visible=visible,
                             site=r["site"], day=r["day"], available_day=r["available_day"],
+                            record_source=r["record_source"], review_source=r["review_source"],
+                            clock_quality=r["clock_quality"],
                             observed_minutes=r["wait_minutes"] if visible else None, proxy_minutes=r["proxy_minutes"],
                             review_minutes=r["review_minutes"] if reviewed else None,
                             proxy_absolute_error=abs(r["proxy_minutes"]-r["wait_minutes"]) if visible else None,

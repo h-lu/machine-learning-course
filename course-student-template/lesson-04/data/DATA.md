@@ -35,7 +35,7 @@ JSON 顶层 `rows` 是这些样本的列表。B04 的 `wait_minutes` 和 `availa
 
 ## 先读 records.csv
 
-每行仍是一条样本，共八行。`day`、`site` 和 `available_day` 来自人工模拟记录，便于核对截止日；未来上传日也是模拟元数据，不是实际已知的未来事实。
+每行仍是一条样本，共八行。`day`、`site` 和 `available_day` 来自人工模拟记录，便于核对截止日；未来上传日也是模拟元数据，不是实际已知的未来事实。程序生成的 `records.csv` 会同时保留 `record_source`、`review_source` 和 `clock_quality`，让你能把统计数字与来源质量对应起来。
 
 `visible=True` 表示截止日已收到第一份标签，`False` 表示尚未收到。`observed_minutes` 只显示当前可用的值；`proxy_minutes` 显示估计值；`review_minutes` 在第一份标签可见且第二份存在时显示。
 
