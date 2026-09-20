@@ -73,7 +73,7 @@ MAE = (1 + 1 + 5 + 5 + 7 + 7) ÷ 6
 python lesson-03/analysis.py --config lesson-03/config-support.json --output lesson-03/artifacts/support-compare
 ```
 
-打开 `original` 和 `support-compare` 两个目录中的 `records.csv`，只比较 B06 的 `method=linear` 行；再看两个 `comparison.csv` 的 `linear` 行。核对示例是：预测仍约为 8.333，提醒从 `True` 变为 `False`，MAE 仍约为 2.556，提醒总数从 3 变为 1。示例只用于检查你有没有读对列，不是你报告必须得到的评分目标。若你希望把这个对照目录命名为 `trial`，等价命令是 `python lesson-03/analysis.py --config lesson-03/config-support.json --output lesson-03/artifacts/trial`。
+打开 `support-start` 和 `support-compare` 两个目录中的 `records.csv`，只比较 B06 的 `method=linear` 行；再看两个 `comparison.csv` 的 `linear` 行。核对示例是：预测仍约为 8.333，提醒从 `True` 变为 `False`，MAE 仍约为 2.556，提醒总数从 3 变为 1。示例只用于检查你有没有读对列，不是你报告必须得到的评分目标。若你希望把这个对照目录命名为 `trial`，等价命令是 `python lesson-03/analysis.py --config lesson-03/config-support.json --output lesson-03/artifacts/trial`。
 
 如果你只看 B05，它两次都不会提醒，因为预测是 3，低于 8 和 10 两个阈值。这不代表阈值实验没有运行；要看指定样本和指定方法。
 
