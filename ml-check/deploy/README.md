@@ -138,3 +138,16 @@ docker compose up -d --no-build
 ```
 
 实际备份文件若使用带时刻的名称，以发布记录为准；恢复前不要覆盖唯一备份。Nginx 路径本轮不变，无需重载。若以后修改代理，先执行 `nginx -t`，只调整本服务的 location，避免覆盖其他站点配置。
+
+## 2026-09-21 v13 实际部署记录
+
+v13 于 2026-09-21 18:33:59 UTC 开始切换，18:34:03 UTC 完成。正式容器使用镜像 `ml-check:2026-09-21-v13`，题库版本为 `ml-v13-course-map-2026-09-21`，`lessons.json` 的 SHA-256 为 `537bf31972b8cb3655f1cd1e9fcd245ea7bf6713ae3187d899e4c4e446c9720f`。切换前已保存下列两份可独立恢复的备份：
+
+- 数据库：`/home/ubuntu/ml-check/data/ml-check.before-v13-20260921T182552Z.sqlite3`
+- 源码与部署文件：`/home/ubuntu/ml-check/backups/source-before-v13-20260921T182552Z.tar.gz`
+
+正式数据库在迁移前后均通过 `PRAGMA integrity_check`。迁移前后的记录数完全一致：`users=64`、`course_sessions=4`、`responses=1649`、`learning_completions=169`。场次 7/C01、8/C02、9/S01 和 11/S02 分别保存了 v4、v6、v11 和 v11 的题库快照，且仍处于 `result` 阶段。因此历史题目、答案、解析和学习说明继续按创建场次时的版本读取，本次切换没有丢失用户、场次、作答或学习完成数据。
+
+正式切换前，先用迁移后的生产数据库副本在 `127.0.0.1:8897` 启动临时 v13 实例。验收时确认健康接口返回 32 课和 v13；通过测试登录打开教师页及历史场次 7，核对第 01 课编号和 v4 版本标识；再于副本中创建 S03/场次 12，确认新场次保存 v13 快照。将该场次切到 `learn` 阶段后，学生当前页正确显示“第 05 课（S03）”、5 个知识点标题和学习说明；逐条核对后，S03 的 10 道 A/B 题题干均未出现在 AI 学习页。临时容器、副本数据库和测试文件已清理。这次临时验收没有走完 A 作答→学习→B 作答的完整提交流程，也没有测试 CSV 导出。
+
+切换后，`http://127.0.0.1:8896/ml-check/healthz` 和 `https://hblu.top/ml-check/healthz` 均返回 `status=ok`、`lesson_count=32` 和 `bank_version=ml-v13-course-map-2026-09-21`，正式容器通过健康检查。旧镜像 `ml-check:2026-09-16`、`ml-check:2026-09-14`、`ml-check:2026-09-12` 和 `ml-check:2026-09-06` 均已保留，可与上述数据库、源码和历史题库备份配合恢复。

@@ -1,6 +1,6 @@
 # S03 运行单：怎样比较才接近未来使用
 
-状态：成套候选材料，未指定班级启用，也未部署线上题库。学生入口见[本课任务](https://github.com/h-lu/machine-learning-course/blob/course/foundations-s01-s06/course-student-template/lesson-05/README.md)；本地目录为 `lesson-05`，不能把 S 编号直接传给数字课次脚本。
+状态：已随 `ml-v13-course-map-2026-09-21` 于 2026-09-21 发布；本次没有真人 90 分钟试读。学生目录为 `lesson-05`。
 
 ## 本课关系与前置支持
 

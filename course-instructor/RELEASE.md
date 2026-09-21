@@ -25,6 +25,22 @@
 
 旧课含义和旧实验保留在[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)，仅用于追溯，不能与新课包按相同编号任意拼接。
 
+## 2026-09-21 v13 实际发布记录
+
+第 05–32 课已按上述边界成套发布。内容提交为 GitHub 完整仓库 `fea7ab2`、Gitea 学生模板 `f0807a4`、教师课包内容 `19a1d2a`、`ml-check` `e7bf5a0` 和学生发布仓库 `4f7406f`。生产题库 SHA-256 为 `537bf31972b8cb3655f1cd1e9fcd245ea7bf6713ae3187d899e4c4e446c9720f`。
+
+发布前的统一验收结果如下：
+
+- `python3 tools/validate_course.py` 的 8 组检查全部通过，包括学生实验 131 项、32 课教师参考 117 项独立核算、教师脚本 15 项、`ml-check` 单元测试 81 项，以及学生、教师和课程规划严格检查；
+- `PYTHONPATH=ml-check pytest -q ml-check/tests` 的 81 项测试通过；
+- 全新学生仓库副本中的第 05–32 课 151 条命令全部成功，随后整仓 `python3 scripts/course.py ci` 通过。
+
+生产镜像 `ml-check:2026-09-21-v13` 在 `2026-09-21T18:33:59Z` 至 `2026-09-21T18:34:03Z` 完成切换，内网和公网健康接口均正常。数据库备份是 `/home/ubuntu/ml-check/data/ml-check.before-v13-20260921T182552Z.sqlite3`，服务源码与部署文件备份是 `/home/ubuntu/ml-check/backups/source-before-v13-20260921T182552Z.tar.gz`，历史题库保存在 `/home/ubuntu/ml-check/data/session-banks/`。
+
+切换前后用户、场次、作答和学习完成记录数量保持为 64、4、1649、169，SQLite 完整性检查通过。历史场次 7、8、9、11 分别读取 v4、v6、v11、v11 快照，因此第 01–04 课的既有题目和解释没有被 v13 改写。
+
+上述冷读由模型模拟，命令由验收环境实际运行。本次没有真人首次试读或 90 分钟课堂计时；课堂完成时间和不同基础学生的理解情况仍需在后续实际授课中单独记录。
+
 ## 一次课怎样进入生产
 
 完整课包必须同时具备学生 README、LEARN、SUPPORT、数据、配置、程序与报告提示，教师 RUNBOOK、REFERENCE、五个知识点和十道 A/B 题，以及与该版本对应的题库汇集文件。必须实际运行起点、支持配置、个人单因素修改、提交检查和确定性重跑。
