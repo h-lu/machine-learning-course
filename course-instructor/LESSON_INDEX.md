@@ -1,49 +1,47 @@
-# 教师逐课入口与重组对照
+# 教师逐课入口与历史对照
 
-**状态：C01–C02 与 S01–S06 成套候选课包已编写；S07–S30 新目标仍待改写**。除上述候选课包外，其余现行入口仍使用[教学基线 84aa171](https://github.com/h-lu/machine-learning-course/blob/84aa1710803f006cf781590126cafcd494bf5515/machine-learning-course/COURSE_MAP.md)的课次含义；[新地图](https://github.com/h-lu/machine-learning-course/blob/main/machine-learning-course/COURSE_MAP.md)是后续编写目标，不代表其余旧课次已经更新。
+**状态：第 05–32 课的学生材料、教师材料和概念题已经与新学习地图对齐。** 第 01–04 课已经授课，保留当时实际采用的内容、题目和成绩依据；前四课的当前文件不因新地图追溯重写。实际部署版本、验证证据和未做的真人试读见[发布说明](RELEASE.md)。
 
-本页分为现行入口和新目标复用对照。旧材料只作为机制或任务的候选起点，不等于可直接复制到同编号新课。本分支的 C01–C02 与 S01–S06 链接指向新版候选材料，S07–S30 保留原内容；课堂是否切换以 [入门课发布记录](releases/intro-2026-09-19.md) 和班级版本安排为准，不改变历史成绩。
+## 32 课教师入口
 
-## 32 课材料入口（前八课为候选版本）
+每课的运行单说明 90 分钟组织与失败支持；参考分析给出至少两条合理路线、独立核算和结论边界；概念题包含五个知识点及 A/B 换情境题。第 01–04 课标为“已授课”，提醒教师不要追溯改要求。
 
-以下 C01–C02 与 S01–S06 为本分支候选课包入口；S07–S30 保留原课次含义。旧课包 可从固定教学基线查看，不覆盖历史版本。教师运行单组织课堂，参考分析解释多条路线，概念题帮助发现误解。
+- C01 从一行数据得到第一个预测（已授课）：[运行单](lessons/C01/RUNBOOK.md) · [参考分析](lessons/C01/REFERENCE.md) · [概念题](lessons/C01/questions.json)
+- C02 怎样公平比较三个预测办法（已授课）：[运行单](lessons/C02/RUNBOOK.md) · [参考分析](lessons/C02/REFERENCE.md) · [概念题](lessons/C02/questions.json)
+- S01 怎样把模糊需求变成可研究的问题（已授课）：[运行单](lessons/S01/RUNBOOK.md) · [参考分析](lessons/S01/REFERENCE.md) · [概念题](lessons/S01/questions.json)
+- S02 收到的数据能代表全部记录吗（已授课）：[运行单](lessons/S02/RUNBOOK.md) · [参考分析](lessons/S02/REFERENCE.md) · [概念题](lessons/S02/questions.json)
+- S03 怎样比较才接近未来使用：[运行单](lessons/S03/RUNBOOK.md) · [参考分析](lessons/S03/REFERENCE.md) · [概念题](lessons/S03/questions.json)
+- S04 什么算做好了，失败会造成什么后果：[运行单](lessons/S04/RUNBOOK.md) · [参考分析](lessons/S04/REFERENCE.md) · [概念题](lessons/S04/questions.json)
+- S05 还缺哪些数据，哪些记录值得补：[运行单](lessons/S05/RUNBOOK.md) · [参考分析](lessons/S05/REFERENCE.md) · [概念题](lessons/S05/questions.json)
+- S06 一次小实验能否改变最初的问题：[运行单](lessons/S06/RUNBOOK.md) · [参考分析](lessons/S06/REFERENCE.md) · [概念题](lessons/S06/questions.json)
+- S07 简单模型与复杂模型各自假设了什么：[运行单](lessons/S07/RUNBOOK.md) · [参考分析](lessons/S07/REFERENCE.md) · [概念题](lessons/S07/questions.json)
+- S08 预测概率怎样转成合适的行动：[运行单](lessons/S08/RUNBOOK.md) · [参考分析](lessons/S08/REFERENCE.md) · [概念题](lessons/S08/questions.json)
+- S09 数据怎样表示，模型才容易使用：[运行单](lessons/S09/RUNBOOK.md) · [参考分析](lessons/S09/REFERENCE.md) · [概念题](lessons/S09/questions.json)
+- S10 模型究竟从数据中学到了什么：[运行单](lessons/S10/RUNBOOK.md) · [参考分析](lessons/S10/REFERENCE.md) · [概念题](lessons/S10/questions.json)
+- S11 借来的表示适合当前数据吗：[运行单](lessons/S11/RUNBOOK.md) · [参考分析](lessons/S11/REFERENCE.md) · [概念题](lessons/S11/questions.json)
+- S12 下一项实验应该改数据、表示还是训练方法：[运行单](lessons/S12/RUNBOOK.md) · [参考分析](lessons/S12/REFERENCE.md) · [概念题](lessons/S12/questions.json)
+- S13 预训练模型的能力来自哪里：[运行单](lessons/S13/RUNBOOK.md) · [参考分析](lessons/S13/REFERENCE.md) · [概念题](lessons/S13/questions.json)
+- S14 输入怎样影响模型能够利用的信息：[运行单](lessons/S14/RUNBOOK.md) · [参考分析](lessons/S14/REFERENCE.md) · [概念题](lessons/S14/questions.json)
+- S15 提示改进了，还是只适配了见过的例子：[运行单](lessons/S15/RUNBOOK.md) · [参考分析](lessons/S15/REFERENCE.md) · [概念题](lessons/S15/questions.json)
+- S16 怎样补充资料，而不是期待模型猜对：[运行单](lessons/S16/RUNBOOK.md) · [参考分析](lessons/S16/REFERENCE.md) · [概念题](lessons/S16/questions.json)
+- S17 该改提示、补上下文，还是改参数：[运行单](lessons/S17/RUNBOOK.md) · [参考分析](lessons/S17/REFERENCE.md) · [概念题](lessons/S17/questions.json)
+- S18 没有唯一答案时，怎样判断真的变好了：[运行单](lessons/S18/RUNBOOK.md) · [参考分析](lessons/S18/REFERENCE.md) · [概念题](lessons/S18/questions.json)
+- S19 怎样把任务拆成模型、程序和人的协作：[运行单](lessons/S19/RUNBOOK.md) · [参考分析](lessons/S19/REFERENCE.md) · [概念题](lessons/S19/questions.json)
+- S20 什么时候应调用工具，而不是继续生成：[运行单](lessons/S20/RUNBOOK.md) · [参考分析](lessons/S20/REFERENCE.md) · [概念题](lessons/S20/questions.json)
+- S21 固定流程还是由模型选择下一步：[运行单](lessons/S21/RUNBOOK.md) · [参考分析](lessons/S21/REFERENCE.md) · [概念题](lessons/S21/questions.json)
+- S22 输入里的指令可以改变系统职责吗：[运行单](lessons/S22/RUNBOOK.md) · [参考分析](lessons/S22/REFERENCE.md) · [概念题](lessons/S22/questions.json)
+- S23 多步方案失败，应该先改哪一步：[运行单](lessons/S23/RUNBOOK.md) · [参考分析](lessons/S23/REFERENCE.md) · [概念题](lessons/S23/questions.json)
+- S24 怎样用下一项实验改进整件作品：[运行单](lessons/S24/RUNBOOK.md) · [参考分析](lessons/S24/REFERENCE.md) · [概念题](lessons/S24/questions.json)
+- S25 反馈怎样帮助学习，又会遗漏什么：[运行单](lessons/S25/RUNBOOK.md) · [参考分析](lessons/S25/REFERENCE.md) · [概念题](lessons/S25/questions.json)
+- S26 一个好分数会不会鼓励错误行为：[运行单](lessons/S26/RUNBOOK.md) · [参考分析](lessons/S26/REFERENCE.md) · [概念题](lessons/S26/questions.json)
+- S27 运行条件变了，怎样发现并处理：[运行单](lessons/S27/RUNBOOK.md) · [参考分析](lessons/S27/REFERENCE.md) · [概念题](lessons/S27/questions.json)
+- S28 更高效果值得多少等待和计算：[运行单](lessons/S28/RUNBOOK.md) · [参考分析](lessons/S28/REFERENCE.md) · [概念题](lessons/S28/questions.json)
+- S29 换一个场景，原来的方案还能用吗：[运行单](lessons/S29/RUNBOOK.md) · [参考分析](lessons/S29/REFERENCE.md) · [概念题](lessons/S29/questions.json)
+- S30 怎样交付作品，并说明下一轮该学什么：[运行单](lessons/S30/RUNBOOK.md) · [参考分析](lessons/S30/REFERENCE.md) · [概念题](lessons/S30/questions.json)
 
-- C01 怎样把一个想法变成可运行的作品（候选）：[运行单](lessons/C01/RUNBOOK.md) · [参考分析](lessons/C01/REFERENCE.md) · [概念题](lessons/C01/questions.json)
-- C02 一个结果能说明方案有用吗（候选）：[运行单](lessons/C02/RUNBOOK.md) · [参考分析](lessons/C02/REFERENCE.md) · [概念题](lessons/C02/questions.json)
-- S01 怎样把模糊需求变成可研究的问题（候选）：[运行单](lessons/S01/RUNBOOK.md) · [参考分析](lessons/S01/REFERENCE.md) · [概念题](lessons/S01/questions.json)
-- S02 这份数据和标签代表谁、代表什么（候选）：[运行单](lessons/S02/RUNBOOK.md) · [参考分析](lessons/S02/REFERENCE.md) · [概念题](lessons/S02/questions.json)
-- S03 怎样比较才接近未来使用（候选）：[运行单](lessons/S03/RUNBOOK.md) · [参考分析](lessons/S03/REFERENCE.md) · [概念题](lessons/S03/questions.json)
-- S04 什么算做好了，失败会造成什么后果（候选）：[运行单](lessons/S04/RUNBOOK.md) · [参考分析](lessons/S04/REFERENCE.md) · [概念题](lessons/S04/questions.json)
-- S05 还缺哪些数据，哪些记录值得补（候选）：[运行单](lessons/S05/RUNBOOK.md) · [参考分析](lessons/S05/REFERENCE.md) · [概念题](lessons/S05/questions.json)
-- S06 一次小实验能否改变最初的问题（候选）：[运行单](lessons/S06/RUNBOOK.md) · [参考分析](lessons/S06/REFERENCE.md) · [概念题](lessons/S06/questions.json)
-- S07 直线能支持哪一种预测：[运行单](lessons/S07/RUNBOOK.md) · [参考分析](lessons/S07/REFERENCE.md) · [概念题](lessons/S07/questions.json)
-- S08 风险概率应该怎样使用：[运行单](lessons/S08/RUNBOOK.md) · [参考分析](lessons/S08/REFERENCE.md) · [概念题](lessons/S08/questions.json)
-- S09 一棵树能否成为可执行的规则：[运行单](lessons/S09/RUNBOOK.md) · [参考分析](lessons/S09/REFERENCE.md) · [概念题](lessons/S09/questions.json)
-- S10 多一点性能值得多大成本：[运行单](lessons/S10/RUNBOOK.md) · [参考分析](lessons/S10/REFERENCE.md) · [概念题](lessons/S10/questions.json)
-- S11 分成几组之后，准备怎样做：[运行单](lessons/S11/RUNBOOK.md) · [参考分析](lessons/S11/REFERENCE.md) · [概念题](lessons/S11/questions.json)
-- S12 没有故障标签，先检查哪些记录：[运行单](lessons/S12/RUNBOOK.md) · [参考分析](lessons/S12/REFERENCE.md) · [概念题](lessons/S12/questions.json)
-- S13 这次任务需要神经网络吗：[运行单](lessons/S13/RUNBOOK.md) · [参考分析](lessons/S13/REFERENCE.md) · [概念题](lessons/S13/questions.json)
-- S14 训练没有变好，应该先改什么：[运行单](lessons/S14/RUNBOOK.md) · [参考分析](lessons/S14/REFERENCE.md) · [概念题](lessons/S14/questions.json)
-- S15 图像换个样子，还能认出来吗：[运行单](lessons/S15/RUNBOOK.md) · [参考分析](lessons/S15/REFERENCE.md) · [概念题](lessons/S15/questions.json)
-- S16 借来的表示，适合我的数据吗：[运行单](lessons/S16/RUNBOOK.md) · [参考分析](lessons/S16/REFERENCE.md) · [概念题](lessons/S16/questions.json)
-- S17 一段话中，该看哪些信息：[运行单](lessons/S17/RUNBOOK.md) · [参考分析](lessons/S17/REFERENCE.md) · [概念题](lessons/S17/questions.json)
-- S18 微型 Transformer 怎样猜下一个词元：[运行单](lessons/S18/RUNBOOK.md) · [参考分析](lessons/S18/REFERENCE.md) · [概念题](lessons/S18/questions.json)
-- S19 一句话怎样变成词元和概率：[运行单](lessons/S19/RUNBOOK.md) · [参考分析](lessons/S19/REFERENCE.md) · [概念题](lessons/S19/questions.json)
-- S20 同一个模型，怎样选择输出：[运行单](lessons/S20/RUNBOOK.md) · [参考分析](lessons/S20/REFERENCE.md) · [概念题](lessons/S20/questions.json)
-- S21 提示改好了，还是只记住了例子：[运行单](lessons/S21/RUNBOOK.md) · [参考分析](lessons/S21/REFERENCE.md) · [概念题](lessons/S21/questions.json)
-- S22 数据很多，怎样找到有用的一段：[运行单](lessons/S22/RUNBOOK.md) · [参考分析](lessons/S22/REFERENCE.md) · [概念题](lessons/S22/questions.json)
-- S23 有了引用，回答就可信吗：[运行单](lessons/S23/RUNBOOK.md) · [参考分析](lessons/S23/REFERENCE.md) · [概念题](lessons/S23/questions.json)
-- S24 哪些请求可以交给语言模型：[运行单](lessons/S24/RUNBOOK.md) · [参考分析](lessons/S24/REFERENCE.md) · [概念题](lessons/S24/questions.json)
-- S25 先试一试，还是继续选最好的一项：[运行单](lessons/S25/RUNBOOK.md) · [参考分析](lessons/S25/REFERENCE.md) · [概念题](lessons/S25/questions.json)
-- S26 怎样把连续决策写成一个环境：[运行单](lessons/S26/RUNBOOK.md) · [参考分析](lessons/S26/REFERENCE.md) · [概念题](lessons/S26/questions.json)
-- S27 知道规则后，怎样规划下一步：[运行单](lessons/S27/RUNBOOK.md) · [参考分析](lessons/S27/REFERENCE.md) · [概念题](lessons/S27/questions.json)
-- S28 不知道转移规律，怎样从尝试中学习：[运行单](lessons/S28/RUNBOOK.md) · [参考分析](lessons/S28/REFERENCE.md) · [概念题](lessons/S28/questions.json)
-- S29 模型运行后，什么时候需要处理：[运行单](lessons/S29/RUNBOOK.md) · [参考分析](lessons/S29/REFERENCE.md) · [概念题](lessons/S29/questions.json)
-- S30 换一个场景，原来的方案还能用吗：[运行单](lessons/S30/RUNBOOK.md) · [参考分析](lessons/S30/REFERENCE.md) · [概念题](lessons/S30/questions.json)
+## 新目标与历史材料的对应记录
 
-## 新目标与旧材料的复用候选
-
-“目标课次”均指新地图；“旧课次”均指固定提交 84aa171 中的历史材料，而不是本分支当前同编号文件。表中的匹配依据是内容与机制，不表示代码、题目或完整教学目标已经兼容。空缺能力必须补实验和理解检查，不能只换标题；下列 32 项目前都未作为新课包发布。
+“目标课次”指当前学习地图；“旧课次”指固定提交 84aa171 中的历史材料，而不是当前同编号文件。下表保留重组来源，便于教师追溯哪些机制被复用、哪些缺口已经在新课包中补齐。它不是当前入口清单，也不能用来混搭新旧课包。
 
 | 目标课次 | 新目标（与目标地图一致） | 可参考的旧课次 | 必须补齐或重新核对的内容 |
 |---|---|---|---|
@@ -99,10 +97,8 @@
 
 编写方法见[课程设计](COURSE_DESIGN.md)，切换与服务版本限制见[发布说明](RELEASE.md)，计分继续使用[评分规则](GRADING.md)。
 
-## C01–C02 本批进展
+## 当前批次进展
 
-两课现有学生任务、学习卡、8/18 条人工数据、规则与回归实验、教师运行单与参考、每课五知识点及 A/B 题已一起改写。新实验与数据划分由候选课包的测试覆盖，发布限制见 [入门课记录](releases/intro-2026-09-19.md)。本页旧材料候选编号指固定教学基线，不表示当前同编号文件仍保存旧内容。
+第 01–04 课已经完成教学，本轮不改学生任务或概念题要求。第 05–08 课完成问题与评价模块的后半段；S03、S04 增加了能改变结论的选择和证据要求，S05、S06 延续现有模块作品。
 
-## S01–S06 本批进展
-
-六课的任务、LEARN、数据/配置、实验、教师参考、五知识点及 A/B 题已成套重写，仍待实际学生试读和班级启用。数据版本、前置知识、独立核算与部署边界见 [模块记录](releases/foundations-2026-09-19.md)。表中旧材料候选用于追溯，不是旧题已经适配的证明。
+S07–S12、S13–S18、S19–S24、S25–S30 已分别成套实现。每个模块都包含学生任务、LEARN、SUPPORT、数据和程序、教师运行单与参考、五知识点及 A/B 题，并有单独的命令演练与模拟冷读记录。真人试读和真实课堂用时需在授课后另记，不能由模型模拟代替。

@@ -1,9 +1,14 @@
 {
   "lesson": "S08",
-  "purpose": "加强正则化并改变行动阈值",
-  "config_patch": {
-    "l2": 0.15,
-    "threshold": 0.7
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "改变行动阈值并核对概率分组、误报、漏报与容量",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "comparison.csv",
+    "records.csv",
+    "calibration.csv"
+  ],
+  "specialized_test": "tests/test_s07_s12_rewrite.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

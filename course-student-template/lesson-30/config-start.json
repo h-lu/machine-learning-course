@@ -1,0 +1,11 @@
+{
+  "timing_repeats": 3,
+  "work_iterations": {
+    "fast": 500,
+    "thorough": 3000
+  },
+  "estimated_cost_per_fresh_call": {
+    "fast": 1.0,
+    "thorough": 4.0
+  }
+}

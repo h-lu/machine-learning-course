@@ -1,0 +1,10 @@
+{
+  "seed": 7,
+  "evaluation_mode": "final",
+  "baseline_confidence_threshold": 0.0,
+  "candidate_confidence_threshold": 0.0,
+  "baseline_filter_untrusted": false,
+  "candidate_filter_untrusted": true,
+  "baseline_validate_tools": true,
+  "candidate_validate_tools": true
+}

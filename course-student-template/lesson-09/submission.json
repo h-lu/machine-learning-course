@@ -6,7 +6,7 @@
     "lesson-09/artifacts/summary.json",
     "lesson-09/artifacts/comparison.csv",
     "lesson-09/artifacts/records.csv",
-    "lesson-09/artifacts/extrapolation.csv"
+    "lesson-09/artifacts/outside_check.csv"
   ],
   "run": [
     "python",

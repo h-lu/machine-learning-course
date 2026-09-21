@@ -1,9 +1,14 @@
 {
   "lesson": "S07",
-  "purpose": "有正则化的线性解及不同外推距离",
-  "config_patch": {
-    "ridge": 2.0,
-    "extrapolation_distance": 3.0
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "比较简单模型与复杂模型在范围外输入上的分歧",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "comparison.csv",
+    "records.csv",
+    "outside_check.csv"
+  ],
+  "specialized_test": "tests/test_s07_s12_rewrite.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

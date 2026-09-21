@@ -1,0 +1,6 @@
+{
+  "routes": [
+    "prompt_revision",
+    "parameter_adapter"
+  ]
+}

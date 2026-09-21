@@ -1,0 +1,176 @@
+{
+  "kind": "open_response_evaluation_final",
+  "product": "离线课程问答助手",
+  "source": "课程人工编写的 4 个最终评价案例、两份人工构造标注和固定模拟评价器分数。",
+  "scale": "每个维度 0=不满足，1=部分满足，2=满足。",
+  "cases": [
+    {
+      "id": "final-01",
+      "split": "final",
+      "question": "概念检查在哪里？",
+      "reference": "D2：课程平台当次课页面",
+      "candidates": {
+        "A": {
+          "output": "在课程平台的当次课页面，来源 D2。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "proxy_AB": 1.8,
+          "proxy_BA": 1.7
+        },
+        "B": {
+          "output": "在网上。",
+          "reviewer_1": {
+            "task_completion": 1,
+            "factuality": 1,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 1,
+            "factuality": 1,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "proxy_AB": 1.0,
+          "proxy_BA": 1.2
+        }
+      }
+    },
+    {
+      "id": "final-02",
+      "split": "final",
+      "question": "学校提供住宿吗？",
+      "reference": "现有资料没有住宿信息",
+      "candidates": {
+        "A": {
+          "output": "通常会提供。",
+          "reviewer_1": {
+            "task_completion": 1,
+            "factuality": 0,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 0,
+            "factuality": 0,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "proxy_AB": 1.0,
+          "proxy_BA": 1.2
+        },
+        "B": {
+          "output": "现有资料不足，无法回答。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "proxy_AB": 1.7,
+          "proxy_BA": 1.6
+        }
+      }
+    },
+    {
+      "id": "final-03",
+      "split": "final",
+      "question": "只运行成功够不够？",
+      "reference": "D3：运行成功不能单独证明理解",
+      "candidates": {
+        "A": {
+          "output": "不够，还要解释证据。来源 D3。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 1
+          },
+          "proxy_AB": 1.7,
+          "proxy_BA": 1.8
+        },
+        "B": {
+          "output": "够，程序没有报错。",
+          "reviewer_1": {
+            "task_completion": 0,
+            "factuality": 0,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 0,
+            "factuality": 0,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "proxy_AB": 0.8,
+          "proxy_BA": 1.0
+        }
+      }
+    },
+    {
+      "id": "final-04",
+      "split": "final",
+      "question": "晚交时需要写什么？",
+      "reference": "D1：说明原因",
+      "candidates": {
+        "A": {
+          "output": "需要说明原因，来源 D1。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "proxy_AB": 1.9,
+          "proxy_BA": 1.7
+        },
+        "B": {
+          "output": "请尽快提交。",
+          "reviewer_1": {
+            "task_completion": 1,
+            "factuality": 1,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 1,
+            "factuality": 1,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "proxy_AB": 1.1,
+          "proxy_BA": 1.3
+        }
+      }
+    }
+  ]
+}

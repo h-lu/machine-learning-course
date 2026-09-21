@@ -1,10 +1,23 @@
 {
   "lesson": "S30",
-  "purpose": "不同资源和代价下的同分母迁移比较",
-  "config_patch": {
-    "training_fraction": 0.5,
-    "ridge": 2.0,
-    "underestimate_cost": 5.0
+  "purpose": "核对开发选择与最后评价分离，以及最终交付能确定性重跑",
+  "development": {
+    "data": "course-student-template/lesson-32/data/base.json",
+    "config": "course-student-template/lesson-32/config-support.json",
+    "expected_stage": "development",
+    "expected_comparison": {
+      "original": "6/8",
+      "adapted": "8/8"
+    }
   },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "final_evaluation": {
+    "data": "course-student-template/lesson-32/data/final.json",
+    "config": "course-student-template/lesson-32/config-final.json",
+    "expected_stage": "final_evaluation",
+    "expected_comparison": {
+      "original": "5/8",
+      "adapted": "8/8"
+    }
+  },
+  "boundary": "教师核对案例；学生必须先在开发证据上固定候选、指标和停止条件，再显式传入最后评价数据。"
 }

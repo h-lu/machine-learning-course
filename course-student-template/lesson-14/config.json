@@ -1,5 +1,4 @@
 {
-  "seed": 7,
-  "components": 1,
-  "review_capacity": 8
+  "evaluation_split": "validation",
+  "diagnostic_change": "stronger_regularization"
 }

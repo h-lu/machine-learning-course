@@ -1,5 +1,5 @@
 {
-  "seed": 7,
-  "ridge": 0.0,
-  "extrapolation_distance": 4.0
+  "evaluation_split": "validation",
+  "candidate_degree": 2,
+  "outside_detail_count": 12
 }

@@ -1,21 +1,9 @@
-# 第 20 课 示例数据
+# S18 数据说明：开放回答与分维度评分
 
-计算一个微型Transformer块，训练输出头一步；不更新整个Transformer，不构成预训练实验。
+每个案例包含问题、可核对资料 `reference`，以及 A、B 两个候选回答。回答可以有不同说法，因此本课不靠一个标准句子判断；要分别评价任务完成、事实正确、资料支持和格式。
 
-数据由本仓库脚本生成，未收集真实个人信息。固定种子用于重现；它不是现实世界的代表性样本。
+`reviewer_1` 与 `reviewer_2` 是课程人工构造的两份标注。每个维度取 0、1、2 分，分别表示不满足、部分满足、满足。它们用于练习评分分歧，不是真实学生或教师调查。程序计算平均值只是汇总，不能解释谁更有依据。
 
-类型：`sequence`。顶层字段及一行记录字段包括：`kind, tokens, vectors, next_token_targets`。
+`proxy_AB` 和 `proxy_BA` 是固定的模拟评价器分数，故意保留了顺序差异。它们不是现场 AI 评分，也不能用来衡量真实 AI 能力。
 
-`tokens` 为四个符号；`vectors` 为对应的人工4维向量；`next_token_targets` 为教学目标词编号，最后一个目标只是演示约定。
-
-可调整参数（见 `../config.json`）：`seed`=7, `learning_rate`=0.05, `causal`=True。
-
-替换数据时保留相应字段和数值形状，或者一起修改 `analysis.py`。写下新数据如何得到、每条记录代表什么、哪些结果已知。程序输出在 summary.json 的 provenance 中记录实际输入哈希。
-
-## 参数怎样改变实验
-
-| 参数 | 含义 |
-|---|---|
-| `seed` | 随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。 |
-| `learning_rate` | 固定Transformer块后，输出头只更新一次时使用的步长。 |
-| `causal` | 是否禁止当前位置读取后面的词元。false可用来检查未来信息进入的影响。 |
+`data/base.json` 只有 4 个 `development` 案例，用于调整评分说明和权重。`data/final.json` 只有 4 个 `final` 案例，应在规则确定后使用。默认 `submission.json` 只读取 `base.json`；复制 `submission-final.json` 后才会显式读取 `final.json`。看过 final 后修改规则，就要把这批结果称为开发依据或另找新数据。

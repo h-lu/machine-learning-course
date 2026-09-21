@@ -1,0 +1,63 @@
+{
+  "kind": "campus_service_lifecycle",
+  "project_id": "equipment-helpdesk-v1",
+  "source": "课程编写者制作的离线教学数据；不代表真实学校、真实使用者反馈、真实模型运行或真实图书馆规定",
+  "delivery_requests": [
+    {
+      "id": "D01",
+      "split": "final_evaluation",
+      "condition": "新名词",
+      "text": "读者证能用到什么时候？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "D02",
+      "split": "final_evaluation",
+      "condition": "在架说法",
+      "text": "这本书目前在架吗？",
+      "expected_route": "inventory"
+    },
+    {
+      "id": "D03",
+      "split": "final_evaluation",
+      "condition": "费用同义词",
+      "text": "滞纳金怎样计算？",
+      "expected_route": "calculator"
+    },
+    {
+      "id": "D04",
+      "split": "final_evaluation",
+      "condition": "个人资料",
+      "text": "帮我更新个人信息",
+      "expected_route": "human"
+    },
+    {
+      "id": "D05",
+      "split": "final_evaluation",
+      "condition": "续借",
+      "text": "这本书如何续借？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "D06",
+      "split": "final_evaluation",
+      "condition": "馆藏数量",
+      "text": "可借册数是多少？",
+      "expected_route": "inventory"
+    },
+    {
+      "id": "D07",
+      "split": "final_evaluation",
+      "condition": "有副作用请求",
+      "text": "请预约一间自习室",
+      "expected_route": "human"
+    },
+    {
+      "id": "D08",
+      "split": "final_evaluation",
+      "condition": "辅助服务",
+      "text": "无障碍服务规则在哪里？",
+      "expected_route": "retrieve"
+    }
+  ]
+}

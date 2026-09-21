@@ -3,7 +3,7 @@
   <div class="phase-topline">
     <div>
       <span class="eyebrow">{{ session.lesson_id }}</span>
-      <strong>{{ session.lesson_id }} · {{ session.title }}</strong>
+      <strong>{{ lesson_display_label(session.lesson_id) }} · {{ session.title }}</strong>
     </div>
     <div class="timer" {% if not session.phase_ends_at %}hidden{% endif %}>
       <span>剩余时间</span>

@@ -3,7 +3,10 @@
   "status": "not_started",
   "report": "lesson-16/report.md",
   "artifacts": [
-    "lesson-16/artifacts/summary.json"
+    "lesson-16/artifacts/summary.json",
+    "lesson-16/artifacts/visibility.csv",
+    "lesson-16/artifacts/attention_weights.csv",
+    "lesson-16/artifacts/evidence.json"
   ],
   "run": [
     "python",

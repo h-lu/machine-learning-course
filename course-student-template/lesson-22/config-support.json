@@ -1,0 +1,10 @@
+{
+  "seed": 7,
+  "validate_arguments": true,
+  "invalid_call": {
+    "tool": "overdue_fee",
+    "arguments": {
+      "days": 31
+    }
+  }
+}

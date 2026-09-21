@@ -1,21 +1,11 @@
-# 第 28 课 示例数据
+# 第 28 课数据说明：状态、动作和延迟后果
 
-小网格中的转移和折扣回报，展示不同状态合并后信息丢失。
+`decision_cases` 中一行代表一条按顺序处理的服务台请求。数据是确定性表格模拟。
 
-数据由本仓库脚本生成，未收集真实个人信息。固定种子用于重现；它不是现实世界的代表性样本。
+- `risk`：人工设定的低风险或高风险状态；本练习假设处理时可见。
+- `queue`：人工队列长短。本课保留该字段以区分“状态中已记录”和“策略已使用”；给出的两条策略并不根据队列长短改动作。
+- `auto_resolved`：若自动回答，当前请求是否立即解决。
+- `delayed_harm`：自动回答后稍晚是否出现严重问题；转人工时不触发该模拟后果。
+- `state_fields`：配置规定策略在作选择时可以看到哪些字段。
 
-类型：`grid`。顶层字段及一行记录字段包括：`kind, width, height, start, goal, hazards, bonus_state, step_reward, goal_reward, hazard_reward, actions`。
-
-状态为row×width+column；动作0/1/2/3是上/右/下/左；撞墙停留；到goal或hazards后回合结束。step_reward用于普通移动，goal_reward和hazard_reward替代终止步奖励。bonus_state用于检查奖励诱导的循环。
-
-可调整参数（见 `../config.json`）：`seed`=7, `gamma`=0.9, `policy`=right_then_down。
-
-替换数据时保留相应字段和数值形状，或者一起修改 `analysis.py`。写下新数据如何得到、每条记录代表什么、哪些结果已知。程序输出在 summary.json 的 provenance 中记录实际输入哈希。
-
-## 参数怎样改变实验
-
-| 参数 | 含义 |
-|---|---|
-| `seed` | 随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。 |
-| `gamma` | 未来奖励每晚一步乘以多少。必须小于1；越接近1，越重视较远的结果。 |
-| `policy` | 手写路线：right_then_down先向右再向下；down_then_right先向下再向右。 |
+奖励权重在配置文件中，不在数据里伪装成观察事实。`delayed_harm_weight=4` 表示本练习扣 4 分，不代表真实金额或统一社会价值。若添加请求，要写明各字段含义，不能让策略读取结果字段再决定动作。

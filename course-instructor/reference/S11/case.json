@@ -1,9 +1,15 @@
 {
   "lesson": "S11",
-  "purpose": "改簇数并检查未标准化距离",
-  "config_patch": {
-    "k": 4,
-    "standardize": false
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "改变借来表示的维度并核对冻结表示的适配结果",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "comparison.csv",
+    "records.csv",
+    "source_components.csv",
+    "stress_check.csv"
+  ],
+  "specialized_test": "tests/test_s07_s12_rewrite.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

@@ -1,47 +1,176 @@
 {
-  "kind": "sequence",
-  "tokens": [
-    "借",
-    "书",
-    "需",
-    "证"
-  ],
-  "vectors": [
-    [
-      1,
-      0,
-      0.2,
-      0
-    ],
-    [
-      0.7,
-      0.4,
-      0,
-      0.1
-    ],
-    [
-      0,
-      1,
-      0.3,
-      0
-    ],
-    [
-      0.1,
-      0.8,
-      0,
-      0.5
-    ]
-  ],
-  "next_token_targets": [
-    1,
-    2,
-    3,
-    0
-  ],
-  "source": {
-    "type": "synthetic",
-    "generator": "scripts/build_example_data.py",
-    "seed": 419,
-    "limitation": "仅供教学，不支持对真实人群或线上效果作推断"
-  }
+  "kind": "open_response_evaluation_development",
+  "product": "离线课程问答助手",
+  "source": "课程人工编写的 4 个开发评价案例、两份人工构造标注和固定模拟评价器分数。",
+  "scale": "每个维度 0=不满足，1=部分满足，2=满足。",
+  "cases": [
+    {
+      "id": "dev-01",
+      "split": "development",
+      "question": "作业几点截止？",
+      "reference": "D1：每周五 18:00 前",
+      "candidates": {
+        "A": {
+          "output": "周五交。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 1,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 1,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "proxy_AB": 1.4,
+          "proxy_BA": 1.2
+        },
+        "B": {
+          "output": "每周五 18:00 前，来源 D1。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "proxy_AB": 1.8,
+          "proxy_BA": 1.7
+        }
+      }
+    },
+    {
+      "id": "dev-02",
+      "split": "development",
+      "question": "教师办公室在哪？",
+      "reference": "现有资料没有办公室信息",
+      "candidates": {
+        "A": {
+          "output": "现有资料不足，无法回答。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "proxy_AB": 1.8,
+          "proxy_BA": 1.6
+        },
+        "B": {
+          "output": "办公室大概在三楼。",
+          "reviewer_1": {
+            "task_completion": 1,
+            "factuality": 0,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 0,
+            "factuality": 0,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "proxy_AB": 0.9,
+          "proxy_BA": 1.2
+        }
+      }
+    },
+    {
+      "id": "dev-03",
+      "split": "development",
+      "question": "补交有什么要求？",
+      "reference": "D1：七天内补交并说明原因",
+      "candidates": {
+        "A": {
+          "output": "七天内补交。来源 D1。",
+          "reviewer_1": {
+            "task_completion": 1,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 1,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "proxy_AB": 1.5,
+          "proxy_BA": 1.4
+        },
+        "B": {
+          "output": "七天内补交并说明原因，来源 D1。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 1
+          },
+          "proxy_AB": 1.7,
+          "proxy_BA": 1.8
+        }
+      }
+    },
+    {
+      "id": "dev-04",
+      "split": "development",
+      "question": "报告要提交 AI 对话吗？",
+      "reference": "D3：不收集完整 AI 对话，但保留实验依据",
+      "candidates": {
+        "A": {
+          "output": "不用提交。",
+          "reviewer_1": {
+            "task_completion": 1,
+            "factuality": 1,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 1,
+            "factuality": 2,
+            "evidence_support": 0,
+            "format": 2
+          },
+          "proxy_AB": 1.2,
+          "proxy_BA": 1.0
+        },
+        "B": {
+          "output": "不收集完整 AI 对话；须保留实验依据。来源 D3。",
+          "reviewer_1": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "reviewer_2": {
+            "task_completion": 2,
+            "factuality": 2,
+            "evidence_support": 2,
+            "format": 2
+          },
+          "proxy_AB": 1.9,
+          "proxy_BA": 1.8
+        }
+      }
+    }
+  ]
 }

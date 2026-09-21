@@ -10,7 +10,7 @@ from app import db
 from app.config import Settings
 from app.main import create_app
 from app.legacy import load_bank, response
-from app.questions import BANK_VERSION, bank_for_lesson
+from app.questions import BANK_VERSION, bank_for_lesson, bank_snapshot
 
 ROOT = Path(__file__).resolve().parents[2]
 IDS = [f'S{i:02}' for i in range(1,7)]
@@ -78,7 +78,10 @@ class FoundationBank(unittest.TestCase):
     def test_stage_durations_leave_two_minutes_for_submission(self):
         with tempfile.TemporaryDirectory() as temp:
             path=str(Path(temp)/'test.sqlite3')
-            db.initialize(path,'S01','阶段测试')
+            bank = bank_for_lesson('S01')
+            db.initialize(
+                path, 'S01', '阶段测试', BANK_VERSION, bank_snapshot(bank)
+            )
             session=db.current_session(path)
             for lesson in IDS:
                 durations=bank_for_lesson(lesson).durations

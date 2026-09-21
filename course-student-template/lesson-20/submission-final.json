@@ -1,0 +1,20 @@
+{
+  "lesson": "lesson-20",
+  "status": "in_progress",
+  "report": "lesson-20/report.md",
+  "artifacts": [
+    "lesson-20/artifacts/summary.json",
+    "lesson-20/artifacts/dimension_scores.csv",
+    "lesson-20/artifacts/disagreements.csv",
+    "lesson-20/artifacts/pairwise.csv",
+    "lesson-20/artifacts/evidence.json"
+  ],
+  "run": [
+    "python",
+    "lesson-20/analysis.py",
+    "--data",
+    "lesson-20/data/final.json",
+    "--config",
+    "lesson-20/config-final.json"
+  ]
+}

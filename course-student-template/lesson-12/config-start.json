@@ -1,0 +1,6 @@
+{
+  "evaluation_split": "validation",
+  "learning_rate": 0.15,
+  "epochs": 20,
+  "comparison_learning_rate": 0.4
+}

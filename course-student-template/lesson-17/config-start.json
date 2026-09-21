@@ -1,0 +1,6 @@
+{
+  "seed": 15,
+  "evaluation_split": "development",
+  "repeats": 3,
+  "prompt_text": "请简短回答学生的问题。"
+}

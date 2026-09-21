@@ -1,0 +1,28 @@
+{
+  "sessions": {
+    "7": {
+      "lesson_id": "C01",
+      "bank": "../data/session-banks/lessons-351dad0-ml-v4.json",
+      "bank_version": "ml-v4-2026-09-14",
+      "bank_sha256": "7b6e5968ce5fd1ef7ce99e83930fc5461cca41d2ea98568a121de12cb4d3d42b"
+    },
+    "8": {
+      "lesson_id": "C02",
+      "bank": "../data/session-banks/lessons-df707d9-ml-v6.json",
+      "bank_version": "ml-v6-2026-09-16",
+      "bank_sha256": "31552ecd340a6c8cc1ebb2434372892b5b01b6baff74e40c02e5f39123d99e16"
+    },
+    "9": {
+      "lesson_id": "S01",
+      "bank": "../data/session-banks/lessons-production-c044440b-ml-v11.json",
+      "bank_version": "ml-v11-s01-s02-review-2026-09-20",
+      "bank_sha256": "c044440b1d2efe5a5f485632567502a758835004de334ae9f49e240e12cb7f81"
+    },
+    "11": {
+      "lesson_id": "S02",
+      "bank": "../data/session-banks/lessons-production-c044440b-ml-v11.json",
+      "bank_version": "ml-v11-s01-s02-review-2026-09-20",
+      "bank_sha256": "c044440b1d2efe5a5f485632567502a758835004de334ae9f49e240e12cb7f81"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "lesson": "lesson-32",
+  "status": "in_progress",
+  "report": "lesson-32/report.md",
+  "artifacts": [
+    "lesson-32/artifacts/summary.json",
+    "lesson-32/artifacts/records.csv",
+    "lesson-32/artifacts/manifest.json"
+  ],
+  "run": [
+    "python",
+    "lesson-32/analysis.py",
+    "--data",
+    "lesson-32/data/base.json",
+    "--final-data",
+    "lesson-32/data/final.json",
+    "--config",
+    "lesson-32/config-final.json",
+    "--output",
+    "lesson-32/artifacts"
+  ]
+}

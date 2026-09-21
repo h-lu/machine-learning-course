@@ -1,6 +1,6 @@
 {
-  "seed": 7,
-  "n_estimators": 8,
-  "max_depth": 2,
-  "learning_rate": 0.2
+  "evaluation_split": "validation",
+  "learning_rate": 0.15,
+  "epochs": 80,
+  "comparison_learning_rate": 0.8
 }

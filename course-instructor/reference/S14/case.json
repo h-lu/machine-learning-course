@@ -1,9 +1,14 @@
 {
   "lesson": "S14",
-  "purpose": "改变学习率进行优化失败诊断",
-  "config_patch": {
-    "learning_rate": 0.4,
-    "comparison_learning_rate": 12.0
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "改变未来位置的值并核对因果遮罩的信息边界",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "evidence.json",
+    "visibility.csv",
+    "attention_weights.csv"
+  ],
+  "specialized_test": "tests/test_pretrained_module.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

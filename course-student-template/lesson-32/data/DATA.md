@@ -1,24 +1,21 @@
-# 第 32 课 示例数据
+# 第 32 课数据说明：开发数据与最后评价分开保存
 
-在已有线性/均值方案上比较新使用场景中的代价与重新拟合。
+`base.json` 保存同一 `equipment-helpdesk-v1` 项目的前课数据，其中 `transfer_requests` 是本课可反复查看的开发请求。默认运行只读取这个文件。开发请求中：
 
-数据由本仓库脚本生成，未收集真实个人信息。固定种子用于重现；它不是现实世界的代表性样本。
+- 一行代表一条社区图书馆文字请求；
+- `split` 为 `development`；
+- `condition` 说明这条请求检查的输入条件；
+- `expected_route` 是课程编写者给出的人工参考路线。
 
-类型：`table`。顶层字段及一行记录字段包括：`id, x1, x2, target, label, score, group, user, time, split`。
+`final.json` 单独保存 8 条最后评价请求。先在开发数据上固定候选、指标和停止条件，再通过 `--final-data lesson-32/data/final.json` 显式读取它。不要通过文件预览、搜索或默认命令提前查看内容。
 
-`id` 是记录编号；`x1/x2` 是无量纲合成特征；`target` 是连续结果；`label` 是0/1结果；`score` 是合成机制给出的概率，不是拟合模型的泛化成绩；`group` 是演示分组；`user` 是重复对象编号；`time` 是顺序；`split` 为 train 或 evaluation。每课用到的列由程序明确选择。示例评估可反复用来理解代码；自己的最终测试数据需另行保留。
+`final.json` 中：
 
-可调整参数（见 `../config.json`）：`seed`=7, `training_fraction`=0.7, `ridge`=1.0, `underestimate_cost`=3.0。
+- 一行代表一条社区图书馆文字请求；
+- `split` 全部为 `final_evaluation`；
+- `condition` 说明新名词、在架说法、个人信息等条件；
+- `expected_route` 是课程人工参考路线。
 
-替换数据时保留相应字段和数值形状，或者一起修改 `analysis.py`。写下新数据如何得到、每条记录代表什么、哪些结果已知。程序输出在 summary.json 的 provenance 中记录实际输入哈希。
+开发运行的 manifest 只计算 `base.json` 与开发配置的 SHA-256 摘要。最后评价运行才会增加 `final_data_sha256`。摘要用于判断本次运行是否使用了相同字节，不能证明数据真实、参考路线正确或方案安全。看过这 8 条后再修改方案，同一文件只能作为开发证据；新判断需要另备数据。
 
-## 参数怎样改变实验
-
-| 参数 | 含义 |
-|---|---|
-| `seed` | 随机数种子。只影响使用随机数的步骤；在同一数据、参数和环境下可重现结果。 |
-| `training_fraction` | 从原训练部分抽取多大比例来拟合现有方案；新批次的适配/评估另行一分为二。 |
-| `ridge` | 线性模型系数的平方惩罚强度；截距不受惩罚，0表示不加惩罚。 |
-| `underestimate_cost` | 低估一个单位的代价；高估一个单位的代价固定为1。 |
-
-原模型和适配后的模型都在新批次的后半评估，参看old_on_adaptation_holdout与adapted_on_first_half_of_new_batch，避免比较不同分母。
+`config.json` 的 `release_candidate` 只接受 `campus_original` 或 `library_adapted`。在开发证据上作出选择后，把它复制为 `config-final.json`；最后评价命令读取这份固定配置。程序会在 `selected_candidate_evaluation` 中单独报告所选候选，同时保留两个方案在相同请求上的比较供复核。

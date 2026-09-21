@@ -1,5 +1,9 @@
 {
-  "seed": 7,
-  "max_mae": 1.0,
-  "drift_threshold": 1.0
+  "split": "development",
+  "added_request": {
+    "id": "T09",
+    "condition": "需要学生自行说明的新条件",
+    "text": "How many copies are available?",
+    "expected_route": "inventory"
+  }
 }

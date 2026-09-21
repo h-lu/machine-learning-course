@@ -11,7 +11,7 @@ from app import db
 from app.config import Settings
 from app.main import create_app
 from app.legacy import load_bank
-from app.questions import BANK_VERSION, CURRENT_BANKS, LessonBank
+from app.questions import BANK_VERSION, CURRENT_BANKS, LessonBank, bank_snapshot
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -20,7 +20,7 @@ class IntroBank(unittest.TestCase):
     def test_both_loaders_use_the_same_bank_and_version(self):
         raw = load_bank()
         self.assertEqual(raw["version"], BANK_VERSION)
-        self.assertEqual(BANK_VERSION, "ml-v11-s01-s02-review-2026-09-20")
+        self.assertEqual(BANK_VERSION, "ml-v13-course-map-2026-09-21")
         for bank, source in zip(CURRENT_BANKS, raw["lessons"]):
             self.assertEqual(bank.lesson_id, source["lesson_id"])
             self.assertEqual(bank.questions, source["questions"])
@@ -41,12 +41,10 @@ class IntroBank(unittest.TestCase):
                 for phase in ("a", "b"):
                     self.assertNotIn(item["pair"][phase]["prompt"], item["tutor_context"])
 
-    def test_first_eight_phases_fit_fifteen_minutes_and_other_lessons_keep_durations(self):
-        for bank in CURRENT_BANKS[:8]:
+    def test_every_lesson_phase_fits_fifteen_minutes(self):
+        for bank in CURRENT_BANKS:
             self.assertEqual(bank.durations, {"attempt_a": 240, "learn": 300, "attempt_b": 240})
             self.assertEqual(sum(bank.durations.values()) + 120, 900)
-        for bank in CURRENT_BANKS[8:]:
-            self.assertEqual(bank.durations, {"attempt_a": 600, "learn": 900, "attempt_b": 600})
 
     def test_invalid_phase_duration_is_rejected(self):
         bank = CURRENT_BANKS[0]
@@ -59,7 +57,13 @@ class IntroBank(unittest.TestCase):
         self.assertEqual(datetime.fromisoformat(db.iso_now()).utcoffset(), timedelta(0))
         with tempfile.TemporaryDirectory() as temp:
             path = str(Path(temp) / "time.sqlite3")
-            db.initialize(path, "C01", "入门检查")
+            db.initialize(
+                path,
+                "C01",
+                "入门检查",
+                BANK_VERSION,
+                bank_snapshot(CURRENT_BANKS[0]),
+            )
             session = db.current_session(path)
             db.set_phase(path, session["id"], "a", CURRENT_BANKS[0].durations["attempt_a"])
             updated = db.get_session(path, session["id"])

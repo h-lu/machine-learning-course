@@ -1,62 +1,78 @@
 # 小实验的运行办法
 
-在学生仓库根目录运行。需要 Python 3.10 以上和 NumPy；开课前安装依赖，课堂运行不联网。
+所有命令都在学生仓库根目录执行，也就是能同时看到 `scripts`、`lesson-01` 和 `lesson-32` 的目录。需要 Python 3.10 以上；开课前安装依赖，课堂实验不需要联网。
 
 ```bash
 python3 -m pip install -r requirements.txt
-python3 lesson-09/analysis.py --output artifacts/S07-demo
-python3 lesson-09/analysis.py --config lesson-09/config.json --data lesson-09/data/base.json --output artifacts/S07-trial
 ```
 
-`--output` 是输出目录。程序在其中生成 `summary.json`；不传参数时写到本课 `artifacts/summary.json`。`--config` 和 `--data` 都接受一个 JSON 文件路径；相对路径从运行命令所在目录解释。默认读取本课 `config.json` 和 `data/base.json`。
+每课的 `analysis.py` 是起步程序，`config.json` 是默认配置，`artifacts/` 是默认结果目录。最稳妥的入口是当课 README 或 SUPPORT 给出的命令；不同课的参数和输出文件不完全相同。
 
-每课起步实验已经能运行。它展示一种方法、产生实际数值并运行一种条件变化，不能代表学生已经完成任务。学生还要自行界定用途、设计对比和失败输入，并根据结果说明是否采用。你可以修改配置、换数据或重写 `analysis.py`；不要求使用起步程序中的模型、阈值或最终结论。
+## 先跑通一次
 
-## 文件和输出
+例如，第 9 课的独立分析程序支持 `--config`、`--output` 和 `--split`，不支持 `--data`：
 
-- `config.json`：本课可调整的参数。`seed` 控制随机数；其余参数随课次变化。修改前另存一份配置，便于比较。
-- `data/base.json`：随仓库提供的小数据。`kind` 说明数据类型；`source` 说明数据如何生成及限制。具体字段见同目录 `DATA.md`。
-- `analysis.py`：可替换的运行入口；`mlcourse/` 提供起步实现和基础计算。
-- `artifacts/summary.json`：机器可读的实际结果，包括 `lesson`、`status`、`data`、`config`、`metrics`、`comparison`、`stress_test`、`details` 和 `provenance`。默认 `status` 是 `example_only`，不替学生填写采用决定。
+```bash
+python3 lesson-09/analysis.py --config lesson-09/config.json --output lesson-09/artifacts/trial
+```
 
-`metrics` 是本次结果；`comparison` 是一个起步对比；`stress_test` 是已运行的条件变化，包含改了什么及结果；`details` 保存检查数值所需的预测、计数、曲线或轨迹。不要把起步测试直接当作自己的失败案例。
+成功后先按第 9 课 README 打开 `comparison.csv`，再看 `records.csv` 和 `outside_check.csv`。要查某一课实际支持的参数，可运行：
 
-如果你选择继续使用 `summary.json`，建议保留课次编号 `lesson`、说明运行性质的 `status`、数据来源 `data`、数值结果 `metrics`、实际运行的失败或条件变化 `stress_test`、追溯信息 `provenance`，便于比较。你也可以改用 CSV、图表和其他报告格式，并在提交说明中指出运行入口与产物。检查工具不依据模型名称、阈值或结论判分。
+```bash
+python3 lesson-09/analysis.py --help
+```
 
-本工具的 JSON 不写入 NaN 或 Infinity；暂时没有定义的指标用 null，并解释原因。`provenance` 记录输入内容、配置和执行源码的哈希。命令行运行还记录输入文件原始字节与本课入口文件的哈希；它们能发现文件变化，不能证明数据来源真实。
+`--output` 接受一个目录路径。比较两个设置时，请写入两个不同的目录，避免新结果和旧结果混在一起。相对路径从执行命令的仓库根目录解释。
 
-起步入口调用 `mlcourse/experiments.py` 中与课次编号对应的函数（例如 S07 对应 `s07`）。基础算法在 `mlcourse/mathops.py`。可以从这里阅读计算过程，也可以将自己的方法直接写入本课 `analysis.py`，或使用其他入口并在提交说明中注明。
+## 两类运行入口
 
-## 验证与限制
+### 第 1–8 课：共享运行时
+
+第 1–8 课的 `analysis.py` 调用 `mlcourse/runtime.py`。这些课支持：
+
+- `--config`：选择 JSON 配置文件；
+- `--data`：选择 JSON 数据文件；
+- `--output`：选择结果目录；
+- 部分课支持 `--split validation` 或 `--split test`，具体以当课 README 为准。
+
+共享运行时会生成 `summary.json`，并按课次生成 `records.csv`、`comparison.csv` 等表格。`summary.json` 中的 `metrics`、`comparison`、`stress_test`、`details` 和 `provenance` 是这类早期课程的共享结构。第 1–8 课的具体字段和单位见各课 `data/DATA.md`。
+
+### 第 9–32 课：按课分析程序
+
+第 9–32 课使用各课自己的 `analysis.py`。所有这些程序都支持 `--config` 和 `--output`，但只有需要替换数据的课才支持 `--data`；个别课还有 `--split` 或其他参数。不要把某一课的命令行原样套到另一课。
+
+输出表格围绕当课问题命名，例如 `attention_weights.csv`、`responses.csv` 或 `dimension_scores.csv`。`summary.json` 的字段也会随课次变化，没有一套适用于第 9–32 课的固定字段。运行后先打开当课 README 或 SUPPORT 点名的文件和行，再用 `data/DATA.md` 解释列名。
+
+## `course.py` 运行的是哪条命令
+
+```bash
+python3 scripts/course.py run 17
+```
+
+`scripts/course.py` 不会自行猜测配置；它会逐项执行当课 `submission.json` 的 `run` 列表。`check` 只检查清单所列结果是否存在，`ci` 还会在临时副本中删除这些结果、重新运行，并比较文件哈希。这些检查能证明文件可重建，不会自动评价报告中的理由是否充分。
+
+第 17、18、20 和 26 课把开发数据与最终评价数据放在不同文件中。仓库默认的 `submission.json` 只运行开发数据；它不会读取 `data/final.json` 或 `data/holdout.json`。只有在开发数据上选好方案、写好评价规则并固定 `config-final.json` 之后，才按当课 README 把 `submission-final.json` 复制为 `submission.json`，再运行 `course.py run`。这样 `run`、`check` 和 `ci` 都指向同一份最终评价结果。
+
+最终数据在公开教学仓库中仍可被人主动打开，所以这个设计练习的是正确的使用顺序，不是技术保密。如果提前看过最终数据或结果，就在报告中说明，并把它改称为开发证据。
+
+## 结果、哈希和限制
+
+输入、配置和程序哈希可以帮助发现文件是否发生变化，但不能证明数据来源真实或结论正确。JSON 不写入 NaN 或 Infinity；暂时无法定义的数值应写为 `null` 并说明原因。课程提供的起步结果是核对示例，不是学生的采用建议，也不能代替自己的对照和理由。
+
+课程数据都是教学数据，不代表真实人群、机构或线上业务。神经网络课使用小型 NumPy 实现；表示、语言模型和问答课会区分人工数值、微型模型、固定候选输出与真实预训练模型。使用固定材料只能评价材料覆盖的候选，不能声称测试了没有实际生成的新提示或新模型。
+
+## 开发者回归检查
+
+以下命令用于确认课程自带程序的计算、输入处理和确定性；学生替换方法后，需要为新方法设计对应检查。
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
 
-这些测试用于确认发布的起步工具计算和输入处理正常；你替换方法后，可以为新方法设计相应检查。它不评价你的任务是否值得做，也不证明模型可在现实中上线。数据均为本课程生成的教学数据，不代表真实人口、机构或线上业务。普通 CPU 上每课目标三分钟内；从头重跑目标五分钟内。没有 GPU、付费 API 或课堂下载模型的要求。
-
-神经网络课使用小型 NumPy 实现；表示、语言模型和问答课会明确区分人工生成表示、微型模型、固定候选输出与真实预训练模型。使用缓存只能评价已有候选，不能据此声称测试了未运行的提示或新模型。
-
-要检查教学数据如何生成，可读 `scripts/build_example_data.py`。以下命令在一个新的空目录重建示例，不覆盖当前课次的修改：
+要检查第 1–8 课的教学数据如何生成，可读 `scripts/build_example_data.py`。下面的命令在新目录重建示例，不覆盖当前课次修改：
 
 ```bash
 python3 scripts/build_example_data.py --output /tmp/ml-example-data
 ```
 
-这个目录包含重建的数据、配置和入口样例；运行仍需完整学生仓库中的 `mlcourse/`，它不是独立安装包。
-
-## C01–C02 入门案例
-
-C01–C02 使用 `mlcourse/intro.py` 中的取餐等待时间案例，公共运行入口和文件名不变。C01 的规则参数人为设定；C02 的均值基线与一元线性回归只使用训练集，默认在验证集上评价。只有 C02 接受 `--split validation` 或 `--split test`，也可在配置中选择；测试集不用于选择方案。
-
-两课额外生成 `predictions.csv`，逐条保存特征、真实值、预测值与绝对误差。默认提交清单列出 JSON 和 CSV，当前配置与清单命令应能重新生成主要结果。模型的主要数值显示在 `summary.json`，学习所需术语见 [术语表](TERMINOLOGY.md)。
-
-## S01–S06 的结果表
-
-`lesson-03` 至 `lesson-08` 对应问题与评价模块。默认输出为 `summary.json`、`comparison.csv` 和 `records.csv`；S05 另有 `added_samples.csv`。终端显示方法名、单位与分母，JSON 保留模型参数、样本编号和分组检查。具体字段见各课 `data/DATA.md`。
-
-S01、S03–S06 支持 `--split validation` 或 `--split test`，只改变评价部分，模型和预处理仍只从训练数据学习。S03 先保留原测试编号，再在开发部分比较划分；不同划分评价的对象不同。S02 没有这个选项，用 `observation_day` 控制可见标签。
-
-每次修改配置或数据后使用新的 `--output` 目录，不复用旧输出充当新实验。默认结构中的 `metrics` 是为兼容工具保留的主方案指标，不是程序的采用建议。逐条表是长表：同一个样本在不同方法下各占一行。空白/`null` 表示未知或未定义，不表示零。
-
-输入、代码和配置哈希帮助复核文件变化，不证明数据真实。本模块的代理标签、采集池与合成标签都有明确模拟来源；数据生成和使用步骤见 [模块说明](FOUNDATIONS.md)。
+重建目录只包含示例数据、配置和入口样例；实际运行仍需要完整学生仓库中的 `mlcourse/`。

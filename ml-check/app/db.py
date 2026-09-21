@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS course_sessions (
     phase TEXT NOT NULL CHECK (phase IN ('closed', 'a', 'learn', 'b', 'result')),
     phase_started_at TEXT,
     phase_ends_at TEXT,
+    bank_version TEXT,
+    bank_json TEXT,
     created_at TEXT NOT NULL
 );
 
@@ -66,11 +68,49 @@ def connect(database_path: str) -> sqlite3.Connection:
     return connection
 
 
-def initialize(database_path: str, lesson_id: str, title: str) -> None:
+def _validate_session_bank(lesson_id: str, bank_version: str, bank_json: str) -> None:
+    if not isinstance(bank_version, str) or not bank_version.strip():
+        raise ValueError("bank_version must be non-empty")
+    if not isinstance(bank_json, str) or not bank_json.strip():
+        raise ValueError("bank_json must be non-empty")
+    # Local import avoids coupling schema creation to question-bank loading.
+    from .questions import bank_from_snapshot
+
+    try:
+        bank = bank_from_snapshot(bank_json)
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError("bank_json must contain a valid lesson snapshot") from error
+    if bank.lesson_id != lesson_id:
+        raise ValueError("bank_json lesson_id must match the session lesson_id")
+
+
+def initialize(
+    database_path: str,
+    lesson_id: str,
+    title: str,
+    bank_version: str,
+    bank_json: str,
+) -> None:
+    _validate_session_bank(lesson_id, bank_version, bank_json)
     Path(database_path).parent.mkdir(parents=True, exist_ok=True)
     with connect(database_path) as connection:
         connection.executescript(SCHEMA)
         connection.execute("PRAGMA journal_mode = WAL")
+        # Serialize the column inspection and ALTER statements.  Without this
+        # lock, two application workers starting against the same legacy
+        # database can both observe the missing column and race to add it.
+        connection.execute("BEGIN IMMEDIATE")
+        # Existing production databases predate per-session snapshots.  Add
+        # nullable columns without rewriting their response records.  The
+        # deployment procedure backfills those rows with the bank that was
+        # live when the sessions were taught.
+        columns = {
+            row["name"] for row in connection.execute("PRAGMA table_info(course_sessions)")
+        }
+        if "bank_version" not in columns:
+            connection.execute("ALTER TABLE course_sessions ADD COLUMN bank_version TEXT")
+        if "bank_json" not in columns:
+            connection.execute("ALTER TABLE course_sessions ADD COLUMN bank_json TEXT")
         existing = connection.execute(
             "SELECT id FROM course_sessions ORDER BY id DESC LIMIT 1"
         ).fetchone()
@@ -78,10 +118,10 @@ def initialize(database_path: str, lesson_id: str, title: str) -> None:
             connection.execute(
                 """
                 INSERT INTO course_sessions
-                    (lesson_id, title, phase, created_at)
-                VALUES (?, ?, 'closed', ?)
+                    (lesson_id, title, phase, bank_version, bank_json, created_at)
+                VALUES (?, ?, 'closed', ?, ?, ?)
                 """,
-                (lesson_id, title, iso_now()),
+                (lesson_id, title, bank_version, bank_json, iso_now()),
             )
 
 
@@ -145,20 +185,56 @@ def session_history(database_path: str, limit: int = 12) -> list[sqlite3.Row]:
         ).fetchall()
 
 
-def create_session(database_path: str, lesson_id: str, title: str) -> sqlite3.Row:
+def session_snapshots(database_path: str) -> list[sqlite3.Row]:
+    """Return every session so health checks can validate historical banks."""
+    with connect(database_path) as connection:
+        return connection.execute(
+            "SELECT id, lesson_id, bank_version, bank_json FROM course_sessions ORDER BY id"
+        ).fetchall()
+
+
+def create_session(
+    database_path: str,
+    lesson_id: str,
+    title: str,
+    bank_version: str,
+    bank_json: str,
+) -> sqlite3.Row:
+    _validate_session_bank(lesson_id, bank_version, bank_json)
     with connect(database_path) as connection:
         cursor = connection.execute(
             """
             INSERT INTO course_sessions
-                (lesson_id, title, phase, created_at)
-            VALUES (?, ?, 'closed', ?)
+                (lesson_id, title, phase, bank_version, bank_json, created_at)
+            VALUES (?, ?, 'closed', ?, ?, ?)
             """,
-            (lesson_id, title, iso_now()),
+            (lesson_id, title, bank_version, bank_json, iso_now()),
         )
         session_id = int(cursor.lastrowid)
         return connection.execute(
             "SELECT * FROM course_sessions WHERE id = ?", (session_id,)
         ).fetchone()
+
+
+def missing_snapshot_count(database_path: str) -> int:
+    """Count sessions that cannot be tied to an immutable question bank."""
+    with connect(database_path) as connection:
+        columns = {
+            row["name"] for row in connection.execute("PRAGMA table_info(course_sessions)")
+        }
+        if "bank_version" not in columns or "bank_json" not in columns:
+            return int(
+                connection.execute("SELECT COUNT(*) FROM course_sessions").fetchone()[0]
+            )
+        return int(
+            connection.execute(
+                """
+                SELECT COUNT(*) FROM course_sessions
+                WHERE bank_version IS NULL OR trim(bank_version) = ''
+                   OR bank_json IS NULL OR trim(bank_json) = ''
+                """
+            ).fetchone()[0]
+        )
 
 
 def delete_session(database_path: str, session_id: int, force: bool = False) -> str | None:

@@ -1,0 +1,8 @@
+{
+  "state_fields": [
+    "risk",
+    "queue"
+  ],
+  "human_delay_cost": 0.5,
+  "delayed_harm_weight": 1.0
+}

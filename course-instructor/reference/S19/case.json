@@ -1,9 +1,12 @@
 {
   "lesson": "S19",
-  "purpose": "加入词表外字符并改变上下文长度",
-  "config_patch": {
-    "text": "图书馆借书🧭",
-    "context_length": 4
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "在同一多步作品上改用评价请求并保留输入到回答的追踪",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "traces.csv"
+  ],
+  "specialized_test": "tests/test_workflow_module.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

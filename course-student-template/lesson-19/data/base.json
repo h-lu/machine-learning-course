@@ -1,47 +1,100 @@
 {
-  "kind": "sequence",
-  "tokens": [
-    "借",
-    "书",
-    "需",
-    "证"
+  "kind": "fixed_candidate_outputs",
+  "product": "离线课程问答助手",
+  "source": "教师为三个明确候选路线准备的固定输出。只用于比较已有候选，不代表现场生成。",
+  "routes": [
+    {
+      "id": "prompt_revision",
+      "description": "只改任务说明和输出格式，不增加资料，不更新参数。",
+      "parameters_updated": false,
+      "extra_documents": 0,
+      "adaptation_examples": 0,
+      "setup_minutes": 10
+    },
+    {
+      "id": "retrieval_context",
+      "description": "每次检索三份本地课程资料并加入上下文，不更新参数。",
+      "parameters_updated": false,
+      "extra_documents": 3,
+      "adaptation_examples": 0,
+      "setup_minutes": 25
+    },
+    {
+      "id": "parameter_adapter",
+      "description": "使用 12 条标注样例得到的固定适配候选；这些输出由教师材料提供，本课不重现训练。",
+      "parameters_updated": true,
+      "extra_documents": 0,
+      "adaptation_examples": 12,
+      "setup_minutes": 60
+    }
   ],
-  "vectors": [
-    [
-      1,
-      0,
-      0.2,
-      0
-    ],
-    [
-      0.7,
-      0.4,
-      0,
-      0.1
-    ],
-    [
-      0,
-      1,
-      0.3,
-      0
-    ],
-    [
-      0.1,
-      0.8,
-      0,
-      0.5
-    ]
+  "cases": [
+    {
+      "id": "case-01",
+      "question": "作业几点截止？",
+      "expected_answer": "每周五 18:00 前",
+      "required_source": "D1",
+      "outputs": {
+        "prompt_revision": "结论：通常在周五提交。来源：原有常识。",
+        "retrieval_context": "结论：每周五 18:00 前。来源：D1。",
+        "parameter_adapter": "结论：每周五 18:00 前。来源：训练样例。"
+      }
+    },
+    {
+      "id": "case-02",
+      "question": "教师办公室在哪？",
+      "expected_answer": "",
+      "required_source": "",
+      "outputs": {
+        "prompt_revision": "现有资料不足，无法回答。",
+        "retrieval_context": "现有资料不足，无法回答。",
+        "parameter_adapter": "结论：可能在教学楼。来源：训练样例。"
+      }
+    },
+    {
+      "id": "case-03",
+      "question": "完整 AI 对话要交吗？",
+      "expected_answer": "不需要提交完整 AI 对话",
+      "required_source": "D3",
+      "outputs": {
+        "prompt_revision": "结论：不需要提交完整 AI 对话。来源：已有任务说明。",
+        "retrieval_context": "结论：不需要提交完整 AI 对话。来源：D3。",
+        "parameter_adapter": "结论：不需要提交完整 AI 对话。来源：训练样例。"
+      }
+    },
+    {
+      "id": "case-04",
+      "question": "晚交后怎么办？",
+      "expected_answer": "七天内补交并说明原因",
+      "required_source": "D1",
+      "outputs": {
+        "prompt_revision": "结论：请尽快补交。来源：已有任务说明。",
+        "retrieval_context": "结论：七天内补交并说明原因。来源：D1。",
+        "parameter_adapter": "结论：七天内补交并说明原因。来源：训练样例。"
+      }
+    },
+    {
+      "id": "case-05",
+      "question": "概念检查有几个阶段？",
+      "expected_answer": "三个阶段",
+      "required_source": "D2",
+      "outputs": {
+        "prompt_revision": "结论：需要完成三个阶段。来源：已有任务说明。",
+        "retrieval_context": "结论：三个阶段。来源：D2。",
+        "parameter_adapter": "结论：三个阶段。来源：训练样例。"
+      }
+    },
+    {
+      "id": "case-06",
+      "question": "学校提供住宿吗？",
+      "expected_answer": "",
+      "required_source": "",
+      "outputs": {
+        "prompt_revision": "现有资料不足，无法回答。",
+        "retrieval_context": "现有资料不足，无法回答。",
+        "parameter_adapter": "现有资料不足，无法回答。"
+      }
+    }
   ],
-  "next_token_targets": [
-    1,
-    2,
-    3,
-    0
-  ],
-  "source": {
-    "type": "synthetic",
-    "generator": "scripts/build_example_data.py",
-    "seed": 418,
-    "limitation": "仅供教学，不支持对真实人群或线上效果作推断"
-  }
+  "setup_minutes_note": "10、25、60 分钟是课程情境的人工假设，不是实测开发时间。"
 }

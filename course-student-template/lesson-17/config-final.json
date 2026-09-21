@@ -1,0 +1,6 @@
+{
+  "seed": 15,
+  "evaluation_split": "final",
+  "repeats": 3,
+  "prompt_text": "先写依据并引用来源，再写结论；资料不足时明确说资料不足，无法回答。"
+}

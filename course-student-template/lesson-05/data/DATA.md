@@ -9,7 +9,7 @@ JSON 用带字段名的文本保存数据，顶层 `rows` 是样本列表，共 
 | `id` | 样本编号，不作为模型特征 |
 | `queue_length` | 加入队伍时前面的人数；预测特征 |
 | `wait_minutes` | 实际等待分钟数；事后核对的标签 |
-| `period` | 午间或晚间；分组评估，S06 可作为特征 |
+| `period` | 午间或晚间；本课只用于帮助辨认记录，不作为默认模型特征 |
 | `site` | 虚构窗口 A、B、C；S03 的分组对象 |
 | `day` | 记录对应的第几天；S03 用于时间划分 |
 | `split` | train=训练，validation=验证，test=保留测试 |
@@ -23,7 +23,7 @@ JSON 用带字段名的文本保存数据，顶层 `rows` 是样本列表，共 
 
 | 参数 | 含义 |
 |---|---|
-| `seed` | 固定随机划分或抽样；本课无随机步骤时不改变结果；默认 `7` |
+| `seed` | 固定 random 随机划分；只改变 random 行的训练与验证编号，不改变 time 或 group 行；默认 `7` |
 | `evaluation_split` | 指定 validation 或 test；默认只评价验证集；默认 `validation` |
 | `split_strategy` | 主要划分：time=时间，group=按窗口，random=随机；默认 `time` |
 | `train_through_day` | 时间方案训练到第几天；默认 4；默认 `4` |
@@ -37,6 +37,6 @@ JSON 用带字段名的文本保存数据，顶层 `rows` 是样本列表，共 
 
 `train_n` 是训练数量，`shared_sites` 是训练与评价共有窗口数；`leaked_mae_demo` 与 `leaked_prediction_demo` 是违规使用小票后的错误示范。不同划分中的 `n` 和具体编号可能不同，不能把它们当作同一测试上的模型竞赛。
 
-`summary.json` 保存完整结果和输入、配置、源码哈希；`metrics` 只是一份指定主要方案的汇总，不是自动推荐。`comparison` 保存其余方案；`stress_test` 是改变一个条件的检查。哈希帮助核对文件变化，不能证明来源真实。兼容输出中出现但本课未使用的指标不要求背诵。
+`summary.json` 保存完整结果和输入、配置、源码哈希；`metrics` 只是一份指定主要方案的汇总，不是自动推荐。`comparison` 保存其余方案；`details.splits` 保存三种方案各自的训练、验证、测试与未使用编号；`stress_test` 在本课保存所选划分的数据泄漏反例，不是推荐方案。哈希帮助核对文件变化，不能证明来源真实。兼容输出中出现但本课未使用的指标不要求背诵。
 
 每次换配置或数据使用新的 `--output` 目录。错误退出后旧文件可能还在，不能把它们算作新运行结果。程序不自动把提交状态改为完成。数据可由 `mlcourse/foundations_data.py` 的 `example_data` 重建；完整批量脚本只能输出到新的空目录，不能覆盖自己的实验。

@@ -1,9 +1,14 @@
 {
   "lesson": "S15",
-  "purpose": "改变平移幅度与分类头训练预算",
-  "config_patch": {
-    "shift_pixels": 1,
-    "steps": 120
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "使用修订提示生成匹配的新固定输出并比较开发集指标",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "evidence.json",
+    "responses.csv",
+    "metrics.csv"
+  ],
+  "specialized_test": "tests/test_pretrained_module.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

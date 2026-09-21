@@ -23,8 +23,8 @@ class ReviewReadiness(unittest.TestCase):
         bank = bank_for_lesson('S07')
         self.assertEqual(bank.questions, source['questions'])
         self.assertEqual(bank.concepts, source['concepts'])
-        self.assertEqual(source['content_version'], 's07-guided-review-2026-09-19')
-        self.assertEqual(BANK_VERSION, 'ml-v11-s01-s02-review-2026-09-20')
+        self.assertEqual(source['content_version'], 's07-learning-representation-2026-09-21')
+        self.assertEqual(BANK_VERSION, 'ml-v13-course-map-2026-09-21')
 
     def test_s07_pairs_remain_bound_to_the_same_concept(self):
         bank = bank_for_lesson('S07')
@@ -49,9 +49,9 @@ class ReviewReadiness(unittest.TestCase):
                 self.assertLess(len(q['prompt']), 180)
                 self.assertTrue(q['explanation'].strip())
 
-    def test_s07_timer_is_not_silently_changed(self):
+    def test_s07_timer_uses_the_course_wide_four_five_four_schedule(self):
         self.assertEqual(bank_for_lesson('S07').durations,
-                         {'attempt_a': 600, 'learn': 900, 'attempt_b': 600})
+                         {'attempt_a': 240, 'learn': 300, 'attempt_b': 240})
 
     def test_s07_public_interfaces_keep_answers_private(self):
         raw = load_bank()

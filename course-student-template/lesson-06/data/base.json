@@ -4,7 +4,7 @@
     "type": "synthetic",
     "generator": "mlcourse/foundations_data.py",
     "limitation": "人工教学数据，不代表真实人群、因果效果或 AI 能力。",
-    "note": "S01/S03/S04 共用 24 条样本；S06 只隐藏其中部分人数，不改变标签。"
+    "note": "本课沿用前面课次的 24 条人工样本；需要按本课用途重新核对配置和结果，不能直接引用旧分数。"
   },
   "rows": [
     {

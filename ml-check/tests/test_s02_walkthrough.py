@@ -11,7 +11,7 @@ from app import db
 from app.config import Settings
 from app.main import create_app
 from app.legacy import load_bank, response
-from app.questions import BANK_VERSION, CURRENT_BANKS, bank_for_lesson
+from app.questions import BANK_VERSION, CURRENT_BANKS, bank_for_lesson, bank_snapshot
 
 ROOT = Path(__file__).resolve().parents[2]
 # Derived by solving the items, not by reading answer fields during submission.
@@ -31,7 +31,7 @@ class S02Walkthrough(unittest.TestCase):
             self.assertEqual(source['questions'], bank.questions)
             self.assertEqual(source['concepts'], bank.concepts)
             self.assertEqual(source['content_version'], 's02-focused-review-2026-09-20')
-        self.assertEqual(BANK_VERSION, 'ml-v11-s01-s02-review-2026-09-20')
+        self.assertEqual(BANK_VERSION, 'ml-v13-course-map-2026-09-21')
         self.assertEqual(bank.durations, {'attempt_a': 240, 'learn': 300, 'attempt_b': 240})
         for phase, choices in CHOICES.items():
             for i, choice in enumerate(choices, 1):
@@ -59,7 +59,13 @@ class S02Walkthrough(unittest.TestCase):
                 client.get('/ml-check/test-login?login=feedback_learner&role=student')
                 for bank in CURRENT_BANKS:
                     with self.subTest(lesson=bank.lesson_id):
-                        session = db.create_session(path, bank.lesson_id, bank.title)
+                        session = db.create_session(
+                            path,
+                            bank.lesson_id,
+                            bank.title,
+                            BANK_VERSION,
+                            bank_snapshot(bank),
+                        )
                         db.set_phase(path, session['id'], 'result', None)
                         response = client.get('/ml-check/current')
                         self.assertEqual(response.status_code, 200)

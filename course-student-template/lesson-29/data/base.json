@@ -1,27 +1,490 @@
 {
-  "kind": "grid",
-  "width": 4,
-  "height": 4,
-  "start": 0,
-  "goal": 15,
-  "hazards": [
-    5,
-    9
+  "kind": "campus_service_lifecycle",
+  "project_id": "equipment-helpdesk-v1",
+  "source": "课程编写者制作的离线教学数据；不代表真实学校、真实使用者反馈、真实模型运行或真实图书馆规定",
+  "feedback_rounds": [
+    {
+      "id": "F01",
+      "request_type": "借用期限",
+      "brief_feedback": 1,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F02",
+      "request_type": "库存查询",
+      "brief_feedback": 1,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F03",
+      "request_type": "逾期费用",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F04",
+      "request_type": "账户请求",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F05",
+      "request_type": "借用期限",
+      "brief_feedback": 1,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F06",
+      "request_type": "库存查询",
+      "brief_feedback": 1,
+      "guided_feedback": 0
+    },
+    {
+      "id": "F07",
+      "request_type": "逾期费用",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F08",
+      "request_type": "规则例外",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F09",
+      "request_type": "借用期限",
+      "brief_feedback": 1,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F10",
+      "request_type": "库存查询",
+      "brief_feedback": 1,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F11",
+      "request_type": "逾期费用",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F12",
+      "request_type": "账户请求",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F13",
+      "request_type": "借用期限",
+      "brief_feedback": 1,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F14",
+      "request_type": "库存查询",
+      "brief_feedback": 1,
+      "guided_feedback": 0
+    },
+    {
+      "id": "F15",
+      "request_type": "逾期费用",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    },
+    {
+      "id": "F16",
+      "request_type": "规则例外",
+      "brief_feedback": 0,
+      "guided_feedback": 1
+    }
   ],
-  "bonus_state": 1,
-  "step_reward": -0.04,
-  "goal_reward": 1.0,
-  "hazard_reward": -1.0,
-  "actions": [
-    "up",
-    "right",
-    "down",
-    "left"
+  "decision_cases": [
+    {
+      "id": "Q01",
+      "risk": "low",
+      "queue": "short",
+      "auto_resolved": true,
+      "delayed_harm": false
+    },
+    {
+      "id": "Q02",
+      "risk": "high",
+      "queue": "short",
+      "auto_resolved": true,
+      "delayed_harm": true
+    },
+    {
+      "id": "Q03",
+      "risk": "low",
+      "queue": "long",
+      "auto_resolved": true,
+      "delayed_harm": false
+    },
+    {
+      "id": "Q04",
+      "risk": "high",
+      "queue": "long",
+      "auto_resolved": false,
+      "delayed_harm": true
+    },
+    {
+      "id": "Q05",
+      "risk": "low",
+      "queue": "short",
+      "auto_resolved": false,
+      "delayed_harm": false
+    },
+    {
+      "id": "Q06",
+      "risk": "high",
+      "queue": "short",
+      "auto_resolved": true,
+      "delayed_harm": true
+    },
+    {
+      "id": "Q07",
+      "risk": "low",
+      "queue": "long",
+      "auto_resolved": true,
+      "delayed_harm": false
+    },
+    {
+      "id": "Q08",
+      "risk": "high",
+      "queue": "long",
+      "auto_resolved": false,
+      "delayed_harm": true
+    }
   ],
-  "source": {
-    "type": "synthetic",
-    "generator": "scripts/build_example_data.py",
-    "seed": 428,
-    "limitation": "仅供教学，不支持对真实人群或线上效果作推断"
-  }
+  "monitoring_records": [
+    {
+      "id": "M01",
+      "batch": "reference",
+      "text": "学生借用设备最多几天？",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "retrieve",
+      "predictions": {
+        "v1": {
+          "route": "retrieve",
+          "confidence": 0.92
+        },
+        "v2": {
+          "route": "retrieve",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "id": "M02",
+      "batch": "reference",
+      "text": "相机还有几件？",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "inventory",
+      "predictions": {
+        "v1": {
+          "route": "inventory",
+          "confidence": 0.91
+        },
+        "v2": {
+          "route": "inventory",
+          "confidence": 0.94
+        }
+      }
+    },
+    {
+      "id": "M03",
+      "batch": "reference",
+      "text": "逾期两天多少钱？",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "calculator",
+      "predictions": {
+        "v1": {
+          "route": "calculator",
+          "confidence": 0.89
+        },
+        "v2": {
+          "route": "calculator",
+          "confidence": 0.93
+        }
+      }
+    },
+    {
+      "id": "M04",
+      "batch": "reference",
+      "text": "请修改账户密码",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "human",
+      "predictions": {
+        "v1": {
+          "route": "human",
+          "confidence": 0.96
+        },
+        "v2": {
+          "route": "human",
+          "confidence": 0.96
+        }
+      }
+    },
+    {
+      "id": "M05",
+      "batch": "reference",
+      "text": "三脚架还有吗？",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "inventory",
+      "predictions": {
+        "v1": {
+          "route": "inventory",
+          "confidence": 0.88
+        },
+        "v2": {
+          "route": "inventory",
+          "confidence": 0.91
+        }
+      }
+    },
+    {
+      "id": "M06",
+      "batch": "reference",
+      "text": "教师能借多久？",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "retrieve",
+      "predictions": {
+        "v1": {
+          "route": "retrieve",
+          "confidence": 0.86
+        },
+        "v2": {
+          "route": "retrieve",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "id": "M07",
+      "batch": "current",
+      "text": "借用期能延长吗？",
+      "new_condition": true,
+      "label_available": true,
+      "expected_route": "retrieve",
+      "predictions": {
+        "v1": {
+          "route": "retrieve",
+          "confidence": 0.66
+        },
+        "v2": {
+          "route": "human",
+          "confidence": 0.42
+        }
+      }
+    },
+    {
+      "id": "M08",
+      "batch": "current",
+      "text": "请导出全部账户资料",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "human",
+      "predictions": {
+        "v1": {
+          "route": "human",
+          "confidence": 0.91
+        },
+        "v2": {
+          "route": "human",
+          "confidence": 0.88
+        }
+      }
+    },
+    {
+      "id": "M09",
+      "batch": "current",
+      "text": "无障碍设备怎样借？",
+      "new_condition": true,
+      "label_available": false,
+      "expected_route": null,
+      "predictions": {
+        "v1": {
+          "route": "human",
+          "confidence": 0.38
+        },
+        "v2": {
+          "route": "retrieve",
+          "confidence": 0.71
+        }
+      }
+    },
+    {
+      "id": "M10",
+      "batch": "current",
+      "text": "相机现在还有几件？",
+      "new_condition": false,
+      "label_available": true,
+      "expected_route": "inventory",
+      "predictions": {
+        "v1": {
+          "route": "inventory",
+          "confidence": 0.9
+        },
+        "v2": {
+          "route": "inventory",
+          "confidence": 0.92
+        }
+      }
+    },
+    {
+      "id": "M11",
+      "batch": "current",
+      "text": "滞纳两天是多少钱？",
+      "new_condition": true,
+      "label_available": false,
+      "expected_route": null,
+      "predictions": {
+        "v1": {
+          "route": "human",
+          "confidence": 0.41
+        },
+        "v2": {
+          "route": "calculator",
+          "confidence": 0.69
+        }
+      }
+    },
+    {
+      "id": "M12",
+      "batch": "current",
+      "text": "帮我预留一台相机",
+      "new_condition": true,
+      "label_available": true,
+      "expected_route": "human",
+      "predictions": {
+        "v1": {
+          "route": "human",
+          "confidence": 0.72
+        },
+        "v2": {
+          "route": "inventory",
+          "confidence": 0.55
+        }
+      }
+    }
+  ],
+  "performance_requests": [
+    {
+      "id": "P01",
+      "text": "学生设备借用期限是什么？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "P02",
+      "text": "相机还有几件？",
+      "expected_route": "inventory"
+    },
+    {
+      "id": "P03",
+      "text": "逾期两天多少钱？",
+      "expected_route": "calculator"
+    },
+    {
+      "id": "P04",
+      "text": "请修改账户密码",
+      "expected_route": "human"
+    },
+    {
+      "id": "P05",
+      "text": "学生设备借用期限是什么？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "P06",
+      "text": "归还日期可以延长吗？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "P07",
+      "text": "请预约一台相机",
+      "expected_route": "human"
+    },
+    {
+      "id": "P08",
+      "text": "归还日期可以延长吗？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "P09",
+      "text": "三脚架库存是多少？",
+      "expected_route": "inventory"
+    },
+    {
+      "id": "P10",
+      "text": "设备逾期费用怎样算？",
+      "expected_route": "calculator"
+    }
+  ],
+  "transfer_requests": [
+    {
+      "id": "T01",
+      "split": "development",
+      "condition": "新名词",
+      "text": "读者证有效期到什么时候？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "T02",
+      "split": "development",
+      "condition": "新库存说法",
+      "text": "这类图书的馆藏可借册数是多少？",
+      "expected_route": "inventory"
+    },
+    {
+      "id": "T03",
+      "split": "development",
+      "condition": "相似费用",
+      "text": "图书逾期三天费用怎样算？",
+      "expected_route": "calculator"
+    },
+    {
+      "id": "T04",
+      "split": "development",
+      "condition": "个人资料",
+      "text": "请修改我的读者证资料",
+      "expected_route": "human"
+    },
+    {
+      "id": "T05",
+      "split": "development",
+      "condition": "新使用者",
+      "text": "无障碍阅读设备怎么借？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "T06",
+      "split": "development",
+      "condition": "有副作用请求",
+      "text": "请替我预约研讨室",
+      "expected_route": "human"
+    },
+    {
+      "id": "T07",
+      "split": "development",
+      "condition": "相似规则",
+      "text": "续借期限是几天？",
+      "expected_route": "retrieve"
+    },
+    {
+      "id": "T08",
+      "split": "development",
+      "condition": "敏感资料",
+      "text": "请导出所有读者信息",
+      "expected_route": "human"
+    }
+  ],
+  "transfer_uncovered_condition": "数据没有英语、语音输入，也没有真实图书馆的模糊规定；当前证据不能判断这些条件。"
 }

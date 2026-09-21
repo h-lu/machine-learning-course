@@ -1,0 +1,9 @@
+{
+  "seed": 7,
+  "request_batch": "later",
+  "confidence_threshold": 0.45,
+  "max_tool_retries": 1,
+  "max_actions": 8,
+  "stop_when_complete": false,
+  "failure_request_id": "W09"
+}

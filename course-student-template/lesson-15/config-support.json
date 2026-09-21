@@ -1,0 +1,10 @@
+{
+  "head_steps": 120,
+  "learning_rate": 0.4,
+  "context_terms": [
+    "截止",
+    "补交",
+    "成绩"
+  ],
+  "context_boost": 0.0
+}

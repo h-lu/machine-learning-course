@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 from app import db
 from app.config import Settings
 from app.main import create_app
-from app.questions import BANK_VERSION, bank_for_lesson
+from app.questions import BANK_VERSION, bank_for_lesson, bank_snapshot
 from app.legacy import load_bank, response
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -27,7 +27,7 @@ class S01QuestionWalkthrough(unittest.TestCase):
     def test_source_concepts_keys_and_timer_match_reviewed_reading(self):
         bank = bank_for_lesson('S01')
         self.assertEqual(bank.durations, {'attempt_a': 240, 'learn': 300, 'attempt_b': 240})
-        self.assertEqual(BANK_VERSION, 'ml-v11-s01-s02-review-2026-09-20')
+        self.assertEqual(BANK_VERSION, 'ml-v13-course-map-2026-09-21')
         for i, item in enumerate(bank.items):
             for phase in ('a', 'b'):
                 q = item['pair'][phase]
@@ -55,7 +55,9 @@ class S01QuestionWalkthrough(unittest.TestCase):
             with TestClient(app) as teacher, TestClient(app) as student:
                 teacher.get('/ml-check/test-login?login=teacher-local&role=teacher')
                 student.get('/ml-check/test-login?login=student-local&role=student')
-                session = db.create_session(path, 'S01', bank.title)
+                session = db.create_session(
+                    path, 'S01', bank.title, BANK_VERSION, bank_snapshot(bank)
+                )
                 def phase(value):
                     page = teacher.get('/ml-check/teacher').text
                     r = teacher.post('/ml-check/teacher/phase', data={

@@ -1,0 +1,81 @@
+{
+  "kind": "small_document_collection_final",
+  "product": "离线课程问答助手",
+  "source": "课程人工编写的同组三份短资料和四条最终评价查询。",
+  "documents": [
+    {
+      "id": "D1",
+      "title": "提交与补交",
+      "text": "作业须在每周五 18:00 前提交。逾期七天内可以补交，但须说明原因。",
+      "units": [
+        "作业须在每周五 18:00 前提交",
+        "逾期七天内可以补交，但须说明原因"
+      ]
+    },
+    {
+      "id": "D2",
+      "title": "概念检查",
+      "text": "概念检查在课程平台的当次课页面完成。每次包含 A 版、学习和 B 版三个阶段。",
+      "units": [
+        "概念检查在课程平台的当次课页面完成",
+        "每次包含 A 版、学习和 B 版三个阶段"
+      ]
+    },
+    {
+      "id": "D3",
+      "title": "报告与评分",
+      "text": "报告不收集完整 AI 对话，但须保留用于判断的实验依据。程序运行成功不能单独证明理解。",
+      "units": [
+        "报告不收集完整 AI 对话，但须保留用于判断的实验依据",
+        "程序运行成功不能单独证明理解"
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "id": "final-01",
+      "split": "final",
+      "question": "作业可以晚交几天？",
+      "search_terms": [
+        "逾期",
+        "七天",
+        "补交"
+      ],
+      "expected_document": "D1",
+      "expected_answer": "逾期七天内"
+    },
+    {
+      "id": "final-02",
+      "split": "final",
+      "question": "在哪里做概念检查？",
+      "search_terms": [
+        "概念检查",
+        "课程平台"
+      ],
+      "expected_document": "D2",
+      "expected_answer": "课程平台"
+    },
+    {
+      "id": "final-03",
+      "split": "final",
+      "question": "只要程序能跑就算理解了吗？",
+      "search_terms": [
+        "程序运行",
+        "理解"
+      ],
+      "expected_document": "D3",
+      "expected_answer": "不能单独证明理解"
+    },
+    {
+      "id": "final-04",
+      "split": "final",
+      "question": "课程是否提供住宿？",
+      "search_terms": [
+        "住宿",
+        "宿舍"
+      ],
+      "expected_document": "",
+      "expected_answer": ""
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "candidate_version": "v1",
+  "recovery_version": "v1",
+  "confidence_threshold": 0.6,
+  "low_confidence_increase_limit": 0.2,
+  "new_condition_rate_limit": 0.4,
+  "route_shift_limit": 0.3,
+  "known_accuracy_minimum": 0.75
+}

@@ -1,0 +1,5 @@
+{
+  "evaluation_split": "validation",
+  "neighbors": 3,
+  "candidate_representation": "scaled"
+}

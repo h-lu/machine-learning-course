@@ -78,6 +78,8 @@ def example_data(lesson: str) -> dict:
             # 三种训练/验证划分只使用开发部分；原 test 行始终单独保留。
             r["receipt_minutes"] = r["wait_minutes"] + 0.25
         note = "receipt_minutes 是结束后小票才有的时间，仅供演示数据泄漏，不能作正常预测特征。"
+    elif lesson == "S04":
+        note = "本课沿用前面课次的 24 条人工样本；需要按本课用途重新核对配置和结果，不能直接引用旧分数。"
     elif lesson == "S05":
         kind = "foundation_sampling"
         for r in rows:

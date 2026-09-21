@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import io
+import json
 import secrets
 import sqlite3
 from datetime import datetime
@@ -20,7 +21,14 @@ from . import db
 from .legacy import ReceiptStore, load_bank, make_handler, response
 from . import pages as legacy_pages
 from .config import Settings
-from .questions import BANK_VERSION, CURRENT_BANKS, DEFAULT_BANK, bank_for_lesson
+from .questions import (
+    BANK_VERSION,
+    CURRENT_BANKS,
+    DEFAULT_BANK,
+    bank_for_lesson,
+    bank_from_snapshot,
+    bank_snapshot,
+)
 
 
 PHASE_LABELS = {
@@ -35,6 +43,18 @@ CONFIDENCE_LABELS = {
     "unsure": "不太确定",
     "sure": "确定",
 }
+
+
+def lesson_display_label(lesson_id: object) -> str:
+    """Show the human class number together with the stable C/S identifier."""
+    value = str(lesson_id).upper()
+    if value.startswith("C") and value[1:].isdigit():
+        number = int(value[1:])
+    elif value.startswith("S") and value[1:].isdigit():
+        number = int(value[1:]) + 2
+    else:
+        return value
+    return f"第 {number:02d} 课（{value}）"
 
 
 def format_timestamp(value: object) -> str:
@@ -61,7 +81,11 @@ def empty_session() -> dict[str, object]:
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or Settings.from_env()
     db.initialize(
-        settings.database_path, DEFAULT_BANK.lesson_id, DEFAULT_BANK.title
+        settings.database_path,
+        DEFAULT_BANK.lesson_id,
+        DEFAULT_BANK.title,
+        BANK_VERSION,
+        bank_snapshot(DEFAULT_BANK),
     )
 
     app = FastAPI(title="ML Check", docs_url=None, redoc_url=None)
@@ -116,12 +140,22 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return user
 
     def bank_for_session(session):
-        try:
-            return bank_for_lesson(str(session["lesson_id"]))
-        except LookupError as error:
+        snapshot = session["bank_json"] if "bank_json" in session.keys() else None
+        version = session["bank_version"] if "bank_version" in session.keys() else None
+        if not snapshot or not version:
             raise HTTPException(
                 status_code=500,
-                detail="当前场次对应的题库不存在，请联系教师",
+                detail="当前场次尚未完成题库快照回填，请联系管理员",
+            )
+        try:
+            bank = bank_from_snapshot(str(snapshot))
+            if bank.lesson_id != str(session["lesson_id"]):
+                raise ValueError("场次课次与题库快照不一致")
+            return bank
+        except (KeyError, TypeError, ValueError, json.JSONDecodeError) as error:
+            raise HTTPException(
+                status_code=500,
+                detail="当前场次保存的题目快照无法读取，请联系管理员",
             ) from error
 
     def phase_expired(session) -> bool:
@@ -138,6 +172,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "user": current_user(request),
             "phase_labels": PHASE_LABELS,
             "format_timestamp": format_timestamp,
+            "lesson_display_label": lesson_display_label,
             **context,
         }
         return templates.TemplateResponse(
@@ -154,8 +189,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @router.get("/healthz")
     def healthz() -> dict[str, object]:
-        session = db.current_session(settings.database_path)
-        if session is not None:
+        missing = db.missing_snapshot_count(settings.database_path)
+        if missing:
+            raise HTTPException(
+                status_code=500,
+                detail=f"有 {missing} 个场次尚未完成题库快照回填",
+            )
+        for session in db.session_snapshots(settings.database_path):
             bank_for_session(session)
         return {
             "status": "ok",
@@ -491,7 +531,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             bank = bank_for_lesson(lesson_id)
         except LookupError as error:
             raise HTTPException(status_code=400, detail="所选课次不存在") from error
-        db.create_session(settings.database_path, bank.lesson_id, bank.title)
+        db.create_session(
+            settings.database_path,
+            bank.lesson_id,
+            bank.title,
+            BANK_VERSION,
+            bank_snapshot(bank),
+        )
         return RedirectResponse(f"{settings.base_path}/teacher", status_code=303)
 
     @router.post("/teacher/session/delete")

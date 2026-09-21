@@ -1,14 +1,12 @@
-# ml-check：检查材料，帮助发现概念误解
+# ml-check：课程材料检查与概念练习
 
-**本分支使用候选题库 `ml-v11-s01-s02-review-2026-09-20`，未部署到生产服务**。C01–C02、S01–S06 的课包与 S07 修订题需要按班级版本一并采用；旧场次不得直接切换当前题库。本候选相对主分支 v9 仅重写第四课 S02；第三课 PR #4 尚未合并，后续合并须保留两课源题再重新同步。
+本仓库同时提供两项功能：`ml_check` 命令检查 32 课材料的结构、路径和 Python 语法；FastAPI 服务为课堂提供 A 版判断、AI 学习、B 版换情境判断和教师统计。当前源码题库为 `ml-v13-course-map-2026-09-21`，共 32 课、320 道题。
 
-本工具检查 32 课材料是否齐全、学生说明是否可读、提交文件是否有效、结果路径能否找到，以及 Python 代码是否有语法错误。它不运行学生提交命令，也不按指定模型、指标分数或采用结论判分。
-
-模板状态与项目完成分开：`template` 可通过课程材料结构检查；`complete` 还需要填写任务说明、写报告并提供实际结果文件。能否据此支持学生的建议，仍需教师阅读和实验核对。
+2026 班第 01–04 课已经完成，历史场次继续读取创建时使用的题库快照。当前题库只用于以后新建的场次，不会重新解释旧作答。首次部署快照功能和本轮生产切换按 [部署说明](deploy/README.md) 操作。
 
 ## 检查课程仓库
 
-在本目录运行。材料结构检查仅需 Python 3.10 以上；运行包含 Web 服务的测试集，还需预先安装 `requirements.txt` 中的依赖：
+在 `ml-check` 目录运行。结构检查需要 Python 3.10 以上；运行 Web 测试还需安装 `requirements.txt`。
 
 ```bash
 python3 -m ml_check --repo ../course-student-template --profile student --strict
@@ -17,38 +15,47 @@ python3 -m ml_check --repo ../machine-learning-course --profile planning --stric
 python3 -m unittest discover -s tests -v
 ```
 
-退出码 0 表示结构检查没有错误；严格模式还会将警告视为失败。工具不通过搜索“开放”等关键词证明教学质量。是否存在实质自主选择，需要对照任务和参考分析阅读。
+退出码 0 表示相应自动检查通过。学生仓库的 `scripts/course.py run/ci` 会执行课程程序；`ml_check` 本身不执行学生提交，也不评价报告结论。结构、关键词和语法检查不能证明文案易懂、实验正确或学生能在 90 分钟内完成，这些仍需命令实跑、教师审阅和真人试读。
 
 ## 在线概念练习
 
-访问 **https://hblu.top/ml-check**，使用 Gitea 账号登录。教师在 `/ml-check/teacher` 创建场次并切换 A、学习、B 阶段；学生在 `/ml-check/current` 作答并查看解释。教师页面提供场次进度、统计和 CSV 导出，概念练习结果用于形成性评价，不直接替代项目报告评分。
+访问 [ml-check](https://hblu.top/ml-check)，使用 Gitea 账号登录。教师在 `/ml-check/teacher` 创建场次并依次开放 A、学习、B 和结果阶段；学生在 `/ml-check/current` 进入当前场次。每个页面标题显示“第 NN 课（Cxx/Sxx）”和课名，避免只看内部编号。
 
-## 概念题
+每课有五个知识点，每个知识点对应一对 A/B 题：
 
-32 课各有五个独立定义的知识点，每个知识点配一对 A、B 题，共 320 题。每题使用 `C01-A-01`、`S01-B-05` 这样的稳定编号，页面标题也直接显示课次编号。学生先完成 A 版判断；AI 学习阶段只看到知识点标题与学习说明，不会看到或复述 A、B 题；最后由教师开放 B 版换场景检验。此前发布版本 `ml-v6-2026-09-16` 使用完整小场景；本分支候选版本见页首，不能用历史发布说明代替当前文件版本。题目答案与解释保留在教师/服务文件中；学生读取接口只返回题干与选项。
+- A 版先独立判断；
+- AI 学习阶段只显示知识点标题和学习说明，不显示或复述 A/B 题；
+- B 版换一个情境检查同一概念；
+- A、学习、B 默认分别为 240、300、240 秒，另留约 2 分钟提交。
+
+题号使用 `C01-A-01`、`S07-B-05` 这样的稳定格式。教师题库保存答案和解释；学生读取接口在作答前只返回题干与选项。参与情况与正确率用途不同，具体计分以课程评分说明为准。
+
+## 本地运行服务
 
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8896
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8896
 ```
 
-接口保留 `GET /ml-check/healthz`、`GET /ml-check/api/lessons` 和 `GET /ml-check/api/lessons/{lesson_id}`。页面入口为 `GET /ml-check/`，答题页面为 `GET /ml-check/lessons/{lesson_id}?phase=A`（或 B），核对提交为 `POST /ml-check/lessons/{lesson_id}/check`。提交后可通过 `GET /ml-check/api/receipts/{receipt_id}` 读取凭据。读取接口不会提前返回参考答案；凭据 API 也不会返回答案。
+本地服务通过 `DATABASE_PATH` 使用 SQLite。生产还要配置 `SESSION_SECRET`、Gitea OAuth、`TEACHER_LOGINS`、公开地址和安全 Cookie，示例见 `.env.example`；密钥和数据库不得提交到 Git。
 
-本地服务通过 `DATABASE_PATH` 配置 SQLite；部署时使用 `/data/ml-check.sqlite3`。生产环境还需设置 `SESSION_SECRET`、Gitea OAuth 客户端和 `TEACHER_LOGINS`，示例见 `.env.example`。旧匿名凭据 API 保留兼容，但新场次数据均按账号和场次持久化。
+主要页面和接口保留 `/ml-check` 前缀：
 
-## 与旧版的关系
+- `/ml-check/`：入口；
+- `/ml-check/current`：学生当前场次；
+- `/ml-check/teacher`：教师控制、进度、历史统计和 CSV；
+- `/ml-check/healthz`：服务、题库和历史快照健康状态；
+- `/ml-check/api/lessons` 与 `/ml-check/api/lessons/{lesson_id}`：兼容的题库读取接口。
 
-课次编号、检查命令的主要选项、HTTP 路径和 `contract.json`、`submission.json` 等文件名保留。任务字段精简为自然语言说明；提交清单允许学生更换运行入口与报告路径。JSON 内容为第 2 版接口，不能将旧前端直接视为兼容。
+旧匿名凭据和课次读取接口继续保留兼容。新建场次会保存该课完整题干、选项、答案、解释、学习说明、计时和题库版本；历史页面、统计和反馈都从场次快照读取。任何旧场次缺少或损坏快照时，健康检查会失败，部署人员应先修复映射，不能直接换题库。
 
-服务现使用 FastAPI、Session 和 Gitea OAuth，页面与 statistics-course 的 stat-check 保持一致；匿名 API 和旧答题路径继续可用。运行方式见 [部署说明](deploy/README.md)。
+## 题库来源与发布
 
-## C01–C02 候选题库版本
+教师源题位于完整 GitHub 课程仓库的 [`course-instructor/lessons`](https://github.com/h-lu/machine-learning-course/tree/main/course-instructor/lessons)。在完整工作区根目录使用下面的命令生成服务汇总文件：
 
-此前入门候选版本为 `ml-v7-intro-2026-09-19`：当时只改写 C01–C02 的五知识点与 A/B 题，S01–S30 保留原题。上文 `ml-v6-2026-09-16` 为此前发布记录，不代表本分支候选已部署。健康接口的版本从题库文件读取，避免页面与文件各自维护不同版本号。
+```bash
+python3 tools/sync_question_bank.py
+```
 
-生产服务不在本次变更中切换。旧场次只记录课号且读取当前题库，不能在使用旧题的实例原地替换题库后宣称历史仍兼容；隔离实例、备份及班级版本安排按教师发布说明执行。
-
-## S01–S06 候选题库版本
-
-`ml-v11-s01-s02-review-2026-09-20` 保留入门两课，再重写 S01–S06 的 30 个知识点及 60 道 A/B 题。总计仍为 32 课、320 题。前八课 A/学习/B 为 240/300/240 秒，另留 120 秒提交；S07 的 10 道题在合并前修订，五个知识点及 10/15/10 分钟时长不变；S08–S30 题目和时长不变。
-
-源题在教师 `lessons/S01` 至 `S06/questions.json`，汇集文件与读取服务使用同一版本。版本名不提供新旧场次隔离；旧班级和旧数据库不得直接用候选题库重新解释。此处只描述源码，不声称生产已更新。
+生成后仍需人工核对 A/B 是否检查同一概念、B 是否真正换情境、学习说明是否没有泄露题干，以及术语和干扰项是否清楚。生产部署还要核对题库文件 SHA-256、数据库数量、旧场次快照、新场次完整流程和 HTTPS 健康接口；详见 [部署说明](deploy/README.md) 与 [教师发布说明](https://github.com/h-lu/machine-learning-course/blob/main/course-instructor/RELEASE.md)。

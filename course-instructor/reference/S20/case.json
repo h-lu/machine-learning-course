@@ -1,10 +1,12 @@
 {
   "lesson": "S20",
-  "purpose": "更集中的解码分布",
-  "config_patch": {
-    "temperature": 0.6,
-    "top_k": 2,
-    "top_p": 0.8
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "改变无效工具参数并核对参数验证和无结果边界",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "tool_calls.csv"
+  ],
+  "specialized_test": "tests/test_workflow_module.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

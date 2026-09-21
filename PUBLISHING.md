@@ -4,7 +4,7 @@
 
 | 位置 | 内容 |
 |---|---|
-| [GitHub：h-lu/machine-learning-course](https://github.com/h-lu/machine-learning-course) | 32 课完整材料、128 道题和运行工具，公开 |
+| [GitHub：h-lu/machine-learning-course](https://github.com/h-lu/machine-learning-course) | 32 课完整材料、320 道 A/B 题和运行工具，公开 |
 | [Gitea：course-student-template](https://hblu.top/gitea/machine-learning-2026/course-student-template) | 学生课包、数据和实验工具 |
 | [Gitea：course-instructor](https://hblu.top/gitea/machine-learning-2026/course-instructor) | 教师运行单、参考分析和题目答案 |
 | [Gitea：ml-check](https://hblu.top/gitea/machine-learning-2026/ml-check) | 格式检查与在线概念练习代码 |
@@ -18,7 +18,7 @@
 
 公开仓库中的教师答案不嵌入学生任务目录。学生应先作判断，再用 AI 和参考材料学习；项目仍按自己的实验、检查与理由评价。
 
-课程仓库发布后，已于 2026-09-06 将概念练习服务部署到 [hblu.top/ml-check](https://hblu.top/ml-check)。覆盖 32 课、128 题，提供 A/B 两轮答题、提交后的解释和匿名完成凭据；无需登录，凭据不含姓名或账号。服务器配置见 `ml-check/deploy/README.md`。
+课程仓库发布后，已于 2026-09-06 将概念练习服务部署到 [hblu.top/ml-check](https://hblu.top/ml-check)，后续改为使用 Gitea 账号参与教师场次。当前服务覆盖 32 课、每课 A/B 各五题，共 320 题；历史发布记录保留在下文，当前题库与部署状态以[教师发布说明](course-instructor/RELEASE.md)为准。服务器配置见 `ml-check/deploy/README.md`。
 
 ## 2026-09-06 发布记录
 

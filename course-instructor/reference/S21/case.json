@@ -1,8 +1,13 @@
 {
   "lesson": "S21",
-  "purpose": "另一份已有候选输出表",
-  "config_patch": {
-    "candidate": "structured"
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "关闭完成停止条件并核对重复动作与共享动作单位",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "route_decisions.csv",
+    "action_trace.csv"
+  ],
+  "specialized_test": "tests/test_workflow_module.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

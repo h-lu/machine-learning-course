@@ -1,9 +1,15 @@
 {
   "lesson": "S13",
-  "purpose": "较窄网络与较少训练步数",
-  "config_patch": {
-    "hidden": 6,
-    "steps": 180
-  },
-  "scope": "教师工具核对案例，不是学生必须采用的方案"
+  "runner": "standalone",
+  "purpose": "移除输入上下文增益并区分固定记录、输入规则与训练输出头",
+  "config_file": "config-support.json",
+  "expected_outputs": [
+    "summary.json",
+    "evidence.json",
+    "routes.csv",
+    "records.csv",
+    "parameter_trace.csv"
+  ],
+  "specialized_test": "tests/test_pretrained_module.py",
+  "scope": "共享验证器检查命令、产物与确定性；数值和机制断言由列出的学生模板专项测试覆盖，不规定学生结论"
 }

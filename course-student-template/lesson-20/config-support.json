@@ -1,0 +1,11 @@
+{
+  "evaluation_split": "development",
+  "presentation_order": "BA",
+  "disagreement_threshold": 1,
+  "weights": {
+    "task_completion": 0.3,
+    "factuality": 0.3,
+    "evidence_support": 0.3,
+    "format": 0.1
+  }
+}

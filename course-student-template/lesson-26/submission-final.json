@@ -1,0 +1,17 @@
+{
+  "lesson": "lesson-26",
+  "status": "in_progress",
+  "report": "lesson-26/report.md",
+  "artifacts": [
+    "lesson-26/artifacts/summary.json",
+    "lesson-26/artifacts/final_cases.csv"
+  ],
+  "run": [
+    "python",
+    "lesson-26/analysis.py",
+    "--data",
+    "lesson-26/data/holdout.json",
+    "--config",
+    "lesson-26/config-final.json"
+  ]
+}

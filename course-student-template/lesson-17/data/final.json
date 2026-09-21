@@ -1,0 +1,39 @@
+{
+  "kind": "prompt_final_evaluation_cases",
+  "product": "离线课程问答助手",
+  "source": "课程人工编写的 4 条最终评价问题、短资料和期望要点；不是学生真实提问，也不是大模型缓存。",
+  "rows": [
+    {
+      "id": "final-01",
+      "split": "final",
+      "question": "补交时要写什么？",
+      "evidence": "逾期七天内可以补交，但须说明原因",
+      "answer": "须说明原因",
+      "source": "课程手册第 2 节"
+    },
+    {
+      "id": "final-02",
+      "split": "final",
+      "question": "概念检查从哪个页面进入？",
+      "evidence": "概念检查在课程平台的当次课页面完成",
+      "answer": "从课程平台的当次课页面进入",
+      "source": "学习指南第 4 节"
+    },
+    {
+      "id": "final-03",
+      "split": "final",
+      "question": "学校是否报销打印费？",
+      "evidence": "",
+      "answer": "",
+      "source": ""
+    },
+    {
+      "id": "final-04",
+      "split": "final",
+      "question": "报告中必须保留什么？",
+      "evidence": "报告不收集完整 AI 对话，但须保留用于判断的实验证据",
+      "answer": "保留用于判断的实验依据",
+      "source": "作业说明第 1 节"
+    }
+  ]
+}
