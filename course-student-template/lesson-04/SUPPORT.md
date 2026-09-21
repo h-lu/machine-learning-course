@@ -23,7 +23,7 @@ python scripts/course.py start 04
 python lesson-04/analysis.py --config lesson-04/config-start.json --output lesson-04/artifacts/support-start
 ```
 
-看到“结果写入”后，先打开 `support-start/records.csv`。CSV 第一行是列名。先只看 `id`、`visible` 和 `observed_minutes`：`True` 表示截至第 4 天已经收到直接观测标签，空白表示未知，不是 0。
+`records.csv` 和 `comparison.csv` 是这条命令运行后才生成的结果文件，不在 `lesson-04/data/` 目录中。看到“结果写入”后，打开 `lesson-04/artifacts/support-start/records.csv`。CSV 第一行是列名。先只看 `id`、`visible` 和 `observed_minutes`：`True` 表示截至第 4 天已经收到直接观测标签，空白表示未知，不是 0。
 
 ## 3. 手算均值和覆盖率
 
@@ -34,7 +34,7 @@ python lesson-04/analysis.py --config lesson-04/config-start.json --output lesso
 覆盖率 = 4 ÷ 8 = 50%
 ```
 
-均值分母为 4，覆盖率分母为 8。打开 `support-start/comparison.csv`，在 `method=available_only` 行核对 `n=4`、`mean_minutes=5`、`coverage=0.5`。
+均值分母为 4，覆盖率分母为 8。打开同一输出目录中的 `lesson-04/artifacts/support-start/comparison.csv`，在 `method=available_only` 行核对 `n=4`、`mean_minutes=5`、`coverage=0.5`。
 
 `zero_fill_demo` 是把未知错误填成 0 的示范；`proxy_all` 平均的是代理值。它们都不是 8 条目标值（实际等待时间）的真实平均值。
 
@@ -56,7 +56,7 @@ python lesson-04/analysis.py --config lesson-04/config-start.json --output lesso
 python lesson-04/analysis.py --config lesson-04/config-support.json --output lesson-04/artifacts/support-compare
 ```
 
-比较 `support-start` 和 `support-compare`。第 7 天新增 A03、B01、B03，已知 7/8 条，覆盖率 87.5%；B04 仍未知。新均值约为 6.143 分钟。
+比较 `lesson-04/artifacts/support-start/records.csv` 和 `lesson-04/artifacts/support-compare/records.csv`。第 7 天新增 A03、B01、B03，已知 7/8 条，覆盖率 87.5%；B04 仍未知。新均值约为 6.143 分钟。
 
 这是同一批 8 条经历在较晚截止日收到更多标签，不是第 7 天重新发生了 8 次排队，也不能说服务因此变慢。
 
@@ -89,7 +89,7 @@ git diff --cached --name-only
 
 ## 9. 卡住时怎么办
 
-- 不知道先看什么：先看 `records.csv` 中 B02，再找四行 `visible=True`。
+- 不知道先看什么：先打开当前输出目录中的 `records.csv`，看 B02，再找四行 `visible=True`。
 - 均值或覆盖率不对：分别检查分母是 4 还是 8。
 - 日期改变后结果没变：检查实际使用的配置和输出目录。
 - JSON 报错：按行号、列号检查英文双引号、逗号和非负数值。

@@ -44,7 +44,7 @@ python scripts/course.py start 04
 python lesson-04/analysis.py --config lesson-04/config-start.json --output lesson-04/artifacts/original
 ```
 
-这条命令会读取 `data/base.json` 中的原始教学数据和 `config-start.json` 中的起点设置，并把结果写入指定目录。看到“结果写入”后，按下面的顺序查看文件，这样不容易把原始记录、汇总数字和完整配置混在一起：
+这条命令会读取 `data/base.json` 中的原始教学数据和 `config-start.json` 中的起点设置，并把结果写入指定目录。`records.csv` 和 `comparison.csv` 在运行前并不存在，它们会在下面的命令成功后出现在 `lesson-04/artifacts/original/`；不要到 `lesson-04/data/` 里寻找它们。看到“结果写入”后，按下面的顺序查看文件，这样不容易把原始记录、汇总数字和完整配置混在一起：
 
 1. `artifacts/original/records.csv`：每条记录的来源、可见状态和数值；
 2. `artifacts/original/comparison.csv`：不同统计办法的汇总；
@@ -52,7 +52,7 @@ python lesson-04/analysis.py --config lesson-04/config-start.json --output lesso
 
 ### 3. 手算两个不同分母
 
-在 `records.csv` 中找到 `visible=True` 的 A01、A02、A04、B02。`visible=True` 的意思是“截至本次观察日已经收到直接观测标签”，并不表示这条记录一定正确。第 4 天收到的目标值是 1、3、7、9 分钟，因此可以这样核对两个不同的分母：
+打开刚生成的 `artifacts/original/records.csv`，找到 `visible=True` 的 A01、A02、A04、B02。`visible=True` 的意思是“截至本次观察日已经收到直接观测标签”，并不表示这条记录一定正确。第 4 天收到的目标值是 1、3、7、9 分钟，因此可以这样核对两个不同的分母：
 
 ```text
 已收到标签的均值 = (1 + 3 + 7 + 9) ÷ 4 = 5 分钟
@@ -98,7 +98,7 @@ python -m json.tool lesson-04/config-mine.json
 python lesson-04/analysis.py --config lesson-04/config-mine.json --output lesson-04/artifacts/my-check
 ```
 
-成功后先打开 `records.csv` 查看一条具体记录，再打开 `comparison.csv` 查看一个带分母的比例。改变容差只会改变“是否标记为分歧”，不会修改两份原始分钟数，也不能让标签自动变得正确。报告中要写出你预计的变化、实际看到的变化，以及这项检查仍然不能回答什么问题。
+成功后先打开 `lesson-04/artifacts/my-check/records.csv` 查看一条具体记录，再打开同一目录下的 `comparison.csv` 查看一个带分母的比例。改变容差只会改变“是否标记为分歧”，不会修改两份原始分钟数，也不能让标签自动变得正确。报告中要写出你预计的变化、实际看到的变化，以及这项检查仍然不能回答什么问题。
 
 ### 6. 保存报告和提交文件
 
@@ -118,7 +118,7 @@ python scripts/course.py check 04
 ## 必须提交什么
 
 - 程序与最终配置；
-- `records.csv`、`comparison.csv` 和 `summary.json`；
+- 最后一次运行生成的 `lesson-04/artifacts/records.csv`、`comparison.csv` 和 `summary.json`；
 - 起点、日期对照和个人检查所用的配置与输出；
 - 已填写的 `contract.json`、`report.md` 和 `submission.json`。
 
@@ -150,4 +150,4 @@ python scripts/course.py check 04
 
 需要 Python 3.10 以上、NumPy 和仓库内的 8 条人工数据。普通 CPU 可离线运行，不需要显卡、付费 API 或下载模型。单次运行目标不超过 3 分钟。在线概念检查另需网络；本课结果不能证明真实食堂或真实 AI 服务的效果。
 
-> 数据提醒：`records.csv` 还会显示 `record_source` 和 `clock_quality`。它们不是等待分钟数，而是帮助判断先复核哪条记录的来源信息。先读 B04 和 A03 的这两列，写下它们为什么更需要说明。
+> 数据提醒：运行生成的 `records.csv` 还会显示 `record_source` 和 `clock_quality`。它们不是等待分钟数，而是帮助判断先复核哪条记录的来源信息。先读 B04 和 A03 的这两列，写下它们为什么更需要说明。
