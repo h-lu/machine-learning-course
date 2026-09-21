@@ -8,11 +8,11 @@ B02 是一次已经发生的排队经历：
 
 | 字段 | 数值 | 来源与含义 |
 |---|---:|---|
-| `wait_minutes` | 9 分钟 | 第一份实际等待记录，本课暂作核对参照 |
-| `proxy_minutes` | 5 分钟 | 按人数等信息得到的代理估计，不是实际计时 |
-| `review_minutes` | 9 分钟 | 第二份标注，用来检查是否与第一份分歧 |
+| `wait_minutes` | 9 分钟 | 直接观测到的目标值（等待时间），本课暂作核对参照 |
+| `proxy_minutes` | 5 分钟 | 按人数等信息推算的代理值，不是目标值 |
+| `review_minutes` | 9 分钟 | 第二位记录者独立得到的复核值 |
 
-先用一两句话回答三个问题：如果要统计已经收到的实际等待，应使用哪一列？代理估计 5 分钟能不能直接写成“实际等了 5 分钟”？两份标注相同能否证明它们一定正确？暂时答不完整也没有关系，运行结果后再回来看你的判断是否需要修改。
+先用一两句话回答三个问题：如果要统计已经收到的目标值（实际等待时间），应使用哪一列？代理值 5 分钟能不能直接写成“目标值是 5 分钟”？直接观测值和独立复核值相同，能否证明它们一定正确？暂时答不完整也没有关系，运行结果后再回来看你的判断是否需要修改。
 
 ## 2. 运行第 4 天起点
 
@@ -23,7 +23,7 @@ python scripts/course.py start 04
 python lesson-04/analysis.py --config lesson-04/config-start.json --output lesson-04/artifacts/support-start
 ```
 
-看到“结果写入”后，先打开 `support-start/records.csv`。CSV 第一行是列名。先只看 `id`、`visible` 和 `observed_minutes`：`True` 表示截至第 4 天已经收到实际标签，空白表示未知，不是 0。
+看到“结果写入”后，先打开 `support-start/records.csv`。CSV 第一行是列名。先只看 `id`、`visible` 和 `observed_minutes`：`True` 表示截至第 4 天已经收到直接观测标签，空白表示未知，不是 0。
 
 ## 3. 手算均值和覆盖率
 
@@ -36,13 +36,13 @@ python lesson-04/analysis.py --config lesson-04/config-start.json --output lesso
 
 均值分母为 4，覆盖率分母为 8。打开 `support-start/comparison.csv`，在 `method=available_only` 行核对 `n=4`、`mean_minutes=5`、`coverage=0.5`。
 
-`zero_fill_demo` 是把未知错误填成 0 的示范；`proxy_all` 平均的是代理估计。它们都不是 8 条实际等待的真实平均值。
+`zero_fill_demo` 是把未知错误填成 0 的示范；`proxy_all` 平均的是代理值。它们都不是 8 条目标值（实际等待时间）的真实平均值。
 
-## 4. 核对一条标注分歧
+## 4. 核对一条标注者间分歧
 
 找 A04：`observed_minutes=7`，`review_minutes=10`，绝对差为 3 分钟。默认容差是 2，规则写的是“差异超过 2 才算分歧”，所以 A04 标为 `True`。
 
-一致比例的分母是同时有两份标注的记录数。没有第二份标注的记录不算一致，也不算分歧。
+一致比例的分母是同时有直接观测值和独立复核值的记录数。没有独立复核值的记录不算一致，也不算分歧。
 
 ## 5. 检查来源质量
 
