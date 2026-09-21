@@ -246,7 +246,7 @@ def s02(data, config):
                             disagreement=abs(r["wait_minutes"]-r["review_minutes"]) > tolerance if reviewed else None))
     return output("available_only", reports, rows, records, "推迟观察截止日，重新统计实际收到的标签", audit(later),
                   visible_ids=sorted(available_ids), observation_day=day, later_day=later, disagreement_minutes=tolerance,
-                  note="填零仅为错误示范；代理标签的全体平均不是全体真实等待时间；没有调用 AI 标注服务。")
+                  note="填零仅为错误示范；全部代理值的平均不是全部目标值的平均；本课没有调用 AI 标注服务。")
 
 
 def assign_splits(rows, strategy, config):
@@ -456,11 +456,11 @@ def label_audit_console_summary(result):
         f"S02 标签检查：固定 {m['total_rows']} 条已发生记录；主截止日为第 {d['observation_day']} 天结束。",
         f"已收到 {m['n']}/{m['total_rows']} 条；标签覆盖率 {100*m['coverage']:.6g}%；未知 {m['unknown_labels']} 条。",
         f"已知标签均值 = {number(m['mean_minutes'])} 分钟；均值分母为 {m['n']}，不是全部记录数。",
-        f"两份标注可比较 {m['review_pairs']} 对；差异 > {d['disagreement_minutes']:.6g} 分钟才标记，分歧 {m['disagreements']} 对；一致比例 {agreement}。",
-        f"代理 MAE = {number(m['proxy_mae_observed'])} 分钟，只比较当前已收到的参照标签。",
-        "填零是错误示范；全部代理值的均值不是全部实际等待均值。先从 records.csv 核对一行，再读 comparison.csv。",
+        f"直接观测值和独立复核值可比较 {m['review_pairs']} 对；差异 > {d['disagreement_minutes']:.6g} 分钟才标记为分歧，标注者间分歧 {m['disagreements']} 对；一致比例 {agreement}（标注者间一致性比例）。",
+        f"代理值 MAE = {number(m['proxy_mae_observed'])} 分钟，只比较当前已收到直接观测目标值的记录。",
+        "填零是错误示范；全部代理值的均值不是全部目标值的均值。先从生成的 records.csv 核对一行，再读 comparison.csv。",
         f"额外截止日第 {d['later_day']} 天：已收到 {later['n']}/{later['total_rows']} 条；已知均值 {number(later['mean_minutes'])} 分钟。",
-        "日期控制哪些标签可见；分歧容差只改变标记，不修改原值。没有配对不等于全部正确；本例没有调用 AI 服务。",
+        "日期控制哪些直接观测标签可见；分歧容差只改变复核标记，不修改原值。没有配对不等于全部正确；本课没有调用 AI 服务。",
     ])
 
 
