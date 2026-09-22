@@ -3,5 +3,6 @@
   "evaluation_split": "validation",
   "split_strategy": "time",
   "train_through_day": 4,
-  "validation_through_day": 6
+  "validation_through_day": 6,
+  "group_validation_site": "B"
 }

@@ -6,7 +6,7 @@ from copy import deepcopy
 TITLES = {
     "S01": "怎样把模糊需求变成可研究的问题",
     "S02": "这份数据和标签代表谁、代表什么",
-    "S03": "怎样比较才接近未来使用",
+    "S03": "怎样划分数据，才能让验证更接近实际使用",
     "S04": "什么算做好了，失败会造成什么后果",
     "S05": "还缺哪些数据，哪些记录值得补",
     "S06": "一次小实验能否改变最初的问题",
@@ -16,7 +16,8 @@ CONFIGS = {
                 rule_intercept=1.0, rule_slope=2.0, alert_minutes=8.0, stress_queue=10),
     "S02": dict(seed=7, observation_day=4, later_day=7, disagreement_minutes=2.0),
     "S03": dict(seed=7, evaluation_split="validation", split_strategy="time",
-                train_through_day=4, validation_through_day=6),
+                train_through_day=4, validation_through_day=6,
+                group_validation_site="B"),
     "S04": dict(seed=7, evaluation_split="validation", primary_model="linear",
                 buffer_minutes=4.0, underestimate_weight=3.0,
                 long_wait_minutes=8.0, alert_threshold=8.0, capacity=2, stress_capacity=1),

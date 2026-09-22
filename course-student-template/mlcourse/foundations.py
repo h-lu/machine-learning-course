@@ -262,7 +262,14 @@ def assign_splits(rows, strategy, config):
     elif strategy == "group":
         if {r["site"] for r in rows} != {"A", "B", "C"}:
             raise ValueError("分组示例需要 A、B、C 三个窗口；换分组时请一起修改 assign_splits。")
-        splits = [{"A": "train", "B": "validation", "C": "unused"}[r["site"]] for r in development]
+        validation_site = choice(config, "group_validation_site", ("A", "B"))
+        train_site = "B" if validation_site == "A" else "A"
+        splits = [
+            "train" if r["site"] == train_site else
+            "validation" if r["site"] == validation_site else
+            "unused"
+            for r in development
+        ]
         heldout = [{**r, "split": "test" if r["site"] == "C" else "unused"} for r in heldout]
     else:
         order = np.random.default_rng(config["seed"]).permutation(len(development))
@@ -297,6 +304,8 @@ def s03(data, config):
         records.extend(trace)
         plans[strategy] = dict(model=model, train_ids=[r["id"] for r in train],
                                evaluation_ids=[r["id"] for r in evaluation],
+                               train_sites=sorted({r["site"] for r in train}),
+                               evaluation_sites=sorted({r["site"] for r in evaluation}),
                                test_ids=[r["id"] for r in assigned if r["split"] == "test"],
                                unused_ids=[r["id"] for r in assigned if r["split"] == "unused"])
         leakage[strategy] = errors([r["wait_minutes"] for r in evaluation], bad)
@@ -485,6 +494,20 @@ def console_summary(result):
         return "\n".join(lines)
     if d.get("primary_method") == "available_only":
         return label_audit_console_summary(result)
+    if result.get("lesson") in {"S03", "lesson-05"}:
+        lines = ["第 05 课数据划分结果（不是自动推荐）："]
+        for row in d["tables"]["comparison"]:
+            lines.append(
+                f"{row['method_name']}；训练集 {row['train_n']} 条；"
+                f"验证集 {row['n']} 条；训练集和验证集共有取餐窗口 {row['shared_sites']} 个；"
+                f"验证集 MAE = {row['mae']:.6g} 分钟"
+            )
+        lines += [
+            "先根据将来的使用对象选择划分方法，再比较对应记录上的 MAE；三行使用的验证记录并不相同。",
+            "请先打开 comparison.csv 核对分母，再到 summary.json 的 details.splits 中核对训练和验证编号。",
+            "leaked_mae_demo 是误用结束后小票时间得到的目标泄漏反例，不能作为候选方案。",
+        ]
+        return "\n".join(lines)
     lines = ["比较结果（不是自动推荐）："]
     for r in d["tables"]["comparison"]:
         parts = [r["method_name"]]

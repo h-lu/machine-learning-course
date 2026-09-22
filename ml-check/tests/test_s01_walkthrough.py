@@ -27,7 +27,7 @@ class S01QuestionWalkthrough(unittest.TestCase):
     def test_source_concepts_keys_and_timer_match_reviewed_reading(self):
         bank = bank_for_lesson('S01')
         self.assertEqual(bank.durations, {'attempt_a': 240, 'learn': 300, 'attempt_b': 240})
-        self.assertEqual(BANK_VERSION, 'ml-v13-course-map-2026-09-21')
+        self.assertEqual(BANK_VERSION, 'ml-v14-s03-readability-2026-09-22')
         for i, item in enumerate(bank.items):
             for phase in ('a', 'b'):
                 q = item['pair'][phase]

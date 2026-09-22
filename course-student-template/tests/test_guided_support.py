@@ -73,6 +73,20 @@ class GuidedValues(unittest.TestCase):
         self.assertEqual(a['comparison']['group'], b['comparison']['group'])
         self.assertEqual(a['comparison']['random'], b['comparison']['random'])
 
+    def test_s03_prepared_group_check_swaps_a_and_b_without_using_c(self):
+        folder=ROOT/'lesson-05'
+        data=json.loads((folder/'data/base.json').read_text())
+        start=json.loads((folder/'config-start.json').read_text())
+        changed=json.loads((folder/'config-group-check.json').read_text())
+        self.assertEqual([k for k in start if start[k] != changed[k]],['group_validation_site'])
+        before=run_experiment('S03',data,start);after=run_experiment('S03',data,changed)
+        a=before['details']['splits']['group'];b=after['details']['splits']['group']
+        self.assertEqual((a['train_sites'],a['evaluation_sites']),(['A'],['B']))
+        self.assertEqual((b['train_sites'],b['evaluation_sites']),(['B'],['A']))
+        self.assertEqual(a['test_ids'],b['test_ids'])
+        self.assertEqual(before['comparison']['group']['shared_sites'],0)
+        self.assertEqual(after['comparison']['group']['shared_sites'],0)
+
     def test_s04_weight_does_not_change_predictions_or_decisions(self):
         a, b = payload(4)[2], payload(4, 'support')[2]
         for key in ('n','mae','alerts','tp','fp','fn','tn'):

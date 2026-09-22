@@ -25,7 +25,7 @@ S01–S06 的先后关系、数据版本和提交方法见 [问题与评价模�
 |---|---|
 | 1 | [01 从一行数据得到第一个预测](lesson-01/README.md) · [02 怎样公平比较三个预测办法](lesson-02/README.md) |
 | 2 | [03 怎样把模糊需求变成可研究的问题](lesson-03/README.md) · [04 收到的数据能代表全部记录吗](lesson-04/README.md) |
-| 3 | [05 怎样比较才接近未来使用](lesson-05/README.md) · [06 什么算做好了，失败会造成什么后果](lesson-06/README.md) |
+| 3 | [05 怎样划分数据，才能让验证更接近实际使用](lesson-05/README.md) · [06 什么算做好了，失败会造成什么后果](lesson-06/README.md) |
 | 4 | [07 还缺哪些数据，哪些记录值得补](lesson-07/README.md) · [08 一次小实验能否改变最初的问题](lesson-08/README.md) |
 | 5 | [09 简单模型与复杂模型各自假设了什么](lesson-09/README.md) · [10 预测概率怎样转成合适的行动](lesson-10/README.md) |
 | 6 | [11 数据怎样表示，模型才容易使用](lesson-11/README.md) · [12 模型究竟从数据中学到了什么](lesson-12/README.md) |

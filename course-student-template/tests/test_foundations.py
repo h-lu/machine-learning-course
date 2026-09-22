@@ -92,6 +92,18 @@ class FoundationalRelationships(unittest.TestCase):
         self.assertGreater(a['metrics']['mae'],0)
         self.assertAlmostEqual(a['metrics']['leaked_mae_demo'],0,places=7)
 
+    def test_s03_group_validation_site_rotates_development_groups_only(self):
+        data=example_data('S03');start=example_config('S03')
+        rotated={**start,'group_validation_site':'A'}
+        before=run_experiment('S03',data,start);after=run_experiment('S03',data,rotated)
+        a=before['details']['splits']['group'];b=after['details']['splits']['group']
+        self.assertEqual((a['train_sites'],a['evaluation_sites']),(['A'],['B']))
+        self.assertEqual((b['train_sites'],b['evaluation_sites']),(['B'],['A']))
+        self.assertEqual((a['test_ids'],b['test_ids']),(['C07','C08'],['C07','C08']))
+        self.assertEqual(before['metrics'],after['metrics'])
+        self.assertNotEqual(before['comparison']['group'],after['comparison']['group'])
+        self.assertEqual(after['comparison']['group']['shared_sites'],0)
+
     def test_s04_weighted_loss_can_reverse_mae_ranking_without_changing_predictions(self):
         r=run('S04');q=run('S04',underestimate_weight=1)
         self.assertLess(r['metrics']['mae'],r['comparison']['buffered']['mae'])
@@ -185,20 +197,28 @@ class FoundationColdRead(unittest.TestCase):
     def test_all_readme_trial_json_and_commands_run_and_preserve_originals(self):
         for i in range(1,7):
             folder=f'lesson-{i+2:02d}';text=(self.root/folder/'README.md').read_text()
-            trial=(json.loads((self.root/folder/'config-support.json').read_text()) if i == 1
+            trial=(json.loads((self.root/folder/'config-support.json').read_text()) if i in {1,3}
                    else json.loads(re.search(r'```json\n(.*?)\n```',text,re.S).group(1)))
             self.cmd(sys.executable,'scripts/course.py','start',f'{i+2:02d}')
             original=[f'{folder}/analysis.py']
-            if i == 1: original += ['--config', f'{folder}/config-start.json']
-            original += ['--output',f'{folder}/artifacts/original']
+            if i in {1,3}: original += ['--config', f'{folder}/config-start.json']
+            original_dir='support-start' if i == 3 else 'original'
+            original += ['--output',f'{folder}/artifacts/{original_dir}']
             if i == 2:
                 # S02 now supplies a fixed starting config, a date contrast, then a personal check.
                 original=[f'{folder}/analysis.py','--config',f'{folder}/config-start.json','--output',f'{folder}/artifacts/original']
             self.assertIn('python '+' '.join(original),text)
             result=self.cmd(sys.executable,*original)
             self.assertIn('comparison.csv',result.stdout);self.assertIn('records.csv',result.stdout)
-            old=(self.root/folder/'artifacts/original/records.csv').read_bytes()
-            config_name, output_name = ('config-support.json', 'trial') if i == 1 else (('config-mine.json', 'my-check') if i == 2 else ('config-trial.json', 'trial'))
+            old=(self.root/folder/f'artifacts/{original_dir}/records.csv').read_bytes()
+            if i == 1:
+                config_name, output_name = 'config-support.json', 'trial'
+            elif i == 2:
+                config_name, output_name = 'config-mine.json', 'my-check'
+            elif i == 3:
+                config_name, output_name = 'config-support.json', 'support-compare'
+            else:
+                config_name, output_name = 'config-trial.json', 'trial'
             if i == 2:
                 contrast=[f'{folder}/analysis.py','--config',f'{folder}/config-support.json','--output',f'{folder}/artifacts/trial']
                 self.assertIn('python '+' '.join(contrast),text)
@@ -206,12 +226,12 @@ class FoundationColdRead(unittest.TestCase):
                 dated=json.loads((self.root/folder/'artifacts/trial/summary.json').read_text())
                 self.assertEqual(dated['details']['observation_day'],7)
                 self.assertEqual(dated['metrics']['n'],7)
-                self.assertEqual(old,(self.root/folder/'artifacts/original/records.csv').read_bytes())
-            if i != 1:
+                self.assertEqual(old,(self.root/folder/f'artifacts/{original_dir}/records.csv').read_bytes())
+            if i not in {1,3}:
                 (self.root/folder/config_name).write_text(json.dumps(trial,ensure_ascii=False))
             args=[f'{folder}/analysis.py','--config',f'{folder}/{config_name}','--output',f'{folder}/artifacts/{output_name}']
             self.assertIn('python '+' '.join(args),text);self.cmd(sys.executable,*args)
-            self.assertEqual(old,(self.root/folder/'artifacts/original/records.csv').read_bytes())
+            self.assertEqual(old,(self.root/folder/f'artifacts/{original_dir}/records.csv').read_bytes())
             payload=json.loads((self.root/folder/f'artifacts/{output_name}/summary.json').read_text())
             if i == 2:
                 self.assertEqual(payload['details']['observation_day'],4)

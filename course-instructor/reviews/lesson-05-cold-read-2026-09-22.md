@@ -1,0 +1,51 @@
+# 第 05 课模拟冷读、练习与命令实跑记录（2026-09-22）
+
+## 范围与证据边界
+
+本轮只修订第 05 课（S03）及其教师参考和概念题。第 01–04 课已经授课，学生要求、概念题和成绩依据没有改变。
+
+冷读者被模拟为第一次学习这一主题的学生，只使用学生仓库中的 `README.md`、`SUPPORT.md`、需要时才查看的 `LEARN.md`、数据说明、配置和程序。命令在全新临时副本中真实执行；但本记录不是真人试读，也不证明不同基础的学生都能在 90 分钟内完成。
+
+## 按学生顺序冷读
+
+1. README 首屏先说明两个使用问题：预测已出现窗口的较晚日期，以及预测训练中没出现的新窗口。首个动作是在报告中写预计和主要用途，不需要先修改程序。
+2. SUPPORT 在首次命令前解释训练集、验证集和测试集的职责，并说明一行数据代表什么。命令说明了执行目录、读取的配置、输出目录、成功标志和首先打开的列。
+3. LEARN 按使用问题解释时间顺序划分、分组划分／按组留出、随机划分与随机种子、数据泄漏与目标泄漏；这些词在首次出现时都有通俗解释和数值例子。
+4. 报告要求填写具体编号、窗口、分母、MAE 和结论限制，不再使用只有栏目名称的抽象提示。
+
+## 发现的问题与修改
+
+- 原路径要求学生评价“新窗口”，但个人检查只能改日期边界或随机种子，没有真正改变验证窗口。现在新增 `config-group-check.json`，让 A/B 互换训练和验证角色，C 继续保留，不参与方案选择。
+- 原文本的多个短句分开描述用途、划分和结论，读者需要自己补足它们的关系。现在每节先写使用情境，再引入标准术语，然后追踪一组编号或一次计算。
+- 终端原先突出了本课不使用的兼容指标。现在第 05 课首先显示训练记录数、验证记录数、共有窗口数和验证集 MAE，并明确三行结果不是自动推荐。
+- 概念题 S03-B-01 曾出现尚未学习的提示词汇，S03-B-02 没有集中检查时间顺序划分。现在五对 A/B 题分别检查三类数据的职责、时间划分、分组划分、随机种子与评价对象、数据／目标泄漏。
+- 当前验收主机没有 `python` 别名，原样命令会提示找不到命令。README 和 SUPPORT 已明确说明：若 `python3 --version` 成功，将本页的 `python` 改为 `python3`。本轮按这个失败恢复路径完成了后续全流程。
+
+## 命令实跑与结果核对
+
+在全新副本中实际执行：
+
+```text
+python3 scripts/course.py start 05
+python3 lesson-05/analysis.py --config lesson-05/config-start.json --output lesson-05/artifacts/support-start
+python3 lesson-05/analysis.py --config lesson-05/config-support.json --output lesson-05/artifacts/support-compare
+python3 lesson-05/analysis.py --config lesson-05/config-group-check.json --output lesson-05/artifacts/group-check
+python3 -m json.tool lesson-05/config-mine.json
+python3 lesson-05/analysis.py --config lesson-05/config-mine.json --output lesson-05/artifacts/my-check
+python3 scripts/course.py run 05
+python3 scripts/course.py check 05
+python3 scripts/course.py ci
+```
+
+起点的时间划分为 12 条训练、6 条验证、3 个共有窗口，MAE 为 `2.5555555556` 分钟。默认分组划分为 A 训练、B 验证、共有窗口数为 0，MAE 为 `4.0650406504` 分钟。A/B 互换后为 B 训练、A 验证，MAE 为 `4.0` 分钟。两次分组结果来自不同验证窗口，报告中没有把差值写成同一批样本上的性能提升。
+
+时间划分中 A05、A06、B05、B06、C05、C06 的绝对误差约为 `2.3333、2.3333、1.6667、1.6667、3.6667、3.6667` 分钟，总和约 `15.3334` 分钟，除以 6 得 `2.5556` 分钟。将时间训练截止日从第 4 天改为第 2 天后，time 为 6 条训练、12 条验证，MAE 约 `2.9797979798` 分钟。
+
+模拟学生填写了完整报告、任务说明和提交状态，把 `split_strategy` 保存为 `group`，然后 `run`、`check` 和整仓 `ci` 均通过。这证明学生页面上的文件、命令和产物可以衔接，不代替真人对文字和概念的理解。
+
+## 专项检查
+
+- `test_foundations.py`：23 项通过，包括分组验证窗口互换与测试记录隔离。
+- `test_guided_support.py`：11 项通过，包括文档命令、支持路径、全新克隆和产物重现。
+- `validate_reference_coverage.py --lesson S03`：通过 3 组独立核算。
+- 本轮的整仓验收、题库服务测试和生产发布结果记录在完成后另行补入发布说明。

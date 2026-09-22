@@ -31,7 +31,7 @@ class S02Walkthrough(unittest.TestCase):
             self.assertEqual(source['questions'], bank.questions)
             self.assertEqual(source['concepts'], bank.concepts)
             self.assertEqual(source['content_version'], 's02-focused-review-2026-09-20')
-        self.assertEqual(BANK_VERSION, 'ml-v13-course-map-2026-09-21')
+        self.assertEqual(BANK_VERSION, 'ml-v14-s03-readability-2026-09-22')
         self.assertEqual(bank.durations, {'attempt_a': 240, 'learn': 300, 'attempt_b': 240})
         for phase, choices in CHOICES.items():
             for i, choice in enumerate(choices, 1):
