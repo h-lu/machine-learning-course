@@ -5,15 +5,19 @@
 - **已有取餐窗口的较晚日期**：A、B、C 已经在训练数据中出现；
 - **训练中没出现的新取餐窗口**：验证窗口没有进入训练集。
 
-先不要看哪一行 MAE 最小。第一项小任务是在 `report.md` 第 1 节写下：第一个用途预计采用 time，第二个用途预计采用 group，并选出本次主要准备支持的一个用途。
+先不要按误差数值选方法。第一项小任务是在 `report.md` 第 1 节写下：“已有窗口的较晚日期”预计采用时间顺序划分（程序中写作 `time`），“训练中没出现的新窗口”预计采用分组划分（程序中写作 `group`）。然后选出本次主要准备支持的一个用途。
 
 ## 1. 先理解三个数据部分
 
-- **训练集（training set）**用于拟合模型参数。
-- **验证集（validation set）**用于比较划分或方案。
+- **模型（model）**是根据输入计算预测值的规则。**特征（feature）**是预测时使用的输入，本课是排队人数；**标签／目标值（label / target）**是希望预测的真实结果，本课是实际等待分钟数。
+- **模型参数（model parameter）**是决定这条计算规则的数值，例如直线的截距和斜率。**拟合（fitting）**是用训练数据确定这些参数的过程。
+- **训练集（training set）**用于拟合模型，也就是确定模型参数。
+- **验证集（validation set）**用于比较候选方案，不用于拟合当前模型。
 - **测试集（test set）**在方案确定后才做最后评价，本课不会打开它。
 
-本课一行数据代表某个取餐窗口某一天的一次记录。输入特征是加入队伍时前面有多少人，标签／目标值是实际等待分钟数。A、B、C 是三个虚构的取餐窗口。
+**平均绝对误差（mean absolute error，MAE）**的计算方法是：先算每条“预测值减实际值”的绝对值，再用这些绝对误差的总和除以记录数。本课单位是分钟。
+
+本课一行数据代表某个取餐窗口某一天的一次记录。A、B、C 是三个虚构的取餐窗口。
 
 ## 2. 运行起点，先找数量和编号
 
@@ -26,7 +30,7 @@ python lesson-05/analysis.py --config lesson-05/config-start.json --output lesso
 
 如果终端找不到 `python`，但 `python3 --version` 能显示版本，把本页所有 `python` 换成 `python3`。成功时终端会显示“结果写入”。
 
-先打开 `lesson-05/artifacts/support-start/comparison.csv`，只核对下面四列：
+先打开 `lesson-05/artifacts/support-start/comparison.csv`。CSV 是用行和列保存表格的文本文件；只核对下面四列：
 
 | `method` | `train_n` 训练数 | `n` 验证数 | `shared_sites` 训练和验证共有窗口数 |
 |---|---:|---:|---:|
@@ -41,7 +45,7 @@ python lesson-05/analysis.py --config lesson-05/config-start.json --output lesso
 - `details.splits.group.train_ids` 与 `evaluation_ids`；
 - 两段中的 `train_sites` 与 `evaluation_sites`。
 
-起点的 time 用三个窗口的第 1–4 天训练、第 5–6 天验证。group 用 A01–A06 训练、B01–B06 验证。第 7–8 天的记录没有进入开发比较。
+起点的 `time` 用三个窗口的第 1–4 天训练、第 5–6 天验证。`group` 用 A01–A06 训练、B01–B06 验证。第 7–8 天的记录没有用于拟合模型或选择方案。
 
 ## 3. 手算 time 的 MAE
 

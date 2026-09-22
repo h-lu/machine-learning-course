@@ -29,7 +29,7 @@ class FoundationBank(unittest.TestCase):
             self.assertEqual(bank.durations, source['durations'])
             expected_version = ('s01-focused-review-2026-09-19' if lesson == 'S01' else
                                 's02-focused-review-2026-09-20' if lesson == 'S02' else
-                                's03-readability-2026-09-22' if lesson == 'S03' else
+                                's03-terminology-2026-09-22' if lesson == 'S03' else
                                 'foundations-2026-09-19')
             self.assertEqual(source['content_version'], expected_version)
 
