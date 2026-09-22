@@ -55,4 +55,4 @@ SUPPORT 在第一条命令前给出模型参数和拟合的具体意思，并把
 - `test_guided_support.py`：11 项通过，包括文档命令、支持路径、全新克隆和产物重现。
 - `validate_reference_coverage.py --lesson S03`：通过 3 组独立核算。
 - `python3 tools/validate_course.py`：8 组检查全部通过，其中学生实验 133 项、教师参考 117 项独立核算、教师脚本 15 项和 `ml-check` 81 项测试通过。
-- `PYTHONPATH=ml-check pytest -q ml-check/tests`：81 项通过。生产已以 `ml-v14-s03-readability-2026-09-22` 发布，部署时间、备份路径、数据计数和历史场次快照核对见[发布说明](../RELEASE.md)。
+- `PYTHONPATH=ml-check pytest -q ml-check/tests`：81 项通过。生产已以 `ml-v15-s03-terminology-2026-09-22` 发布，部署时间、备份路径、数据计数和历史场次快照核对见[发布说明](../RELEASE.md)。
