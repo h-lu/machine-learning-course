@@ -60,3 +60,7 @@ python3 scripts/course.py check 06
 - 回退材料：数据库备份为 `/home/ubuntu/ml-check/data/ml-check.before-v13-20260921T182552Z.sqlite3`，服务源码与部署文件备份为 `/home/ubuntu/ml-check/backups/source-before-v13-20260921T182552Z.tar.gz`；历史题库文件保存在 `/home/ubuntu/ml-check/data/session-banks/`。
 - 历史数据核对：切换前后用户、场次、作答和学习完成记录分别为 64、4、1649、169，SQLite 完整性检查通过；场次 7、8、9、11 分别固定到 v4、v6、v11、v11 题目快照，不随 v13 改写。
 - 真人试读边界：本次没有真人首次试读或 90 分钟课堂计时。后续课堂观察需单独记录学生停顿点、概念解释和各阶段实际用时，不能用上述模拟冷读与命令实跑替代。
+
+## 2026-09-22 第 05 课补充发布
+
+第 05 课按[新一轮冷读与实跑记录](../reviews/lesson-05-cold-read-2026-09-22.md)重写了 README、SUPPORT、LEARN、数据说明和报告提示，并新增 A/B 窗口互换检查。具体提交、`ml-v14-s03-readability-2026-09-22` 题库摘要、测试数量、生产切换时间和回退材料见[发布说明](../RELEASE.md)。第 01–04 课没有修改，历史场次继续读取创建时的题目快照。

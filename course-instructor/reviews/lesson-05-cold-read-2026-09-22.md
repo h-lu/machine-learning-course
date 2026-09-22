@@ -48,4 +48,5 @@ python3 scripts/course.py ci
 - `test_foundations.py`：23 项通过，包括分组验证窗口互换与测试记录隔离。
 - `test_guided_support.py`：11 项通过，包括文档命令、支持路径、全新克隆和产物重现。
 - `validate_reference_coverage.py --lesson S03`：通过 3 组独立核算。
-- 本轮的整仓验收、题库服务测试和生产发布结果记录在完成后另行补入发布说明。
+- `python3 tools/validate_course.py`：8 组检查全部通过，其中学生实验 133 项、教师参考 117 项独立核算、教师脚本 15 项和 `ml-check` 81 项测试通过。
+- `PYTHONPATH=ml-check pytest -q ml-check/tests`：81 项通过。生产已以 `ml-v14-s03-readability-2026-09-22` 发布，部署时间、备份路径、数据计数和历史场次快照核对见[发布说明](../RELEASE.md)。
