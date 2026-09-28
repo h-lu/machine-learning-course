@@ -60,4 +60,4 @@ GitHub 公开仓库已创建，完整课程已推送到 `main`。从公开 HTTPS
 
 ## 2026-09-28 第 06 课学生发布状态
 
-上面的 v13 记录描述当时的四个 Gitea 仓库状态，不代表当前学生发布仓库仍包含全部后续课。2026 班学生发布仓库目前只含第 01–06 课；第 07–32 课继续保留在课程源码和模板仓库，等待逐课发布。第 06 课已在 `course-student-release-2026` 的 [`ed6fecd`](https://hblu.top/gitea/machine-learning-2026/course-student-release-2026/commit/ed6fecd3f26244be5ccf94b253c1a2bff0b23427) 发布，学生目录与模板 `54c5ef0` 一致。生产 `ml-check` 已含 S04 题目，本次没有重新部署；验收范围和未做的真人试读见[教师发布说明](course-instructor/RELEASE.md)。
+上面的 v13 记录描述当时的四个 Gitea 仓库状态，不代表当前学生发布仓库仍包含全部后续课。2026 班学生发布仓库目前只含第 01–06 课；第 07–32 课继续保留在课程源码和模板仓库，等待逐课发布。第 06 课先在 `course-student-release-2026` 的 [`ed6fecd`](https://hblu.top/gitea/machine-learning-2026/course-student-release-2026/commit/ed6fecd3f26244be5ccf94b253c1a2bff0b23427) 发布，随后按冷读结果修订至 [`b2884f1`](https://hblu.top/gitea/machine-learning-2026/course-student-release-2026/commit/b2884f1a7290c6ee12a149a0e6e7821a2f10a618)；修订后的学生材料与模板 `60a7d10` 对齐。生产 `ml-check` 已切换至 v16 题库。验收范围和未做的真人试读见[教师发布说明](course-instructor/RELEASE.md)。
