@@ -197,12 +197,12 @@ class FoundationColdRead(unittest.TestCase):
     def test_all_readme_trial_json_and_commands_run_and_preserve_originals(self):
         for i in range(1,7):
             folder=f'lesson-{i+2:02d}';text=(self.root/folder/'README.md').read_text()
-            trial=(json.loads((self.root/folder/'config-support.json').read_text()) if i in {1,3}
+            trial=(json.loads((self.root/folder/'config-support.json').read_text()) if i in {1,3,4}
                    else json.loads(re.search(r'```json\n(.*?)\n```',text,re.S).group(1)))
             self.cmd(sys.executable,'scripts/course.py','start',f'{i+2:02d}')
             original=[f'{folder}/analysis.py']
-            if i in {1,3}: original += ['--config', f'{folder}/config-start.json']
-            original_dir='support-start' if i == 3 else 'original'
+            if i in {1,3,4}: original += ['--config', f'{folder}/config-start.json']
+            original_dir='support-start' if i in {3,4} else 'original'
             original += ['--output',f'{folder}/artifacts/{original_dir}']
             if i == 2:
                 # S02 now supplies a fixed starting config, a date contrast, then a personal check.
@@ -215,7 +215,7 @@ class FoundationColdRead(unittest.TestCase):
                 config_name, output_name = 'config-support.json', 'trial'
             elif i == 2:
                 config_name, output_name = 'config-mine.json', 'my-check'
-            elif i == 3:
+            elif i in {3,4}:
                 config_name, output_name = 'config-support.json', 'support-compare'
             else:
                 config_name, output_name = 'config-trial.json', 'trial'
@@ -227,7 +227,7 @@ class FoundationColdRead(unittest.TestCase):
                 self.assertEqual(dated['details']['observation_day'],7)
                 self.assertEqual(dated['metrics']['n'],7)
                 self.assertEqual(old,(self.root/folder/f'artifacts/{original_dir}/records.csv').read_bytes())
-            if i not in {1,3}:
+            if i not in {1,3,4}:
                 (self.root/folder/config_name).write_text(json.dumps(trial,ensure_ascii=False))
             args=[f'{folder}/analysis.py','--config',f'{folder}/{config_name}','--output',f'{folder}/artifacts/{output_name}']
             self.assertIn('python '+' '.join(args),text);self.cmd(sys.executable,*args)

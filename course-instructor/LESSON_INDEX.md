@@ -11,7 +11,7 @@
 - S01 怎样把模糊需求变成可研究的问题（已授课）：[运行单](lessons/S01/RUNBOOK.md) · [参考分析](lessons/S01/REFERENCE.md) · [概念题](lessons/S01/questions.json)
 - S02 收到的数据能代表全部记录吗（已授课）：[运行单](lessons/S02/RUNBOOK.md) · [参考分析](lessons/S02/REFERENCE.md) · [概念题](lessons/S02/questions.json)
 - S03 怎样划分数据，才能让验证更接近实际使用：[运行单](lessons/S03/RUNBOOK.md) · [参考分析](lessons/S03/REFERENCE.md) · [概念题](lessons/S03/questions.json)
-- S04 什么算做好了，失败会造成什么后果：[运行单](lessons/S04/RUNBOOK.md) · [参考分析](lessons/S04/REFERENCE.md) · [概念题](lessons/S04/questions.json)
+- S04 怎样评价等待时间预测与有限提醒：[运行单](lessons/S04/RUNBOOK.md) · [参考分析](lessons/S04/REFERENCE.md) · [概念题](lessons/S04/questions.json)
 - S05 还缺哪些数据，哪些记录值得补：[运行单](lessons/S05/RUNBOOK.md) · [参考分析](lessons/S05/REFERENCE.md) · [概念题](lessons/S05/questions.json)
 - S06 一次小实验能否改变最初的问题：[运行单](lessons/S06/RUNBOOK.md) · [参考分析](lessons/S06/REFERENCE.md) · [概念题](lessons/S06/questions.json)
 - S07 简单模型与复杂模型各自假设了什么：[运行单](lessons/S07/RUNBOOK.md) · [参考分析](lessons/S07/REFERENCE.md) · [概念题](lessons/S07/questions.json)
@@ -50,7 +50,7 @@
 | S01 | 怎样把模糊需求变成可研究的问题 | S01、C02 | 同一小数据运行两种处理办法，区分预测关联与行动的因果效果 |
 | S02 | 这份数据和标签代表谁、代表什么 | S02 | 补人工或 AI 标注的来源、抽查与争议处理比较 |
 | S03 | 怎样划分数据，才能让验证更接近实际使用 | S03、S06 | 区分训练集、验证集和测试集；按时间或分组划分；识别数据泄漏和目标泄漏 |
-| S04 | 什么算做好了，失败会造成什么后果 | S04、S05 | 在同一结果上比较用途不同的评价与工作量，保留关键小计算 |
+| S04 | 怎样评价等待时间预测与有限提醒 | S04、S05 | 在同一结果上比较用途不同的评价与工作量，保留关键小计算 |
 | S05 | 还缺哪些数据，哪些记录值得补 | S02、S12 | 新增两种补数据或复核策略及代表性检查；合成样本不作为真实人群证据 |
 | S06 | 一次小实验能否改变最初的问题 | S01、S06、C02 | 串联本模块已有作品，提出竞争解释并只改一个因素 |
 | S07 | 简单模型与复杂模型各自假设了什么 | S07、S09、S10 | 选两个代表性模型作公平比较，不堆三套算法；补泛化与成本解释 |
