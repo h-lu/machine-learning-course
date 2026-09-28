@@ -57,3 +57,7 @@ GitHub 公开仓库已创建，完整课程已推送到 `main`。从公开 HTTPS
 生产服务在 2026-09-21 18:33:59–18:34:03 UTC 切换到 `ml-check:2026-09-21-v13`。切换前后的用户、场次、作答和学习完成记录分别保持为 64、4、1649、169；SQLite 完整性和外键检查通过。四个已结束场次保存其原题库快照：C01 为 v4、C02 为 v6、S01 和 S02 为 v11，因此新题不会改变已经完成的练习和解释。数据库备份为 `/home/ubuntu/ml-check/data/ml-check.before-v13-20260921T182552Z.sqlite3`，旧源码和 compose 备份为 `/home/ubuntu/ml-check/backups/source-before-v13-20260921T182552Z.tar.gz`，旧镜像与三份历史题库继续保留。
 
 切换前先在 8897 隔离实例验证了历史场次、新建 v13 场次、课次编号和 AI 学习页；学习页只显示知识点与学习说明，不显示 A/B 题干。切换后容器为 healthy，本机和公网健康接口均返回 32 课及 v13，公开登录页返回 200。
+
+## 2026-09-28 第 06 课学生发布状态
+
+上面的 v13 记录描述当时的四个 Gitea 仓库状态，不代表当前学生发布仓库仍包含全部后续课。2026 班学生发布仓库目前只含第 01–06 课；第 07–32 课继续保留在课程源码和模板仓库，等待逐课发布。第 06 课已在 `course-student-release-2026` 的 [`ed6fecd`](https://hblu.top/gitea/machine-learning-2026/course-student-release-2026/commit/ed6fecd3f26244be5ccf94b253c1a2bff0b23427) 发布，学生目录与模板 `54c5ef0` 一致。生产 `ml-check` 已含 S04 题目，本次没有重新部署；验收范围和未做的真人试读见[教师发布说明](course-instructor/RELEASE.md)。
