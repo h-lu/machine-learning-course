@@ -167,8 +167,8 @@ class GuidedWalkthrough(unittest.TestCase):
                     for block in re.findall(r'```bash\n(.*?)```',text,re.S):
                         for line in block.strip().splitlines():
                             args=shlex.split(line)
-                            self.assertIn(args[0],('python','git'))
-                            if args[0]=='python':args[0]=sys.executable
+                            self.assertIn(args[0],('python','python3','git'))
+                            if args[0] in ('python','python3'):args[0]=sys.executable
                             # Only local staging is documented; never push student submissions.
                             if args[0]=='git':self.assertIn(args[1],('add','diff'))
                             command(args,work)

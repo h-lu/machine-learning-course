@@ -207,7 +207,7 @@ class FoundationColdRead(unittest.TestCase):
             if i == 2:
                 # S02 now supplies a fixed starting config, a date contrast, then a personal check.
                 original=[f'{folder}/analysis.py','--config',f'{folder}/config-start.json','--output',f'{folder}/artifacts/original']
-            self.assertIn('python '+' '.join(original),text)
+            self.assertTrue(any(executable+' '+' '.join(original) in text for executable in ('python','python3')))
             result=self.cmd(sys.executable,*original)
             self.assertIn('comparison.csv',result.stdout);self.assertIn('records.csv',result.stdout)
             old=(self.root/folder/f'artifacts/{original_dir}/records.csv').read_bytes()
@@ -221,7 +221,7 @@ class FoundationColdRead(unittest.TestCase):
                 config_name, output_name = 'config-trial.json', 'trial'
             if i == 2:
                 contrast=[f'{folder}/analysis.py','--config',f'{folder}/config-support.json','--output',f'{folder}/artifacts/trial']
-                self.assertIn('python '+' '.join(contrast),text)
+                self.assertTrue(any(executable+' '+' '.join(contrast) in text for executable in ('python','python3')))
                 self.cmd(sys.executable,*contrast)
                 dated=json.loads((self.root/folder/'artifacts/trial/summary.json').read_text())
                 self.assertEqual(dated['details']['observation_day'],7)
@@ -230,7 +230,7 @@ class FoundationColdRead(unittest.TestCase):
             if i not in {1,3,4}:
                 (self.root/folder/config_name).write_text(json.dumps(trial,ensure_ascii=False))
             args=[f'{folder}/analysis.py','--config',f'{folder}/{config_name}','--output',f'{folder}/artifacts/{output_name}']
-            self.assertIn('python '+' '.join(args),text);self.cmd(sys.executable,*args)
+            self.assertTrue(any(executable+' '+' '.join(args) in text for executable in ('python','python3')));self.cmd(sys.executable,*args)
             self.assertEqual(old,(self.root/folder/f'artifacts/{original_dir}/records.csv').read_bytes())
             payload=json.loads((self.root/folder/f'artifacts/{output_name}/summary.json').read_text())
             if i == 2:
