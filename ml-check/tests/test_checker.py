@@ -88,6 +88,12 @@ class SubmissionChecks(unittest.TestCase):
             (p / "submission.json").write_text(json.dumps({**self.sub, "lesson_id": lesson}))
         report = check_repo(self.root, "student")
         self.assertFalse(report.failed(True), report.issues)
+        lesson08 = self.root / "lessons/S06/README.md"
+        lesson08.write_text(lesson08.read_text().replace("完成步骤", "作品需要说明的内容"))
+        report = check_repo(self.root, "student")
+        self.assertFalse(report.failed(True), report.issues)
+        lesson08.write_text(lesson08.read_text().replace("作品需要说明的内容", "未约定的标题"))
+        self.assertIn("headings", {issue["code"] for issue in check_repo(self.root, "student").issues})
 
     def test_nonfinite_json_is_rejected(self):
         path = self.root / "bad.json"

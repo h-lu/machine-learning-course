@@ -21,10 +21,12 @@ OUTPUT_FILES = ("summary.json", "comparison.csv", "records.csv", "data_audit.jso
 
 
 def candidate_predictions(train_inputs, train_targets, evaluation_inputs):
-    """在这里实现自己计划的一项候选，也可另写研究入口。
+    """在这里实现自己的原方案与候选，也可另写研究入口。
 
     三个参数：训练输入字典列表、训练 cnt 数值列表、评价输入字典列表。
     返回与评价输入等长的有限数值预测列表，或 {自定方法名: 预测列表}。
+    字典可同时包含自定义原方案与候选；baseline 保留给额外的训练均值参照。
+    原方案须匹配所检查的解释，不能将均值到完整回归说成只改小时编码。
     不要在评价输入查找真实 cnt。
     默认 None 表示没有候选，所以起点只跑基线，不能算完成正式比较。
     使用自己的处理参数/规则时，另保存中间值来核算和解释。
@@ -118,7 +120,10 @@ def main(argv=None):
         write_csv(output / "comparison.csv", comparison)
         write_csv(output / "records.csv", records)
         print(f"结果写入：{output.relative_to(ROOT)}")
-        print(f"{args.split}: n={len(evaluation)}；训练均值基线={baseline_value:.3f} 次租借")
+        if args.split == "test":
+            print(f"test: n={len(evaluation)}；所选方法={args.selected_method}")
+        else:
+            print(f"validation: n={len(evaluation)}；训练均值基线={baseline_value:.3f} 次租借")
         print("尚无候选；请自行设计对照、核算与失败检查，再更新自己的提交清单。" if candidate is None
               else "候选来自你的实现；仍需独立核算、失败检查与建议，程序不自动判项目完成。")
         return 0

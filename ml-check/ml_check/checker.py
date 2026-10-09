@@ -267,7 +267,8 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int | None = N
                 path = folder / "README.md"
                 if path.exists():
                     headings = re.findall(r"^##\s+(.+)$", path.read_text(), re.M)
-                    if headings != HEADINGS and headings != ["90 分钟安排" if item == "课堂任务" else item for item in HEADINGS]:
+                    content_headings = ["作品需要说明的内容" if item == "完成步骤" else item for item in HEADINGS]
+                    if headings not in [HEADINGS, content_headings, ["90 分钟安排" if item == "课堂任务" else item for item in HEADINGS]]:
                         report.add(path, "headings", "课次 README 应依次使用课程规范中的七个二级标题。")
                 check_submission(folder, report)
                 for name in ["config.json", "data/base.json"]:

@@ -171,7 +171,8 @@ def documents():
         for filename in ["README.md", "LEARN.md", "SUPPORT.md", "EXERCISES.md", "HINTS.md", "report.md", "analysis.py", "config.json", "contract.json", "submission.json"]:
             require((lesson / filename).is_file() and (lesson / filename).stat().st_size > 0, f"missing {lesson.name}/{filename}")
         actual = re.findall(r"^## (.+)$", (lesson / "README.md").read_text(), re.M)
-        require(actual == HEADINGS, f"{lesson.name} seven README headings mismatch: {actual}")
+        content_headings = ["作品需要说明的内容" if title == "完成步骤" else title for title in HEADINGS]
+        require(actual in [HEADINGS, content_headings], f"{lesson.name} seven README headings mismatch: {actual}")
         bank = read_json(ROOT / f"course-instructor/lessons/{identifier}/questions.json")
         require(bank["lesson_id"] == identifier, "question bank lesson ID mismatch")
         require(len(bank["concepts"]) == 5 and len(bank["questions"]) == 10, "bank must have five concepts and ten AB questions")
