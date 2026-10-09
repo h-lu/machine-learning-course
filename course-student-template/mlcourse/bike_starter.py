@@ -1,6 +1,6 @@
-"""开放研究的数据起点：读取、核对和薄计算工具，不运行整课答案。
+"""开放研究的数据起点：读取、核对和辅助计算函数，不运行整课答案。
 
-公开原始 CSV 可由学生读取；测试期封存是研究协议。本 reader 不返回
+公开原始 CSV 可由学生读取；测试期封存是研究协议。本读取函数不返回
 测试期标签，不能将它描述成对公开数据实现了技术上不可绕过的访问控制。
 """
 from __future__ import annotations
@@ -54,7 +54,7 @@ def _read_source(root, data, include_test=False):
     path = _root_path(root, data)
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     if digest != OFFICIAL_SHA256:
-        raise ValueError("这份 Bike 原始 CSV 与随包官方字节不符；请保留原件。自选其他数据时自行编写相应 reader")
+        raise ValueError("这份 Bike 原始 CSV 与随包官方字节不符；请保留原件。自选其他数据时自行编写相应读取函数")
     train, validation, metadata, test = [], [], [], []
     empty_fields = 0
     with path.open(encoding="utf-8-sig", newline="") as stream:

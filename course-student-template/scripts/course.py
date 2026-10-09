@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import errno
 import hashlib
 import json
 import os
@@ -117,10 +118,25 @@ def reproduce(root: Path, lesson: str) -> None:
     # Work on a disposable copy: a no-op must not pass by reusing old outputs,
     # and a failed reproduction must not destroy the student's submitted files.
     with tempfile.TemporaryDirectory(prefix="ml-reproduce-") as temp:
-        scratch = Path(temp) / "project"
+        scratch = (Path(temp) / "project").resolve()
         shutil.copytree(root, scratch, ignore=shutil.ignore_patterns(".git", ".venv", "__pycache__"))
-        for path in obj["artifacts"]:
-            inside(scratch, path).unlink()
+        artifacts = [inside(scratch, path) for path in obj["artifacts"]]
+        for path in artifacts:
+            path.unlink()
+        # Fresh-output helpers reject existing directories. Remove only empty
+        # parents of listed outputs; rmdir preserves any unlisted files there.
+        for path in artifacts:
+            parent = path.parent
+            while parent != scratch:
+                try:
+                    parent.rmdir()
+                except FileNotFoundError:
+                    break
+                except OSError as error:
+                    if error.errno not in {errno.ENOTEMPTY, errno.EEXIST}:
+                        raise
+                    break
+                parent = parent.parent
         run(scratch, lesson)
         check(scratch, lesson)
         if before != digest(scratch, obj["artifacts"]):

@@ -1,6 +1,6 @@
 # 环境准备
 
-课前需要 Python 3.10 或更高版本，以及 NumPy。先在学生仓库根目录打开终端，检查已经准备好的环境：
+课前需要 Python 3.10 或更高版本，以及 NumPy。完整目录和启动命令见[环境说明](../ENVIRONMENT.md)。下面以 `python3` 为例；若教师准备的环境用 `python` 或 `py`，替换命令开头即可。在学生仓库根目录打开终端，检查已经准备好的环境：
 
 ```bash
 python3 --version
@@ -8,9 +8,9 @@ python3 -c "import numpy; print(numpy.__version__)"
 python3 lesson-01/analysis.py
 ```
 
-打开 `lesson-01/artifacts/summary.json`，对照第 1 课学习卡核对一条计算。这个文件是程序输出，可以删除后重跑；你写的分析应放在 `report.md`，不要混进程序生成文件。
+打开 `lesson-01/artifacts/starter/summary.json`，核对准备好的训练、验证记录数；再打开同目录的 `sample.csv`，对照第1课学习页理解一条记录。默认程序只准备数据，不代表已经完成研究。自己的分析写入 `lesson-01/report.md`，程序生成文件用于保存实际运行证据。
 
-如果课前尚未安装依赖，可以在联网时建立环境：
+如果课前尚未安装依赖，可以在联网时建立环境。以下激活命令适用于 Linux/macOS 的终端；Windows 使用教师提供的激活方式：
 
 ```bash
 python3 -m venv .venv

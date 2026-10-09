@@ -2,16 +2,16 @@
 
 ## 卡在环境、目录或第一份输入
 
-如果只是想查看输入结构，从学生仓库根进入`cd lesson-07`，运行`python3 analysis.py --config config.json --output artifacts/start-a`。成功后先看`artifacts/start-a/summary.json`的训练/验证条数，再看sample.csv的一行输入；04只元数据，05额外固定时间清单。audit.json提供文件完整性。样本只是预览，不替代完整真实标准分析，起点没有全方案结果或报告。
+如果只是想查看输入结构，从学生仓库根进入`cd lesson-07`，运行`python3 analysis.py --config config.json --output artifacts/start-a`。成功后先看`artifacts/start-a/summary.json`的训练/验证条数，再看`artifacts/start-a/sample.csv`的一行输入；本课的样本含开发数据的输入字段和租赁次数，只用于预览结构。正式候选表须另建，排除`cnt`、`casual`、`registered`。`audit.json`记录文件行数、空字段、重复时点和缺失小时等检查结果。样本只是预览，不替代使用真实数据的完整标准分析，起点没有全方案结果或报告。
 
 ## 卡在数据怎样进入自己的代码
 
-你可修改analysis.py或另写my_analysis.py。`load_development(ROOT)`只返回训练和验证字典列表及审计；你决定输入/模型/规则/指标/保存内容。代码可让AI协助生成，但先解释自己的问题和不能偷看什么。
+你可修改`analysis.py`或另写`my_analysis.py`。`load_development(ROOT)`返回训练记录列表、验证记录列表和文件检查信息。每条记录是一个Python字典，用字段名取值；例如`train[0]["cnt"]`是第一条训练记录的租赁次数。输入、模型、规则、指标和保存内容由你决定。代码可让AI协助生成，但先解释自己的问题和不能偷看什么。
 
 ```python
 from pathlib import Path
 import sys
-ROOT = Path(__file__).resolve().parents[1]  # 文件在lesson目录中
+ROOT = Path(__file__).resolve().parents[1]  # 本程序放在 lesson-XX 目录中，ROOT 是学生仓库根目录
 sys.path.insert(0, str(ROOT))
 from mlcourse.bike_starter import load_development, mae, fit_simple_line, write_csv
 train, validation, audit = load_development(ROOT)
@@ -20,16 +20,20 @@ print("已读取训练/验证记录：", len(train), len(validation))
 # write_csv输出你构造的记录，不会替你选择研究策略。
 ```
 
-如果把这段存为本课`my_analysis.py`，在本课目录运行`python3 my_analysis.py`；应先看到训练/验证记录数13,003和2,208，再构建自己的分析。这些是薄工具，不要求调用全部函数；读取之外由你组织自己的程序。04的标准分析使用全文件时点元数据，避免测试目标统计。可按CODE_TOOLKIT查示例片段，但不能把完整参考当自己的选择。
+如果把这段存为本课`my_analysis.py`，在本课目录运行`python3 my_analysis.py`；应先看到训练/验证记录数13,003和2,208，再构建自己的分析。这些是基础工具函数，不要求全部调用；读取后的分析由你组织。训练得到的统计量只用本方案的训练记录计算，不使用封存测试目标。可按[代码工具](../docs/CODE_TOOLKIT.md)查示例片段，但不能把完整参考当自己的选择。
 
-## 卡在本课关系或失败解释
+## 卡在概念理解或失败原因
 
-卡在选择时，只把候选编号/日期/hr/workingday等已知信息交给选择逻辑，先写计划再用被选标签；不要把全表cnt交给AI让它替你倒选。 用LEARN小例核概念，再回自己选的真实范围；HINTS只提供检查方向，不给统一结论。默认起点无抽样策略、学习曲线或标签揭示答案。公开CSV含标签，课堂先选择是实验协议不是保密机制；预算回放不等于新真实采集。
+卡在选择时，核对选样程序或AI收到的候选表是否只含选择时可见的字段；除`cnt`外，也要排除`casual`、`registered`。先保存计划，再读取被选记录的标签；不要让实际标签反过来决定选择。 用LEARN小例核概念，再回自己选的真实范围；HINTS只提供检查方向，不给统一结论。默认起点无抽样策略、学习曲线或标签揭示答案。公开CSV含标签，课堂先选择是实验协议不是保密机制；用已有记录模拟标注预算，不等于实际采集了新数据。
 
 ## 卡在怎样保存与重跑
 
-为每个比较保留配置、原始结果和运行命令；自己的程序建议写新试验目录，避免覆盖旧证据。report格式可改，引用具体文件/列/编号。更新submission.json的run和artifacts后再check/ci；默认起点结果不会证明完成研究。若你的代码有随机性，保存seed及全部重复结果；生成原始响应先保存再确定性重算。
+`config.json`目前是空对象`{}`，不代表已经选定分析方法。你可以在自己的程序中定义并读取配置字段；只在配置中写入方法名称，不会让起点代码自动完成分析。`load_development`返回完整训练期标签；预算比较时，只使用初始集和本方案选中记录的标签。可选的`starter_baseline=true`会计算全部13,003条训练标签的总均值，不能作为只取得部分标签的预算实验的公平对照。`contract.json`记录研究问题（`question`）、使用者（`user`）、来源（`data_source`）、指标或审查规则（`metric`）、数据划分（`split_plan`）和观察结果前的预期（`initial_expectation`），请用自己的说明替换占位文字。
 
-使用已准备的Python与NumPy，命令示例为本机`python3`；你原环境若使用`python`或`py`，统一用已经成功的启动命令，不安装新环境。默认起点离线读取`data/bike/hour.csv`，只准备审计/样本预览，不能作为正式分析已完成证据。AI可帮助提出问题、写代码、核算和解释，不收集prompt记录、不要求所有人同路线或强制逐人答辩。
+`submission.json`是提交清单：`report`是报告路径，`artifacts`是结果文件路径列表，路径都相对于学生仓库根目录；`run`是从该根目录执行的命令参数列表，例如`["python", "lesson-07/my_analysis.py"]`。`status`可为`not_started`（尚未开始）、`in_progress`（进行中）或`complete`（已完成）。
 
-数据/依赖错误保留命令、工作目录和完整报错；先用不同数据的完整小例继续理解，明确写未实跑，再找教师修复。显式输出已存在拒覆盖，换新目录保留旧证据。默认`artifacts/starter`可重算。学生正式程序与输出由自己确定；submission.json的run必须真实重建其artifacts中列出的科学结果。比较试验若未列入CI，另保存配置和独立重跑命令，不宣称CI全核。
+为每个比较试验保留配置、原始结果和运行命令；自己的程序建议写新试验目录，避免覆盖旧证据。`report.md`的结构可改，引用具体文件、列名和记录编号。更新`submission.json`的`run`和`artifacts`后，再运行README中的`check`和`ci`命令；默认起点结果不会证明完成研究。若代码有随机性，保存随机种子（`seed`）和每次重复的结果，便于重跑。如果使用AI生成的数据或回答，先保存原始输出，再用固定的程序计算指标。
+
+使用已准备的Python与NumPy，命令示例为本机`python3`；你原环境若使用`python`或`py`，统一用已经成功的启动命令，不安装新环境。默认起点从学生仓库根目录的`data/bike/hour.csv`离线读取数据，只准备文件检查和样本预览，不能作为正式分析已完成证据。AI可帮助提出问题、写代码、核算和解释，不要求提交提示词记录、不要求所有人同路线或强制逐人答辩。
+
+数据/依赖错误保留命令、工作目录和完整报错；先用不同数据的完整小例继续理解，明确写未实跑，再找教师修复。用`--output`指定的目录若已存在，程序会拒绝覆盖；请换新目录保留旧结果。不指定`--output`时，默认的`artifacts/starter`允许重新生成。正式程序和输出由你决定；`submission.json`中的`run`必须能重新生成`artifacts`列出的分析结果。未列入清单的比较试验，另存配置和重跑命令。

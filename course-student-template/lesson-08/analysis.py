@@ -42,13 +42,13 @@ def inside(name):
 def nonempty_record(name, description):
     path = inside(name)
     if not path.is_file() or not path.read_text(encoding="utf-8").strip():
-        raise ValueError(f"先保存自己的{description}：{name}。结构可自由，不是统一数字规则。")
+        raise ValueError(f"先保存自己的{description}：{name}。可用自己的文字记录，不要求统一数值规则。")
     return path
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", help="可选新结果目录；省略时重算默认基线/主验证产物")
+    parser.add_argument("--output", help="可选新结果目录；省略时重算默认基线或自己实现的验证结果")
     parser.add_argument("--plan", default="lesson-08/report.md", help="自己的验证前计划，可放报告或独立文件")
     parser.add_argument("--split", choices=["validation", "test"], default="validation")
     parser.add_argument("--decision", help="测试前保存的自由文字选择记录")
@@ -58,7 +58,7 @@ def main(argv=None):
         train, validation, audit = load_development(ROOT)
         if args.split == "test":
             if not args.output or not args.decision or not args.selected_method:
-                raise ValueError("最后测试需显式新output、decision记录与selected-method；默认命令只评价验证。")
+                raise ValueError("最后测试需用 --output 指定新结果目录、--decision 指定选择记录、--selected-method 指定方法名；默认命令只评价验证。")
             nonempty_record(args.decision, "测试前选择")
             from mlcourse.bike_starter import load_selected_test
             evaluation = load_selected_test(ROOT, args.decision)

@@ -1,4 +1,4 @@
-"""第 8 课：训练期拟合、预登记单因素比较、事先决策后最后评价。
+"""第 8 课：用训练数据拟合，按事前计划比较，选定方案后作最后评价。
 
 仅使用随包 UCI hour.csv；读取全文件审计不等于计算测试分数。
 使用 NumPy 普通最小二乘（OLS），负预测对所有方案统一截为 0。
@@ -270,12 +270,12 @@ def text_field(value, field: str) -> str:
 
 def verify_preregister(path: Path | None, config: dict) -> dict:
     if path is None:
-        raise ValueError("验证运行前必须提供 --preregister：先生成、填写并保存预登记 JSON")
+        raise ValueError("验证运行前必须提供 --preregister：先生成、填写并保存事前实验计划 JSON")
     plan = read_json(path)
     if set(plan) != PREREG_FIELDS or type(plan.get("schema_version")) is not int or plan["schema_version"] != 1:
-        raise ValueError("预登记字段不完整；使用 preregister 子命令生成本课模板，保留字段名")
+        raise ValueError("事前实验计划字段不完整；使用 preregister 子命令生成本课模板，保留字段名")
     if plan["change"] != config["change"] or plan["config_sha256"] != digest(config):
-        raise ValueError("预登记的候选或配置哈希不一致；先确定配置，再重新生成并填写预登记")
+        raise ValueError("事前实验计划的候选或配置哈希不一致；先确定配置，再重新生成并填写事前实验计划")
     if plan["primary_metric"] not in {"overall_mae", "commute_mae"}:
         raise ValueError("primary_metric 应亲自选择 overall_mae 或 commute_mae")
     for name in ("hypothesis", "explanation", "check_reason"):
@@ -339,7 +339,7 @@ def verify_validation(root: Path, reviewed: Path, config: dict | None = None, da
     result = read_json(reviewed/"metrics.json")
     computed = selection_check(plan, result["metrics"]["validation"])
     if result.get("selection_check") != computed:
-        raise ValueError("保存的验证比较与预登记规则不一致")
+        raise ValueError("保存的验证比较与事前实验计划规则不一致")
     return manifest, result
 
 
@@ -365,7 +365,7 @@ def verify_decision(root: Path, path: Path | None, config: dict, data_hash: str)
     if decision["validation_manifest_sha256"] != sha256(reviewed/"source_manifest.json"):
         raise ValueError("决策引用的验证清单哈希不一致，需根据这次验证重新生成决策")
     if decision["selected_method"] == "candidate" and not result["selection_check"]["candidate_passes"]:
-        raise ValueError("候选未通过你事先写下的规则，请保留 original；要改规则需承认探索并重新预登记")
+        raise ValueError("候选未通过你事先写下的规则，请保留 original；要改规则需承认探索并重新保存事前实验计划")
     return {**decision, "decision_file": str(path.relative_to(root)), "decision_sha256": sha256(path)}
 
 
@@ -418,7 +418,7 @@ def run_bike(root: Path, config_path: Path, output: Path, *, preregister_path: P
     if decision_path and not unlock_test:
         raise ValueError("--decision 不会自动打开测试；需明确加 --unlock-test")
     if preregister_path and unlock_test:
-        raise ValueError("测试从引用的验证运行读取预登记，不使用新的 --preregister")
+        raise ValueError("测试从引用的验证运行读取事前实验计划，不使用新的 --preregister")
     plan = verify_preregister(preregister_path, config) if not unlock_test else None
     rows, audit = load_data(safe_path(root, config["data"]), allow_fixture)
     splits = split_data(rows, config)
@@ -550,4 +550,4 @@ def run_warmup(root: Path, output: Path) -> None:
                "training_queue_sum": sum(known), "fill_training_mean": fill,
                "fixed_rule": "prediction=1+2*queue_length_used; given teaching rule, not fitted",
                "unit": "分钟", "test_evaluated": False, "data_sha256": sha256(data_path)})
-    print(f"短热身写入：{output.relative_to(root)}；只用 {len(train)} 行人工训练样本，真实任务仍需预登记。")
+    print(f"短热身写入：{output.relative_to(root)}；只用 {len(train)} 行人工训练样本，真实任务仍需事前实验计划。")

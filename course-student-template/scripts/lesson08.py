@@ -1,4 +1,4 @@
-"""第 8 课：短热身、生成待填预登记、验证比较、保存决策后最后评价。"""
+"""第 8 课：短热身、生成待填事前实验计划、验证比较、保存决策后最后评价。"""
 from __future__ import annotations
 
 import argparse
@@ -13,7 +13,7 @@ def main(argv: list[str] | None = None) -> int:
     commands = parser.add_subparsers(dest="task", required=True)
     warmup = commands.add_parser("warmup", help="短追踪：旧人工样本的训练均值填补与给定规则")
     warmup.add_argument("--output", required=True, help="新的结果目录；不覆盖已有结果")
-    prereg = commands.add_parser("preregister", help="生成待填写预登记；不会运行模型或给出解释")
+    prereg = commands.add_parser("preregister", help="生成待填写事前实验计划；不会运行模型或给出解释")
     prereg.add_argument("--config", default="lesson-08/config-hour-onehot.json")
     prereg.add_argument("--output", required=True, help="新的 JSON 文件，例如 lesson-08/preregister.json")
     decision = commands.add_parser("decision", help="从已保存的验证运行生成待填写决策")
@@ -21,7 +21,7 @@ def main(argv: list[str] | None = None) -> int:
     decision.add_argument("--output", required=True, help="新的 JSON 文件，例如 lesson-08/decision.json")
     bike = commands.add_parser("bike", help="运行真实逐小时数据上的一个单因素比较")
     bike.add_argument("--config", default="lesson-08/config-hour-onehot.json")
-    bike.add_argument("--preregister", help="验证前已经填写并独立保存的预登记 JSON")
+    bike.add_argument("--preregister", help="验证前已经填写并独立保存的事前实验计划 JSON")
     bike.add_argument("--output", help="新结果目录；显式路径不覆盖。省略时重算默认 lesson-08/artifacts/run")
     bike.add_argument("--unlock-test", action="store_true", help="明确打开最后测试，只评价事先选择的方法")
     bike.add_argument("--decision", help="引用已保存验证运行的决策 JSON")
@@ -39,7 +39,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.task == "preregister":
             config = config_from(safe_path(ROOT, args.config))
             write_new_json(output, preregister_draft(config))
-            print(f"待填预登记：{output.relative_to(ROOT)}。先填写指标、解释和检查规则，再运行验证。")
+            print(f"待填事前实验计划：{output.relative_to(ROOT)}。先填写指标、解释和检查规则，再运行验证。")
         elif args.task == "decision":
             write_new_json(output, decision_draft(ROOT, safe_path(ROOT, args.validation_run)))
             print(f"待填决策：{output.relative_to(ROOT)}。先选 original/candidate 并说明验证依据。")
