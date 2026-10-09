@@ -1,7 +1,8 @@
 {
-  "purpose": "S02 非默认配置下独立核算与证据检查",
-  "config_patch": {
-    "observation_day": 5,
-    "disagreement_minutes": 1.0
-  }
+  "purpose": "S02 真实Bike新接口独立核算",
+  "runtime": "mlcourse.bike_course",
+  "lesson_number": 4,
+  "config": {},
+  "config_patch": {},
+  "evidence_scope": "开发评价或元数据审计；测试目标封存；不改历史成绩。"
 }

@@ -1,0 +1,509 @@
+{
+  "lesson": "lesson-05",
+  "status": "example_only",
+  "data": {
+    "kind": "foundation_waiting",
+    "source": {
+      "type": "synthetic",
+      "generator": "mlcourse/foundations_data.py",
+      "limitation": "人工教学数据，不代表真实人群、因果效果或 AI 能力。",
+      "note": "receipt_minutes 是结束后小票才有的时间，仅供演示数据泄漏，不能作正常预测特征。"
+    },
+    "rows": 24
+  },
+  "config": {
+    "seed": 7,
+    "evaluation_split": "validation",
+    "split_strategy": "time",
+    "train_through_day": 4,
+    "validation_through_day": 6,
+    "group_validation_site": "B"
+  },
+  "metrics": {
+    "n": 6,
+    "mae": 2.5555555556,
+    "rmse": 2.6874192494,
+    "asymmetric_loss": 2.5555555556,
+    "train_n": 12,
+    "shared_sites": 3,
+    "leaked_mae_demo": 0.0
+  },
+  "comparison": {
+    "group": {
+      "n": 6,
+      "mae": 4.0650406504,
+      "rmse": 4.0965445894,
+      "asymmetric_loss": 4.0650406504,
+      "train_n": 6,
+      "shared_sites": 0,
+      "leaked_mae_demo": 0.0
+    },
+    "random": {
+      "n": 6,
+      "mae": 2.0111731844,
+      "rmse": 2.2504399315,
+      "asymmetric_loss": 2.0111731844,
+      "train_n": 12,
+      "shared_sites": 3,
+      "leaked_mae_demo": 0.0
+    }
+  },
+  "stress_test": {
+    "change": "在相同划分中误用结束后才知道的小票时间；这是泄漏反例，不是可用方案",
+    "metrics": {
+      "n": 6,
+      "mae": 0.0,
+      "rmse": 0.0,
+      "asymmetric_loss": 0.0
+    }
+  },
+  "details": {
+    "primary_method": "time",
+    "tables": {
+      "records": [
+        {
+          "id": "A05",
+          "method": "time",
+          "period": "午间",
+          "queue_length": 0,
+          "actual": 2,
+          "prediction": 4.3333333333,
+          "absolute_error": 2.3333333333,
+          "leaked_prediction_demo": 2.0
+        },
+        {
+          "id": "A06",
+          "method": "time",
+          "period": "午间",
+          "queue_length": 1,
+          "actual": 4,
+          "prediction": 6.3333333333,
+          "absolute_error": 2.3333333333,
+          "leaked_prediction_demo": 4.0
+        },
+        {
+          "id": "B05",
+          "method": "time",
+          "period": "晚间",
+          "queue_length": 1,
+          "actual": 8,
+          "prediction": 6.3333333333,
+          "absolute_error": 1.6666666667,
+          "leaked_prediction_demo": 8.0
+        },
+        {
+          "id": "B06",
+          "method": "time",
+          "period": "晚间",
+          "queue_length": 2,
+          "actual": 10,
+          "prediction": 8.3333333333,
+          "absolute_error": 1.6666666667,
+          "leaked_prediction_demo": 10.0
+        },
+        {
+          "id": "C05",
+          "method": "time",
+          "period": "晚间",
+          "queue_length": 2,
+          "actual": 12,
+          "prediction": 8.3333333333,
+          "absolute_error": 3.6666666667,
+          "leaked_prediction_demo": 12.0
+        },
+        {
+          "id": "C06",
+          "method": "time",
+          "period": "晚间",
+          "queue_length": 3,
+          "actual": 14,
+          "prediction": 10.3333333333,
+          "absolute_error": 3.6666666667,
+          "leaked_prediction_demo": 14.0
+        },
+        {
+          "id": "B01",
+          "method": "group",
+          "period": "晚间",
+          "queue_length": 1,
+          "actual": 7,
+          "prediction": 3.3658536585,
+          "absolute_error": 3.6341463415,
+          "leaked_prediction_demo": 7.0
+        },
+        {
+          "id": "B02",
+          "method": "group",
+          "period": "晚间",
+          "queue_length": 2,
+          "actual": 9,
+          "prediction": 5.1707317073,
+          "absolute_error": 3.8292682927,
+          "leaked_prediction_demo": 9.0
+        },
+        {
+          "id": "B03",
+          "method": "group",
+          "period": "晚间",
+          "queue_length": 3,
+          "actual": 11,
+          "prediction": 6.9756097561,
+          "absolute_error": 4.0243902439,
+          "leaked_prediction_demo": 11.0
+        },
+        {
+          "id": "B04",
+          "method": "group",
+          "period": "晚间",
+          "queue_length": 0,
+          "actual": 5,
+          "prediction": 1.5609756098,
+          "absolute_error": 3.4390243902,
+          "leaked_prediction_demo": 5.0
+        },
+        {
+          "id": "B05",
+          "method": "group",
+          "period": "晚间",
+          "queue_length": 1,
+          "actual": 8,
+          "prediction": 3.3658536585,
+          "absolute_error": 4.6341463415,
+          "leaked_prediction_demo": 8.0
+        },
+        {
+          "id": "B06",
+          "method": "group",
+          "period": "晚间",
+          "queue_length": 2,
+          "actual": 10,
+          "prediction": 5.1707317073,
+          "absolute_error": 4.8292682927,
+          "leaked_prediction_demo": 10.0
+        },
+        {
+          "id": "A03",
+          "method": "random",
+          "period": "午间",
+          "queue_length": 2,
+          "actual": 5,
+          "prediction": 8.9664804469,
+          "absolute_error": 3.9664804469,
+          "leaked_prediction_demo": 5.0
+        },
+        {
+          "id": "A06",
+          "method": "random",
+          "period": "午间",
+          "queue_length": 1,
+          "actual": 4,
+          "prediction": 6.4525139665,
+          "absolute_error": 2.4525139665,
+          "leaked_prediction_demo": 4.0
+        },
+        {
+          "id": "B04",
+          "method": "random",
+          "period": "晚间",
+          "queue_length": 0,
+          "actual": 5,
+          "prediction": 3.938547486,
+          "absolute_error": 1.061452514,
+          "leaked_prediction_demo": 5.0
+        },
+        {
+          "id": "B06",
+          "method": "random",
+          "period": "晚间",
+          "queue_length": 2,
+          "actual": 10,
+          "prediction": 8.9664804469,
+          "absolute_error": 1.0335195531,
+          "leaked_prediction_demo": 10.0
+        },
+        {
+          "id": "C01",
+          "method": "random",
+          "period": "晚间",
+          "queue_length": 2,
+          "actual": 11,
+          "prediction": 8.9664804469,
+          "absolute_error": 2.0335195531,
+          "leaked_prediction_demo": 11.0
+        },
+        {
+          "id": "C02",
+          "method": "random",
+          "period": "晚间",
+          "queue_length": 3,
+          "actual": 13,
+          "prediction": 11.4804469274,
+          "absolute_error": 1.5195530726,
+          "leaked_prediction_demo": 13.0
+        }
+      ],
+      "comparison": [
+        {
+          "method": "time",
+          "method_name": "时间划分",
+          "n": 6,
+          "mae": 2.5555555556,
+          "rmse": 2.6874192494,
+          "asymmetric_loss": 2.5555555556,
+          "train_n": 12,
+          "shared_sites": 3,
+          "leaked_mae_demo": 0.0
+        },
+        {
+          "method": "group",
+          "method_name": "分组划分",
+          "n": 6,
+          "mae": 4.0650406504,
+          "rmse": 4.0965445894,
+          "asymmetric_loss": 4.0650406504,
+          "train_n": 6,
+          "shared_sites": 0,
+          "leaked_mae_demo": 0.0
+        },
+        {
+          "method": "random",
+          "method_name": "随机划分",
+          "n": 6,
+          "mae": 2.0111731844,
+          "rmse": 2.2504399315,
+          "asymmetric_loss": 2.0111731844,
+          "train_n": 12,
+          "shared_sites": 3,
+          "leaked_mae_demo": 0.0
+        }
+      ]
+    },
+    "evaluation_ids": [
+      "A05",
+      "A06",
+      "B05",
+      "B06",
+      "C05",
+      "C06"
+    ],
+    "evaluation_split": "validation",
+    "splits": {
+      "time": {
+        "model": {
+          "features": [
+            "queue_length"
+          ],
+          "imputation": "zero",
+          "fill_value": 0.0,
+          "train_ids": [
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "B01",
+            "B02",
+            "B03",
+            "B04",
+            "C01",
+            "C02",
+            "C03",
+            "C04"
+          ],
+          "coefficients": [
+            4.3333333333,
+            2.0
+          ]
+        },
+        "train_ids": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "B01",
+          "B02",
+          "B03",
+          "B04",
+          "C01",
+          "C02",
+          "C03",
+          "C04"
+        ],
+        "evaluation_ids": [
+          "A05",
+          "A06",
+          "B05",
+          "B06",
+          "C05",
+          "C06"
+        ],
+        "train_sites": [
+          "A",
+          "B",
+          "C"
+        ],
+        "evaluation_sites": [
+          "A",
+          "B",
+          "C"
+        ],
+        "test_ids": [
+          "A07",
+          "A08",
+          "B07",
+          "B08",
+          "C07",
+          "C08"
+        ],
+        "unused_ids": []
+      },
+      "group": {
+        "model": {
+          "features": [
+            "queue_length"
+          ],
+          "imputation": "zero",
+          "fill_value": 0.0,
+          "train_ids": [
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "A05",
+            "A06"
+          ],
+          "coefficients": [
+            1.5609756098,
+            1.8048780488
+          ]
+        },
+        "train_ids": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "A05",
+          "A06"
+        ],
+        "evaluation_ids": [
+          "B01",
+          "B02",
+          "B03",
+          "B04",
+          "B05",
+          "B06"
+        ],
+        "train_sites": [
+          "A"
+        ],
+        "evaluation_sites": [
+          "B"
+        ],
+        "test_ids": [
+          "C07",
+          "C08"
+        ],
+        "unused_ids": [
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C06",
+          "A07",
+          "A08",
+          "B07",
+          "B08"
+        ]
+      },
+      "random": {
+        "model": {
+          "features": [
+            "queue_length"
+          ],
+          "imputation": "zero",
+          "fill_value": 0.0,
+          "train_ids": [
+            "A01",
+            "A02",
+            "A04",
+            "A05",
+            "B01",
+            "B02",
+            "B03",
+            "B05",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coefficients": [
+            3.938547486,
+            2.5139664804
+          ]
+        },
+        "train_ids": [
+          "A01",
+          "A02",
+          "A04",
+          "A05",
+          "B01",
+          "B02",
+          "B03",
+          "B05",
+          "C03",
+          "C04",
+          "C05",
+          "C06"
+        ],
+        "evaluation_ids": [
+          "A03",
+          "A06",
+          "B04",
+          "B06",
+          "C01",
+          "C02"
+        ],
+        "train_sites": [
+          "A",
+          "B",
+          "C"
+        ],
+        "evaluation_sites": [
+          "A",
+          "B",
+          "C"
+        ],
+        "test_ids": [
+          "A07",
+          "A08",
+          "B07",
+          "B08",
+          "C07",
+          "C08"
+        ],
+        "unused_ids": []
+      }
+    },
+    "note": "不同划分的评价样本可能不同，不可按最低 MAE 挑划分；小票字段不得用于真实预测。"
+  },
+  "provenance": {
+    "data_sha256": "ee8e841e781afd80aa308a6aa415c8dac4b242b670d983c9cd84dc6e1b05817a",
+    "config_sha256": "e31c15b218273f30e32bd3926c809222784f835c88fe4b10a9ec423c3a5b4150",
+    "source_sha256": {
+      "mlcourse/runtime.py": "66df0bfac47b990a8d3b73496098c14ee2a980220ad96f686d8638fe597dd2f3",
+      "mlcourse/mathops.py": "c8192a53f5940a322484b8199cebafa5f0f114161768ac4bb4495677abf39108",
+      "mlcourse/experiments.py": "8d1570fb733e0c9604e71edd3bdd665bf57213b318823ea2e102e3c5882e5ee2",
+      "mlcourse/intro.py": "60c82f73dc7382dd5424fa01b979b4a093bde29c0fdb79d77d253e537ac294a0",
+      "mlcourse/foundations.py": "4fb87657dd5e8145a63fd4a2c52e9e43a97b7a7a61a0fde0b35704887b8cd965",
+      "mlcourse/foundations_data.py": "ff210780dd37a78eb7f2dea240108108bc9e2396b99f88d52c4ea0a3e5e4b1fd"
+    },
+    "runtime": "mlcourse-numpy-v2",
+    "python": "3.14.4",
+    "numpy": "2.5.2",
+    "data_file": "lesson-05/data/base.json",
+    "config_file": "lesson-05/config.json",
+    "data_file_sha256": "7662b23504b10dc422f5cb8b625e5a4b74f06e0f549c5aaa62b2825869e0ae71",
+    "config_file_sha256": "8f609ca7394c5d03a44b2ae9ee10cb5131d9f4e25c91d3c3d066b0b3ba6c86f1",
+    "entry_sha256": "6b43537cfe973323cf6a9ff9d6634d2cc5bcbb9944652ef92b221219e2b8b541"
+  }
+}

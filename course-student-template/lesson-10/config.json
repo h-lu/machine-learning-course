@@ -1,6 +1,0 @@
-{
-  "evaluation_split": "validation",
-  "original_threshold": 0.5,
-  "candidate_threshold": 0.35,
-  "review_capacity": 6
-}

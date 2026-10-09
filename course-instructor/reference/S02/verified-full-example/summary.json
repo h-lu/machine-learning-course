@@ -1,0 +1,26 @@
+{
+  "audit": {
+    "absent_timestamp_policy": "只记录缺行，不造需求 0，也不填补目标值",
+    "absent_timestamp_rows": 165,
+    "columns": 17,
+    "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+    "duplicate_hours": 0,
+    "empty_fields": 0,
+    "expected_calendar_hours": 17544,
+    "first_datetime": "2011-01-01T00:00",
+    "last_datetime": "2012-12-31T23:00",
+    "rows": 17379,
+    "target_identity_check": "casual+registered=cnt；只做原文件完整性核对，不作为输入"
+  },
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "evaluation_partition": "none; integrity/coverage audit only",
+  "lesson": 4,
+  "sealed_test_rows": 2168,
+  "source_rows": 17379,
+  "status": "ok",
+  "test_policy": "01–07 仅审计封存期行数，不拟合、不评价封存期目标",
+  "train_end_exclusive": "2012-07-01",
+  "training_rows": 13003,
+  "validation_end_exclusive": "2012-10-01",
+  "validation_rows": 2208
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "case": "wrong_length",
+    "exit_code": 2,
+    "expected_rejection_observed": true,
+    "message": "无法继续：候选须返回与评价记录等长的一列有限数值预测"
+  },
+  {
+    "case": "nonfinite",
+    "exit_code": 2,
+    "expected_rejection_observed": true,
+    "message": "无法继续：候选须返回与评价记录等长的一列有限数值预测"
+  },
+  {
+    "case": "duplicate_baseline",
+    "exit_code": 2,
+    "expected_rejection_observed": true,
+    "message": "无法继续：方法名须非空且不能重复；可以使用自己定义的名称"
+  },
+  {
+    "case": "empty_dictionary",
+    "exit_code": 2,
+    "expected_rejection_observed": true,
+    "message": "无法继续：候选方法字典不能为空；无候选时返回None"
+  },
+  {
+    "case": "missing_plan",
+    "exit_code": 2,
+    "expected_rejection_observed": true,
+    "message": "无法继续：先保存自己的验证前计划：lesson-08/missing-plan.md。结构可自由，不是统一数字规则。"
+  },
+  {
+    "case": "test_without_saved_choice",
+    "exit_code": 2,
+    "expected_rejection_observed": true,
+    "message": "无法继续：最后测试需显式新output、decision记录与selected-method；默认命令只评价验证。"
+  },
+  {
+    "case": "existing_output",
+    "exit_code": 2,
+    "expected_rejection_observed": true,
+    "message": "无法继续：显式结果目录已存在，换新目录以保留旧证据"
+  }
+]

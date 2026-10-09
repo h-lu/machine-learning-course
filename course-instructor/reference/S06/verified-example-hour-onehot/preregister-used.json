@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "change": "hour_onehot",
+  "config_sha256": "e4edcafd4de662531e2b237d8872086d0509e647d511f1adb0da0f82e37e9bcb",
+  "primary_metric": "overall_mae",
+  "hypothesis": "教师参考：仅检查此项表示变化能否改善验证整体误差。",
+  "explanation": "教师参考：固定数据天气日历特征和算法，仅改变对应表示，非学生唯一路线。",
+  "check_rule": {
+    "minimum_primary_improvement": 0,
+    "maximum_secondary_mae_increase": 0
+  },
+  "check_reason": "教师接口验证的数值规则；不代表学生采用标准或真实使用决定。"
+}

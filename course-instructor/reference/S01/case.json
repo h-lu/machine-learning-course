@@ -1,8 +1,8 @@
 {
-  "purpose": "S01 非默认配置下独立核算与证据检查",
-  "config_patch": {
-    "primary_model": "rule",
-    "rule_slope": 1.5,
-    "alert_minutes": 7.0
-  }
+  "lesson": "S01",
+  "runner": "open_bike_teacher_reference",
+  "purpose": "对开放任务的一条可行参考路线独立核算，不规定学生参数或结论",
+  "reference_script": "course-instructor/reference/S01/verify.py",
+  "student_starter": "lesson-03/analysis.py",
+  "scope": "固定真实开发数据；不评价最后测试或历史成绩"
 }

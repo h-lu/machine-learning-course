@@ -1,0 +1,10 @@
+{
+  "data": "data/bike/hour.csv",
+  "change": "hour_onehot",
+  "ridge_alpha": 0.0,
+  "train_end": "2012-07-01",
+  "validation_end": "2012-10-01",
+  "tail_quantile": 0.9,
+  "condition_hour_shift": 1,
+  "error_case_count": 12
+}

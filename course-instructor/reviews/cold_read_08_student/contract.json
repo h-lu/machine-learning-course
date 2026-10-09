@@ -1,0 +1,9 @@
+{
+  "lesson": "lesson-08",
+  "question": "粗时间结构能否减少历史夜间租借估计高估？",
+  "user": "共享单车历史需求分析员",
+  "data_source": "data/bike/hour.csv；UCI官方离线小时记录，CC BY4.0",
+  "metric": "主hr<6 MAE；次总体MAE；次租借/已记录小时，各组实际n作为分母",
+  "split_plan": "<2012-07-01训练；<2012-10-01验证；其后测试仅选择后评价window_mean",
+  "initial_expectation": "窗口均值降低夜间误差，但年月需求漂移/工作日条件解释仍未排除"
+}

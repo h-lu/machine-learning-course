@@ -1,7 +1,26 @@
 {
-  "purpose": "S06 非默认配置下独立核算与证据检查",
-  "config_patch": {
-    "change": "period_feature",
-    "stress_queue_shift": 2
-  }
+  "purpose": "S06开放真实课：起点/自主候选接口与可选参考分别验收",
+  "lesson": "S06",
+  "runner": "open-starter-and-optional-author-reference",
+  "student_entry": "lesson-08/analysis.py",
+  "starter_expected_outputs": [
+    "summary.json",
+    "comparison.csv",
+    "records.csv",
+    "data_audit.json"
+  ],
+  "starter_is_formal_completion": false,
+  "optional_reference_configs": [
+    "lesson-08/config-hour-onehot.json",
+    "lesson-08/config-workingday-interaction.json"
+  ],
+  "checks": [
+    "默认开发reader不返回最后测试标签",
+    "默认仅训练均值基线，candidate hook None",
+    "自由命名候选及评价输入不含目标组成项",
+    "独立逐条重算与分组分母",
+    "先保存选择再显式最后评价；只报所选方法",
+    "教师数值示例不规定学生采用与评分"
+  ],
+  "historical_toy_only": "旧foundation_reference S06仅可核人工热身，不代表本次完整课包"
 }

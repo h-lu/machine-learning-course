@@ -1,86 +1,35 @@
-# S05 入门支持：同样的新增条数，信息可能不同
+# 第07课支持：按卡点选用，不是统一研究路线
 
-这是 [本课任务](README.md) 的详细做法，不是额外作业。完成下面的比较、自己的检查和解释，就覆盖必做任务；不用再把 README 的另一条路径重复一遍。你可以使用现成程序和教师帮助，不需要先会写训练代码。**先做第一项小任务：找到四种方案各增加几条样本、来自什么时段。**
+## 卡在环境、目录或第一份输入
 
-## 1. 先知道今天在检查什么
+如果只是想查看输入结构，从学生仓库根进入`cd lesson-07`，运行`python3 analysis.py --config config.json --output artifacts/start-a`。成功后先看`artifacts/start-a/summary.json`的训练/验证条数，再看sample.csv的一行输入；04只元数据，05额外固定时间清单。audit.json提供文件完整性。样本只是预览，不替代完整真实标准分析，起点没有全方案结果或报告。
 
-本课要在顾客加入队伍时，根据前面的人数预测实际等待分钟数。一行数据记录一次排队；实际等待时间是事后取得的**标签**。**候选池**是可以从中选取新记录的集合；**标注预算**是能用于取得真实标签的资源，本课简化成最多增加的记录条数。**合成标签**是由程序生成而非观察到的数值；本课用原模型的预测生成标签，并没有新增真实观察。这里的候选池也只是人工数据模拟。
+## 卡在数据怎样进入自己的代码
 
-在 `report.md` 先写一句用途与预计：例如“给需要估计等候时间的顾客使用；我预计补晚间记录可能减小晚间误差”。这是预计，不是实验结论。术语表按需查；运行后需要解释误差时，再读 [LEARN.md](LEARN.md) 的小例子。
+你可修改analysis.py或另写my_analysis.py。`load_development(ROOT)`只返回训练和验证字典列表及审计；你决定输入/模型/规则/指标/保存内容。代码可让AI协助生成，但先解释自己的问题和不能偷看什么。
 
-## 2. 不改代码，先跑通并找到结果
-
-在学生仓库根目录运行，那里同时有 `scripts` 和 `lesson-07`。不知道终端或根目录在哪里，按 [第一次运行指南](../docs/FIRST_RUN.md) 的目录与环境检查操作；不要在 Python 的 `>>>` 中输入命令。以下用 `python3`；如果电脑只提供 `python`，将 `python3` 换成 `python`。
-
-```bash
-python3 scripts/course.py start 07
-python3 lesson-07/analysis.py --config lesson-07/config-start.json --output lesson-07/artifacts/support-start
+```python
+from pathlib import Path
+import sys
+ROOT = Path(__file__).resolve().parents[1]  # 文件在lesson目录中
+sys.path.insert(0, str(ROOT))
+from mlcourse.bike_starter import load_development, mae, fit_simple_line, write_csv
+train, validation, audit = load_development(ROOT)
+print("已读取训练/验证记录：", len(train), len(validation))
+# 在此构建你自己的标准分析；训练统计只来自train。
+# write_csv输出你构造的记录，不会替你选择研究策略。
 ```
 
-`config-start.json` 是随课准备的起始配置，先不要改；数据仍来自本课 `data/base.json`。终端出现“结果写入”后，在 `lesson-07/artifacts/support-start/` 找到 `comparison.csv`、`records.csv`、`added_samples.csv` 和 `summary.json`。CSV 可以用表格软件或文本编辑器打开；文本编辑器中每行是记录，逗号隔开列。先看下面点名的列，不要求一次看懂所有指标。
+如果把这段存为本课`my_analysis.py`，在本课目录运行`python3 my_analysis.py`；应先看到训练/验证记录数13,003和2,208，再构建自己的分析。这些是薄工具，不要求调用全部函数；读取之外由你组织自己的程序。04的标准分析使用全文件时点元数据，避免测试目标统计。可按CODE_TOOLKIT查示例片段，但不能把完整参考当自己的选择。
 
-## 3. 停下来核对，不只看运行成功
+## 卡在本课关系或失败解释
 
-先打开 `comparison.csv`，暂时不看全部指标，只看方法名、`added_n`（新增条数）、`evening_train_n`（训练中晚间条数）和 MAE。所有方案使用同一组 6 条验证样本。
+卡在选择时，只把候选编号/日期/hr/workingday等已知信息交给选择逻辑，先写计划再用被选标签；不要把全表cnt交给AI让它替你倒选。 用LEARN小例核概念，再回自己选的真实范围；HINTS只提供检查方向，不给统一结论。默认起点无抽样策略、学习曲线或标签揭示答案。公开CSV含标签，课堂先选择是实验协议不是保密机制；预算回放不等于新真实采集。
 
-| `method` | 新增条数 | 晚间训练条数 | MAE（分钟，约） |
-|---|---:|---:|---:|
-| no_addition：不补数据 | 0 | 0 | 4.333 |
-| random_sample：随机抽样 | 4 | 2 | 3.836 |
-| group_first：优先补晚间 | 4 | 4 | 3.000 |
-| synthetic：模型生成标签 | 4 | 0 | 4.333 |
+## 卡在怎样保存与重跑
 
-“不补数据”是参照，不要求它也增加 4 条。其他三种方案新增条数相同，但实际采集与生成的成本不一定相同。
+为每个比较保留配置、原始结果和运行命令；自己的程序建议写新试验目录，避免覆盖旧证据。report格式可改，引用具体文件/列/编号。更新submission.json的run和artifacts后再check/ci；默认起点结果不会证明完成研究。若你的代码有随机性，保存seed及全部重复结果；生成原始响应先保存再确定性重算。
 
-再打开 `added_samples.csv`，找 `method=group_first` 的 B01–B04；核对它们全是晚间。该表不单列窗口，打开 `data/base.json`，按编号找到 B01–B04 的 `site=B`，再找到 C01 的 `site=C`。C 窗口也有晚间记录，但这条规则按编号先取 B，训练集中仍没有 C。然后找 synthetic 的 `label_source`，它标明模型生成。候选池选择先看人数、时段和编号，选中后才取标签；本课不需要你联网采集或调用 AI。
+使用已准备的Python与NumPy，命令示例为本机`python3`；你原环境若使用`python`或`py`，统一用已经成功的启动命令，不安装新环境。默认起点离线读取`data/bike/hour.csv`，只准备审计/样本预览，不能作为正式分析已完成证据。AI可帮助提出问题、写代码、核算和解释，不收集prompt记录、不要求所有人同路线或强制逐人答辩。
 
-在 `records.csv` 找 B05：原方案预测 3、实际 8；优先补晚间后预测 5，绝对误差从 5 变为 3。终端还列出分组 MAE，请各抄一项午间、晚间结果，不只看总体。
-
-以上数值是给定数据和起始配置的**自查参考**，四舍五入造成的小差异正常。它们不是必须达到的评分标准。先自己算或数，再对照；出现较大差异时检查方法名、配置路径和输出目录，不手改结果文件。
-
-## 4. 跑一个已经准备好的对照
-
-`config-support.json` 已经准备好，不用从空白文件写 JSON。
-
-这个副本只把 `budget` 从 4 改为 2。三种补充方案各增加 2 条，不补数据仍是 0。优先晚间的方案现在训练 6 条，其中晚间 2 条，验证 MAE 约 3.222。不要因为样本减少后一次结果变化，就断言任意任务都需要同样预算。
-
-```bash
-python3 lesson-07/analysis.py --config lesson-07/config-support.json --output lesson-07/artifacts/support-compare
-```
-
-并排打开两次结果，把“改了什么、哪项结果变了、哪项不变”记在报告。两个输出目录分开，不覆盖第一份。
-
-## 5. 做一次有理由的个人选择
-
-从 `config-start.json` 另存 `config-mine.json`。预算保持 4，自己选另一个整数随机种子，只改 `seed`（如 11）。保留两次随机抽样的编号、时段和 MAE，说明哪类输入仍缺少；不要只保留较好的一次，也不要先看候选标签再选编号。
-
-另存文件时在编辑器中使用“另存为”，文件名是 `lesson-07/config-mine.json`。只改刚才点名的字段值，保留英文双引号、逗号和冒号，其他字段先不动。文件名不要多出 `.txt` 后缀。检查格式，再运行：
-
-```bash
-python3 -m json.tool lesson-07/config-mine.json
-python3 lesson-07/analysis.py --config lesson-07/config-mine.json --output lesson-07/artifacts/my-check
-```
-
-这次填写自己的预计、实际结果和理由，不照抄例子中的采用建议。允许结果支持保留原方案，也允许暂不使用。需要 AI 帮助时，可以提问：“请只解释这条命令和这一行数据，先让我计算，再帮我核对；不要替我填最终建议。”
-
-## 6. 写完报告，确认文件已保存
-
-在 `report.md` 回答本课的问题，每项几句话；删除模板提示语，写出配置和结果路径。最少保留：用途与预计、一项手算或计数、同条件比较、自己的检查及原因、仍不能得出的结论。把想保留的参数写回本课 `config.json`，不要改课次字段。
-
-`contract.json` 是任务说明，保留 `lesson` 并填其余六项：`question` 写问题，`user` 写使用者，`data_source` 写人工数据来源，`metric` 写指标和单位/分母，`split_plan` 写数据用途，`initial_expectation` 写实验前预计。完成实际工作后再将 `submission.json` 的 `status` 改为 `complete`。
-
-```bash
-python3 scripts/course.py run 07
-python3 scripts/course.py check 07
-git add lesson-07
-git add -f lesson-07/artifacts
-git diff --cached --name-only
-```
-
-最后一条只列出准备提交的文件；确认报告、任务说明、配置副本和引用的结果都在。你改过共享代码时，还要保存相应代码。上面没有提交到远程，接着按 [操作与提交步骤](../docs/WORKFLOW.md) 创建提交和本课 `v2-l07-final` 标签；不要覆盖已存在的标签。
-
-## 卡住时先这样做
-
-找不到脚本：回到学生仓库根目录。找不到 `config-mine.json`：检查是否另存到了本课目录或多了 `.txt`。JSON 报错：先运行上面的格式检查，修正显示的行列。运行失败后旧输出可能还在，不能当作新结果；换新目录重跑并确认成功提示。
-
-环境仍不能运行时，先用第 3 节表格完成手算、计数和一段解释，明确注明“仅手算，尚未运行”，把命令与报错交给教师处理，之后补跑。这是不中断学习的办法，不是用给定答案冒充已完成实验。已完成核心比较后再选提高或拓展任务；不需要把全部层次做一遍。
+数据/依赖错误保留命令、工作目录和完整报错；先用不同数据的完整小例继续理解，明确写未实跑，再找教师修复。显式输出已存在拒覆盖，换新目录保留旧证据。默认`artifacts/starter`可重算。学生正式程序与输出由自己确定；submission.json的run必须真实重建其artifacts中列出的科学结果。比较试验若未列入CI，另保存配置和独立重跑命令，不宣称CI全核。

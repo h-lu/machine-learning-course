@@ -1,0 +1,5 @@
+split,method,kind,n,overall_mae,commute_n,commute_mae
+train,original,hour_onehot,13003,61.78765318668265,2617,86.5248248136121
+train,candidate,workingday_interaction,13003,44.788499881870145,2617,74.25160171857662
+validation,original,hour_onehot,2208,111.2039458201682,441,194.12392957332503
+validation,candidate,workingday_interaction,2208,87.22328402945227,441,156.31643396619467

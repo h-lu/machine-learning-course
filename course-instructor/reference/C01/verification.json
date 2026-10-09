@@ -1,0 +1,98 @@
+{
+  "lesson": "C01",
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "train_n": 13003,
+  "validation_n": 2208,
+  "sealed_test_rows": 2168,
+  "test_evaluated": false,
+  "scope": "教师参考路线，非学生唯一答案",
+  "300.0": {
+    "metrics": {
+      "n": 2208,
+      "mae": 175.44972826086956,
+      "underestimated_rows": 1128
+    },
+    "hours": {
+      "3": {
+        "n": 92,
+        "mae": 202.45652173913044,
+        "underestimated_rows": 0
+      },
+      "17": {
+        "n": 92,
+        "mae": 451.3695652173913,
+        "underestimated_rows": 90
+      },
+      "23": {
+        "n": 92,
+        "mae": 87.05434782608695,
+        "underestimated_rows": 5
+      }
+    },
+    "first_three": [
+      {
+        "instant": "13004",
+        "prediction": 258.0,
+        "cnt": 149,
+        "absolute_error": 109.0
+      },
+      {
+        "instant": "13005",
+        "prediction": 252.0,
+        "cnt": 93,
+        "absolute_error": 159.0
+      },
+      {
+        "instant": "13006",
+        "prediction": 246.0,
+        "cnt": 90,
+        "absolute_error": 156.0
+      }
+    ]
+  },
+  "450.0": {
+    "metrics": {
+      "n": 2208,
+      "mae": 191.64356884057972,
+      "underestimated_rows": 736
+    },
+    "hours": {
+      "3": {
+        "n": 92,
+        "mae": 297.5108695652174,
+        "underestimated_rows": 0
+      },
+      "17": {
+        "n": 92,
+        "mae": 349.85869565217394,
+        "underestimated_rows": 84
+      },
+      "23": {
+        "n": 92,
+        "mae": 184.17391304347825,
+        "underestimated_rows": 0
+      }
+    },
+    "first_three": [
+      {
+        "instant": "13004",
+        "prediction": 372.0,
+        "cnt": 149,
+        "absolute_error": 223.0
+      },
+      {
+        "instant": "13005",
+        "prediction": 363.0,
+        "cnt": 93,
+        "absolute_error": 270.0
+      },
+      {
+        "instant": "13006",
+        "prediction": 354.0,
+        "cnt": 90,
+        "absolute_error": 264.0
+      }
+    ]
+  },
+  "status": "passed"
+}

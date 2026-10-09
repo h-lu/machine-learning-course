@@ -1,39 +1,15 @@
-# 现代机器学习课程
+# 机器学习2026–2027
 
-这是面向 AI 时代的项目制机器学习课程资料库。课程按 16 周、32 次课组织，学生可以使用 AI 完成编程、计算、分析与写作，但需要对问题定义、评价方式、结果依据和适用条件负责。
+32次课保留两次入门与五个六课模块的原主线：借助AI提出问题、构建方案、取得证据、持续改进。每课教师10分钟、学生自主65分钟、末尾AB概念检查15分钟；学生页不写分钟食谱。
 
-## 当前材料状态
+- [学生入口](course-student-template/README.md)
+- [第08课：用一次实验区分失败解释](course-student-template/lesson-08/README.md)
+- [32次完整大纲](machine-learning-course/COURSE_MAP.md)
+- [教师索引与过程参考](course-instructor/LESSON_INDEX.md)
+- [维护规范](AGENTS.md)
+- [原评分制度](course-instructor/GRADING.md)
+- [旧教材归档与恢复](archives/2026-10-09-before-90min-redesign/README.md)
 
-第 05–32 课已按新学习地图提供学生任务、学习材料、入门支持、离线实验、教师参考和 A/B 概念题。2026 班第 01–04 课已经授课，继续使用当时实际采用的课件、题目和完成要求；本轮不把新地图追溯套用到前四课。采用提交、题库版本、验证范围和线上状态见[发布说明](course-instructor/RELEASE.md)。
+当前具体新材料覆盖01–08；09–32仅保留规划，旧具体材料已归档。学生自主决定至少两个重要选择，薄起点只读取／必要基线；完整例子、提示和提高任务服务同一作品。AI可全程帮助，允许有依据地保留、修改或暂停。前1–7新版用于补学，不追改旧要求与成绩。教师答案位于教师目录，不嵌入学生学习页或测验接口。
 
-## 目录
-
-- `course-instructor/`：教师课程标准、32 课设计、运行手册、概念检查题库与参考材料。
-- `course-student-template/`：完整 32 课学生模板；实际 Gitea 学生仓库按教学进度逐课使用。
-- `ml-check/`：课末机器学习概念检查服务，支持 Gitea 登录、A 版基础题、AI 学习、B 版变式题和教师统计。
-- `machine-learning-course/`：课程地图、发布说明和整体规划入口。
-
-## 课程设计入口
-
-- [32 课学习地图](machine-learning-course/COURSE_MAP.md)
-- [教师课程设计标准](course-instructor/COURSE_DESIGN.md)
-- [教师评分标准](course-instructor/GRADING.md)
-- [学生项目模板](course-student-template/README.md)
-- [学生成果与评分说明](course-student-template/docs/ASSESSMENT.md)
-- [学生概念检查说明](course-student-template/docs/KNOWLEDGE_CHECK.md)
-
-## 本地运行检查
-
-```bash
-python3 tools/validate_course.py
-PYTHONPATH=ml-check pytest -q ml-check/tests
-```
-
-生产环境的服务入口是 [ml-check](https://hblu.top/ml-check)，教师页面为 [ml-check/teacher](https://hblu.top/ml-check/teacher)。生产凭据和数据库不放入 Git；部署说明见 [ml-check/deploy/README.md](ml-check/deploy/README.md)。
-
-## 发布仓库
-
-- [GitHub 完整课程](https://github.com/h-lu/machine-learning-course)
-- [Gitea 学生模板](https://hblu.top/gitea/machine-learning-2026/course-student-template)
-- [Gitea 教师材料](https://hblu.top/gitea/machine-learning-2026/course-instructor)
-- [Gitea ml-check](https://hblu.top/gitea/machine-learning-2026/ml-check)
+源代码更新与线上课程场次分开。此提交不部署课程服务器，不修改账号、成绩或历史场次。模拟冷读及作者运行结果见[本轮检查](course-instructor/reviews/README.md)；90分钟是教学设计，未进行真人试教。

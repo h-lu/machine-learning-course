@@ -1,0 +1,48 @@
+{
+  "calculation": "69706/3187",
+  "night_training_sum": 69706,
+  "night_training_n": 3187,
+  "night_prediction": 21.871979918418575,
+  "five_records": [
+    {
+      "datetime": "2012-07-01T00:00",
+      "cnt": 149,
+      "prediction": 21.871979918418575,
+      "signed_error": -127.12802008158143,
+      "absolute_error": 127.12802008158143
+    },
+    {
+      "datetime": "2012-07-01T01:00",
+      "cnt": 93,
+      "prediction": 21.871979918418575,
+      "signed_error": -71.12802008158143,
+      "absolute_error": 71.12802008158143
+    },
+    {
+      "datetime": "2012-07-01T02:00",
+      "cnt": 90,
+      "prediction": 21.871979918418575,
+      "signed_error": -68.12802008158143,
+      "absolute_error": 68.12802008158143
+    },
+    {
+      "datetime": "2012-07-01T03:00",
+      "cnt": 33,
+      "prediction": 21.871979918418575,
+      "signed_error": -11.128020081581425,
+      "absolute_error": 11.128020081581425
+    },
+    {
+      "datetime": "2012-07-01T04:00",
+      "cnt": 4,
+      "prediction": 21.871979918418575,
+      "signed_error": 17.871979918418575,
+      "absolute_error": 17.871979918418575
+    }
+  ],
+  "five_n": 5,
+  "five_mae": 59.07681204894885,
+  "full_night_n": 552,
+  "full_night_mae": 28.69927536231884,
+  "five_is_full_group": false
+}

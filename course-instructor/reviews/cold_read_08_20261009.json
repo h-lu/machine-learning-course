@@ -1,0 +1,318 @@
+{
+  "review_kind": "工具辅助独立学生流程模拟；非真人试教",
+  "lesson": "08/S06",
+  "environment": {
+    "python": "3.14.4",
+    "numpy": "2.5.2",
+    "new_install": false
+  },
+  "sequence": [
+    "读取学生README/LEARN/EXERCISES与按卡点SUPPORT",
+    "新干净学生副本运行默认薄基线和人工热身",
+    "只查看训练时段统计，提出H1小时结构遗漏/H2年月漂移",
+    "保存自由plan、窗口及主要指标/总体保护规则",
+    "自己构建窗口均值规则，运行首个同条件候选验证",
+    "独立核一条预测及五条失败记录/整夜间组",
+    "写decision并冻结候选和config",
+    "显式读取官方测试，只计算window_mean",
+    "同作品继续诊断工作日条件及小时登记敏感性，未改所选方法",
+    "更新report/contract/submission并运行run/check/禁止test的ci",
+    "之后读取教师RUNBOOK/REFERENCE和S06 A/B，交叉只读审查"
+  ],
+  "default_baseline": {
+    "train_n": 13003,
+    "validation_n": 2208,
+    "training_mean": 167.71345074213642,
+    "validation_mae": 197.82937894348797,
+    "candidate": null
+  },
+  "warmup": {
+    "known_n": 9,
+    "known_sum": 13,
+    "imputation": 1.4444444444444444,
+    "C04_fixed_prediction": 3.888888888888889,
+    "unit": "minutes；仅人工训练例"
+  },
+  "design": {
+    "original": "global training mean",
+    "candidate": "window_mean",
+    "unique_change": "用固定小时窗口分组估计均值",
+    "important_decisions": [
+      "预先固定五个时段窗口，而非逐小时参数",
+      "夜间MAE主要，至少改善30；总体不得增加10以上"
+    ],
+    "plan_before_candidate_validation": true,
+    "baseline_seen_before_plan": true,
+    "test_seen_before_selection": false
+  },
+  "validation": [
+    {
+      "method": "baseline",
+      "n": 2208,
+      "night_mae": 129.30458132850055,
+      "night_n": 552,
+      "overall_mae": 197.82937894348797,
+      "split": "validation"
+    },
+    {
+      "method": "window_mean",
+      "n": 2208,
+      "night_mae": 28.69927536231884,
+      "night_n": 552,
+      "overall_mae": 140.07227424835028,
+      "split": "validation"
+    }
+  ],
+  "decision": {
+    "selected_method": "window_mean",
+    "parameters": "lesson-08/personal-config.json",
+    "config_sha256": "82aa3317906db6666b70fa5a6aa50100b70b70079a9042ea604b72464bb7aa91",
+    "validation_evidence": "lesson-08/artifacts/first-personal-validation/comparison.csv",
+    "validation_sha256": "0b793b82a82b792c5a9cb1c85ef370c00f22a1253045b1508182d8c90adcf92b",
+    "night_improvement": 100.6053059661817,
+    "overall_change": -57.757104695137684,
+    "reason": "夜间MAE降低100.605305966>30，总体下降57.757104695，没有越过+10保护规则；夜間仍有明显周末高估/低估差异，只作为粗分时段历史分析。",
+    "scope": "当小时记录租借粗结构分析，不用于未来调度或因果解释",
+    "saved_before_test": true,
+    "test_computed": false,
+    "no_reselection_after_test": true
+  },
+  "selected_test": [
+    {
+      "method": "window_mean",
+      "n": 2168,
+      "night_mae": 22.11692694775505,
+      "night_n": 537,
+      "overall_mae": 105.96921543027828,
+      "split": "test"
+    }
+  ],
+  "independent_calculation": {
+    "calculation": "69706/3187",
+    "night_training_sum": 69706,
+    "night_training_n": 3187,
+    "night_prediction": 21.871979918418575,
+    "five_records": [
+      {
+        "datetime": "2012-07-01T00:00",
+        "cnt": 149,
+        "prediction": 21.871979918418575,
+        "signed_error": -127.12802008158143,
+        "absolute_error": 127.12802008158143
+      },
+      {
+        "datetime": "2012-07-01T01:00",
+        "cnt": 93,
+        "prediction": 21.871979918418575,
+        "signed_error": -71.12802008158143,
+        "absolute_error": 71.12802008158143
+      },
+      {
+        "datetime": "2012-07-01T02:00",
+        "cnt": 90,
+        "prediction": 21.871979918418575,
+        "signed_error": -68.12802008158143,
+        "absolute_error": 68.12802008158143
+      },
+      {
+        "datetime": "2012-07-01T03:00",
+        "cnt": 33,
+        "prediction": 21.871979918418575,
+        "signed_error": -11.128020081581425,
+        "absolute_error": 11.128020081581425
+      },
+      {
+        "datetime": "2012-07-01T04:00",
+        "cnt": 4,
+        "prediction": 21.871979918418575,
+        "signed_error": 17.871979918418575,
+        "absolute_error": 17.871979918418575
+      }
+    ],
+    "five_n": 5,
+    "five_mae": 59.07681204894885,
+    "full_night_n": 552,
+    "full_night_mae": 28.69927536231884,
+    "five_is_full_group": false
+  },
+  "upgrade": {
+    "group_metrics": [
+      {
+        "group": "night_workingday",
+        "n": 378,
+        "mae": 17.28188009157573,
+        "bias": -3.1571206106819547
+      },
+      {
+        "group": "night_nonworkingday",
+        "n": 174,
+        "mae": 53.50258232979525,
+        "bias": -47.6050315758343
+      },
+      {
+        "group": "workingday_8",
+        "n": 63,
+        "mae": 512.3225142670607,
+        "bias": -510.301342473579
+      },
+      {
+        "group": "nonworkingday_8",
+        "n": 29,
+        "mae": 37.60935580685603,
+        "bias": 27.494497701571543
+      },
+      {
+        "group": "evening",
+        "n": 368,
+        "mae": 264.74614787386525,
+        "bias": -249.26241240643415
+      }
+    ],
+    "registration_shift": [
+      {
+        "fixed_model_hour_shift": -1,
+        "n": 2208,
+        "mae": 140.82328320764924
+      },
+      {
+        "fixed_model_hour_shift": 0,
+        "n": 2208,
+        "mae": 140.0722742483503
+      },
+      {
+        "fixed_model_hour_shift": 1,
+        "n": 2208,
+        "mae": 153.6222084008712
+      }
+    ],
+    "status": "同一验证上的继续开发诊断；固定标签与已选规则，不作现实因果干预，不作新的独立评价；未调整所选方法。"
+  },
+  "failure_support": [
+    {
+      "case": "wrong_length",
+      "exit_code": 2,
+      "expected_rejection_observed": true,
+      "message": "无法继续：候选须返回与评价记录等长的一列有限数值预测"
+    },
+    {
+      "case": "nonfinite",
+      "exit_code": 2,
+      "expected_rejection_observed": true,
+      "message": "无法继续：候选须返回与评价记录等长的一列有限数值预测"
+    },
+    {
+      "case": "duplicate_baseline",
+      "exit_code": 2,
+      "expected_rejection_observed": true,
+      "message": "无法继续：方法名须非空且不能重复；可以使用自己定义的名称"
+    },
+    {
+      "case": "empty_dictionary",
+      "exit_code": 2,
+      "expected_rejection_observed": true,
+      "message": "无法继续：候选方法字典不能为空；无候选时返回None"
+    },
+    {
+      "case": "missing_plan",
+      "exit_code": 2,
+      "expected_rejection_observed": true,
+      "message": "无法继续：先保存自己的验证前计划：lesson-08/missing-plan.md。结构可自由，不是统一数字规则。"
+    },
+    {
+      "case": "test_without_saved_choice",
+      "exit_code": 2,
+      "expected_rejection_observed": true,
+      "message": "无法继续：最后测试需显式新output、decision记录与selected-method；默认命令只评价验证。"
+    },
+    {
+      "case": "existing_output",
+      "exit_code": 2,
+      "expected_rejection_observed": true,
+      "message": "无法继续：显式结果目录已存在，换新目录以保留旧证据"
+    }
+  ],
+  "workflow": {
+    "run_exit": 0,
+    "check_exit": 0,
+    "ci_exit": 0,
+    "ci_env": "ML08_FORBID_TEST=1",
+    "ci_automatic_test": false,
+    "artifact_count": 8,
+    "byte_reproduction": "passed"
+  },
+  "student_local_links_checked": 13,
+  "s06_review": {
+    "pairs": 5,
+    "unique_best_answers": 10,
+    "all_options_explained": true,
+    "formal_answer_leak_in_student": false,
+    "teacher_minutes": [
+      10,
+      65,
+      15
+    ],
+    "question_phase_seconds": [
+      240,
+      300,
+      240
+    ],
+    "submission_seconds": 120,
+    "review_after_student_run": true,
+    "independent_cross_read": true
+  },
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    {
+      "path": "course-student-template/lesson-08/LEARN.md",
+      "original": "十分钟热身",
+      "fixed": "概念热身",
+      "status": "已修复；仅一处措辞同步，分钟组织留教师材料"
+    }
+  ],
+  "source_evidence": {
+    "data": "course-student-template/data/bike/hour.csv",
+    "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+    "student_template": "course-student-template/lesson-08",
+    "instructor_bank": "course-instructor/lessons/S06/questions.json"
+  },
+  "preserved_inputs": {
+    "directory": "course-instructor/reviews/cold_read_08_student",
+    "sha256": {
+      "research.py": "1aa37ac4bfd3b0e63a714ae86e142007284d2ad3307550255977e35d8ce6bcf0",
+      "plan.md": "290bd4fb5d36b26666d5cdc08b7d4278af9c50674095bad2ef42f13d36d8ab13",
+      "personal-config.json": "82aa3317906db6666b70fa5a6aa50100b70b70079a9042ea604b72464bb7aa91",
+      "decision.json": "51bb5d9acde19255598cff764618b49b442d00da45e19233bcf96b2001fed758",
+      "report.md": "c1f60455a8e2993d5502c33e60dfe9ebb70e27d5424d4226649690ae07c27a36",
+      "contract.json": "42502d5b4fdc11e1bd9c46a79fd78235563f7d5d00cf7ab6ef58b728c5ff39c0",
+      "submission.json": "fef6947e4eaa7e0935efa5fa65a8e6e6ce17850a0832b044158c71eeb77ba58b",
+      "independent-check.json": "e18274be30bdca804a8f1f63310a5c181c346ab61cd305fb5c5284662dafa03a",
+      "upgrade.json": "1ada50035197648786daa23c1f371c2ab2c18b8a563e69d0f5597ca2ce4ece54",
+      "failure-support-check.json": "840498779b6467b34ac5368bc59c014ae00ccb0780010376ae18a8272cc93a4f",
+      "link-check.json": "ebfd6b076c5507cd0aa3656e05988f506b66f67c63bfbe794efcfcd766ffe1a4"
+    }
+  },
+  "commands": [
+    "python3 lesson-08/analysis.py",
+    "python3 scripts/lesson08.py warmup --output lesson-08/artifacts/warmup",
+    "python3 lesson-08/research.py --output lesson-08/artifacts/first-personal-validation",
+    "python3 lesson-08/research.py --split test --decision lesson-08/decision.json --selected-method window_mean --output lesson-08/artifacts/selected-test",
+    "python3 scripts/course.py run 08",
+    "python3 scripts/course.py check 08",
+    "ML08_FORBID_TEST=1 python3 scripts/course.py ci"
+  ],
+  "limitations": [
+    "软件复现与工具模拟不证明真人90分钟课堂效果",
+    "本次官方最后测试已用于预先所选模拟方法的流程验收；修改该方法后不能再称该测试为独立最后评价",
+    "固定窗口遗漏工作日8点与需求增长解释，只支持粗时段历史分析",
+    "测试不用于选择，测试后未改方法；敏感性不作因果推断",
+    "公开数据封存是研究协议，不能证明技术不可绕过",
+    "正式线上题库/场次/账号/成绩未访问或修改"
+  ],
+  "teacher_reference_boundary": "已有可选教师参考仅训练/验证；本次测试只为已预选window_mean模拟方案，不回写教师参考",
+  "smoke_verification": {
+    "without_test_exit": 0,
+    "explicit_selected_test_exit": 0,
+    "default_smoke_opens_test": false,
+    "ci_opens_test": false
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "review_date": "2026-10-09",
+  "validation_kind": "simulated independent student cold read and executed workflow, not human 90-minute pilot",
+  "reading_order": [
+    "AGENTS.md",
+    "course-student-template/README.md",
+    "course-student-template/ENVIRONMENT.md",
+    "01 README/LEARN/EXERCISES/data dictionary; default command; SUPPORT when writing own analysis",
+    "02 README/LEARN/EXERCISES; default baseline; SUPPORT when fitting and saving",
+    "03 README/LEARN/EXERCISES; default command; SUPPORT when writing hour-only analysis",
+    "personal contracts/reports/submissions; run/check 01-03; ci; independent arithmetic",
+    "teacher C01/C02/S01 RUNBOOK/REFERENCE and 30 A/B question explanations"
+  ],
+  "execution_environment": {
+    "python": "3.14.4",
+    "numpy": "2.5.2",
+    "required_software_already_prepared": true,
+    "installation_performed": false,
+    "gpu_or_paid_model_required": false
+  },
+  "source_data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "dataset_counts": {
+    "train": 13003,
+    "validation": 2208,
+    "sealed_test": 2168,
+    "test_targets_evaluated": false
+  },
+  "student_files": {
+    "lesson-01/my_analysis.py": "from pathlib import Path\nimport sys, json\nROOT=Path(__file__).resolve().parents[1]\nsys.path.insert(0,str(ROOT))\nfrom mlcourse.bike_starter import load_development, mae, write_csv\nHERE=Path(__file__).resolve().parent\nconfig=json.loads((HERE/'my_config.json').read_text())\ntrain,validation,audit=load_development(ROOT)\nout=HERE/'artifacts'/'personal'; out.mkdir(parents=True,exist_ok=True)\nrows=[]\nfor row in validation:\n    pred=max(0.,config['intercept']+config['slope']*row['temp'])\n    alt=max(0.,config['intercept']+config['alternative_slope']*row['temp'])\n    rows.append({'instant':row['instant'],'datetime':row['datetime'],'hr':row['hr'],'temp':row['temp'],'cnt':row['cnt'],'prediction':pred,'signed_error':pred-row['cnt'],'absolute_error':abs(pred-row['cnt']),'alternative_prediction':alt,'alternative_absolute_error':abs(alt-row['cnt'])})\nwrite_csv(out/'predictions.csv',rows)\nwrite_csv(out/'traces.csv',[row for row in rows if row['datetime'] in config['trace_datetimes']])\ngroups=[]\nfor name,hours in {'all':list(range(24)),**config['groups']}.items():\n    group=[r for r in rows if r['hr'] in hours]\n    groups.append({'group':name,'n':len(group),'mae':mae([r['cnt'] for r in group],[r['prediction'] for r in group]),'alternative_mae':mae([r['cnt'] for r in group],[r['alternative_prediction'] for r in group]),'mean_signed_error':sum(r['signed_error'] for r in group)/len(group)})\nwrite_csv(out/'groups.csv',groups)\nsummary={'config':config,'data_sha256':audit['data_sha256'],'training_rows':len(train),'validation_rows':len(rows),'sealed_test_rows':audit['sealed_test_rows'],'training_temp_range':[min(r['temp'] for r in train),max(r['temp'] for r in train)],'groups':groups,'boundary_check':{'temp_minus_0_1':'invalid normalized input; reject','temp_1_1':'out of defined 0..1 domain; reject','new_temp_0_5_prediction':config['intercept']+config['slope']*0.5,'new_input_error':'unknown without actual label'}}\n(out/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,sort_keys=True,indent=2)+'\\n')\nprint(json.dumps({'validation_rows':len(rows),'groups':groups},ensure_ascii=False))\n",
+    "lesson-01/my_config.json": "{\n  \"purpose\": \"analyst conditional hourly demand estimate after actual weather is observed\",\n  \"input\": \"temp\",\n  \"intercept\": 40,\n  \"slope\": 300,\n  \"alternative_slope\": 450,\n  \"groups\": {\n    \"night\": [\n      0,\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"commute\": [\n      7,\n      8,\n      17,\n      18\n    ],\n    \"midday\": [\n      11,\n      12,\n      13,\n      14,\n      15\n    ]\n  },\n  \"trace_datetimes\": [\n    \"2012-07-01T00:00\",\n    \"2012-07-02T08:00\",\n    \"2012-07-01T14:00\"\n  ],\n  \"expectation\": \"Higher temp tends to imply more demand; changing slope alone may not repair time-of-day differences.\"\n}\n",
+    "lesson-01/contract.json": "{\n  \"question\": \"When does a transparent temperature rule fail for conditional hourly demand?\",\n  \"user\": \"An analyst viewing actual weather after the hour\",\n  \"data_source\": \"UCI Bike Sharing hour.csv, original SHA256 e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f\",\n  \"metric\": \"MAE in rentals per hour; signed error for three selected traces\",\n  \"split_plan\": \"Fixed 13003 training / 2208 validation; sealed test excluded. Human parameters set before validation.\",\n  \"initial_expectation\": \"Higher temp tends to imply more demand; changing slope alone may not repair time-of-day differences.\",\n  \"lesson\": \"lesson-01\"\n}\n",
+    "lesson-01/report.md": "# 规则作品：天气条件估计的时间盲点\n\n我为实际当小时天气已经可得的分析员估计系统每小时租车次数；不是前一天预报，不是站点库存。先选人为规则 max(0,40+300×temp)，40次数/小时是起点，300是每一个标准化温度单位的变化，未用标签训练。第二项决定是固定夜间0–5、通勤7/8/17/18、中午11–15的失效检查，而不是从分数逐条挑模型。运行前预计温度能解释部分需求但不能修复小时差异。\n\n三条追踪（traces.csv）：13004 temp=.76→268，实际149，预测−实际119，绝对误差119；13036 temp=.76→268，实际568，有符号−300、绝对300；13018 temp=.92→316，实际444，有符号−128、绝对128。前两条同温不同小时的需求差异支持时间输入不足的可能，不能证明小时是唯一原因。新输入temp=.5预测190，无实际标签不能算误差。\n\n正式验证n=2208，MAE175.405344次/小时。夜间n552 MAE192.449275且平均有符号误差为正192.449275；通勤n368 MAE350.203804且有符号−307.019022；中午n460 MAE116.547826。只有斜率300→450改变：整体MAE195.111866，夜间288.193841，通勤286.415761，中午130.415217。提高斜率能减轻通勤不足却损害夜间和整体，故不一律采用高斜率。它仍是人为参数敏感性，不是验证后拟合训练。\n\n保留透明计算作为诊断，暂停全天操作建议；中午可继续研究但仍缺使用效果证据。竞争解释包括季节与年份需求增长、周末构成和未记录事件。负temp与>1比例超出定义范围应拒绝，不把缺小时补0；此报告的正式区分检查是斜率与时段，不声称已经部署所有输入防护。\n\n基础自检：排队输入1实际6，预测3、有符号−3、绝对3；输入4实际7，预测9、有符号2、绝对2；改斜率1.5使q预测5.5，误差3.5，较原误差2更差。人工例题不是正式证据。\n\n从学生根运行 python3 lesson-01/my_analysis.py；my_config.json由程序实际读取，predictions.csv、traces.csv、groups.csv、summary.json均在lesson-01/artifacts/personal。数据原哈希e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f，train13003、validation2208、sealed2168未评价。仅程序运行与模拟冷读，不是真人课堂。\n",
+    "lesson-01/submission.json": "{\n  \"lesson\": \"lesson-01\",\n  \"status\": \"complete\",\n  \"report\": \"lesson-01/report.md\",\n  \"artifacts\": [\n    \"lesson-01/artifacts/personal/predictions.csv\",\n    \"lesson-01/artifacts/personal/traces.csv\",\n    \"lesson-01/artifacts/personal/groups.csv\",\n    \"lesson-01/artifacts/personal/summary.json\"\n  ],\n  \"run\": [\n    \"python3\",\n    \"lesson-01/my_analysis.py\"\n  ]\n}\n",
+    "lesson-02/my_analysis.py": "from pathlib import Path\nimport sys,json\nROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))\nfrom mlcourse.bike_starter import load_development,mae,fit_simple_line,write_csv\nHERE=Path(__file__).resolve().parent\nconfig=json.loads((HERE/'my_config.json').read_text())\nprior=json.loads((ROOT/config['prior_config']).read_text())\ntrain,validation,audit=load_development(ROOT)\nmean=sum(r['cnt'] for r in train)/len(train)\nintercept,slope=fit_simple_line([r['temp'] for r in train],[r['cnt'] for r in train])\nrows=[]\nfor r in validation:\n    predictions={'baseline':mean,'line':max(0.,intercept+slope*r['temp']),'prior_rule':max(0.,prior['intercept']+prior['slope']*r['temp'])}\n    row={k:r[k] for k in ['instant','datetime','hr','temp','cnt']}\n    for method,pred in predictions.items():\n        row[method+'_prediction']=pred;row[method+'_error']=abs(pred-r['cnt'])\n    rows.append(row)\ngroups=[]\nfor name,hours in {'all':list(range(24)),**config['groups']}.items():\n    group=[r for r in rows if r['hr'] in hours]\n    for method in ['baseline','line','prior_rule']:\n        groups.append({'group':name,'method':method,'n':len(group),'absolute_error_sum':sum(r[method+'_error'] for r in group),'mae':mae([r['cnt'] for r in group],[r[method+'_prediction'] for r in group])})\nout=HERE/'artifacts'/'personal';out.mkdir(parents=True,exist_ok=True)\nwrite_csv(out/'predictions.csv',rows);write_csv(out/'groups.csv',groups)\nwrite_csv(out/'arithmetic_check.csv',[r for r in rows if r['instant'] in config['check_instants']])\nlookup={(r['group'],r['method']):r['mae'] for r in groups}\nnight_diff=lookup[('night','line')]-lookup[('night','baseline')]\ncommute_diff=lookup[('commute','line')]-lookup[('commute','baseline')]\nsummary={'config':config,'data_sha256':audit['data_sha256'],'training_rows':len(train),'validation_rows':len(rows),'sealed_test_evaluated':False,'parameters':{'training_mean':mean,'intercept':intercept,'slope':slope,'clipping':'max(0,prediction)'},'groups':groups,'night_commute_weight_switch':night_diff/(night_diff-commute_diff),'weight_definition':'fraction of commute records in a hypothetical night+commute use, not full-data prevalence','trace':[r for r in rows if r['instant']==config['trace_instant']][0]}\n(out/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,sort_keys=True,indent=2)+'\\n')\nprint(json.dumps({'parameters':summary['parameters'],'groups':groups,'weight_switch':summary['night_commute_weight_switch']},ensure_ascii=False))\n",
+    "lesson-02/my_config.json": "{\n  \"candidate\": \"training_temp_line\",\n  \"input\": \"temp\",\n  \"groups\": {\n    \"night\": [\n      0,\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"commute\": [\n      7,\n      8,\n      17,\n      18\n    ]\n  },\n  \"trace_instant\": 13036,\n  \"check_instants\": [\n    13004,\n    13005,\n    13006\n  ],\n  \"prior_config\": \"lesson-01/my_config.json\",\n  \"expectation\": \"Training the temperature slope should improve the overall score relative to a constant mean, but hour groups can still disagree. A night-focused use may prefer the constant.\"\n}\n",
+    "lesson-02/contract.json": "{\n  \"question\": \"Should we replace the constant training-mean estimate with a temperature-trained line?\",\n  \"user\": \"Demand analyst with actual hourly weather; compare night and commute uses\",\n  \"data_source\": \"Original UCI Bike Sharing hour.csv; original hash as lesson-01\",\n  \"metric\": \"Same 2208 validation instants, MAE rentals/hour for each method; night and commute groups\",\n  \"split_plan\": \"Train mean and least-squares line on 13003 earlier records; select on validation only; test sealed.\",\n  \"initial_expectation\": \"Training the temperature slope should improve the overall score relative to a constant mean, but hour groups can still disagree. A night-focused use may prefer the constant.\",\n  \"lesson\": \"lesson-02\"\n}\n",
+    "lesson-02/report.md": "# 比较作品：总体改善不能代替目标时段判断\n\n延续第01课已观测天气的分析用途，第一项选择是训练温度一元最小二乘候选，与训练均值和真实读取的前课规则比较；第二项选择是夜间与通勤分组，因前课已暴露两组方向相反。预期训练候选总体更好，但夜间可能保留均值。所有参数由较早13003记录确定，同2208编号评价，最后测试未读。\n\n训练均值167.71345074213642；直线截距−1.03692728376339，斜率350.3810244264711，预测统一max(0,直线)。验证MAE：均值197.82937894348797、直线174.29402691551385、前课规则175.40534420289856次/小时。拟合最小化训练平方差，评价MAE，二者作用不同。\n\n编号13036：temp=.76，直线−1.036927+350.381024×.76=265.252651，实际568，绝对误差302.747349；均值误差400.286549，前课规则误差300。独立加法核13004/13005/13006：基线18.713451+74.713451+77.713451=171.140352，除3=57.046784；直线116.252651+165.245031+161.237410=442.735092，除3=147.578364。不能除以跨模型的6行。\n\n夜间n552：均值129.304581，直线183.570410，前课192.449275；通勤n368：均值410.353467，直线353.192815，前课350.203804。总体候选改善却夜间退步，通勤直线亦略差于前课人为规则，这是未预计的局部证据。每组都在固定同编号上评价，没有事后逐条切换模型。\n\n继续直线作为全天透明参照，夜间条件用途可保留均值；暂停需要可靠通勤容量的行动建议。可能遗漏小时，也可能受月份/周末/年份增长构成影响，需要保持信息可得性的进一步候选。提高任务在同件作品定义夜间+通勤假设用途中通勤占比p：直线减基线加权MAE=(1−p)54.265829−p57.160652，p>0.487010时直线较低；这是用途权重，不是全验证数据的实际分布。观察两个组总体不能冒充全体。\n\n基础自检：训练1/3/5/7均值4；验证2/8误差2/4，MAE3。人工a/b两条基线MAE2、候选.5，c一条基线0、候选4。配送可迁移公平同编号比较，不能移用单车斜率。\n\n运行 python3 lesson-02/my_analysis.py；my_config.json和lesson-01/my_config.json均实际读取。证据在lesson-02/artifacts/personal：predictions.csv、groups.csv、arithmetic_check.csv、summary.json。原数据哈希e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f，13,003训练/2,208验证；sealed2168未评价。程序与模拟证据不代替真人自学试教。\n",
+    "lesson-02/submission.json": "{\n  \"lesson\": \"lesson-02\",\n  \"status\": \"complete\",\n  \"report\": \"lesson-02/report.md\",\n  \"artifacts\": [\n    \"lesson-02/artifacts/personal/predictions.csv\",\n    \"lesson-02/artifacts/personal/groups.csv\",\n    \"lesson-02/artifacts/personal/arithmetic_check.csv\",\n    \"lesson-02/artifacts/personal/summary.json\"\n  ],\n  \"run\": [\n    \"python3\",\n    \"lesson-02/my_analysis.py\"\n  ]\n}\n",
+    "lesson-03/my_analysis.py": "from pathlib import Path\nimport sys,json\nfrom collections import defaultdict\nROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))\nfrom mlcourse.bike_starter import load_development,mae,write_csv\nHERE=Path(__file__).resolve().parent\nconfig=json.loads((HERE/'my_config.json').read_text())\ndef validate_inputs(fields,hour):\n    if fields != ['hr']:raise ValueError('Only hr is approved for this previous-day task; target components and future measured weather are unavailable.')\n    if type(hour) is not int or not 0<=hour<=23:raise ValueError('hr must be an integer in 0..23')\nvalidate_inputs(config['whitelist'],0)\ntrain,validation,audit=load_development(ROOT)\nlabels=defaultdict(list)\nfor r in train:labels[r['hr']].append(r['cnt'])\nmeans={hour:sum(values)/len(values) for hour,values in sorted(labels.items())}\nrows=[]\nfor r in validation:\n    validate_inputs(config['whitelist'],r['hr'])\n    pred=means[r['hr']];actual_high=r['cnt']>=config['fixed_actual_high']\n    row={'instant':r['instant'],'datetime':r['datetime'],'hr':r['hr'],'prediction':pred,'cnt':r['cnt'],'absolute_error':abs(pred-r['cnt']),'actual_high':actual_high}\n    for threshold in config['alert_thresholds']:\n        alert=pred>=threshold\n        row['alert_'+str(threshold)]=alert\n        row['outcome_'+str(threshold)]=('hit' if actual_high else 'false_alert') if alert else ('miss' if actual_high else 'correct_no_alert')\n    rows.append(row)\ncounts=[]\nfor threshold in config['alert_thresholds']:\n    values={key:sum(r['outcome_'+str(threshold)]==key for r in rows) for key in ['hit','false_alert','miss','correct_no_alert']}\n    assert sum(values.values())==len(rows)\n    values.update(threshold=threshold,n=len(rows),alerts=values['hit']+values['false_alert'],actual_high=values['hit']+values['miss'],precision=(values['hit']/(values['hit']+values['false_alert'])) if values['hit']+values['false_alert'] else None,recall=values['hit']/(values['hit']+values['miss']))\n    counts.append(values)\nfailures=[]\nfor fields,hour in [(config['failure_attempt'],8),(['hr'],24),(['temp'],8)]:\n    try:validate_inputs(fields,hour)\n    except ValueError as e:failures.append({'fields':fields,'hour':hour,'rejected':True,'reason':str(e)})\n    else:raise AssertionError('Invalid input was accepted')\nout=HERE/'artifacts'/'personal';out.mkdir(parents=True,exist_ok=True)\nwrite_csv(out/'predictions.csv',rows)\nwrite_csv(out/'traces.csv',[r for r in rows if r['datetime'] in config['trace_datetimes']])\nwrite_csv(out/'counts.csv',counts)\nwrite_csv(out/'hour_parameters.csv',[{'hour':hour,'training_n':len(labels[hour]),'training_mean':means[hour]} for hour in means])\nsummary={'config':config,'data_sha256':audit['data_sha256'],'training_rows':len(train),'validation_rows':len(rows),'mae':mae([r['cnt'] for r in rows],[r['prediction'] for r in rows]),'counts':counts,'failure_checks':failures,'sealed_test_evaluated':False,'causal_claim_supported':False}\n(out/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,sort_keys=True,indent=2)+'\\n')\nprint(json.dumps({'mae':summary['mae'],'counts':counts,'failure_checks':failures},ensure_ascii=False))\n",
+    "lesson-03/my_config.json": "{\n  \"purpose\": \"Previous-day planner sees historical hourly demand estimate and a review flag\",\n  \"whitelist\": [\n    \"hr\"\n  ],\n  \"alert_thresholds\": [\n    300,\n    400\n  ],\n  \"fixed_actual_high\": 500,\n  \"trace_datetimes\": [\n    \"2012-07-01T00:00\",\n    \"2012-07-02T08:00\",\n    \"2012-07-02T17:00\"\n  ],\n  \"expectation\": \"Calendar-hour means may avoid the night-versus-commute failure without tomorrow's measured weather. Raising the alert threshold should reduce flags, but may lose high-demand cases.\",\n  \"failure_attempt\": [\n    \"hr\",\n    \"registered\"\n  ]\n}\n",
+    "lesson-03/contract.json": "{\n  \"question\": \"Can a previous-day hour-only estimate support a limited review flag?\",\n  \"user\": \"Planner the previous day; next day calendar hours are known\",\n  \"data_source\": \"Original UCI Bike Sharing hourly records; no weather forecast, station inventory, action data\",\n  \"metric\": \"MAE rentals/hour and full 2208-row confusion counts at fixed actual cnt>=500\",\n  \"split_plan\": \"Fit 24 hourly training means on 13003 earlier rows; thresholds 300/400 decided before validation; test sealed.\",\n  \"initial_expectation\": \"Calendar-hour means may avoid the night-versus-commute failure without tomorrow's measured weather. Raising the alert threshold should reduce flags, but may lose high-demand cases.\",\n  \"lesson\": \"lesson-03\"\n}\n",
+    "lesson-03/report.md": "# 用途作品：前一天计划可以使用哪些信息\n\n第一项决定是前一天规划员，使用翌日已知hr，输入白名单仅hr；给小时需求估计与需复核的提醒，不声称自动增车。模型是24个小时各自的训练均值，标签只来自较早13003条。第二项决定固定实际高需求cnt>=500，比较预测提醒>=300与>=400。预计抬高提醒阈值会少打扰而多漏报；这些值在验证运行前固定。\n\n另一个合理用途是第02课实际天气可得后的分析员条件估计，其temp当时可得、预测表达为温度直线，评价MAE即可。前一天没有天气预报，不能将未来实测temp从CSV借来。03相对02同时改变时点、输入、模型；不把不同MAE差声称为单一字段因果效果。\n\n验证n2208、MAE136.70789351189399次/小时。固定actual_high393条。提醒300：命中205、误报71、漏报188、正确未提醒1744，共2208；提醒276，精确率205/276=.742754，召回205/393=.521628。提醒400：74/18/319/1797，共2208；提醒92，精确率74/92=.804348，召回74/393=.188295。预测和MAE不变、实际高需求标准和393分母不变。\n\n三个自主追踪：13004 hr0→47.200737，实际149，不提醒/非高需求，绝对101.799263；13036 hr8→315.462385，实际568，阈值300命中、400漏报，绝对252.537615；13045 hr17→409.427788，实际747，两阈值命中，绝对337.572212。提示由预测得出，标签仅用于核对。\n\n实际程序拒绝白名单hr+registered、temp前一天输入以及hr24；失败原因存summary.json。registered+casual=cnt属于目标组成项，程序禁止它。把系统租车次数当单站库存亦不成立。\n\n保留hr估计用于计划讨论，暂停把提醒当作可靠高需求行动信号：即300仍漏188/393，而400漏319/393。数量与MAE不能证明提醒使出行方便或增车有效。竞争解释是系统需求增长、日历构成及未记录活动；新增站点供需、提醒接收、执行动作、结果和可比设计后再研究效果，不能仅拿历史次数断言因果。提高任务在同一作品固定实际标准核阈值敏感性，无需另交一件作品。\n\n基础自检：页3预测11实际16，两阈值均漏报；页6预测20实际11，固定实际>=12为否，两阈值均误报。迁移到设备报修时最终修好日期不可作报修时输入。\n\n运行 python3 lesson-03/my_analysis.py。my_config.json实际读入；证据在lesson-03/artifacts/personal：predictions.csv、traces.csv、counts.csv、hour_parameters.csv、summary.json。原哈希e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f，train13003/validation2208，最后测试2168未评价。本页为可运行模拟学生作品，不是实际干预或真人试教。\n",
+    "lesson-03/submission.json": "{\n  \"lesson\": \"lesson-03\",\n  \"status\": \"complete\",\n  \"report\": \"lesson-03/report.md\",\n  \"artifacts\": [\n    \"lesson-03/artifacts/personal/predictions.csv\",\n    \"lesson-03/artifacts/personal/traces.csv\",\n    \"lesson-03/artifacts/personal/counts.csv\",\n    \"lesson-03/artifacts/personal/hour_parameters.csv\",\n    \"lesson-03/artifacts/personal/summary.json\"\n  ],\n  \"run\": [\n    \"python3\",\n    \"lesson-03/my_analysis.py\"\n  ]\n}\n"
+  },
+  "result_summaries": {
+    "lesson-01": {
+      "boundary_check": {
+        "new_input_error": "unknown without actual label",
+        "new_temp_0_5_prediction": 190.0,
+        "temp_1_1": "out of defined 0..1 domain; reject",
+        "temp_minus_0_1": "invalid normalized input; reject"
+      },
+      "config": {
+        "alternative_slope": 450,
+        "expectation": "Higher temp tends to imply more demand; changing slope alone may not repair time-of-day differences.",
+        "groups": {
+          "commute": [
+            7,
+            8,
+            17,
+            18
+          ],
+          "midday": [
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "night": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "input": "temp",
+        "intercept": 40,
+        "purpose": "analyst conditional hourly demand estimate after actual weather is observed",
+        "slope": 300,
+        "trace_datetimes": [
+          "2012-07-01T00:00",
+          "2012-07-02T08:00",
+          "2012-07-01T14:00"
+        ]
+      },
+      "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+      "groups": [
+        {
+          "alternative_mae": 195.111865942029,
+          "group": "all",
+          "mae": 175.40534420289856,
+          "mean_signed_error": -39.68432971014493,
+          "n": 2208
+        },
+        {
+          "alternative_mae": 288.1938405797101,
+          "group": "night",
+          "mae": 192.44927536231884,
+          "mean_signed_error": 192.44927536231884,
+          "n": 552
+        },
+        {
+          "alternative_mae": 286.4157608695652,
+          "group": "commute",
+          "mae": 350.20380434782606,
+          "mean_signed_error": -307.01902173913044,
+          "n": 368
+        },
+        {
+          "alternative_mae": 130.41521739130434,
+          "group": "midday",
+          "mae": 116.54782608695652,
+          "mean_signed_error": -86.5391304347826,
+          "n": 460
+        }
+      ],
+      "sealed_test_rows": 2168,
+      "training_rows": 13003,
+      "training_temp_range": [
+        0.02,
+        0.98
+      ],
+      "validation_rows": 2208
+    },
+    "lesson-02": {
+      "config": {
+        "candidate": "training_temp_line",
+        "check_instants": [
+          13004,
+          13005,
+          13006
+        ],
+        "expectation": "Training the temperature slope should improve the overall score relative to a constant mean, but hour groups can still disagree. A night-focused use may prefer the constant.",
+        "groups": {
+          "commute": [
+            7,
+            8,
+            17,
+            18
+          ],
+          "night": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "input": "temp",
+        "prior_config": "lesson-01/my_config.json",
+        "trace_instant": 13036
+      },
+      "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+      "groups": [
+        {
+          "absolute_error_sum": 436807.26870722143,
+          "group": "all",
+          "mae": 197.82937894348797,
+          "method": "baseline",
+          "n": 2208
+        },
+        {
+          "absolute_error_sum": 384841.21142945456,
+          "group": "all",
+          "mae": 174.29402691551385,
+          "method": "line",
+          "n": 2208
+        },
+        {
+          "absolute_error_sum": 387295.0,
+          "group": "all",
+          "mae": 175.40534420289856,
+          "method": "prior_rule",
+          "n": 2208
+        },
+        {
+          "absolute_error_sum": 71376.1288933323,
+          "group": "night",
+          "mae": 129.30458132850055,
+          "method": "baseline",
+          "n": 552
+        },
+        {
+          "absolute_error_sum": 101330.86628578542,
+          "group": "night",
+          "mae": 183.5704099380171,
+          "method": "line",
+          "n": 552
+        },
+        {
+          "absolute_error_sum": 106232.0,
+          "group": "night",
+          "mae": 192.44927536231884,
+          "method": "prior_rule",
+          "n": 552
+        },
+        {
+          "absolute_error_sum": 151010.07590556025,
+          "group": "commute",
+          "mae": 410.3534671346747,
+          "method": "baseline",
+          "n": 368
+        },
+        {
+          "absolute_error_sum": 129974.95592744513,
+          "group": "commute",
+          "mae": 353.19281502023136,
+          "method": "line",
+          "n": 368
+        },
+        {
+          "absolute_error_sum": 128875.0,
+          "group": "commute",
+          "mae": 350.20380434782606,
+          "method": "prior_rule",
+          "n": 368
+        }
+      ],
+      "night_commute_weight_switch": 0.48701016362484684,
+      "parameters": {
+        "clipping": "max(0,prediction)",
+        "intercept": -1.03692728376339,
+        "slope": 350.3810244264711,
+        "training_mean": 167.71345074213642
+      },
+      "sealed_test_evaluated": false,
+      "trace": {
+        "baseline_error": 400.2865492578636,
+        "baseline_prediction": 167.71345074213642,
+        "cnt": 568,
+        "datetime": "2012-07-02T08:00",
+        "hr": 8,
+        "instant": 13036,
+        "line_error": 302.7473487196454,
+        "line_prediction": 265.2526512803546,
+        "prior_rule_error": 300.0,
+        "prior_rule_prediction": 268.0,
+        "temp": 0.76
+      },
+      "training_rows": 13003,
+      "validation_rows": 2208,
+      "weight_definition": "fraction of commute records in a hypothetical night+commute use, not full-data prevalence"
+    },
+    "lesson-03": {
+      "causal_claim_supported": false,
+      "config": {
+        "alert_thresholds": [
+          300,
+          400
+        ],
+        "expectation": "Calendar-hour means may avoid the night-versus-commute failure without tomorrow's measured weather. Raising the alert threshold should reduce flags, but may lose high-demand cases.",
+        "failure_attempt": [
+          "hr",
+          "registered"
+        ],
+        "fixed_actual_high": 500,
+        "purpose": "Previous-day planner sees historical hourly demand estimate and a review flag",
+        "trace_datetimes": [
+          "2012-07-01T00:00",
+          "2012-07-02T08:00",
+          "2012-07-02T17:00"
+        ],
+        "whitelist": [
+          "hr"
+        ]
+      },
+      "counts": [
+        {
+          "actual_high": 393,
+          "alerts": 276,
+          "correct_no_alert": 1744,
+          "false_alert": 71,
+          "hit": 205,
+          "miss": 188,
+          "n": 2208,
+          "precision": 0.7427536231884058,
+          "recall": 0.5216284987277354,
+          "threshold": 300
+        },
+        {
+          "actual_high": 393,
+          "alerts": 92,
+          "correct_no_alert": 1797,
+          "false_alert": 18,
+          "hit": 74,
+          "miss": 319,
+          "n": 2208,
+          "precision": 0.8043478260869565,
+          "recall": 0.18829516539440203,
+          "threshold": 400
+        }
+      ],
+      "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+      "failure_checks": [
+        {
+          "fields": [
+            "hr",
+            "registered"
+          ],
+          "hour": 8,
+          "reason": "Only hr is approved for this previous-day task; target components and future measured weather are unavailable.",
+          "rejected": true
+        },
+        {
+          "fields": [
+            "hr"
+          ],
+          "hour": 24,
+          "reason": "hr must be an integer in 0..23",
+          "rejected": true
+        },
+        {
+          "fields": [
+            "temp"
+          ],
+          "hour": 8,
+          "reason": "Only hr is approved for this previous-day task; target components and future measured weather are unavailable.",
+          "rejected": true
+        }
+      ],
+      "mae": 136.70789351189399,
+      "sealed_test_evaluated": false,
+      "training_rows": 13003,
+      "validation_rows": 2208
+    }
+  },
+  "submitted_artifact_sha256": {
+    "lesson-01/artifacts/personal/predictions.csv": "244a5e6828feddb167e7580ef759fe783a6bd67745458d67c3c9561a3baebd9d",
+    "lesson-01/artifacts/personal/traces.csv": "8d26b66247c69728f73c466a3ac33d4167736c5b4884fe4287d3d9decdcf1392",
+    "lesson-01/artifacts/personal/groups.csv": "ebf3838fe03f781a869c298f9b76bd9a3439c29b6240382e2453228dd9b49cff",
+    "lesson-01/artifacts/personal/summary.json": "1f331624c4594675ab8938e4aae3ac55a4ed2ec7460200b580640382a526bc0b",
+    "lesson-02/artifacts/personal/predictions.csv": "df3dcd44ee50195e50e9b8772ce40a8a50353f4c95a6a558a7a8a324c1f9da5a",
+    "lesson-02/artifacts/personal/groups.csv": "11325242fc1955194931187d9098f24228ab4c498d6f45a0314bff6d9794e632",
+    "lesson-02/artifacts/personal/arithmetic_check.csv": "28787ac81c387fb76c22efb14cf6c686db079985b04b1dfa06ff851fc65e5eca",
+    "lesson-02/artifacts/personal/summary.json": "aeb018967a2603fabd4f6ae21efefcf9a8c31492456e8c77f2cfaea2f954f8d0",
+    "lesson-03/artifacts/personal/predictions.csv": "4e81503fde6a1c9519364448f3a0ef8c70dca84b7a6d5cedaaa6540a5a950e28",
+    "lesson-03/artifacts/personal/traces.csv": "0a5d1b113ee64ba31f890a6f33fcc10979ddd4bf469c0adcb975d4f756b62b34",
+    "lesson-03/artifacts/personal/counts.csv": "6b086cc1afae6b7d8fe61d5180b46da2383def6606c901bf93c796258dc71f2d",
+    "lesson-03/artifacts/personal/hour_parameters.csv": "96e8baee18a98e188d6a509d4908eca3aa5d76a909715640c869e28cd383985b",
+    "lesson-03/artifacts/personal/summary.json": "0d6fb5568a497085bb931973ac4e6e018d417621003602acee2342330708a5a5"
+  },
+  "independent_arithmetic": {
+    "method": "Python stdlib csv/math.fsum; independently calculate training and validation values, skip test before target parsing",
+    "passed": true,
+    "mean": 167.71345074213642,
+    "intercept": -1.0369272837634185,
+    "slope": 350.38102442647113,
+    "mae_manual": 175.40534420289856,
+    "mae_alternative": 195.111865942029,
+    "mae_mean": 197.82937894348797,
+    "mae_line": 174.29402691551385,
+    "mae_hour_mean": 136.70789351189399,
+    "all_confusion_counts_match": true
+  },
+  "teacher_alignment": {
+    "first_opened_after_student_completion": true,
+    "lessons": [
+      "C01",
+      "C02",
+      "S01"
+    ],
+    "five_concepts_each": true,
+    "ab_pairs_reviewed": 15,
+    "question_explanations_reviewed": 30,
+    "transfer_and_unique_best_answer_blockers": [],
+    "formal_questions_not_given_as_student_report_answers": true,
+    "time_plan_teacher_only": "10 teacher / 65 autonomous / 15 A-learning-B"
+  },
+  "material_edits": [],
+  "remaining_limitations": [
+    "Not human learner observation or a timed 90-minute pilot; no completion-rate conclusion.",
+    "Learner needs basic arithmetic and ability to run/edit a file with permitted AI help; local environment was prepared.",
+    "Shared complete example tool was not used for the student candidate.",
+    "A default preview was also run in the source before switching all student work to the disposable copy; no source configs/reports/manifests were changed."
+  ],
+  "replay_result": {
+    "commands_with_expected_exit": 13,
+    "default_starter_commands_passed": 3,
+    "default_incomplete_checks_rejected": 3,
+    "personal_runs_passed": 3,
+    "personal_checks_passed": 3,
+    "ci_passed": true,
+    "submitted_artifact_byte_matches": 13,
+    "independent_arithmetic_passed": true,
+    "test_targets_evaluated": false,
+    "human_90_minute_pilot": false
+  }
+}

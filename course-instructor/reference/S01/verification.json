@@ -1,0 +1,32 @@
+{
+  "lesson": "S01",
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "train_n": 13003,
+  "validation_n": 2208,
+  "sealed_test_rows": 2168,
+  "test_evaluated": false,
+  "scope": "教师参考路线，非学生唯一答案",
+  "200": {
+    "counts": {
+      "true_positive": 1247,
+      "false_positive": 728,
+      "false_negative": 72,
+      "true_negative": 161
+    },
+    "predicted_alert_rows": 1975,
+    "mae": 175.44972826086956,
+    "actual_high_threshold": 200
+  },
+  "260": {
+    "counts": {
+      "true_positive": 346,
+      "false_positive": 115,
+      "false_negative": 745,
+      "true_negative": 1002
+    },
+    "predicted_alert_rows": 461,
+    "mae": 175.44972826086956,
+    "actual_high_threshold": 260
+  },
+  "status": "passed"
+}

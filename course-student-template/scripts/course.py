@@ -24,6 +24,18 @@ def lesson_name(value: str | int) -> str:
     return f"lesson-{int(raw):02d}"
 
 
+def active_lessons(root: Path) -> list[str]:
+    path = root / "active_lessons.json"
+    if not path.is_file():
+        return [lesson_name(i) for i in range(1, 33)]
+    values = json.loads(path.read_text(encoding="utf-8"))["active_student_lessons"]
+    if not isinstance(values, list) or not values or values != list(dict.fromkeys(values)):
+        raise ValueError("active_lessons.json 应列出不重复的活跃课次")
+    if any(not isinstance(value, str) or lesson_name(value) != value for value in values):
+        raise ValueError("活跃课次应使用 lesson-NN 格式")
+    return values
+
+
 def inside(root: Path, relative: str) -> Path:
     if not isinstance(relative, str) or not relative.strip() or Path(relative).is_absolute():
         raise ValueError("提交文件的路径必须是非空的仓库相对路径")
@@ -34,6 +46,8 @@ def inside(root: Path, relative: str) -> Path:
 
 
 def manifest(root: Path, lesson: str) -> dict:
+    if lesson not in active_lessons(root):
+        raise ValueError(f"{lesson} 尚无本轮活跃课包；旧材料已归档，当前请使用教师指定的01–08课")
     path = root / lesson / "submission.json"
     obj = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(obj, dict) or obj.get("lesson") != lesson:
@@ -114,7 +128,7 @@ def reproduce(root: Path, lesson: str) -> None:
 
 
 def ci(root: Path, ref: str = "") -> None:
-    objects = {lesson_name(i): manifest(root, lesson_name(i)) for i in range(1, 33)}
+    objects = {lesson: manifest(root, lesson) for lesson in active_lessons(root)}
     selected = None
     if ref.startswith("refs/tags/v2-"):
         match = TAG.fullmatch(ref.removeprefix("refs/tags/"))

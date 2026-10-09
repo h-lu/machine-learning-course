@@ -1,0 +1,12 @@
+{
+  "completion_note": "仅完成数据起点；自己实现重要选择、运行实验、保存证据并完成解释后才算完成",
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "lesson": 4,
+  "prepared": true,
+  "sample_purpose": "只预览结构；不代替完整开发数据",
+  "sample_rows": 12,
+  "sealed_test_rows": 2168,
+  "status": "not_started",
+  "training_rows": 13003,
+  "validation_rows": 2208
+}

@@ -1,0 +1,29 @@
+{
+  "description": "Invented public mapping fixture; not an operational session map",
+  "sessions": {
+    "101": {
+      "lesson_id": "C01",
+      "bank": "example-banks/C01.json",
+      "bank_version": "example-v1",
+      "bank_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "102": {
+      "lesson_id": "C02",
+      "bank": "example-banks/C02.json",
+      "bank_version": "example-v2",
+      "bank_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "103": {
+      "lesson_id": "S01",
+      "bank": "example-banks/S01.json",
+      "bank_version": "example-v3",
+      "bank_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "104": {
+      "lesson_id": "S02",
+      "bank": "example-banks/S02.json",
+      "bank_version": "example-v3",
+      "bank_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    }
+  }
+}

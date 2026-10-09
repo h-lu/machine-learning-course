@@ -1,0 +1,575 @@
+{
+  "date": "2026-10-09",
+  "kind": "independent simulated student workflow; not human self-study or 90-minute teaching trial",
+  "student_source": "course-student-template",
+  "student_first_then_teacher_review": true,
+  "environment": {
+    "python": "3.14.4",
+    "numpy": "2.5.2",
+    "device": "ordinary CPU; offline; no environment installation"
+  },
+  "source_data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "lessons": [
+    {
+      "lesson": "lesson-04",
+      "read_student_first": true,
+      "starter_command": "python3 scripts/course.py run 04",
+      "starter_files": [
+        "audit.json",
+        "config_snapshot.json",
+        "sample.csv",
+        "summary.json"
+      ],
+      "starter_status": "not_started",
+      "contract": {
+        "lesson": "lesson-04",
+        "question": "2011年第一季度早间哪些小时记录缺口需优先查来源？",
+        "user": "系统数据审查者",
+        "data_source": "UCI Bike Sharing CC BY4.0; 04小表人工模拟; 07标签生成规则模拟",
+        "metric": "覆盖率、分母或MAE次租赁/小时及本课用途规则",
+        "split_plan": "04仅日历元数据；05–07仅开发集13003+2208，测试目标未用",
+        "initial_expectation": "凌晨缺口可能高于通勤；提高容差会减少复核请求而非改变真实等待。",
+        "decisions": {
+          "start": "2011-01-01",
+          "end": "2011-04-01",
+          "hour_groups": {
+            "early_morning": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "morning_commute": [
+              7,
+              8,
+              9
+            ]
+          },
+          "tolerances": [
+            2,
+            4
+          ]
+        }
+      },
+      "config": {
+        "start": "2011-01-01",
+        "end": "2011-04-01",
+        "hour_groups": {
+          "early_morning": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "morning_commute": [
+            7,
+            8,
+            9
+          ]
+        },
+        "tolerances": [
+          2,
+          4
+        ]
+      },
+      "personal_submission": {
+        "lesson": "lesson-04",
+        "status": "complete",
+        "report": "lesson-04/report.md",
+        "artifacts": [
+          "lesson-04/artifacts/personal/coverage.csv",
+          "lesson-04/artifacts/personal/missing.csv",
+          "lesson-04/artifacts/personal/simulated_review.csv",
+          "lesson-04/artifacts/personal/summary.json"
+        ],
+        "run": [
+          "python",
+          "lesson-04/my_analysis.py"
+        ]
+      },
+      "scientific_summary": {
+        "groups": {
+          "early_morning": {
+            "coverage": 0.8511111111111112,
+            "expected": 450,
+            "missing": 67,
+            "observed": 383
+          },
+          "morning_commute": {
+            "coverage": 0.9777777777777777,
+            "expected": 270,
+            "missing": 6,
+            "observed": 264
+          }
+        },
+        "overall_expected": 2160,
+        "overall_observed": 2067,
+        "simulated_delay": {
+          "INVALID_zero_filled_day2_mean": 2,
+          "known_day2_mean": 4,
+          "known_day5_mean": 10
+        },
+        "source_demo": "artificial, not Bike independent review",
+        "target_statistics_read": false
+      },
+      "scientific_sha256": {
+        "lesson-04/artifacts/personal/coverage.csv": "4bcdddbb8b00fc2a6d0dc53d8154916d69d02c7cdc6d482a464728ccbef714c9",
+        "lesson-04/artifacts/personal/missing.csv": "cf9667540fcb1ae1cc143545d365cd72b06d69cfbe2b534fff72ea07f6a232d0",
+        "lesson-04/artifacts/personal/simulated_review.csv": "b5a7536a399ffb53396e574b9eb8c97621b41234cc62109490d2cf1636402e5c",
+        "lesson-04/artifacts/personal/summary.json": "f2706367dc773dadf789646e1d25232a996140be41a8bd7feac3d19b83508d79"
+      },
+      "student_report": "# 我的早间覆盖与复核审查\n\n用途是告诉系统数据审查者哪些时段应先回查记录来源；不是估算潜在需求。研究2011第一季度，开始前预计凌晨比通勤更易缺行，调大复核容差只会改变复核标记。\n\n我自选2–6时与7–9时作比较，第二项选择是独立复核容差2分钟，对照4分钟。范围的分母来自90天日历，保留未知，不把缺小时补0。原始文件来源UCI Bike Sharing CC BY4.0；复核小表是人工机制模拟。\n\nartifacts/personal/coverage.csv和summary.json显示：凌晨应450、实际383，覆盖383/450=85.11%；通勤应270、实际264，覆盖97.78%。全季度2067/2160=95.69%。missing.csv第一条2011-01-02T05:00没有记录；不推断它的cnt为零。相同日期范围和官方字节控制不变，只改变自选小时范围。\n\nsimulated_review.csv中m4直接20、代理14、独立复核23分钟，差3；容差2时需复核，容差4时可接受，未知m3始终需复核；m1直接真实0仍保留。容差不改变实际等待。标签到达模拟2/4已知时均值4，全部到达均值10；强填未知0会错误报告2，作为失败检查。\n\n建议优先查凌晨缺行机制，仍保留通勤较高覆盖的观察；暂不把cnt用于未满足需求或把缺口归因停运。补查清单与模拟复核机制只能提出核查计划，没有Bike独立复核事实。\n\n从学生根运行python3 lesson-04/my_analysis.py，my-config.json是配置；所有标准/对照结果一条命令重建。已完成真实元数据读取与人工小表计算，未打开封存目标。增强复习不追改既有成绩。\n",
+      "personal_program_sha256": "d05dd01d0adfac8da0bd8963439a39c6656a42ec003aacf9d8498e2017f2ea60",
+      "run_exit_code": 0,
+      "check_exit_code": 0
+    },
+    {
+      "lesson": "lesson-05",
+      "read_student_first": true,
+      "starter_command": "python3 scripts/course.py run 05",
+      "starter_files": [
+        "audit.json",
+        "config_snapshot.json",
+        "sample.csv",
+        "split_manifest.csv",
+        "summary.json"
+      ],
+      "starter_status": "not_started",
+      "contract": {
+        "lesson": "lesson-05",
+        "question": "怎样评价后来日期的同小时租赁估计，相关日记录应怎样划分？",
+        "user": "小时估计的人工值班员",
+        "data_source": "UCI Bike Sharing CC BY4.0; 04小表人工模拟; 07标签生成规则模拟",
+        "metric": "覆盖率、分母或MAE次租赁/小时及本课用途规则",
+        "split_plan": "04仅日历元数据；05–07仅开发集13003+2208，测试目标未用",
+        "initial_expectation": "随机日期更接近历史分布，不能替未来用途；小时/工作日均值或比全局均值更好。",
+        "decisions": {
+          "seed": 29,
+          "random_days": 92,
+          "method": "hour_workingday_mean",
+          "use": "later calendar dates"
+        }
+      },
+      "config": {
+        "seed": 29,
+        "random_days": 92,
+        "method": "hour_workingday_mean",
+        "use": "later calendar dates"
+      },
+      "personal_submission": {
+        "lesson": "lesson-05",
+        "status": "complete",
+        "report": "lesson-05/report.md",
+        "artifacts": [
+          "lesson-05/artifacts/personal/INVALID_target_parts.json",
+          "lesson-05/artifacts/personal/model.csv",
+          "lesson-05/artifacts/personal/records.csv",
+          "lesson-05/artifacts/personal/roles.csv",
+          "lesson-05/artifacts/personal/summary.json"
+        ],
+        "run": [
+          "python",
+          "lesson-05/my_analysis.py"
+        ]
+      },
+      "scientific_summary": {
+        "group_unit": "day; not station or person",
+        "schemes": {
+          "random_day": {
+            "global_mean_mae": 137.80351779168228,
+            "group_mean_mae": 74.18280380280606,
+            "overlapping_days": 0,
+            "training_mean": 187.52344350499615,
+            "training_rows": 13010,
+            "validation_rows": 2201
+          },
+          "random_row": {
+            "global_mean_mae": 139.47619118274824,
+            "group_mean_mae": 69.94881810317602,
+            "overlapping_days": 617,
+            "training_mean": 185.48527262939322,
+            "training_rows": 13003,
+            "validation_rows": 2208
+          },
+          "time": {
+            "global_mean_mae": 197.82937894348797,
+            "group_mean_mae": 125.53846712016272,
+            "overlapping_days": 0,
+            "training_mean": 167.71345074213642,
+            "training_rows": 13003,
+            "validation_rows": 2208
+          }
+        },
+        "sealed_targets_used": false,
+        "selected_for_later_dates": "time"
+      },
+      "scientific_sha256": {
+        "lesson-05/artifacts/personal/INVALID_target_parts.json": "b3470f451a27189dd80be908bb08e67236e80b1deefb78ca49b0a29fe1a0993c",
+        "lesson-05/artifacts/personal/model.csv": "a4317b22b71b5e494801c2cc6a3e63e38721c4a749d63cb046756e69ff1a60c0",
+        "lesson-05/artifacts/personal/records.csv": "e3bdce97869e1c877cb70ba1edec2d464abd51075c15a5a85633c1ef7f1a3b9f",
+        "lesson-05/artifacts/personal/roles.csv": "4aab13e5ef9c176e2354824dded0d3932016af65c646c35b8122b76fd6089834",
+        "lesson-05/artifacts/personal/summary.json": "b722dbdf597625a20de7f7ee19caf659287233c83a6150b6687df19c283a3c49"
+      },
+      "student_report": "# 后来日期的验证设计\n\n我为人工值班员估计系统小时租赁次数，以后遇到后来日期；预计历史随机验证更容易，但不能证明后续月份有效。来源是UCI Bike Sharing CC BY4.0，测试目标未读取。\n\n两个实质选择是按后来日期验证，和只按训练小时×workingday组均值预测，合理对照为训练全局均值。所有方法在各方案同一验证行比较；并自选按日成块的随机验证作条件敏感性，按行随机作相关记录失败检查。种子29预先固定。\n\nsummary.json：时间方案13003/2208行，组均值MAE125.5385，全局197.8294次租赁/小时；随机92天是13010/2201行，组均值74.1828，全局137.8035；按行随机13003/2208行，组均值69.9488，全局139.4762。随机按日因缺小时并非2208行，明确分母2201；这些分数不是同记录改进。按行随机有617天跨两侧，时间与按日均为0；按日验证未见日期，仍不是陌生站点/新人，Bike无此身份字段。\n\nrecords.csv首个时间验证instant13004是2012-07-01T00:00，真实149、预测79.327485，绝对差69.672515。model.csv记录每组仅训练均值和条数；roles.csv追踪每条角色。独立核到0点休息日组的训练来源，未拿验证改参数。casual+registered恒等于cnt的0误差在INVALID_target_parts.json，完全排除合法模型比较。\n\n保留时间方案回答未来日期用途，组均值比全局均值有开发证据；不因更低随机分数替换用途。失败检查说明按行随机不能证明不曾出现日期的效果；天气/事件的共享相关性仍需诊断。下一课沿用同一时间组均值作品。\n\n从学生根运行python3 lesson-05/my_analysis.py，以my-config.json控制种子/日期数；全方案同命令重建，完整结果已列submission。没有测试评价或外部对象采集。\n",
+      "personal_program_sha256": "e17d4e82851940459fef163cc34d61f88aa623c018f02ab7d7ada8fb37fc5b42",
+      "run_exit_code": 0,
+      "check_exit_code": 0
+    },
+    {
+      "lesson": "lesson-06",
+      "read_student_first": true,
+      "starter_command": "python3 scripts/course.py run 06",
+      "starter_files": [
+        "audit.json",
+        "config_snapshot.json",
+        "sample.csv",
+        "summary.json"
+      ],
+      "starter_status": "not_started",
+      "contract": {
+        "lesson": "lesson-06",
+        "question": "每天只能人工查看2或5个高租赁提醒时，哪种规则有证据支持？",
+        "user": "小时估计的人工值班员",
+        "data_source": "UCI Bike Sharing CC BY4.0; 04小表人工模拟; 07标签生成规则模拟",
+        "metric": "覆盖率、分母或MAE次租赁/小时及本课用途规则",
+        "split_plan": "04仅日历元数据；05–07仅开发集13003+2208，测试目标未用",
+        "initial_expectation": "容量增大可能提高召回而带来误报，同一预测的MAE不变。",
+        "decisions": {
+          "underweight": 3,
+          "threshold": 350,
+          "capacities": [
+            2,
+            5,
+            0
+          ],
+          "method": "hour_workingday_mean"
+        }
+      },
+      "config": {
+        "underweight": 3,
+        "threshold": 350,
+        "capacities": [
+          2,
+          5,
+          0
+        ],
+        "method": "hour_workingday_mean"
+      },
+      "personal_submission": {
+        "lesson": "lesson-06",
+        "status": "complete",
+        "report": "lesson-06/report.md",
+        "artifacts": [
+          "lesson-06/artifacts/personal/daily_capacity.csv",
+          "lesson-06/artifacts/personal/records.csv",
+          "lesson-06/artifacts/personal/summary.json"
+        ],
+        "run": [
+          "python",
+          "lesson-06/my_analysis.py"
+        ]
+      },
+      "scientific_summary": {
+        "capacities": {
+          "0": {
+            "confusion": {
+              "FN": 733,
+              "TN": 1475
+            },
+            "mae": 125.53846712016272,
+            "precision": null,
+            "recall": 0.0,
+            "rows": 2208,
+            "selected": 0,
+            "weighted_mae": 372.8260554414852
+          },
+          "2": {
+            "confusion": {
+              "FN": 609,
+              "FP": 2,
+              "TN": 1473,
+              "TP": 124
+            },
+            "mae": 125.53846712016272,
+            "precision": 0.9841269841269841,
+            "recall": 0.16916780354706684,
+            "rows": 2208,
+            "selected": 126,
+            "weighted_mae": 372.8260554414852
+          },
+          "5": {
+            "confusion": {
+              "FN": 547,
+              "FP": 3,
+              "TN": 1472,
+              "TP": 186
+            },
+            "mae": 125.53846712016272,
+            "precision": 0.9841269841269841,
+            "recall": 0.25375170532060026,
+            "rows": 2208,
+            "selected": 189,
+            "weighted_mae": 372.8260554414852
+          }
+        },
+        "commute_mae": 256.66268424553454,
+        "commute_rows": 441,
+        "evaluation": "same-hour offline daily batches, no causal or realtime claim",
+        "threshold": 350,
+        "underweight": 3
+      },
+      "scientific_sha256": {
+        "lesson-06/artifacts/personal/daily_capacity.csv": "c458d837d189ccb05b88fb4128dcc607139dd86b76fdf9f252b271308524f820",
+        "lesson-06/artifacts/personal/records.csv": "2e4bccdd340747ee8f4c4a3d40f6381e296c631b76a345c6b04f46e57fc5d66e",
+        "lesson-06/artifacts/personal/summary.json": "91243dffeccad908826522c4cafc065ab5ab4001db8d02426553ce092042dd93"
+      },
+      "student_report": "# 同一预测怎样分配人工提醒\n\n继续第05课时间组均值作品，给值班员同小时离线日批次提醒。预计扩大容量会增加召回但不改变预测误差。两个选择是低估权重3（全行分母）和阈值350、每天容量2；合理对照容量5，同预测/验证2208行/排序/阈值/权重不变。容量0是自拟边界失败检查。\n\nsummary.json：MAE125.538467、加权误差372.826055次租赁/小时，容量2和5一致。容量2是TP124/FP2/FN609/TN1473，精确率124/126=0.984127，召回124/733=0.169168；容量5是186/3/547/1472，精确率186/189=0.984127，召回186/733=0.253752。容量5并非每天用尽5个名额，阈值候选最多3；daily_capacity.csv逐日核到selected不超过候选或容量。\n\n2012-07-02有8时418.442359、17时461.733333、18时434.860963三个候选；容量2先选17、18时。instant13036真实568、预测418.442359，差-149.557641，加权448.672922；虽然候选，最终没提醒，所以FN。不是按真实需求倒排序。\n\n容量0最终提醒0，精确率null，召回0，不能写100%。通勤切片workingday=1且指定七小时，共441行，MAE256.662684显著高于总体，需要诊断。建议仅在确有更多查看资源时采用容量5，并明确它仍漏报547次；保留低估成本的用途权重，不宣称等于真实经济损失。\n\n数据为UCI Bike Sharing CC BY4.0，组均值只用13003训练。程序python3 lesson-06/my_analysis.py读取my-config.json；同命令重建records.csv、daily_capacity.csv、summary.json。比较是离线已打分同日批次，未证明实时系统、前日天气可得或补车因果效果；测试未用。\n",
+      "personal_program_sha256": "e53b825d3d14770b1f58da978f7fe29b66605b27b3cb4054ebb26710e85d5e5a",
+      "run_exit_code": 0,
+      "check_exit_code": 0
+    },
+    {
+      "lesson": "lesson-07",
+      "read_student_first": true,
+      "starter_command": "python3 scripts/course.py run 07",
+      "starter_files": [
+        "audit.json",
+        "config_snapshot.json",
+        "sample.csv",
+        "summary.json"
+      ],
+      "starter_status": "not_started",
+      "contract": {
+        "lesson": "lesson-07",
+        "question": "预算96条真实训练标签优先补通勤是否优于随机？",
+        "user": "小时估计的人工值班员",
+        "data_source": "UCI Bike Sharing CC BY4.0; 04小表人工模拟; 07标签生成规则模拟",
+        "metric": "覆盖率、分母或MAE次租赁/小时及本课用途规则",
+        "split_plan": "04仅日历元数据；05–07仅开发集13003+2208，测试目标未用",
+        "initial_expectation": "补通勤可能改善通勤但不必改善总体；模型自产标签不会提供独立信息。",
+        "decisions": {
+          "seeds": [
+            11,
+            23,
+            37
+          ],
+          "initial": 240,
+          "budget": 96,
+          "use": "commute estimation",
+          "method": "hour_workingday_mean"
+        }
+      },
+      "config": {
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "initial": 240,
+        "budget": 96,
+        "use": "commute estimation",
+        "method": "hour_workingday_mean"
+      },
+      "personal_submission": {
+        "lesson": "lesson-07",
+        "status": "complete",
+        "report": "lesson-07/report.md",
+        "artifacts": [
+          "lesson-07/artifacts/personal/metrics.csv",
+          "lesson-07/artifacts/personal/plan.json",
+          "lesson-07/artifacts/personal/records.csv",
+          "lesson-07/artifacts/personal/selection_without_labels.csv",
+          "lesson-07/artifacts/personal/summary.json"
+        ],
+        "run": [
+          "python",
+          "lesson-07/my_analysis.py"
+        ]
+      },
+      "scientific_summary": {
+        "all_seeds_reported": true,
+        "metrics": [
+          {
+            "commute_mae": 275.3342466616276,
+            "commute_rows": 441,
+            "covered_groups": 45,
+            "mae": 146.56253038929665,
+            "real_labels": 240,
+            "seed": 11,
+            "strategy": "initial",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 280.45034727177585,
+            "commute_rows": 441,
+            "covered_groups": 48,
+            "mae": 135.89608823015752,
+            "real_labels": 336,
+            "seed": 11,
+            "strategy": "random",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 263.2572852103805,
+            "commute_rows": 441,
+            "covered_groups": 45,
+            "mae": 143.01608585858585,
+            "real_labels": 336,
+            "seed": 11,
+            "strategy": "commute_focus",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 245.0501700680272,
+            "commute_rows": 441,
+            "covered_groups": 45,
+            "mae": 128.51782410675074,
+            "real_labels": 240,
+            "seed": 23,
+            "strategy": "initial",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 244.03155442441155,
+            "commute_rows": 441,
+            "covered_groups": 48,
+            "mae": 123.3713439175056,
+            "real_labels": 336,
+            "seed": 23,
+            "strategy": "random",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 260.0994319496506,
+            "commute_rows": 441,
+            "covered_groups": 45,
+            "mae": 130.98146070495883,
+            "real_labels": 336,
+            "seed": 23,
+            "strategy": "commute_focus",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 243.62722978080123,
+            "commute_rows": 441,
+            "covered_groups": 47,
+            "mae": 129.56503896253523,
+            "real_labels": 240,
+            "seed": 37,
+            "strategy": "initial",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 269.77295427550524,
+            "commute_rows": 441,
+            "covered_groups": 48,
+            "mae": 129.04051163962848,
+            "real_labels": 336,
+            "seed": 37,
+            "strategy": "random",
+            "validation_rows": 2208
+          },
+          {
+            "commute_mae": 254.44212172397306,
+            "commute_rows": 441,
+            "covered_groups": 47,
+            "mae": 131.3699828739766,
+            "real_labels": 336,
+            "seed": 37,
+            "strategy": "commute_focus",
+            "validation_rows": 2208
+          }
+        ],
+        "sealed_test_used": false,
+        "synthetic_control": [
+          {
+            "generated_rows": 96,
+            "max_prediction_change": 0.704572403456325,
+            "new_independent_labels": 0,
+            "seed": 11,
+            "source": "rule-generated labels from initial model; not an actual AI API call"
+          },
+          {
+            "generated_rows": 96,
+            "max_prediction_change": 0.6345727685013571,
+            "new_independent_labels": 0,
+            "seed": 23,
+            "source": "rule-generated labels from initial model; not an actual AI API call"
+          },
+          {
+            "generated_rows": 96,
+            "max_prediction_change": 2.0234458237042645,
+            "new_independent_labels": 0,
+            "seed": 37,
+            "source": "rule-generated labels from initial model; not an actual AI API call"
+          }
+        ],
+        "weather4_train_rows": 3,
+        "weather4_validation_rows": 0
+      },
+      "scientific_sha256": {
+        "lesson-07/artifacts/personal/metrics.csv": "4947cf4289ab19f261bd8c5189a57e669d4c55330b101fa1af1ab6cba59c94e9",
+        "lesson-07/artifacts/personal/plan.json": "75d9fee4f087ad18de0690de9498c019ba9d0cf280f106a2612e9ec08ae75e3a",
+        "lesson-07/artifacts/personal/records.csv": "b8f8785cef3a92bf61c2b7cdeca6a6dc8c6b47e252560f072191fd41d3a3e68c",
+        "lesson-07/artifacts/personal/selection_without_labels.csv": "ccce264505ef759bcef2338033aac930f8c55ece03f01f539ca7b826e0c52085",
+        "lesson-07/artifacts/personal/summary.json": "af5ee73ad9bb5038f5f80029adbf92a8dd6e4134d9ee613bd98a576af55f08d2"
+      },
+      "student_report": "# 预算96条的补标回放\n\n沿用小时×workingday组均值，想补通勤证据；开始前预计通勤优先可能帮助通勤而不必帮助总体，模型产生标签不会增加独立真实观察。来源为UCI Bike Sharing已有训练记录，预算回放不是新采集。选择一是每次240条初始+96预算，选择二是先补通勤且当前组计数较少；合理对照同初始/预算/模型的随机策略。提前定种子11、23、37且全报告。\n\n程序把候选只投影为instant/dteday/hr/workingday/weathersit，selection_without_labels.csv与plan.json先保存标签不可见的编号/规则，再取被选训练标签，验证2208条与测试不进池。公开原CSV有标签，故这是研究协议，不能声称不可绕过。选入条数96，揭示后336；编号无重复且与初始不重叠。\n\nmetrics.csv的随机/通勤优先总体MAE分别：seed11为135.8961/143.0161，23为123.3713/130.9815，37为129.0405/131.3700。通勤441行MAE分别为280.4503/263.2573、244.0316/260.0994、269.7730/254.4421。通勤优先两次比随机好、一次差，总体三次均差；初始通勤MAE分别275.3342/245.0502/243.6272，不能称补通勤稳定帮助通勤。不挑seed11当赢家，暂停把此策略当稳定改善。\n\n我补查失败条件：生成96条初始模型自己的标签，没有新独立标签，组内均值基本未变，但不均匀重复输入改变全局回退；对未覆盖组预测最大变化0.7046/0.6346/2.0234。模型变化仍不是新真实信息。这个对照是规则产生，不是AI API实测，不能按96真实标签等成本。天气4训练仅3、验证0，仍无严重天气效果证据。\n\n真实采集建议先登记通勤/稀有天气/未知来源的缺口与预算，并独立观察后再评价；它仅是计划。保留原作品，增加预算敏感性或标签复核是同一作品深化，不要求另交三份。python3 lesson-07/my_analysis.py与my-config.json重建所有计划、逐行预测、全部种子和对照结果；submission全部列入。测试未用。\n",
+      "personal_program_sha256": "4f5bd30747d5f6fd3ffe702b24a5dafbc1a34a74e006e8ac96971e31dd43c88d",
+      "run_exit_code": 0,
+      "check_exit_code": 0
+    }
+  ],
+  "ci": {
+    "command": "python3 scripts/course.py ci",
+    "exit_code": 0,
+    "complete_lessons": [
+      "lesson-04",
+      "lesson-05",
+      "lesson-06",
+      "lesson-07"
+    ],
+    "deterministic_scientific_artifact_count": 17,
+    "byte_for_byte_rebuild": true,
+    "not_started_lessons_are_not_claimed_complete": true
+  },
+  "independent_checks": [
+    "Q1 unique hours 2067; early morning 383/450; commute 264/270",
+    "training only 0h non-working-day mean 79.32748538011695; instant13004 absolute error 69.67251461988305",
+    "three capacities each total2208; final reminders=TP+FP; actual positives=TP+FN=733; weighted mean denominator2208",
+    "six seed/strategy plans each initial240+selected96, no duplicate/disjoint IDs, no cnt selection column, all dates before2012-07-01"
+  ],
+  "public_replay": {
+    "command": "python3 course-instructor/reviews/verify_cold_read_04_07.py",
+    "exit_code": 0,
+    "fresh_temporary_copy": true,
+    "sha256": "0d4765d0c29609eea3e33508d3fbb53eda6e9392cd131d343400e9f568787a62"
+  },
+  "fixes": [
+    {
+      "file": "course-student-template/lesson-05/LEARN.md",
+      "reason": "method/leakage config wording implied unavailable default analysis; now states own implementation and inactive config keys"
+    },
+    {
+      "file": "course-student-template/lesson-07/LEARN.md",
+      "reason": "select wording implied unavailable default command; now describes own label-free projection and saved plan"
+    }
+  ],
+  "teacher_review": {
+    "scope": "S02–S05 mechanism and selected calculations; no repeat full-format audit",
+    "question_count": 40,
+    "ab_pairs": 20,
+    "unique_best_and_all_distractor_explanations": true,
+    "AB_new_context": true,
+    "10_65_15_teacher_only": true,
+    "no_blocker_found": true
+  },
+  "remaining_limits": [
+    "No human novice completion or actual 90-minute teaching trial was performed.",
+    "AI-generated control is rule-simulated; no live AI service was called.",
+    "Protocol preserves label-free selection but cannot technically hide labels in public source CSV.",
+    "Final grading and external accounts were not touched."
+  ]
+}

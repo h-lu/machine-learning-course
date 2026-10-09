@@ -1,76 +1,54 @@
-# 第 01 课入门支持：先手算一行，再让程序核对
+# 第01课支持卡：需要时查，不是统一实验流程
 
-这是第 01 课必做任务的一条完整路径，不是额外作业。你会先算 `train-03`，再运行起点，只改一个参数，最后检查一个没有标签的新输入。
+## 卡点：我还不能读取真实数据
 
-## 1. 第一项任务：算出 train-03
-
-这一行记录的是一次已经结束的排队经历：开始时前面有 2 人，最后实际等了 4 分钟。规则是：
-
-```text
-预测分钟数 = 1 + 2 × 前面人数
-```
-
-先写下：输入是 2 人；预测是 `1 + 2 × 2 = 5` 分钟；绝对误差是 `|5 − 4| = 1` 分钟。
-
-这里的**特征**是预测时知道的前面人数，**标签**是事后记录的实际等待时间，**预测值**是规则算出的 5 分钟。实际值不能在排队开始时当作输入。
-
-## 2. 从仓库根目录运行
-
-根目录是能看到 `scripts` 和 `lesson-01` 的文件夹。不要把命令输入 Python 的 `>>>`。电脑没有 `python` 命令时统一使用 `python3`。
+在学生仓库根目录（有lesson-01、mlcourse、scripts）运行：
 
 ```bash
-python scripts/course.py start 01
-python scripts/course.py run 01
+python3 lesson-01/analysis.py
 ```
 
-看到“结果写入”后，先打开 `lesson-01/artifacts/predictions.csv`。CSV 是用逗号分列的表格文本，第一行是列名。
+使用自己的python/py启动命令也可。读取共享data/bike/hour.csv与本课config.json，将审计和结构预览写入 `lesson-01/artifacts/starter/`。先看sample.csv的instant、datetime、partition：每行一个小时，partition区分train/validation。它只有6条训练和6条验证预览，不能替代标准项目完整评价。audit.json核对rows=17,379，训练13,003、验证2,208、封存2,168；数据哈希与来源页一致（键名按产物）。
 
-## 3. 核对程序中的同一行
+默认起点没有整组预测、提醒或候选比较。只运行起点不等于标准项目完成。
 
-找到 `id=train-03`，只看这几列：
+## 卡点：我需要例题理解计算
 
-| 列名 | 含义 | 核对值 |
-|---|---|---:|
-| `queue_length` | 开始时前面人数 | 2 人 |
-| `actual` | 事后实际等待 | 4 分钟 |
-| `prediction_rule` | 人工规则预测 | 5 分钟 |
-| `absolute_error_rule` | 预测与实际的绝对差 | 1 分钟 |
+[LEARN](LEARN.md)用不同情境人工小表给完整例题、半提示与独立练习。正式项目由你选择编号、参数、评价组和使用规则。本页不规定正式结果或结论。
 
-把你的手算和程序结果写进报告。如果不一致，先检查样本编号、配置和单位，不要手改 CSV。
+## 卡点：我想自己写分析
 
-再在 `data/base.json` 看 `train-03` 的三个背景字段。它们描述当时的工作人员、服务状态和天气，但这条规则没有把它们代入计算。记录一个你认为可能影响等待的条件，暂时不要把它写成已经验证的原因。
+可以在本课另建my_analysis.py，以下只读取开发数据：
 
-## 4. 只把斜率改为 1.5
+```python
+from pathlib import Path
+import sys
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from mlcourse.bike_starter import load_development
+train, validation, audit = load_development(ROOT)
+print(len(train), len(validation))
+# train/validation是由字典组成的列表，每个row字典是一条记录。
+# row['temp']取温度；训练row['cnt']用于学习，验证row['cnt']用于核对。
+# 在这里写你自己的规则、候选、检查与保存，不能只提交读取数量。
+```
 
-把 `config.json` 另存为 `config-trial.json`，只将 `rule_slope` 改成 1.5。其余字段保持不变。先预计 `train-03` 的新预测，再运行：
+运行 `python3 lesson-01/my_analysis.py` 应只显示13,003和2,208。这只是工具起点，不是正式分析。mae(actual,predicted)帮助核算；write_csv保存自己构造的字典行；第02课可用fit_simple_line(x,y)拟合训练期一条直线。薄工具不自动选字段、分组或方案。
+
+## 卡点：配置、路径或软件报错
+
+JSON用大括号保存字段和值，当前config.json为{}。你可保存自己的参数，代码必须实际读取它们；起点不会自动理解你的自定义字段。`python3 -m json.tool lesson-01/config.json`检查逗号与双引号。
+
+另存起点可用：
 
 ```bash
-python lesson-01/analysis.py --config lesson-01/config-trial.json --output lesson-01/artifacts/trial
+python3 lesson-01/analysis.py --config lesson-01/config.json --output lesson-01/artifacts/starter-check
 ```
 
-打开 `trial/predictions.csv`。新预测应为 4 分钟，这一行误差为 0。不要写成“新规则已经更好”；你只核对了一行，还需要更多记录和清楚的评价方法。
+显式输出目录已存在则换名字，保留旧文件。命令在学生根的终端执行，不能写进Python的>>>。查看 [环境说明](../ENVIRONMENT.md)，不在课堂临时安装升级。保留完整报错；先用LEARN小表继续并标尚未运行，随后补跑。
 
-## 5. 做自己的新输入检查
+## 卡点：我想保存自己的作品
 
-在 `config-trial.json` 中只改 `stress_queue`，例如设为 6。先写预计，再用上一步命令重跑。终端会显示新人数的预测。
+report.md提示可重组，contract六字段填任务与预计。submission默认清单只对应起点，完成时须改为自己的程序命令和实际证据路径，保持课号与字段。status改complete后 `python3 scripts/course.py check 01`，它只检查文件，不证明分析完成。
 
-新输入没有实际等待标签，所以不能计算绝对误差。报告应写出预测、单位、已知数据只覆盖 0–3 人，以及为什么这不能证明 6 人时可靠。
-
-## 6. 写报告并检查文件
-
-报告至少写：任务、`train-03` 手算、参数对照、新输入检查和限制。填写 `contract.json` 六个空字段，把最后保留的合法配置写回 `config.json`，实际完成后把 `submission.json` 状态改为 `complete`。
-
-```bash
-python scripts/course.py run 01
-python scripts/course.py check 01
-```
-
-检查通过后，按 [第一次运行指南](../docs/FIRST_RUN.md) 保存结果和提交。
-
-## 7. 卡住时怎么办
-
-- 找不到文件：确认当前目录能看到 `scripts` 和 `lesson-01`。
-- 找不到 Python：把所有 `python` 改成 `python3`。
-- JSON 报错：按报错中的行号、列号检查英文双引号、逗号和数字。
-- 输出没有变化：检查实际使用的 `--config` 和 `--output`，再看文件修改时间。
-- 暂时不能运行：保留完整报错，先做第 1 节手算，在报告标明“尚未运行”，修复后补跑。
+用 `git add -f lesson-01/artifacts`保存结果，程序/配置也保存。CI只重算提交清单，其他试验给独立命令；不要只交截图。

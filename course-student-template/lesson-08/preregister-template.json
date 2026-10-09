@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "change": "hour_onehot",
+  "config_sha256": "e4edcafd4de662531e2b237d8872086d0509e647d511f1adb0da0f82e37e9bcb",
+  "primary_metric": "",
+  "hypothesis": "",
+  "explanation": "",
+  "check_rule": {
+    "minimum_primary_improvement": null,
+    "maximum_secondary_mae_increase": null
+  },
+  "check_reason": ""
+}

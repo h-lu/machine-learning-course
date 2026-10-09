@@ -1,0 +1,13 @@
+id,expected_route,expected_value,baseline_predicted_route,baseline_confidence,baseline_executed_route,baseline_document,baseline_value,baseline_status,candidate_predicted_route,candidate_confidence,candidate_executed_route,candidate_document,candidate_value,candidate_status
+W01,retrieve,7,retrieve,0.884589316304233,retrieve,loan-student-current,7,automatic_correct,retrieve,0.884589316304233,retrieve,loan-student-current,7,automatic_correct
+W02,inventory,2,inventory,0.670269675488034,inventory,,2,automatic_correct,inventory,0.670269675488034,inventory,,2,automatic_correct
+W03,calculator,4,calculator,0.8215927774392995,calculator,,4,automatic_correct,calculator,0.8215927774392995,calculator,,4,automatic_correct
+W04,human,,human,0.8363585834374627,human,,,appropriate_handoff,human,0.8363585834374627,human,,,appropriate_handoff
+W05,inventory,0,inventory,0.6702696754880341,inventory,,0,automatic_correct,inventory,0.6702696754880341,inventory,,0,automatic_correct
+W06,human,,human,0.4566954819768392,human,,,appropriate_handoff,human,0.4566954819768392,human,,,appropriate_handoff
+W07,retrieve,14,retrieve,0.7930615415779075,retrieve,loan-teacher-current,14,automatic_correct,retrieve,0.7930615415779075,retrieve,loan-teacher-current,14,automatic_correct
+W08,inventory,1,inventory,0.8647253244947146,inventory,,1,automatic_correct,inventory,0.8647253244947146,inventory,,1,automatic_correct
+W09,calculator,2,calculator,0.6972061624452397,calculator,,2,automatic_correct,calculator,0.6972061624452397,calculator,,2,automatic_correct
+W10,human,,human,0.7175347008643745,human,,,appropriate_handoff,human,0.7175347008643745,human,,,appropriate_handoff
+W11,retrieve,7,retrieve,0.934817043195003,retrieve,untrusted-note,,automatic_error,retrieve,0.934817043195003,retrieve,loan-student-current,7,automatic_correct
+W12,human,,human,0.38367492554675536,human,,,appropriate_handoff,human,0.38367492554675536,human,,,appropriate_handoff

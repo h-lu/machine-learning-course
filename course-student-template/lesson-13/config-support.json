@@ -1,5 +1,0 @@
-{
-  "evaluation_split": "validation",
-  "borrowed_dimensions": 2,
-  "stress_feature": "message_length"
-}

@@ -1,0 +1,24 @@
+{
+  "budget": 120,
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "evaluation_partition": "none; label-free selection only",
+  "initial_size": 240,
+  "labels_revealed": false,
+  "lesson": 7,
+  "method": "coverage",
+  "sealed_test_rows": 2168,
+  "seed_policy": "保留全部固定 seed，不按分数挑选",
+  "seeds": [
+    11,
+    29,
+    47
+  ],
+  "source_rows": 17379,
+  "stage": "select",
+  "status": "ok",
+  "test_policy": "01–07 仅审计封存期行数，不拟合、不评价封存期目标",
+  "train_end_exclusive": "2012-07-01",
+  "training_rows": 13003,
+  "validation_end_exclusive": "2012-10-01",
+  "validation_rows": 2208
+}

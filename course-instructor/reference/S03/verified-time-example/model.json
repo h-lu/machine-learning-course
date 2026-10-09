@@ -1,0 +1,10 @@
+{
+  "fallback_mean": 167.71345074213642,
+  "intercept": -1.03692728376339,
+  "method": "temp_linear",
+  "slope": 350.3810244264711,
+  "training_rows": 13003,
+  "used_inputs": [
+    "temp"
+  ]
+}

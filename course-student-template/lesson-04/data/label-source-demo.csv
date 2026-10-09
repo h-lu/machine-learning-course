@@ -1,0 +1,5 @@
+id,event_day,label_arrival_day,direct_minutes,proxy_minutes,review_minutes
+m1,1,2,0,4,1
+m2,1,2,8,6,8
+m3,1,5,12,10,
+m4,1,5,20,14,23

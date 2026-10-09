@@ -1,0 +1,57 @@
+{
+  "lesson": "S24",
+  "evaluation_mode": "development",
+  "data_role": "development",
+  "comparison": {
+    "baseline": {
+      "n": 12,
+      "covered": 12,
+      "not_covered": 0,
+      "automatic_count": 8,
+      "automatic_correct": 7,
+      "automatic_errors": 1,
+      "automatic_accuracy": 0.875,
+      "sent_to_human": 4,
+      "appropriate_handoffs": 4,
+      "deferred_automatable": 0,
+      "reference_route_matches": 12
+    },
+    "candidate": {
+      "n": 12,
+      "covered": 12,
+      "not_covered": 0,
+      "automatic_count": 8,
+      "automatic_correct": 8,
+      "automatic_errors": 0,
+      "automatic_accuracy": 1.0,
+      "sent_to_human": 4,
+      "appropriate_handoffs": 4,
+      "deferred_automatable": 0,
+      "reference_route_matches": 12
+    }
+  },
+  "changed_settings": [
+    "filter_untrusted"
+  ],
+  "decision": "由学生根据用途、错误记录和人工容量决定保留、修改或停止；程序不自动推荐。",
+  "limits": "本次只产生开发结果，没有读取或写出 holdout。",
+  "status": "example_only",
+  "config": {
+    "seed": 7,
+    "evaluation_mode": "development",
+    "baseline_confidence_threshold": 0.0,
+    "candidate_confidence_threshold": 0.0,
+    "baseline_filter_untrusted": false,
+    "candidate_filter_untrusted": true,
+    "baseline_validate_tools": true,
+    "candidate_validate_tools": true
+  },
+  "provenance": {
+    "data_sha256": "1e9a359031c6ba8155d44e22a4c78ab2c8d1f03ffde4ba94883860731db4186e",
+    "config_sha256": "2e6b6671e78367f749289d18ee8b1511ed74ad0dad68b3fa7ce625daeeb1522c",
+    "data_file": "lesson-26/data/base.json",
+    "config_file": "lesson-26/config.json",
+    "workflow_sha256": "e39d8d4ab670a2dbfbabd5aef60d009dcad3654d559a9101021ce0fe26ea0ae8",
+    "entry_sha256": "f0ecab8418295d50abe9d5380b4652558b68c0a1e39d83a482a8602ef1e847eb"
+  }
+}

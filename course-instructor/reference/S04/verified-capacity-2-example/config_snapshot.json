@@ -1,0 +1,8 @@
+{
+  "alert_threshold": 300.0,
+  "daily_capacity": 2,
+  "data": "data/bike/hour.csv",
+  "inspect_count": 12,
+  "method": "hour_mean",
+  "underestimate_weight": 2.0
+}

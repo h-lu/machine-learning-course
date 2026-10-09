@@ -12,7 +12,7 @@ from app.questions import bank_for_lesson, bank_from_snapshot, bank_snapshot
 
 
 SCRIPT = Path(__file__).parents[1] / "deploy/backfill_session_snapshots.py"
-PRODUCTION_MAP = SCRIPT.parent / "session-snapshot-map-2026-09-21.json"
+SYNTHETIC_MAP = Path(__file__).resolve().parent / "fixtures/synthetic-session-snapshot-map.json"
 SPEC = importlib.util.spec_from_file_location("snapshot_backfill", SCRIPT)
 MODULE = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
@@ -75,25 +75,14 @@ def legacy_database(path: Path, rows=((11, "S02"),)) -> None:
 
 
 class SnapshotBackfill(unittest.TestCase):
-    def test_production_map_pins_the_four_observed_historical_sessions(self):
-        sessions = json.loads(PRODUCTION_MAP.read_text(encoding="utf-8"))["sessions"]
-        self.assertEqual(
-            {
-                session_id: (entry["lesson_id"], entry["bank_version"])
-                for session_id, entry in sessions.items()
-            },
-            {
-                "7": ("C01", "ml-v4-2026-09-14"),
-                "8": ("C02", "ml-v6-2026-09-16"),
-                "9": ("S01", "ml-v11-s01-s02-review-2026-09-20"),
-                "11": ("S02", "ml-v11-s01-s02-review-2026-09-20"),
-            },
-        )
-        self.assertEqual(
-            sessions["9"]["bank_sha256"],
-            "c044440b1d2efe5a5f485632567502a758835004de334ae9f49e240e12cb7f81",
-        )
-        self.assertEqual(sessions["11"]["bank_sha256"], sessions["9"]["bank_sha256"])
+    def test_synthetic_map_can_pin_distinct_lesson_versions(self):
+        # Public fixture is invented; no production session metadata is published.
+        sessions = json.loads(SYNTHETIC_MAP.read_text(encoding="utf-8"))["sessions"]
+        self.assertEqual({key:(row["lesson_id"],row["bank_version"]) for key,row in sessions.items()},
+                         {"101":("C01","example-v1"),"102":("C02","example-v2"),
+                          "103":("S01","example-v3"),"104":("S02","example-v3")})
+        self.assertEqual(sessions["103"]["bank_sha256"],"c"*64)
+        self.assertEqual(sessions["104"]["bank_sha256"],sessions["103"]["bank_sha256"])
 
     def test_backfills_matching_lesson_and_is_idempotent(self):
         with tempfile.TemporaryDirectory() as folder:

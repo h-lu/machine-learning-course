@@ -9,9 +9,23 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 LESSONS = ["C01", "C02"] + [f"S{i:02d}" for i in range(1, 31)]
-HEADINGS = ["本课要解决什么问题", "本课要学会什么", "90 分钟安排", "完成步骤",
+HEADINGS = ["本课要解决什么问题", "本课要学会什么", "课堂任务", "完成步骤",
             "必须提交什么", "不同起点怎么做", "运行限制"]
 TASK_FIELDS = ["question", "user", "data_source", "metric", "split_plan", "initial_expectation"]
+
+
+def active_ids(root: Path, profile: str) -> list[str]:
+    """Keep the 32-lesson plan separate from currently available packages."""
+    path = root / "active_lessons.json"
+    if not path.is_file():
+        return [f"lesson-{i:02d}" for i in range(1, 33)] if profile == "student" else LESSONS
+    value = json.loads(path.read_text(encoding="utf-8"))
+    key = "active_student_lessons" if profile == "student" else "active_instructor_lessons"
+    ids = value[key]
+    allowed = [f"lesson-{i:02d}" for i in range(1, 33)] if profile == "student" else LESSONS
+    if not isinstance(ids, list) or not ids or ids != [item for item in allowed if item in ids]:
+        raise ValueError("活跃课次清单必须按完整课程顺序列出不重复的合法编号")
+    return ids
 # Scan current student prose, not archives, field names or historical explanations.
 OLD_TERMS = ["问题契约", "知识自查", "使用决定", "输入契约", "指标契约", "MDP 契约",
              "知识自查", "门禁", "签收", "消费测试集", "运行前预测", "样本单位", "预测时点",
@@ -203,7 +217,7 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
             report.add(path, "questions", f"知识点 {concept_id} 必须恰好有一道 A 题和一道 B 题。")
 
 
-def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> Report:
+def check_repo(root: Path, profile: str = "auto", expected_count: int | None = None) -> Report:
     root = root.resolve()
     if profile == "auto":
         profile = "planning" if (root / "COURSE_MAP.md").exists() else (
@@ -216,17 +230,28 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> R
     if profile == "planning":
         path = root / "COURSE_MAP.md"
         if required(path, report):
-            ids = re.findall(r"^\|\s*(C\d{2}|S\d{2})\s*\|", path.read_text(), re.M)
-            if ids != LESSONS or len(ids) != expected_count:
+            text = path.read_text()
+            ids = re.findall(r"^\|\s*(C\d{2}|S\d{2})\s*\|", text, re.M)
+            numbers = None
+            if not ids:
+                rows = re.findall(r"^###\s+(\d{2})\s*·\s*(C\d{2}|S\d{2})\s*[｜|]", text, re.M)
+                numbers = [int(number) for number, _ in rows]
+                ids = [lesson for _, lesson in rows]
+            if ids != LESSONS or len(ids) != (32 if expected_count is None else expected_count) or (numbers is not None and numbers != list(range(1, 33))):
                 report.add(path, "lesson_set", "总表必须按顺序恰好列出 C01、C02 和 S01–S30。")
             report.stats["lessons"] = len(ids)
     else:
         lesson_root = root / "lesson-01" if (root / "lesson-01").is_dir() else root / "lessons"
         folders = sorted(p for p in ((root.glob("lesson-*") if lesson_root == root / "lesson-01" else lesson_root.glob("*"))) if p.is_dir())
         ids = [p.name for p in folders]
-        expected_ids = [f"lesson-{i:02d}" for i in range(1, 33)] if lesson_root.name == "lesson-01" else LESSONS
-        if ids != expected_ids or len(ids) != expected_count:
-            report.add(lesson_root, "lesson_set", "目录应按顺序包含 32 个 lesson-01…lesson-32 课次。")
+        try:
+            expected_ids = active_ids(root, "student" if lesson_root.name == "lesson-01" else "instructor")
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            report.add(root / "active_lessons.json", "lesson_set", f"活跃课次清单无效：{exc}")
+            expected_ids = []
+        count = len(expected_ids) if expected_count is None else expected_count
+        if ids != expected_ids or len(ids) != count:
+            report.add(lesson_root, "lesson_set", "现行课包目录应与 active_lessons.json 完全一致；完整32课规划单独检查。")
         report.stats["lessons"] = len(folders)
         for folder in folders:
             if profile == "student":
@@ -242,7 +267,7 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> R
                 path = folder / "README.md"
                 if path.exists():
                     headings = re.findall(r"^##\s+(.+)$", path.read_text(), re.M)
-                    if headings != HEADINGS:
+                    if headings != HEADINGS and headings != ["90 分钟安排" if item == "课堂任务" else item for item in HEADINGS]:
                         report.add(path, "headings", "课次 README 应依次使用课程规范中的七个二级标题。")
                 check_submission(folder, report)
                 for name in ["config.json", "data/base.json"]:
@@ -254,7 +279,7 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int = 32) -> R
                 path = folder / "questions.json"
                 check_question_set(read_json(path, report), path, report, folder.name)
     for path in root.rglob("*"):
-        if any(part in (".git", ".venv", "__pycache__", ".pytest_cache", "artifacts") for part in path.relative_to(root).parts):
+        if any(part in (".git", ".venv", "__pycache__", ".pytest_cache", "artifacts", "archives") for part in path.relative_to(root).parts):
             continue
         if not path.is_file():
             continue
@@ -275,7 +300,7 @@ def run_cli(argv=None) -> int:
     parser = argparse.ArgumentParser(description="检查课程材料的结构；不执行学生代码，不选择模型或判断结论。")
     parser.add_argument("--repo", type=Path, required=True)
     parser.add_argument("--profile", choices=("auto", "student", "instructor", "planning"), default="auto")
-    parser.add_argument("--expected-count", type=int, default=32)
+    parser.add_argument("--expected-count", type=int, default=None, help="可选覆盖；默认规划32课，课包按活跃清单")
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)

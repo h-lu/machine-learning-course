@@ -1,0 +1,134 @@
+{
+  "lesson": "lesson-04",
+  "status": "example_only",
+  "data": {
+    "kind": "table",
+    "source": {
+      "type": "synthetic",
+      "generator": "scripts/build_example_data.py",
+      "seed": 403,
+      "limitation": "仅供教学，不支持对真实人群或线上效果作推断"
+    },
+    "rows": 180
+  },
+  "config": {
+    "seed": 7,
+    "observation_day": 10,
+    "agreement_threshold": 0.8
+  },
+  "metrics": {
+    "visible_labels": 62,
+    "total_rows": 180,
+    "coverage": 0.3444444444,
+    "positive_rate": 0.4677419355,
+    "proxy_accuracy_visible": 0.8548387097,
+    "annotator_agreement": 0.8888888889,
+    "agreement_meets_setting": true
+  },
+  "comparison": {
+    "eventual_all_labels": {
+      "visible_labels": 180,
+      "total_rows": 180,
+      "coverage": 1.0,
+      "positive_rate": 0.5944444444,
+      "proxy_accuracy_visible": 0.8555555556
+    }
+  },
+  "stress_test": {
+    "change": "把标签观察截止日期延后7天",
+    "metrics": {
+      "visible_labels": 134,
+      "total_rows": 180,
+      "coverage": 0.7444444444,
+      "positive_rate": 0.5074626866,
+      "proxy_accuracy_visible": 0.8507462687
+    }
+  },
+  "details": {
+    "label_counts": {
+      "true_positive": 107,
+      "proxy_positive": 105
+    },
+    "visible_ids": [
+      "S02-000",
+      "S02-003",
+      "S02-004",
+      "S02-006",
+      "S02-009",
+      "S02-010",
+      "S02-011",
+      "S02-014",
+      "S02-017",
+      "S02-020",
+      "S02-022",
+      "S02-024",
+      "S02-028",
+      "S02-031",
+      "S02-038",
+      "S02-039",
+      "S02-042",
+      "S02-045",
+      "S02-046",
+      "S02-052",
+      "S02-057",
+      "S02-060",
+      "S02-061",
+      "S02-062",
+      "S02-064",
+      "S02-070",
+      "S02-074",
+      "S02-081",
+      "S02-082",
+      "S02-087",
+      "S02-090",
+      "S02-092",
+      "S02-099",
+      "S02-101",
+      "S02-102",
+      "S02-103",
+      "S02-107",
+      "S02-110",
+      "S02-111",
+      "S02-117",
+      "S02-118",
+      "S02-125",
+      "S02-127",
+      "S02-128",
+      "S02-132",
+      "S02-133",
+      "S02-135",
+      "S02-136",
+      "S02-139",
+      "S02-140",
+      "S02-142",
+      "S02-143",
+      "S02-145",
+      "S02-149",
+      "S02-158",
+      "S02-159",
+      "S02-161",
+      "S02-162",
+      "S02-168",
+      "S02-169",
+      "S02-176",
+      "S02-177"
+    ]
+  },
+  "provenance": {
+    "data_sha256": "86e5eaf85df55c9d2a42e406e125b302be8852d0c5a4c97d173866824ae1658f",
+    "config_sha256": "4d101f700dfa87de71e1113ba7ef2837a8435d3a901c2f4160fde080cd6a9771",
+    "source_sha256": {
+      "mlcourse/runtime.py": "f013c77faedc7bec5653aa01f7ff45af23ebbe318161a17ee6ceddc8b56d7772",
+      "mlcourse/mathops.py": "c8192a53f5940a322484b8199cebafa5f0f114161768ac4bb4495677abf39108",
+      "mlcourse/experiments.py": "c721759a1cc1a2e65c9570596167b3745167c4d8f348d1f6a9dfc02dee8addda"
+    },
+    "runtime": "mlcourse-numpy-v2",
+    "python": "3.14.4",
+    "numpy": "2.5.2",
+    "data_file": "lesson-04/data/base.json",
+    "config_file": "lesson-04/config.json",
+    "data_file_sha256": "881633220d59e9d8b606a09700864b7326aa191c8333972dc2a25d0d549ed2e5",
+    "config_file_sha256": "36223c5d12bcfef72f5755229e4cbb443d20bdaf899b223857f54dd93fd997f6",
+    "entry_sha256": "6b43537cfe973323cf6a9ff9d6634d2cc5bcbb9944652ef92b221219e2b8b541"
+  }
+}

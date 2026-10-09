@@ -1,0 +1,32 @@
+{
+  "description": "模拟小时登记偏移；固定模型、实际需求和其他字段，诊断输入敏感性，不是改变时间的因果效果。",
+  "split": "validation",
+  "shift_hours": 1,
+  "model_refit": false,
+  "metrics": {
+    "original": {
+      "n": 2208,
+      "mae": 143.99661449577025,
+      "rmse": 190.63353140098553,
+      "p90_absolute_error": 318.09928917660056,
+      "p95_absolute_error": 460.99074351090053,
+      "mean_signed_error": -22.93240651552303,
+      "status": "available",
+      "overall_mae": 143.99661449577025,
+      "commute_mae": 288.5645104585095,
+      "commute_n": 441
+    },
+    "candidate": {
+      "n": 2208,
+      "mae": 127.59158605583391,
+      "rmse": 168.76670874736334,
+      "p90_absolute_error": 312.0144752184577,
+      "p95_absolute_error": 380.8626479444458,
+      "mean_signed_error": -17.042824420874425,
+      "status": "available",
+      "overall_mae": 127.59158605583391,
+      "commute_mae": 229.98218015988533,
+      "commute_n": 441
+    }
+  }
+}

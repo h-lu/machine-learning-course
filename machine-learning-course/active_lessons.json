@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "planned_lesson_count": 32,
+  "active_student_lessons": [
+    "lesson-01",
+    "lesson-02",
+    "lesson-03",
+    "lesson-04",
+    "lesson-05",
+    "lesson-06",
+    "lesson-07",
+    "lesson-08"
+  ],
+  "active_instructor_lessons": [
+    "C01",
+    "C02",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "archive_root_relative_to_project": "archives/2026-10-09-before-90min-redesign",
+  "status": "local redesign; 32 planned lessons, concrete active packages 01–08; no production deployment"
+}

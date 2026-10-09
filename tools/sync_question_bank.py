@@ -5,13 +5,13 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "ml-check"))
-from ml_check.checker import LESSONS, Report, check_question_set, read_json
+from ml_check.checker import active_ids, Report, check_question_set, read_json
 
 
 def main():
     lessons = []
     report = Report(ROOT / "course-instructor", "instructor")
-    for id in LESSONS:
+    for id in active_ids(ROOT / "course-instructor", "instructor"):
         path = ROOT / "course-instructor/lessons" / id / "questions.json"
         value = read_json(path, report)
         check_question_set(value, path, report, id)
@@ -33,7 +33,7 @@ def main():
         return 1
     target = ROOT / "ml-check/app/question_bank/lessons.json"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps({"version": "ml-v17-s04-cold-read-2026-09-29", "lessons": lessons}, ensure_ascii=False, indent=2) + "\n")
+    target.write_text(json.dumps({"version": "ml-local-redesign-2026-10-09-active-01-08", "lessons": lessons}, ensure_ascii=False, indent=2) + "\n")
     print(f"已汇集 {len(lessons)} 课、{sum(len(x['questions']) for x in lessons)} 题。")
     return 0
 

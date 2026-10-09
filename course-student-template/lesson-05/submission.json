@@ -3,9 +3,11 @@
   "status": "not_started",
   "report": "lesson-05/report.md",
   "artifacts": [
-    "lesson-05/artifacts/summary.json",
-    "lesson-05/artifacts/comparison.csv",
-    "lesson-05/artifacts/records.csv"
+    "lesson-05/artifacts/starter/audit.json",
+    "lesson-05/artifacts/starter/summary.json",
+    "lesson-05/artifacts/starter/config_snapshot.json",
+    "lesson-05/artifacts/starter/sample.csv",
+    "lesson-05/artifacts/starter/split_manifest.csv"
   ],
   "run": [
     "python",

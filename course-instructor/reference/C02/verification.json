@@ -1,0 +1,66 @@
+{
+  "lesson": "C02",
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "train_n": 13003,
+  "validation_n": 2208,
+  "sealed_test_rows": 2168,
+  "test_evaluated": false,
+  "scope": "教师参考路线，非学生唯一答案",
+  "training_sum": 2180778,
+  "model": {
+    "mean": 167.71345074213642,
+    "intercept": -1.0369272837634185,
+    "slope": 350.38102442647113
+  },
+  "methods": {
+    "mean": {
+      "metrics": {
+        "n": 2208,
+        "mae": 197.82937894348797,
+        "underestimated_rows": 1436
+      },
+      "hours": {
+        "8": {
+          "n": 92,
+          "mae": 370.0081996127984,
+          "underestimated_rows": 70
+        },
+        "17": {
+          "n": 92,
+          "mae": 539.6343753448201,
+          "underestimated_rows": 92
+        },
+        "23": {
+          "n": 92,
+          "mae": 42.19063075745061,
+          "underestimated_rows": 26
+        }
+      }
+    },
+    "temp_linear": {
+      "metrics": {
+        "n": 2208,
+        "mae": 174.29402691551385,
+        "underestimated_rows": 1105
+      },
+      "hours": {
+        "8": {
+          "n": 92,
+          "mae": 342.58270172505365,
+          "underestimated_rows": 66
+        },
+        "17": {
+          "n": 92,
+          "mae": 444.5799545137318,
+          "underestimated_rows": 89
+        },
+        "23": {
+          "n": 92,
+          "mae": 89.36770912865683,
+          "underestimated_rows": 5
+        }
+      }
+    }
+  },
+  "status": "passed"
+}

@@ -1,0 +1,134 @@
+{
+  "budget": 120,
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "evaluation_partition": "validation",
+  "initial_size": 240,
+  "labels_revealed": true,
+  "lesson": 7,
+  "method": "coverage",
+  "results": [
+    {
+      "budget_used": 0,
+      "mae": 133.06304347826085,
+      "mae_denominator": 2208,
+      "seed": 11,
+      "selection_method": "coverage",
+      "training_rows": 240,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 120,
+      "mae": 128.8387438535197,
+      "mae_denominator": 2208,
+      "seed": 11,
+      "selection_method": "coverage",
+      "training_rows": 360,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 0,
+      "mae": 133.06304347826085,
+      "mae_denominator": 2208,
+      "seed": 11,
+      "selection_method": "random",
+      "training_rows": 240,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 120,
+      "mae": 132.0176674950452,
+      "mae_denominator": 2208,
+      "seed": 11,
+      "selection_method": "random",
+      "training_rows": 360,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 0,
+      "mae": 120.85398550724639,
+      "mae_denominator": 2208,
+      "seed": 29,
+      "selection_method": "coverage",
+      "training_rows": 240,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 120,
+      "mae": 121.3225284679089,
+      "mae_denominator": 2208,
+      "seed": 29,
+      "selection_method": "coverage",
+      "training_rows": 360,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 0,
+      "mae": 120.85398550724639,
+      "mae_denominator": 2208,
+      "seed": 29,
+      "selection_method": "random",
+      "training_rows": 240,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 120,
+      "mae": 121.51815147790012,
+      "mae_denominator": 2208,
+      "seed": 29,
+      "selection_method": "random",
+      "training_rows": 360,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 0,
+      "mae": 129.0316123188406,
+      "mae_denominator": 2208,
+      "seed": 47,
+      "selection_method": "coverage",
+      "training_rows": 240,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 120,
+      "mae": 123.08127911490685,
+      "mae_denominator": 2208,
+      "seed": 47,
+      "selection_method": "coverage",
+      "training_rows": 360,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 0,
+      "mae": 129.0316123188406,
+      "mae_denominator": 2208,
+      "seed": 47,
+      "selection_method": "random",
+      "training_rows": 240,
+      "validation_rows": 2208
+    },
+    {
+      "budget_used": 120,
+      "mae": 127.42202372657535,
+      "mae_denominator": 2208,
+      "seed": 47,
+      "selection_method": "random",
+      "training_rows": 360,
+      "validation_rows": 2208
+    }
+  ],
+  "sealed_test_rows": 2168,
+  "seed_policy": "保留全部固定 seed，不按分数挑选",
+  "seeds": [
+    11,
+    29,
+    47
+  ],
+  "source_rows": 17379,
+  "stage": "reveal",
+  "status": "ok",
+  "test_policy": "01–07 仅审计封存期行数，不拟合、不评价封存期目标",
+  "train_end_exclusive": "2012-07-01",
+  "training_rows": 13003,
+  "validation_end_exclusive": "2012-10-01",
+  "validation_rows": 2208
+}

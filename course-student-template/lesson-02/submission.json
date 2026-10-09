@@ -3,11 +3,14 @@
   "status": "not_started",
   "report": "lesson-02/report.md",
   "artifacts": [
-    "lesson-02/artifacts/summary.json",
-    "lesson-02/artifacts/predictions.csv"
+    "lesson-02/artifacts/starter/audit.json",
+    "lesson-02/artifacts/starter/summary.json",
+    "lesson-02/artifacts/starter/config_snapshot.json",
+    "lesson-02/artifacts/starter/sample.csv",
+    "lesson-02/artifacts/starter/baseline.json"
   ],
   "run": [
-    "python",
+    "python3",
     "lesson-02/analysis.py"
   ]
 }

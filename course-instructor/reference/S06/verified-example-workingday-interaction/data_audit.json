@@ -1,0 +1,40 @@
+{
+  "source_kind": "real-observational-data",
+  "rows": 17379,
+  "columns": 17,
+  "first_datetime": "2011-01-01T00:00:00",
+  "last_datetime": "2012-12-31T23:00:00",
+  "duplicate_hours": 0,
+  "empty_fields": 0,
+  "hours_in_timestamp_span": 17544,
+  "absent_timestamp_rows": 165,
+  "absent_timestamp_policy": "Only counted; no zero-demand rows invented.",
+  "sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "target_identity_check": "casual+registered=cnt in every row",
+  "audit_scope": "File integrity and schema, not test target distributions or test scores.",
+  "split_counts": {
+    "train": 13003,
+    "validation": 2208,
+    "test": 2168
+  },
+  "weather_category_counts_by_split": {
+    "train": {
+      "1": 8595,
+      "2": 3276,
+      "3": 1129,
+      "4": 3
+    },
+    "validation": {
+      "1": 1594,
+      "2": 484,
+      "3": 130,
+      "4": 0
+    },
+    "test": {
+      "1": 1224,
+      "2": 784,
+      "3": 160,
+      "4": 0
+    }
+  }
+}

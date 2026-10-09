@@ -1,96 +1,35 @@
-# 第 04 课入门支持：先分清三个数，再计算覆盖率
+# 第04课支持：按卡点选用，不是统一研究路线
 
-这是第 04 课必做任务的一条完整路径。如果你还不熟悉缺失值、标签覆盖率或标注复核，不必先背这些词；你会先从 B02 的一行数据开始，弄清三个数分别来自哪里，再运行第 4 天起点，比较第 7 天收到的标签，最后只改一个设置做自己的检查。每一步都说明了要看哪个文件，以及这个结果能支持什么结论。
+## 卡在环境、目录或第一份输入
 
-## 1. 第一项任务：B02 的三个数分别是什么
+如果只是想查看输入结构，从学生仓库根进入`cd lesson-04`，运行`python3 analysis.py --config config.json --output artifacts/start-a`。成功后先看`artifacts/start-a/summary.json`的训练/验证条数，再看sample.csv的一行输入；04只元数据，05额外固定时间清单。audit.json提供文件完整性。样本只是预览，不替代完整真实标准分析，起点没有全方案结果或报告。
 
-B02 是一次已经发生的排队经历：
+## 卡在数据怎样进入自己的代码
 
-| 字段 | 数值 | 来源与含义 |
-|---|---:|---|
-| `wait_minutes` | 9 分钟 | 直接观测到的目标值（等待时间），本课暂作核对参照 |
-| `proxy_minutes` | 5 分钟 | 按人数等信息推算的代理值，不是目标值 |
-| `review_minutes` | 9 分钟 | 第二位记录者独立得到的复核值 |
+你可修改analysis.py或另写my_analysis.py。`load_development(ROOT)`只返回训练和验证字典列表及审计；你决定输入/模型/规则/指标/保存内容。代码可让AI协助生成，但先解释自己的问题和不能偷看什么。
 
-先用一两句话回答三个问题：如果要统计已经收到的目标值（实际等待时间），应使用哪一列？代理值 5 分钟能不能直接写成“目标值是 5 分钟”？直接观测值和独立复核值相同，能否证明它们一定正确？暂时答不完整也没有关系，运行结果后再回来看你的判断是否需要修改。
-
-## 2. 运行第 4 天起点
-
-在学生仓库根目录运行。电脑没有 `python` 命令时统一使用 `python3`。
-
-```bash
-python scripts/course.py start 04
-python lesson-04/analysis.py --config lesson-04/config-start.json --output lesson-04/artifacts/support-start
+```python
+from pathlib import Path
+import sys
+ROOT = Path(__file__).resolve().parents[1]  # 文件在lesson目录中
+sys.path.insert(0, str(ROOT))
+from mlcourse.bike_starter import load_development, mae, fit_simple_line, write_csv
+train, validation, audit = load_development(ROOT)
+print("已读取训练/验证记录：", len(train), len(validation))
+# 在此构建你自己的标准分析；训练统计只来自train。
+# write_csv输出你构造的记录，不会替你选择研究策略。
 ```
 
-`records.csv` 和 `comparison.csv` 是这条命令运行后才生成的结果文件，不在 `lesson-04/data/` 目录中。看到“结果写入”后，打开 `lesson-04/artifacts/support-start/records.csv`。CSV 第一行是列名。先只看 `id`、`visible` 和 `observed_minutes`：`True` 表示截至第 4 天已经收到直接观测标签，空白表示未知，不是 0。
+如果把这段存为本课`my_analysis.py`，在本课目录运行`python3 my_analysis.py`；应先看到训练/验证记录数13,003和2,208，再构建自己的分析。这些是薄工具，不要求调用全部函数；读取之外由你组织自己的程序。04的标准分析使用全文件时点元数据，避免测试目标统计。可按CODE_TOOLKIT查示例片段，但不能把完整参考当自己的选择。
 
-## 3. 手算均值和覆盖率
+## 卡在本课关系或失败解释
 
-`visible=True` 的记录是 A01、A02、A04、B02，实际值为 1、3、7、9 分钟。
+不知道缺什么时，比较“应有时间集合”和“已记录集合”；不知道目标含义时，从租赁次数与未成功请求是否被记录区分。 用LEARN小例核概念，再回自己选的真实范围；HINTS只提供检查方向，不给统一结论。本课不开模型目标评价；可审全文件日期/小时元数据，不输出封存目标统计。标签延迟/复核小表明确为人工模拟，不能称Bike实际复核结果。
 
-```text
-均值 = (1 + 3 + 7 + 9) ÷ 4 = 5 分钟
-覆盖率 = 4 ÷ 8 = 50%
-```
+## 卡在怎样保存与重跑
 
-均值分母为 4，覆盖率分母为 8。打开同一输出目录中的 `lesson-04/artifacts/support-start/comparison.csv`，在 `method=available_only` 行核对 `n=4`、`mean_minutes=5`、`coverage=0.5`。
+为每个比较保留配置、原始结果和运行命令；自己的程序建议写新试验目录，避免覆盖旧证据。report格式可改，引用具体文件/列/编号。更新submission.json的run和artifacts后再check/ci；默认起点结果不会证明完成研究。若你的代码有随机性，保存seed及全部重复结果；生成原始响应先保存再确定性重算。
 
-`zero_fill_demo` 是把未知错误填成 0 的示范；`proxy_all` 平均的是代理值。它们都不是 8 条目标值（实际等待时间）的真实平均值。
+使用已准备的Python与NumPy，命令示例为本机`python3`；你原环境若使用`python`或`py`，统一用已经成功的启动命令，不安装新环境。默认起点离线读取`data/bike/hour.csv`，只准备审计/样本预览，不能作为正式分析已完成证据。AI可帮助提出问题、写代码、核算和解释，不收集prompt记录、不要求所有人同路线或强制逐人答辩。
 
-## 4. 核对一条标注者间分歧
-
-找 A04：`observed_minutes=7`，`review_minutes=10`，绝对差为 3 分钟。默认容差是 2，规则写的是“差异超过 2 才算分歧”，所以 A04 标为 `True`。
-
-一致比例的分母是同时有直接观测值和独立复核值的记录数。没有独立复核值的记录不算一致，也不算分歧。
-
-## 5. 检查来源质量
-
-回到 `data/base.json` 看四条已知记录的 `record_source` 和 `clock_quality`。统计数字相同不代表来源质量相同；把一条需要复核的记录写入报告，并说明你要先查哪份原始记录。运行结果的 `records.csv` 也会保留这三列，方便把来源和统计数字对应起来。
-
-## 6. 只把观察日改为第 7 天
-
-先预计会新增哪些标签，再运行现成配置：
-
-```bash
-python lesson-04/analysis.py --config lesson-04/config-support.json --output lesson-04/artifacts/support-compare
-```
-
-比较 `lesson-04/artifacts/support-start/records.csv` 和 `lesson-04/artifacts/support-compare/records.csv`。第 7 天新增 A03、B01、B03，已知 7/8 条，覆盖率 87.5%；B04 仍未知。新均值约为 6.143 分钟。
-
-这是同一批 8 条经历在较晚截止日收到更多标签，不是第 7 天重新发生了 8 次排队，也不能说服务因此变慢。
-
-## 7. 做自己的单一检查
-
-从 `config-start.json` 另存为 `config-mine.json`。只改 `disagreement_minutes` 或 `observation_day` 中的一项，先写预计，再运行：
-
-```bash
-python -m json.tool lesson-04/config-mine.json
-python lesson-04/analysis.py --config lesson-04/config-mine.json --output lesson-04/artifacts/my-check
-```
-
-成功后记录一条原始数值和一个带分母的比例。若把容差改为 3，A04 的差异恰好为 3，不再满足“超过 3”，但原始的 7 和 10 没有改变。
-
-写一条具体复核计划，例如检查 A04 的加入队伍和取餐时间。计划尚未执行时必须写成“准备复核”，不能写成已经证实。
-
-## 8. 写报告并检查保存
-
-报告至少包含：三个数的来源、均值与覆盖率手算、日期对照、自己的检查、复核计划和限制。填写 `contract.json`；其中 `split_plan` 写“第 4 天起点、第 7 天对照和最后保留的截止日”，不是机器学习中的训练/验证/测试划分。把最后保留的设置写回 `config.json`，实际完成后把 `submission.json` 状态改为 `complete`。
-
-```bash
-python scripts/course.py run 04
-python scripts/course.py check 04
-git add lesson-04
-git add -f lesson-04/artifacts
-git diff --cached --name-only
-```
-
-暂存清单应包含报告、任务说明、配置和报告引用的结果。以上命令只准备本地提交，不会自动上传。
-
-## 9. 卡住时怎么办
-
-- 不知道先看什么：先打开当前输出目录中的 `records.csv`，看 B02，再找四行 `visible=True`。
-- 均值或覆盖率不对：分别检查分母是 4 还是 8。
-- 日期改变后结果没变：检查实际使用的配置和输出目录。
-- JSON 报错：按行号、列号检查英文双引号、逗号和非负数值。
-- 软件暂时不能运行：保留报错，先完成第 1、3、4 节手算，并在报告标明“尚未运行”，修复后补跑。
+数据/依赖错误保留命令、工作目录和完整报错；先用不同数据的完整小例继续理解，明确写未实跑，再找教师修复。显式输出已存在拒覆盖，换新目录保留旧证据。默认`artifacts/starter`可重算。学生正式程序与输出由自己确定；submission.json的run必须真实重建其artifacts中列出的科学结果。比较试验若未列入CI，另保存配置和独立重跑命令，不宣称CI全核。

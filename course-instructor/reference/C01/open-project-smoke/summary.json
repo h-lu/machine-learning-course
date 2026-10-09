@@ -1,0 +1,27 @@
+{
+  "scope": "作者模拟开放选择，非真人试教",
+  "training_n": 13003,
+  "validation_n": 2208,
+  "test_evaluated": false,
+  "choice": {
+    "input": "temp",
+    "intercept": 25,
+    "slope": 280,
+    "failure_hours": [
+      8,
+      20
+    ]
+  },
+  "mae": 177.0723731884058,
+  "groups": {
+    "8": {
+      "n": 92,
+      "mae": 351.2717391304348
+    },
+    "20": {
+      "n": 92,
+      "mae": 157.04347826086956
+    }
+  },
+  "status": "passed"
+}

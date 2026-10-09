@@ -1,0 +1,39 @@
+{
+  "scope": "作者模拟开放选择，非真人试教",
+  "training_n": 13003,
+  "validation_n": 2208,
+  "test_evaluated": false,
+  "choice": {
+    "candidate": "simple temperature line",
+    "groups": "workingday",
+    "intercept": -1.03692728376339,
+    "slope": 350.3810244264711
+  },
+  "mae": {
+    "mean": 197.82937894348797,
+    "candidate": 174.29402691551385
+  },
+  "groups": {
+    "0": {
+      "mean": {
+        "n": 696,
+        "mae": 182.62494110554505
+      },
+      "candidate": {
+        "n": 696,
+        "mae": 164.90094374655442
+      }
+    },
+    "1": {
+      "mean": {
+        "n": 1512,
+        "mae": 204.82824715460455
+      },
+      "candidate": {
+        "n": 1512,
+        "mae": 178.6178271043999
+      }
+    }
+  },
+  "status": "passed"
+}

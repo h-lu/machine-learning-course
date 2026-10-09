@@ -1,0 +1,398 @@
+{
+  "checks": {
+    "04": {
+      "audit": {
+        "absent_timestamp_policy": "只记录缺行，不造需求 0，也不填补目标值",
+        "absent_timestamp_rows": 165,
+        "columns": 17,
+        "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+        "duplicate_hours": 0,
+        "empty_fields": 0,
+        "expected_calendar_hours": 17544,
+        "first_datetime": "2011-01-01T00:00",
+        "last_datetime": "2012-12-31T23:00",
+        "rows": 17379,
+        "target_identity_check": "casual+registered=cnt；只做原文件完整性核对，不作为输入"
+      },
+      "label_demo": {
+        "day2_coverage": 0.5,
+        "day2_mean": 4.0,
+        "day5_coverage": 1.0,
+        "day5_mean": 10.0,
+        "review_pairs": 3,
+        "within_tolerance_1": 2
+      },
+      "max_missing_month": {
+        "expected_hours": 744,
+        "missing_hours": 56,
+        "month": "2011-01",
+        "observed_rows": 688
+      }
+    },
+    "05": {
+      "invalid_target_sum": {
+        "in_legal_metrics": false,
+        "mae": 0.0,
+        "n": 2208,
+        "valid": false
+      },
+      "time_random": {
+        "random": {
+          "config": {
+            "leakage_demo": false,
+            "method": "temp_linear",
+            "seed": 17,
+            "split": "random"
+          },
+          "mae": 116.4325346995778,
+          "model": {
+            "fallback_mean": 185.26170883642237,
+            "intercept": -17.065374732713906,
+            "method": "temp_linear",
+            "slope": 395.3206713222358,
+            "training_rows": 13003,
+            "used_inputs": [
+              "temp"
+            ]
+          }
+        },
+        "time": {
+          "config": {
+            "leakage_demo": false,
+            "method": "temp_linear",
+            "seed": 17,
+            "split": "time"
+          },
+          "mae": 174.29402691551385,
+          "model": {
+            "fallback_mean": 167.71345074213642,
+            "intercept": -1.03692728376339,
+            "method": "temp_linear",
+            "slope": 350.3810244264711,
+            "training_rows": 13003,
+            "used_inputs": [
+              "temp"
+            ]
+          }
+        }
+      }
+    },
+    "06": {
+      "2": {
+        "config": {
+          "alert_threshold": 300.0,
+          "daily_capacity": 2,
+          "inspect_count": 12,
+          "method": "hour_mean",
+          "underestimate_weight": 2.0
+        },
+        "decision_counts": {
+          "actual_high_rows": 906,
+          "false_negative": 734,
+          "false_positive": 12,
+          "precision": 0.9347826086956522,
+          "precision_denominator": 184,
+          "predicted_alert_rows": 184,
+          "recall": 0.18984547461368653,
+          "recall_denominator": 906,
+          "total_rows": 2208,
+          "true_negative": 1290,
+          "true_positive": 172
+        },
+        "mae": 136.70789351189399,
+        "outcome_samples": {
+          "false_negative": {
+            "absolute_error": 213.62568807339449,
+            "actual_high": 1,
+            "candidate_alert": 0,
+            "cnt": 366,
+            "datetime": "2012-07-01T10:00",
+            "final_alert": 0,
+            "hr": 10,
+            "instant": 13014,
+            "method": "hour_mean",
+            "outcome": "false_negative",
+            "partition": "validation",
+            "prediction": 152.37431192660551,
+            "signed_error": -213.62568807339449,
+            "temp": 0.86,
+            "weighted_absolute_error": 427.25137614678897,
+            "workingday": 0
+          },
+          "false_positive": {
+            "absolute_error": 130.42778793418648,
+            "actual_high": 0,
+            "candidate_alert": 1,
+            "cnt": 279,
+            "datetime": "2012-07-07T17:00",
+            "final_alert": 1,
+            "hr": 17,
+            "instant": 13165,
+            "method": "hour_mean",
+            "outcome": "false_positive",
+            "partition": "validation",
+            "prediction": 409.4277879341865,
+            "signed_error": 130.42778793418648,
+            "temp": 0.96,
+            "weighted_absolute_error": 130.42778793418648,
+            "workingday": 0
+          },
+          "true_negative": {
+            "absolute_error": 101.79926335174954,
+            "actual_high": 0,
+            "candidate_alert": 0,
+            "cnt": 149,
+            "datetime": "2012-07-01T00:00",
+            "final_alert": 0,
+            "hr": 0,
+            "instant": 13004,
+            "method": "hour_mean",
+            "outcome": "true_negative",
+            "partition": "validation",
+            "prediction": 47.20073664825046,
+            "signed_error": -101.79926335174954,
+            "temp": 0.76,
+            "weighted_absolute_error": 203.5985267034991,
+            "workingday": 0
+          },
+          "true_positive": {
+            "absolute_error": 3.572212065813517,
+            "actual_high": 1,
+            "candidate_alert": 1,
+            "cnt": 413,
+            "datetime": "2012-07-01T17:00",
+            "final_alert": 1,
+            "hr": 17,
+            "instant": 13021,
+            "method": "hour_mean",
+            "outcome": "true_positive",
+            "partition": "validation",
+            "prediction": 409.4277879341865,
+            "signed_error": -3.572212065813517,
+            "temp": 0.92,
+            "weighted_absolute_error": 7.144424131627034,
+            "workingday": 0
+          }
+        },
+        "weighted_mae": 265.9161845722919
+      },
+      "4": {
+        "config": {
+          "alert_threshold": 300.0,
+          "daily_capacity": 4,
+          "inspect_count": 12,
+          "method": "hour_mean",
+          "underestimate_weight": 2.0
+        },
+        "decision_counts": {
+          "actual_high_rows": 906,
+          "false_negative": 672,
+          "false_positive": 42,
+          "precision": 0.8478260869565217,
+          "precision_denominator": 276,
+          "predicted_alert_rows": 276,
+          "recall": 0.2582781456953642,
+          "recall_denominator": 906,
+          "total_rows": 2208,
+          "true_negative": 1260,
+          "true_positive": 234
+        },
+        "mae": 136.70789351189399,
+        "outcome_samples": {
+          "false_negative": {
+            "absolute_error": 213.62568807339449,
+            "actual_high": 1,
+            "candidate_alert": 0,
+            "cnt": 366,
+            "datetime": "2012-07-01T10:00",
+            "final_alert": 0,
+            "hr": 10,
+            "instant": 13014,
+            "method": "hour_mean",
+            "outcome": "false_negative",
+            "partition": "validation",
+            "prediction": 152.37431192660551,
+            "signed_error": -213.62568807339449,
+            "temp": 0.86,
+            "weighted_absolute_error": 427.25137614678897,
+            "workingday": 0
+          },
+          "false_positive": {
+            "absolute_error": 173.4623853211009,
+            "actual_high": 0,
+            "candidate_alert": 1,
+            "cnt": 142,
+            "datetime": "2012-07-01T08:00",
+            "final_alert": 1,
+            "hr": 8,
+            "instant": 13012,
+            "method": "hour_mean",
+            "outcome": "false_positive",
+            "partition": "validation",
+            "prediction": 315.4623853211009,
+            "signed_error": 173.4623853211009,
+            "temp": 0.78,
+            "weighted_absolute_error": 173.4623853211009,
+            "workingday": 0
+          },
+          "true_negative": {
+            "absolute_error": 101.79926335174954,
+            "actual_high": 0,
+            "candidate_alert": 0,
+            "cnt": 149,
+            "datetime": "2012-07-01T00:00",
+            "final_alert": 0,
+            "hr": 0,
+            "instant": 13004,
+            "method": "hour_mean",
+            "outcome": "true_negative",
+            "partition": "validation",
+            "prediction": 47.20073664825046,
+            "signed_error": -101.79926335174954,
+            "temp": 0.76,
+            "weighted_absolute_error": 203.5985267034991,
+            "workingday": 0
+          },
+          "true_positive": {
+            "absolute_error": 3.572212065813517,
+            "actual_high": 1,
+            "candidate_alert": 1,
+            "cnt": 413,
+            "datetime": "2012-07-01T17:00",
+            "final_alert": 1,
+            "hr": 17,
+            "instant": 13021,
+            "method": "hour_mean",
+            "outcome": "true_positive",
+            "partition": "validation",
+            "prediction": 409.4277879341865,
+            "signed_error": -3.572212065813517,
+            "temp": 0.92,
+            "weighted_absolute_error": 7.144424131627034,
+            "workingday": 0
+          }
+        },
+        "weighted_mae": 265.9161845722919
+      }
+    },
+    "07": {
+      "all_results": [
+        {
+          "budget_used": 0,
+          "mae": 133.06304347826085,
+          "mae_denominator": 2208,
+          "seed": 11,
+          "selection_method": "coverage",
+          "training_rows": 240,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 120,
+          "mae": 128.8387438535197,
+          "mae_denominator": 2208,
+          "seed": 11,
+          "selection_method": "coverage",
+          "training_rows": 360,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 0,
+          "mae": 133.06304347826085,
+          "mae_denominator": 2208,
+          "seed": 11,
+          "selection_method": "random",
+          "training_rows": 240,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 120,
+          "mae": 132.0176674950452,
+          "mae_denominator": 2208,
+          "seed": 11,
+          "selection_method": "random",
+          "training_rows": 360,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 0,
+          "mae": 120.85398550724639,
+          "mae_denominator": 2208,
+          "seed": 29,
+          "selection_method": "coverage",
+          "training_rows": 240,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 120,
+          "mae": 121.3225284679089,
+          "mae_denominator": 2208,
+          "seed": 29,
+          "selection_method": "coverage",
+          "training_rows": 360,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 0,
+          "mae": 120.85398550724639,
+          "mae_denominator": 2208,
+          "seed": 29,
+          "selection_method": "random",
+          "training_rows": 240,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 120,
+          "mae": 121.51815147790012,
+          "mae_denominator": 2208,
+          "seed": 29,
+          "selection_method": "random",
+          "training_rows": 360,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 0,
+          "mae": 129.0316123188406,
+          "mae_denominator": 2208,
+          "seed": 47,
+          "selection_method": "coverage",
+          "training_rows": 240,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 120,
+          "mae": 123.08127911490685,
+          "mae_denominator": 2208,
+          "seed": 47,
+          "selection_method": "coverage",
+          "training_rows": 360,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 0,
+          "mae": 129.0316123188406,
+          "mae_denominator": 2208,
+          "seed": 47,
+          "selection_method": "random",
+          "training_rows": 240,
+          "validation_rows": 2208
+        },
+        {
+          "budget_used": 120,
+          "mae": 127.42202372657535,
+          "mae_denominator": 2208,
+          "seed": 47,
+          "selection_method": "random",
+          "training_rows": 360,
+          "validation_rows": 2208
+        }
+      ],
+      "protocol": "teacher optional complete example; not default student task or actual new collection",
+      "selected_without_labels": true
+    }
+  },
+  "environment": {
+    "python": "3.14.4"
+  },
+  "source_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "status": "passed numerical and starter checks; no human classroom trial"
+}

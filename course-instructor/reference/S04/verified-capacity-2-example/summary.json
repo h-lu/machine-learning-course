@@ -1,0 +1,42 @@
+{
+  "alert_threshold": 300.0,
+  "capacity_protocol": "同一天离线批次；按预测降序选最多 capacity 条，同分按时间先后；未利用当天真实标签分配容量",
+  "daily_capacity": 2,
+  "data_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+  "decision_counts": {
+    "actual_high_rows": 906,
+    "false_negative": 734,
+    "false_positive": 12,
+    "precision": 0.9347826086956522,
+    "precision_denominator": 184,
+    "predicted_alert_rows": 184,
+    "recall": 0.18984547461368653,
+    "recall_denominator": 906,
+    "total_rows": 2208,
+    "true_negative": 1290,
+    "true_positive": 172
+  },
+  "evaluation_partition": "validation",
+  "lesson": 6,
+  "metrics": {
+    "hour_mean": {
+      "mae": 136.70789351189399,
+      "mae_denominator": 2208,
+      "mae_unit": "次租赁/小时",
+      "mean_signed_error": -121.70868860890178,
+      "n": 2208,
+      "underestimate_weight": 2.0,
+      "underestimated_rows": 1811,
+      "weighted_mae": 265.9161845722919,
+      "weighted_mae_denominator": 2208
+    }
+  },
+  "sealed_test_rows": 2168,
+  "source_rows": 17379,
+  "status": "ok",
+  "test_policy": "01–07 仅审计封存期行数，不拟合、不评价封存期目标",
+  "train_end_exclusive": "2012-07-01",
+  "training_rows": 13003,
+  "validation_end_exclusive": "2012-10-01",
+  "validation_rows": 2208
+}

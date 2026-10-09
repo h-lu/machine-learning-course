@@ -1,0 +1,67 @@
+[
+  {
+    "from": "course-student-template/lesson-08/README.md",
+    "target": "SUPPORT.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/README.md",
+    "target": "HINTS.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/README.md",
+    "target": "LEARN.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/README.md",
+    "target": "../ENVIRONMENT.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/README.md",
+    "target": "EXERCISES.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/README.md",
+    "target": "../data/bike/LICENSE_AND_SOURCE.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/LEARN.md",
+    "target": "SUPPORT.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/LEARN.md",
+    "target": "EXERCISES.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/LEARN.md",
+    "target": "HINTS.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/SUPPORT.md",
+    "target": "../ENVIRONMENT.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/SUPPORT.md",
+    "target": "data/DATA.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/SUPPORT.md",
+    "target": "../docs/WORKFLOW.md",
+    "exists": true
+  },
+  {
+    "from": "course-student-template/lesson-08/data/DATA.md",
+    "target": "../../data/bike/LICENSE_AND_SOURCE.md",
+    "exists": true
+  }
+]

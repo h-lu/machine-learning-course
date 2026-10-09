@@ -1,0 +1,19 @@
+{
+  "lesson": "lesson-08",
+  "status": "complete",
+  "report": "lesson-08/report.md",
+  "artifacts": [
+    "lesson-08/artifacts/personal-validation/summary.json",
+    "lesson-08/artifacts/personal-validation/comparison.csv",
+    "lesson-08/artifacts/personal-validation/records.csv",
+    "lesson-08/artifacts/personal-validation/group_metrics.csv",
+    "lesson-08/artifacts/personal-validation/night_five.csv",
+    "lesson-08/artifacts/personal-validation/learned_rules.json",
+    "lesson-08/artifacts/personal-validation/data_audit.json",
+    "lesson-08/artifacts/personal-validation/config-used.json"
+  ],
+  "run": [
+    "python",
+    "lesson-08/research.py"
+  ]
+}

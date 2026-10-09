@@ -256,17 +256,17 @@ class SessionSnapshots(unittest.TestCase):
                     "/ml-check/teacher/session",
                     data={
                         "csrf_token": csrf(page.text),
-                        "lesson_id": "S07",
+                        "lesson_id": "S06",
                     },
                     follow_redirects=False,
                 )
                 self.assertEqual(result.status_code, 303)
             session = db.current_session(database)
-            expected = bank_for_lesson("S07")
+            expected = bank_for_lesson("S06")
             self.assertEqual(session["bank_version"], BANK_VERSION)
             self.assertEqual(session["bank_json"], bank_snapshot(expected))
             restored = bank_from_snapshot(session["bank_json"])
-            self.assertEqual(restored.lesson_id, "S07")
+            self.assertEqual(restored.lesson_id, "S06")
             self.assertEqual(restored.questions, expected.questions)
 
     def test_result_and_timer_use_the_saved_bank_instead_of_current_globals(self):

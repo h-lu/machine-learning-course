@@ -1,9 +1,8 @@
 {
   "lesson": "C02",
-  "purpose": "在测试集独立核对基线、回归和分组误差",
-  "config_patch": {
-    "evaluation_split": "test",
-    "stress_queue": 12
-  },
-  "scope": "教师数值核对案例，不规定学生结论"
+  "runner": "open_bike_teacher_reference",
+  "purpose": "对开放任务的一条可行参考路线独立核算，不规定学生参数或结论",
+  "reference_script": "course-instructor/reference/C02/verify.py",
+  "student_starter": "lesson-02/analysis.py",
+  "scope": "固定真实开发数据；不评价最后测试或历史成绩"
 }

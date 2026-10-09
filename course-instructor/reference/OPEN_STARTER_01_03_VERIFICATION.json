@@ -1,0 +1,50 @@
+[
+  {
+    "lesson": "C01",
+    "starter_files": [
+      "audit.json",
+      "config_snapshot.json",
+      "sample.csv",
+      "summary.json"
+    ],
+    "repeated_sha256_equal": true,
+    "reader_rows": "13003 2208",
+    "baseline": null,
+    "status": "passed"
+  },
+  {
+    "lesson": "C02",
+    "starter_files": [
+      "audit.json",
+      "baseline.json",
+      "config_snapshot.json",
+      "sample.csv",
+      "summary.json"
+    ],
+    "repeated_sha256_equal": true,
+    "reader_rows": "13003 2208",
+    "baseline": {
+      "mae_denominator": 2208,
+      "method": "training_mean",
+      "prediction": 167.71345074213642,
+      "purpose": "可选简单起点，不是正式方案或候选对比",
+      "training_rows": 13003,
+      "validation_mae": 197.82937894348797,
+      "validation_rows": 2208
+    },
+    "status": "passed"
+  },
+  {
+    "lesson": "S01",
+    "starter_files": [
+      "audit.json",
+      "config_snapshot.json",
+      "sample.csv",
+      "summary.json"
+    ],
+    "repeated_sha256_equal": true,
+    "reader_rows": "13003 2208",
+    "baseline": null,
+    "status": "passed"
+  }
+]

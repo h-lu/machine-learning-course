@@ -1,7 +1,16 @@
 {
-  "purpose": "S03 非默认配置下独立核算与证据检查",
+  "purpose": "S03 真实Bike新接口独立核算",
+  "runtime": "mlcourse.bike_course",
+  "lesson_number": 5,
+  "config": {
+    "split": "time",
+    "seed": 17,
+    "method": "temp_linear",
+    "leakage_demo": false
+  },
   "config_patch": {
-    "split_strategy": "group",
+    "split": "random",
     "seed": 11
-  }
+  },
+  "evidence_scope": "开发评价或元数据审计；测试目标封存；不改历史成绩。"
 }

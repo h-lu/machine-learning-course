@@ -1,88 +1,35 @@
-# 第 06 课入门支持：先核对一条预测，再比较提醒
+# 第06课支持：按卡点选用，不是统一研究路线
 
-这是 [本课任务](README.md) 的一条完整做法，完成后不用另交一份必做任务。先做一件能在几分钟内开始的小事：运行本课程序，在逐条结果里找到 B05，判断线性回归预测是高估还是低估。你不必先写代码或读完整术语表。
+## 卡在环境、目录或第一份输入
 
-## 1. 先认清两种用途和三个方法
+如果只是想查看输入结构，从学生仓库根进入`cd lesson-06`，运行`python3 analysis.py --config config.json --output artifacts/start-a`。成功后先看`artifacts/start-a/summary.json`的训练/验证条数，再看sample.csv的一行输入；04只元数据，05额外固定时间清单。audit.json提供文件完整性。样本只是预览，不替代完整真实标准分析，起点没有全方案结果或报告。
 
-一条记录对应一位同学加入队伍、最后等到取餐的一次观察。同一个等待时间预测可以直接显示给这位同学，也可以帮助值班人员决定优先联系谁。显示分钟数时，要看预测与实际相差多少；用于人工提醒时，还要看哪些真正久等的同学没有被联系、哪些不用久等的同学收到了提醒。本课把不同日期的 6 条验证记录暂当一轮候选，只是为了练习容量限制，不表示他们真在同一轮排队。
+## 卡在数据怎样进入自己的代码
 
-本课程序提供三种方法：`baseline` 是总预测训练记录平均等待时间的**均值基线**；`linear` 是用“前面排队人数”预测等待分钟数的**线性回归模型**；`buffered` 只是在 `linear` 的每个预测上加 4 分钟，**没有重新训练模型**。这些都是本课给定的起点，不是程序读取了你在第 05 课提交的模型。
+你可修改analysis.py或另写my_analysis.py。`load_development(ROOT)`只返回训练和验证字典列表及审计；你决定输入/模型/规则/指标/保存内容。代码可让AI协助生成，但先解释自己的问题和不能偷看什么。
 
-现在先在 `report.md` 第 1 节各写一句：如果显示的时间偏低或偏高，会怎样？如果一轮最多只能处理 2 条提醒，会怎样？低估权重 3 和容量 2 是练习用的使用假设，不是调查得到的真实成本。
-
-## 2. 运行起点，先打开逐条结果
-
-在学生仓库根目录运行，也就是同时能看到 `scripts` 和 `lesson-06` 的目录。若电脑只有 `python3`，把以下 `python` 换为 `python3`。不要把命令输在 Python 的 `>>>` 提示符后。
-
-```bash
-python scripts/course.py start 06
-python lesson-06/analysis.py --config lesson-06/config-start.json --output lesson-06/artifacts/support-start
+```python
+from pathlib import Path
+import sys
+ROOT = Path(__file__).resolve().parents[1]  # 文件在lesson目录中
+sys.path.insert(0, str(ROOT))
+from mlcourse.bike_starter import load_development, mae, fit_simple_line, write_csv
+train, validation, audit = load_development(ROOT)
+print("已读取训练/验证记录：", len(train), len(validation))
+# 在此构建你自己的标准分析；训练统计只来自train。
+# write_csv输出你构造的记录，不会替你选择研究策略。
 ```
 
-第一条命令只把本课提交状态改为“进行中”；第二条命令读取 `lesson-06/data/base.json` 和给定的 `config-start.json`，把结果写到 `lesson-06/artifacts/support-start/`。看到终端的“结果写入”后，**先打开 `records.csv`**，再看 `comparison.csv`；`summary.json` 保存同一实验的完整信息。CSV 可以用表格软件或文本编辑器打开，第一行是列名，一行是一种方法对一条记录的结果。
+如果把这段存为本课`my_analysis.py`，在本课目录运行`python3 my_analysis.py`；应先看到训练/验证记录数13,003和2,208，再构建自己的分析。这些是薄工具，不要求调用全部函数；读取之外由你组织自己的程序。04的标准分析使用全文件时点元数据，避免测试目标统计。可按CODE_TOOLKIT查示例片段，但不能把完整参考当自己的选择。
 
-在 `records.csv` 找 `id=B05` 且 `method=linear` 的那行。`id` 是记录编号，`method` 是方法代号；`actual` 是事后知道的真实等待分钟数，`prediction` 是模型事先给的预测。B05 的 `actual=8`、`prediction≈6.333`：预测比实际少，叫**低估**。如果找不到这行，先核对文件路径和这两个列名，暂时不要继续改配置。
+## 卡在本课关系或失败解释
 
-## 3. 自己算一行，再读比较表
+不知道类别时先写final_alert与actual_high两布尔值；不知道排名时只按可用预测排序，不能按真实cnt倒挑。 用LEARN小例核概念，再回自己选的真实范围；HINTS只提供检查方向，不给统一结论。误差单位为次租赁/小时。默认起点没有提醒排行或模型答案；学生可沿用前课作品，自选均值起点只是最小资源。
 
-B05 的**绝对误差**是 `|8−6.333|≈1.667` 分钟。`config-start.json` 规定低估权重为 3，所以这条的 `weighted_error≈1.667×3=5`；它是评价分数，**不表示现实中损失了 5 分钟**。再找 `id=A06`、`method=linear`：A06 与 B05 加入队伍时前面都只有 1 人，所以模型同样预测约 6.333 分钟；A06 实际只等 4 分钟，成了高估。先自己算 A06 的绝对误差及加权误差，再对照文件中的两列。两个真实等待不同的人得到同样预测，是因为本课模型只使用前面排队人数，没有使用窗口或其他信息。
+## 卡在怎样保存与重跑
 
-现在打开 `comparison.csv`。`n=6` 表示每个方法都用同一批 6 条验证记录来评价；同一个 B05 在 `records.csv` 出现多次，是不同方法的结果，不是多条新记录。先只看这两行：
+为每个比较保留配置、原始结果和运行命令；自己的程序建议写新试验目录，避免覆盖旧证据。report格式可改，引用具体文件/列/编号。更新submission.json的run和artifacts后再check/ci；默认起点结果不会证明完成研究。若你的代码有随机性，保存seed及全部重复结果；生成原始响应先保存再确定性重算。
 
-| `method` | 方案 | MAE：平均绝对误差（分钟） | `asymmetric_loss`：平均加权误差分数 |
-|---|---|---:|---:|
-| `linear` | 本课给定的线性回归 | 2.556 | 6.111 |
-| `buffered` | 每个回归预测加 4 分钟 | 3.000 | 3.000 |
+使用已准备的Python与NumPy，命令示例为本机`python3`；你原环境若使用`python`或`py`，统一用已经成功的启动命令，不安装新环境。默认起点离线读取`data/bike/hour.csv`，只准备审计/样本预览，不能作为正式分析已完成证据。AI可帮助提出问题、写代码、核算和解释，不收集prompt记录、不要求所有人同路线或强制逐人答辩。
 
-MAE 是 6 条绝对误差之和除以 6；加权误差分数也是逐条加权误差之和除以 6。按 MAE，`linear` 较小；若认为低估应乘 3，`buffered` 的加权误差分数较小。两种指标回答的问题不同，不能挑一个分数就宣布所有用途都适合它。需要再看一遍小计算时，读 [LEARN.md 的误差与权重解释](LEARN.md)。
-
-提醒又是另一件事：事后实际等待**至少 8 分钟**算需要提醒；当时只能根据**预测至少 8 分钟**形成候选，再按预测从高到低选最多 2 位同学联系。起点里 `linear` 的 `tp/fp/fn/tn=2/0/2/2`，依次是正确提醒、误报、漏报、正确不提醒，总数为 6。B05 是实际久等却没收到提醒的漏报。想看清候选与最终提醒的区别，读 [LEARN.md 的四行例子](LEARN.md)，再回到输出文件。
-
-表里的数值只用于核对给定数据和配置，不是你必须得到的“标准结论”。若数字差很多，检查方法名、配置路径和输出目录，不手改程序结果。
-
-## 4. 只改评价权重，不改预测
-
-`config-support.json` 是准备好的单项对照：它只把 `underestimate_weight` 从 3 改为 1。先预计：同一批预测的 MAE、提醒编号和误报漏报会不会变？平均加权误差分数会不会变？把预计写在报告第 3 节，再运行：
-
-```bash
-python lesson-06/analysis.py --config lesson-06/config-support.json --output lesson-06/artifacts/support-compare
-```
-
-并排看两份 `comparison.csv` 的 `linear` 和 `buffered`。权重为 1 时，平均加权误差分数分别约为 2.556 和 3.000，等于各自 MAE；两种方法按这个分数的先后顺序反转。B05 的 `weighted_error` 从约 5 变为约 1.667。权重改变的是**评价规则**，模型预测及提醒规则没有改变；报告要把这两件事分清。
-
-## 5. 只改提醒容量，做自己的检查
-
-这一次由你设定一个使用条件：一轮只能处理 `1` 条，或一轮最多处理 `4` 条。`capacity` 是最多能发出的提醒数，不是预测阈值。先在报告写明为什么选这个名额、预计哪些提醒或误报漏报会变化，以及什么结果会让你改变建议。
-
-配置文件使用 JSON：每一项写成 `"字段名": 值`，例如 `"capacity": 2`。在编辑器里把 `lesson-06/config-start.json` **另存为** `lesson-06/config-mine.json`。只把 `"capacity": 2` 改成 `"capacity": 1` 或 `"capacity": 4`，其他行保持原样，包括权重、两个 8 分钟阈值，以及只用于附加容量检查的 `stress_capacity`。文件名不要多出 `.txt`。先检查 JSON 格式，再运行到新的目录：
-
-```bash
-python -m json.tool lesson-06/config-mine.json
-python lesson-06/analysis.py --config lesson-06/config-mine.json --output lesson-06/artifacts/my-check
-```
-
-在新 `comparison.csv` 分别找 `linear` 和 `buffered`，读 `eligible`（达到预测阈值的候选数）、`alerts`（实际提醒数）、`tp/fp/fn/tn`。在新 `records.csv` 找这两种方法中 `alert=True` 的编号。每种方法都应满足四类计数合计为 6，且 `alerts≤capacity`。
-
-供**数完后核对**：容量 1 时，两种方法都只提醒 C06，各有 1 次正确提醒、3 次漏报。容量 4 时，`linear` 只提醒 B06、C05、C06，漏报 B05；`buffered` 提醒 A06、B06、C05、C06，其中 A06 是误报，B05 仍是漏报。它们来自人工小数据和固定排序规则，不能推广成真实系统的效果。报告须写你的预计、实际编号与理由，不能只抄这些核对数字。
-
-## 6. 写报告并确认文件能提交
-
-在 `report.md` 写两个用途、B05 的低估与 A06 的高估手算、权重 3 与 1 的比较、你的容量检查及提醒编号，并分别给显示分钟数和有限提醒写建议。每条建议至少有一项支持证据和一项代价。`contract.json` 是任务说明：保留 `lesson`，在其余六个字段写问题、使用者、数据来源、指标及单位与分母、数据用途和运行前预计。
-
-`config.json` 用于下面一次主结果重跑，**不是同时保存两条建议的地方**。若要让主结果采用你选的容量，就打开 `config.json`，把其中的 `"capacity": 2` 改成与你在 `config-mine.json` 中选的 1 或 4；如果仍采用起点容量 2，就保持原样。权重、阈值等其他字段仍与 `config-start.json` 一致。保存后运行 `python -m json.tool lesson-06/config.json` 检查格式；再把 `submission.json` 中的 `status` 改为 `complete`。即使报告建议暂不启用人工提醒，也保留本课实验配置和实际结果，并在报告中解释原因。
-
-```bash
-python scripts/course.py run 06
-python scripts/course.py check 06
-git add lesson-06
-git add -f lesson-06/artifacts
-git diff --cached --name-only
-```
-
-`run` 生成主结果，`check` 检查清单和文件；最后一条只列出准备提交的文件。确认配置副本、报告、任务说明和报告引用的所有结果都在列表里。`artifacts/` 默认被 Git 忽略，所以要显式 `git add -f`。这些命令尚未提交或上传；接着按 [操作与提交步骤](../docs/WORKFLOW.md) 创建提交和本课 `v2-l06-final` 标签，不覆盖已有标签。
-
-## 卡住时先这样做
-
-找不到脚本时回到仓库根目录；找不到 B05 时先确认打开的是 `support-start/records.csv`，再检查 `id` 和 `method` 两列。JSON 报错时看格式检查指出的行列；文件名多出 `.txt` 时重新另存。运行失败后旧输出可能还在，要换新目录重跑并看到成功提示，不能把旧文件算作这次结果。
-
-环境暂时不能运行时，先用第 3 节给出的两行数字完成手算，并在报告写“仅手算，尚未运行”，把命令与完整报错交给教师，之后补跑。这样可以继续学习，但不能把核对示例当作自己完成的实验。
+数据/依赖错误保留命令、工作目录和完整报错；先用不同数据的完整小例继续理解，明确写未实跑，再找教师修复。显式输出已存在拒覆盖，换新目录保留旧证据。默认`artifacts/starter`可重算。学生正式程序与输出由自己确定；submission.json的run必须真实重建其artifacts中列出的科学结果。比较试验若未列入CI，另保存配置和独立重跑命令，不宣称CI全核。

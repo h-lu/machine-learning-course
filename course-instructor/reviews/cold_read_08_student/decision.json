@@ -1,0 +1,14 @@
+{
+  "selected_method": "window_mean",
+  "parameters": "lesson-08/personal-config.json",
+  "config_sha256": "82aa3317906db6666b70fa5a6aa50100b70b70079a9042ea604b72464bb7aa91",
+  "validation_evidence": "lesson-08/artifacts/first-personal-validation/comparison.csv",
+  "validation_sha256": "0b793b82a82b792c5a9cb1c85ef370c00f22a1253045b1508182d8c90adcf92b",
+  "night_improvement": 100.6053059661817,
+  "overall_change": -57.757104695137684,
+  "reason": "夜间MAE降低100.605305966>30，总体下降57.757104695，没有越过+10保护规则；夜間仍有明显周末高估/低估差异，只作为粗分时段历史分析。",
+  "scope": "当小时记录租借粗结构分析，不用于未来调度或因果解释",
+  "saved_before_test": true,
+  "test_computed": false,
+  "no_reselection_after_test": true
+}

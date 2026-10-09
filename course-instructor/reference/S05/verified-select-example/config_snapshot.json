@@ -1,0 +1,14 @@
+{
+  "budget": 120,
+  "data": "data/bike/hour.csv",
+  "initial_size": 240,
+  "method": "coverage",
+  "seeds": [
+    11,
+    29,
+    47
+  ],
+  "selection_note": "先按小时和工作日覆盖不足选择，记录随机对照。",
+  "selection_plan": "artifacts/select/selection_plan.json",
+  "stage": "select"
+}

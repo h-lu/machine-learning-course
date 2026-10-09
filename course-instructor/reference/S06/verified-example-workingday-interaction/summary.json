@@ -1,0 +1,107 @@
+{
+  "lesson": "lesson-08",
+  "status": "experiment_evidence_not_student_conclusion",
+  "target": "cnt: recorded hourly rentals; not unmet demand or a causal effect",
+  "unit": "次租借/已记录小时",
+  "condition": "Given actual weather in the SAME hour; not known future weather.",
+  "change": "workingday_interaction",
+  "method_kinds": {
+    "original": "hour_onehot",
+    "candidate": "workingday_interaction"
+  },
+  "split_counts": {
+    "train": 13003,
+    "validation": 2208,
+    "test": 2168
+  },
+  "train_end_exclusive": "2012-07-01",
+  "validation_end_exclusive": "2012-10-01",
+  "evaluation_mode": "validation",
+  "test_sealed": true,
+  "commute_definition": {
+    "workingday": 1,
+    "hours": [
+      7,
+      8,
+      9,
+      16,
+      17,
+      18,
+      19
+    ],
+    "meaning": "Teaching-defined working-day hour group; not observed commuter identities."
+  },
+  "prediction_rule": "Negative predictions clipped to 0 identically for both models.",
+  "tail_threshold": {
+    "trained_on": "train",
+    "quantile": 0.9,
+    "cnt_at_least": 399.0,
+    "quantile_method": "linear"
+  },
+  "metrics": {
+    "train": {
+      "original": {
+        "n": 13003,
+        "mae": 61.78765318668265,
+        "rmse": 87.4726653463696,
+        "p90_absolute_error": 144.2135076517939,
+        "p95_absolute_error": 194.6079599316853,
+        "mean_signed_error": 4.644419815254976,
+        "status": "available",
+        "overall_mae": 61.78765318668265,
+        "commute_mae": 86.5248248136121,
+        "commute_n": 2617
+      },
+      "candidate": {
+        "n": 13003,
+        "mae": 44.788499881870145,
+        "rmse": 65.03816576370181,
+        "p90_absolute_error": 105.18157760858071,
+        "p95_absolute_error": 138.1101920296644,
+        "mean_signed_error": 5.044430130000946,
+        "status": "available",
+        "overall_mae": 44.788499881870145,
+        "commute_mae": 74.25160171857662,
+        "commute_n": 2617
+      }
+    },
+    "validation": {
+      "original": {
+        "n": 2208,
+        "mae": 111.2039458201682,
+        "rmse": 145.98471858799624,
+        "p90_absolute_error": 261.97167879537943,
+        "p95_absolute_error": 319.73486589867815,
+        "mean_signed_error": -17.042824420874425,
+        "status": "available",
+        "overall_mae": 111.2039458201682,
+        "commute_mae": 194.12392957332503,
+        "commute_n": 441
+      },
+      "candidate": {
+        "n": 2208,
+        "mae": 87.22328402945227,
+        "rmse": 114.0180971770425,
+        "p90_absolute_error": 188.78143014572717,
+        "p95_absolute_error": 249.536767028986,
+        "mean_signed_error": -16.824194969107044,
+        "status": "available",
+        "overall_mae": 87.22328402945227,
+        "commute_mae": 156.31643396619467,
+        "commute_n": 441
+      }
+    }
+  },
+  "selection_check": {
+    "primary_metric": "overall_mae",
+    "secondary_metric": "commute_mae",
+    "primary_improvement_original_minus_candidate": 23.980661790715928,
+    "secondary_increase_candidate_minus_original": -37.80749560713036,
+    "rule": {
+      "minimum_primary_improvement": 0,
+      "maximum_secondary_mae_increase": 0
+    },
+    "candidate_passes": true,
+    "interpretation": "Candidate must improve primary by MORE than the minimum and keep secondary increase at most the limit."
+  }
+}

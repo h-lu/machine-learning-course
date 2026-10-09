@@ -1,0 +1,7 @@
+id,expected_route,expected_value,baseline_predicted_route,baseline_confidence,baseline_executed_route,baseline_document,baseline_value,baseline_status,candidate_predicted_route,candidate_confidence,candidate_executed_route,candidate_document,candidate_value,candidate_status
+F01,retrieve,14,retrieve,0.8776117165815109,retrieve,loan-teacher-current,14,automatic_correct,retrieve,0.8776117165815109,retrieve,loan-teacher-current,14,automatic_correct
+F02,inventory,2,inventory,0.8647253244947146,inventory,,2,automatic_correct,inventory,0.8647253244947146,inventory,,2,automatic_correct
+F03,calculator,6,calculator,0.8231418998533515,calculator,,6,automatic_correct,calculator,0.8231418998533515,calculator,,6,automatic_correct
+F04,human,,human,0.8363585834374627,human,,,appropriate_handoff,human,0.8363585834374627,human,,,appropriate_handoff
+F05,human,,human,0.38367492554675536,human,,,appropriate_handoff,human,0.38367492554675536,human,,,appropriate_handoff
+F06,retrieve,7,retrieve,0.9640667956701295,retrieve,untrusted-note,,automatic_error,retrieve,0.9640667956701295,retrieve,loan-student-current,7,automatic_correct

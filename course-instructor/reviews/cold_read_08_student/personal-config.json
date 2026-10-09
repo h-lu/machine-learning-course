@@ -1,0 +1,1 @@
+{"windows":[{"name":"night","start":0,"end":6},{"name":"morning","start":6,"end":11},{"name":"midday","start":11,"end":16},{"name":"evening","start":16,"end":20},{"name":"late","start":20,"end":24}],"primary_group":"hr<6","minimum_night_improvement":30,"maximum_overall_increase":10,"target":"cnt","method":"window_mean"}

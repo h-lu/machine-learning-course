@@ -1,0 +1,7 @@
+{
+  "data": "data/bike/hour.csv",
+  "leakage_demo": false,
+  "method": "temp_linear",
+  "seed": 17,
+  "split": "time"
+}

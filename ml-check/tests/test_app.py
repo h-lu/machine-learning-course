@@ -6,8 +6,10 @@ from urllib.request import urlopen
 
 from app.main import ReceiptStore, load_bank, make_handler, response
 from app.questions import CURRENT_BANKS
-from ml_check.checker import LESSONS, Report, check_question_set
+from ml_check.checker import active_ids, Report, check_question_set
 from pathlib import Path
+
+ACTIVE_LESSONS = active_ids(Path(__file__).resolve().parents[1], "instructor")
 
 
 class Questions(unittest.TestCase):
@@ -15,8 +17,8 @@ class Questions(unittest.TestCase):
     def setUpClass(cls):
         cls.bank = load_bank()
 
-    def test_all_32_lessons_have_ten_valid_questions(self):
-        self.assertEqual([x["lesson_id"] for x in self.bank["lessons"]], LESSONS)
+    def test_active_lessons_have_ten_valid_questions(self):
+        self.assertEqual([x["lesson_id"] for x in self.bank["lessons"]], ACTIVE_LESSONS)
         for lesson in self.bank["lessons"]:
             report = Report(Path.cwd(), "instructor")
             check_question_set(lesson, Path(lesson["lesson_id"]), report, lesson["lesson_id"])
@@ -37,7 +39,7 @@ class Questions(unittest.TestCase):
             self.assertNotIn("哪项说明正确", prompt, question["id"])
 
     def test_every_lesson_defines_five_named_concepts_and_ab_pairs(self):
-        self.assertEqual(len(CURRENT_BANKS), 32)
+        self.assertEqual(len(CURRENT_BANKS), len(ACTIVE_LESSONS))
         for bank in CURRENT_BANKS:
             self.assertEqual(len(bank.items), 5)
             self.assertEqual(
@@ -63,7 +65,7 @@ class Questions(unittest.TestCase):
         self.assertIn("item.tutor_context", template)
 
     def test_question_get_does_not_publish_teacher_answers(self):
-        for lesson in LESSONS:
+        for lesson in ACTIVE_LESSONS:
             status, payload = response(f"/ml-check/api/lessons/{lesson}", self.bank)
             self.assertEqual(status, 200)
             for question in payload["questions"]:
@@ -74,8 +76,8 @@ class Questions(unittest.TestCase):
             self.assertEqual(response(path, self.bank)[0], 404)
 
     def test_legacy_paths_and_case_insensitive_ids(self):
-        self.assertEqual(response("/ml-check/healthz", self.bank)[1]["lesson_count"], 32)
-        self.assertEqual(len(response("/ml-check/api/lessons", self.bank)[1]), 32)
+        self.assertEqual(response("/ml-check/healthz", self.bank)[1]["lesson_count"], len(ACTIVE_LESSONS))
+        self.assertEqual(len(response("/ml-check/api/lessons", self.bank)[1]), len(ACTIVE_LESSONS))
         self.assertEqual(response("/ml-check/api/lessons/s01", self.bank)[1]["lesson_id"], "S01")
 
     def test_actual_http_read(self):
@@ -83,10 +85,10 @@ class Questions(unittest.TestCase):
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
         try:
-            with urlopen(f"http://127.0.0.1:{server.server_port}/ml-check/api/lessons/S23", timeout=5) as r:
+            with urlopen(f"http://127.0.0.1:{server.server_port}/ml-check/api/lessons/S06", timeout=5) as r:
                 payload = json.load(r)
                 self.assertEqual(r.status, 200)
-                self.assertEqual(payload["lesson_id"], "S23")
+                self.assertEqual(payload["lesson_id"], "S06")
                 self.assertNotIn("answer", payload["questions"][0])
         finally:
             server.shutdown()

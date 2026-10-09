@@ -1,7 +1,11 @@
 __pycache__/
+*.pyc
 .pytest_cache/
 .venv/
 **/artifacts/
 .publish/
 build/
 *.egg-info/
+*.db
+*.sqlite*
+.env*
