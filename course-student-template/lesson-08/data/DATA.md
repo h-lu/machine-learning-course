@@ -8,11 +8,11 @@
 
 | 原字段 | 意义与本课使用 |
 |---|---|
-| `dteday`、`hr` | 记录日期和0–23小时；合并成唯一时间；hr为可比较表示的输入 |
+| `dteday`、`hr` | 记录日期和0–23小时；合并成唯一时间；hr是本次可改变表示方式的输入 |
 | `cnt` | 当小时记录租借总次数，预测目标；不代表没有车时未满足的需求 |
 | `casual`、`registered` | 非注册与注册租借组成项，每行相加=cnt；禁作输入，避免答案泄漏 |
 | `instant` | 记录编号，禁作业务输入 |
-| `yr`、`mnth`、`weekday` | 年份编码（0为2011，1为2012）、月份（1–12）、星期类别（0–6，0为星期日）；日历特征 |
+| `yr`、`mnth`、`weekday` | 年份编码（0为2011，1为2012）、月份（1–12）、星期编码（0–6，0为星期日）；月份和星期有顺序及周期，示例用指示变量表示 |
 | `holiday`、`workingday` | 0/1编码，1表示是；数据把既不是周末、也不是假日的日期定义为工作日 |
 | `weathersit` | 官方天气类别1–4；基础输入使用类别指示变量，数字不是天气大小 |
 | `temp`、`atemp` | 官方已归一化的温度与体感温度；归一化在这里指按来源说明缩放数值，CSV中的值不直接以摄氏度计。0.5不能解释成0.5摄氏度；可选回归示例用 `temp`，不同时放入 `atemp` |
@@ -31,20 +31,20 @@
 
 默认 `analysis.py` 调用 `load_development`，获得训练记录、验证记录和数据检查信息，不读取最后测试标签。它用训练集 `cnt` 的均值预测每条验证记录，作为基线。`candidate_predictions` 默认返回 `None`（尚未实现候选），所以默认输出只有基线。你可在该函数中返回自己算出的预测列表，或 `{自定方法名: 预测列表}`；也可另写自己的入口。
 
-方法字典可同时包含自己实现的原方案和候选方案；`baseline` 是训练均值参照的保留名称。自行实现与假设匹配的原方案，不能把均值到完整回归的变化说成只改变小时编码，说明见 [README](../README.md#构建并公平比较)。
+方法字典可同时包含自己实现的原方案和候选方案；`baseline` 是训练均值参照的保留名称。自行实现与假设匹配的原方案，从均值改成完整回归并非只改变小时编码，说明见 [README](../README.md#课堂任务)。
 
-候选函数收到训练输入、训练 `cnt` 列表和评价输入。评价输入已排除 `cnt`、`casual`、`registered`、`instant`，避免把目标或其组成项带入预测。从训练集学习自己的处理参数，再将它们用于评价输入。默认程序不会替你选择失败分组、分析失败或写报告。
+候选函数收到训练输入、训练 `cnt` 列表和评价输入。评价输入已排除 `cnt`、`casual`、`registered`、`instant`，避免把目标或其组成项带入预测。从训练集学习自己的处理参数，再将它们用于评价输入。默认程序不选择重点分组、解释误差原因或写报告。
 
 默认基线结果保存在 `artifacts/baseline/`：
 
 - `comparison.csv`：`split`（训练／验证／测试中的哪一部分）、`method`（方法名）、`n`（评价记录数）、`mae`（平均绝对误差）。
-- `records.csv`：日期与输入条件、`cnt`（真实租借次数）、`prediction`（预测次数）、`err_signed`（预测−真实）、`err_absolute`（绝对差），以及方法名。
+- `records.csv`：日期与输入条件、`cnt`（记录中的观测租借次数）、`prediction`（预测次数）、`err_signed`（预测−真实）、`err_absolute`（绝对差），以及方法名。
 - `summary.json`：`training_n`（训练记录数）、`baseline_training_mean`（训练集租借次数均值）、`starter_only`（是否只有起点基线）等。
 - `data_audit.json`：文件行数、时间范围等数据检查信息，不含默认测试误差。
 
-默认重跑只更新这四份结果。自主方案新增的输出和字段需要在报告中说明，并更新 `submission.json` 的 `run` 和 `artifacts`；只提交基线不能宣称完成本课任务。
+默认重跑只更新这四份结果。自主方案新增的输出和字段需要在报告中说明，并更新 `submission.json` 的 `run` 和 `artifacts`；课堂任务还需要自己的两方案比较与核算。
 
-保存测试前选择记录后，可调用 `load_test(root, decision_path)` 读取测试数据，再用自己的程序只评价所选方法。读取函数只检查选择文件已保存且非空，不要求统一方法或数值规则，也不会自动拟合或判断结论。`analysis.py` 提供 `--split test` 参数，默认命令不使用它；先实现自己的候选并保存选择，再进行最后测试，调用示例见 [SUPPORT](../SUPPORT.md)。
+保存测试前选择记录后，可调用 `load_test(root, decision_path)` 读取测试数据，再用自己的程序只评价所选方法。读取函数只检查选择文件已保存且非空，不要求统一方法或数值规则，也不会自动拟合或判断结论。`analysis.py` 提供 `--split test` 参数，默认命令不使用它；先实现自己的比较方案并保存选择，再进行最后测试，调用示例见 [SUPPORT](../SUPPORT.md)。
 
 ## 配置文件：哪些会影响当前程序
 
@@ -72,7 +72,7 @@
 5. `models.json`：feature_names、center、scale同序；weights第0项截距，之后对应各特征；design_rank/design_columns说明秩与列数。
 6. `condition_check.json`：小时登记偏移敏感性检查，固定真实cnt和参数，不是改变现实时间的因果效果。
 
-`metrics.json`与`summary.json`内容相同，保存训练／验证或测试指标；`error_cases.csv`每种方法最多12条绝对误差最大的记录，供开始分析失败；`data_audit.json`审计行、缺小时、组成恒等式等，不含默认测试误差。`config-used.json`、`preregister-used.json`、`source_manifest.json`保存实际配置、事前实验计划、源码／数据与结果文件的哈希及环境信息。哈希是由文件内容计算的校验值，可用来核对文件是否改变。
+`metrics.json`与`summary.json`内容相同，保存训练／验证或测试指标；`error_cases.csv`每种方法最多12条绝对误差最大的记录，供开始分析失败；`data_audit.json`审计行、缺小时、组成恒等式等，不含默认测试误差。`config-used.json`、`preregister-used.json`、`source_manifest.json`保存实际配置、比较前的实验计划、源码／数据与结果文件的哈希及环境信息。哈希是由文件内容计算的校验值，可用来核对文件是否改变。
 
 使用 `--output` 指定结果目录时，必须使用新目录，以保留旧结果。省略该参数时，示例工具在 `artifacts/run/` 重新生成验证结果；它不打开测试，也不覆盖单独保存的验证或测试目录。没有成功信息时不要把旧文件当新结果；不要手改生成的分数、记录或哈希。报告引用路径、字段、分母与命令。程序不会自动写报告或把status改为complete。
 
@@ -108,4 +108,4 @@ python scripts/lesson08.py decision --validation-run lesson-08/artifacts/example
 python scripts/lesson08.py bike --config lesson-08/config-hour-onehot.json --unlock-test --decision lesson-08/example-decision.json --output lesson-08/artifacts/example-test
 ```
 
-显式结果目录必须新建，不覆盖旧证据；示例工具test只报告所选方法。示例仍不自动完成自己的设计、独立检查、建议或报告。若你采用／改写示例，请如实说明给定与自己构建部分。
+显式结果目录必须新建，不覆盖旧证据；示例工具test只报告所选方法。自己的选择理由、核算与建议仍需写进报告。若你采用／改写示例，请如实说明给定与自己构建部分。

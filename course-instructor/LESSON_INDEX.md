@@ -11,6 +11,6 @@
 |05|S03|验证怎样接近实际使用：[运行单](lessons/S03/RUNBOOK.md) · [过程参考](lessons/S03/REFERENCE.md) · [概念题](lessons/S03/questions.json) · [学生页](../course-student-template/lesson-05/README.md)|
 |06|S04|总体误差能决定行动吗：[运行单](lessons/S04/RUNBOOK.md) · [过程参考](lessons/S04/REFERENCE.md) · [概念题](lessons/S04/questions.json) · [学生页](../course-student-template/lesson-06/README.md)|
 |07|S05|固定预算应该补哪些记录：[运行单](lessons/S05/RUNBOOK.md) · [过程参考](lessons/S05/REFERENCE.md) · [概念题](lessons/S05/questions.json) · [学生页](../course-student-template/lesson-07/README.md)|
-|08|S06|用一次实验区分失败解释：[运行单](lessons/S06/RUNBOOK.md) · [过程参考](lessons/S06/REFERENCE.md) · [概念题](lessons/S06/questions.json) · [学生页](../course-student-template/lesson-08/README.md)|
+|08|S06|用对照实验诊断预测误差：[运行单](lessons/S06/RUNBOOK.md) · [过程参考](lessons/S06/REFERENCE.md) · [概念题](lessons/S06/questions.json) · [学生页](../course-student-template/lesson-08/README.md)|
 
 09–32对应S07–S30。其旧具体材料已完整移入根级归档，当前检查和导航不加载；不得按目录数字误将S06归档。

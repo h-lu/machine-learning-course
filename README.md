@@ -4,7 +4,7 @@
 
 - [学生入口](course-student-template/README.md)
 - [hblu.top 学生课程首页](https://hblu.top/gitea/machine-learning-2026/course-student-release-2026)
-- [第08课：用一次实验区分失败解释](course-student-template/lesson-08/README.md)
+- [第08课：用对照实验诊断预测误差](course-student-template/lesson-08/README.md)
 - [32次完整大纲](machine-learning-course/COURSE_MAP.md)
 - [教师索引与过程参考](course-instructor/LESSON_INDEX.md)
 - [维护规范](AGENTS.md)

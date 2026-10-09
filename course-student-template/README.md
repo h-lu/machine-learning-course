@@ -15,7 +15,7 @@
 - [第05课：验证怎样接近实际使用](lesson-05/README.md)
 - [第06课：总体误差能决定行动吗](lesson-06/README.md)
 - [第07课：固定预算应该补哪些记录](lesson-07/README.md)
-- [第08课：用一次实验区分失败解释](lesson-08/README.md)
+- [第08课：用对照实验诊断预测误差](lesson-08/README.md)
 
 ## 数据与作品
 
