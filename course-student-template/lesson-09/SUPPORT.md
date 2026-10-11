@@ -18,13 +18,13 @@ python3 lesson-09/analysis.py --compare --output lesson-09/artifacts/first-compa
 
 ### summary.json：先看整体
 
-JSON是一种保存数据的格式，可以用编辑器打开，也可以请AI整理成表格。
+JSON（JavaScript Object Notation）是一种保存数据的格式，可以用编辑器打开，也可以请AI整理成表格。
 
-找到两种模型的MAE。它表示每小时的预测平均偏离实际多少次租借。较小的值表示本批验证记录中平均偏差较小。
+找到两种模型的平均绝对误差（mean absolute error，MAE）。它表示每小时的预测平均偏离实际多少次租借。较小的值表示本批验证记录中平均偏差较小。
 
 ### records.csv：再看具体小时
 
-CSV可以用表格软件打开。每行有：
+CSV（comma-separated values，逗号分隔值）可以用表格软件打开。每行有：
 
 |字段|含义|
 |---|---|
