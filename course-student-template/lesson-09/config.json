@@ -1,0 +1,10 @@
+{
+  "fields": [
+    "hr",
+    "workingday",
+    "temp",
+    "hum",
+    "windspeed"
+  ],
+  "depth": 2
+}

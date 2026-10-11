@@ -1,0 +1,32 @@
+{
+  "metrics": {
+    "n": 807,
+    "tp": 0,
+    "fp": 0,
+    "fn": 123,
+    "tn": 684,
+    "reviewed": 0,
+    "precision": null,
+    "recall": 0.0,
+    "accuracy": 0.8475836431226765,
+    "brier": 0.12516905894304586
+  },
+  "partition": "dev",
+  "training_rows": 3877,
+  "dimensions": 1200,
+  "final_test_opened": false,
+  "config": {
+    "representation": "tfidf",
+    "max_features": 1200,
+    "lr": 0.2,
+    "steps": 100,
+    "l2": 0.001,
+    "spam_weight": 1.0,
+    "seed": 0,
+    "initial_scale": 0.0,
+    "threshold": 0.5,
+    "capacity_fraction": 1.0
+  },
+  "data_manifest_sha256": "686ee5e28cc33d749f25ca1d170e550b700f80629b2c262986751a0a11b9cd0d",
+  "code_sha256": "94709300f375254151bb2c618e14487ecadc68e099cb8041f7515009e3f34efd"
+}

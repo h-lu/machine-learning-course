@@ -1,0 +1,46 @@
+{
+  "model": "sentence-transformers/paraphrase-MiniLM-L3-v2",
+  "revision": "4ca70771034acceecb2e72475f72050fcdde4ddc",
+  "license": "Apache-2.0 (upstream model card); LICENSE.txt is standard license text",
+  "dimension": 384,
+  "backend": "onnx/model_quint8_avx2.onnx",
+  "max_length": 128,
+  "pooling": "attention-mask mean then L2 normalize",
+  "files": [
+    {
+      "file": "1_Pooling/config.json",
+      "bytes": 190,
+      "sha256": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23"
+    },
+    {
+      "file": "LICENSE.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "file": "README.md",
+      "bytes": 3828,
+      "sha256": "367a3b024bae0609cd4c9c355d4ef968a974c03d9bde297550508472e5dc0db9"
+    },
+    {
+      "file": "config.json",
+      "bytes": 629,
+      "sha256": "fc00f0ca1c3380f17937a4050908dd2cf743c36bebe437cf448b8aa4e7ddfe4d"
+    },
+    {
+      "file": "onnx/model_quint8_avx2.onnx",
+      "bytes": 17490869,
+      "sha256": "7b411e18f5974428b388be5667cf76d57c2a52968e1d6b0153a30a8ccfb34204"
+    },
+    {
+      "file": "sentence_bert_config.json",
+      "bytes": 53,
+      "sha256": "70f4448f31320443fe3557cacea5abf2dcc4915dda8c80646bec9f3bb0aa5a1f"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 466248,
+      "sha256": "a9576e4dadfe7f78f071a1c00ba6902cc83ec6ed7e9b590ee974950bd4d54393"
+    }
+  ]
+}

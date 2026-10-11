@@ -1,0 +1,16 @@
+{
+  "rejected": [
+    "revision",
+    "dimension",
+    "max_length",
+    "pooling",
+    "vectors_sha256",
+    "split",
+    "text bytes with stale digest"
+  ],
+  "original_cache_still_valid": true,
+  "shape": [
+    807,
+    384
+  ]
+}

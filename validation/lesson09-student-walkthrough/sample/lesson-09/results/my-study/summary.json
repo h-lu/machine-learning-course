@@ -1,0 +1,44 @@
+{
+  "plan": {
+    "question": "工作日通勤小时的需求估计是否需要比加性线性更能表达分段关系的模型？",
+    "use": "同小时天气已知时复核运营需求估计，不能提前调度",
+    "choice1": {
+      "focus": "workingday=1且hr属于8、17、18",
+      "primary": "commute_MAE",
+      "secondary": "overall_MAE",
+      "reason": "错误在通勤小时可能影响需求复核，而不是只看大量低需求夜间小时"
+    },
+    "choice2": {
+      "depth": 3,
+      "reason": "允许比默认两层多一次条件分支，仍限制模型容量；和深度2结果对照，观察额外层是否改善已选重点"
+    },
+    "controls": [
+      "五个原始字段对线性和树相同",
+      "同13003训练和2208验证记录",
+      "只用训练拟合缩放与叶均值",
+      "未读取旧测试"
+    ],
+    "decision_rule": "主要比较通勤MAE；候选整体MAE若明显变差，应限制用途或不改。树深度3未改善通勤则保留深度2。"
+  },
+  "config": {
+    "fields": [
+      "hr",
+      "workingday",
+      "temp",
+      "hum",
+      "windspeed"
+    ],
+    "depth": 3
+  },
+  "train_n": 13003,
+  "dev_n": 2208,
+  "commute_n": 189,
+  "test_opened": false,
+  "models": [
+    "linear",
+    "tree_depth2",
+    "tree_depth3"
+  ],
+  "data_sha256": "see official source",
+  "purpose": "same-hour conditional estimation, not future dispatch or causal intervention"
+}

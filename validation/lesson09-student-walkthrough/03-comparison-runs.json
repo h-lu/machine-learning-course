@@ -1,0 +1,32 @@
+[
+  {
+    "command": [
+      "<PYTHON_ENV>/bin/python",
+      "lesson-09/analysis.py",
+      "--compare",
+      "--config",
+      "lesson-09/config.json",
+      "--output",
+      "lesson-09/artifacts/depth2"
+    ],
+    "seconds": 0.276320864999434,
+    "exit_code": 0,
+    "stdout": "{'linear': 146.48353463806205, 'shallow_tree': 128.11579744069076}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "<PYTHON_ENV>/bin/python",
+      "lesson-09/analysis.py",
+      "--compare",
+      "--config",
+      "lesson-09/my-depth3.json",
+      "--output",
+      "lesson-09/artifacts/depth3"
+    ],
+    "seconds": 0.2610580430045957,
+    "exit_code": 0,
+    "stdout": "{'linear': 146.48353463806205, 'shallow_tree': 119.26390929925401}\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,4 @@
+# Preserve upstream bytes and machine-generated vector artwork.
+SMSSpamCollection -text -diff
+original-readme.txt -text -diff
+figures/*.svg -text -diff

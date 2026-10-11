@@ -1,0 +1,45 @@
+{
+  "deleted_files": [
+    "lesson-09/artifacts/my-study/comparison.csv",
+    "lesson-09/artifacts/my-study/records.csv",
+    "lesson-09/artifacts/my-study/chosen-record.json",
+    "lesson-09/artifacts/my-study/transfer.json",
+    "lesson-09/artifacts/my-study/summary.json"
+  ],
+  "identical_after_rebuild": true,
+  "hashes": {
+    "lesson-09/artifacts/my-study/comparison.csv": "0968ccd7a6cd430d6b855aa1e87250b6eb980ae01bb22df5c6b9d4a0f244bbac",
+    "lesson-09/artifacts/my-study/records.csv": "70202d9aa4ff6a8b84b729c18f9e9995c37a0c71b69344a6c0ec2a3d4670510a",
+    "lesson-09/artifacts/my-study/chosen-record.json": "30656ab7fc47ba86694408107be39042df42ae6a352eb7c988b0f42145e1a5b9",
+    "lesson-09/artifacts/my-study/transfer.json": "79137a6a346fc3be7f63b9165680a71eed928f0b9312d254ae8be95a536ad63f",
+    "lesson-09/artifacts/my-study/summary.json": "bfea11dd69307f70a95e5c004218fde61e7be29505977db940ff6189d8ae89e2"
+  },
+  "runs": [
+    {
+      "command": [
+        "scripts/course.py",
+        "run",
+        "09"
+      ],
+      "seconds": 0.33881022498826496,
+      "exit": 0
+    },
+    {
+      "command": [
+        "scripts/course.py",
+        "check",
+        "09"
+      ],
+      "seconds": 0.0196987950039329,
+      "exit": 0
+    },
+    {
+      "command": [
+        "scripts/course.py",
+        "ci"
+      ],
+      "seconds": 0.3552299699949799,
+      "exit": 0
+    }
+  ]
+}

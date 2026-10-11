@@ -1,0 +1,11 @@
+{
+  "command": [
+    "<PYTHON_ENV>/bin/python",
+    "lesson-09/analysis.py"
+  ],
+  "cwd": "<STUDENT_WORK_COPY>",
+  "seconds": 0.2547367779916385,
+  "exit_code": 0,
+  "stdout": "{'training_mean': 197.82937894348797}\n",
+  "stderr": ""
+}

@@ -1,0 +1,67 @@
+运行lesson-09：<PYTHON_ENV>/bin/python lesson-09/my_analysis.py
+[
+  {
+    "method": "linear",
+    "group": "all",
+    "n": 2208,
+    "mae": 146.48353463806205,
+    "mean_signed_error": -57.29190515042795
+  },
+  {
+    "method": "linear",
+    "group": "commute",
+    "n": 189,
+    "mae": 489.66321301825127,
+    "mean_signed_error": -489.50212566708075
+  },
+  {
+    "method": "linear",
+    "group": "other",
+    "n": 2019,
+    "mae": 114.35824528003539,
+    "mean_signed_error": -16.83240456714545
+  },
+  {
+    "method": "tree_depth2",
+    "group": "all",
+    "n": 2208,
+    "mae": 128.11579744069076,
+    "mean_signed_error": -79.47996970970901
+  },
+  {
+    "method": "tree_depth2",
+    "group": "commute",
+    "n": 189,
+    "mae": 479.98271829207636,
+    "mean_signed_error": -478.2100580612401
+  },
+  {
+    "method": "tree_depth2",
+    "group": "other",
+    "n": 2019,
+    "mae": 95.17728924806478,
+    "mean_signed_error": -42.154567679773706
+  },
+  {
+    "method": "tree_depth3",
+    "group": "all",
+    "n": 2208,
+    "mae": 119.26390929925401,
+    "mean_signed_error": -80.82935511628611
+  },
+  {
+    "method": "tree_depth3",
+    "group": "commute",
+    "n": 189,
+    "mae": 455.75303317851444,
+    "mean_signed_error": -453.45648786414165
+  },
+  {
+    "method": "tree_depth3",
+    "group": "other",
+    "n": 2019,
+    "mae": 87.76492742051195,
+    "mean_signed_error": -45.94746898981523
+  }
+]
+diagnostic ID 14774

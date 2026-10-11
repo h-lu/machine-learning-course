@@ -1,0 +1,1 @@
+本目录保留首次路径关键原文件，字节不改；不是完整学生仓库，原文中的其他课次/数据链接需在完整student-frozen副本或基线5979da1中打开。全体247文件的SHA见上级frozen-manifest.json。完整固定副本在任务目录lesson09-walkthrough/student-frozen。

@@ -48,7 +48,7 @@ def inside(root: Path, relative: str) -> Path:
 
 def manifest(root: Path, lesson: str) -> dict:
     if lesson not in active_lessons(root):
-        raise ValueError(f"{lesson} 尚无本轮活跃课包；旧材料已归档，当前请使用教师指定的01–08课")
+        raise ValueError(f"{lesson} 尚无本轮活跃课包；旧材料已归档，当前请使用active_lessons.json中列出的课次")
     path = root / lesson / "submission.json"
     obj = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(obj, dict) or obj.get("lesson") != lesson:

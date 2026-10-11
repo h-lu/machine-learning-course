@@ -1,0 +1,229 @@
+{
+  "root": "<REPOSITORY>",
+  "profile": "planning",
+  "issues": [
+    {
+      "path": "COURSE_MAP.md",
+      "code": "missing",
+      "message": "缺少文件，请补齐或修正引用路径。",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：ENVIRONMENT.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-01/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-02/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-03/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-04/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-05/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-06/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-07/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-08/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：data/bike/LICENSE_AND_SOURCE.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：docs/ASSESSMENT.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：docs/SUBMISSION.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：docs/WORKFLOW.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：active_lessons.json",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-10/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-11/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-12/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-13/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：lesson-14/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/README.md",
+      "code": "link",
+      "message": "链接目标不存在：data/sms/DATA.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/lesson-09/README.md",
+      "code": "link",
+      "message": "链接目标不存在：../docs/WORKFLOW.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/lesson-09/README.md",
+      "code": "link",
+      "message": "链接目标不存在：../data/bike/LICENSE_AND_SOURCE.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-01/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-02/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-03/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-04/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-05/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-06/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-07/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-08/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-10/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-11/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-12/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-13/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "validation/lesson09-student-walkthrough/frozen-student-material/docs/LESSON_GUIDE.md",
+      "code": "link",
+      "message": "链接目标不存在：../lesson-14/README.md",
+      "severity": "error"
+    },
+    {
+      "path": "course-instructor/lessons/S06/REFERENCE.md",
+      "code": "wording",
+      "message": "请用具体动作或解释替换旧说法：使用决定",
+      "severity": "error"
+    }
+  ],
+  "stats": {}
+}

@@ -1,0 +1,19 @@
+{
+  "lesson": "lesson-11",
+  "status": "not_started",
+  "report": "lesson-11/report.md",
+  "artifacts": [
+    "lesson-11/artifacts/baseline/summary.json",
+    "lesson-11/artifacts/baseline/records.csv",
+    "lesson-11/artifacts/baseline/representation.json",
+    "lesson-11/artifacts/baseline/config.json",
+    "lesson-11/artifacts/baseline/first_update.json",
+    "lesson-11/artifacts/baseline/model.npz",
+    "lesson-11/artifacts/baseline/curve.csv",
+    "lesson-11/artifacts/baseline/prediction_trace.json"
+  ],
+  "run": [
+    "python3",
+    "lesson-11/analysis.py"
+  ]
+}

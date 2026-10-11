@@ -1,0 +1,10 @@
+{
+  "kind": "deliberate robustness probe, not spontaneous student failure",
+  "command": [
+    "<PYTHON_ENV>/bin/python",
+    "lesson-09/my_analysis.py"
+  ],
+  "seconds": 0.09523266000906006,
+  "exit_code": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"<STUDENT_WORK_COPY>/lesson-09/my_analysis.py\", line 12, in <module>\n    if OUT.exists() and any(OUT.iterdir()):raise ValueError('Keep old evidence; choose a fresh directory or use the reproduction checker')\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Keep old evidence; choose a fresh directory or use the reproduction checker\n"
+}

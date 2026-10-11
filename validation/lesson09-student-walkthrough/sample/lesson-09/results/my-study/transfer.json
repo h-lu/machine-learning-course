@@ -1,0 +1,10 @@
+{
+  "changed_sample": [
+    1,
+    6
+  ],
+  "slope": 2.0,
+  "intercept": 1.5,
+  "old_parameters_unchanged": false,
+  "warning": "Changing a target can alter the fitted intercept even when the slope happens to stay unchanged."
+}

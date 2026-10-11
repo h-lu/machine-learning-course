@@ -1,0 +1,16 @@
+{
+  "lesson": "lesson-09",
+  "status": "complete",
+  "report": "lesson-09/report.md",
+  "artifacts": [
+    "lesson-09/artifacts/my-study/comparison.csv",
+    "lesson-09/artifacts/my-study/records.csv",
+    "lesson-09/artifacts/my-study/chosen-record.json",
+    "lesson-09/artifacts/my-study/transfer.json",
+    "lesson-09/artifacts/my-study/summary.json"
+  ],
+  "run": [
+    "python3",
+    "lesson-09/my_analysis.py"
+  ]
+}

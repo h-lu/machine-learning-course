@@ -1,0 +1,89 @@
+{
+  "instant": 14774,
+  "date": "2012-09-12",
+  "hr": 18,
+  "actual": 977,
+  "selection": "largest absolute tree_depth3 error among the predeclared commute group, chosen for diagnosis not representativeness",
+  "fields": [
+    "intercept_constant",
+    "hr",
+    "workingday",
+    "temp",
+    "hum",
+    "windspeed"
+  ],
+  "raw": [
+    18.0,
+    1.0,
+    0.66,
+    0.44,
+    0.2537
+  ],
+  "standardized_with_constant": [
+    1.0,
+    0.9324924847149985,
+    0.6784945811689567,
+    0.9328729573553095,
+    -0.9186913084451944,
+    0.4638408602937359
+  ],
+  "train_mean": [
+    11.555333384603554,
+    0.6847650542182573,
+    0.4816196262400983,
+    0.6235238021994887,
+    0.19608339613934714
+  ],
+  "train_scale": [
+    6.911226332688522,
+    0.464609378660968,
+    0.19121614830127487,
+    0.19976655979263244,
+    0.12421631812291407
+  ],
+  "coefficients": [
+    167.71345074213693,
+    45.536692657176715,
+    0.4417684930183484,
+    58.62590173804554,
+    -36.74538213976613,
+    0.37743781694432615
+  ],
+  "contributions": [
+    167.71345074213693,
+    42.46262368159394,
+    0.29973752864412545,
+    54.69051833199232,
+    33.757663197300424,
+    0.17507108171884586
+  ],
+  "linear": 299.0990645633866,
+  "tree_depth2": 283.7581959070137,
+  "tree_depth3": 308.5117661041122,
+  "tree_path": [
+    {
+      "feature": 0,
+      "value": 18.0,
+      "threshold": 6.0,
+      "branch": "right"
+    },
+    {
+      "feature": 2,
+      "value": 0.66,
+      "threshold": 0.46,
+      "branch": "right"
+    },
+    {
+      "feature": 0,
+      "value": 18.0,
+      "threshold": 20.0,
+      "branch": "left"
+    },
+    {
+      "leaf_n": 4207,
+      "leaf_mean": 308.5117661041122
+    }
+  ],
+  "leaf_count_independent": 4207,
+  "leaf_mean_independent": 308.5117661041122
+}

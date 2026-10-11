@@ -1,0 +1,16 @@
+{
+  "base": "5979da1b9d256b3f6830e3f60893b9a0284a948f",
+  "changed_existing_files": [
+    "course-student-template/README.md",
+    "course-student-template/lesson-09/LEARN.md",
+    "course-student-template/lesson-09/README.md",
+    "course-student-template/lesson-09/SUPPORT.md",
+    "course-student-template/lesson-09/analysis.py",
+    "course-student-template/mlcourse/bike_models09.py"
+  ],
+  "previous_386_protected_files_unchanged": true,
+  "lessons01_08_unchanged": true,
+  "lessons10_14_unchanged": true,
+  "lessons15_32_planning_unchanged": true,
+  "remote_actions": false
+}

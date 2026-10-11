@@ -1,0 +1,89 @@
+{
+  "scope": "Only evidence interpretation and its audit; no course/model/data changes",
+  "training_rows": 13003,
+  "training_mean": 167.71345074213642,
+  "split": {
+    "train": "date < 2012-07-01",
+    "validation": "2012-07-01 <= date < 2012-10-01",
+    "test_read": false
+  },
+  "metrics": {
+    "training_mean": {
+      "all": {
+        "n": 2208,
+        "mae": 197.82937894348797
+      },
+      "commute": {
+        "n": 189,
+        "mae": 594.7702894773571
+      },
+      "other": {
+        "n": 2019,
+        "mae": 160.67146309856412
+      }
+    },
+    "linear": {
+      "all": {
+        "n": 2208,
+        "mae": 146.48353463806203
+      },
+      "commute": {
+        "n": 189,
+        "mae": 489.66321301825127
+      },
+      "other": {
+        "n": 2019,
+        "mae": 114.35824528003539
+      }
+    },
+    "tree_depth2": {
+      "all": {
+        "n": 2208,
+        "mae": 128.11579744069078
+      },
+      "commute": {
+        "n": 189,
+        "mae": 479.9827182920766
+      },
+      "other": {
+        "n": 2019,
+        "mae": 95.17728924806478
+      }
+    },
+    "tree_depth3": {
+      "all": {
+        "n": 2208,
+        "mae": 119.26390929925401
+      },
+      "commute": {
+        "n": 189,
+        "mae": 455.7530331785145
+      },
+      "other": {
+        "n": 2019,
+        "mae": 87.76492742051195
+      }
+    }
+  },
+  "tree3_relative_reduction": {
+    "training_mean": {
+      "all": 0.39713752357619747,
+      "commute": 0.23373268429564853
+    },
+    "linear": {
+      "all": 0.18582037500708504,
+      "commute": 0.06925204699515142
+    },
+    "tree_depth2": {
+      "all": 0.06909287003060349,
+      "commute": 0.050480328124684615
+    }
+  },
+  "prior_acceptance_threshold": false,
+  "prior_action_cost": false,
+  "prior_plan_sha256": "87a75ee46712554508e1a5f9e428c1fea2a90a148b928f19224ab7ad4b97b5e4",
+  "records_sha256": "70202d9aa4ff6a8b84b729c18f9e9995c37a0c71b69344a6c0ec2a3d4670510a",
+  "diagnostic_selection": "largest observed absolute tree3 error within declared commute group, not representative sampling",
+  "submission_reproduction": "passed: existing run/artifacts reproduced byte-for-byte in disposable student copy",
+  "reproduction_log_sha256": "c815e51e5193275e161d8c1f3c9b1ecaa9212ad8089f8b3ea15136799b80db7d"
+}

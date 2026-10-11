@@ -1,0 +1,18 @@
+{
+  "rows": 2,
+  "zero_vectors": 0,
+  "recall400": 0.0,
+  "recall800": 0.0,
+  "example": {
+    "id": "sms-02864",
+    "label": "spam",
+    "token_count": 10,
+    "nonzero": 8,
+    "p400": 0.19031966876034973,
+    "p800": 0.20948460328780613,
+    "selected400": false,
+    "selected800": false
+  },
+  "final_test_opened": false,
+  "conclusion": "No all-OOV vector would weaken explanation B for this slice; any probability/recall improvement supports A partially, but does not establish sufficient semantic representation or unique cause. The candidate can still be rejected for cost or remaining misses."
+}

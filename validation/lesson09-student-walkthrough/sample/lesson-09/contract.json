@@ -1,0 +1,9 @@
+{
+  "lesson": "lesson-09",
+  "question": "相同原始信息下，浅树能改善工作日通勤小时的估计吗？",
+  "user": "用同小时实际天气复核需求估计的分析者",
+  "data_source": "UCI Bike Sharing hour.csv，官方字节未改",
+  "metric": "主：通勤MAE；辅：全体和其他时段MAE，次/小时",
+  "split_plan": "既有13003训练/2208验证；不读旧测试，不声称独立最终评价",
+  "initial_expectation": "多一层分支可能改善，但不预定足以解决通勤失败"
+}

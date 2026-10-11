@@ -1,0 +1,50 @@
+[
+  {
+    "encoder_manifest_sha256": "7be0758d71fd1781c2abf0017783e14b62f7cb4a11791870c865af3df9650ccc",
+    "model": "sentence-transformers/paraphrase-MiniLM-L3-v2",
+    "revision": "4ca70771034acceecb2e72475f72050fcdde4ddc",
+    "dimension": 384,
+    "max_length": 128,
+    "batch_size": 32,
+    "pooling": "attention-mask mean then L2 normalize",
+    "dtype": "float32",
+    "provider": "CPUExecutionProvider",
+    "threads": 1,
+    "seconds": 6.787876788992435,
+    "split": "train",
+    "vectors_sha256": "b74619604f86de3916b736d58fa21df1ff1a7f43ce4b221c71936feea1a0e5f9",
+    "fitted_on_sms": false
+  },
+  {
+    "encoder_manifest_sha256": "7be0758d71fd1781c2abf0017783e14b62f7cb4a11791870c865af3df9650ccc",
+    "model": "sentence-transformers/paraphrase-MiniLM-L3-v2",
+    "revision": "4ca70771034acceecb2e72475f72050fcdde4ddc",
+    "dimension": 384,
+    "max_length": 128,
+    "batch_size": 32,
+    "pooling": "attention-mask mean then L2 normalize",
+    "dtype": "float32",
+    "provider": "CPUExecutionProvider",
+    "threads": 1,
+    "seconds": 1.7310944409982767,
+    "split": "dev",
+    "vectors_sha256": "e82a1eb2752340fb4cc625ad068e30b4ffca4417607e4dc721ad6751cbaae2ae",
+    "fitted_on_sms": false
+  },
+  {
+    "encoder_manifest_sha256": "7be0758d71fd1781c2abf0017783e14b62f7cb4a11791870c865af3df9650ccc",
+    "model": "sentence-transformers/paraphrase-MiniLM-L3-v2",
+    "revision": "4ca70771034acceecb2e72475f72050fcdde4ddc",
+    "dimension": 384,
+    "max_length": 128,
+    "batch_size": 32,
+    "pooling": "attention-mask mean then L2 normalize",
+    "dtype": "float32",
+    "provider": "CPUExecutionProvider",
+    "threads": 1,
+    "seconds": 1.3681073290063068,
+    "split": "finalholdout",
+    "vectors_sha256": "c0fb525e2231df5fdd5701492ecdcf5ea9f2e3cc0b2492dacfe3f4cfc1fd1c63",
+    "fitted_on_sms": false
+  }
+]

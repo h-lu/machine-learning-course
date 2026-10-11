@@ -9,7 +9,13 @@
     "lesson-05",
     "lesson-06",
     "lesson-07",
-    "lesson-08"
+    "lesson-08",
+    "lesson-09",
+    "lesson-10",
+    "lesson-11",
+    "lesson-12",
+    "lesson-13",
+    "lesson-14"
   ],
   "active_instructor_lessons": [
     "C01",
@@ -19,8 +25,14 @@
     "S03",
     "S04",
     "S05",
-    "S06"
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12"
   ],
   "archive_root_relative_to_project": "archives/2026-10-09-before-90min-redesign",
-  "status": "local redesign; 32 planned lessons, concrete active packages 01–08; no production deployment"
+  "status": "01–08 preserved; 09–14 local classroom packages, author CPU verified; 15–32 unchanged planning; no deployment"
 }

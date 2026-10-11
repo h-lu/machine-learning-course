@@ -1,0 +1,672 @@
+{
+  "python": "3.12.5 (main, Aug 14 2024, 05:08:31) [Clang 18.1.8 ]",
+  "scope": "local author verification; no publication or historical score mutation",
+  "real_student_trial": false,
+  "timings_are_execution_not_learning_time": true,
+  "documents_and_bank_structure": [
+    {
+      "number": 1,
+      "lesson": "C01",
+      "complete_files": true,
+      "bank_structure": true
+    },
+    {
+      "number": 2,
+      "lesson": "C02",
+      "complete_files": true,
+      "bank_structure": true
+    },
+    {
+      "number": 3,
+      "lesson": "S01",
+      "complete_files": true,
+      "bank_structure": true
+    },
+    {
+      "number": 4,
+      "lesson": "S02",
+      "complete_files": true,
+      "bank_structure": true
+    },
+    {
+      "number": 5,
+      "lesson": "S03",
+      "complete_files": true,
+      "bank_structure": true
+    },
+    {
+      "number": 6,
+      "lesson": "S04",
+      "complete_files": true,
+      "bank_structure": true
+    },
+    {
+      "number": 7,
+      "lesson": "S05",
+      "complete_files": true,
+      "bank_structure": true
+    },
+    {
+      "number": 8,
+      "lesson": "S06",
+      "complete_files": true,
+      "bank_structure": true
+    }
+  ],
+  "references": {
+    "student_open_starters": [
+      {
+        "lesson": "C01",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-01/analysis.py",
+            "--config",
+            "config.json",
+            "--output",
+            "artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2136,
+          "output": "数据起点已准备：<TEMP_DIR>/student/lesson-01/artifacts/author-starter；研究状态仍为 not_started。\n先看 sample.csv 的结构；自行编写实验并保存你选择的方法、结果和解释。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "audit.json",
+          "config_snapshot.json",
+          "sample.csv",
+          "summary.json"
+        ]
+      },
+      {
+        "lesson": "C02",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-02/analysis.py",
+            "--config",
+            "config.json",
+            "--output",
+            "artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2153,
+          "output": "数据起点已准备：<TEMP_DIR>/student/lesson-02/artifacts/author-starter；研究状态仍为 not_started。\n先看 sample.csv 的结构；自行编写实验并保存你选择的方法、结果和解释。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "audit.json",
+          "baseline.json",
+          "config_snapshot.json",
+          "sample.csv",
+          "summary.json"
+        ]
+      },
+      {
+        "lesson": "S01",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-03/analysis.py",
+            "--config",
+            "config.json",
+            "--output",
+            "artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2121,
+          "output": "数据起点已准备：<TEMP_DIR>/student/lesson-03/artifacts/author-starter；研究状态仍为 not_started。\n先看 sample.csv 的结构；自行编写实验并保存你选择的方法、结果和解释。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "audit.json",
+          "config_snapshot.json",
+          "sample.csv",
+          "summary.json"
+        ]
+      },
+      {
+        "lesson": "S02",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-04/analysis.py",
+            "--config",
+            "config.json",
+            "--output",
+            "artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2113,
+          "output": "数据起点已准备：<TEMP_DIR>/student/lesson-04/artifacts/author-starter；研究状态仍为 not_started。\n先看 sample.csv 的结构；自行编写实验并保存你选择的方法、结果和解释。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "audit.json",
+          "config_snapshot.json",
+          "sample.csv",
+          "summary.json"
+        ]
+      },
+      {
+        "lesson": "S03",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-05/analysis.py",
+            "--config",
+            "config.json",
+            "--output",
+            "artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2216,
+          "output": "数据起点已准备：<TEMP_DIR>/student/lesson-05/artifacts/author-starter；研究状态仍为 not_started。\n先看 sample.csv 的结构；自行编写实验并保存你选择的方法、结果和解释。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "audit.json",
+          "config_snapshot.json",
+          "sample.csv",
+          "split_manifest.csv",
+          "summary.json"
+        ]
+      },
+      {
+        "lesson": "S04",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-06/analysis.py",
+            "--config",
+            "config.json",
+            "--output",
+            "artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2141,
+          "output": "数据起点已准备：<TEMP_DIR>/student/lesson-06/artifacts/author-starter；研究状态仍为 not_started。\n先看 sample.csv 的结构；自行编写实验并保存你选择的方法、结果和解释。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "audit.json",
+          "config_snapshot.json",
+          "sample.csv",
+          "summary.json"
+        ]
+      },
+      {
+        "lesson": "S05",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-07/analysis.py",
+            "--config",
+            "config.json",
+            "--output",
+            "artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.21,
+          "output": "数据起点已准备：<TEMP_DIR>/student/lesson-07/artifacts/author-starter；研究状态仍为 not_started。\n先看 sample.csv 的结构；自行编写实验并保存你选择的方法、结果和解释。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "audit.json",
+          "config_snapshot.json",
+          "sample.csv",
+          "summary.json"
+        ]
+      },
+      {
+        "lesson": "S06",
+        "execution": {
+          "command": [
+            "<PYTHON_ENV>/bin/python",
+            "lesson-08/analysis.py",
+            "--output",
+            "lesson-08/artifacts/author-starter"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2228,
+          "output": "结果写入：lesson-08/artifacts/author-starter\nvalidation: n=2208；训练均值基线=167.713 次租借\n尚无候选；请自行设计对照、核算与失败检查，再更新自己的提交清单。"
+        },
+        "scope": "data/necessary baseline starter only; does not complete the open standard task",
+        "outputs": [
+          "comparison.csv",
+          "data_audit.json",
+          "records.csv",
+          "summary.json"
+        ]
+      }
+    ],
+    "teacher_optional_reference_experiments": [
+      {
+        "lesson": "C01",
+        "number": 1,
+        "executions": [
+          {
+            "call": "optional bike_course.run_lesson",
+            "lesson": 1,
+            "config": {
+              "intercept": 30.0,
+              "slope": 300.0,
+              "inspect_count": 12
+            },
+            "scope": "teacher numerical reference; not the student's standard route"
+          }
+        ],
+        "independent_record_recalculations": [
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "manual_rule",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 175.44972826086956
+          }
+        ],
+        "result_sha256": {
+          "trace.csv": "600ad2b4f2b1077a953762bb652ac0acef2aac4c7615f39730787cacfad8101d",
+          "records.csv": "43ce5e1fd2b61d5c5d3ba311418667e94a17759dbffa5a395c3a36d0d902f7f9",
+          "model.json": "aa001c7d9487dbd8ba9bb619a25b89f36ba533dca3eb4acced5b0f6b86c614a7",
+          "config_snapshot.json": "c6fb1802e94fc1bdfadc4b08f74a5bf480df1c24cf080204913e483bf5871ea9",
+          "summary.json": "706b010d3bcf7ab69f120b756d843d23738d48bb3f76ccdfdb11a6ce5e4e3932"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      },
+      {
+        "lesson": "C02",
+        "number": 2,
+        "executions": [
+          {
+            "call": "optional bike_course.run_lesson",
+            "lesson": 2,
+            "config": {
+              "method": "temp_linear",
+              "inspect_count": 12
+            },
+            "scope": "teacher numerical reference; not the student's standard route"
+          }
+        ],
+        "independent_record_recalculations": [
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "temp_linear",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 174.29402691551385
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "mean",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 197.82937894348797
+          }
+        ],
+        "result_sha256": {
+          "trace.csv": "eb4801cbe433768d3a3115489ca778c52df5661e7ac72fad21862e52ec423297",
+          "records.csv": "37413b5409c7e5bbd9eecfe63afa1fe825c6df1d5f090076f9847ac6f79d23ba",
+          "model.json": "65cc9f288f17b3e822ead5b97a77af4b5fdd723c6cea53775caf9248410143f3",
+          "config_snapshot.json": "12d31ca28959a1a633af3c11adf1e40f84a259abeb0e7668307319c5fe0df3f7",
+          "summary.json": "49af82e78689f64a99440f2ea264dd7cd2c2bb8e02ebfcd53193ea65fdaf507e"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      },
+      {
+        "lesson": "S01",
+        "number": 3,
+        "executions": [
+          {
+            "call": "optional bike_course.run_lesson",
+            "lesson": 3,
+            "config": {
+              "purpose": "same_hour_estimation",
+              "input_fields": [
+                "temp",
+                "hr",
+                "workingday"
+              ],
+              "rule_field": "temp",
+              "intercept": 30.0,
+              "slope": 300.0,
+              "alert_threshold": 200.0,
+              "inspect_count": 12
+            },
+            "scope": "teacher numerical reference; not the student's standard route"
+          }
+        ],
+        "independent_record_recalculations": [
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "manual_rule",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 175.44972826086956
+          }
+        ],
+        "result_sha256": {
+          "trace.csv": "b302897532148d5986b85f14cfb3ef3807df344e82deeacd3dce692ddd3ece61",
+          "alerts.csv": "3d39d5b7f8d1b83145a7046d46b7a377a0776ee98c67579bd42ce5c94d130aa4",
+          "field_audit.csv": "64ca25ed05f0054682653c10bb8e8a35ff85a7548e7e86af80007a1bd2bb1016",
+          "records.csv": "0a34d3cf7f5fb874137afee87bbc23bd35a93d6fccf8fadf4c0ef7d1b7e3ce29",
+          "model.json": "aa001c7d9487dbd8ba9bb619a25b89f36ba533dca3eb4acced5b0f6b86c614a7",
+          "config_snapshot.json": "71ef09575e54a836415d1899f4dd9600f5f8148a16ca8ac25aaf2d4eabc895e8",
+          "summary.json": "42e24992b1d772d8d8efdadcdcb7b83de892d4c4f586670bd6ddbd9f62db91d7"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      },
+      {
+        "lesson": "S02",
+        "number": 4,
+        "executions": [
+          {
+            "call": "optional bike_course.run_lesson",
+            "lesson": 4,
+            "config": {},
+            "scope": "teacher numerical reference; not the student's standard route"
+          }
+        ],
+        "independent_record_recalculations": [],
+        "result_sha256": {
+          "records.csv": "0090fc4027086c9a8292f3bca8b8b2b3980ffc8220690ca2c2588496dc9ed6bf",
+          "missing_hours.csv": "fba3bb6ebdca43523857b002af4d773c593c34f8369adeb0d7a426f79bf86fad",
+          "coverage_hour.csv": "8850a828a69fde2020868c927e3e5ce0812dee3619c26e53cc23340b33849b83",
+          "coverage_month.csv": "0d028980443542622b18ca88a0b879a4ca7f9161990440e422c42b42e7204c0e",
+          "audit.json": "3dcdb60f3784aa8dea724f1e938bac97c201c47149c8873b9e9f853e3b216961",
+          "config_snapshot.json": "12ac19baf5e3f2074fd2479562fd169a43b505a317d87ba57bb6334cea8f5783",
+          "summary.json": "fafe7b5bc7e53482f9b84b40120896391c3dbeb3baefaba48974ffa42a848449"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      },
+      {
+        "lesson": "S03",
+        "number": 5,
+        "executions": [
+          {
+            "call": "optional bike_course.run_lesson",
+            "lesson": 5,
+            "config": {
+              "split": "time",
+              "seed": 17,
+              "method": "temp_linear",
+              "leakage_demo": false
+            },
+            "scope": "teacher numerical reference; not the student's standard route"
+          }
+        ],
+        "independent_record_recalculations": [
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "temp_linear",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 174.29402691551385
+          }
+        ],
+        "result_sha256": {
+          "split_manifest.csv": "8e948032dd20c5c55cccd28b5b595bce7e85ac40ec617e766b02e26459d628e1",
+          "records.csv": "42f28ccc94740489464a0c384cf0af29339b32f60a66b2ba8b6d9f4b4f3cb676",
+          "model.json": "fa1a48ac127a4398bd1c89cf4b0075e84bfaacb9087584ca5100f7dc0fa9200d",
+          "config_snapshot.json": "a4d6ba0a9443f1fd287af92ade6beb32148d02a2efb74f5355f29e81fc132b02",
+          "summary.json": "1f4e3c9643a061386ac4d781d7aa0ce4436616811ce82a97c24b380a874531a4"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      },
+      {
+        "lesson": "S04",
+        "number": 6,
+        "executions": [
+          {
+            "call": "optional bike_course.run_lesson",
+            "lesson": 6,
+            "config": {
+              "method": "hour_mean",
+              "alert_threshold": 300.0,
+              "daily_capacity": 4,
+              "underestimate_weight": 2.0,
+              "inspect_count": 12
+            },
+            "scope": "teacher numerical reference; not the student's standard route"
+          }
+        ],
+        "independent_record_recalculations": [
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "hour_mean",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 136.70789351189399
+          }
+        ],
+        "result_sha256": {
+          "trace.csv": "35bd2341e66bd45865e9026cde726b670a78f97aaaef867115ffbe5852fcadc3",
+          "daily_capacity.csv": "e333a324077056830e14d2a19a704e449f2ff022d780b9cc6a086a5d446a6763",
+          "records.csv": "6d89819734f666f80dd0e7a4b36e888ad4965ed75ad039b3881b6ff9c9c90f6e",
+          "model.json": "4feba03993fb3f679ff8d89c6412ec2d3bb5eb2aa48de6ef8991ab0a464ab898",
+          "config_snapshot.json": "e099024e98503cbbf669fd27047b921c3b75b3a301a33a0658826410d99ebb72",
+          "summary.json": "00f9dadc7f333b70294c631555b66658f973274e00701b1b30fccbc1575b9adf"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      },
+      {
+        "lesson": "S05",
+        "number": 7,
+        "executions": [
+          {
+            "call": "optional bike_course.run_lesson",
+            "lesson": 7,
+            "config": {
+              "stage": "reveal",
+              "method": "coverage",
+              "seeds": [
+                11,
+                29,
+                47
+              ],
+              "initial_size": 240,
+              "budget": 120,
+              "selection_note": "作者可选参考：先登记条件与预算，再揭示已选训练标签。",
+              "selection_plan": "artifacts/author-select/selection_plan.json"
+            },
+            "scope": "teacher numerical reference; not the student's standard route"
+          }
+        ],
+        "independent_record_recalculations": [
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "hour_workingday_mean",
+              "11",
+              "0"
+            ],
+            "n": 4416,
+            "mae": 133.06304347826088
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "hour_workingday_mean",
+              "11",
+              "120"
+            ],
+            "n": 4416,
+            "mae": 130.42820567428245
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "hour_workingday_mean",
+              "29",
+              "0"
+            ],
+            "n": 4416,
+            "mae": 120.85398550724636
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "hour_workingday_mean",
+              "29",
+              "120"
+            ],
+            "n": 4416,
+            "mae": 121.42033997290451
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "hour_workingday_mean",
+              "47",
+              "0"
+            ],
+            "n": 4416,
+            "mae": 129.0316123188406
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "hour_workingday_mean",
+              "47",
+              "120"
+            ],
+            "n": 4416,
+            "mae": 125.2516514207411
+          }
+        ],
+        "result_sha256": {
+          "records.csv": "79966f37554fe117e4f6ed507082624f1944bd474c18bb3226fc6a95646e57ea",
+          "learning_curve.csv": "7fa8b95227bb0143b73fb7aca7da680d174fc00c2339220cce68d918c14862bf",
+          "revealed_training.csv": "cc52b3045fdb4eb247213f4cafb33071cbd23d20439d8606672e7c869926eeaa",
+          "selection_manifest.csv": "99ca04f88a84314762f5af11031aa4d762f503af7f0f7ba933c8d5a265aba283",
+          "selection_plan.json": "187a32ee3755a61da64dc460afe8cc857e964bd69bc0dacca20f05fe80447b07",
+          "config_snapshot.json": "caac95c80b9e578cb04e89e7b754ec3bf48e608e7335e533236e9f27e4082c70",
+          "summary.json": "1f58e34b5bd720f17d5007d5617a1021360e87f2d6d47ffb19e92f2369e619d8"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      },
+      {
+        "lesson": "S06",
+        "number": 8,
+        "executions": [
+          {
+            "command": [
+              "<PYTHON_ENV>/bin/python",
+              "scripts/lesson08.py",
+              "preregister",
+              "--config",
+              "lesson-08/config-hour-onehot.json",
+              "--output",
+              "lesson-08/author-preregister.json"
+            ],
+            "exit_code": 0,
+            "seconds": 0.0463,
+            "output": "待填事前实验计划：lesson-08/author-preregister.json。先填写指标、解释和检查规则，再运行验证。"
+          },
+          {
+            "command": [
+              "<PYTHON_ENV>/bin/python",
+              "scripts/lesson08.py",
+              "bike",
+              "--config",
+              "lesson-08/config-hour-onehot.json",
+              "--preregister",
+              "lesson-08/author-preregister.json",
+              "--output",
+              "lesson-08/artifacts/author-reference"
+            ],
+            "exit_code": 0,
+            "seconds": 0.4439,
+            "output": "结果写入：lesson-08/artifacts/author-reference；先打开 comparison.csv\nvalidation/original: n=2208, overall MAE=148.299, commute MAE=294.663 次租借/小时\nvalidation/candidate: n=2208, overall MAE=111.204, commute MAE=194.124 次租借/小时\n测试尚未评价。先解释验证错误，再保存决策。"
+          }
+        ],
+        "independent_record_recalculations": [
+          {
+            "split_method_seed_budget": [
+              "train",
+              "original",
+              "",
+              ""
+            ],
+            "n": 13003,
+            "mae": 91.13688652706925
+          },
+          {
+            "split_method_seed_budget": [
+              "train",
+              "candidate",
+              "",
+              ""
+            ],
+            "n": 13003,
+            "mae": 61.78765318668265
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "original",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 148.2986821493119
+          },
+          {
+            "split_method_seed_budget": [
+              "validation",
+              "candidate",
+              "",
+              ""
+            ],
+            "n": 2208,
+            "mae": 111.2039458201682
+          }
+        ],
+        "result_sha256": {
+          "source_manifest.json": "f7dbe7ec98d5c9a9b962c72cf025beb65cac30c90b934b0ab26d4150abf1064d",
+          "feature_trace.csv": "3b117fa506fa8eb3d42deee884352658202d327e048b209a0af196d8aae3dc93",
+          "error_cases.csv": "eb47a57f5f14ddbc7c2b1ae1f163e1ee94f3a8a3938dfe87146bd0ddab2c0aef",
+          "group_metrics.csv": "ba8d09c50ef5500da5529c6fa21d70f53222ed87f1065261271288efd9e9f0e4",
+          "records.csv": "17952e77f3de379254939af76622e000a9a00d7b68552e4b835aee3c9a1c64c6",
+          "comparison.csv": "7b23f38639c581517a9bd82c3604dd4edca76abd45e0c0b7ce887b4669b2237f",
+          "condition_check.json": "ee16e3d39618c195a7c9f63f3a0f4517c342c1799add3c4de269328cb1aeba31",
+          "models.json": "48623c9f63eadf2d9afb557c28cb5fed50f5505936a075334f85d28be201c1c9",
+          "data_audit.json": "a78d11420a3daa4753be85e79c5f4c0e6715e08990c56ab6b6bef4adca1b0740",
+          "preregister-used.json": "cec908668da85e9893d538c513622f17205c2690895adb48ef74e003ebc16ff2",
+          "config-used.json": "bd8a88bc323fd25982eb6bff031710971510af46ca3ec5220a87ad584283c435",
+          "summary.json": "b075dc5c207c6f4922d71dc35effec3e0b392fdd4613d2167e7b5bbe56d16310",
+          "metrics.json": "b075dc5c207c6f4922d71dc35effec3e0b392fdd4613d2167e7b5bbe56d16310"
+        },
+        "test_scores_opened": false,
+        "scope": "author command and independent scalar arithmetic; not student trial"
+      }
+    ],
+    "standard_open_student_task_claimed_complete": false
+  },
+  "passed": true
+}

@@ -23,6 +23,14 @@ def main() -> int:
         command.extend(["--lesson", args.lesson])
     if args.output:
         command.extend(["--output", str(args.output.absolute())])
-    return subprocess.run(command, cwd=ROOT.parent, check=False).returncode
+    if args.lesson and args.lesson.startswith('S') and int(args.lesson[1:]) >= 7:
+        command = [sys.executable, str(ROOT.parent / 'tools/validate_lessons09_14.py')]
+        if args.output:
+            command.extend(['--output', str(args.output.absolute())])
+        return subprocess.run(command, cwd=ROOT.parent, check=False).returncode
+    result = subprocess.run(command, cwd=ROOT.parent, check=False).returncode
+    if result == 0 and not args.lesson:
+        result = subprocess.run([sys.executable, str(ROOT.parent / 'tools/validate_lessons09_14.py')], cwd=ROOT.parent, check=False).returncode
+    return result
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -1,0 +1,10 @@
+{
+  "slice": "dev spam messages with <=12 tokenizer tokens",
+  "explanation_a": "400 updates may leave the fixed TF-IDF head under-trained",
+  "explanation_b": "the selected short messages may be all OOV, so this representation provides no input signal",
+  "experiment": "fixed representation/settings; 400 vs 800 updates; examine nonzero count and per-ID probability, not only total accuracy",
+  "prediction_a": "training loss and some missed probabilities should improve with more updates",
+  "prediction_b": "all-zero representations share intercept-only scores and adding updates cannot separate their texts",
+  "primary": "same short-spam IDs: recall at fixed threshold 0.5; also examine vector nonzero counts",
+  "controls": "same train/dev IDs, vocabulary/IDF, L2=.001, uniform weights, initialization, lr=1, threshold=.5, capacity=1"
+}

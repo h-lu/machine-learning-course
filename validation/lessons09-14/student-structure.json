@@ -1,0 +1,9 @@
+{
+  "root": "<REPOSITORY>/course-student-template",
+  "profile": "student",
+  "issues": [],
+  "stats": {
+    "lessons": 14,
+    "not_started": 14
+  }
+}

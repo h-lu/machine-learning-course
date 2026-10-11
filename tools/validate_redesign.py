@@ -162,8 +162,8 @@ def references(selected):
 
 def documents():
     checks = []
-    require({p.name for p in STUDENT.glob("lesson-*") if p.is_dir()} == {f"lesson-{i:02d}" for i in range(1, 9)}, "active student directories must be exactly 01–08")
-    require({p.name for p in (ROOT / "course-instructor/lessons").iterdir() if p.is_dir()} == set(IDS), "active teacher directories mismatch")
+    require({p.name for p in STUDENT.glob("lesson-*") if p.is_dir()} >= {f"lesson-{i:02d}" for i in range(1, 9)}, "historical 01–08 directories must remain available")
+    require({p.name for p in (ROOT / "course-instructor/lessons").iterdir() if p.is_dir()} >= set(IDS), "active teacher directories mismatch")
     map_text = (ROOT / "machine-learning-course/COURSE_MAP.md").read_text()
     require(len(re.findall(r"^### \d\d", map_text, re.M)) == 32, "planning must contain all 32 lessons")
     for number, identifier in enumerate(IDS, 1):

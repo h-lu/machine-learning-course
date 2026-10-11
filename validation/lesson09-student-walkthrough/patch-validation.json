@@ -1,0 +1,18 @@
+{
+  "chosen_id": 14774,
+  "linear_matches_student_calculation": true,
+  "tree_matches_independent_leaf_mean": true,
+  "intercept_label_explicit": true,
+  "invalid_or_test_id_rejected": [
+    {
+      "id": 1,
+      "rejected": true,
+      "message": "analysis.py: error: This ID is not in the development validation partition; choose one from records.csv"
+    },
+    {
+      "id": 16000,
+      "rejected": true,
+      "message": "analysis.py: error: This ID is not in the development validation partition; choose one from records.csv"
+    }
+  ]
+}

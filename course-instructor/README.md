@@ -1,6 +1,6 @@
 # 机器学习2026–2027教师材料
 
-本次重设计以[32次90分钟大纲](../machine-learning-course/COURSE_MAP.md)和[实施框架](../REDESIGN_FRAMEWORK.md)为准。当前具体课包为01–08；09–32旧具体材料归档，本轮不制作后续新课包。
+本次重设计以[32次90分钟大纲](../machine-learning-course/COURSE_MAP.md)和[实施框架](../REDESIGN_FRAMEWORK.md)为准。当前具体课包为01–14；本轮新增09–14，15–32仍为原规划，旧具体材料继续归档。
 
 [教师课次索引](LESSON_INDEX.md)提供运行单、过程参考与本地概念题。[课程设计](COURSE_DESIGN.md)说明深度、递进与自学验收；[发布说明](RELEASE.md)记录本地验收和仍待真人试教的限制。[评分](GRADING.md)保持原制度。
 

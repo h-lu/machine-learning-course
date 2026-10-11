@@ -1,0 +1,35 @@
+{
+  "scope": "disposable author interface test, no grades changed, not student completion",
+  "lessons": [
+    {
+      "lesson": "lesson-09",
+      "byte_identical": true,
+      "seconds": 0.5459740639926167
+    },
+    {
+      "lesson": "lesson-10",
+      "byte_identical": true,
+      "seconds": 0.44614567000826355
+    },
+    {
+      "lesson": "lesson-11",
+      "byte_identical": true,
+      "seconds": 5.256457689989475
+    },
+    {
+      "lesson": "lesson-12",
+      "byte_identical": true,
+      "seconds": 5.308171737997327
+    },
+    {
+      "lesson": "lesson-13",
+      "byte_identical": true,
+      "seconds": 3.252058810001472
+    },
+    {
+      "lesson": "lesson-14",
+      "byte_identical": true,
+      "seconds": 5.258331830991665
+    }
+  ]
+}
