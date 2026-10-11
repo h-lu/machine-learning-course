@@ -1,41 +1,141 @@
-# 卡住时再看：运行、选记录、提交
+# 第09课 · 从运行程序到读懂结果
 
-## 想先运行两种模型
+## 1. 先运行一次完整比较
 
-从学生仓库根目录运行：
+在学生仓库根目录运行。这个目录里应有 `lesson-09`、`data` 和 `scripts`。
 
 ```bash
-python3 lesson-09/analysis.py --compare --output lesson-09/artifacts/example
+python3 lesson-09/analysis.py --compare --output lesson-09/artifacts/first-comparison
 ```
 
-它用相同训练/验证记录，给两方相同字段，默认树深度2。它只完成拟合和预测，不替你选择失败问题、分组、评价重点或建议。若自己实现，仍保持这些公平条件。
+程序会使用相同的训练记录，分别建立线性模型和浅树，再用相同的验证记录检查预测。默认使用五个字段，树深度为2。
 
-想改设置，复制config.json为my-config.json。fields列两方共同使用的字段；允许hr、workingday、temp、hum、windspeed。depth是树一条路径最多经过几次分组，可选1–5。不要使用目标cnt的组成项casual、registered，或把instant编号当业务输入。
+如果提示结果目录不是空的，换一个新名字，例如 `second-comparison`。这样可以保留旧结果，之后知道自己改过什么。
+
+## 2. 先打开哪个文件？
+
+结果在命令中指定的目录里。三个文件可以按下面的顺序看。
+
+### summary.json：先看整体
+
+JSON是一种保存数据的格式，可以用编辑器打开，也可以请AI整理成表格。
+
+找到两种模型的MAE。它表示每小时的预测平均偏离实际多少次租借。较小的值表示本批验证记录中平均偏差较小。
+
+### records.csv：再看具体小时
+
+CSV可以用表格软件打开。每行有：
+
+|字段|含义|
+|---|---|
+|instant|这个小时在原数据中的编号|
+|method|使用哪一种模型|
+|actual|实际租借次数|
+|prediction|预测租借次数|
+|absolute_error|预测与实际相差多少次，不带正负号|
+
+同一个 `instant` 会出现两行，因为两种模型都预测了这个小时。它们不是两个不同的小时。
+
+先任选一个编号，检查“预测值与实际值相减后取绝对值”，是否等于 `absolute_error`。这样能确认自己没有读错列。
+
+### trace.json：最后追一条预测
+
+它记录默认第一条验证记录的预测过程。线性各项怎样相加、树怎样分组，见[LEARN第7节](LEARN.md#7-怎样核对一条真实预测)。
+
+## 3. 想检查另一条记录，怎样选？
+
+从 `records.csv` 找到想检查的 `instant`，在命令里加 `--trace-id`。
+
+例如，你选中了编号14774，可以运行：
+
+```bash
+python3 lesson-09/analysis.py --compare --trace-id 14774 --output lesson-09/artifacts/trace-14774
+```
+
+这个编号只是演示命令怎样写，不要求你选它。你应选择与自己的问题有关的验证记录，并说明理由。
+
+更换追踪编号只改变 `trace.json` 重点展示哪一条记录，不改变训练和评价用的数据。训练集或旧测试集中的编号不能用于这里。
+
+## 4. 想看“工作日高峰”，怎样筛选？
+
+先把条件说清楚。例如，定义为“工作日，并且小时是8、17或18”。
+
+`records.csv` 没有小时和工作日字段。这些信息在 `data/bike/hour.csv` 中，可以按相同的 `instant` 编号把它们补到结果表旁边：
+
+- `dteday` 是日期；
+- `hr` 是小时；
+- `workingday` 中1表示工作日。
+
+可以用表格软件查找，也可以请AI写代码合并。合并后抽查一个编号，确认两边对应的是同一小时。只保留本次验证结果中的编号，不把训练或旧测试记录加进来。
+
+然后按你的条件筛选，分别计算两种模型的MAE：
+
+**这一组的MAE = 选中小时的绝对误差合计 ÷ 选中小时数。**
+
+例如，某模型在三个选中小时的误差是10、20、30次，MAE就是20次/小时。另一模型也必须用这三个小时，单独求平均。
+
+不要把两模型的六行一起平均，也不要只留下预测好的小时。报告中同时写出选中了多少个小时；一个都没选中时，应写“没有可比较记录”，而不是“误差为0”。
+
+## 5. 想改字段或树深度，怎样做？
+
+复制 `lesson-09/config.json`，另存为 `lesson-09/my-config.json`，再修改新文件。
+
+- `fields` 是两种模型共同使用的输入字段；
+- `depth` 是树最多经过几次分组，可选1至5。
+
+允许使用的字段是 `hr`、`workingday`、`temp`、`hum`、`windspeed`。
+
+不要把 `casual` 和 `registered` 放进输入：它们相加就是要预测的 `cnt`，等于提前把答案给了模型。`instant` 是记录编号，也不作为预测输入。
+
+运行自己的配置：
 
 ```bash
 python3 lesson-09/analysis.py --compare --config lesson-09/my-config.json --output lesson-09/artifacts/my-comparison
 ```
 
-## 不知道输出里看什么
+比较新旧设置时，先只改一项，会更容易说明结果变化的原因。如果同时改了很多项，只能比较整套方案，不能轻易说是某一项导致了改善。
 
-JSON 文件可用平时写代码的编辑器打开，CSV 文件可用表格软件打开，或请 AI 帮你读取。文件名不是统计概念：`summary` 是汇总，`records` 是逐条结果，`trace` 是一次预测的计算记录。
+## 6. 报告和两个JSON文件分别做什么？
 
-|文件|先看什么|
+`report.md` 是你给读者看的分析。可以直接用[现成提纲](report.md)，写问题、比较、一次预测的计算、建议和限制。
+
+`contract.json` 是开始时的简短计划，不是另外一篇报告：
+
+|字段|写什么|
 |---|---|
-|summary.json|两方法在相同验证记录上的MAE；值小表示平均少错一些|
-|records.csv|instant是原记录编号；actual实际值、prediction预测、absolute_error绝对差|
-|trace.json|linear_columns按顺序标出截距与所选字段（默认共六项）；tree给分组路径与叶均值，详见LEARN|
+|question|想弄清什么问题|
+|user|结果准备给谁参考|
+|data_source|使用什么数据|
+|metric|主要用什么指标比较|
+|split_plan|哪些记录训练，哪些记录验证|
+|initial_expectation|看结果之前有什么猜想|
 
-默认追踪第一条验证记录。若它不属于你要研究的情形，从records.csv选自己的instant，再在比较命令里加`--trace-id 你的编号`，输出到新目录。此参数只换追踪哪条记录，不改变两方训练或评价的记录。训练部分或旧测试部分的ID会被拒绝。
+猜想与结果不同没有关系，在报告中解释即可。如果问题是看过结果后才提出的，也应照实说明。
 
-要算自己的分组，先写清规则，例如“工作日且小时为8、17或18”。`records.csv` 中的 `method` 区分模型；一个小时的 `instant` 在两种模型里相同。默认文件没有日期和小时，要从 `data/bike/hour.csv` 中按这个编号找回 `dteday`（日期）、`hr`（小时）和 `workingday`（是否工作日）。只保留已经出现在本次验证结果中的编号，不把其他日期的记录加进来。可以请 AI 帮你完成这一步，但要抽查一条编号是否对应正确。
+`submission.json` 则供检查程序使用。它需要知道：运行哪条命令，结果在哪些文件里，报告在哪里。
 
-对选中小时，分别将每个模型的 `absolute_error` 加起来，再除以小时数。例如三个小时的误差是10、20、30次，MAE就是20次/小时。两种模型必须用同样的小时，且分别计算，不能把两种模型的六行混在一起平均。写明一共有多少个小时；如果没有选中记录，应写“本次没有可比较的记录”，不能填误差0。不要只留下预测好的小时。算法源码在mlcourse/bike_models09.py，是否阅读由你的问题决定。
+例如，如果正式分析采用上面的自定义配置，`run` 应按词拆成数组：
 
-## 怎样算完成并交给别人重跑
+```json
+["python3", "lesson-09/analysis.py", "--compare", "--config", "lesson-09/my-config.json", "--output", "lesson-09/artifacts/my-comparison"]
+```
 
-只得到example输出尚未完成。还要有自己的两项选择、一条计算核对、公平比较和限制，写在同一份report.md。`contract.json` 是开始实验时的简短计划，不是额外一篇报告。里面的 `question` 写想弄清什么，`user` 写结果给谁用，`data_source` 写数据来源，`metric` 写主要比较什么（例如所选时段的 MAE），`split_plan` 写哪些记录用于训练、哪些用于比较，`initial_expectation` 写看结果前的猜想。猜错不等于任务失败，报告中解释结果即可。submission.json的run填从学生根目录执行的命令，artifacts列它产生的文件。
+`artifacts` 应列出这个命令生成的三个文件：该目录下的 `summary.json`、`records.csv` 和 `trace.json`。若另外生成了分组比较结果，也把相应文件及生成步骤纳入自己的正式程序和提交声明。
 
-均值起点生成summary.json、records.csv；--compare还生成trace.json，三者都要列入。自己另写程序时按实际输出修改。命令要写成 `run` 数组，每个词或参数单独一项；具体格式可对照[提交流程](../docs/WORKFLOW.md)。保存结果的目录名必须与 `artifacts` 中的路径一致。完成后把status改为complete，用`python3 scripts/course.py check 09`检查文件；本地`python3 scripts/course.py ci`会在临时副本中删除清单结果再重跑。它只证明文件和重现，不评判理解或作品质量。
+## 7. 提交前怎样检查？
 
-直接重复同一非空输出目录会报错，这是为了保留旧证据。改用新目录，或按上述临时副本流程重现；不要删除原作品来凑通过。
+先确认报告里的数字能在结果文件中找到，再把 `status` 改为 `complete`，运行：
+
+```bash
+python3 scripts/course.py check 09
+```
+
+还可以运行本地重现检查：
+
+```bash
+python3 scripts/course.py ci
+```
+
+它会按课程规则检查已启用的课次，并在临时副本中重新生成已完成课次声明的结果，不需要你删除原来的文件。
+
+检查通过说明文件和运行过程符合要求，不代替对分析内容的判断。最后按[课程提交流程](../docs/WORKFLOW.md)提交即可。
