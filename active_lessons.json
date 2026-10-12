@@ -9,7 +9,8 @@
     "lesson-05",
     "lesson-06",
     "lesson-07",
-    "lesson-08"
+    "lesson-08",
+    "lesson-09"
   ],
   "active_instructor_lessons": [
     "C01",
@@ -19,8 +20,9 @@
     "S03",
     "S04",
     "S05",
-    "S06"
+    "S06",
+    "S07"
   ],
   "archive_root_relative_to_project": "archives/2026-10-09-before-90min-redesign",
-  "status": "local redesign; 32 planned lessons, concrete active packages 01–08; no production deployment"
+  "status": "Reviewed lessons 01–09; historical assignments and sessions retain their original versions."
 }

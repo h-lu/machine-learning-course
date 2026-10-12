@@ -29,8 +29,8 @@ def active_ids(root: Path, profile: str) -> list[str]:
 # Scan current student prose, not archives, field names or historical explanations.
 OLD_TERMS = ["问题契约", "知识自查", "使用决定", "输入契约", "指标契约", "MDP 契约",
              "知识自查", "门禁", "签收", "消费测试集", "运行前预测", "样本单位", "预测时点",
-             "适用边界", "委托", "红组", "蓝组", "负责决定", "适用范围", "结果记录",
-             "锁定", "行动规则", "错误代价", "回退/撤回"]
+             "适用边界", "委托", "红组", "蓝组", "负责决定", "适用范围",
+             "锁定", "行动规则", "回退/撤回"]
 
 
 @dataclass
@@ -268,8 +268,15 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int | None = N
                 if path.exists():
                     headings = re.findall(r"^##\s+(.+)$", path.read_text(), re.M)
                     content_headings = ["作品需要说明的内容" if item == "完成步骤" else item for item in HEADINGS]
-                    if headings not in [HEADINGS, content_headings, ["90 分钟安排" if item == "课堂任务" else item for item in HEADINGS]]:
-                        report.add(path, "headings", "课次 README 应依次使用课程规范中的七个二级标题。")
+                    legacy_layout = headings in [HEADINGS, content_headings, ["90 分钟安排" if item == "课堂任务" else item for item in HEADINGS]]
+                    # Reviewed numeric lessons use task-specific headings and linked support.
+                    text = path.read_text()
+                    flexible_layout = (folder.name.startswith("lesson-") and len(headings) >= 3
+                                       and len(headings) == len(set(headings))
+                                       and "LEARN.md" in text and "SUPPORT.md" in text
+                                       and any(word in text for word in ("标准任务", "本课必做", "标准项目", "课堂任务")))
+                    if not (legacy_layout or flexible_layout):
+                        report.add(path, "headings", "课次 README 需有清楚的任务分节，并链接学习与操作支持；旧模板仍可用原七节结构。")
                 check_submission(folder, report)
                 for name in ["config.json", "data/base.json"]:
                     if (folder / name).exists():

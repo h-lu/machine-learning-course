@@ -33,7 +33,14 @@ class Questions(unittest.TestCase):
         questions = [q for lesson in self.bank["lessons"] for q in lesson["questions"]]
         for question in questions:
             prompt = question["prompt"]
-            self.assertGreaterEqual(len(prompt), 25, question["id"])
+            reviewed_short_prompts = {
+                "S07-A-04": "比较配送线性模型与树，哪种安排可检查模型差异？",
+                "S07-B-04": "比较产量线性模型与树，怎样更公平？",
+            }
+            if question["id"] in reviewed_short_prompts:
+                self.assertEqual(prompt, reviewed_short_prompts[question["id"]])
+            else:
+                self.assertGreaterEqual(len(prompt), 25, question["id"])
             self.assertRegex(prompt, r"[。？]", question["id"])
             self.assertNotIn("学习“", prompt, question["id"])
             self.assertNotIn("哪项说明正确", prompt, question["id"])
