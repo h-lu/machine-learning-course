@@ -6,6 +6,8 @@
 
 正常课次入口见下方列表或[课程导航](docs/LESSON_GUIDE.md)；点击第 01–09 课均进入新版教材。第一次运行从[环境与目录](ENVIRONMENT.md)开始。每课先读 `README.md` 中的课堂任务和证据要求，再按自己的问题选路线。`LEARN.md` 解释关键关系，`SUPPORT.md` 提供操作支持，`EXERCISES.md` 提供练习，`HINTS.md` 在卡住时给提示；按需要查阅即可。
 
+已有个人仓库需要取得第09课时，按[升级工具与同步步骤](docs/WORKFLOW.md#已有仓库怎样取得第09课)操作；升级后运行 `python3 scripts/course.py sync`。已有课次全部跳过，第1–8课不用重做。
+
 ## 当前学习页
 
 - [第01课：从真实小时记录得到一个预测](lesson-01/README.md)

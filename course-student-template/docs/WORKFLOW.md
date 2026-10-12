@@ -16,6 +16,28 @@ Python 需要 3.10 或以上。下文以 `python3` 为例；如果已准备的�
 
 目录和任务字段见[第一次运行指南](FIRST_RUN.md)，提交内容见[提交说明](SUBMISSION.md)。下面以第03课演示命令；用于其他课时，将课次、路径和标签中的编号改为实际课次。
 
+## 已有仓库怎样取得第09课
+
+第1–8课不用更新或重做。本次只补入缺少的第09课及其缺失共享文件；已有整课、代码、报告和结果全部跳过。工具只把第09课加入本地可运行课次清单，保留其他清单值，不同步后续课包。
+
+第一次先保存并提交自己的修改，再升级运行工具。在学生仓库根目录执行：
+
+```bash
+git remote add course-release ssh://git@hblu.top:2222/machine-learning-2026/course-student-release-2026.git
+git fetch course-release main
+git restore --source=course-release/main -- scripts/course.py
+```
+
+若提示`course-release already exists`，跳过添加远程这一步。若你自行改过`scripts/course.py`，先保留自己的版本并请教师协助，不直接执行覆盖工具的`git restore`。上述升级只更换运行工具，不恢复整个仓库。
+
+升级后，同步只需一条命令；重复运行不会覆盖已有内容：
+
+```bash
+python3 scripts/course.py sync
+```
+
+用`git status`和`git diff`查看新增文件及第09课登记，然后从[第09课任务](../lesson-09/README.md)开始。工具不会自动暂存、提交或推送；完成作品后按下文提交。
+
 ## 运行与提交示例
 
 从仓库根目录执行（以下以第 3 课为例）：

@@ -162,13 +162,72 @@ def ci(root: Path, ref: str = "") -> None:
     print("检查结束。尚未开始的项目未计为完成；统计质量由成果评价。")
 
 
+
+RELEASE_URL = "ssh://git@hblu.top:2222/machine-learning-2026/course-student-release-2026.git"
+# This release only adds lesson09; do not sync later or existing lesson packages.
+LESSON09_SHARED = (
+    "mlcourse/__init__.py", "mlcourse/bike_starter.py",
+    "mlcourse/bike_models09.py", "mlcourse/lesson_io.py",
+    "data/bike/hour.csv", "data/bike/LICENSE_AND_SOURCE.md", "data/bike/Readme.txt",
+)
+
+
+def sync(root: Path) -> None:
+    """Add missing lesson09/support files, preserving existing student content."""
+    def git(*args: str) -> bytes:
+        return subprocess.check_output(["git", *args], cwd=root)
+
+    manifest_path = inside(root, "active_lessons.json")
+    if (root / "active_lessons.json").is_symlink():
+        raise ValueError("active_lessons.json须为本地普通文件")
+    config = json.loads(manifest_path.read_text(encoding="utf-8"))
+    current = active_lessons(root)  # Validate before changing any content.
+    if "course-release" not in git("remote").decode().splitlines():
+        git("remote", "add", "course-release", RELEASE_URL)
+    git("fetch", "course-release", "main")
+    ref = "course-release/main"
+    lesson = root / "lesson-09"
+    prefixes = list(LESSON09_SHARED)
+    if not lesson.exists() and not lesson.is_symlink():
+        entry = git("ls-tree", ref, "--", "lesson-09").decode()
+        if not entry.startswith("040000 tree "):
+            raise ValueError("发布仓库尚未提供第09课")
+        prefixes.insert(0, "lesson-09")
+    else:
+        print("已存在，跳过整个lesson-09；不替换代码、报告或结果。")
+    pending = []
+    for entry in git("ls-tree", "-r", ref, "--", *prefixes).decode().splitlines():
+        metadata, relative = entry.split("\t", 1)
+        mode, kind, _ = metadata.split()
+        target = root / relative
+        if target.exists() or target.is_symlink():
+            continue
+        if kind != "blob" or mode not in {"100644", "100755"}:
+            raise ValueError(f"发布内容须为普通文件：{relative}")
+        target = inside(root, relative)
+        pending.append((target, git("show", f"{ref}:{relative}")))
+    for target, content in pending:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open("xb") as handle:
+            handle.write(content)
+    registered = False
+    if lesson.is_dir() and not lesson.is_symlink() and "lesson-09" not in current:
+        config["active_student_lessons"].append("lesson-09")
+        manifest_path.write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        registered = True
+    print(f"已补齐{len(pending)}个缺失文件；" + ("已登记第09课。" if registered else "课次清单无需改变。"))
+    print("已有内容保持不变。请用git status与git diff查看；不会自动提交或推送。")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["start", "run", "check", "ci"])
+    parser.add_argument("action", choices=["start", "run", "check", "sync", "ci"])
     parser.add_argument("lesson", nargs="?")
     args = parser.parse_args()
     try:
-        if args.action == "ci":
+        if args.action == "sync":
+            sync(ROOT)
+        elif args.action == "ci":
             ci(ROOT, os.getenv("GITHUB_REF", ""))
         else:
             if args.lesson is None:
