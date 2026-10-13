@@ -10,7 +10,8 @@
     "lesson-06",
     "lesson-07",
     "lesson-08",
-    "lesson-09"
+    "lesson-09",
+    "lesson-10"
   ],
   "active_instructor_lessons": [
     "C01",
@@ -24,5 +25,5 @@
     "S07"
   ],
   "archive_root_relative_to_project": "archives/2026-10-09-before-90min-redesign",
-  "status": "Reviewed lessons 01–09; historical assignments and sessions retain their original versions."
+  "status": "Reviewed lessons 01–09; lesson10 enabled for local technical checks. Formal banks and historical assignments retain their existing versions."
 }

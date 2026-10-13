@@ -87,8 +87,16 @@ def local_path(value, report: Report, source: Path) -> Path | None:
 def check_prose(path: Path, report: Report, student: bool = False) -> None:
     text = path.read_text(encoding="utf-8")
     if student:
+        allowed_terms = set()
+        # Literal approved lesson10 terminology, without relaxing other lessons.
+        relative = path.relative_to(report.root)
+        if report.profile == "student" and relative.parts[0] == "lesson-10":
+            if all(word in text for word in ("概率", "阈值", "容量")):
+                allowed_terms.add("行动规则")
+            if path.name == "README.md" and all(word in text for word in ("历史英语短信", "当前中文短信")):
+                allowed_terms.add("适用范围")
         for word in set(OLD_TERMS):
-            if word in text:
+            if word in text and word not in allowed_terms:
                 report.add(path, "wording", f"请用具体动作或解释替换旧说法：{word}")
         if re.search(r"\b(?:Core|Support|Upgrade|Transfer|Open extension)\b", text):
             # Headings may contain English only after the Chinese explanation.
@@ -148,12 +156,16 @@ def check_submission(folder: Path, report: Report) -> None:
     report.stats[status or "unknown"] = report.stats.get(status or "unknown", 0) + 1
 
 
-def check_question_set(value, path: Path, report: Report, lesson_id: str) -> None:
+def check_question_set(value, path: Path, report: Report, lesson_id: str, concept_numbers: list[int] | None = None) -> None:
     if not isinstance(value, dict) or value.get("lesson_id") != lesson_id:
         report.add(path, "questions", "题目课次与目录不一致。")
         return
+    numbers = list(range(1, 6)) if concept_numbers is None else concept_numbers
+    if not isinstance(numbers, list) or len(numbers) != 5 or any(type(n) is not int or not 1 <= n <= 99 for n in numbers) or numbers != sorted(set(numbers)):
+        report.add(path, "concepts", "离线草稿须明确五个按顺序排列且不重复的两位题号。")
+        return
     concepts = value.get("concepts")
-    expected_concept_ids = [f"{lesson_id}-{index:02d}" for index in range(1, 6)]
+    expected_concept_ids = [f"{lesson_id}-{index:02d}" for index in numbers]
     if not isinstance(concepts, list) or len(concepts) != 5:
         report.add(path, "concepts", "每课需要独立定义五个知识点，供 A、AI 学习和 B 三阶段共同使用。")
         concepts = []
@@ -164,8 +176,8 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
             continue
         concept_id = concept.get("concept_id")
         concept_ids.append(concept_id)
-        if concept_id != f"{lesson_id}-{index:02d}":
-            report.add(path, "concepts", "知识点编号应按课次写成 Lxx-01 至 Lxx-05。")
+        if concept_id != expected_concept_ids[index - 1]:
+            report.add(path, "concepts", "知识点编号须与本课明确登记的题号一致。")
         for key in ("title", "tutor_context"):
             if not isinstance(concept.get(key), str) or not concept[key].strip():
                 report.add(path, "concepts", f"知识点缺少非空字段 {key}。")
@@ -191,11 +203,11 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
             seen.add(qid)
         phases.append(q.get("phase"))
         question_concepts.append(q.get("concept_id"))
-        if isinstance(qid, str) and not re.fullmatch(r"(?:C\d{2}|S\d{2})-[AB]-0[1-5]", qid):
+        if isinstance(qid, str) and not re.fullmatch(r"(?:C\d{2}|S\d{2})-[AB]-\d{2}", qid):
             report.add(path, "questions", "题目编号必须使用 Lxx-A-01 或 Lxx-B-01 格式。")
         elif isinstance(qid, str):
             parts = qid.split("-")
-            if parts[0] != lesson_id or q.get("phase") != parts[1] or not 1 <= int(parts[2]) <= 5:
+            if parts[0] != lesson_id or q.get("phase") != parts[1] or int(parts[2]) not in numbers:
                 report.add(path, "questions", "题目编号必须与课次、阶段和题号一致。")
         options = q.get("options")
         if not isinstance(options, list) or len(options) != 4 or any(not isinstance(x, str) or not x.strip() for x in options):
@@ -215,6 +227,31 @@ def check_question_set(value, path: Path, report: Report, lesson_id: str) -> Non
     for concept_id in expected_concept_ids:
         if question_concepts.count(concept_id) != 2:
             report.add(path, "questions", f"知识点 {concept_id} 必须恰好有一道 A 题和一道 B 题。")
+
+
+def offline_instructor_lessons(root: Path, active: list[str]) -> dict:
+    path = root / "active_lessons.json"
+    if not path.exists():
+        return {}
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError("离线草稿清单须在JSON对象内登记")
+    offline = value.get("offline_instructor_lessons", {})
+    if not isinstance(offline, dict):
+        raise ValueError("offline_instructor_lessons须为明确的课次对象")
+    for lesson, entry in offline.items():
+        if lesson not in LESSONS or lesson in active or not isinstance(entry, dict):
+            raise ValueError("离线草稿课次须合法且不能同时登记为正式活跃课次")
+        filename = entry.get("questions")
+        if not isinstance(filename, str) or not filename.startswith("questions.draft-") or not filename.endswith(".json"):
+            raise ValueError("离线课次须明确登记questions.draft-*.json文件")
+        folder = (root / "lessons" / lesson).resolve()
+        if not (folder / filename).resolve().is_relative_to(folder):
+            raise ValueError("离线草稿题源不能越出本课目录")
+        numbers = entry.get("concept_numbers")
+        if not isinstance(numbers, list) or len(numbers) != 5 or any(type(n) is not int or not 1 <= n <= 99 for n in numbers) or numbers != sorted(set(numbers)):
+            raise ValueError("离线课次须明确登记五个不重复、有序的两位题号")
+    return offline
 
 
 def check_repo(root: Path, profile: str = "auto", expected_count: int | None = None) -> Report:
@@ -249,8 +286,15 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int | None = N
         except (OSError, ValueError, KeyError, TypeError) as exc:
             report.add(root / "active_lessons.json", "lesson_set", f"活跃课次清单无效：{exc}")
             expected_ids = []
-        count = len(expected_ids) if expected_count is None else expected_count
-        if ids != expected_ids or len(ids) != count:
+        offline = {}
+        if profile == "instructor":
+            try:
+                offline = offline_instructor_lessons(root, expected_ids)
+            except (OSError, ValueError, KeyError, TypeError) as exc:
+                report.add(root / "active_lessons.json", "offline", f"离线草稿清单无效：{exc}")
+        all_expected = [lesson for lesson in LESSONS if lesson in expected_ids or lesson in offline] if profile == "instructor" else expected_ids
+        count = len(all_expected) if expected_count is None else expected_count
+        if ids != all_expected or len(ids) != count:
             report.add(lesson_root, "lesson_set", "现行课包目录应与 active_lessons.json 完全一致；完整32课规划单独检查。")
         report.stats["lessons"] = len(folders)
         for folder in folders:
@@ -282,10 +326,12 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int | None = N
                     if (folder / name).exists():
                         read_json(folder / name, report)
             else:
-                for name in ["RUNBOOK.md", "REFERENCE.md", "questions.json"]:
+                entry = offline.get(folder.name)
+                question_file = entry["questions"] if entry else "questions.json"
+                for name in ["RUNBOOK.md", "REFERENCE.md", question_file]:
                     required(folder / name, report)
-                path = folder / "questions.json"
-                check_question_set(read_json(path, report), path, report, folder.name)
+                path = folder / question_file
+                check_question_set(read_json(path, report), path, report, folder.name, concept_numbers=entry["concept_numbers"] if entry else None)
     for path in root.rglob("*"):
         if any(part in (".git", ".venv", "__pycache__", ".pytest_cache", "artifacts", "archives") for part in path.relative_to(root).parts):
             continue

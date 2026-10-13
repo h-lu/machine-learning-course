@@ -1,0 +1,808 @@
+id,label,text,text_sha256,group_id,split
+sms-00004,ham,U dun say so early hor... U c already then say...,c76963e1d7581d1844a6fd2c57bd18f1fe031d67dbf6d8c6c2fb27edc9d39915,7f53f64259461b4c4dc8,dev
+sms-00007,ham,Even my brother is not like to speak with me. They treat me like aids patent.,8353bb57606780175dd200cbbb26c0459772e3679c07cab2f0784413afd7c08b,08939f7138d5b0bfaae6,dev
+sms-00019,ham,Fine if thats the way u feel. Thats the way its gota b,dbe1c0ff0dfb38d6540916d37baac93427211b68723f0901f9cabd4e1aa7d07e,dadfe55f0ec7a5f64ff8,dev
+sms-00020,spam,"England v Macedonia - dont miss the goals/team news. Txt ur national team to 87077 eg ENGLAND to 87077 Try:WALES, SCOTLAND 4txt/ú1.20 POBOXox36504W45WQ 16+",24120d0956109088bf5b11d5dedb64184611d13dc71700b56fd23613ba4a2a99,d5dcdc72e9c528aa15de,dev
+sms-00025,ham,Ffffffffff. Alright no way I can meet up with you sooner?,6599254e4e3ef17e8b7b498c33dc0f7c9f62b5fc28861e4c83920b6dabeb02c4,011425fa797b7bcbbc33,dev
+sms-00033,ham,K tell me anything about you.,acddf9b1a85d62950a0ba5614125290780c6ad2045dc8e4b423c8bd5087ffbe6,094df346c201129a3c20,dev
+sms-00036,ham,Yup... Ok i go home look at the timings then i msg ü again... Xuhui going to learn on 2nd may too but her lesson is at 8am,f2fe9ca423b00c3096317cfac1a7adef92848e038df26d8986641f1b040afa9e,f8f31f3e83bfbf79f768,dev
+sms-00053,ham,K fyi x has a ride early tomorrow morning but he's crashing at our place tonight,95404d940091a227c8c12212ccd426b32aeb828aec69c4bc6366ca359f270c7d,eb0dce0df3240b9db0fa,dev
+sms-00056,ham,Do you know what Mallika Sherawat did yesterday? Find out now @  &lt;URL&gt;,5bb4cf225fd64c7959c7c8ea88ae79719cf71b1fc9280ef9425bcbf21499226b,decc4da48d9677b7e352,dev
+sms-00057,spam,"Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now! C Suprman V, Matrix3, StarWars3, etc all 4 FREE! bx420-ip4-5we. 150pm. Dont miss out! ",ba91b7ba0bcec8565cea3baab2c540420e2db87c79fe4a6af8f1edff910aacf8,24fe31d0e3d424b9e150,dev
+sms-00058,ham,"Sorry, I'll call later in meeting.",5c09978008026b66793451a03c2356efe92dc3da9507de19bc93731bf360f209,735f457a06a868815ec0,dev
+sms-00059,ham,Tell where you reached,d71982a746b4ad90a3029ced76524c34c23666eab1ba263519303a51eab1a222,00e963a1bfdb2442704b,dev
+sms-00071,ham,Wah lucky man... Then can save money... Hee...,2050ef1c326536f22cd5408e24e716e260a177f9093734086e6392e0803daf3a,4cf51124abfaac2f17bf,dev
+sms-00094,spam,Please call our customer service representative on 0800 169 6031 between 10am-9pm as you have WON a guaranteed £1000 cash or £5000 prize!,5ec49e2b2537bf83eee1a6e943201495ee5eba42ba3de07ee513f08424d1de19,62471f7e14565ddf30b6,dev
+sms-00103,ham,I'm still looking for a car to buy. And have not gone 4the driving test yet.,b93d97a4838da53e03627b9d24df942a2ef2f02b2f1ddfb726acb4946ef66385,578eb563d74ca0e6fe08,dev
+sms-00105,ham,"wow. You're right! I didn't mean to do that. I guess once i gave up on boston men and changed my search location to nyc, something changed. Cuz on my signin page it still says boston.",13dedcbbddce77c9eab620ec49be299ae4d8b66d823cd4312a03cd7b88476cd6,f877039777a24aca8bfa,dev
+sms-00110,ham,I know! Grumpy old people. My mom was like you better not be lying. Then again I am always the one to play jokes...,34fcb347ece2ccd3e79e4ce20822dd809fa0a1a74c23fa58dcb61afd80c08aec,04919659b3ebc1168e7f,dev
+sms-00121,spam,PRIVATE! Your 2004 Account Statement for 07742676969 shows 786 unredeemed Bonus Points. To claim call 08719180248 Identifier Code: 45239 Expires,61292ff23881e54efee971e3cf36c43f266a68cdada0dba870d7c70e6e854aac,937c7b7403d43433a2f3,dev
+sms-00132,ham,I'm home.,7384eb9bcd361f06c344abfcd927b690ba9b7c5eb500c13715bcf595d4d7dc3d,33fa3adf8a09a3e101ea,dev
+sms-00139,ham,No no. I will check all rooms befor activities,3fb531fbe341dd9d143fb75f3cddfc032b54895a5763d39e2731a2d44b8f3bf0,ada0c57516e368093181,dev
+sms-00142,ham,"K, text me when you're on the way",09a046e9faa48ed2b1deb386b0bebd9fb30afcd0310dc06caa79421a61807e41,1c8697b0c23e407e25e3,dev
+sms-00153,ham,Yup i thk cine is better cos no need 2 go down 2 plaza mah.,dd785015747b2d5de01ebcef64cdfca85a7f02a779eb7de2e1d35dc85e7bf45f,c0be4ff86ca325906b8a,dev
+sms-00164,ham,I'm so in love with you. I'm excited each day i spend with you. You make me so happy.,f10c99581c082928c5f710b953dcca5b11325962ea0070168f5100f0be531f1a,f8bf74ec4b52dc81d841,dev
+sms-00166,spam,"BangBabes Ur order is on the way. U SHOULD receive a Service Msg 2 download UR content. If U do not, GoTo wap. bangb. tv on UR mobile internet/service menu",90113d3db7201d43cef3043c395750e3a74d9ea07a24cd4aa076a3997b3495ff,2ef502233aa79d8a79cc,dev
+sms-00174,ham,What time you coming down later? ,082b5fa091b8e4ada5930d6614f68e71b3dd332974a4168c4a61a9190011632d,05ec86adca36538af755,dev
+sms-00184,ham,ok. I am a gentleman and will treat you with dignity and respect.,ca73e220c75d81c098af01f9ea8001918e9c338623d82a7f1a0202614546e268,8ed717c0924cb4ec23f5,dev
+sms-00189,spam,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!,9b753a9470f93c6554421d35ddfbaa73479722a00955ff42f7421d31a8ac1157,62471f7e14565ddf30b6,dev
+sms-00192,spam,Are you unique enough? Find out from 30th August. www.areyouunique.co.uk,c31e26ffcbc8ede087987dda6cefeaf9cc1feb36e53edaf9b42a1b36e249ce7b,26071aa74ca41b08bbb5,dev
+sms-00197,ham,Gud mrng dear hav a nice day,1882952ddf7380e0b7f0ea2926e44f55f5d5898ad6e3fde0c75dd3379f957140,0d96b76a458df65cbd47,dev
+sms-00198,ham,Did u got that persons story,9ff0f91a50efa821df2834b3cedc42ff401e6b6ba6c8f5162a340d1b4f8c8418,a5b97137965c94ac5f00,dev
+sms-00202,ham,I sent you  &lt;#&gt;  bucks,d451a3ee786c50136a445f9bea63e0edaec0dda8fde49a86f68ed8b14db4b349,2cf38a198f48801ae377,dev
+sms-00204,ham,Your account has been refilled successfully by INR  &lt;DECIMAL&gt; . Your KeralaCircle prepaid account balance is Rs  &lt;DECIMAL&gt; . Your Transaction ID is KR &lt;#&gt; .,965eafe126d27d9b027d6590e5e93962a1af2d5c383539aef7614608acb0d621,0d1e573a3dac9e2c21f2,dev
+sms-00216,ham,Sounds great! Are you home now?,2c7e999ae188e497dbafc7297718e4969c83a6b23838398e3c8590332780b851,9346e5e1c1e3bee10167,dev
+sms-00218,ham,Tired. I haven't slept well the past few nights.,f89f478c4654d3da8c9de9ef3b63e02b346948ffed92518d5f23a01c21ef6ecb,c5658e80950bd0298608,dev
+sms-00220,ham,I have to take exam with march 3,0e3b174d3885b5014ba5c2a4fd0bb61572e50a4cc37525692fea947bb74b7168,02747408d3c834f8f6bc,dev
+sms-00230,ham,"Life is more strict than teacher... Bcoz Teacher teaches lesson &amp; then conducts exam, But Life first conducts Exam &amp; then teaches Lessons. Happy morning. . .",e873163e83e626bff0dfb791a3b00b2818d8e4c1b14f9444038a6d72234adf24,d8a7264c86a2dd86670d,dev
+sms-00241,spam,U 447801259231 have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094597,7617adfa9169bfaf347f6cf12dc176eb6b5d565ad864617ce288e73c5b946468,efd86bc7c59a70f079ad,dev
+sms-00262,ham,Yup,a1ca5756d9a7b959a727aea7f3ae3d6223facb363403e9913e984f5868fede2b,fab1dbfb8b7efed8cd3e,dev
+sms-00269,spam,Ur ringtone service has changed! 25 Free credits! Go to club4mobiles.com to choose content now! Stop? txt CLUB STOP to 87070. 150p/wk Club4 PO Box1146 MK45 2WT,15eee577c611298f961767e57362630a3f0a4a97e54ff00d53537c06f3744d28,6f422cf5587a0ef4f62c,dev
+sms-00274,spam,HMV BONUS SPECIAL 500 pounds of genuine HMV vouchers to be won. Just answer 4 easy questions. Play Now! Send HMV to 86688 More info:www.100percent-real.com,4995517d61b71396c4a51a4be63d055982a0fd60f81675e1d629ed33c50e2f51,2f9954fe257f873e4042,dev
+sms-00277,ham,Thanx...,d447b34a088e699096ba3298dc01816343c0fcb68e1b5254ba1e3c5601fd57d4,42ac79b37736977fbc99,dev
+sms-00290,ham,"My life Means a lot to me, Not because I love my life, But because I love the people in my life, The world calls them friends, I call them my World:-).. Ge:-)..",e76e4cbf514f5d25a5a4138173f77398e8981e03da4d9dee33923a4be599abe2,4d065fb58f63330aa732,dev
+sms-00294,ham,Oops. 4 got that bit.,9f676a77b05d6b7ebdf3736b8e7c1fb40677cdd886d53e86ade77a85554296d0,ec0e86858d7ae3332e2c,dev
+sms-00299,ham,Hurt me... Tease me... Make me cry... But in the end of my life when i die plz keep one rose on my grave and say STUPID I MISS U.. HAVE A NICE DAY BSLVYL,21bebbfd1b14950f8895da7e9653db7ee4cd8c5194b26c793c4d861f4f51878e,83a15900cdec0d864d62,dev
+sms-00310,spam,"TheMob> Check out our newest selection of content, Games, Tones, Gossip, babes and sport, Keep your mobile fit and funky text WAP to 82468",6a40ddbb2a6a6f973cec03784ffac3c12242f4da72945a2f6689c531021fd6f9,a3520aeefbee726829e6,dev
+sms-00318,ham,"Hmmm... Guess we can go 4 kb n power yoga... Haha, dunno we can tahan power yoga anot... Thk got lo oso, forgot liao...",a8d4802cb13c0c8594a1c58874c171a8e551912193fd90969113774e175fdc5e,cefaecdd0c5ccaa50fb8,dev
+sms-00321,ham,"Coffee cake, i guess...",8382dd7954be7105ad7e814ae70d3d39356b85f325182a47995495f0e6fbd68d,c13e40613a6f1a230ce2,dev
+sms-00323,ham,Hey... Why dont we just go watch x men and have lunch... Haha ,dc8e18d16cac9312fbece6a6c5920a4d5bc5f12ca35130486fd19ddce321bafd,7415e17fd0f9395f266e,dev
+sms-00324,ham,cud u tell ppl im gona b a bit l8 cos 2 buses hav gon past cos they were full & im still waitin 4 1. Pete x,83485aa6edcdd46b3b7b8a2b76b9db5130cdda98d2fc7086061f6dd0c1bdedc9,93540800639b7811f293,dev
+sms-00333,ham,Maybe i could get book out tomo then return it immediately ..? Or something.,b0c7096ab544d1d146b8d8761f51b5671ed7919d056af85f098ba6ffbc7aaa64,01d90af063637e3a52db,dev
+sms-00334,spam,Call Germany for only 1 pence per minute! Call from a fixed line via access number 0844 861 85 85. No prepayment. Direct access!,0a65c0bc2b5b66bb03d342376de4bf8eedff5d8766b2113035ad69e618515843,7f9d803eed5933c6b8ec,dev
+sms-00338,ham,Cool. So how come you havent been wined and dined before?,a5b82be556370ac97614bda8808a77f9f3fe10ef57c0f491fc16a1b50ffdbabc,9df4455c1116532092f5,dev
+sms-00339,ham,Just sleeping..and surfing,592bf95daf9f4220f39de3576790b8c34aeba062071a2ee084a48433b16cbf62,8b9881fcd9d1d4a1f4c3,dev
+sms-00347,ham,Gudnite....tc...practice going on,da625b969282b4e3b004a43e9ff20adc4e2ee90db4a37ddd0ba28dadeada3b8b,9bb305f805fc237e54e6,dev
+sms-00348,ham,Dis is yijue. I jus saw ur mail. In case huiming havent sent u my num. Dis is my num.,15b2f2d8bb4fd932c41b8aca34f9f61b407b0d243ac23bd641b88f10a50fe904,8ef962aa320a15bb1c09,dev
+sms-00362,ham,Ha ha cool cool chikku chikku:-):-DB-),bd1d1389e28884c3e7552ac9d90c8bc739ed949e5e7e59df7888000275ea197d,a3962460334b7a7907ad,dev
+sms-00367,ham,Well i know Z will take care of me. So no worries.,c0a31ab027dcd4b6aa02f3eb293d6266d4259579fb15a893d5e540b64214fa62,ee7bebb8214ed8594235,dev
+sms-00372,ham,"Hello my boytoy ... Geeee I miss you already and I just woke up. I wish you were here in bed with me, cuddling me. I love you ...",a1dfa4e752f64ce00f6cff64bb47a3047a53406a99446803f484038ea0a2fbbe,dfb7d101ee5f4ebda412,dev
+sms-00376,spam,"Thanks for your Ringtone Order, Reference T91. You will be charged GBP 4 per week. You can unsubscribe at anytime by calling customer services on 09057039994",c2e92231c2a1731138a3432f0b3631fb5fc6794db3982aefd527d70f0d38c2d1,8a3ef88a77629fd36c14,dev
+sms-00385,ham,Hey i will be late ah... Meet you at 945+,e4ec09fbe80418d68c5bb9c929a9889380a2f80b10ea65f83ecc8e611313dceb,145050f5561f8f725ae9,dev
+sms-00386,spam,"Double mins and txts 4 6months FREE Bluetooth on Orange. Available on Sony, Nokia Motorola phones. Call MobileUpd8 on 08000839402 or call2optout/N9DX",9e1608f7e314c4461e87d98c2c9958b7c9842488bd4a2b58d2aa6661cbc73606,c80e0581978bd5d50a37,dev
+sms-00392,ham,Huh so late... Fr dinner?,2084b818e3dd966e56207deab88fb20d3f82eec14b124d44bdf935d4a25b1849,fa7e107fe88a0bd528ce,dev
+sms-00401,ham,Hmmm...k...but i want to change the field quickly da:-)i wanna get system administrator or network administrator..,b100fdf33773b829949435c70a3d5f7ed42cbc50c4a086ff7a27921861f3b89e,b7ae80f5b388d6c36180,dev
+sms-00410,ham,Headin towards busetop,549bad14eeaa8e923d279e7eac9ad37e12a465dff7a3439a9cb59beb470a1878,6315da8c1a1bb312ffa8,dev
+sms-00425,spam,URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09058094455 from land line. Claim 3030. Valid 12hrs only,d64763351dfb0690141d76897b208c76c66c85fc50a2b4c32acd47bc1bae8ae7,4749aace322b01672389,dev
+sms-00434,spam,Congrats! Nokia 3650 video camera phone is your Call 09066382422 Calls cost 150ppm Ave call 3mins vary from mobiles 16+ Close 300603 post BCM4284 Ldn WC1N3XX,5f7803a269a03402833de8dabcb61c9f4ebf968a6e3e316576d6b5687c0924ed,83907a470802ff342578,dev
+sms-00440,ham,"Hi hope u get this txt~journey hasnt been gd,now about 50 mins late I think.",341d2019441727d764ae066578b279e375379959d4cdd85aab5644a3ecde16b3,3b43006f327d0e08796f,dev
+sms-00443,ham,You were supposed to wake ME up &gt;:(,39a3d81de5c75d274c176b2ca71556700371d9130777a62853b6588dcec1a828,d50d27d6c4d8b6e85ed6,dev
+sms-00446,ham,"""HEY HEY WERETHE MONKEESPEOPLE SAY WE MONKEYAROUND! HOWDY GORGEOUS, HOWU DOIN? FOUNDURSELF A JOBYET SAUSAGE?LOVE JEN XXX""",b02ba70f9dc1c4392cd93ba75c752bf520e0956fb3345140f990405c5abca5f6,c704441b239b648ab434,dev
+sms-00447,ham,"Sorry, my battery died, I can come by but I'm only getting a gram for now, where's your place?",75767e758dd7182e8f3b2476c369f67692f5ba146299075c5dc289509d69f7b1,3af9777648a020ab9ab6,dev
+sms-00459,ham,I hope you that's the result of being consistently intelligent and kind. Start asking him about practicum links and keep your ears open and all the best. ttyl,18a871c680cb7dd31f0152c618ffdb590ee14c92b2081bcf7568f38e6c1ef419,5a2cd306dbf575cc0d41,dev
+sms-00480,ham,"K, can I pick up another 8th when you're done?",39a522cc4a03750e459a02273bf93b9e4679fc7eba94b309321849a74ef0ebbd,870455eb7e76479ab605,dev
+sms-00481,ham,When're you guys getting back? G said you were thinking about not staying for mcr,d4a7714b16e6fd3648052625ac80ddac220618da973197dafb9eb1adf7082b32,d717265a5da67d5fb4a2,dev
+sms-00485,ham,Thank you baby! I cant wait to taste the real thing...,ae361bd13829f03af78adfba60057970d26c8b7247f683ba7dcd1ea2cc86dfbb,c0fa25ea908733b37924,dev
+sms-00491,ham,I think i've fixed it can you send a test message?,360e82df624f35734b44e92bce429abd29bf8f198cb8c94e6fa09805d4b17b34,1a0898ec578c9078b2b1,dev
+sms-00492,ham,"Sorry man my account's dry or I would, if you want we could trade back half or I could buy some shit with my credit card",62371755035442204c3d9f0030fad01c5c96a966df7f3cc3b8bbdc4872aa31f2,6406095606a5bed3e82b,dev
+sms-00493,spam,"Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now! C Suprman V, Matrix3, StarWars3, etc all 4 FREE! bx420-ip4-5we. 150pm. Dont miss out!",ec8fa4bb96e5d4f5f056b5ed446d8fe56bc3e7b980587939167caa5b0b62b6c0,24fe31d0e3d424b9e150,dev
+sms-00494,ham,"Sorry,in meeting I'll call later",d1052099514b22238af4c76f5f7d4ea480d137a4bbe7b2fcba1c59e629f09cf5,735f457a06a868815ec0,dev
+sms-00506,spam,+123 Congratulations - in this week's competition draw u have won the £1450 prize to claim just call 09050002311 b4280703. T&Cs/stop SMS 08718727868. Over 18 only 150ppm,fd878cec58d58f5f4e4307d9f95f1f7d55b4d18f8a162917f34d4e6fdb126b2d,44aa9da95f5336f01e00,dev
+sms-00516,spam,"You are guaranteed the latest Nokia Phone, a 40GB iPod MP3 player or a £500 prize! Txt word: COLLECT to No: 83355! IBHltd LdnW15H 150p/Mtmsgrcvd18+",e9cbf876814e762f2af215d383087c796780d7f59aff04f158681345289e04d3,1b0d60504ff43d6824e0,dev
+sms-00518,spam,Boltblue tones for 150p Reply POLY# or MONO# eg POLY3 1. Cha Cha Slide 2. Yeah 3. Slow Jamz 6. Toxic 8. Come With Me or STOP 4 more tones txt MORE,ad2ceefe48e831d21120f144118300be8ad331a61b818ac91f66d7ca2d6c777f,27e7ad7eb48df186ccbc,dev
+sms-00527,ham,Hi i won't b ard 4 christmas. But do enjoy n merry x'mas.,24d719c8f283ab211f770254e87c90a105248564b86ed0933c43b795f0b8b614,756b379fa05d80dab3ce,dev
+sms-00530,spam,You will recieve your tone within the next 24hrs. For Terms and conditions please see Channel U Teletext Pg 750,bbb69b8966b2581c84fb61b906688bfd6cdc22c3ac739598e77a707aa9200143,3fd156c355085bd22299,dev
+sms-00534,ham,Gudnite....tc...practice going on,da625b969282b4e3b004a43e9ff20adc4e2ee90db4a37ddd0ba28dadeada3b8b,9bb305f805fc237e54e6,dev
+sms-00535,ham,I'll be late...,a31f08a6234da6ae2d693346d640c1a61f2fad38d31d00bc1f89ba3225b7cd8a,dd9bd4af00896f03ef22,dev
+sms-00537,ham,"Good afternoon, my love! How goes that day ? I hope maybe you got some leads on a job. I think of you, boytoy and send you a passionate kiss from across the sea",80ace806fd965f3e313b970422cb1cee025d0f2d111600c409d8ec0db02d5e4d,c3ebb6b534a1a6c8433d,dev
+sms-00549,ham,"Sorry that took so long, omw now",edf00f505066deb1b0c6e460848a962ee6e3de3394dfa3bfa6c6480dc624c796,b8ac26be6b57baf99e63,dev
+sms-00555,ham,Ok. Every night take a warm bath drink a cup of milk and you'll see a work of magic. You still need to loose weight. Just so that you know,cccb1243d4f8bb1249b8aec53e2252414986dd60599a834c4068690e2f5c4138,a5f698f75aecb053bb52,dev
+sms-00556,ham,I‘ll have a look at the frying pan in case it‘s cheap or a book perhaps. No that‘s silly a frying pan isn‘t likely to be a book,e345c62967cbbcdb9c90cb08abe8dd78c9aa963fd07fc247270d23f1696631fe,f79a10a19bd94a76a5a9,dev
+sms-00568,ham,Oooh bed ridden ey? What are YOU thinking of?,1ccfb359ccede0225da861d22a2b0ebef71866ceaa0d3b3a2d5479c0a8d8c9e6,04b0e6039bbe92e9b805,dev
+sms-00571,ham,WOT U WANNA DO THEN MISSY?,de5e6f2b3d0f4ecf1a52236bf34b4c283c43a5fd79391156b408cfd5b79d140b,e05f0d99354c6316fbac,dev
+sms-00577,spam,"You have won ?1,000 cash or a ?2,000 prize! To claim, call09050000327",9aef2c422277fc30b51eb9aafd376ee6246475316f3e27976d9351dfa96859b7,321fe34c9fd51e782118,dev
+sms-00600,ham,Will do. Was exhausted on train this morning. Too much wine and pie. You sleep well too,d782409bf68b72b8deacad124fa49e1d98138d4534bd4a384f4d3f03aef8a68b,ea8c807a8cb5ef193db3,dev
+sms-00604,ham,Speaking of does he have any cash yet?,7177ae01bf02edf75aeacb9ce75ed0855cbef2356d1f297ecea5af79ec3c4817,375cf0828d333d35e61a,dev
+sms-00608,spam,XCLUSIVE@CLUBSAISAI 2MOROW 28/5 SOIREE SPECIALE ZOUK WITH NICHOLS FROM PARIS.FREE ROSES 2 ALL LADIES !!! info: 07946746291/07880867867 ,71b624dba15bc28d80a39ce5c43fa303778f32b6af232a5336df4e2eb10b74e1,22170badc6d323b8a513,dev
+sms-00609,ham,what I meant to say is cant wait to see u again getting bored of this bridgwater banter,9196f00894d5da093bab64b3410c6c350898645f6596376b7330921208803fd4,1c40869bdb6c4f7399f8,dev
+sms-00617,ham,"""Happy valentines day"" I know its early but i have hundreds of handsomes and beauties to wish. So i thought to finish off aunties and uncles 1st...",9313e9623da404fbeaf64e99189465eeb55dec871755cf4e7e5103142819f1b9,edf46579a73ee6f416d2,dev
+sms-00624,ham,MAKE SURE ALEX KNOWS HIS BIRTHDAY IS OVER IN FIFTEEN MINUTES AS FAR AS YOU'RE CONCERNED,c139793409ca9dc8a7db0feb73cb2765e173286a5868bd37d71f3fb510a1296c,36bbc512fa6d87fa0f4d,dev
+sms-00627,ham,"Haha good to hear, I'm officially paid and on the market for an 8th",25e5a6238a6f4227440d7e9796364d478927c6b3407d52b5bc9c9dcc5d36fc9c,ce21d8582b7bd2212fb9,dev
+sms-00629,ham,Yup i thk they r e teacher said that will make my face look longer. Darren ask me not 2 cut too short.,0bac07006faed1ef87de21fa3eebf38c85765b150742abf8cfd6c8068f531f4f,f0f4d4ea19ad680426c3,dev
+sms-00634,ham,Oh that was a forwarded message. I thought you send that to me,46873e25516110bc660668e8f8207bd3d7839b2df758a2e1ad29ad2ad8e66410,4e467ec5a8a4c194c621,dev
+sms-00636,spam,"Dear Voucher Holder, 2 claim this weeks offer, at your PC go to http://www.e-tlp.co.uk/expressoffer Ts&Cs apply.2 stop texts txt STOP to 80062.",7c1023e7dc8625f424d408c73f688f624119881339a2f77f77825eaed4cdc3ce,1806778a243685b6222c,dev
+sms-00643,ham," said kiss, kiss, i can't do the sound effects! He is a gorgeous man isn't he! Kind of person who needs a smile to brighten his day! ",4820af6138af41dc4159ef6e49eecce46287670928bfba981623826ae0caddcc,ad8ece82791aff4b553e,dev
+sms-00654,ham,"Wait, do you know if wesleys in town? I bet she does hella drugs!",0f41e2173c0ec0a836e1dbef9c061ee4310138901d1d80ccba6531add1f16cdb,cd6711bbdf97ba236dfa,dev
+sms-00656,ham,Did u got that persons story,9ff0f91a50efa821df2834b3cedc42ff401e6b6ba6c8f5162a340d1b4f8c8418,a5b97137965c94ac5f00,dev
+sms-00657,ham,Tell them the drug dealer's getting impatient,92655984e2cd334c33c8a4e0bc5d00da4e9a75f08b9e3a91416fc8c45fbffc0c,43bcfff28dfac460e88c,dev
+sms-00713,ham,It just seems like weird timing that the night that all you and g want is for me to come smoke is the same day as when a shitstorm is attributed to me always coming over and making everyone smoke,07b66ea9be3e038e26aaf8df0532f93193ec9df228ba8e9de580851fcb3f802f,40050f9f506641bba6c2,dev
+sms-00719,ham,Book which lesson? then you msg me... I will call up after work or sth... I'm going to get specs. My membership is PX3748,969b0bd9e57292f03b7cc23a4f271b4393107fe64e9e5da7373dd92413dc0d81,8fb7c11602b9914775e2,dev
+sms-00726,ham,"The world is running and i am still.maybe all are feeling the same,so be it.or i have to admit,i am mad.then where is the correction?or let me call this is life.and keep running with the world,may be u r also running.lets run.",20577707afe03b6dd49a7b8236fde8e3955a380b25e8af720cd0399546d2574a,ab176bb8b7057b5ad0b4,dev
+sms-00727,ham,Got it! It looks scrumptious... daddy wants to eat you all night long!,2767d9bc640f18fc597e337282802b2385acefe06b24aae41359f2735a0b8bec,f92b3115b87d68929e1c,dev
+sms-00729,ham,"Alright omw, gotta change my order to a half8th",32313202c59173f37b6406477e69148572e12099865d2fd88fba3ca9c09fa4b2,cb3408473c3e23918057,dev
+sms-00735,ham,Even u dont get in trouble while convincing..just tel him once or twice and just tel neglect his msgs dont c and read it..just dont reply,dfa484dabd4ad074c27bc40a866423f9f81b89c3e30bfc74cd91defcc930b24f,dc4c0dc235b47d05fdb6,dev
+sms-00737,ham,Then why no one talking to me,217c35d4d9b4bc591c4ee19326811c2f6e6172fafcb77f7bba3a68c5c5d945b7,dc9341742f1a7593a4ca,dev
+sms-00738,ham,Thanks for looking out for me. I really appreciate.,2396d7d90a882b4eb8f27817b9a1f0afa3f8f2a9f129aa0e107ab7f75fd41f88,b3f119714b5f0ebdb987,dev
+sms-00740,ham,Wish i were with you now!,863abb57396726e58c4f2d2000eef33dc4a8c3ab150de5c2baf6038641d9db47,23dace9b2d2102cd343e,dev
+sms-00743,ham,Do well :)all will for little time. Thing of good times ahead:,e722a2def5e0a258dc63f42f2eb30006af3a33c9b57e16b505439ce8e78068d2,87ad4a861ccf0e6b77f3,dev
+sms-00751,ham,By monday next week. Give me the full gist,ada2879f9cf3965713a899433d26287046cc4ca51acb0a203a59c6f2824ddf42,0215b5126b39ab49f124,dev
+sms-00756,ham,Realy sorry-i don't recognise this number and am now confused :) who r u please?! ,0267c0ad0f7bab16b5d7ae4a6bf6512da184f77d3fbec317a30bb52c6b08160b,4cc08be2ed6b47284dea,dev
+sms-00775,ham,I wil be there with in  &lt;#&gt;  minutes. Got any space,f51e64d0d055c29a139d7cb76635a175d9c3751032fff089bc0c95e07c1a890d,e1b985a4bf82f6bdfe3d,dev
+sms-00776,ham,Just sleeping..and surfing,592bf95daf9f4220f39de3576790b8c34aeba062071a2ee084a48433b16cbf62,8b9881fcd9d1d4a1f4c3,dev
+sms-00778,ham,Why don't you go tell your friend you're not sure you want to live with him because he smokes too much then spend hours begging him to come smoke,151af938cf037212da67014e6954c0cfc0f6563eef8f6e47177f9efe2cf9ecba,40236bddaddb17c4c4cf,dev
+sms-00779,ham,"""Hi its Kate it was lovely to see you tonight and ill phone you tomorrow. I got to sing and a guy gave me his card! xxx""",3088239dd62e4b554bf6033da230a5edb0b3914491c58f466f406173ade4b182,10f3a566828298e57539,dev
+sms-00784,ham,Beerage?,f11be05fe3cbcd46396d80d15f757dc01b46af3571f351e2978c918272487e65,bd67f63404cbf5ebae7a,dev
+sms-00791,ham,Gud mrng dear hav a nice day,1882952ddf7380e0b7f0ea2926e44f55f5d5898ad6e3fde0c75dd3379f957140,0d96b76a458df65cbd47,dev
+sms-00819,ham,Also are you bringing galileo or dobby,8c3853363d1faa9a67a70291dee8e1fafa5b1ad6a0d0dd4b82db7ef01ca040ca,02bd488110f1c6164b10,dev
+sms-00824,spam,"SMSSERVICES. for yourinclusive text credits, pls goto www.comuk.net login= 3qxj9 unsubscribe with STOP, no extra charge. help 08702840625.COMUK. 220-CM2 9AE",b62d16df77bb8269f835ee91d4df1784ddb9166f4acb85ef0026a82133ac0875,1a909cd2f1ff9ee0fb40,dev
+sms-00827,ham,Hmm .. Bits and pieces lol ... *sighs* ...,5354b034ea49578ee9bdfa88ae0f3b5cd250d9fd2ad60f2304bc997e1a83ebdd,0acd23ceabd5019547dd,dev
+sms-00831,ham,Thanks for yesterday sir. You have been wonderful. Hope you enjoyed the burial. MojiBiola,13731ab95e421fb367153ee7d59f703e4afd4478eded1dfdac3e8fc97e49e9c2,1307ca56dd9b1195b1b6,dev
+sms-00834,spam,"Dear Voucher Holder, To claim this weeks offer, at you PC please go to http://www.e-tlp.co.uk/expressoffer Ts&Cs apply. To stop texts, txt STOP to 80062",86dcec6c8d465b04bdce7d3337467235c8eb606106bc504461f3a9644554cae3,2b4b94a4f3125850c144,dev
+sms-00859,ham,Hai ana tomarrow am coming on morning.  &lt;DECIMAL&gt;  ill be there in sathy then we ll go to RTO office. Reply me after came to home.,7cf34937a302a494471f3c28cb6617097c184bcce25e01d2a16caae07d4f0d9e,577cff4e1b811de08d98,dev
+sms-00862,ham,In work now. Going have in few min.,d013021fdf90a510ba8460c68b74a769ad7502874741adbe9dc79be8ed8f3c4a,35222aeebb40e161483f,dev
+sms-00877,spam,"Shop till u Drop, IS IT YOU, either 10K, 5K, £500 Cash or £100 Travel voucher, Call now, 09064011000. NTT PO Box CR01327BT fixedline Cost 150ppm mobile vary",b0228c9805e1696987703b18839dc0a89e11206d86de87af8d4676880b5b9a3c,80c673803f822cf8d0b3,dev
+sms-00880,spam,U have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094565,9a21223cafe696deaf22baf5488c30e785e8ee1bf7535294cc4839e4ab090f7b,efd86bc7c59a70f079ad,dev
+sms-00881,spam,U have a Secret Admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09065171142-stopsms-08,6434c18c8346cac716c73bd281f9eb30c2008d5ebbe84e0397b8bec1611983d5,efd86bc7c59a70f079ad,dev
+sms-00915,ham,Ok lor but not too early. Me still having project meeting now.,057be646e94654b2088556e07e8c206b0c6f0cc5efa71efadea4017ddd75ec59,991c59c78ba66ecdccbc,dev
+sms-00919,ham,"When people see my msgs, They think Iam addicted to msging... They are wrong, Bcoz They don\'t know that Iam addicted to my sweet Friends..!! BSLVYL",51ce5bb1add0100d294a04b32e3b92cd6e37c20193e0f98447fbed35d35dda83,146e31c65269a822dc0f,dev
+sms-00932,ham,I'm really sorry i won't b able 2 do this friday.hope u can find an alternative.hope yr term's going ok:-),97a49daf603e1f68dfb8d64fb0483578db440adaf3505836d9bbb72d11ae29f7,5972b50368b96daf4273,dev
+sms-00935,ham,What time you think you'll have it? Need to know when I should be near campus,765893d31987212298c2a3144018298cae6e2a1d170b92e238ca31e28aa6f8a7,baa9a2c9b5c4e1a4ee9d,dev
+sms-00946,ham,"I sent my scores to sophas and i had to do secondary application for a few schools. I think if you are thinking of applying, do a research on cost also. Contact joke ogunrinde, her school is one me the less expensive ones",0b406232c1a6c7c368e52cfcb6db52cb6e2881d803dc797cefd2b131301552f3,9bbd4fa8c87e29ccb19c,dev
+sms-00952,ham,"Awesome, lemme know whenever you're around",81a768541d46dbfa13896101341e76e1699773fce49fe2394adccaf6f0580576,bc7b07cf6879c478169c,dev
+sms-00961,ham,Where @,72fd7fab6ad15626b982d92ddd0979bb600cfe9dc0b1d8b79bfcd8dbb3a342e4,f73cbe4547cda8a86ec2,dev
+sms-00969,ham,What do u want when i come back?.a beautiful necklace as a token of my heart for you.thats what i will give but ONLY to MY WIFE OF MY LIKING.BE THAT AND SEE..NO ONE can give you that.dont call me.i will wait till i come.,77437c9cf4227536803e0bb707dd0c543ab8907cc4f13397cf70ac49fa080649,17d0823dfc26106c17b6,dev
+sms-00975,ham,what is your account number?,f98365d76aa116b457771bff7652312e0333b61b46f21f01a0d9533313fe30f8,68f77ff0978fc74616ea,dev
+sms-00999,ham,Not a lot has happened here. Feels very quiet. Beth is at her aunts and charlie is working lots. Just me and helen in at the mo. How have you been? ,2dbe29e396b0f67d6ee2c13172e2af69a2b5104f7da9fc4aab90fbb35fa469d9,c6dfd8fc1ae316e71c21,dev
+sms-01003,spam,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!,9b753a9470f93c6554421d35ddfbaa73479722a00955ff42f7421d31a8ac1157,62471f7e14565ddf30b6,dev
+sms-01005,ham,&lt;#&gt;  am I think? Should say on syllabus,ff586088e776470e7e5820d8cf28175a60a7805747c70861d051fa8bdef40465,142aa3d61e15d28b13cf,dev
+sms-01006,ham,Umma. Did she say anything,081e4810267295a93fd1d9d46157e934c8cf4b8f3a910c985153f5d307646f61,1a17b97a2f5726689007,dev
+sms-01013,ham,"I just got home babe, are you still awake ?",454f8f471c16dca18d7653f0ce61a40e11ea79bba51fe268a7de34cf1327742b,86011ba95f6b7515af5f,dev
+sms-01023,spam,Guess what! Somebody you know secretly fancies you! Wanna find out who it is? Give us a call on 09065394514 From Landline DATEBox1282EssexCM61XN 150p/min 18,d56a66a9f56b3c639c46887eb596cc96b83d7c9aa09b21139141661d05996860,020d4de74cdfcf71d71b,dev
+sms-01030,ham,"Lol you forgot it eh ? Yes, I'll bring it in babe",0ac97d3e2b2b42a9dbbb79613b399984b09a01c8c97b84cb01ceb08d4e32d109,3b64a73571dc601a2a6e,dev
+sms-01040,ham,"Edison has rightly said, ""A fool can ask more questions than a wise man can answer"" Now you know why all of us are speechless during ViVa.. GM,GN,GE,GNT:-)",40cd136806e33f4aa56fffe48bc2cf60454f545277adfd4da79f65c6ae7c5371,3b33401f700844aab39c,dev
+sms-01054,ham,"I got another job! The one at the hospital doing data analysis or something, starts on monday! Not sure when my thesis will got finished",4f5956b209472295b8c1896b25504a65b1ed903081a0b3b0e884751c70dca831,9648f269b1654283fb7b,dev
+sms-01067,ham,No my mum went 2 dentist.,2932cebc779e50d853dfe0287a2f13d2031bf0cc87bbd47000ed2ded448f00ae,ad395a23b2a616c4b796,dev
+sms-01070,spam,Someone U know has asked our dating service 2 contact you! Cant Guess who? CALL 09058091854 NOW all will be revealed. PO BOX385 M6 6WU,c1158daec8bcc3ee53337dddb81855741fb46f7ac5b228bf42304a0b181286ad,0bfe748fddb255654e3b,dev
+sms-01079,ham,"Yep, by the pretty sculpture",7be5dc7cb765742b1496a36b720d3a5de13a0bddf9d6021346d59547a7834658,1db6bab7c356479fdcdd,dev
+sms-01092,spam,WIN URGENT! Your mobile number has been awarded with a £2000 prize GUARANTEED call 09061790121 from land line. claim 3030 valid 12hrs only 150ppm ,49d202bbf4f5ebfa67828d0ae0dfb29358d6a539df16c381098e07500a855686,4749aace322b01672389,dev
+sms-01098,spam,Dear Subscriber ur draw 4 £100 gift voucher will b entered on receipt of a correct ans. When was Elvis Presleys Birthday? TXT answer to 80062,0d9d8859aea1f81d8d57435f5b950566fc171ec62ecb2f4faca5d8ca4653e968,69b6f13fa8533771ddd7,dev
+sms-01101,ham,Been up to ne thing interesting. Did you have a good birthday? When are u wrking nxt? I started uni today.,7a628d842246634f5a3127221ccf329c5e0adbe26657f0022e5940d4a5e75002,53b189fbec80a9fa62ca,dev
+sms-01131,ham,"So check your errors and if you had difficulties, do correction.",97ef5cbf2bae5002ed54d4be828cc45fe5defb4470041739bae169b19ccd90aa,1e0e85ccbe923e6c6748,dev
+sms-01136,ham,U wake up already? Thanx 4 e tau sar piah it's quite nice.,30f525208d8f237c755ed2141077b478ed0f86d21b7b5317751abe43472cd43c,dcc8df4163d650e9ba52,dev
+sms-01145,ham,And is there a way you can send shade's stuff to her. And she has been wonderful too.,19ce604b3ff39f3c9c2fecdc7b35a0f9eab3ea979e0f73d4ccc26506b344995e,c5b813ddff720c3b29c3,dev
+sms-01150,ham,I'm not driving... Raining! Then i'll get caught at e mrt station lor.,da30ed06dd3fa4e4e53e4d63e231fb2e4352e1e6ebf2227e8ef0128bd99c8c83,79e8faaa7544a136063d,dev
+sms-01161,ham,Yun buying... But school got offer 2000 plus only...,7b2705661219e08968f870329974d6f117da66283342193db142ec93c32d1054,285508adf1e21d4a837e,dev
+sms-01170,ham,Ok . . now i am in bus. . If i come soon i will come otherwise tomorrow,3cfa7818a1c1eccda1083eb2b516f97fe088108344eb88ec692cb770259f97df,5b647f844d24233c6d1e,dev
+sms-01178,ham,"Did he say how fantastic I am by any chance, or anything need a bigger life lift as losing the will 2 live, do you think I would be the first person 2 die from N V Q? ",adc63a578f4ce9ad484887628a4016db6c2ea63ca5642c1529ad2fc47f98014e,c8f2c690604333f1f002,dev
+sms-01187,ham,Annoying isn't it.,1e17a837209394e6b4b83748fc3938c7287d6910645c7918467eb11f0c9041e8,5b2603fbd061826c39b5,dev
+sms-01202,ham,Otherwise had part time job na-tuition..,209326089e8b1cc0180ff01c84be47f36fbbe601bd569f908936d64501dab0a2,f326f64fe5af987dffd5,dev
+sms-01210,ham,Also maaaan are you missing out,f896a8548d4ebf5c3efb3b9e67d01fc84e38a052244f8ef8c57066fa8ac842ee,5ccc6752db5e2d61cd2e,dev
+sms-01215,ham,"Yeah, probably but not sure. Ilol let u know, but personally I wuldnt bother, then again if ur goin to then I mite as well!!",7fd31f25654873831c9284494424b2ade77cd749cdead79b66d89f72695516d6,877329ab5ed1392123a8,dev
+sms-01216,ham,I'll text now! All creepy like so he won't think that we forgot,687ae7b38affa2cd0b18c0d0b769831277b83263d012b0b1e8aef02bba04632c,cc51b51f9d0936777524,dev
+sms-01220,ham,K..k..i'm also fine:)when will you complete the course?,44d5a1cfe2f20d4ffbf08c3189a08a2b5b42a590d6fe81094e98ac79fd44da9e,69d0815b193a8ce7c0e0,dev
+sms-01241,ham,Hope you are having a great new semester. Do wish you the very best. You are made for greatness.,a5d06cea2c98249d1909583d79d384b978cbf876a5f71df79c10efa1f9374f92,4aeb95a6774af8741aee,dev
+sms-01248,ham,"I do know what u mean,  is the king of not havin credit! I'm goin2bed now. Night night sweet! Only1more sleep! ",6194e51d0cdef02ddbada2cf3b3c8b099a603479de38213e53c81a0a31e3b131,12b857dae88f069010ac,dev
+sms-01259,ham,Am also doing in cbe only. But have to pay.,778f52d74b860ad14faa1b442028fabd8761f0d595108e31fea00864c0e2fe17,b584488da2bd5cbdf16a,dev
+sms-01276,ham,Let me know how to contact you. I've you settled in a room. Lets know you are ok.,ae82fa5d4cc34f5841be700d88c380951bedbef50460ceeff5397252d3b96749,587c7205d57e118b8909,dev
+sms-01277,ham,Wot u up 2 u weirdo?,f4b483336368d1e066b031bb86614140ed0d6d59f157945d7ed115e36f6e7118,8d14c18a51d9aeca5ad4,dev
+sms-01289,ham,"What do you do, my dog ? Must I always wait till the end of your day to have word from you ? Did you run out of time on your cell already?",063002c3cb0aa63886367628ddc103ba07cd050e8a285b1f067ea42ff472e382,deabb5b935ff6d99ce80,dev
+sms-01303,ham,I tot u reach liao. He said t-shirt.,5b811e3409ae8ac4278e79cc74cfc2e126ff3d7a56d625192a02f97dc6dcca03,e2a3466840817fb5ce36,dev
+sms-01304,ham,"FRAN I DECIDED 2 GO N E WAY IM COMPLETELY BROKE AN KNACKERED I GOT UP BOUT 3 C U 2MRW LOVE JANX P.S THIS IS MY DADS FONE, -NO CREDIT",280d2d234818bc65e99e8093ac46155027ea11a1afad9fdfbf672f2b3c286981,3d194cdd62e4cc017756,dev
+sms-01310,ham,I jokin oni lar.. Ü busy then i wun disturb ü.,35abca7b3d9dde33b2ab20b8f2f21b9a6633c220bfe1303e1f52a159e34be79d,88cc8f9719e26efbb792,dev
+sms-01317,ham,"Whenevr ur sad, Whenevr ur gray, Remembr im here 2 listn 2 watevr u wanna say, Jus walk wid me a little while,&amp; I promise I'll bring back ur smile.:-)",bb69ae9642f673326f3b437a7d67cbefb3804f55e42829bd6a8bd5ba13cb7429,55d0f04a8687832c209f,dev
+sms-01360,ham,If i start sending blackberry torch to nigeria will you find buyer for me?like 4a month. And tell dad not to buy bb from anyone oh.,fec5ed61cc9d0081be160b2882f5aa2fa7451d9e4d256ac6bc35b573fbd33b29,a93fe8d67045dc538f39,dev
+sms-01370,ham,Alright. I'm out--have a good night!,766758c856c12e2dfdd3cfa71b4494fef2c4cf85abaf182a0c6fa073f501a65f,db8b6d3cf08f58c55200,dev
+sms-01380,ham,"Ya tel, wats ur problem..",5a2c8d24442441f4b05062d0a71f22ad69d9a65626e37091ccc15f0705e0dfdb,8b6f91f47344b2d1fafc,dev
+sms-01386,ham,"Storming msg: Wen u lift d phne, u say ""HELLO"" Do u knw wt is d real meaning of HELLO?? . . . It's d name of a girl..! . . . Yes.. And u knw who is dat girl?? ""Margaret Hello"" She is d girlfrnd f Grahmbell who invnted telphone... . . . . Moral:One can 4get d name of a person, bt not his girlfrnd... G o o d n i g h t . . .@",d4bdd6cd29f9ea5c62d27538df9a989fdb395e79314db068f31ac7cf4649e6bf,daa71618bb3d41fee38a,dev
+sms-01399,ham,Then we wait 4 u lor... No need 2 feel bad lar...,c0d7c75d2b5cffedd3bf45852e55c8ba23bcaccf3023b829293b25d45cd7f2e0,c042e3d86beaa4a800d6,dev
+sms-01405,ham,cool. We will have fun practicing making babies!,305fddaf76c6f4540912b224bd72b79a5fe82a0c99c80d9e14807bd89212fe01,263c0f1d35da97def5ba,dev
+sms-01425,ham,Lol great now im getting hungry.,bce43726f32f89830c4aa3c9216f2c070fcee7fb5c8ccedd51d75247d35f6a71,e5fb10cb9e7ee535c073,dev
+sms-01429,ham,THING R GOOD THANX GOT EXAMS IN MARCH IVE DONE NO REVISION? IS FRAN STILL WITH BOYF? IVE GOTTA INTERVIW 4 EXETER BIT WORRIED!x,468370b7601a1158602623cec8fb7ecd649acfdd5b8a95fa980b1782ea674dc2,c366dd1f4ab395613eca,dev
+sms-01447,ham,I am in a marriage function,eca589ef54bb58716dc946ae0992940ffd8245bffb3b6b046c8463b1bba95ce9,966826466f88efa289c8,dev
+sms-01448,ham,Looks like u wil b getting a headstart im leaving here bout 2.30ish but if u r desperate for my company I could head in earlier-we were goin to meet in rummer.,2b0bbcc3d8b1e0cb997af7afe7e6d6731c840d595018493d307eff97366ac8f0,868bb85abba0a7629399,dev
+sms-01458,ham,U sleeping now.. Or you going to take? Haha.. I got spys wat.. Me online checking n replying mails lor..,7bb443f1f1f2eada42c4553887c31bf01393ab492d05b9ff09fe50da8595a2bd,914dd210d000c1b311b1,dev
+sms-01467,spam,"YOU 07801543489 are guaranteed the latests Nokia Phone, a 40GB iPod MP3 player or a £500 prize! Txt word:COLLECT to No:83355! TC-LLC NY-USA 150p/Mt msgrcvd18+",c92328b09f4301da3ab8da1fdd1e0c8a8757894aa046a7eb2bff335ed9f955a8,8d3075f607f09b1fb631,dev
+sms-01468,ham,Your account has been refilled successfully by INR  &lt;DECIMAL&gt; . Your KeralaCircle prepaid account balance is Rs  &lt;DECIMAL&gt; . Your Transaction ID is KR &lt;#&gt; .,965eafe126d27d9b027d6590e5e93962a1af2d5c383539aef7614608acb0d621,0d1e573a3dac9e2c21f2,dev
+sms-01471,ham,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear",4e88adc989758717785dc14bcf123b463b2a76a653fed99c619b08b8ace46f92,fdad3383ed635e9592a3,dev
+sms-01473,ham,Oh. U must have taken your REAL Valentine out shopping first.,0e94603a37ec575fed9b9adbc7a88a4a6a8f34ecdf84efb42236d567873223ba,ef45ea5178439e888776,dev
+sms-01502,ham,Host-based IDPS for linux systems.,8453d40a75586fa0f12eb49972c16f56917c55ceb008366c449f22f1b5b4f68d,2d471089fc92ee085f0d,dev
+sms-01507,ham,Total video converter free download type this in google search:),e9cf98f94a20c88a6c696fbed7b0e3b2b7810e8894e813f9ac320602339aa30c,a60d483bab26e8b3eb54,dev
+sms-01510,ham,Sounds like something that someone testing me would sayy,2d6f4ee92ff1c4b145a79f828935f045217244e9508b71248138c0862600ad69,7f8be3fac03b4dbdb4d9,dev
+sms-01513,ham,Oops sorry. Just to check that you don't mind picking me up tomo at half eight from station. Would that be ok?,303f7f478e31b2b305c4a07f10343a6fec5463acd2b2bd17b88db64134d3c52f,acb042a7ce0b3d91b06f,dev
+sms-01539,ham,All sounds good. Fingers . Makes it difficult to type,bcdfea5cc832391cfb470cd7801099ff7d0303e5fda3139b160d9d4ee22ef3f1,6bd7cbd5538f67a5a241,dev
+sms-01549,ham,Bishan lar nearer... No need buy so early cos if buy now i gotta park my car...,a1db6c320eae06966321b263b6a82ea877ced2b4a7f6267b98c82e488e1f79fe,2f2a8cea3382061929bc,dev
+sms-01552,ham,He says hi and to get your ass back to south tampa (preferably at a kegger),869ca492109e4f8fb625900ac7eaebdbaf5e758271015afcceb12b520656ccc4,dd59c7d2e8e04be3e1fb,dev
+sms-01557,ham,Ok i found dis pierre cardin one which looks normal costs 20 its on sale.,38dda2a08614d6724feb5ba5392741f4f3b8700e6b5cc4689f0b39735f893a9d,27fb8dc6b6a6661ae5cd,dev
+sms-01561,ham,"Single line with a big meaning::::: ""Miss anything 4 ur ""Best Life"" but, don't miss ur best life for anything... Gud nyt...",ff57c95f34d7a34c2e5f251256cc52f95a7efc50876bca69a853dd254ea92e44,a57735fb4d33b9713ab2,dev
+sms-01562,ham,"Just got some gas money, any chance you and the gang want to go on a grand nature adventure?",30b76a94e16c58595316048d40227fcdea14c474025dbe7045b327e9310a67a4,2a4b795a89fe8d9e1edf,dev
+sms-01576,ham,My sis is catching e show in e afternoon so i'm not watching w her. So c u wan 2 watch today or tmr lor.,ffcc64f49d28a0c0de879d7b9d53152c74d5c441b3f03932da990f93b1b1d527,975176bcd52ef5917fc1,dev
+sms-01578,ham,No. To be nosy I guess. Idk am I over reacting if I'm freaked?,4bbcbc3cba55380740899bf26b19fe47484ef2842b0c5ef6c88ff98909d6c232,c951ee0067906803075d,dev
+sms-01593,ham,That's my honeymoon outfit. :),5be02f5f29f696305cfbca8127b71887ac91674f2495a6107401af1c5cb7e07b,d281b62bcc878237370b,dev
+sms-01596,ham,Never blame a day in ur life. Good days give u happiness. Bad days give u experience. Both are essential in life! All are Gods blessings! good morning.:,fd83e4af26feaf516c797e1bfafe4e6143229e83f4ad6c087e37dfa630e3f1f6,200aa9ecfa6773ac8136,dev
+sms-01599,spam,URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790121 from land line. Claim 3030. Valid 12hrs only 150ppm,5f40155165128aa3826de29e3a1700ad2872d47e4c3b483c49f3e54466f61254,4749aace322b01672389,dev
+sms-01601,ham,"Yeah probably, I still gotta check out with leo",01391f5ec429a0c9bee2ced936bf13441ebdde75a848a5f0d6dfe5689432197d,71e13483085fc1233af4,dev
+sms-01610,ham,Are your freezing ? Are you home yet ? Will you remember to kiss your mom in the morning? Do you love me ? Do you think of me ? Are you missing me yet ?,a13816c7c9e1a5c03e9b5e8528675c9176399c620e34beb784fdbcb81fcbedae,a53ad41a417b7dee4968,dev
+sms-01614,spam,RT-KIng Pro Video Club>> Need help? info@ringtoneking.co.uk or call 08701237397 You must be 16+ Club credits redeemable at www.ringtoneking.co.uk! Enjoy!,43fd6014556638185dd32dc98bff72a153f82ffbec3b1177c9187500cc14152c,f241438cff09f5ca2f2d,dev
+sms-01624,spam,U have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094599,cdd374212c4449caec188e101c4e807af5ca284fd96b4ad50d0888fe4cbf60fc,efd86bc7c59a70f079ad,dev
+sms-01631,ham,Sounds like you have many talents! would you like to go on a dinner date next week?,60ac267c6fb931acb28eec4d3549f2ed8e8d777283cc1a5fba0e6680104a2a86,4ff1ccd7040c17040a94,dev
+sms-01632,ham,I am going to film 2day da. At 6pm. Sorry da.,8ff4b22234797931cae9bc9c0f788c0fa36940aa90d6f57e9e2f5d7de946ad6e,c7cb287185b439ed7712,dev
+sms-01646,ham,India have to take lead:),ada1353e5fe012ae6e35737fb35e5dd258e20c34633f1e65d3a0b7063225c4c1,498a43a6d9cdc769e040,dev
+sms-01649,ham,"Evening * v good if somewhat event laden. Will fill you in, don't you worry … Head * ok but throat * wrecked. See you at six then!",5c0a3072132ecf77d7993620419ea520476246d683b7ed822cc461b5fcb8da93,61d63da50703f6fd7879,dev
+sms-01665,ham,S but mostly not like that.,4ddaf2e908c3c9e7f88143e61fa174bc3b52180c47ac9d87c2b2b1426e497137,885f089650128cb1da7c,dev
+sms-01666,ham,Ü v ma fan...,4e0ffd40eb4183f62257582eeb56ca3310f174d8253b7cad81f800706c2173b2,037afe0d9111e84b866c,dev
+sms-01695,ham,Was gr8 to see that message. So when r u leaving? Congrats dear. What school and wat r ur plans.,98fdc90cbf981cc0003a358db7634332b3469ae69dad50e449971116e7fcb00d,ea5c28fed924dcea6f03,dev
+sms-01696,ham,Ü eatin later but i'm eatin wif my frens now lei... Ü going home first? ,03721b822ffef0d9020815dcbd4877235a7767f158962c77c34cdafcfa9bd5b0,ac7d34eea29b320ca8e5,dev
+sms-01698,ham,"Sorry man, my stash ran dry last night and I can't pick up more until sunday",91f9bde41a8fa09f6bfcb9bd421255443f9331507a1435d41bdab65acc805638,50916f9fce28c2ffff18,dev
+sms-01699,ham,Hai priya are you right. What doctor said pa. Where are you.,9a7c2aec2e97c3f919d5f10345477d1172794a9980bc17947b97fc2ba03d40dd,8af54679ef27d7e6c0fb,dev
+sms-01709,ham,Was doing my test earlier. I appreciate you. Will call you tomorrow.,8821a2d448d7c9d0cb052ba0d73992fedd9dd72f56cbc68c8e397f94f18688c0,e961c97cf342749900d0,dev
+sms-01721,ham,Then u better go sleep.. Dun disturb u liao.. U wake up then msg me lor..,2e9dbbafe79f67cc2baaa3421d5ccfe89f65655392728226e9b8b8fea530b86c,46fbc95ffb8faec4f486,dev
+sms-01737,ham,Why tired what special there you had,cd597eff61b49c74b795410c809f7def1f4285106146d9b48c00e96fa9f59b6b,2a7a9897e0503a0f2c0e,dev
+sms-01741,ham,U guys never invite me anywhere :(,a042d5cc0e351f9bdcbaece5a6249016c25a31b9cbabbeca5feff028e422433c,a5f79a9acfe51559330a,dev
+sms-01743,ham,I can do that! I want to please you both inside and outside the bedroom...,fbcbcf5ae07c82cf17748316311cf40930a1e715589da229d6bc715a846d8b6c,05cdab7eae5ec6ab2894,dev
+sms-01757,ham,Really good:)dhanush rocks once again:),195f93656eb157d7b20bfa704fce143189d990e0eb658e1f968164be4514bdff,42fb8e6571f0a61c5ebe,dev
+sms-01760,ham,Sorry i'm not free...,9321a71f05f5971dd9b009c3fb3301263c47fc97cb27820e7da71450e81f7cfd,1158cb98711e8f69ef59,dev
+sms-01774,ham,"Good afternoon sexy buns! How goes the job search ? I wake and you are my first thought as always, my love. I wish your fine and happy and know I adore you!",1c82befa643840cd415276a91cb99b959f1ae417d6ecfc5612a0c633b5c38063,b539fee2efd90b20486f,dev
+sms-01780,ham,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear",4e88adc989758717785dc14bcf123b463b2a76a653fed99c619b08b8ace46f92,fdad3383ed635e9592a3,dev
+sms-01787,ham,I dun believe u. I thk u told him.,7955034e473b8cbc430aae1c54a2efd4f2b95a648973754056b0ce8302001563,1f42bf4d1e5225e8e579,dev
+sms-01797,ham,"I hope your alright babe? I worry that you might have felt a bit desparate when you learned the job was a fake ? I am here waiting when you come back, my love",97f06ba477e14d847f6147c2320a0fb670be3d4661daa842923a2eb1f9df5919,e81967419fd259d2804e,dev
+sms-01816,ham,HI ITS JESS I DONT KNOW IF YOU ARE AT WORK BUT CALL ME WHEN U CAN IM AT HOME ALL EVE. XXX,67ffcaa0c8a0b8ccddcd446370b9d4e38a02bc0bd2abd9e111ddd3985e844d81,6b9c887988b444fb95e6,dev
+sms-01819,ham,Well i will watch shrek in 3D!!B),339571116b9f8de480fe78a0a269befd67104be04da4428d77ae066550bc482c,f282e0abde33b12bb519,dev
+sms-01828,ham,"Dude. What's up. How Teresa. Hope you have been okay. When i didnt hear from these people, i called them and they had received the package since dec  &lt;#&gt; . Just thot you'ld like to know. Do have a fantastic year and all the best with your reading. Plus if you can really really Bam first aid for Usmle, then your work is done.",893c8e8dda19d7b293502461b7d02fe971f71063addc7917edc9c929e9da0167,83b1de3c8aebfd824d1d,dev
+sms-01835,ham,When should I come over?,b80fca3adb307ea722e48aa33297ea5d7b5f7846b8fe51c72d15f344728af19d,44ad2838f263ed34ab29,dev
+sms-01838,ham,Are you wet right now?,4c5fcead6bf5a0488608f21ed67f93a98c3b950fdb658344520b80ca8c57b7ac,ee7d2f7004c38bc0c0d7,dev
+sms-01839,ham,And how's your husband.,06773b9bd2d419191b219daa91922626567d0445ee5e2ea79809131fa357566d,604f20067c926c173429,dev
+sms-01844,ham,"""Are you comingdown later?""",2b9d10a5f7ac9cb97e080e2de87d1d7d0ad41c3078502c6675ccd266e97e3a73,74bd24bb677270b506cd,dev
+sms-01850,ham,I dont want to hear philosophy. Just say what happen,ceb80ccabf291128c12198ab2d7854ddd7be4cef78971500bb3a42483392579a,e8d6b2a550b04bc9edfa,dev
+sms-01852,ham,Then cant get da laptop? My matric card wif ü lei... ,7427e6f558dba1a1d2927402f0bfb843f1f454186e3b4a3e8be401d23e7df7a2,1d2b33d2e03dc8e24dba,dev
+sms-01855,ham,I just made some payments so dont have that much. Sorry. Would you want it fedex or the other way.,c0178a437493b7eb5848ec8b282a16be56a744376926fbc25b0ce1171485d6e2,68f136878599b9879c11,dev
+sms-01859,ham,I hate when she does this. She turns what should be a fun shopping trip into an annoying day of how everything would look in her house.,16656d7deafc53ac2c85a217361e43ef0a476fd39abcbff0924fefb70f521fe5,91e1a26c6f96e3f82061,dev
+sms-01866,ham,You call him now ok i said call him,142031816c5f554760d9b62f66c171f3edd7286a3f98aca0e41b14e385cd4276,576e5c7c12ae13c440f3,dev
+sms-01877,spam,HMV BONUS SPECIAL 500 pounds of genuine HMV vouchers to be won. Just answer 4 easy questions. Play Now! Send HMV to 86688 More info:www.100percent-real.com,4995517d61b71396c4a51a4be63d055982a0fd60f81675e1d629ed33c50e2f51,2f9954fe257f873e4042,dev
+sms-01880,ham,I AM AT A PARTY WITH ALEX NICHOLS,aad4dd05778348268950ec7f8e593038102d1b16c87d8e15805f5822ffdee134,fcc07ea765b8f1abce92,dev
+sms-01881,spam,U have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094594,e9bf98918ca5722fe007efb9cbc42b36b8af9763dd50b558e565164304b83f1f,efd86bc7c59a70f079ad,dev
+sms-01893,ham,Probably earlier than that if the station's where I think it is,443ce2033fbdc5d8ab6f79744635753e5f955598bdbe3eca81697218c772a75f,fff72a0ec62de7cb26e4,dev
+sms-01904,ham,My sister got placed in birla soft da:-),7f94aaeca15bae9aa66fc8442d12f3e57becd89688b72f4fcdf4c64494f4bb72,b63857c3adea2c57d2e8,dev
+sms-01905,spam,Free entry in 2 a weekly comp for a chance to win an ipod. Txt POD to 80182 to get entry (std txt rate) T&C's apply 08452810073 for details 18+,1d5b7aa1900186396ded400d6f719ad58a49e932a851a8694f80bdcb07444f69,d471d56f7e73f4890694,dev
+sms-01917,ham,Its not that time of the month nor mid of the time?,925ecfd0882651e390c5f5b4629ab42df1873ea99c746ee55d31948d568516fd,ecaebed37e2fa9ea00d6,dev
+sms-01922,ham,Dont know you bring some food,204c086aa7bb4933bea10300f4fd49b39b1fb88a0e2997c09b7fe692c2916a80,62c7dbde3eba1277d76f,dev
+sms-01925,ham,Hello. They are going to the village pub at 8 so either come here or there accordingly. Ok?,cdae00effe63039b1339ca337ed77c6813994e9448af7fb617dcfbe2a91f721c,13b5f90a4a320c9b2b1f,dev
+sms-01930,spam,Call from 08702490080 - tells u 2 call 09066358152 to claim £5000 prize. U have 2 enter all ur mobile & personal details @ the prompts. Careful!,d0d8282c501e354d8d8a5ea4b37ef18ea512b0768d6603bbc61c6cd414052956,e8a305cc1135478eba4a,dev
+sms-01937,ham,Did either of you have any idea's? Do you know of anyplaces doing something?,15d20489bb46553d4a259accbffb9c625de19b3ba3e634cad437caf7d0df448b,7d386ef7fb8c179606a2,dev
+sms-01942,ham,Dude avatar 3d was imp. At one point i thought there were actually flies in the room and almost tried hittng one as a reflex,2d2db4e85a61d9613e7607b8e2259e19e377e1ce349bfce9d4f7fd4f40333946,c5ec99f4a6b5d827780d,dev
+sms-01944,ham,K...k:)why cant you come here and search job:),d9143231c2fde8db3b5996b73ad418d67b429f1aae77fc23074d70f7ed155cf8,8737db04231a4ea04636,dev
+sms-01945,ham,I got lousy sleep. I kept waking up every 2 hours to see if my cat wanted to come in. I worry about him when its cold :(,d37028e6cefc8fa75c5f0fd9587923ca0548bc1e79b9c947692635f49b598a44,d9c1dc88b4b3a79ea992,dev
+sms-01958,ham,K...k:)why cant you come here and search job:),d9143231c2fde8db3b5996b73ad418d67b429f1aae77fc23074d70f7ed155cf8,8737db04231a4ea04636,dev
+sms-01959,ham,Take something for pain. If it moves however to any side in the next 6hrs see a doctor.,dfbb50e89ea4d3ad9d21abebd1500df33ab2a700366c9b4af25298ef57444ca1,90d6b389a1970a26d0e5,dev
+sms-01962,spam,Guess what! Somebody you know secretly fancies you! Wanna find out who it is? Give us a call on 09065394973 from Landline DATEBox1282EssexCM61XN 150p/min 18,71c331c96189e1ac205907b573291f9cee34af0526ac71041d315b74604b31c1,020d4de74cdfcf71d71b,dev
+sms-01963,ham,LOL that would be awesome payback.,4fcc222db13ae14f8e84af1029a890c41a8a735aa08677daaca8126af7d408c5,2bdec57e49b8e0089cf7,dev
+sms-01964,spam,it to 80488. Your 500 free text messages are valid until 31 December 2005.,8700098e97cf86f420ddcfa7d9636da4f25a69e921628a8fe8e3022ee28e23f6,7b79ce0230999e019ff5,dev
+sms-01968,ham,What's a feathery bowa? Is that something guys have that I don't know about?,8d643b47fd69f6fd0f0f3a2f907edcbd5e98f09ceb208cbc115fb0a62eee71b9,505544b295fe212a9c4a,dev
+sms-01969,ham,Even i cant close my eyes you are in me our vava playing umma :-D,7768dbc07785381b614d029548f2bcc6769c6a4b8a8206b62b89dcf2f657a80a,22ec6a7ba9f238abcabc,dev
+sms-01976,ham,Thats cool. Where should i cum? On you or in you? :),fbdce86649397190a0b87feb5c7c41daa0f81abdc10ef710202a8d7e04ba7b4c,629f430b408f6a30418e,dev
+sms-01980,ham,No I'm in the same boat. Still here at my moms. Check me out on yo. I'm half naked.,b70511627f4799c977f053b131006ca0fedc1cb3b2e157e44479a75324715d6b,7cff06b909b353b0c961,dev
+sms-01987,ham,The length is e same but e top shorter n i got a fringe now. I thk i'm not going liao. Too lazy. Dun wan 2 distract u also.,7ebdcec3a26a3b75908c1434111605e7807c9611cb56cf7a2aad5d9bc23b3928,9ca013969185291cf629,dev
+sms-01999,ham,"""YEH I AM DEF UP4 SOMETHING SAT,JUST GOT PAYED2DAY & I HAVBEEN GIVEN A£50 PAY RISE 4MY WORK & HAVEBEEN MADE PRESCHOOLCO-ORDINATOR 2I AM FEELINGOOD LUV""",62625fc53fe3595f17599beeb756f739878817135daef2a98e802c82ec65d51c,c3b79474876c4c63f93f,dev
+sms-02002,ham,But i'll b going 2 sch on mon. My sis need 2 take smth.,e9431fd8e73c3bcdbee8ec475e89193e595c0ef9d646c3641bc47a333701dba4,6e1cc744d14fe093e9b6,dev
+sms-02004,spam,TheMob>Yo yo yo-Here comes a new selection of hot downloads for our members to get for FREE! Just click & open the next link sent to ur fone...,33849e09cf23d24eed9125697437050c4a0fa618530be83ac1731352db74e2c4,140cf563ee0015f773f8,dev
+sms-02033,ham,"I noe la... U wana pei bf oso rite... K lor, other days den...",9b409c9fa562c730b11d0f70d55b9acb801b6db3615a3a64d6c3d5562747dc31,8a63b62063a56ff32399,dev
+sms-02037,ham,Simply sitting and watching match in office..,fcee51c906737103a1b07a19caf4a15b0f96e01d1c63544399f29d66ca4dbcbd,bff2563c6e4740359ffe,dev
+sms-02038,ham,You can jot down things you want to remember later.,01495f60e986ecd825b30516b3dd2d01c0611cce2ffa4bfc06eb58961387f1c0,a9ab1b0ef827835c28fc,dev
+sms-02049,ham,No de. But call me after some time. Ill tell you k,da9d333fcca94c1e95b19e8da587f7bce608ece160fc0e3c8e38d40087eda613,c36d9a1b492e35af8449,dev
+sms-02064,ham,Is there any training tomorrow?,c84b14bf324e992cb3fe30b1d99eefa215ee27037a35494ecc8580039d7180ea,c2e4f3c3af99b29a7f71,dev
+sms-02074,ham,That is wondarfull song,82b443bb90b7a961e8896c7ef9fdefccc94f1904bbac3083996fbdd93cc9a1a6,72227e368d00094936b6,dev
+sms-02086,ham,How are you. Wish you a great semester,03215fe751d90ad50c976e80ed0879caf4bc0d19a395e13d68db53e56e757c10,481ec5db5b982c687d87,dev
+sms-02091,ham,"No i'm not. I can't give you everything you want and need. You actually could do better for yourself on yor own--you've got more money than i do. I can't get work, i can't get a man, i can't pay the rent, i can't even fill my fucking gas tank. yes, i'm stressed and depressed. I didn't even call home for thanksgiving cuz i'll have to tell them i,m up to nothing.",8a755d50d8baf9efc7e42a83f728074ab3455fcfdfafe150718f57edd5d7a9d9,85a10fceefbda4ff0983,dev
+sms-02096,spam,PRIVATE! Your 2004 Account Statement for 07742676969 shows 786 unredeemed Bonus Points. To claim call 08719180248 Identifier Code: 45239 Expires,61292ff23881e54efee971e3cf36c43f266a68cdada0dba870d7c70e6e854aac,937c7b7403d43433a2f3,dev
+sms-02099,ham,Are you the cutest girl in the world or what,73e810d9989ee2811282878aaed9f44f636dc4e0aec25b1376b0f4f87748a251,eca67c391ee933ebb36c,dev
+sms-02116,spam,"Sunshine Hols. To claim ur med holiday send a stamped self address envelope to Drinks on Us UK, PO Box 113, Bray, Wicklow, Eire. Quiz Starts Saturday! Unsub Stop",ec5ee0dd6a70f90202e399d6604b8e9aa2d91e8372e1a090a4bbdc356c17a131,71e50d50a3a3c9c8c4b0,dev
+sms-02121,ham,I hope you know I'm still mad at you.,361ed2298ef78b066083935207ca7e9e0922cac7b682f4eb1d290dd19771d55d,4174d2dc1edf8bdffbda,dev
+sms-02123,ham,In xam hall boy asked girl Tell me the starting term for dis answer I can den manage on my own After lot of hesitation n lookin around silently she said THE! intha ponnungale ipaditan;),74d90a01f305f1ec6d55cf5b9090871a0e007b7243487843be711941a63ac39c,3fce59dc9cbca3c13f8f,dev
+sms-02125,spam,+123 Congratulations - in this week's competition draw u have won the £1450 prize to claim just call 09050002311 b4280703. T&Cs/stop SMS 08718727868. Over 18 only 150ppm,fd878cec58d58f5f4e4307d9f95f1f7d55b4d18f8a162917f34d4e6fdb126b2d,44aa9da95f5336f01e00,dev
+sms-02146,spam,FreeMsg: Hey - I'm Buffy. 25 and love to satisfy men. Home alone feeling randy. Reply 2 C my PIX! QlynnBV Help08700621170150p a msg Send stop to stop txts,0b709ed940cacb8266074e4f53c5d560c4b4e80079bab98ad7cbd85dd2459c34,f4ba26383ab45de4e59b,dev
+sms-02147,spam,"Sunshine Hols. To claim ur med holiday send a stamped self address envelope to Drinks on Us UK, PO Box 113, Bray, Wicklow, Eire. Quiz Starts Saturday! Unsub Stop",ec5ee0dd6a70f90202e399d6604b8e9aa2d91e8372e1a090a4bbdc356c17a131,71e50d50a3a3c9c8c4b0,dev
+sms-02150,ham,I will once i get home,ad0b8abefc5e98cb0858ad014dc29595992a43b2795f8dc688344fab31cbfa47,c78104e41a3f83c652d4,dev
+sms-02152,ham,"The table's occupied, I'm waiting by the tree",ea89b128c72feff8feb499a32a2dd6819e8d6b5910883937e3edab27851f0145,f9d305c51e39ce002183,dev
+sms-02153,ham,I surely dont forgot to come:)i will always be in touch in with you:-),a714d354ee948257900f82c43cbb579f353d4c70eb479aaf21f674b58e2b1831,e5d59eddd976307ac914,dev
+sms-02157,ham,What year. And how many miles.,3d723bef35528f5907da2c9f7d5ab906fa9e21cccaf5478a9655662471721c91,07294857cea77ea11f4f,dev
+sms-02158,ham,Hey cutie. How goes it? Here in WALES its kinda ok. There is like hills and shit but i still avent killed myself. ,e7021d45a9a259ba7a7204c7bd60496fdbfeff8560c0de0c96c0d1aba4374e94,d4f85d1e54f37a50ad32,dev
+sms-02168,ham,"Thank you. And by the way, I just lost.",2efb86be4333893305fc04a8106ce9e18c7fded17cc156434035d9cec5dd1c77,aa6d0a60a891f1510690,dev
+sms-02171,spam,"Shop till u Drop, IS IT YOU, either 10K, 5K, £500 Cash or £100 Travel voucher, Call now, 09064011000. NTT PO Box CR01327BT fixedline Cost 150ppm mobile vary",b0228c9805e1696987703b18839dc0a89e11206d86de87af8d4676880b5b9a3c,80c673803f822cf8d0b3,dev
+sms-02184,ham,PS U no ur a grown up now right?,42d9a6e7950ec92dfbdaa5e10b5ac4c0a9e0d030ecf73b53d91ecb43cdd173c4,67ca8b1828e36a5414ef,dev
+sms-02191,ham,Yup i shd haf ard 10 pages if i add figures... Ü all got how many pages?,7f52ce8dceab5d7b8e39f22d62f5f571faf74c2c2a026a6b339768249485a379,65e3cea5cc031dd8fff5,dev
+sms-02206,ham,Raji..pls do me a favour. Pls convey my Birthday wishes to Nimya. Pls. Today is her birthday.,65ab0769da7b357513b5fb064917f48329aeb51c59939da500b5df7638cf0ce9,2a2fcc351fd6cf551a8b,dev
+sms-02215,ham,"Goodmorning, today i am late for 2hrs. Because of back pain.",43bd080c527a25f0ccf843e08ff79a83a1d0a676d29376c85e9975c3501e6f92,b213ac812ce5ffdd91c8,dev
+sms-02225,spam,"Thanks for your ringtone order, ref number K718. Your mobile will be charged £4.50. Should your tone not arrive please call customer services on 09065069120",b12347958e1b644aef000e58bfb0e5751999faf78bfd863e94edf2026ea9e91a,c31f02a284e7c0ed755b,dev
+sms-02227,ham,Alrite jod hows the revision goin? Keris bin doin a smidgin. N e way u wanna cum over after college?xx,cb48b93aa13548ed1cee498ca4ac1281a6c8857cca3eed259fb170d6dbef1aa2,a21000386aa9f1691abf,dev
+sms-02229,ham,Oh k.k..where did you take test?,f9ebb93af4f232ae7d4cf7e54bbf70310955b2d8f969393576fb0ac53beec087,0777c267c4070c36a4e7,dev
+sms-02230,ham,Those were my exact intentions,9de2604dcf79ba823d6e76e90e6db88128ea6da9540caf5bf386409c4cd1249f,e2c1914e8f4b32d03f69,dev
+sms-02241,ham,Every day i use to sleep after  &lt;#&gt;  so only.,5249f3442bdbc3e0dd19d1e05e351e38f30ece83ae0eb92f49bf071a638f9778,d9353648814eeab2e361,dev
+sms-02242,ham,K I'll call you when I'm close,242111827fdb04ff35bc2f65d8a14734acec6972725cf22a2f370b614b1fcfab,f0e4498f923b38551f45,dev
+sms-02251,spam,"Thanks for your ringtone order, ref number R836. Your mobile will be charged £4.50. Should your tone not arrive please call customer services on 09065069154",82d357c2c0ce2f007763245957293b9803d1d634d309301d7ac7d824cb045f3e,c31f02a284e7c0ed755b,dev
+sms-02258,ham,"Just checked out, heading out to drop off my stuff now",4acf65917364ccec4a5c9a06ca60ce86e64ba8f16c835eeebc234e6da45021ce,ef0868b4e351ea0166bf,dev
+sms-02266,ham,Ok . . now i am in bus. . If i come soon i will come otherwise tomorrow,3cfa7818a1c1eccda1083eb2b516f97fe088108344eb88ec692cb770259f97df,5b647f844d24233c6d1e,dev
+sms-02268,spam,<Forwarded from 88877>FREE entry into our £250 weekly comp just send the word ENTER to 88877 NOW. 18 T&C www.textcomp.com,5c661f72fd7b3d7c8140734df614e2202bacc427258a081a1c2f80f8aa1d3696,f5b268a633151cedec80,dev
+sms-02273,ham,Life spend with someone for a lifetime may be meaningless but a few moments spent with someone who really love you means more than life itself..,387337808a5d79d1aeaf0e62d3069a6775d5f749a049c16ecd0e65c88d20350a,b73f3c578e3c684b5586,dev
+sms-02274,ham,"Haha awesome, I've been to 4u a couple times. Who all's coming?",ef6133313a89cd85c1a02e1968d41c33ac04e1cf4104000b3f1863a80308abba,f1b1fb176b4189828b74,dev
+sms-02275,ham,Cold. Dont be sad dear,410f624c17f400b0ad2b4031aca55306a3e062c86d7505ec689ae512953efede,4d784af7d46208b3e4c3,dev
+sms-02281,ham,"Sorry, I'll call later in meeting",8abdceed92c3df65a367fd65934e839f79b0fd2fd2d9288234328a808ea00c16,735f457a06a868815ec0,dev
+sms-02287,ham,"Hi, wkend ok but journey terrible. Wk not good as have huge back log of marking to do",428beae24fe46988f24bd26cacfbf6ab4494642274ad81e38219251505e35e94,0a8a5be93796bf0241a3,dev
+sms-02290,ham,Dont you have message offer,d032d5d344e231a611c870715bb5dcb504f49e86784683f468bca7a5e2e8a720,d53ef6898073c66094fa,dev
+sms-02297,ham,HI DARLIN IM MISSIN U HOPE YOU ARE HAVING A GOOD TIME. WHEN ARE U BACK AND WHAT TIME IF U CAN GIVE ME A CALL AT HOME. JESS XX,c4202b18f322aea209df0067ba6ac65c2cfe6a1783a4aaa77ee16cd47bcd7705,0019211e6ef1288d7cbd,dev
+sms-02299,ham,Draw va?i dont think so:),54a0b79e2fb3e485a7600c11757099c29bfe805ab35153480ec5038042803d1a,10d069f91e7c155f470a,dev
+sms-02301,spam,"Congrats! 1 year special cinema pass for 2 is yours. call 09061209465 now! C Suprman V, Matrix3, StarWars3, etc all 4 FREE! bx420-ip4-5we. 150pm. Dont miss out!",ec8fa4bb96e5d4f5f056b5ed446d8fe56bc3e7b980587939167caa5b0b62b6c0,24fe31d0e3d424b9e150,dev
+sms-02359,ham,Okay same with me. Well thanks for the clarification,7dce27766a3f3330048b88a05f205c4ca8c186b54bd9bf2bcb5bb1abdd528d9d,adaccabf0595fa4243db,dev
+sms-02376,ham,Dunno lei he neva say...,07a31c5300bf018bca36c37852c136686860c8d2f5fd13a0799021fa523cbb87,28d2fe212cf93840117b,dev
+sms-02381,ham,"Good evening Sir, hope you are having a nice day. I wanted to bring it to your notice that I have been late in paying rent for the past few months and have had to pay a $ &lt;#&gt;  charge. I felt it would be inconsiderate of me to nag about something you give at great cost to yourself and that's why i didnt speak up. I however am in a recession and wont be able to pay the charge this month hence my askin well ahead of month's end. Can you please help. Thank you for everything.",01a2f2501b783d8d3a3f2f15a585612a1c124815a94957a3d7944dd9d59d010a,702947d872f7160cf656,dev
+sms-02392,ham,First has she gained more than  &lt;#&gt; kg since she took in. Second has she done the blood sugar tests. If she has and its ok and her blood pressure is within normal limits then no worries,344b68dc5b65e6c3f56983022ecba538c04fa2a20586e23995d3e1437829b56d,695ecc56c0d693cf0b3b,dev
+sms-02402,ham,Hi! This is Roger from CL. How are you?,2685d12b38b3e2c5ab0e6974b278e8781a329226769df35a4182feb46b738b28,6e528c0f376e5d977f59,dev
+sms-02409,ham,"Solve d Case : A Man Was Found Murdered On  &lt;DECIMAL&gt; . &lt;#&gt;  AfterNoon. 1,His wife called Police. 2,Police questioned everyone. 3,Wife: Sir,I was sleeping, when the murder took place. 4.Cook: I was cooking. 5.Gardener: I was picking vegetables. 6.House-Maid: I went 2 d post office. 7.Children: We went 2 play. 8.Neighbour: We went 2 a marriage. Police arrested d murderer Immediately. Who's It? Reply With Reason, If U r Brilliant.",223e7c7ae1af6cc6dcc69e67dd16580b06ef68e6deb69b1908fd1cf430badda0,2b4737595d3df1e9b5dd,dev
+sms-02410,ham,Dear where you will be when i reach there,9a4d046e0e31f1e8b4964c3f60de8ad7a19ce102dcebcbf9a5773c91274143b1,f6b238ba6a41b98d94e7,dev
+sms-02415,ham,Lol please do. Actually send a pic of yourself right now. I wanna see. Pose with a comb and hair dryer or something.,67e3e93c2de0aee89961a013eeaf1e977a99ca5529147e73ea0d9c97a805095a,6a794c2214ee779313e2,dev
+sms-02421,spam,SMS SERVICES For your inclusive text credits pls gotto www.comuk.net login 3qxj9 unsubscribe with STOP no extra charge help 08702840625 comuk.220cm2 9AE,71049fe357f423f2651b0bc346f7305b923e1698450bb1dae169b31639d62207,1a909cd2f1ff9ee0fb40,dev
+sms-02424,ham,A bloo bloo bloo I'll miss the first bowl,731060c93f6cd936dd138a81046b92596471aefd99c06bf0b373525f39a96222,ae822cf4ad0857775c65,dev
+sms-02435,ham,"Indians r poor but India is not a poor country. Says one of the swiss bank directors. He says that "" &lt;#&gt;  lac crore"" of Indian money is deposited in swiss banks which can be used for 'taxless' budget for  &lt;#&gt;  yrs. Can give  &lt;#&gt;  crore jobs to all Indians. From any village to Delhi 4 lane roads. Forever free power suply to more than  &lt;#&gt;  social projects. Every citizen can get monthly  &lt;#&gt; /- for  &lt;#&gt;  yrs. No need of World Bank &amp; IMF loan. Think how our money is blocked by rich politicians. We have full rights against corrupt politicians. Itna forward karo ki pura INDIA padhe.g.m.""",3bd3e0002301a628b75b51a9023f3d9b6bb64c0384548e76a9dbbcdb1369687f,02712f4fffb894aabc57,dev
+sms-02442,ham,"Great. I'm in church now, will holla when i get out",844f8dbc698fed6f3a14ee482466ee4889a527fd7a08ec1838653caf01c35d4b,77cdbf0ff75d079d9b2e,dev
+sms-02445,ham,&lt;#&gt;  great loxahatchee xmas tree burning update: you can totally see stars here,413b88808041fd09b6780a0aa38da29668f819997dd58fad5f286fad9115c160,47356e945f05a310f51d,dev
+sms-02451,ham,Then she dun believe wat?,4960c4f3e767b8a49176e70d370e9648434bead4d6e7440c2092a4f0f967a6bd,d1ebc88aae81f436c9c4,dev
+sms-02453,ham,I know complain num only..bettr directly go to bsnl offc nd apply for it..,99f6a40efe99dcbf3c75c8f7b3cb56f678215fa492f332fbd1910ae807b33d7c,020df4e7fcad8fe80230,dev
+sms-02462,ham,i cant talk to you now.i will call when i can.dont keep calling.,bf479d02543bc9b6c2b5ab51d665cea17608829b1f0a368b910a4c90fa81cc67,02b339c1ce38a77d8d78,dev
+sms-02467,ham,S.i think he is waste for rr..,d268b3f997b9a7959f1fff9ed860733321c70f0ffc5df7cbee8a1c36769c0d02,00c5803e233d836a6919,dev
+sms-02481,spam,"Sppok up ur mob with a Halloween collection of nokia logo&pic message plus a FREE eerie tone, txt CARD SPOOK to 8007",1587e00a958757a510cd5fa5e4d410e974a54c2f3a4b139df40644e34d9e24b4,9b407c1df7d246474de9,dev
+sms-02482,spam,"Urgent! call 09066612661 from landline. Your complementary 4* Tenerife Holiday or £10,000 cash await collection SAE T&Cs PO Box 3 WA14 2PX 150ppm 18+ Sender: Hol Offer",a682777c20cb4ba56521b289a4f222c46bc8f4df6ddf47fcec698923ba321e48,a6932e419a61b1be6912,dev
+sms-02487,ham,Lol that's different. I don't go trying to find every real life photo you ever took.,4c6b711a232bc733ddf33352425e180a7fe310d7655a59db61123f2ec35b29a7,382ffbeb27d9ad11a034,dev
+sms-02490,ham,Aiyah e rain like quite big leh. If drizzling i can at least run home.,1dfad636fdccfeb2c6a6744ada93eda69238b9ece2de3639e196b9ef1d71e517,69d32753c6e35cbd0530,dev
+sms-02491,ham,I have 2 docs appointments next week.:/ I'm tired of them shoving stuff up me. Ugh why couldn't I have had a normal body?,d8bea6b6c4539b010f8722b5bfe1fa18f620259027dbc3dbdb9828471d08d5e5,60bd8ea7d090c1b08a2d,dev
+sms-02501,ham,Yup i've finished c ü there...,4572a68ee6fe942f76441d49220392b0e9bce5c91fb7ac3f0c134159a71367ca,06bf31fd6c2a9145d722,dev
+sms-02508,ham,Who u talking about?,4897f92310ceb444cbcfb2146934407aad58dfeb5e2988586abf06e90062a1a0,656a86cf6fb9a2a2a1ec,dev
+sms-02509,ham,Yup...,93dd8bbe5cac4ed4ab048aad5df00edc8db7478794d0f6649d6e434a260c08fc,fab1dbfb8b7efed8cd3e,dev
+sms-02528,ham,Do u noe how 2 send files between 2 computers?,f95d8043fd8553aac1cb725b42bb289fe90166968dfefbbadde3919cdf6f0086,d71a36edbb2b6957f2bd,dev
+sms-02529,ham,"Mmmmm ... I loved waking to your words this morning ! I miss you too, my Love. I hope your day goes well and you are happy. I wait for us to be together again",ac60bfe36e0b756dd5e04a78d184372bc91a362fcd00c07cc16a061c7662f329,a615686ce606984eed73,dev
+sms-02532,ham,So the sun is anti sleep medicine.,587668adbd7c5cedd646e95e742b450a28b55092ec2250d51bdc4094f9484e1c,e5da79cc74d9d08300f5,dev
+sms-02533,ham,What's happening with you. Have you gotten a job and have you begun registration for permanent residency,4b018a1fa58801f204e690a2263929f39e280ea8e53200cda32b8c287d2e9883,2df65343d9c387b4a5dd,dev
+sms-02536,ham,Ok enjoy . R u there in home.,9d50f0ecc41f3427003de1f3734147ef82766310e50cd3eff9e433206c562273,6c44f936ad23df65c898,dev
+sms-02538,ham,You do what all you like,1a4ec5e681ca252c87bd2e893d45162bd4b90ee0d4497e6dac218c3cea959445,5e584e07a1d812c5272c,dev
+sms-02540,ham,The monthly amount is not that terrible and you will not pay anything till 6months after finishing school.,d6ba90e12b2b3a21d40b28410e902efb18a80e53f6864e5333b2ef0531c23891,7ad2708c6eba963e1416,dev
+sms-02551,ham,Yup but not studying surfing lor. I'm in e lazy mode today.,2de0d83e508b82a283455bdacf69f0a29acec79f01403b07638887edeec3365c,4b1174526a194f926559,dev
+sms-02552,ham,Please sen :)my kind advice :-)please come here and try:-),f92b0a362db3796f1429653943e8270704e88bf556e9c95fd79d6f3a7e7b3a26,4917521c36b374c2d226,dev
+sms-02563,ham,And maybe some pressies,51b76b65054e3f07d57295180e0adab3545237ef57aa9ea9b1129a07f652aca3,63e1b962545c7473a2af,dev
+sms-02565,ham,K..k..i'm also fine:)when will you complete the course?,44d5a1cfe2f20d4ffbf08c3189a08a2b5b42a590d6fe81094e98ac79fd44da9e,69d0815b193a8ce7c0e0,dev
+sms-02576,spam,Your next amazing xxx PICSFREE1 video will be sent to you enjoy! If one vid is not enough for 2day text back the keyword PICSFREE1 to get the next video.,61a91a23c66d2421340b9739cc210bba9e863cefd7e1cd3cf88ee31d6cd09712,66a5b2bc34f5706298bc,dev
+sms-02581,ham,I dunno until when... Lets go learn pilates...,5d80c244220040e6a2712fa5d0a144a1797f8ff70238dfe9259912aa9c49e907,2c42819d7bd74bdf1f68,dev
+sms-02583,ham,Yup i'm elaborating on the safety aspects and some other issues..,1d9d05ef5bb8a261032c2e8490df3d06f6dcaf6d546b7610b0424314858bd406,4a58cb99a5ce9d2f5487,dev
+sms-02598,ham,No i'm not gonna be able to. || too late notice. || i'll be home in a few weeks anyway. || what are the plans,44f29ee84e8cc34167bc41f491d5121ad7b3c8ebb5552140673e4ea5580c38c8,ae385e37fdee0e74a510,dev
+sms-02601,ham,"Gosh that , what a pain. Spose I better come then.",df9235bf7cdc9ab3a1fef8bc85b08e36954e204734a185fce30001393efa026b,50e0e6c309c37965cc58,dev
+sms-02605,ham,"""Im at arestaurant eating squid! i will be out about 10:30 wanna dosomething or is that to late?""",423d2739bd501254ca7631193763d66e735757d41a9457d920bb5b366cc69941,8cb8cf323a90a7c765e8,dev
+sms-02611,ham,"Awesome, text me when you're restocked",4c9f8ac6646efd04ad5a2ef79e4b91fbfa85e51b0ddb7f2e43e7f1b61ee57cc5,bb535f1d0cce0385fdb7,dev
+sms-02630,ham,Haha... They cant what... At the most tmr forfeit... haha so how?,3f52663db64b6467eed36b828323c95d90fe15b717b254c92d555a9fb5af1be0,93e94dd8d54fc76e72b0,dev
+sms-02635,ham,"That's what I love to hear :V see you sundayish, then",f873ec264df67e9bf4e351391edcf488a6cd7e6ef6aa8d5d982c15a22ea096e4,f00aa8c856c9e9aa75f0,dev
+sms-02636,ham,"Sorry da thangam, very very sorry i am held up with prasad.",b512c809be85fd1a5334a479116e8b132d57b28dcacfb3a106767154969ef8cd,811c8b849d139e9ed2b6,dev
+sms-02638,ham,Thank god they are in bed!,91c28e547820c299250dbf9affc2ddf780922de067adb70e9104e1117911c993,b76b321536956565ccb5,dev
+sms-02643,spam,"You are guaranteed the latest Nokia Phone, a 40GB iPod MP3 player or a £500 prize! Txt word: COLLECT to No: 83355! IBHltd LdnW15H 150p/Mtmsgrcvd18",0f7925a34be73b259fd27dd954d6ff17d08573be86005900367f9da9c629b50e,1b0d60504ff43d6824e0,dev
+sms-02648,ham,"Em, its olowoyey@ usc.edu have a great time in argentina. Not sad about secretary, everything is a blessing",68dde7299f1c1c6100365e76b2e102e149c07e434206a2d6f624c9fd789f87bf,4cee3a2c176dba3634bf,dev
+sms-02650,ham,"Hi, can i please get a  &lt;#&gt;  dollar loan from you. I.ll pay you back by mid february. Pls.",6b0783c3a8dd7131fd4d4b23a5e3735abde00943d0124020b7679288fd11a5ff,80952d1d957e10fa95ef,dev
+sms-02651,ham,"You might want to pull out more just in case and just plan on not spending it if you can, I don't have much confidence in derek and taylor's money management",ae3cceb8cfbe6c8b40b723e6c99fe6e077a84903b8c2050501777ce36a30dd7b,7800f999adea4f097154,dev
+sms-02654,ham,No need for the drug anymore.,45c7e23732f81d4d4b0a1a52b42463e36bf182016d80db09d992c29b85e698d3,9dc31616ac5c9081d04f,dev
+sms-02657,ham,Great! I have to run now so ttyl!,8c5b655e757539272a15ff6b49206feee647281a74319416657987f454c4939e,d7d6c16e992a7659d011,dev
+sms-02660,ham,Not yet chikku..wat abt u?,87195a945129c15e90c477b1b2935cbac360ca66b69bd52ba15735243f89406c,16781b86052cf632ba4f,dev
+sms-02668,ham,"* Was a nice day and, impressively, i was sensible, went home early and now feel fine. Or am i just boring?! When's yours, i can't remember.",3ff1b2570c28be433379cfad6ce328548852773704ceb6225b426279c870d344,d4db3a3cbcdc16bd371e,dev
+sms-02678,ham,* Am on a train back from northampton so i'm afraid not!,e78599550c276978c8d549923fb3b1464e03d73d72a4a2443a7a715ebf3d8c13,530d1705b1dac233333c,dev
+sms-02682,ham,"Solve d Case : A Man Was Found Murdered On  &lt;DECIMAL&gt; . &lt;#&gt;  AfterNoon. 1,His wife called Police. 2,Police questioned everyone. 3,Wife: Sir,I was sleeping, when the murder took place. 4.Cook: I was cooking. 5.Gardener: I was picking vegetables. 6.House-Maid: I went 2 d post office. 7.Children: We went 2 play. 8.Neighbour: We went 2 a marriage. Police arrested d murderer Immediately. Who's It? Reply With Reason, If U r Brilliant.",223e7c7ae1af6cc6dcc69e67dd16580b06ef68e6deb69b1908fd1cf430badda0,2b4737595d3df1e9b5dd,dev
+sms-02684,ham,I got a call from a landline number. . . I am asked to come to anna nagar . . . I will go in the afternoon,d48a80168912a2203b9d6e1946a82c408514abf07f3e05392c9839dec7304ac0,359e2b079b4a31f12909,dev
+sms-02701,ham,Oh baby of the house. How come you dont have any new pictures on facebook,1fcf1b05105b058f6893ca7804868e0dd8e95c79cb52ad7c678f5ac9722c978b,96bdc47b7bd54bd46284,dev
+sms-02703,ham,"Hiya, sorry didn't hav signal. I haven't seen or heard from and neither has, which is unusual in itself! I'll put on the case and get him to sort it out! Hugs and snogs.",d71fbb30fdbfaf965a643c55d85624bf287fa76a25a3b3753175df1e8575604a,90b257583e44eb9f2e48,dev
+sms-02707,ham,What i mean is do they come chase you out when its over or is it stated you can watch as many movies as you want.,fc6fc7e6be316194b621087f61788f0a76d982015ee5333a2147bbb9cca1571a,59d8f5252e6e10e33eec,dev
+sms-02725,ham,"Tunde, how are you doing. This is just wishing you a great day. Abiola.",2533ef4a989333e45c90537be856092971098051762147137b91c039f176f2a8,aa1bdd0cbda300b5d3f3,dev
+sms-02736,ham,Can you do a mag meeting this avo at some point?,db98644b29f88307e99509c9d7f32fe4679d7ade89e2bd0b23d0f919de9636e1,f763c867000438f7c0af,dev
+sms-02748,ham,K da:)how many page you want?,a313e53f57c63d6ca5bec6b6b61747ceb7d8b9c7bd1b1484187d4e75f6152789,794b8e81359b4484e735,dev
+sms-02754,ham,Sat right? Okay thanks... ,559aa3e8af582d8727106a7e800ba4fbc290752869b7a18dd854856b9251a71a,cc7ce9a0449e36a4cffa,dev
+sms-02757,ham,We r outside already.,ee34460f42555dee111ad3f5ebb3a06efe5a5c3c1a0288f17b25713a17fdcbcd,5d841dac8f3306205636,dev
+sms-02760,ham,What time. I‘m out until prob 3 or so,1e4386e599cf07ed7702cc7b20509898ba1d53ab7a267b8e31db76334b50bd39,3482f7fee69243ccf3be,dev
+sms-02764,ham,ARR birthday today:) i wish him to get more oscar.,5b10e79d9d72dbdb5d9368de72f27e1f0be88c7fab3ab29e76a55f484eb0d3b5,0de4de78279e5c393fc9,dev
+sms-02767,ham, and  picking them up from various points,a75f254387d0c51b98d7663eff45c731ae2bb88a0b90ebbd863a33fb394dca5a,944601e4c5f17babdfd1,dev
+sms-02783,ham,Then its most likely called Mittelschmertz. Google it. If you dont have paracetamol dont worry it will go.,cbbbe6bb97764928b798d5ac02dcb5a37db31d0967ad215c34bf8467b832d6f3,e9ca13c312e3c39f349e,dev
+sms-02791,ham,When you are big..| God will bring success.,6ffc263ff2d90804e6e91456e110eed7b31059e63a3eedb7a9cefdfbf3a26748,85eb71b07a81ba8190e2,dev
+sms-02801,ham,I've told him that i've returned it. That should i re order it.,c6ae6725c7d4ed7113c34fa6af7403062a46aee92a3ea7105ec9f86b1bfaccef,12c3f277fe3d67caa253,dev
+sms-02807,ham,I think it's all still in my car,4a462be5db1d25d1675275108544fe3c2d734c7112a214108378d9d71b694077,2442462cc361a85c21c3,dev
+sms-02808,ham,Can a not?,3f58628088fbb6c3b3d1584db5f937b1685c4f331caf8e9540130dafc734b4d4,8463a9bfe5a412432c46,dev
+sms-02811,ham,Oh yeah I forgot. U can only take 2 out shopping at once.,a8f3d5b024f96968838ab70ca40219df6e110e2a5cf6dea89492cb12cf4fca76,184c68c7ceb2862256b6,dev
+sms-02815,ham,"Enjoy the showers of possessiveness poured on u by ur loved ones, bcoz in this world of lies, it is a golden gift to be loved truly..",7ebdc4a2e661b7ab24582344523d052191c6d2dc0965364110d2c4697681a05f,0cdefff2ae7e3141385b,dev
+sms-02819,spam,"Gr8 Poly tones 4 ALL mobs direct 2u rply with POLY TITLE to 8007 eg POLY BREATHE1 Titles: CRAZYIN, SLEEPINGWITH, FINEST, YMCA :getzed.co.uk POBox365O4W45WQ 300p",11bbfbe8f190352bb81ed0274bd255b1628c3c977c81bae6e482a2f5cf996d5c,f5a7ebcb5e9839660ae8,dev
+sms-02833,ham,Thanx 4 sending me home...,27437b9680e34bd3e7f6d53470c39b17443e697eaeacae45cc6fe0d4fb797cf3,180fa41d7aaa6f6cc2f8,dev
+sms-02834,ham,Its normally hot mail. Com you see!,b7299ea36d6d9e0aaec3861c97c2c02497281cd93d4e992543972622ec252aaf,3ddbe03fa358abfc1d27,dev
+sms-02838,ham,Nice.nice.how is it working?,7bb5aa3ecaab7a20d7934011d79a2cc189549793e5abfa7a5ed81bb77ac1d086,169bdc933122a4b73937,dev
+sms-02851,spam,"YOUR CHANCE TO BE ON A REALITY FANTASY SHOW call now = 08707509020 Just 20p per min NTT Ltd, PO Box 1327 Croydon CR9 5WB 0870 is a national = rate call",5c86d654b3f22861fb42814ca4939b529e63f1af1f3a66d4ad95909c6a9e7eed,12b582ba477cd73f12ac,dev
+sms-02855,ham,I doubt you could handle 5 times per night in any case...,037f009ac2546d9b424ab65acbf3d5bd8d1b783b01f1df27cd82c0d170ebe6d9,6f30281004ff8365873f,dev
+sms-02857,ham,Your gonna be the death if me. I'm gonna leave a note that says its all robs fault. Avenge me.,8de13cc7b14c0852eef19d1e87ec1a95c2c1101490936d67514cc8fbfce8694f,d0b5a35f79e464b29f2e,dev
+sms-02864,spam,Adult 18 Content Your video will be with you shortly,5997e92abfcc3b63ac5b2771d2d8cf6c92917815db5b3c9107c6b7a7f79d2a13,c24035647742b3bad628,dev
+sms-02866,ham,What I'm saying is if you haven't explicitly told nora I know someone I'm probably just not gonna bother,87890d2ae959e96f363f533ac7fc75e91460b547599d08ff86bedd0f5a49cd61,af675424df380e99e906,dev
+sms-02867,ham,He says hi and to get your ass back to south tampa (preferably at a kegger),869ca492109e4f8fb625900ac7eaebdbaf5e758271015afcceb12b520656ccc4,dd59c7d2e8e04be3e1fb,dev
+sms-02872,spam,"YOUR CHANCE TO BE ON A REALITY FANTASY SHOW call now = 08707509020 Just 20p per min NTT Ltd, PO Box 1327 Croydon CR9 5WB 0870 is a national = rate call.",7a8b2c1014aa1b3a930cc6a3c2c29733744ee6d3019839743fefdc0c4c91be34,12b582ba477cd73f12ac,dev
+sms-02881,ham,U still painting ur wall?,e4c6441a818c4277a007c0c838dcd4cd064692e118d92ef6976faba9242d6b41,dd61187b7596eeb09776,dev
+sms-02899,ham,Ü collecting ur laptop then going to configure da settings izzit?,26226b68a9098d4465211cd1e2be82629088f44d4405003e8f6c9e9cdabad613,4877bd74eaf8f5f37248,dev
+sms-02901,ham,"Aight, I should be there by 8 at the latest, probably closer to 7. Are jay and tyler down or should we just do two trips?",db9c15a2a525b49cbd8f4b67cb2337aecbf22cbdf66c3150c17c987b13dc5166,25ed1d4821eb862902b2,dev
+sms-02911,spam,URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09058094454 from land line. Claim 3030. Valid 12hrs only,b047f1494f3fc06b325cca7cd05d936e11cde27c1a7ecbb53cc7ab8555771465,4749aace322b01672389,dev
+sms-02912,ham,How do you guys go to see movies on your side.,e5044e255a440ac36780984f8c693d96a78e3e1a3d02b0009539ed544cec07fd,6f96f9ef0a9a7672bfe5,dev
+sms-02913,ham,"Sorry,in meeting I'll call later",d1052099514b22238af4c76f5f7d4ea480d137a4bbe7b2fcba1c59e629f09cf5,735f457a06a868815ec0,dev
+sms-02916,spam,Sorry! U can not unsubscribe yet. THE MOB offer package has a min term of 54 weeks> pls resubmit request after expiry. Reply THEMOB HELP 4 more info,7bcda6f7e6bd2b6ae8e6f5f6b5b6f6dd2100c65db0a55438e6cdcfe6403546c5,9ce94a851fcf180255af,dev
+sms-02919,ham,Yes. that will be fine. Love you. Be safe.,ea8970cd5a424a60696a48f058a7925658cdf55893a37f07a1c662fe91a9b554,09323754a3d50a380f9f,dev
+sms-02921,ham,Is xy in ur car when u picking me up?,e84a6741cef04114a5b5d2564339abf4e2c1443670af5afac4770c1daacfe536,ab19d6bb666c03e783cf,dev
+sms-02925,ham,Fine am simply sitting.,64c45cec90688fba45d4da6f0febe25be435096676e705ee7b3280a6bb66c2eb,7ac00cbe335bbfba0d4e,dev
+sms-02932,ham,Wat's my dear doing? Sleeping ah?,d6adff901147a3f74b5362884292c8d6749ced2904bbaeb224515b73c10e8bae,329a2b5fdadc583207b7,dev
+sms-02938,ham,"And stop wondering ""wow is she ever going to stop tm'ing me ?!"" because I will tm you whenever I want because you are MINE ... *laughs*",c73c1aa1d475c8e61e4adbe83760e3b6b61bc883de0fa2c7ddd4e8ddcf3ac44a,6847426ccfc0e4d4ed11,dev
+sms-02948,ham,make that 3! 4 fucks sake?! x,ba87d6f65c802f24342da0e3982dccb621d96a812a9a162ad1acbb2cdc0bf3c3,cc3f1dad75b350aa59de,dev
+sms-02951,ham,at bruce b downs &amp; fletcher now,1b94c77782ed3719d83c80c84c5fa95a8d88fd552e83c2fa6587abbe5a7c3e1f,69932c2fa6b3a68c3d92,dev
+sms-02970,ham,"Mostly sports type..lyk footbl,crckt..",0e9b5f746b96c523a9f441466c5edbf2158d5cf0f07cce23223067e0dd2ccaee,4af5238f9ee67ec57cf9,dev
+sms-02978,ham,I love u 2 my little pocy bell I am sorry but I love u,baacdc1f195099eeee805ab7534d8dc9bfb27048c5f35afd458f12ca7f0d7998,511cf77c9e84cec4d8f6,dev
+sms-02983,ham,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear",4e88adc989758717785dc14bcf123b463b2a76a653fed99c619b08b8ace46f92,fdad3383ed635e9592a3,dev
+sms-02985,ham,What should i eat fo lunch senor,c3ef47c4d2b9119b424d309bfe2fe92bea0b5acd614e73fedc909349c96db720,88326b8bf5219342da80,dev
+sms-02996,ham,"No idea, I guess we'll work that out an hour after we're supposed to leave since as usual nobody has any interest in figuring shit out before the last second",8c1efb4c5cd52598372b3150e1a905574c5a01f3c7442af41fb545ba34083c7d,302404971bddde26c9c8,dev
+sms-03001,ham,"Oh, then your phone phoned me but it disconnected",ec2106e399fc8e14232699e5936b65d30215af7ad02ded47a1c6fc149317ccb5,c1c44061e57c5f46ee26,dev
+sms-03016,ham,I might go 2 sch. Yar at e salon now v boring.,4c851aa4b0bbdc2d1ea57aa2920abd274745c0843e0d910e5f5a8933d14a82f6,5790752f57d4c0ab21af,dev
+sms-03029,ham,You still at the game?,4a3a978c556f8a231224be1ea0c45b27732b3fc2c5d1675ac4fae9027f3c0a0e,acf02da99878c7dcacdc,dev
+sms-03037,ham,Raji..pls do me a favour. Pls convey my Birthday wishes to Nimya. Pls. Today is her birthday.,65ab0769da7b357513b5fb064917f48329aeb51c59939da500b5df7638cf0ce9,2a2fcc351fd6cf551a8b,dev
+sms-03044,ham,Slaaaaave ! Where are you ? Must I summon you to me all the time now ? Don't you wish to come to me on your own anymore?,b4fe3ea430762c14682c92422ebdc368a3d29065151b3fdb3bbfeca2d035a637,84824517f376d7e3f0b6,dev
+sms-03054,ham,Please leave this topic..sorry for telling that..,02a1cb8c01dde0e33ce0b6dc1df13419ba73ea570f90e24a71c762e42bc0370d,a6c59111f52e1f21d652,dev
+sms-03056,ham,What happened to our yo date?,d158a582bec541de558d38e6dbf2081a6a3534a17c1d7308d74c9132a88eb1e2,3fac584ac4f96bb8fc5b,dev
+sms-03070,ham,Boy you best get yo ass out here quick,22168c48719c0b1981976382936584df2eb5f801867da920ccc1b7e7f490ca38,1da76158691c0755c81e,dev
+sms-03082,ham,S.s:)i thinl role is like sachin.just standing. Others have to hit.,c618f7fda8452d083ffa6469ca89bef913e9fcb46144ba8ea9b80293ea964c0c,faa8777e840cc98414d6,dev
+sms-03087,ham,In da car park ,97c0bfdcdb4859f51050778a0f2b93cb71a72f7afe2c70fe0069edefd2f7a97b,c4ad8f0e76318c52ea6d,dev
+sms-03089,ham,So i asked how's anthony. Dad. And your bf,0012e3451075d2d25a2cfba8696a4d701d3cbf985d49787183c696df9f930e63,eadcb52b9e31a95dd00c,dev
+sms-03092,ham,Am going to take bath ill place the key in window:-),510ea210d8e14553e3156d9fe94a11b572498348f94be3ee1c0de96c37e81a0b,60aece1874a6087d3e45,dev
+sms-03095,ham,staff.science.nus.edu.sg/~phyhcmk/teaching/pc1323,c29c3a0928522aeb61bf354a279624d29c0290c6ed5874cc16780261e8a189b9,82977240b19c2c97d28f,dev
+sms-03097,ham,Olol i printed out a forum post by a guy with the exact same  prob which was fixed with a gpu replacement. Hopefully they dont ignore that.,94fb5334306511c77eea6a9351fc75bd8dc45100455f3c41b27bd3a84afc606c,ab067c9c4fe330132b65,dev
+sms-03101,ham,Ok... I din get ur msg...,2b234d89d62eb6cd8255a02f2598db9dd6b0136461a4a54c56c36c1636dfb123,3a9cbff3de69c0db9952,dev
+sms-03107,ham,Or remind me in a few hrs.,ae69e9b614ccee76987d23cba65208373427dc6c9e9afe9bfee5e4ee7b8eecd3,249b92dd9fb3507202c2,dev
+sms-03114,ham,Just haven't decided where yet eh ?,5e4004a6279ca82ac1d8c41c2982fd295cc9f37c32f9658a246ed8969470c7d1,2c5353aa7513c46364d4,dev
+sms-03124,spam,Free entry in 2 a weekly comp for a chance to win an ipod. Txt POD to 80182 to get entry (std txt rate) T&C's apply 08452810073 for details 18+,1d5b7aa1900186396ded400d6f719ad58a49e932a851a8694f80bdcb07444f69,d471d56f7e73f4890694,dev
+sms-03125,ham,He telling not to tell any one. If so treat for me hi hi hi,2481a88939b8af077bd4fa8b19521f850fc3a3720cb9927d8e4a4a2dabb475ed,f7ac56153ec6a11e2e81,dev
+sms-03129,ham,Thats cool. i liked your photos. You are very sexy!,a09d56b0e606f097bc726622a4487b08833d68a124317282f10bcace1982b5d2,759ad4e58b025383a6c5,dev
+sms-03134,ham,I've been barred from all B and Q stores for life!?This twat in orange dungerees came up to me and asked if I wanted decking? So I got the first punch in!!,c68a36291ea760b9ce3b2d6a243ffb5ed029d6e65273ade35dc0e9c4a5647f44,407dde97b1f90434df6c,dev
+sms-03139,ham,You're right I have now that I think about it,8a8dca6d299993d1e5f05713f93e192f547ab61cf4f409e65b684ca2383f7f62,18d63b99ee288f6027c0,dev
+sms-03149,ham,Oh thats late! Well have a good night and i will give u a call tomorrow. Iam now going to go to sleep night night,e659f6977f1ef2b9f7a5855d3c62ce39beb75954c86a20b285ef8e7bbe58da53,233113663fb320e9a4a7,dev
+sms-03150,ham,"""CHEERS U TEX MECAUSE U WEREBORED! YEAH OKDEN HUNNY R UIN WK SAT?SOUNDS LIKEYOUR HAVIN GR8FUN J! KEEP UPDAT COUNTINLOTS OF LOVEME XXXXX.""",58561059f37a0573c0fdf816338a0d22d5285f6146eb92a1a80e9c0f76fd6f0b,4c7eee95021e165fca97,dev
+sms-03159,ham,Havent shopping now lor i juz arrive only,d2e609d804f278e593a1053cfc99233572d4bddef5a107e6536c69f2aedcb3a2,041d33a8c53d518a83ae,dev
+sms-03164,ham,I can't describe how lucky you are that I'm actually awake by noon,da1b7e276872bfbb7bf9f65819854511148cb80e5ce00a6e797481fbd6dc0406,720c97ce0c0e4feed368,dev
+sms-03169,ham,"When people see my msgs, They think Iam addicted to msging... They are wrong, Bcoz They don\'t know that Iam addicted to my sweet Friends..!! BSLVYL",51ce5bb1add0100d294a04b32e3b92cd6e37c20193e0f98447fbed35d35dda83,146e31c65269a822dc0f,dev
+sms-03170,ham,Ugh hopefully the asus ppl dont randomly do a reformat.,419f789ceb58fd8e8de97dce5f4503d687b2777df6cf48cf1cb0e3c37a6d24d1,ce934a38ef2a9d91b4bb,dev
+sms-03171,ham,"Haven't seen my facebook, huh? Lol!",dc06ce8af992e5ea2bd2bd90d4d5765b23cdc5673535ff87033a86b6e2c238fa,21196e946a4eea1985dc,dev
+sms-03173,ham,Still otside le..u come 2morrow maga..,26ec4e54c3e369db825a6ac87026c93889303a744948812d00555efc43f416fa,edd2fa13a2e5dd9619e2,dev
+sms-03181,ham,Does cinema plus drink appeal tomo? * Is a fr thriller by director i like on at mac at 8.30.,7e0d154f328facbb4af09e42bf6a14d2cee8ec5e291944999c5caa82fda4b465,d6c0f89d998669b0fc0c,dev
+sms-03198,ham,"I av a new number,  . Wil u only use this one,ta.",c8d572bfa06f0a2eb36f8d84e9b5d7dbb12dcbe851f0f7ee5d96fb62ec63d83f,7a43f851124e9475363e,dev
+sms-03200,ham,7 lor... Change 2 suntec... Wat time u coming?,b55ec07973a8914ca3e1f755bce9f93c344852194432ccc986751f80eb170ccd,90f586dcdef04fb9cce0,dev
+sms-03203,ham,Nice.nice.how is it working?,7bb5aa3ecaab7a20d7934011d79a2cc189549793e5abfa7a5ed81bb77ac1d086,169bdc933122a4b73937,dev
+sms-03204,ham,Okay lor... Wah... like that def they wont let us go... Haha... What did they say in the terms and conditions?,5368de92f7c0b2f27d2cb403cdb5fd318db95a586661154464e050c3e370be59,df65538b6bd053166bd8,dev
+sms-03221,ham,Me too baby! I promise to treat you well! I bet you will take good care of me...,75b837c1e3d4dbee479576281af2e74de721963db657188d06dcfff112f11b30,a1402de4acca315ebc30,dev
+sms-03222,ham,Its like that hotel dusk game i think. You solve puzzles in a area thing,e59930e021073d420a7bd254635fcf0599791e78bb88dc81625e4bba2762e56e,a472b1e1151b47aa7b38,dev
+sms-03223,spam,"Thanks for your ringtone order, reference number X29. Your mobile will be charged 4.50. Should your tone not arrive please call customer services 09065989180",009cdc41b4862f2ea5bba64bb0b92899187798a80d58f569cca20538bcf18053,c31f02a284e7c0ed755b,dev
+sms-03224,ham,"Hi, my love! How goes that day? Fuck, this morning I woke and dropped my cell on the way down the stairs but it seems alright ... *phews* I miss you !",8ca45c76faa672a94fe213eaafa23250430925625c6f30f6ae00b57f2b3d2045,c7d96d7ef23eb000184b,dev
+sms-03227,ham,I need... Coz i never go before ,faa78abfb3a009c23134f1dc3b0f1d5b7aed352b66932d941e8d5ee3f2ba34c2,c07312029c6daebc8f0b,dev
+sms-03228,ham,"Rose for red,red for blood,blood for heart,heart for u. But u for me.... Send tis to all ur friends.. Including me.. If u like me.. If u get back, 1-u r poor in relation! 2-u need some 1 to support 3-u r frnd 2 many 4-some1 luvs u 5+- some1 is praying god to marry u.:-) try it....",1685becbfe98560e6d7fad05ffdec0acf8da579e862fd0eb025330cbef9e9878,435c7ac1acd7f49669c6,dev
+sms-03236,ham,Yup ü not comin :-(,eeb8fcc6709ade25edb26ee39c0b60586c0637c25bb9eb559069b5f9b41b5d86,e999f03c59195a6ed82a,dev
+sms-03240,ham,Good. No swimsuit allowed :),88491539febdd8f134ebda162b8312b2687c2b7971cf06afabb2978cb8fb0907,083643ec698b99c0c65d,dev
+sms-03265,ham,So u gonna get deus ex?,93c920b45b1843d6c3fc33080f9e5ac80303f2bbc692ab305a1558ca139ee247,c72b50ee6970fc569b4a,dev
+sms-03267,spam,"44 7732584351, Do you want a New Nokia 3510i colour phone DeliveredTomorrow? With 300 free minutes to any mobile + 100 free texts + Free Camcorder reply or call 08000930705.",20db2289fa7478ab67819da4e086c19f7ba36d59ab1f5960eb23e718c7a4e7a0,e13ebba70c67290ec33b,dev
+sms-03278,ham,Lol your right. What diet? Everyday I cheat anyway. I'm meant to be a fatty :(,2d11b6e372d633f93cc283ab879420aa177ef5c2ab96c3214960cd187c324e98,33a53dc7f3a46b8b73cc,dev
+sms-03279,ham,Its a great day. Do have yourself a beautiful one.,09c044dedb445f5a6bdac21eb1d2e49c326d2b100390f58f8e5134fc4653fb7e,c07fdc6596f461ba3aa7,dev
+sms-03281,ham,"Solve d Case : A Man Was Found Murdered On  &lt;DECIMAL&gt; . &lt;#&gt;  AfterNoon. 1,His wife called Police. 2,Police questioned everyone. 3,Wife: Sir,I was sleeping, when the murder took place. 4.Cook: I was cooking. 5.Gardener: I was picking vegetables. 6.House-Maid: I went 2 d post office. 7.Children: We went 2 play. 8.Neighbour: We went 2 a marriage. Police arrested d murderer Immediately. Who's It? Reply With Reason, If U r Brilliant.",223e7c7ae1af6cc6dcc69e67dd16580b06ef68e6deb69b1908fd1cf430badda0,2b4737595d3df1e9b5dd,dev
+sms-03284,ham,Hey you around? I've got enough for a half + the ten I owe you,c020d450b87441e297ca469c10d5b58a5ba63a29ed27f82970d1ecf0867cbf23,4a2be6fc143e904d1a56,dev
+sms-03288,ham,Not to worry. I'm sure you'll get it.,e0169ae785d4f6088b1811d5765a430f6dbf6580bf8eabe9c252f521d8fe1cd8,95cca9af8cca449d2a61,dev
+sms-03290,spam,"Someone U know has asked our dating service 2 contact you! Cant Guess who? CALL 09058097189 NOW all will be revealed. POBox 6, LS15HB 150p ",fe6c162970c8f92b0778323fd514079dcc4c595dab0c29c2ce140f8f0fa8263e,0bfe748fddb255654e3b,dev
+sms-03293,ham,"I'm not smoking while people use ""wylie smokes too much"" to justify ruining my shit",338d6f8fb4f42159c7ad39299fbb38f991d9f9fb7d26502f3878aec782502447,bb0166f0546a615c0e44,dev
+sms-03297,ham,Dunno lei ü all decide lor. How abt leona? Oops i tot ben is going n i msg him.,b4e5b298a5671991fc8ea88f7d3a6463d30f55c42e21f424c02f34f779e8c320,582895a183318fa5f0f3,dev
+sms-03298,ham,Hi there. We have now moved in2 our pub . Would be great 2 c u if u cud come up.,bfa11f8aa49b66d29aafcfd1441662ae63b0a308c4dc35fc95462a1ddf0186fa,a13a979153ac56be3f75,dev
+sms-03307,ham,Ee msg na poortiyagi odalebeku: Hanumanji 7 name 1-Hanuman 2-Bajarangabali 3-Maruti 4-Pavanaputra 5-Sankatmochan 6-Ramaduth 7-Mahaveer ee 7 name  &lt;#&gt;  janarige ivatte kalisidare next saturday olage ondu good news keluviri...! Maretare inde 1 dodda problum nalli siguviri idu matra  &lt;#&gt; % true.. Don't neglet.,b4d62834b32cc516c7ce01b4c2f5f3d5e60f2d7a3d4b8723a62c640660520d78,df8b59a6f18e2125fd90,dev
+sms-03316,ham,Oh gei. That happend to me in tron. Maybe ill dl it in 3d when its out,a0d9f94cd5343283929609b31129aa4bae365135e2df61ffef1bcee1ef7872ac,3cbf2c382a9c56e307ba,dev
+sms-03329,ham, what number do u live at? Is it 11?,bf4efd22440bd0e27522917ab7ad756d0dfe4ae022f074b0236cbf6b0d403843,ebeaee277f5d9999e4a7,dev
+sms-03339,ham,I AM AT THE GAS STATION. GO THERE.,c140a36d1af4bda7cb8843104003a332e5f265eeeba355f6f51e1578643c92ec,d51bbb9e39a1015c397b,dev
+sms-03348,ham,U're welcome... Caught u using broken english again...,853f6774cab7f3a7a3ac4f64b9e25b8ef16481e3fd8bfdc77e12bf4b89705641,3ead009bb18af99cf9f4,dev
+sms-03352,ham,Sorry i cant take your call right now. It so happens that there r 2waxsto do wat you want. She can come and ill get her medical insurance. And she'll be able to deliver and have basic care. I'm currently shopping for the right medical insurance for her. So just give me til friday morning. Thats when i.ll see the major person that can guide me to the right insurance.,a47d02701ef1fcf19f72389dd2ac5606b49317d43ee9c7547b84076f21f386a1,82629395bd42c6059d4e,dev
+sms-03365,ham,Can... I'm free...,7c0e1018475c6807131904ca11b9b6f216570abc2c972c28a106ea713a0da6e8,a6f44141c6084e0d5b1a,dev
+sms-03368,ham,I am waiting for your call sir.,49fb467cb1c036aa44886f95902b0edd1382094eb6a5e993d2e445d22ebdb0a0,531ded7868df27f9f7d7,dev
+sms-03372,ham,Most of the tiime when i don't let you hug me it's so i don't break into tears.,f7949d75028892e81e2b1fb1b1e3693b244d2a856b53e5a095d890e56eaf23fb,b5ccdac356f5a9b6aa48,dev
+sms-03379,ham,Yup. Wun believe wat? U really neva c e msg i sent shuhui?,bc9aa7310b478fbdc0f9d0fc0956580b49efcf0ca07cf58d0a9c20ad4954b5dd,5f1bb296ddaf75b7b8f7,dev
+sms-03390,ham,Same as kallis dismissial in 2nd test:-).,d8f305f0e4cd74d7ef251da611e001aa0c80a0c3495ac2b87d8e31068be308dd,f1c13bd7737db77d7220,dev
+sms-03394,ham,What r u cooking me for dinner?,d851b1615ed8c0526d2311a4bbbb3d5e7d029046725b16c03738f609778f4d68,32ec705cf6ebb757edf8,dev
+sms-03398,spam,URGENT! Your Mobile number has been awarded with a £2000 Bonus Caller Prize. Call 09058095201 from land line. Valid 12hrs only,5ba5af14d793280a1d058fa080d84654ad9eddd394b5918c9cf42dcde83da97b,6918ec9c4a1fc7a75963,dev
+sms-03399,ham,Heehee that was so funny tho,92db410ff8e06c68ea18825f19ee2b9e8a7b5f763c49b44eb7cd3bfca8d7b904,a32053dc039377b1c436,dev
+sms-03410,spam,Do you want a New Nokia 3510i colour phone DeliveredTomorrow? With 300 free minutes to any mobile + 100 free texts + Free Camcorder reply or call 08000930705,e442253a043696b37ed3e4f28d8e133229aa8b10993b4d1baec48abb77d1ed0d,e13ebba70c67290ec33b,dev
+sms-03426,spam,Am new 2 club & dont fink we met yet Will B gr8 2 C U Please leave msg 2day wiv ur area 09099726553 reply promised CARLIE x Calls£1/minMobsmore LKPOBOX177HP51FL,521c2b0003d8457c33f94c559cdb1aee5a34888c798546d84c2dcf9767381f30,721db2a3370631f88010,dev
+sms-03427,ham,True. Its easier with her here.,da47baa1552b3beb83dcca3675f1cad3b0093ac694ec32167b1a6e770aa3b205,38b80cf4ba4fc5d5184d,dev
+sms-03431,ham,I don't know jack shit about anything or i'd say/ask something helpful but if you want you can pretend that I did and just text me whatever in response to the hypotheticalhuagauahahuagahyuhagga,069cd4ff5ef879f364e6034a7183b2d34493b0b2337836abc574439f42323a22,d8e79f8b6abffb892aac,dev
+sms-03438,ham,If india win or level series means this is record:),c0b14e725c5f6336b812da2761d8cf26c67c7aa7cf58c3ccaa2771beaec538c2,c8ec0fa1497470516452,dev
+sms-03440,ham,Its good to hear from you,5490cbf50d52de074caacb1b529bea438230b37a45c24ae0199ad21966db5470,26c181bda177418ab95d,dev
+sms-03450,ham,Its  &lt;#&gt; k here oh. Should i send home for sale.,97bb12c699b2fd3a15b1d8720eb9d1795103b3aa20e61806e57e7a38de11e6ae,7a41d84b2cabd50c6f08,dev
+sms-03457,ham,No need lar. Jus testing e phone card. Dunno network not gd i thk. Me waiting 4 my sis 2 finish bathing so i can bathe. Dun disturb u liao u cleaning ur room.,319ca56164446ac6f9a7863834584d520e024241bb9492bb30937fac1ab8c457,5fe4a0c1dd70c451ee9f,dev
+sms-03462,ham,I am back. Bit long cos of accident on a30. Had to divert via wadebridge.I had a brilliant weekend thanks. Speak soon. Lots of love,1a24a474660503382406bc71ef225fdc2ae20904bdbe3d50a3c7c60d0b165f7c,ef934a29e15c6846fba3,dev
+sms-03463,ham,"K.. I yan jiu liao... Sat we can go 4 bugis vill one frm 10 to 3 den hop to parco 4 nb. Sun can go cine frm 1030 to 2, den hop to orc mrt 4 hip hop at 4...",d690b82023f5f9f7ec5570b026a74ffe732ace84a4252b6292d75fe68a1747a7,f0ed9d0018e29d5515bd,dev
+sms-03470,ham,yay! finally lol. i missed our cinema trip last week :-(,33f22d004249f3b81c8ce0b3ce73f25d5ac98c5133e1a32f80d5fa08198eeb5b,64f75fcc19ff47a02c54,dev
+sms-03476,ham,", how's things? Just a quick question.",bc921f23b01e1465c1b1200e2e89075407f22b4690ff906bec16db0fc6d79695,3e2e4b8356b144358105,dev
+sms-03480,ham,I can ask around but there's not a lot in terms of mids up here,48392866caf4f84ffaf6512b8b5aa0c736ace8a9fadbad1e20c42adb5a9141f4,67f5398d36a55b86dcbc,dev
+sms-03481,ham,Be sure to check your yahoo email. We sent photos yesterday,2e4d47d18bc53e33a9a8f969c560c8231d4c1df2c441462e57d153ab4b8073a7,a3e1122439e772d17992,dev
+sms-03502,spam,Dorothy@kiefer.com (Bank of Granite issues Strong-Buy) EXPLOSIVE PICK FOR OUR MEMBERS *****UP OVER 300% *********** Nasdaq Symbol CDGT That is a $5.00 per..,a58b5ca72e5032926000cc98e37396a9bedc77c1728b9564061d54fa062b3bf8,d8a575733526f6d4181d,dev
+sms-03507,ham,"life alle mone,eppolum oru pole allalo",a9d276d50f64753dc214f8c8ebf5e9b49226c387cc31524f4797ce11e99c88f6,3fd352c6d62b848be71e,dev
+sms-03512,ham,I just saw ron burgundy captaining a party boat so yeah,7301843ad0b2d99e7f395da6f7648eb3cf9fec3a701bea4f96162c6163b23a4a,6c193b8a91e780f9df22,dev
+sms-03513,ham,I'm serious. You are in the money base,c165495b8d72b6eda0853e625f94454f2e7b668745843213e9e9139759943c42,80a78f23dd41745c3ec7,dev
+sms-03514,ham,Already one guy loving you:-.,ba2843aab0764ab416c41d7946aedfe46dfcfec2b15c297372d09e14f399d050,ebf96ad1f91da88f5ac7,dev
+sms-03522,ham,No it will reach by 9 only. She telling she will be there. I dont know,8f7dc8fa59d4b6528ea43548ccde4e88bb1303c42b777d916e4b03416e23b81e,1e829a1fe8c4831ff4e5,dev
+sms-03549,spam,"Rock yr chik. Get 100's of filthy films &XXX pics on yr phone now. rply FILTH to 69669. Saristar Ltd, E14 9YT 08701752560. 450p per 5 days. Stop2 cancel",7f14ac101c8930b3694ca08640f10349be1fa6cee1804c6e43bbd781f161de88,ae8bc893ea10f0fdb3dd,dev
+sms-03550,ham,"Single line with a big meaning::::: ""Miss anything 4 ur ""Best Life"" but, don't miss ur best life for anything... Gud nyt...",ff57c95f34d7a34c2e5f251256cc52f95a7efc50876bca69a853dd254ea92e44,a57735fb4d33b9713ab2,dev
+sms-03556,ham,am up to my eyes in philosophy,0b161f8ef2aae7af7a82cd69ce80e96a7724d8b7fd38b5e0551c90809fbea95b,df89b15d7815a730894e,dev
+sms-03561,spam,URGENT! We are trying to contact U Todays draw shows that you have won a £800 prize GUARANTEED. Call 09050000460 from land line. Claim J89. po box245c2150pm,100f55ff7bc6d583b40c6e033295c6e19860e3a02887e097d650ef76cacd9de3,b10934eeb7041c67ce83,dev
+sms-03566,ham,Do you always celebrate NY's with your family ?,5a0421b2240ff907e37aecb1e7b098b8b6ed8e40ae3e3e82586a2b39b76bdb49,118fd19a7e12849f7000,dev
+sms-03568,ham,Its ok..come to my home it vl nice to meet and v can chat..,2f8beed218f2daa486cfa5e66408e167a7776f768f7b80a544db9734c03288bd,0bc211dd68177a194a04,dev
+sms-03574,ham,"Yup, leaving right now, be back soon",3fbb868e3b9036ff8688b673642e9d86d5d85bd107751619572114d98b959db7,89185ea2900f0da6389b,dev
+sms-03589,ham,Our ride equally uneventful - not too many of those pesky cyclists around at that time of night ;).,c20b2d9eb15b724157eadfee9f5b523c5af003f9a7ca2f9bbabda40b2e9ad36b,ca3b10d95d957eba0a9c,dev
+sms-03596,spam,Do you want a New Nokia 3510i Colour Phone Delivered Tomorrow? With 200 FREE minutes to any mobile + 100 FREE text + FREE camcorder Reply or Call 08000930705,e08dc481dd936b7b6e957431c3d91f97148e95167933a633af008ddcea57b5c5,e13ebba70c67290ec33b,dev
+sms-03614,ham,"K, my roommate also wants a dubsack and another friend may also want some so plan on bringing extra, I'll tell you when they know for sure",0c44436bd384bc86463b124c4a429e1658b6a1f4997ba901b7fc64ee39e989b5,d515d88cfb769c70fad9,dev
+sms-03616,ham,Ok c ü then.,d47a96b74c0c60faced9a93c181c41e045accc231cec5e0352fc171dac6c87a1,d5344e8e8c51babad2fd,dev
+sms-03617,ham,I enjoy watching and playing football and basketball. Anything outdoors. And you?,e83fa46bd30c91372b47d0053e18bf6ba3aac8b06b329a91737b26bde3c94a7d,afa8af651c9c4383d92e,dev
+sms-03628,ham,Yeah right! I'll bring my tape measure fri!,6abcdccf8f76b2e69bd144ab619e97f43a8b035c5f383195a1f166338657066c,55d99b2e0eec67df3666,dev
+sms-03631,ham,Should I head straight there or what,6dac2665716574fa00ad92bc834dd2afc924443d923ca4520b605bac76ad5402,f68edf05925f948f60ff,dev
+sms-03641,ham,Wat's da model num of ur phone?,5cbc63ab2ccb8c4e767d89e487eed92e9dfd20ab40cc093399fe20ca29412b24,82f3777f566a9a152fd4,dev
+sms-03649,ham,"Hey babe, my friend had to cancel, still up for a visit ?",ddb54533e62617f49ebf404bd54cbe16fe3bcffe6ef6291f9b3d9d885a448349,f6d52e5d029a113e2634,dev
+sms-03656,ham,Why i come in between you people,81d391a2ecdb2ccfb5f70b8864160a33150e5ea08658c678d35d2f89daed56d3,585a657dc11e9fb2653a,dev
+sms-03664,ham,"What are you doing in langport? Sorry, but I'll probably be in bed by 9pm. It sucks being ill at xmas! When do you and go2sri lanka? ",5305dbf7a22f3ae978cb959a92593ee1804c9be497d8906937e8d0362c968734,0150f1cb4ccdc3afe47d,dev
+sms-03669,ham,"Honey ? Sweetheart ? Darling ? Sexy buns ? Sugar plum ? Loverboy ? I miss you, boytoy ... *smacks your ass* Did you go to the gym too ?",5e24467fcc3ff280fd72b1e5175da71d5620d245620782167dbdfe1360df4419,da427d60818faf419054,dev
+sms-03671,ham,Yeah imma come over cause jay wants to do some drugs,3d82844ebd30b6713c6826c360366cec6f0fd0bca41bb4056e4bc00ad612294a,dcf5bfdb4104a9d7b6e7,dev
+sms-03673,ham,Yup. Thk of u oso boring wat.,339a9f510b18244dde6f0c61be2574b7f23d41f5f6395a8dde67d0555c6e0a0a,083ad07b3fd22b9d2158,dev
+sms-03684,ham,"Hello, hello, hi lou sorry it took so long 2 reply- I left mobile at friends in Lancaster, just got it bak Neway im sorry I couldnt make ur bday 2 hun!",bbeb70a80e869f78e8b8325f3dc24c13181226b1666980e9efac4b5bae0097a5,32ba1bb0f6f8f27e33cc,dev
+sms-03709,ham,Aight do you still want to get money,3dfb98d97486a2534ac849aec0a1fe0e41cb6490e45a25abf873a859f8284e98,9a69c05c1589ffd95d7b,dev
+sms-03715,ham,If i not meeting ü all rite then i'll go home lor. If ü dun feel like comin it's ok.,210501849cad9d1f4f0deaf77df9e800979f73f66eae91dd8d3a63933445c8ee,a7141e3712ccba82a14f,dev
+sms-03724,ham,I'm in a movie... Collect car oredi...,8d108e2fc1ee3fc72708f8497a0e30122d136ba9943e207685a31c3bbedce5fe,e361794fb9a0e2cc869d,dev
+sms-03725,ham,We left already we at orchard now.,1294bf209ba02866e55b7cf62dce01972d31090efb0d10951335c2929ec322f6,68cb8c1574fe04a4c051,dev
+sms-03726,spam,"Hi there, 2nights ur lucky night! Uve been invited 2 XCHAT, the Uks wildest chat! Txt CHAT to 86688 now! 150p/MsgrcvdHG/Suite342/2Lands/Row/W1J6HL LDN 18yrs",fab2c73784fd1c0ae34135a2e318567c1d2e2a92d7b1993b449dce4a76f8e9f1,b8253cba6c45e3fbeb98,dev
+sms-03734,ham,Gud mrng dear hav a nice day,1882952ddf7380e0b7f0ea2926e44f55f5d5898ad6e3fde0c75dd3379f957140,0d96b76a458df65cbd47,dev
+sms-03735,ham,Old Orchard near univ. How about you?,abdb1ddd8cb717f18a08db6ca0e11c709fb806e7ba881bdf989e9b565a0cbf20,40aef2b52e24b37f5724,dev
+sms-03738,ham,Hows the street where the end of library walk is?,8b704a4b7e013791a500a287f3f4e26217ce420038fc598f99900809079e5a9c,941a0c0477d4040ab13c,dev
+sms-03748,ham,I'm not. She lip synced with shangela.,daa009d7fc413dcd225f1e18526c68aec0a3cdcd3fabb250503a811aa379177b,3c4fa5d4f896f580f493,dev
+sms-03753,ham,"Haha... Sounds crazy, dunno can tahan anot...",7a241649983b8f8263102104cd7473015b59cce31f6b3359c813f0440dd1b1c7,7a25a95d98e71db21572,dev
+sms-03755,ham,Ya that one is slow as poo,b8dc1c22fb7c92f151b041598a9296132f40f5deceb0d1c1139b820ff74084a5,55210c865f587f73a960,dev
+sms-03757,ham,"""Im on gloucesterroad what are uup to later?""",3787ffcd1f08bb4c5c3d15f59410b29b817390244343db7e43c7324ebb7f92e6,50e591a8dd04c5981cae,dev
+sms-03763,ham,Was just about to ask. Will keep this one. Maybe that's why you didn't get all the messages we sent you on glo,dd0c9e5369168d0277bbb79b8d157718379f8e2341ed55cd369ce84256d2d587,c105e7754d4bcb8c952a,dev
+sms-03766,ham,Would me smoking you out help us work through this difficult time,2151be63e92d6a9b6db259b1fcc051bc1714d285ca765306bc0534b1d4b71ae7,ef96ea0657a72a2b75ea,dev
+sms-03767,spam,"Someone U know has asked our dating service 2 contact you! Cant guess who? CALL 09058095107 NOW all will be revealed. POBox 7, S3XY 150p ",6c3163293f2b89c34a5f4c85d84c77703379119f2c0eb5ac2994d5f5de800197,0bfe748fddb255654e3b,dev
+sms-03770,ham,Where are you call me.,65eaa968f11e1c8bb435b04332d0bb4293105dbe791ea1b81c75f5194d46c0ff,c4c1a095b2c213b2e243,dev
+sms-03771,ham,Was gr8 to see that message. So when r u leaving? Congrats dear. What school and wat r ur plans.,98fdc90cbf981cc0003a358db7634332b3469ae69dad50e449971116e7fcb00d,ea5c28fed924dcea6f03,dev
+sms-03784,ham,How r ü going to send it to me?,d091d7c317251dac2fad414f5d89f5df1185ffdedd7f7dcc752455184b93775d,e8974265f49ac6fc35f2,dev
+sms-03791,ham,"Are you sure you don't mean ""get here, we made you hold all the weed""",dd39e26c75317815b63d1e788d827c1a4e49ce6661e3324589a6b2567e084578,17d9524dc655b4b9a1d1,dev
+sms-03799,ham,For The First Time In The History 'Need' 'Comfort' And 'Luxury' Are Sold At Same Price In India..!! Onion-Rs. &lt;#&gt;  Petrol-Rs. &lt;#&gt;  Beer-Rs. &lt;#&gt;  SHESIL  &lt;#&gt;,5d77d202d96f621e1b14252577d6dc7d75727eab1143084d94baacdff55ebd1b,d0c96fb82e67b2421845,dev
+sms-03804,ham,No da. I am happy that we sit together na,fbb3d77f9870388d59a1aae65385cd8ffe3add3863f6c6efe99f515ce6880830,23b86692635da511b598,dev
+sms-03809,ham,Pls dont restrict her from eating anythin she likes for the next two days.,2c5b71dd20178b1e4d5d52df1ac9a7d24e5f4bbe1c3c017798ae24ffba6609b0,023b0a3c32ada4630b69,dev
+sms-03820,spam,74355 XMAS iscoming & ur awarded either £500 CD gift vouchers & free entry 2 r £100 weekly draw txt MUSIC to 87066 TnC,0f5f72add5165b6d97c49665263e9db70ef93870a189b8c708566124ec8a60a1,5ff04561b87280df40ce,dev
+sms-03827,ham,Hi. I'm always online on yahoo and would like to chat with you someday,dc3b753e738044f7f0aa491104a45a2ee0c834371aea1038f1ed8b413ca7bba9,9b121dacac28166c64e9,dev
+sms-03830,ham,Where are you ? What are you doing ? Are yuou working on getting the pc to your mom's ? Did you find a spot that it would work ? I need you,850a3bec0fa9f71054d125715e5c8232ca9f2d48dbe917730d47e1b9ab7e7590,e8ed602884622374501e,dev
+sms-03832,ham,I agree. So i can stop thinkin about ipad. Can you please ask macho the same question.,39206b9de7ca4234965c404dab36efa4bc8271520dac91769d46a1529534d0c1,b48452129efdc3c1d26e,dev
+sms-03843,ham,Howz pain.it will come down today.do as i said ystrday.ice and medicine.,adbc32d07c5469e1f8dc42457aff77d57e92de51429755f83adf179ec290766e,994434f19711697fa745,dev
+sms-03848,ham,Pls go there today  &lt;#&gt; . I dont want any excuses,0a0db04867d6fdc1144637eb90befaee3826bf9868860d6af0cf3e88a7b84b91,14e0dd0f0b51a6502519,dev
+sms-03858,ham,I'm ok. Will do my part tomorrow,16203602131b5187b1e76bad18e0b6486d0171c8f28ea12b7756a46b8ddc8a0a,34d03db0b8bc13846726,dev
+sms-03859,ham,"No! But we found a diff farm shop to buy some cheese. On way back now, can i call in?",7096f7bde2339b5b7b151a48e7a4e6876c1df65a9d392474bf8545052f42ad98,cd1e322a1760c468b724,dev
+sms-03863,spam,Free Msg: Ringtone!From: http://tms. widelive.com/index. wml?id=1b6a5ecef91ff9*37819&first=true18:0430-JUL-05,b850da733d3f7551fa9d39297aaad45e1e928f23a737fd6c31f963bbd0e966c9,b6993105503cac3499e7,dev
+sms-03873,ham,Yeah my usual guy's out of town but there're definitely people around I know,b7e27bc210d0a390a751dc6a7ac89becd17c12dbb7be0c04af7755c4557db867,484948ac03bc9a5ffe2a,dev
+sms-03885,ham,"Gumby's has a special where a  &lt;#&gt; "" cheese pizza is $2 so I know what we're doin tonight",fb08136adf225c346700075166145cac2c27db86c2bb47bc6fac8c7c684922ac,60c52af847f1bc13eeb6,dev
+sms-03889,ham,Cab is available.they pick up and drop at door steps.,d47a5f2cce1fce5bff72b41f85e8174210ce95189e8137525630ecb1b56f3ed1,e097c2a6aaa7ef92edf7,dev
+sms-03891,ham,Unlimited texts. Limited minutes.,9a11441d28563878b775c5dc279441b60851ce7fc795f9afaa652ebd05bb9b6f,6e3482bc400ef7344744,dev
+sms-03898,spam,tells u 2 call 09066358152 to claim £5000 prize. U have 2 enter all ur mobile & personal details @ the prompts. Careful!,a6fb3a93a885da49e7536da9b8fe8c2d0df69937afbe49c8741989f5f6d83767,e8a305cc1135478eba4a,dev
+sms-03900,ham,Otherwise had part time job na-tuition..,209326089e8b1cc0180ff01c84be47f36fbbe601bd569f908936d64501dab0a2,f326f64fe5af987dffd5,dev
+sms-03905,ham,Waiting in e car 4 my mum lor. U leh? Reach home already?,f8ca684c472672a72660e49e9b4436c154aa7c028aa8d8bba4448651b99fad58,3300377dadd3b455b298,dev
+sms-03933,ham,Nooooooo I'm gonna be bored to death all day. Cable and internet outage.,048059623a315730a4b6a4ee68b908916bf613bbccc2225750f4a6743708359f,ac86104c57ae1196bcfe,dev
+sms-03945,ham,I got a call from a landline number. . . I am asked to come to anna nagar . . . I will go in the afternoon,d48a80168912a2203b9d6e1946a82c408514abf07f3e05392c9839dec7304ac0,359e2b079b4a31f12909,dev
+sms-03950,ham,I like to think there's always the possibility of being in a pub later.,9940f86b6d6d6845b7a35a62a1391bf98ed4fce02626eda5160ba7f9f62d7d4a,0d70007a18b84db1fd2c,dev
+sms-03951,ham,HMM yeah if your not too grooved out! And im looking forward to my pound special :),07f34f5bb29d481e600e2265ab370f621cb36f8f1ce1465c69156ccb0009b464,cd4691165de985e9593b,dev
+sms-03953,ham,Hi dude hw r u da realy mising u today,69bc309b59b08b12906f3a2dc6aec2101acc81d29d96f44978096a124f9941d3,bb8d11e50cf6a91d81db,dev
+sms-03957,ham,I knew it... U slept v late yest? Wake up so late...,01a7e06dc5df1e3f5bcbb1f4d60d1843e4f8d75a1e8b28e2f79dadc174a174cd,27e1ba4703ef94c7ab6c,dev
+sms-03962,ham,I sent lanre fakeye's Eckankar details to the mail box,de58f5025ee617c467f6d1abc07e399f7de69e810bc334985855f4b65fa4aeef,ce9ecbf6f478eef16e0f,dev
+sms-03985,ham,Nationwide auto centre (or something like that) on Newport road. I liked them there,97b68506aa48c47b9b921149ff429cf10d4c14aca2ecbf0aa561ff7188579058,a591f6f9668e6cb464f5,dev
+sms-03992,spam,(Bank of Granite issues Strong-Buy) EXPLOSIVE PICK FOR OUR MEMBERS *****UP OVER 300% *********** Nasdaq Symbol CDGT That is a $5.00 per..,8c3f31137ac3e047ff8be705d565fe41c86587d5e072add62df87ad83ecdfa27,d8a575733526f6d4181d,dev
+sms-03997,ham,R u in this continent?,f0f439d932f0158c28f5ee0082b4ae3b0dd545d54440a1ebbd98f620df2ded9f,c0846e37343d9ded362d,dev
+sms-03998,ham,We'll you pay over like  &lt;#&gt; yrs so its not too difficult,c794dca2d24948e89e7ec2189961bd14389aca4ef4df6f0fbc776f67ebf41028,09fa0ac5691f5e1ff1fc,dev
+sms-04013,spam,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!,9b753a9470f93c6554421d35ddfbaa73479722a00955ff42f7421d31a8ac1157,62471f7e14565ddf30b6,dev
+sms-04019,ham,Eek that's a lot of time especially since American Pie is like 8 minutes long. I can't stop singing it.,bdc55d933a2a8b82019b199c1a4ff70307b00eb202971a596c8e0665e4573289,96899ddf9f4ff8da4209,dev
+sms-04035,ham,I am taking you for italian food. How about a pretty dress with no panties? :),f5ed3182e823a6b8ee15fc3d52706b52ce6e56fa7fc8462a4ccb0592a2cd7482,f157adc3d1455294c0f7,dev
+sms-04043,spam,Please call our customer service representative on FREEPHONE 0808 145 4742 between 9am-11pm as you have WON a guaranteed £1000 cash or £5000 prize!,9b753a9470f93c6554421d35ddfbaa73479722a00955ff42f7421d31a8ac1157,62471f7e14565ddf30b6,dev
+sms-04044,ham,What time do u get out?,43bddf675193e8869c2c4a12679e793eb1f79e37187231f1e4101d31b24ae3a6,6c194272f46a84456c79,dev
+sms-04049,spam,"Thanks for your ringtone order, reference number X49.Your mobile will be charged 4.50. Should your tone not arrive please call customer services 09065989182",f7f7176dbb0344c09d8629406937d85a448e3d7892c4f62023dbb825b643b190,c31f02a284e7c0ed755b,dev
+sms-04050,ham,Lol or I could just starve and lose a pound by the end of the day.,c849bd59e1c2749bd0d541e1d70778c2ef86768b2c2dc4657efcf5200fc0011d,9d194998a0b29b1a98cf,dev
+sms-04056,ham,dont make ne plans for nxt wknd coz she wants us to come down then ok,15fd28d605750b90f57dde7409067c32d06c75490a3ed67df96edda8bdcc829d,f1c89365048548cc56a8,dev
+sms-04065,ham,How are you. Its been ages. How's abj,2f606955344f42963ffaef5a8a2c8b3be470febe5f14fffa79fc9aeebbfe3ce0,49dcdda15065746147c6,dev
+sms-04084,ham,No no. I will check all rooms befor activities,3fb531fbe341dd9d143fb75f3cddfc032b54895a5763d39e2731a2d44b8f3bf0,ada0c57516e368093181,dev
+sms-04085,ham,"Good afternoon, my love. It was good to see your words on YM and get your tm. Very smart move, my slave ... *smiles* ... I drink my coffee and await you.",0ffeea279c41622a72b5fc81a3116c24b1a82703455f119e03c5b7d8d7131999,8cb4d1eb39f97c4539dc,dev
+sms-04087,spam,"Orange brings you ringtones from all time Chart Heroes, with a free hit each week! Go to Ringtones & Pics on wap. To stop receiving these tips reply STOP.",89fd5f7c957760b3ea4ec3c13d6e01f79b5030cde382ef1ebe0ca8a0200f4c66,0b17b2a0197424403a4e,dev
+sms-04094,ham,I remain unconvinced that this isn't an elaborate test of my willpower,6eafbe15407c8c59f26c0c76f8aa461697039f015f4c8c5fe5cedd007dbd82ac,e1914bcc7b297bc29741,dev
+sms-04095,ham,"""Life is nothing wen v get everything"". But ""life is everything wen v miss something "". Real value of people wil be realized only in their absence.... gud mrng",2eca8eefd774c7a55f4b6fc3c6d92ac43b10ca8e49381b64cf1f872161718bb8,e019aa616dc02daef090,dev
+sms-04100,ham,I think just yourself …Thanks and see you tomo,cac805cf0fa248dceab5e2ed51853922481c17e49f1d5f0f97403bfa10922d51,8a8b0d208f98a58c1d94,dev
+sms-04105,spam,U have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094599,cdd374212c4449caec188e101c4e807af5ca284fd96b4ad50d0888fe4cbf60fc,efd86bc7c59a70f079ad,dev
+sms-04117,ham,Sorry. You never hear unless you book it. One was kinda a joke--thet were really looking for skinny white girls. The other was one line--you can only do so much on camera with that. Something like that they're casting on the look.,4110997145215bf050c4020f798f184a3477925e57fef1ed271a6fc59012ca95,51841a47356ba8367bfe,dev
+sms-04120,ham,Watch lor. I saw a few swatch one i thk quite ok. Ard 116 but i need 2nd opinion leh...,17b1dc58914e23136cf0360a32281644ae2be79e35c1b764dbc7af23319edf42,8932551ac694aceff92b,dev
+sms-04132,ham,And by when you're done I mean now,98dd5f0b4c73bce4793309dcc9157d3345006cfb79f0c31a009f3d5d3df1cf74,b1a0df76045770cd8f62,dev
+sms-04144,ham,Infact happy new year. How are you where are you when are we seeing,1550c395acbb4a46a4aa6536503f360d0423e024bf7d82853723fff661fd54d9,632f44de955ba921b177,dev
+sms-04159,ham,This single single answers are we fighting? Plus i said am broke and you didnt reply,78cc0edd58611d3fe92cc18241e0026c8554b0ead5f3902c20429a49533b1b93,e530c06dd0c774324911,dev
+sms-04161,ham,Now got tv 2 watch meh? U no work today?,e3b18966f1afdb0078d7ffb83a9afd1cfe2fe1bad7857eaa2eeb11edc2b934db,ec1f1a2150845ec18abf,dev
+sms-04165,ham,I told that am coming on wednesday.,70d64a8b01267f7a5779df52683718e63b8177ee1fb59a910df3e134bce15a83,6bcea89d03cb049c14cd,dev
+sms-04170,spam,Congrats! Nokia 3650 video camera phone is your Call 09066382422 Calls cost 150ppm Ave call 3mins vary from mobiles 16+ Close 300603 post BCM4284 Ldn WC1N3XX,5f7803a269a03402833de8dabcb61c9f4ebf968a6e3e316576d6b5687c0924ed,83907a470802ff342578,dev
+sms-04176,ham,And pls pls drink plenty plenty water,3d23e0e34fc497909356e31b1db7cbd4aaac603b7a84dee74dbdf320b333410c,bf6629444a128f25a6ba,dev
+sms-04178,ham,He's in lag. That's just the sad part but we keep in touch thanks to skype,af2ca314a25cc144a34df66a888466b28cefa2a8676914f85974502940229760,2cd344d52a47bc8cfb96,dev
+sms-04185,ham,"Sorry, I'll call later in meeting",8abdceed92c3df65a367fd65934e839f79b0fd2fd2d9288234328a808ea00c16,735f457a06a868815ec0,dev
+sms-04187,ham,I'm good. Have you registered to vote?,95475f97446386984b6371ae42df02bd972b69ff98532ad164acaf8240cb422d,ec1a4902a237ae923aca,dev
+sms-04197,spam,"Double mins and txts 4 6months FREE Bluetooth on Orange. Available on Sony, Nokia Motorola phones. Call MobileUpd8 on 08000839402 or call2optout/N9DX",9e1608f7e314c4461e87d98c2c9958b7c9842488bd4a2b58d2aa6661cbc73606,c80e0581978bd5d50a37,dev
+sms-04198,ham,"Sorry, it's a lot of friend-of-a-friend stuff, I'm just now about to talk to the actual guy who wants to buy",5fbc9f24d2e281f03504b78f64e135c49ed4a1efa4622a3bf8ab892e34b422f0,2d9238d887e869e04ca1,dev
+sms-04206,ham,How are you enjoying this semester? Take care brother.,646e55f177a3263c341d7657c996d48c18e30d7ec93c79dccc1e25eca6d45bda,a9329ee362a8b127f3d1,dev
+sms-04227,ham,"""The world suffers a lot... Not because of the violence of bad people. But because of the silence of good people!"", Gud night....",e2ca49b5c79acbd16698f0b81f6a74d15c7ce966ccc4bfbdde4c8c186b4ff5da,cbc95d51c805a6e0c0fe,dev
+sms-04233,ham,U really pig leh sleep so much. My dad wake me up at 10 smth 2 eat lunch today.,b2d848c883dbedfa048f4a8b867afbe6c68c6cc24f4c814a8e140a6deb20ede8,84aeeef97d1cb972111b,dev
+sms-04250,spam,"accordingly. I repeat, just text the word ok on your mobile phone and send",32e120e121a0664046b922131571021a02b266fa7558f972671310c6d436ad01,ff5fe09c21f488bb4fbd,dev
+sms-04252,ham,How much for an eighth?,dcee17bbb635a92d7dd39af041b8acbce53445d14b9e0258722572e8bdba01b5,f0be46d71301d2843c6b,dev
+sms-04253,ham,Omg Joanna is freaking me out. She's looked thru all my friends to find photos of me. And then she's asking about stuff on my MySpace which I haven't even logged on in like a year. :/,38af23c2d63e1ab24d8ef335761bbac4e1e2dd9eb030287a5e9d6aca55bdf5bc,69207a0ef76d167e7e7d,dev
+sms-04257,spam,Block Breaker now comes in deluxe format with new features and great graphics from T-Mobile. Buy for just £5 by replying GET BBDELUXE and take the challenge,7d87f2ded279ff999e3469fa3789065dbcc528f6992c06fff8217b149a6a763d,bad9d81eb10730e8022c,dev
+sms-04265,ham,"Den only weekdays got special price... Haiz... Cant eat liao... Cut nails oso muz wait until i finish drivin wat, lunch still muz eat wat... ",399c4fc5cc955aff24cac7742db3243a70ad068f8ad8a3a96e78d89c69f7a673,577de1d1c53f1dac2355,dev
+sms-04294,ham,G.W.R,59a1853fe213a6d8a11fe11d64b0f690565b0e14d78caa707e2f34d5e4ec8b2c,ea9c5202d6056a6c05f9,dev
+sms-04297,spam,HMV BONUS SPECIAL 500 pounds of genuine HMV vouchers to be won. Just answer 4 easy questions. Play Now! Send HMV to 86688 More info:www.100percent-real.com,4995517d61b71396c4a51a4be63d055982a0fd60f81675e1d629ed33c50e2f51,2f9954fe257f873e4042,dev
+sms-04301,ham,Hurt me... Tease me... Make me cry... But in the end of my life when i die plz keep one rose on my grave and say STUPID I MISS U.. HAVE A NICE DAY BSLVYL,21bebbfd1b14950f8895da7e9653db7ee4cd8c5194b26c793c4d861f4f51878e,83a15900cdec0d864d62,dev
+sms-04309,ham,I guess it is useless calling u 4 something important.,4826737efcf448fb05bc6d274b29a37485396ef270624aa675707cf621233531,54ededd1f048c991f59c,dev
+sms-04311,ham,He dint tell anything. He is angry on me that why you told to abi.,188c6d2e4b8ebfc6d00a372abc5d664b7fb5ba3d918343d05cc1bbf4ebae6255,d885ae91f092546387e6,dev
+sms-04312,spam,Someone U know has asked our dating service 2 contact you! Cant Guess who? CALL 09058091854 NOW all will be revealed. PO BOX385 M6 6WU,c1158daec8bcc3ee53337dddb81855741fb46f7ac5b228bf42304a0b181286ad,0bfe748fddb255654e3b,dev
+sms-04313,ham,It so happens that there r 2waxsto do wat you want. She can come and ill get her medical insurance. And she'll be able to deliver and have basic care. I'm currently shopping for the right medical insurance for her. So just give me til friday morning. Thats when i.ll see the major person that can guide me to the right insurance.,5f889bccaaaa915cc9a5601ca431a4eb5349fc4ee985403a13bc3002c34e7d13,82629395bd42c6059d4e,dev
+sms-04323,ham,"K, jason says he's gonna be around so I'll be up there around  &lt;#&gt;",5f380c7e3cd29146e14da3834eaea76730d5573e8a81741ba71841aafc8efa88,8ac203cb5c655b928ed9,dev
+sms-04327,ham,Am only searching for good dual sim mobile pa.,6b251ec0bb3d8ee256301a0901d8cb842bec65c9da3de82fd5f28225c1fb6aee,97b66b08fbf09989f4a9,dev
+sms-04336,ham,Boo what time u get out? U were supposed to take me shopping today. :(,c4da9c8d719911f92a10c2e3923fd7fc96559d25382838e2ac443dd48c18a66a,8c45c978ef6e672f10f0,dev
+sms-04349,spam,U 447801259231 have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09058094597,7617adfa9169bfaf347f6cf12dc176eb6b5d565ad864617ce288e73c5b946468,efd86bc7c59a70f079ad,dev
+sms-04363,ham,"Don't Think About ""What u Have Got"" Think About ""How to Use It That You Have Got"" gooD ni8",21e1d7cdfbab3fbb1de6e1ef4478f9b7495d98e8d349b08c3095bbcb5d9ca33c,94702de41cf258ec9bac,dev
+sms-04371,ham,Anytime lor...,6efe5eef8c9d3e0035d355b68d2a749bca986082a8d8391cd3101c6ce9f403fa,7cc9884783f5a6deed0c,dev
+sms-04372,spam,Do you want a new Video handset? 750 any time any network mins? UNLIMITED TEXT? Camcorder? Reply or Call now 08000930705 for del Sat AM,a40fc85d2dd216607099b9dbe4daaf5b50a8c592d129aa02749407518deb24fa,6ce835c37cc6b8210f00,dev
+sms-04377,spam,Ur TONEXS subscription has been renewed and you have been charged £4.50. You can choose 10 more polys this month. www.clubzed.co.uk *BILLING MSG*,5f6b97b2f763a1035dea5aff0ee18dd1cc27a59994c70ce3bddb532d82a38837,8822a19186ba68f17b01,dev
+sms-04387,spam,Do you want a New Nokia 3510i Colour Phone Delivered Tomorrow? With 200 FREE minutes to any mobile + 100 FREE text + FREE camcorder Reply or Call 8000930705,fff2b37f16d3bd1687bf7eff54fc682767bac108430065d04dc94c417b349c1f,e13ebba70c67290ec33b,dev
+sms-04390,ham,"see you then, we're all christmassy here!",56980899c07679d71a7119934ba989195a5a3911b88df4eae288881b42ef7f8c,012f54da55528bda827e,dev
+sms-04395,spam,RECPT 1/3. You have ordered a Ringtone. Your order is being processed...,29e2f9ca5d483e7ba046e8ab7dcfad632f66f586ef5275bb640ba0d1734c8f39,cd63d7fad02e48536a24,dev
+sms-04398,ham,Dear :-/ why you mood off. I cant drive so i brother to drive,ed0e35a7f818acaeb33ea458efa9e41140e419406f10513e5f8b7b3989b7beb4,ee46e19088f307b3aaca,dev
+sms-04401,ham,Yes just finished watching days of our lives. I love it.,b3bdf47e12732381c7065140cab144249c423def0cbb13311d2b05fcf5386e68,d67691702859fd8af12e,dev
+sms-04402,ham,Juz go google n search 4 qet...,1c4a1dec31104291f26bebf5d232f94b387325deb0c3231a3c8bf54b7ee38a16,f4acaff5719a2fb3d754,dev
+sms-04404,ham,"Good FRIENDS CaRE for each Other.. CLoSE Friends UNDERSTaND each Other... and TRUE Friends STaY forever beyond words, beyond time. Gud ni8",5d7edfb64bb0e3b631ee9ef614d55cd73a33d14cc99bd3e3ce4371a46d7b9034,0ef6a23fbd6832324e29,dev
+sms-04411,spam,"For your chance to WIN a FREE Bluetooth Headset then simply reply back with ""ADP""",e2406260c6cafb631e801f180d32db839d8afa07b95184d8f991637b9f00562b,0110119bcd126318ccec,dev
+sms-04418,ham,V skint too but fancied few bevies.waz gona go meet &othrs in spoon but jst bin watchng planet earth&sofa is v comfey; If i dont make it hav gd night,d2f6055a2aab70ecb8bcec513c5c17fb0f42eb9a40eb1280e012eb28cafbfde7,6372f497496b6d4ec18d,dev
+sms-04419,ham," says that he's quitting at least5times a day so i wudn't take much notice of that. Nah, she didn't mind. Are you gonna see him again? Do you want to come to taunton tonight? U can tell me all about !",68aab3dd7e2fd1c2eb27a8fd3b04fe8546b321319495e34513815382937f031a,49fba66624a47dbd0968,dev
+sms-04421,ham,How have your little darlings been so far this week? Need a coffee run tomo?Can't believe it's that time of week already …,e2e3d4e2ba00cf7efd063e5cf288ff1731e199b354794449946f3bc791b39923,2a1510ac4e1f107661c5,dev
+sms-04428,ham,Was it something u ate?,d7df4e1c1a0162e134f363cb3e77b2dfb30d96f5f11d5a835036b9d89af9a6f2,e5693fdb30ab15ec1763,dev
+sms-04440,ham,Nothing will ever be easy. But don't be looking for a reason not to take a risk on life and love,895be4404e3a87965989c1b85ae6b757809dced33090b73eb6ddf0a7a12c3783,090bf63814d3fb1595d3,dev
+sms-04457,ham,"Storming msg: Wen u lift d phne, u say ""HELLO"" Do u knw wt is d real meaning of HELLO?? . . . It's d name of a girl..! . . . Yes.. And u knw who is dat girl?? ""Margaret Hello"" She is d girlfrnd f Grahmbell who invnted telphone... . . . . Moral:One can 4get d name of a person, bt not his girlfrnd... G o o d n i g h t . . .@",d4bdd6cd29f9ea5c62d27538df9a989fdb395e79314db068f31ac7cf4649e6bf,daa71618bb3d41fee38a,dev
+sms-04479,ham,Oh :-)only 4 outside players allowed to play know,3c17f413eec41507c32df69ba9cb4fef5ad921769de52f78fe3890205a99014b,e674bd00dda873f4d6ee,dev
+sms-04484,ham,"What do u reckon as need 2 arrange transport if u can't do it, thanks",193c3efe41201149d7dbf1e31746d5d7b9e0a082b1c6feb87e4cebfdb01576e2,a25f25bb7ce101489e57,dev
+sms-04487,ham,What not under standing.,46692211b48bde4f2cc11a302572a34743afcd0f5696e086921b2a176831d3f6,e6198e3d6163d5caeb08,dev
+sms-04498,ham,"In case you wake up wondering where I am, I forgot I have to take care of something for grandma today, should be done before the parade",bdb917879bec1c111899238bd0c1679d7b00f97d6babe23c6b6fbd7839f7c8e7,6983f4e6a24e005379cc,dev
+sms-04500,spam,"Latest Nokia Mobile or iPOD MP3 Player +£400 proze GUARANTEED! Reply with: WIN to 83355 now! Norcorp Ltd.£1,50/Mtmsgrcvd18+",8c8d9628eb9e7b3bf425c246d5215f028e5c8cf61eeee3dd208416429d7c76ba,69bd3f403a3aeb97941d,dev
+sms-04501,spam,"SMS SERVICES. for your inclusive text credits, pls goto www.comuk.net login= 3qxj9 unsubscribe with STOP, no extra charge. help 08702840625.COMUK. 220-CM2 9AE",1964e5a15073d08e541ec3abfd3573882273f6d6c06a6f1561be6b2c20ea8fa4,1a909cd2f1ff9ee0fb40,dev
+sms-04502,ham,Nvm take ur time.,4f3e450ea2fd007e4bf0233195caa3f7c2038a2db95f269d4714faf535789c2b,3eef923261c67713fd7f,dev
+sms-04506,ham,She told to hr that he want posting in chennai:)because i'm working here:),7051f373451329dfb75c2745afecae1faa9a72cb34c194eb0be96c4853493cc5,543e811b4227377bacd0,dev
+sms-04528,spam,"I want some cock! My hubby's away, I need a real man 2 satisfy me. Txt WIFE to 89938 for no strings action. (Txt STOP 2 end, txt rec £1.50ea. OTBox 731 LA1 7WS. )",ef5431853a4d2cbe147cde44e40b592ecd6a7b82919dee7b7521176beadf5ab1,12497a9feaeb3b2fe89a,dev
+sms-04532,ham,Don't forget though that I love you .... And I walk beside you. Watching over you and keeping your heart warm.,eb60b0b95a548d416340ea1505026ec40cbf7f7e89e595499cc4ff7cb703916e,151d4ffc07d1e67153b4,dev
+sms-04538,ham,Never blame a day in ur life. Good days give u happiness. Bad days give u experience. Both are essential in life! All are Gods blessings! good morning.:,fd83e4af26feaf516c797e1bfafe4e6143229e83f4ad6c087e37dfa630e3f1f6,200aa9ecfa6773ac8136,dev
+sms-04555,ham,Sun ah... Thk mayb can if dun have anythin on... Thk have to book e lesson... E pilates is at orchard mrt u noe hor...  ,bb3480d763de8a1d1a6447847ce44cfd114843181de3cf5858410fe4b674962d,ca49040dc798ff8491bc,dev
+sms-04557,ham,"7 wonders in My WORLD 7th You 6th Ur style 5th Ur smile 4th Ur Personality 3rd Ur Nature 2nd Ur SMS and 1st ""Ur Lovely Friendship""... good morning dear",4e88adc989758717785dc14bcf123b463b2a76a653fed99c619b08b8ace46f92,fdad3383ed635e9592a3,dev
+sms-04558,ham,Gettin rdy to ship comp,fa34a484df00359a5d07ee6805e6906a1a472d5b08515f269ba5fc746ea1be22,3d35f88e73cfb88aafa9,dev
+sms-04565,ham,"Come around  &lt;DECIMAL&gt; pm vikky..i'm otside nw, il come by tht time",4ecd3412bdc306804ef359e86d3730098fdc0dc1e8aad3b288f20065a6c603f2,64323942c898f5ffd924,dev
+sms-04576,ham,:( but your not here....,5161991c52b6303af2e59df36b991228a90ae273ef1a1e5029f413702a42f7ad,0e6ff22844badc52c38d,dev
+sms-04587,spam,U have a Secret Admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09065171142-stopsms-08718727870150ppm,7ff7f8fce445ccb772f6611e01b8e5e38855261f11f6e1d92b8fda9bbe462fc8,efd86bc7c59a70f079ad,dev
+sms-04591,ham,Have you not finished work yet or something?,3856b3d2aec066110f3aa8206bde3b579f1e297e91b97c5b1cdd072e35bfd884,258d329041dc10129ba9,dev
+sms-04595,ham,It's ok i wun b angry. Msg u aft i come home tonight.,03e641a325b7d2425f8d6fa05a34ddfac1208b56e5763238a3add5c0e952cc6d,61c111df3358257a134d,dev
+sms-04604,ham,"""Hey j! r u feeling any better, hopeSo hunny. i amnow feelin ill & ithink i may have tonsolitusaswell! damn iam layin in bedreal bored. lotsof luv me xxxx""",c75e6bc1c4a3f6c25d434d959707a17af621cf9b43d784dc6caaaa75ede3a331,04243f725ba0e7ed43c5,dev
+sms-04618,ham,Ü called dad oredi...,f342c00ff6921199168f765e25039998a9a438a0763f51e2d31ecc9e00650f58,7355e29a5024ea6e140f,dev
+sms-04621,ham,"Sorry, I'll call later In meeting.",665ca50e1b2c23b5949061ba65d7cac87cd477a1803d471bb0a6520b9bd14bcd,735f457a06a868815ec0,dev
+sms-04627,ham,I'm on the bus. Love you,e8e1de359a642d7d8f745037049b13189c47b436a09e7f7dcd1137b5c749a1a8,c2ae03ef5525c0b5a9a4,dev
+sms-04629,spam,Please call our customer service representative on 0800 169 6031 between 10am-9pm as you have WON a guaranteed £1000 cash or £5000 prize!,5ec49e2b2537bf83eee1a6e943201495ee5eba42ba3de07ee513f08424d1de19,62471f7e14565ddf30b6,dev
+sms-04642,ham,Do you hide anythiing or keeping distance from me,068b01fe278b50dd83ce3b576b2e9a4ffff234fa47491d7c7db6f5a60d5f55c1,00a15f76e03088579af6,dev
+sms-04646,ham,Did u got that persons story,9ff0f91a50efa821df2834b3cedc42ff401e6b6ba6c8f5162a340d1b4f8c8418,a5b97137965c94ac5f00,dev
+sms-04660,ham,This message is from a great Doctor in India:-): 1) Do not drink APPY FIZZ. It contains Cancer causing age,76c9547f259934e33571632791adc3acfa6666b8a0c42654c16a006a8198418a,9c6a56a629a8c2a495b2,dev
+sms-04662,ham,You call him and tell now infront of them. Call him now.,31d64172621c8d36d3f3e2329d1fa4b09d0ce58b508846532e7f5671d7f40b5c,2a4b976d2e63ea7c98c7,dev
+sms-04670,ham,IM REALY SOZ IMAT MY MUMS 2NITE WHAT ABOUT 2MORO ,56aeca1b47c5fa793bd5e99407845308573e0e39b4b8127d1dc7d778ead88df7,50e2fccdf6e0c9cd2c74,dev
+sms-04672,ham,"I didnt get ur full msg..sometext is missing, send it again",7697f59f9b642c471b50353280ccef064681edcf2fafd69f41679726c2a0dcd6,f388d78702154a84b932,dev
+sms-04675,ham,I forgot 2 ask ü all smth.. There's a card on da present lei... How? Ü all want 2 write smth or sign on it?,da2add523c1fabb72328d016b5d2cf543e5386e2aee104b3707500b40389b75e,5559fe14e7816ade4699,dev
+sms-04685,ham,Ok u can take me shopping when u get paid =D,c8cce0e9bc3a9cd7da585b6c1ec02226c54d70a44e26be8268a075da97e6bc40,5ae676aa824a08e7051c,dev
+sms-04686,ham,"My life Means a lot to me, Not because I love my life, But because I love the people in my life, The world calls them friends, I call them my World:-).. Ge:-)..",e76e4cbf514f5d25a5a4138173f77398e8981e03da4d9dee33923a4be599abe2,4d065fb58f63330aa732,dev
+sms-04698,ham,A guy who gets used but is too dumb to realize it.,ec78befd38c6d87b05ce5a3c252e86db60d07ebe5a28027ec4cf70a83e405751,f302807011b1ca93d35b,dev
+sms-04706,ham,Yar but they say got some error.,77db013a72de12104d056f97897de8bcbfb6864c2241a2aa09fec7379236095b,ef458665161f88122548,dev
+sms-04710,ham,"Did you say bold, then torch later. Or one torch and 2bold?",cb39a60000bff764bc452bd3885f24d2878a63acca701a60ed21248ff801732d,089b54e50c4e90112838,dev
+sms-04715,ham,Big brother‘s really scraped the barrel with this shower of social misfits,1b07f4c1561068145d29d0f05042f9d9694305474cc3588ee3430fb9092397e8,84c806e7cb3e3d50c5b6,dev
+sms-04743,ham,Many more happy returns of the day. I wish you happy birthday.,16d6746c1483ccc2ed4e5a78b239d43e6b6fb66dbe595899ade6129c04c12c74,8cd98acf6f9a0a7664f1,dev
+sms-04758,ham,Don't make life too stressfull.. Always find time to Laugh.. It may not add years to your Life! But surely adds more life to ur years!! Gud ni8..swt dreams..,f6aa3cde093414f856b31b80e68a290a95d19e44d81139b5ae490d000b6ee616,0fc0e8eb154ae1d99d16,dev
+sms-04760,spam,URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790121 from land line. Claim 3030. Valid 12hrs only 150ppm,5f40155165128aa3826de29e3a1700ad2872d47e4c3b483c49f3e54466f61254,4749aace322b01672389,dev
+sms-04762,ham,I'm home. Doc gave me pain meds says everything is fine.,6bdb8caaad5f15527ca26533a324a07e3759ac6e6a5492b0b4b49f05d336962c,5dfc550cb562bb46abbf,dev
+sms-04799,spam,Santa calling! Would your little ones like a call from Santa Xmas Eve? Call 09077818151 to book you time. Calls1.50ppm last 3mins 30s T&C www.santacalling.com,bd1a37de97b088ce26501a3ca54eef32d95e7b0796c73635b317dcfe492899fd,0c51c8e3a9d6dd3a2901,dev
+sms-04800,ham,Just come home. I don't want u to be miserable,9e4375a13dd96a8361cd71ae66f21655875adafa9c2b9a4f0c15e04f4f329bcb,9b7b00a3a6e4e1da650b,dev
+sms-04803,ham,"The guy at the car shop who was flirting with me got my phone number from the paperwork and called and texted me. I'm nervous because of course now he may have my address. Should i call his boss and tell him, knowing this may get him fired?",0a18e3dca474077b2185bb66a07e6541f34a68fb2eef6e212a881fcb97aeb0ec,0cfde8654c6cc19824e9,dev
+sms-04807,ham,Sorry for the delay. Yes masters,a177cfb95ae197ec5db4c359125b77f641b0c84df54cc0ea67f1d671e8d25b54,7a22c97ef6315bfe86b6,dev
+sms-04809,spam,PRIVATE! Your 2004 Account Statement for 078498****7 shows 786 unredeemed Bonus Points. To claim call 08719180219 Identifier Code: 45239 Expires 06.05.05,5ae8f45ca90775fa89bc61d17f51e3dfb0d05d3b2bc135a6afdfbd982f6ce24d,937c7b7403d43433a2f3,dev
+sms-04811,ham,"Don't worry though, I understand how important it is that I be put in my place with a poorly thought out punishment in the face of the worst thing that has ever happened to me. Brb gonna go kill myself",f8ad35cb456f23898e507300f47ca17b879233d2b68ec231c45cbc344b6bb167,3d46c356814aa16f00ca,dev
+sms-04818,ham,Anything is valuable in only 2 situations: First- Before getting it... Second- After loosing it...,63a8482cf12320fe795fe30272225ac91a1fc36dee6e390842a15816abf3cca8,7186865f20d130c209d5,dev
+sms-04819,ham,Me too. Mark is taking forever to pick up my prescription and the pain is coming back.,e16b92e2fe0c1149902acd60f0313b7f23c99c8679002dc9477e802d81ef8e98,5174c940b25429d6e3d3,dev
+sms-04836,ham,I hope your pee burns tonite.,1dade9ce7d10e319e5f9d95563fb073a97dce894a59d7173a805100ace7c93c7,2ba9c7d2d62d25037667,dev
+sms-04837,ham,"OH RITE. WELL IM WITH MY BEST MATE PETE, WHO I WENT OUT WITH 4 A WEEK+ NOW WERE 2GEVA AGAIN. ITS BEEN LONGER THAN A WEEK.",a76444a47434873376ce070cc12374b7f238812a10b0058d09f7948c941be228,d9125a116b79213835e3,dev
+sms-04843,ham,"Hmmm.... Mayb can try e shoppin area one, but forgot e name of hotel...",b4d40f11d840b321dcaf9b9ac41f20931f5511cb6b681469696fa96fd55259cb,51d6f5c49e7c75cf61c3,dev
+sms-04847,ham,Missing you too.pray inshah allah,e157868942b4c9190d5f790b2f7ed4692b1ef952695f2aeb2554e5cf9201d817,90e996b795be15d28cab,dev
+sms-04854,ham,I liked your new house,6fdea459de4c80eb868f2817851ddc14aca6d76756e975454c02a608976eb503,495ac05ec3ee8be057ba,dev
+sms-04862,ham,"""Response"" is one of d powerful weapon 2 occupy a place in others 'HEART'... So, always give response 2 who cares 4 U""... Gud night..swt dreams..take care",95929b7289af8ee352b3390cf7cee6c93c5205d85049b774e8e61bfabeb46427,a977c4bd14d3bc084036,dev
+sms-04869,ham,Okey dokey swashbuckling stuff what oh.,e964d397fad5847794a90de7ef12216288638418e953f5ff317bec905bebbd5e,e9f88e9fedb5c2d571f2,dev
+sms-04872,ham,Dip's cell dead. So i m coming with him. U better respond else we shall come back.,80f4523f34cc8318bf62c1e498ddfd43f35f35a77c2e50416a12d51a7b3ab7f2,b1c4a91e75bfa68e7e67,dev
+sms-04874,ham,Hi dis is yijue i would be happy to work wif ü all for gek1510...,6b7d76ab41c5a7041d9c56f82285d05d294135d76853b68b750859692b9a66f5,e8b2b05144e330c3b3be,dev
+sms-04901,ham,"Haha, that was the first person I was gonna ask",1374706d4e66c9602fbe82dcfb2680b6800a0bc9134d701282eb3d631aab78a6,3effe03d769fa1a6445c,dev
+sms-04902,spam,"ou are guaranteed the latest Nokia Phone, a 40GB iPod MP3 player or a £500 prize! Txt word: COLLECT to No: 83355! IBHltd LdnW15H 150p/Mtmsgrcvd18",0cc58b631cf94b0d0a10e543e2bfd474fd68759b0e37a53e836f24b1f645d5a3,1b0d60504ff43d6824e0,dev
+sms-04907,spam,Warner Village 83118 C Colin Farrell in SWAT this wkend @Warner Village & get 1 free med. Popcorn!Just show msg+ticket@kiosk.Valid 4-7/12. C t&c @kiosk. Reply SONY 4 mre film offers,391808b42fb3501c0dec5022aa759e1d92ba07c2f18abcb88bd5881f09251df5,75fc852ea2a563410df6,dev
+sms-04917,ham,We took hooch for a walk toaday and i fell over! Splat! Grazed my knees and everything! Should have stayed at home! See you tomorrow! ,026ba8f5ced820eff75b7e727baca76d4afd2fce6e1ba7a43fcf3c67582b31aa,3adbd2732dfeeaef8d77,dev
+sms-04937,ham,"Hey babe, how's it going ? Did you ever figure out where your going for New Years ?",cd40c9343e54bc02e3d7ecab8c66fb542062ebcd842a017fe4e3ca6cb9dc5ffb,ef895ef6f8e124293c28,dev
+sms-04948,ham,I'm already back home so no probably not,a8eca27f57234561e45439fa8a497d2927054454fcec552698673e021d665cfa,d9681beb6e61e16566c8,dev
+sms-04962,ham,I want  &lt;#&gt;  rs da:)do you have it?,1455b94e7d466a54481d4c97a6156316a3c17afe9bdff47476713ab1cc5b2bcc,9fbcacebdc7417f53dfb,dev
+sms-04975,ham,Oops I was in the shower when u called. Hey a parking garage collapsed at university hospital. See I'm not crazy. Stuff like that DOES happen.,4a4ac9898fda21c9328856c2b05ada7a9a294109e1c426dde33b86887f16b1df,8489eacbe758034bab01,dev
+sms-05002,ham,Well its not like you actually called someone a punto. That woulda been worse.,a8563b674f222cd0cca2a772c287492e68db328e04f605bf1b431a288bc2b9d6,a6405110e16db6349836,dev
+sms-05015,ham,"Uncle G, just checking up on you. Do have a rewarding month",b41fde5b7fd2d2c70407fe63a765ebb98f511fe2ac98c26096cdf0cd7eca29bb,ad4946e0537f2f85e671,dev
+sms-05024,ham,Yes its possible but dint try. Pls dont tell to any one k,eef79c92f93f930394654dfa2484f491780a41f4ce799f8591d8c1b6af35382e,b53bce67e9ab55c1794c,dev
+sms-05040,ham,Thanks for being there for me just to talk to on saturday. You are very dear to me. I cherish having you as a brother and role model.,59044449ee01644d443764abdc9529642ebd5ffefe3bdfe0db1f45939ac154bf,ac6b76fa6ddf9f27e4c7,dev
+sms-05045,ham,O ic lol. Should play 9 doors sometime yo,17438f4b59f1f1e4b6b4fcb3451e44c3772ae3773775a2b51a11706738d39a84,f33183e034ab142acde4,dev
+sms-05048,ham,Desires- u going to doctor 4 liver. And get a bit stylish. Get ur hair managed. Thats it.,3ab9f181d85a840f63e9e67784a968f1b096ea031fad48896302fa80e7b429d8,419716cb7b1d00cf696c,dev
+sms-05051,ham,"Edison has rightly said, ""A fool can ask more questions than a wise man can answer"" Now you know why all of us are speechless during ViVa.. GM,GN,GE,GNT:-)",40cd136806e33f4aa56fffe48bc2cf60454f545277adfd4da79f65c6ae7c5371,3b33401f700844aab39c,dev
+sms-05064,ham,Havent stuck at orchard in my dad's car. Going 4 dinner now. U leh? So r they free tonight?,cbf7730562ea958c1cb011aae120bce08214ba8f80a07413a99a76de30d65b7d,09e1d5e71f18740125e0,dev
+sms-05070,ham,Talk to g and x about that,f81bfc3003427b43fda9a24873e836902bb1751dd5c1f2700fd9b4922769cf5a,30906dd6167b09d4fa97,dev
+sms-05078,ham,"Well, i'm glad you didn't find it totally disagreeable ... Lol",42a6344b20a3fcaa81d84395a3f11f3fef6fa40f06cda57d02b2a6f3601f64e4,c2a0153161dc9753b1f4,dev
+sms-05080,spam,Do you want a New Nokia 3510i colour phone DeliveredTomorrow? With 300 free minutes to any mobile + 100 free texts + Free Camcorder reply or call 08000930705.,a4746c4ed865c01e1312579d3dfbbb3519294ee5ae4189309010707697982dd6,e13ebba70c67290ec33b,dev
+sms-05081,ham,Mark works tomorrow. He gets out at 5. His work is by your house so he can meet u afterwards.,e76fde6fa9b7342e1ac15f884039eed76e8e3a045edd9f8fbdc59a0bc96bad2a,c454807fb38a873f3708,dev
+sms-05083,ham,"Yeah, give me a call if you've got a minute",20090aaa75b0bf90d7f3f306b70c2c862679c327e0e5b4c50c2c31c37b5eefe8,a87ff0bfb683b4256d5b,dev
+sms-05085,ham,Amazing : If you rearrange these letters it gives the same meaning... Dormitory = Dirty room Astronomer = Moon starer The eyes = They see Election results = Lies lets recount Mother-in-law = Woman Hitler Eleven plus two =Twelve plus one Its Amazing... !:-),c55b7015590df8adc0bc5e0e78d09cf0a2b92b9596a0de6451d333572e4bf6b2,f65e9e57fc2bb0d6f705,dev
+sms-05089,ham,Omg if its not one thing its another. My cat has worms :/ when does this bad day end?,48316b41fb241112360e33d91781ef31452822960b629f9cfb94fda4aecaf168,19d4e372113c07128abb,dev
+sms-05090,ham,"Good morning, im suffering from fever and dysentry ..will not be able to come to office today.",01a3fc50c286268ed7c5cddc0545ddf8c20e3ff3bdac5faa368028c3c43f8c93,7af43c5e43c012a4384d,dev
+sms-05091,ham,I wont do anything de.,9ce56c856652015a1457ebcf12faf7bc5075e81d2f1c59bbc337909184018211,547915f60a237e5ba640,dev
+sms-05094,ham,No no. I will check all rooms befor activities,3fb531fbe341dd9d143fb75f3cddfc032b54895a5763d39e2731a2d44b8f3bf0,ada0c57516e368093181,dev
+sms-05101,spam,"TheMob>Hit the link to get a premium Pink Panther game, the new no. 1 from Sugababes, a crazy Zebra animation or a badass Hoody wallpaper-all 4 FREE!",07aeaef289703abe6a0cd2675d041b7ff94e0c7bf9456cf40f4a57873d9e5b3f,81984d093b5694ae0268,dev
+sms-05116,ham,U definitely need a module from e humanities dis sem izzit? U wan 2 take other modules 1st?,5fb602e0f4da280783c81af17f4f7b296e984fd0050e45ed205a2dee588eaa52,8ff56ca4f1ffb47750d5,dev
+sms-05117,ham,Argh why the fuck is nobody in town ;_;,b2d5f7c4b4dbe14e3412edef11ce9e4b5c2d4a7bc3c90a62fe521a58415e01ab,8b170ee2c857ba33d55c,dev
+sms-05122,ham,Lol for real. She told my dad I have cancer,7a125cc99c3f07181a6bb7b753f279df7c771e22017a18d2661752f0c846c63a,66ccfcf713652226432f,dev
+sms-05123,spam,PRIVATE! Your 2003 Account Statement for 078,116f12d7f4429d51f77987a159c76e961b832c13cf1ed7b6747b5e3239057b4c,3349167b1eaf86c87644,dev
+sms-05132,ham,"Rose for red,red for blood,blood for heart,heart for u. But u for me.... Send tis to all ur friends.. Including me.. If u like me.. If u get back, 1-u r poor in relation! 2-u need some 1 to support 3-u r frnd 2 many 4-some1 luvs u 5+- some1 is praying god to marry u.:-) try it....",1685becbfe98560e6d7fad05ffdec0acf8da579e862fd0eb025330cbef9e9878,435c7ac1acd7f49669c6,dev
+sms-05139,ham,There are some nice pubs near here or there is Frankie n Bennys near the warner cinema?,e0218e4e5151c5ecdddc801d8b89c47ae857e78d48edadb69fe50b1390b6e84a,61e577c978b14a8cd9c3,dev
+sms-05160,ham,K k:) sms chat with me.,e17115a0f28ad2dbcf009e86e3828f7100caef8d56f1e6ea0113eac610ebf172,fb09cfe064f927d6bdf4,dev
+sms-05163,ham,Ok... Then r we meeting later?,79a7767dfd1559d537e6299044f0d9a21c10c6612730401821c571586a081e08,fe9a0a46e5ec9f2b8c37,dev
+sms-05172,ham,Now i'm going for lunch.,037713aa8bd4a0c678e575f0661a8f741fdfaa1c7be8511146903ebebfd67052,ab055bc7904c9f5b055f,dev
+sms-05175,ham,"Aight, text me tonight and we'll see what's up",aa67c62d3b00a3dc198ff223241cd4d17533de2e0e1e5ccbf5eaacde2bbf8fe3,090099cfe72ce03301d2,dev
+sms-05178,ham,Raji..pls do me a favour. Pls convey my Birthday wishes to Nimya. Pls. Today is her birthday.,65ab0769da7b357513b5fb064917f48329aeb51c59939da500b5df7638cf0ce9,2a2fcc351fd6cf551a8b,dev
+sms-05192,spam,ree entry in 2 a weekly comp for a chance to win an ipod. Txt POD to 80182 to get entry (std txt rate) T&C's apply 08452810073 for details 18+,08fbefd39c8f7977d3837ab36dd611dfdb45e5012798ced7175c9329ba669845,d471d56f7e73f4890694,dev
+sms-05196,ham,"It's wylie, you in tampa or sarasota?",653f95fb1646421aa14099d8b361bc0ca51d8efe1242db569560d07978e63bd7,4891360cb9027dceb7b5,dev
+sms-05203,spam,Call Germany for only 1 pence per minute! Call from a fixed line via access number 0844 861 85 85. No prepayment. Direct access! www.telediscount.co.uk,0b57dbd578350a09036571e2a6a7bc69e67f69dd4135157492d7b69b5887dedb,7f9d803eed5933c6b8ec,dev
+sms-05213,ham,Dai i downloaded but there is only exe file which i can only run that exe after installing.,0c5c6be69f0f53f3598a31825973f2842d1f67265ed44c9caa000caece784e6e,5fc6eb533003ffe0830e,dev
+sms-05223,ham,I have to take exam with in march 3,7d0fb7156f5d1dd8ab77ec56921e881ae628ceaf6f0b5e129840c391429c0464,02747408d3c834f8f6bc,dev
+sms-05245,ham,Hmm thinking lor...,2b97fa2b8b367300597149881082900972d2a1dae45809ca2854d95a2cf41f8d,d19245c3be2666cb29f8,dev
+sms-05254,ham,"Yeah work is fine, started last week, all the same stuff as before, dull but easy and guys are fun!",2ccc25214635d42833b641c560cc60378eaaad1be443ce676a410f7a4f037727,0811587788d2bc534958,dev
+sms-05267,ham,"Storming msg: Wen u lift d phne, u say ""HELLO"" Do u knw wt is d real meaning of HELLO?? . . . It's d name of a girl..! . . . Yes.. And u knw who is dat girl?? ""Margaret Hello"" She is d girlfrnd f Grahmbell who invnted telphone... . . . . Moral:One can 4get d name of a person, bt not his girlfrnd... G o o d n i g h t . . .@",d4bdd6cd29f9ea5c62d27538df9a989fdb395e79314db068f31ac7cf4649e6bf,daa71618bb3d41fee38a,dev
+sms-05279,ham,Dunno leh cant remember mayb lor. So wat time r we meeting tmr?,149ea1b6184355f3c7c423446410b29e7bffe06c3b2dec6de0cfa58b65946fc4,ea70e5f0232ae7ba39b7,dev
+sms-05281,spam,URGENT! Your Mobile number has been awarded with a £2000 prize GUARANTEED. Call 09061790126 from land line. Claim 3030. Valid 12hrs only 150ppm,e8d69bd4d34b338593334808a872192fe5b0ef2cbf4362828a814c3e7c32f5e2,4749aace322b01672389,dev
+sms-05285,ham,I have gone into get info bt dont know what to do,cc3ffe09cbd2a3b3292669bcb5be4fb0880e961a46763a48640a06d3aa5006a2,411e2e5e4acd44a27cce,dev
+sms-05286,ham,"Yeah, probably here for a while",a0000badcaaa1304797a29856addac6c95903321e21dc17259b381729f1c6869,81f8d9d5498f82a8129d,dev
+sms-05291,ham,An excellent thought by a misundrstud frnd: I knw u hate me bt the day wen u'll knw the truth u'll hate urself:-( Gn:-),1643bc49d55d4b93f75bbc24ac17b21815cdcc9dad31ef47ece886e8cc315bf0,195615587904bb50a25d,dev
+sms-05292,ham,Hey! Congrats 2u2. id luv 2 but ive had 2 go home!,51f7ba73bc1d069be054c831f8cea6684330fa04a4eaefce726206d4754ea0dc,cf1d588ed25be6930ba7,dev
+sms-05296,ham,I donno its in your genes or something,bf44ca56f683018796be39454f15606b00c500309c8f79d0185a4c1252a84acc,435f1f561476b4bc4eca,dev
+sms-05297,spam,XMAS iscoming & ur awarded either £500 CD gift vouchers & free entry 2 r £100 weekly draw txt MUSIC to 87066 TnC www.Ldew.com1win150ppmx3age16subscription ,be1a22f94fa9b3105f1393b8db57e73ec17e55fab3b2a6d4375db1b3c7e6e783,5ff04561b87280df40ce,dev
+sms-05305,ham,About  &lt;#&gt; bucks. The banks fees are fixed. Better to call the bank and find out.,34e9fe324b658a24a72fde27e79d84f56cfceb51695fa0e38bcc2143b133b7ec,32bf268af7df1766976d,dev
+sms-05306,ham,"I can. But it will tell quite long, cos i haven't finish my film yet...",d2f69265d5dac8ecf139c833c3db74976c21ad628d3d4362a4295ed61a7acbb5,9589b608bc616ed9e301,dev
+sms-05307,ham,Pls ask macho how much is budget for bb bold 2 is cos i saw a new one for  &lt;#&gt;  dollars.,3f4ff3a5f2e23c48155d06fe725bc886a9bff24caed56d76224c462d0d1a232a,9fb2ad2c909a8e00ef78,dev
+sms-05314,ham,K.k:)i'm going to tirunelvali this week to see my uncle ..i already spend the amount by taking dress .so only i want money.i will give it on feb 1,0e73e92365a8ed1e932f00abd88bb9b82d99a0af3c90ea24f3621b789e9b866c,9815b583004eee59ba24,dev
+sms-05335,ham,I think steyn surely get one wicket:),e97fb7268da644a65c0e37414faeb138fc9d7f0033d75e8e4ac9f9c0c14e92e3,0f1fba77178570dbc6fd,dev
+sms-05339,ham,Sounds better than my evening im just doing my costume. Im not sure what time i finish tomorrow but i will txt you at the end.,19bf7867d934a5f46852c7c776d4a4c42eecff63437218ae43061bb7d2c3a9fe,e58ee4a3f86278354407,dev
+sms-05345,spam,"u r subscribed 2 TEXTCOMP 250 wkly comp. 1st wk?s free question follows, subsequent wks charged@150p/msg.2 unsubscribe txt STOP 2 84128,custcare 08712405020",9aa401b5e268abed66ce88753d466c659899e054712bfe8848b56f85d535e880,fe5ae789b58951eb5023,dev
+sms-05352,ham,I'm home...,556f7db4a73887638a50a41457316ca1abaeeec8f3f9d62ddb36b01aa21c7eab,33fa3adf8a09a3e101ea,dev
+sms-05361,ham,Hmm. Shall i bring a bottle of wine to keep us amused? Just joking! I'll still bring a bottle. Red or white? See you tomorrow,684ae227249506ccbfc8582b049ace3fe8717d361220c7809ee627f9fd31235d,680c6450cfea6093c6d3,dev
+sms-05363,ham,"Hey, iouri gave me your number, I'm wylie, ryan's friend",03be2ea125db7144e4d32a879ef051c7f575ad4e99ef0dd2c864e179965a8430,274962f7ff81f39780bf,dev
+sms-05380,spam,The current leading bid is 151. To pause this auction send OUT. Customer Care: 08718726270,01e675c820d3b07811ba10089f99725dfdee645624e704724783ef35285906f0,65df5b4bd2ec3e3a3662,dev
+sms-05387,ham,How are you babes. Hope your doing ok. I had a shit nights sleep. I fell asleep at 5.Im knackered and im dreading work tonight. What are thou upto tonight. X,52b8e761593e0f07f7913877ebfe159b2b59a1983f06442fa1735809fc4d073c,7b343ba56f6ebe589b09,dev
+sms-05391,ham,NOT MUCH NO FIGHTS. IT WAS A GOOD NITE!!,73f41eccb94d1450c7150d01bb9f760a2c427aac3ab3c774fbac92da17f96af7,5743333c3d4c77526a36,dev
+sms-05404,ham,Babes I think I got ur brolly I left it in English wil bring it in 2mrw 4 u luv Franxx,d4edb3b0cf6a78f26cbde84530afd6ea9da39c9a7401ab9686ab81da448c520a,ab35ef2d406af3753daa,dev
+sms-05409,ham,Dear are you angry i was busy dear,752bd9d05b04929cf12840088f3c0969d433489522a3893f4a0b5f29f593cc70,b807f97e4dfb04ef839e,dev
+sms-05411,ham,... Are you in the pub?,4f3f6fad3bf7989b5eb65e31bc7c0841aaa4f8ec2dcd1ddbb4e91e9cb2c7a891,3c69597a190e4acc106d,dev
+sms-05413,ham,"Daddy, shu shu is looking 4 u... U wan me 2 tell him u're not in singapore or wat?",2750a5d25cd92c326c5f04766313d2f2e21425f648eee0f908e97d0c0cd635cc,3fa95ebc09c17dfda686,dev
+sms-05414,ham,I ask if u meeting da ge tmr nite...,0f0df014422c452972bb82da2c5aee4f8c7039312b608909faa47dc6f5920983,98e2fd4172b9e8b1d5f5,dev
+sms-05422,ham,I'm at bruce &amp; fowler now but I'm in my mom's car so I can't park (long story),d3bb246596182afdab8cd69f847073391a1ff89671182ffcd641030123a5feb8,e8eb5404f2222afab887,dev
+sms-05428,ham,Otherwise had part time job na-tuition..,209326089e8b1cc0180ff01c84be47f36fbbe601bd569f908936d64501dab0a2,f326f64fe5af987dffd5,dev
+sms-05438,ham,I'm wif him now buying tix lar...,e2d962af4e983f12968a820961c7296452c9b0d8888f20d558c8b421d385f04e,18ae44b5d2fd21ca913a,dev
+sms-05441,ham,"""What are youdoing later? Sar xxx""",831dc484cdb5439427fab92cce031c2e0812cffda3710226f8ba0a83282d27b8,52115278f3edd8cabd4b,dev
+sms-05444,ham,"By the way, make sure u get train to worc foregate street not shrub hill. Have fun night x",5e1c4725b0406ed258f66f455fa012a1ad4cfd8db145f5fea10a6ccf02f0f662,b6c0b4988b0c2e9e9101,dev
+sms-05454,ham,Just sing HU. I think its also important to find someone female that know the place well preferably a citizen that is also smart to help you navigate through. Even things like choosing a phone plan require guidance. When in doubt ask especially girls.,3e21d21e2d043713dcae90042879316e6bace0f3a27bbb46602bae37c8aa961d,9a988c3b7c444ba26a88,dev
+sms-05458,ham,Wishing you a beautiful day. Each moment revealing even more things to keep you smiling. Do enjoy it.,0c57dabfb0d699b55fbb92c2724b106dac3b00506d35ba05c7b161642a56aa52,61c478142dfd9d81fa8f,dev
+sms-05471,spam,"URGENT! Last weekend's draw shows that you have won £1000 cash or a Spanish holiday! CALL NOW 09050000332 to claim. T&C: RSTM, SW7 3SS. 150ppm",99649b03c9adf66851ec89bcd45084721e30e2d611c9076163eda9bd1f67f7ad,ae79e713b7a303d9ef66,dev
+sms-05474,ham,Yup,a1ca5756d9a7b959a727aea7f3ae3d6223facb363403e9913e984f5868fede2b,fab1dbfb8b7efed8cd3e,dev
+sms-05478,ham,Dhoni have luck to win some big title.so we will win:),8c32dbd454db5ee1ba92da583753bd901a9d7c7529cdd9cc40e2bfff11e12bac,ce23af3f283ef6b41df6,dev
+sms-05483,ham,Have you seen who's back at Holby?!,d9e6a6f9b27c42a27ea24b5ddbcf9c8084e6cfb925f20f819ab92d65d23990ef,99290ccc808811f7f955,dev
+sms-05500,spam,"SMS SERVICES. for your inclusive text credits, pls goto www.comuk.net login= 3qxj9 unsubscribe with STOP, no extra charge. help 08702840625.COMUK. 220-CM2 9AE",1964e5a15073d08e541ec3abfd3573882273f6d6c06a6f1561be6b2c20ea8fa4,1a909cd2f1ff9ee0fb40,dev
+sms-05501,ham,Why did I wake up on my own &gt;:(,bc791baed4fa2abb4fe2143b936624a5499170a1d74847855b33f3fb671691c0,96b45b137008f3bd16bb,dev
+sms-05509,ham,God's love has no limit. God's grace has no measure. God's power has no boundaries. May u have God's endless blessings always in ur life...!! Gud ni8,d32627b54b228a5cceb456fddadf9188d1db546d28fa017f40a0bbfe37d7a301,063856169c6eb7a3d653,dev
+sms-05510,ham,I want to be inside you every night...,b6acb348f1ad9c14c0e5c1ab6b7408623f146c401f7e37c66ab9f4adc0b04b20,df49474ed7344038be5e,dev
+sms-05512,ham,Lol they were mad at first but then they woke up and gave in.,6611f02d2eee8c7fc1bc7303d777b454b8a2ec8fdb6efb0ee47f889771c7cd19,7f4bef6123b37ce58d54,dev
+sms-05515,ham,"Just making dinner, you ?",f4882645c960dad93bfb116dcedbcc55ced8d2cfe32ce58348e696e2b94db9b5,e7addda2cd877028f1b6,dev
+sms-05524,ham,You are a big chic. Common. Declare,53c98144ea225ab44c40602b8e0fc16c2fb1ffa9f997128c8f3557ea1588c17c,a3623d92d1b1fe003ed3,dev
+sms-05537,ham,Ok which your another number,260cbf87399dae8745e762d68a7717eb21b103af4cbaa0f332fdb87350981883,e600f8e2d4e5aabb2ef7,dev
+sms-05540,spam,Want explicit SEX in 30 secs? Ring 02073162414 now! Costs 20p/min Gsex POBOX 2667 WC1N 3XX,531f01f8264c3727e4dec553a37a3d406db078ba1561aa17a469b896a481f4ac,bd33ad2593a068013340,dev
+sms-05542,ham,Just sleeping..and surfing,592bf95daf9f4220f39de3576790b8c34aeba062071a2ee084a48433b16cbf62,8b9881fcd9d1d4a1f4c3,dev
+sms-05543,spam,ASKED 3MOBILE IF 0870 CHATLINES INCLU IN FREE MINS. INDIA CUST SERVs SED YES. L8ER GOT MEGA BILL. 3 DONT GIV A SHIT. BAILIFF DUE IN DAYS. I O £250 3 WANT £800,f4475729863cec67668537dfaab02c9c863dcff672a21637df0f9b5038516a03,251410736c213e815b55,dev
+sms-05548,ham,Hi its in durban are you still on this number,4cbfc7327b9dd12896829200a31196438027f50b0b3713d11d8b8ccbf55e2ca9,e0ff7d071303cd7db77b,dev
+sms-05563,ham,Anything lor. Juz both of us lor.,52c345b79a794c9f033c0415b5f3ca96f2937dd5e97158d178176fb5ce7382b8,2ef43f98175c98a27e8a,dev

@@ -24,5 +24,17 @@
     "S07"
   ],
   "archive_root_relative_to_project": "archives/2026-10-09-before-90min-redesign",
-  "status": "Reviewed lessons 01–09; historical assignments and sessions retain their original versions."
+  "status": "Reviewed lessons 01–09; historical assignments and sessions retain their original versions.",
+  "offline_instructor_lessons": {
+    "S08": {
+      "questions": "questions.draft-20261013.json",
+      "concept_numbers": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  }
 }

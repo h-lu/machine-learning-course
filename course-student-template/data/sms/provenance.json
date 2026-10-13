@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "source_url": "https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip",
+  "doi": "10.24432/C5CC84",
+  "license": "CC BY 4.0 (UCI catalog); original readme retained",
+  "fetched": "2026-10-11",
+  "student_package": {
+    "scope": "lesson-10 fixed manual representation; train/dev only",
+    "included_files": [
+      "train.csv",
+      "dev.csv",
+      "split_manifest.csv",
+      "provenance.json",
+      "DATA.md"
+    ],
+    "data_files": {
+      "train.csv": {
+        "rows": 3877,
+        "columns": [
+          "id",
+          "label",
+          "text",
+          "text_sha256",
+          "group_id",
+          "split"
+        ],
+        "groups": 3501,
+        "bytes": 733196,
+        "label_counts": {
+          "ham": 3365,
+          "spam": 512
+        }
+      },
+      "dev.csv": {
+        "rows": 807,
+        "columns": [
+          "id",
+          "label",
+          "text",
+          "text_sha256",
+          "group_id",
+          "split"
+        ],
+        "groups": 711,
+        "bytes": 155963,
+        "label_counts": {
+          "ham": 684,
+          "spam": 123
+        }
+      },
+      "split_manifest.csv": {
+        "rows": 5574,
+        "columns": [
+          "id",
+          "text_sha256",
+          "group_id",
+          "split"
+        ],
+        "groups": 4985,
+        "bytes": 578769
+      }
+    },
+    "split_manifest_contains_text": false,
+    "split_manifest_contains_labels": false,
+    "raw_upstream_file_included": false,
+    "upstream_zip_included": false,
+    "finalholdout_text_or_labels_included": false,
+    "encoder_included": false,
+    "embedding_cache_included": false
+  },
+  "source_notice": {
+    "included_in_student_package": false,
+    "teacher_resource_path": "course-instructor/lessons/S08/resources/original-sms-readme.txt",
+    "sha256": "8753cd2d3cab68f80c8257851b8c2037778c267f55accb6fd1b5a2e32d36a84e",
+    "bytes": 5868,
+    "reason": "The upstream notice includes labelled historical holdout examples and is preserved separately in teacher resources."
+  },
+  "historical_source": {
+    "git_commit": "912ade66c5449bfd740277bc761de7b9b54154fd",
+    "provenance_git_path": "course-student-template/data/sms/provenance.json",
+    "metadata": {
+      "source_url": "https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip",
+      "doi": "10.24432/C5CC84",
+      "license": "CC BY 4.0 (UCI catalog); original readme retained",
+      "fetched": "2026-10-11",
+      "zip_sha256": "1587ea43e58e82b14ff1f5425c88e17f8496bfcdb67a583dbff9eefaf9963ce3",
+      "raw_sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d",
+      "rows": 5574,
+      "labels": {
+        "ham": 4827,
+        "spam": 747
+      },
+      "groups": 4985,
+      "edges": 624,
+      "split_counts": {
+        "train": 3877,
+        "finalholdout": 890,
+        "dev": 807
+      },
+      "seed": 20261011,
+      "rule": "NFKC/lower/URL and digits normalized; equality or char3 Jaccard>=0.85 (length>=12); transitive closure before group-hash 70/15/15 split; no labels used",
+      "limitations": "Heuristic near-duplicate rule is not semantic identity. No temporal order. Public research protocol, not access security.",
+      "file_sha256": {
+        "course-student-template/data/sms/train.csv": "3d4c268e8bba99a5dd4bcd806b084d322ad0fb3f404db041109cc1f7d18b26fb",
+        "course-student-template/data/sms/dev.csv": "21602715697e834fc1e69ea9eeb7ae2c280fb2a06833848f48940626e02ac5c6",
+        "course-instructor/resources/sms/finalholdout.csv": "2ea12fb0e009ff567d3e174c8b8ea64ffa31c8192f954ce0d457c87ef625ec18",
+        "course-student-template/data/sms/split_manifest.csv": "686ee5e28cc33d749f25ca1d170e550b700f80629b2c262986751a0a11b9cd0d"
+      }
+    },
+    "status": "Historical source metadata only; referenced raw/ZIP/finalholdout files are not included in this student package."
+  },
+  "file_sha256": {
+    "course-student-template/data/sms/train.csv": "3d4c268e8bba99a5dd4bcd806b084d322ad0fb3f404db041109cc1f7d18b26fb",
+    "course-student-template/data/sms/dev.csv": "21602715697e834fc1e69ea9eeb7ae2c280fb2a06833848f48940626e02ac5c6",
+    "course-student-template/data/sms/split_manifest.csv": "686ee5e28cc33d749f25ca1d170e550b700f80629b2c262986751a0a11b9cd0d"
+  }
+}
