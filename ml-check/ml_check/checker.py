@@ -254,6 +254,23 @@ def offline_instructor_lessons(root: Path, active: list[str]) -> dict:
     return offline
 
 
+def formal_question_numbers(root: Path, active: list[str]) -> dict:
+    """Keep the published S08 revision distinct from historical question IDs."""
+    path = root / "active_lessons.json"
+    if not path.is_file():
+        return {}
+    value = json.loads(path.read_text(encoding="utf-8"))
+    numbers = value.get("formal_question_numbers", {})
+    if not isinstance(numbers, dict):
+        raise ValueError("formal_question_numbers须为明确的课次对象")
+    # This revision only authorizes S08's new IDs. Other formal lessons retain
+    # their original 01–05 constraint; an absent entry also retains that default.
+    for lesson, entry in numbers.items():
+        if lesson != "S08" or lesson not in active or entry != [11, 12, 13, 14, 15] or any(type(n) is not int for n in entry):
+            raise ValueError("仅正式S08新题版本可明确登记11–15题号")
+    return numbers
+
+
 def check_repo(root: Path, profile: str = "auto", expected_count: int | None = None) -> Report:
     root = root.resolve()
     if profile == "auto":
@@ -287,11 +304,16 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int | None = N
             report.add(root / "active_lessons.json", "lesson_set", f"活跃课次清单无效：{exc}")
             expected_ids = []
         offline = {}
+        formal_numbers = {}
         if profile == "instructor":
             try:
                 offline = offline_instructor_lessons(root, expected_ids)
             except (OSError, ValueError, KeyError, TypeError) as exc:
                 report.add(root / "active_lessons.json", "offline", f"离线草稿清单无效：{exc}")
+            try:
+                formal_numbers = formal_question_numbers(root, expected_ids)
+            except (OSError, ValueError, KeyError, TypeError) as exc:
+                report.add(root / "active_lessons.json", "questions", f"正式题号登记无效：{exc}")
         all_expected = [lesson for lesson in LESSONS if lesson in expected_ids or lesson in offline] if profile == "instructor" else expected_ids
         count = len(all_expected) if expected_count is None else expected_count
         if ids != all_expected or len(ids) != count:
@@ -331,7 +353,7 @@ def check_repo(root: Path, profile: str = "auto", expected_count: int | None = N
                 for name in ["RUNBOOK.md", "REFERENCE.md", question_file]:
                     required(folder / name, report)
                 path = folder / question_file
-                check_question_set(read_json(path, report), path, report, folder.name, concept_numbers=entry["concept_numbers"] if entry else None)
+                check_question_set(read_json(path, report), path, report, folder.name, concept_numbers=entry["concept_numbers"] if entry else formal_numbers.get(folder.name))
     for path in root.rglob("*"):
         if any(part in (".git", ".venv", "__pycache__", ".pytest_cache", "artifacts", "archives") for part in path.relative_to(root).parts):
             continue

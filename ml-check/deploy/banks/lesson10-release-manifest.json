@@ -1,0 +1,25 @@
+{
+  "schema": "ml-lesson10-bank-release-v1",
+  "lesson_id": "S08",
+  "human_lesson": 10,
+  "source_content_version": "sms-20261013-S08-draft-v1",
+  "source_questions_sha256": "757213629c4e8fc42b91a9159586edc234a717579f1f7063978dd19dfb4a0fc6",
+  "formal_questions_equal_draft_bytes": true,
+  "bank_version": "ml-lesson10-sms-20261013-v1",
+  "old_bank_version": "ml-v20-reviewed-01-09-2026-10-12",
+  "deployment_lesson_count": 32,
+  "local_lesson_count": 10,
+  "changed_lesson_ids": [
+    "S08"
+  ],
+  "other_production_lessons_deep_equal": true,
+  "local_existing_nine_lessons_deep_equal": true,
+  "files": {
+    "lessons-lesson10-20261013.json": "7786ade4caf576e671e13398a999b44ccdeded64e777cbfc368e3dfe407ecd79",
+    "archive/ml-v20-reviewed-01-09-2026-10-12.lessons.json": "d8b6d197cf8a0bdfe92bea246e9e220db3bd47c7b8d921b61ac08de91d98f3aa",
+    "archive/ml-v20-reviewed-01-09-2026-10-12.S08.json": "78a17d78d37e0bdb7aadd179858f26cdd8e3a724ad099f82ca1c54a0acecc177"
+  },
+  "database_mutations": false,
+  "session_creation_or_phase_changes": false,
+  "grading_policy_changes": false
+}

@@ -6,10 +6,12 @@ from urllib.request import urlopen
 
 from app.main import ReceiptStore, load_bank, make_handler, response
 from app.questions import CURRENT_BANKS
-from ml_check.checker import active_ids, Report, check_question_set
+from ml_check.checker import active_ids, formal_question_numbers, Report, check_question_set
 from pathlib import Path
 
-ACTIVE_LESSONS = active_ids(Path(__file__).resolve().parents[1], "instructor")
+INSTRUCTOR = Path(__file__).resolve().parents[2] / "course-instructor"
+ACTIVE_LESSONS = active_ids(INSTRUCTOR, "instructor")
+FORMAL_NUMBERS = formal_question_numbers(INSTRUCTOR, ACTIVE_LESSONS)
 
 
 class Questions(unittest.TestCase):
@@ -21,7 +23,7 @@ class Questions(unittest.TestCase):
         self.assertEqual([x["lesson_id"] for x in self.bank["lessons"]], ACTIVE_LESSONS)
         for lesson in self.bank["lessons"]:
             report = Report(Path.cwd(), "instructor")
-            check_question_set(lesson, Path(lesson["lesson_id"]), report, lesson["lesson_id"])
+            check_question_set(lesson, Path(lesson["lesson_id"]), report, lesson["lesson_id"], FORMAL_NUMBERS.get(lesson["lesson_id"]))
             self.assertFalse(report.failed(), report.issues)
 
     def test_no_duplicate_question_prompts_across_lessons(self):
@@ -51,7 +53,7 @@ class Questions(unittest.TestCase):
             self.assertEqual(len(bank.items), 5)
             self.assertEqual(
                 bank.concept_ids,
-                [f"{bank.lesson_id}-{index:02d}" for index in range(1, 6)],
+                [f"{bank.lesson_id}-{index:02d}" for index in FORMAL_NUMBERS.get(bank.lesson_id, range(1, 6))],
             )
             for item in bank.items:
                 self.assertFalse(item["title"].startswith(("概念", "知识点")))
