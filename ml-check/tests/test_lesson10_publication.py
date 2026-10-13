@@ -37,7 +37,7 @@ def csrf(text):
     return html.unescape(re.search(r'name="csrf_token" value="([^"]+)"', text).group(1))
 
 
-def test_settings(database):
+def make_test_settings(database):
     return Settings(
         database_path=str(database), session_secret="synthetic-lesson10-tests-only",
         gitea_base_url="https://example.invalid", gitea_client_id="",
@@ -112,7 +112,7 @@ class Lesson10Publication(unittest.TestCase):
             BANK_VERSION=VERSION, bank_for_lesson=lambda key: lookup[str(key).upper()],
         ):
             database = Path(folder) / "synthetic.sqlite3"
-            app = main.create_app(test_settings(database))
+            app = main.create_app(make_test_settings(database))
             old = read(BANKS / "archive/ml-v20-reviewed-01-09-2026-10-12.S08.json")
             historical = db.create_session(str(database), "S08", old["title"], "ml-v20-reviewed-01-09-2026-10-12", bank_snapshot(as_bank(old)))
             old_student = db.upsert_user(str(database), gitea_id=800001, login="synthetic-old", display_name="synthetic-old", role="student")

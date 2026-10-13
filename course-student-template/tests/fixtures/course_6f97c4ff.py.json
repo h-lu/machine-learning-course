@@ -1,0 +1,11 @@
+{
+  "repository": "h-lu/machine-learning-course",
+  "commit": "6f97c4ff0547adc70d7e56cbecb827c3c0fa6174",
+  "path": "course-student-template/scripts/course.py",
+  "git_blob": "2ec0e0cf7b97aa58050ab1747964535319e32511",
+  "sha256": "bcdc83ee2be99e018d8511ca704316c9d0083d1ecb310f06f82a42b63061b7c2",
+  "bytes": 10882,
+  "git_mode": "100644",
+  "fixture_file": "course_6f97c4ff.py.fixture",
+  "purpose": "Exact pre-lesson10 client for missing-only updater regression; no runtime-history or network dependency."
+}

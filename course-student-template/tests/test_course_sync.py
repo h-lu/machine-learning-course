@@ -139,7 +139,15 @@ class Lesson10SyncTests(unittest.TestCase):
         self.assertTrue((self.root/'mlcourse/sms_course.py').exists())
 
     def test_independent_cli_updates_old_course_script_without_replacing_it(self):
-        old = subprocess.check_output(['git', '-C', str(ROOT.parent), 'show', '6f97c4ff0547adc70d7e56cbecb827c3c0fa6174:course-student-template/scripts/course.py'])
+        # Actions checks out only HEAD; keep the exact legacy client in-tree.
+        fixture = ROOT/'tests/fixtures/course_6f97c4ff.py.fixture'
+        provenance = json.loads(fixture.with_suffix('.json').read_text())
+        old = fixture.read_bytes()
+        self.assertEqual(provenance['commit'], '6f97c4ff0547adc70d7e56cbecb827c3c0fa6174')
+        self.assertEqual(provenance['path'], 'course-student-template/scripts/course.py')
+        self.assertEqual(provenance['fixture_file'], fixture.name)
+        self.assertEqual(len(old), provenance['bytes'])
+        self.assertEqual(hashlib.sha256(old).hexdigest(), provenance['sha256'])
         (self.root/'scripts/course.py').write_bytes(old)
         before = self.snapshot()
         bootstrap = """set -e
