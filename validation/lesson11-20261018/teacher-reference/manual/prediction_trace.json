@@ -1,0 +1,87 @@
+{
+  "tokens": [
+    "u",
+    "dun",
+    "say",
+    "so",
+    "early",
+    "hor",
+    "u",
+    "c",
+    "already",
+    "then",
+    "say"
+  ],
+  "unknown_tokens": [],
+  "row_norm": 0.8879581298339069,
+  "features": [
+    {
+      "index": 0,
+      "name": "characters",
+      "raw_value": 49.0,
+      "training_mean": 80.28656177456797,
+      "training_scale": 60.34100634437289,
+      "value": -0.5184958566320895,
+      "weight": 0.36942629438538394,
+      "contribution": -0.19154600296976812
+    },
+    {
+      "index": 1,
+      "name": "digits",
+      "raw_value": 0.0,
+      "training_mean": 2.2875935001289656,
+      "training_scale": 6.0739644737190845,
+      "value": -0.3766227988370623,
+      "weight": 3.2061420212847125,
+      "contribution": -1.2075061815253645
+    },
+    {
+      "index": 2,
+      "name": "exclamations",
+      "raw_value": 0.0,
+      "training_mean": 0.24709827185968533,
+      "training_scale": 0.6876484725947205,
+      "value": -0.35933806546141733,
+      "weight": 0.2815941275699679,
+      "contribution": -0.10118748904628783
+    },
+    {
+      "index": 3,
+      "name": "tokens",
+      "raw_value": 11.0,
+      "training_mean": 16.141604333247358,
+      "training_scale": 12.051125499245597,
+      "value": -0.4266493062054016,
+      "weight": -0.2544873661284332,
+      "contribution": 0.10857685819673604
+    },
+    {
+      "index": 4,
+      "name": "has_free",
+      "raw_value": 0.0,
+      "training_mean": 0.0433324735620325,
+      "training_scale": 0.2036044456710798,
+      "value": -0.21282675542377655,
+      "weight": 0.5521856239062125,
+      "contribution": -0.11751987472761295
+    },
+    {
+      "index": 5,
+      "name": "has_url",
+      "raw_value": 0.0,
+      "training_mean": 0.02089244261026567,
+      "training_scale": 0.14302429322336013,
+      "value": -0.14607618146127158,
+      "weight": 0.7570636500436216,
+      "contribution": -0.11058896712150468
+    }
+  ],
+  "id": "sms-00004",
+  "text": "U dun say so early hor... U c already then say...",
+  "text_sha256": "c76963e1d7581d1844a6fd2c57bd18f1fe031d67dbf6d8c6c2fb27edc9d39915",
+  "intercept": -2.905081564257152,
+  "logit": -4.524853221450954,
+  "probability": 0.010720138171484001,
+  "action": 0,
+  "partition": "dev"
+}

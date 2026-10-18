@@ -255,7 +255,7 @@ def offline_instructor_lessons(root: Path, active: list[str]) -> dict:
 
 
 def formal_question_numbers(root: Path, active: list[str]) -> dict:
-    """Keep the published S08 revision distinct from historical question IDs."""
+    """Keep the published S08/S09 revisions distinct from historical IDs."""
     path = root / "active_lessons.json"
     if not path.is_file():
         return {}
@@ -263,11 +263,12 @@ def formal_question_numbers(root: Path, active: list[str]) -> dict:
     numbers = value.get("formal_question_numbers", {})
     if not isinstance(numbers, dict):
         raise ValueError("formal_question_numbers须为明确的课次对象")
-    # This revision only authorizes S08's new IDs. Other formal lessons retain
-    # their original 01–05 constraint; an absent entry also retains that default.
+    # Each reviewed revision has one exact allowed number set. Other formal
+    # lessons retain 01–05; an absent entry also retains that legacy default.
+    allowed = {"S08": [11, 12, 13, 14, 15], "S09": [21, 22, 23, 24, 25]}
     for lesson, entry in numbers.items():
-        if lesson != "S08" or lesson not in active or entry != [11, 12, 13, 14, 15] or any(type(n) is not int for n in entry):
-            raise ValueError("仅正式S08新题版本可明确登记11–15题号")
+        if lesson not in allowed or lesson not in active or entry != allowed[lesson] or any(type(n) is not int for n in entry):
+            raise ValueError("正式S08新题仅可登记11–15、S09新题仅可登记21–25；其他课保留01–05")
     return numbers
 
 

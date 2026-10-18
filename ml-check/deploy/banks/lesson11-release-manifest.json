@@ -1,0 +1,23 @@
+{
+  "schema": "ml-lesson11-bank-release-v1",
+  "lesson_id": "S09",
+  "human_lesson": 11,
+  "source_sha256": "2026dd01e062258e88aa44d8bff83676fe0332d14838d9970649a6d242951706",
+  "source_equals_reviewed_draft_bytes": true,
+  "bank_version": "ml-lesson11-sms-20261018-v1",
+  "old_bank_version": "ml-lesson10-sms-20261013-v1",
+  "deployment_lesson_count": 32,
+  "local_lesson_count": 11,
+  "changed_lesson_ids": [
+    "S09"
+  ],
+  "other_production_lessons_deep_equal": true,
+  "database_mutations": false,
+  "session_creation_or_phase_changes": false,
+  "grading_policy_changes": false,
+  "files": {
+    "lessons-lesson11-20261018.json": "1e39ae4a03b4ac8f547cbba0ba049982a64a30000c98792df88a5dc269e5477c",
+    "archive/ml-lesson10-sms-20261013-v1.lessons.json": "7786ade4caf576e671e13398a999b44ccdeded64e777cbfc368e3dfe407ecd79",
+    "archive/ml-lesson10-sms-20261013-v1.S09.json": "acc9190dc1560b6e59918472af0abd0d54c08d1ab47c1f716f48126f6e4347cd"
+  }
+}

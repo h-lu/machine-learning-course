@@ -11,7 +11,8 @@
     "lesson-07",
     "lesson-08",
     "lesson-09",
-    "lesson-10"
+    "lesson-10",
+    "lesson-11"
   ],
   "active_instructor_lessons": [
     "C01",
@@ -22,7 +23,9 @@
     "S04",
     "S05",
     "S06",
-    "S07"
+    "S07",
+    "S08",
+    "S09"
   ],
-  "status": "Reviewed lessons 01–09; lesson10 enabled for local technical checks. Formal banks and historical assignments retain their existing versions."
+  "status": "Reviewed student lessons01–11; lesson11/S09 approved2026-10-18. Historical assignments and question versions retained; classroom sessions opened by teacher."
 }

@@ -1,0 +1,77 @@
+{
+  "scope": "L11/S09 code, support and teacher draft only; parent owns main README/LEARN",
+  "new_unit_tests": 16,
+  "same_train_dev_and_protocol_reference_checks": true,
+  "protected_L10_paths_unchanged": [
+    "course-student-template/lesson-10",
+    "course-student-template/data/sms",
+    "course-student-template/mlcourse/sms_course.py"
+  ],
+  "historical_base": "912ade66c5449bfd740277bc761de7b9b54154fd",
+  "historical_gaps": [
+    "Current L10 is manual-only: historic generic analysis entry cannot be restored alone.",
+    "Historic lexical matrices were dense; no min_df or tokenizer choice and no training DF/N audit in representation.",
+    "Historic trace omitted token sequence, unknown words and explicit count/DF/IDF chain.",
+    "Historic teacher evidence refers to past run rather than current finite checks."
+  ],
+  "fair_comparison_limit": "Fixed shared400steps/lr1/L2.001, not separately optimized capacity or convergence; representation scales/dimensions differ.",
+  "reference_metrics": {
+    "manual": {
+      "metrics": {
+        "n": 807,
+        "tp": 105,
+        "fp": 8,
+        "fn": 18,
+        "tn": 676,
+        "reviewed": 113,
+        "precision": 0.9292035398230089,
+        "recall": 0.8536585365853658,
+        "accuracy": 0.9677819083023544,
+        "brier": 0.02478130432222655
+      },
+      "dimensions": 6,
+      "nonzeros": 23262,
+      "seconds_author_CPU_singleBLASthread": 0.14349460997618735
+    },
+    "bow": {
+      "metrics": {
+        "n": 807,
+        "tp": 30,
+        "fp": 0,
+        "fn": 93,
+        "tn": 684,
+        "reviewed": 30,
+        "precision": 1.0,
+        "recall": 0.24390243902439024,
+        "accuracy": 0.8847583643122676,
+        "brier": 0.06516322486045549
+      },
+      "dimensions": 1200,
+      "nonzeros": 46956,
+      "seconds_author_CPU_singleBLASthread": 0.24746583902742714
+    },
+    "tfidf": {
+      "metrics": {
+        "n": 807,
+        "tp": 12,
+        "fp": 0,
+        "fn": 111,
+        "tn": 684,
+        "reviewed": 12,
+        "precision": 1.0,
+        "recall": 0.0975609756097561,
+        "accuracy": 0.862453531598513,
+        "brier": 0.07413122289130024
+      },
+      "dimensions": 1200,
+      "nonzeros": 46956,
+      "seconds_author_CPU_singleBLASthread": 0.24893437093123794
+    }
+  },
+  "question_draft": "course-instructor/lessons/S09/questions.draft-20261018.json",
+  "question_sha256": "1c06e2893ac37e7a202dd678fd11939e03e18f71822252d581dc0252bfa5afec",
+  "quiz_author_review": "All10questions independently cold-read; no mathematical ambiguity found; teacher explanations cover distractors. Parent review required before formalization.",
+  "human_pilot_or_90minute_classroom_test": false,
+  "formalbank_or_sessions_or_grades_changed": false,
+  "production_or_push_by_delegate": false
+}

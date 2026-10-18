@@ -64,7 +64,7 @@ class Lesson10Publication(unittest.TestCase):
         self.assertIn("S08", active)
         self.assertNotIn("S08", read(INSTRUCTOR / "active_lessons.json")["offline_instructor_lessons"])
         numbers = formal_question_numbers(INSTRUCTOR, active)
-        self.assertEqual(numbers, {"S08": [11, 12, 13, 14, 15]})
+        self.assertEqual(numbers, {"S08": [11, 12, 13, 14, 15], "S09": [21, 22, 23, 24, 25]})
         report = Report(INSTRUCTOR, "instructor")
         check_question_set(read(FORMAL), FORMAL, report, "S08", numbers["S08"])
         self.assertFalse(report.failed(True), report.issues)

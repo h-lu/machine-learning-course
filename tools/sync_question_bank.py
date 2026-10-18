@@ -1,7 +1,7 @@
 """Build the reviewed local bank, not the 32-lesson deployment bank.
 
 No student files are written. Preserve the production bank's other lessons when
-preparing a deployment; lesson10's pinned full bank is under ml-check/deploy/banks.
+preparing a deployment; pinned full banks are under ml-check/deploy/banks.
 """
 from pathlib import Path
 import json
@@ -39,7 +39,7 @@ def main():
         return 1
     target = ROOT / "ml-check/app/question_bank/lessons.json"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps({"version": "ml-lesson10-sms-20261013-v1", "lessons": lessons}, ensure_ascii=False, indent=2) + "\n")
+    target.write_text(json.dumps({"version": "ml-lesson11-sms-20261018-v1", "lessons": lessons}, ensure_ascii=False, indent=2) + "\n")
     print(f"已汇集 {len(lessons)} 课、{sum(len(x['questions']) for x in lessons)} 题。")
     return 0
 

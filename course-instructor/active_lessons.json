@@ -22,10 +22,11 @@
     "S05",
     "S06",
     "S07",
-    "S08"
+    "S08",
+    "S09"
   ],
   "archive_root_relative_to_project": "archives/2026-10-09-before-90min-redesign",
-  "status": "Reviewed lessons 01–09; lesson10/S08 SMS question revision is formally available. Historical assignments and sessions retain their original versions.",
+  "status": "Reviewed formal local lessons C01/C02 and S01–S09; lesson11/S09 uses new21–25 identities. Production activation requires its separately recorded deployment; historical assignments and session snapshots remain unchanged.",
   "offline_instructor_lessons": {},
   "formal_question_numbers": {
     "S08": [
@@ -34,6 +35,13 @@
       13,
       14,
       15
+    ],
+    "S09": [
+      21,
+      22,
+      23,
+      24,
+      25
     ]
   }
 }

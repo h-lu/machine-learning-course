@@ -1,0 +1,19 @@
+{
+  "release": "lesson11-bank-20261018-v1",
+  "course": "ml",
+  "files": {
+    "app/question_bank/lessons.json": {
+      "before": "7786ade4caf576e671e13398a999b44ccdeded64e777cbfc368e3dfe407ecd79",
+      "after": "1e39ae4a03b4ac8f547cbba0ba049982a64a30000c98792df88a5dc269e5477c"
+    }
+  },
+  "production_lesson_count": 32,
+  "unchanged_other_lesson_count": 31,
+  "source_lesson_id": "S09",
+  "source_sha256": "2026dd01e062258e88aa44d8bff83676fe0332d14838d9970649a6d242951706",
+  "old_ml_version": "ml-lesson10-sms-20261013-v1",
+  "new_ml_version": "ml-lesson11-sms-20261018-v1",
+  "database_mutations": false,
+  "sessions_created_or_opened": false,
+  "rebuild_base": "exact currently observed production image; copy only listed files; no package downloads"
+}

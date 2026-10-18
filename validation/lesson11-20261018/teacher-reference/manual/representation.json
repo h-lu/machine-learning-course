@@ -1,0 +1,29 @@
+{
+  "kind": "manual",
+  "mean": [
+    80.28656177456797,
+    2.2875935001289656,
+    0.24709827185968533,
+    16.141604333247358,
+    0.0433324735620325,
+    0.02089244261026567
+  ],
+  "scale": [
+    60.34100634437289,
+    6.0739644737190845,
+    0.6876484725947205,
+    12.051125499245597,
+    0.2036044456710798,
+    0.14302429322336013
+  ],
+  "names": [
+    "characters",
+    "digits",
+    "exclamations",
+    "tokens",
+    "has_free",
+    "has_url"
+  ],
+  "training_documents": 3877,
+  "normalization": "training mean and standard deviation per feature"
+}

@@ -1,0 +1,122 @@
+{
+  "tokens": [
+    "u",
+    "dun",
+    "say",
+    "so",
+    "early",
+    "hor",
+    "u",
+    "c",
+    "already",
+    "then",
+    "say"
+  ],
+  "unknown_tokens": [
+    {
+      "token": "hor",
+      "count": 1
+    }
+  ],
+  "row_norm": 3.7416573867739413,
+  "training_documents": 3877,
+  "normalization": "l2",
+  "features": [
+    {
+      "index": 90,
+      "name": "already",
+      "count": 1,
+      "df": 62,
+      "idf": 5.119940109411065,
+      "weighted_value": 1.0,
+      "value": 0.2672612419124244,
+      "weight": -0.12051527696700781,
+      "contribution": -0.0322090625916223
+    },
+    {
+      "index": 189,
+      "name": "c",
+      "count": 1,
+      "df": 64,
+      "idf": 5.08868756590696,
+      "weighted_value": 1.0,
+      "value": 0.2672612419124244,
+      "weight": 0.1950940863506554,
+      "contribution": 0.052141087807845925
+    },
+    {
+      "index": 336,
+      "name": "dun",
+      "count": 1,
+      "df": 38,
+      "idf": 5.59951318967295,
+      "weighted_value": 1.0,
+      "value": 0.2672612419124244,
+      "weight": -0.09714074660858213,
+      "contribution": -0.02596195657890979
+    },
+    {
+      "index": 342,
+      "name": "early",
+      "count": 1,
+      "df": 21,
+      "idf": 6.172032382444281,
+      "weighted_value": 1.0,
+      "value": 0.2672612419124244,
+      "weight": -0.05715106436909872,
+      "contribution": -0.01527426443990223
+    },
+    {
+      "index": 891,
+      "name": "say",
+      "count": 2,
+      "df": 56,
+      "idf": 5.220023567968047,
+      "weighted_value": 2.0,
+      "value": 0.5345224838248488,
+      "weight": -0.10793896935184198,
+      "contribution": -0.057695805999440804
+    },
+    {
+      "index": 946,
+      "name": "so",
+      "count": 1,
+      "df": 303,
+      "idf": 3.5460471343963755,
+      "weighted_value": 1.0,
+      "value": 0.2672612419124244,
+      "weight": -0.44750225140898714,
+      "contribution": -0.11960000747017187
+    },
+    {
+      "index": 1011,
+      "name": "then",
+      "count": 1,
+      "df": 156,
+      "idf": 4.206829030454289,
+      "weighted_value": 1.0,
+      "value": 0.2672612419124244,
+      "weight": -0.32647894558570095,
+      "contribution": -0.08725516845549326
+    },
+    {
+      "index": 1068,
+      "name": "u",
+      "count": 2,
+      "df": 587,
+      "idf": 2.88634788790397,
+      "weighted_value": 2.0,
+      "value": 0.5345224838248488,
+      "weight": -0.3700683541567518,
+      "contribution": -0.19780985584884078
+    }
+  ],
+  "id": "sms-00004",
+  "text": "U dun say so early hor... U c already then say...",
+  "text_sha256": "c76963e1d7581d1844a6fd2c57bd18f1fe031d67dbf6d8c6c2fb27edc9d39915",
+  "intercept": -2.267845071939589,
+  "logit": -2.751510105516124,
+  "probability": 0.0600014217202252,
+  "action": 0,
+  "partition": "dev"
+}
