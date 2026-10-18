@@ -17,6 +17,10 @@
 |curve.csv|固定步数内的训练目标与开发损失；不是自动选择停止点|
 |first_update.json|首轮完整批量更新，供需要时查训练实现；本课不用把训练步骤作为主研究|
 
+先看表示类型，再找相应字段。默认`manual`不建立词表，追踪中的每项特征使用`raw_value`（原始值）、`training_mean`（训练均值）、`training_scale`（训练标准差）和标准化后的`value`；按“原始值减训练均值，再除以训练标准差”核对。这里没有词次数`count`、DF或IDF，`unknown_tokens=[]`也不表示完整覆盖了所有词，只是该字段对人工特征不适用。
+
+`bow`和`tfidf`才使用固定词表、count、DF、IDF及未知词记录。BoW记录IDF便于查训练统计，但不把它乘入词次数；TF–IDF才乘IDF。正式作品的词表示追踪从你选择的BoW或TF–IDF一方完成，不在默认人工特征输出里寻找这些字段。两类表示最后都核对`value × weight`的贡献和、截距、得分与概率。
+
 ## 用自己的配置运行一方
 
 复制`lesson-11/config.json`到你自己命名的配置文件，只改计划研究的表示设置。例如选择`bow`或`tfidf`，以及自己有理由的`min_df`。使用新目录：
@@ -81,9 +85,9 @@ detail = explain_text("green coffee", rep)
 
 词表示使用稀疏存储，`matrix.row(i)`返回非零坐标与值；`matvec(w)`计算所有行与系数的内积。无需把数千维向量全抄到报告里。`to_dense()`只供小例检查，有单元格预算，不应对整个训练矩阵调用。
 
-## 怎样核对真实追踪
+## 怎样核对词表示的真实追踪
 
-在`prediction_trace.json`中按原文找到tokens；对一个词核对出现次数。DF是含这个词的训练短信条数，本身是计数；同一条短信中的重复出现不会让DF增加多次。N是训练短信总条数，两者按给出的公式计算IDF。再乘count，按row_norm做归一化。`value × weight`是该坐标对logit的贡献；所有贡献加intercept后，再经sigmoid得到概率。
+本节用于BoW或TF–IDF。在`prediction_trace.json`中按原文找到tokens；对一个词核对出现次数。DF是含这个词的训练短信条数，本身是计数；同一条短信中的重复出现不会让DF增加多次。N是训练短信总条数，两者按给出的公式计算IDF。TF–IDF将count乘IDF，BoW保留count；若配置为L2归一化，再除以row_norm。`value × weight`是该坐标对logit的贡献；所有贡献加intercept后，再经sigmoid得到概率。
 
 此处weight是分类器学到的系数，idf是表示阶段学到的统计量，两者不是同一个权重。相同分类器协议会在两份表示上分别训练，不能把六维人工特征的系数直接拿去乘词向量。
 

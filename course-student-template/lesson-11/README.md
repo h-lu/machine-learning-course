@@ -26,7 +26,7 @@
 
 标准作品应包含：
 
-1. 一条真实dev短信的追踪：原文、tokens、词表内外词、几个非零坐标怎样得到，再核对贡献之和加截距、得分与概率。
+1. 从所选BoW或TF–IDF一方完成一条真实dev短信的追踪：原文、tokens、词表内外词、几个非零坐标怎样得到，再核对贡献之和加截距、得分与概率。人工特征对照查看raw_value、training_mean、training_scale及标准化后的value；它不建立词表，没有DF/IDF，unknown_tokens为空也不表示词表完整覆盖。
 2. 同条件两方案的配置、运行命令及结果。按相同ID对齐预测，比较复核人数、TP/FP/FN/TN、查准率、召回率；解释哪些记录改变或没有改变。
 3. 一项未知词、空文本或词序改变的失败检查，说明表示没有保留什么信息。
 4. 保留、修改或暂不采用的建议，以及历史语料、表示覆盖和训练预算的局限。
@@ -44,7 +44,7 @@ python3 lesson-11/analysis.py
 
 默认只运行一份人工特征起点，结果位于`lesson-11/artifacts/baseline`。它不会替你选择第二方案、形成完整比较或写结论。
 
-先读`representation.json`确认转换，再看`prediction_trace.json`的一条真实记录、`records.csv`的逐条结果和`summary.json`的指标。自己的设置从`config.json`另存修改，重跑用新的`--output`目录；旧结果不会被静默覆盖。接口与命令见SUPPORT。
+先读`representation.json`确认表示类型，再看`prediction_trace.json`的一条真实记录、`records.csv`的逐条结果和`summary.json`的指标。默认人工特征追踪给出原始值、训练均值和标准差，不会出现词次数、DF或IDF；正式作品要求的词表示追踪应从你所选的BoW或TF–IDF运行中取得。自己的设置从`config.json`另存修改，重跑用新的`--output`目录；旧结果不会被静默覆盖。字段与命令见SUPPORT。
 
 ## 5. 不同完成程度怎样选择？
 

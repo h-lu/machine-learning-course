@@ -13,10 +13,10 @@
 在课程仓库根目录运行：
 
 ```bash
-python3 course-instructor/lessons/S09/reference.py --output validation/lesson11-20261018/teacher-reference
+python3 course-instructor/lessons/S09/reference.py --output validation/lesson11-recheck-20261018-01
 ```
 
-它只供教师核查共同默认协议下的manual、bow、tfidf三次运行，不自动挑最佳结果，不是学生标准作品。目录已有内容时拒绝覆盖。`reference-checks.json`记录三份配置、实际指标、耗时及真实ID的独立数值复算。对照的是当前实际代码与数据，不以历史草稿的验证报告代替。
+它只供教师核查共同默认协议下的manual、bow、tfidf三次运行，不自动挑最佳结果，不是学生标准作品。示例输出目录未随课包提供；重复核对须再换一个尚不存在的新目录，保留已保存的`validation/lesson11-20261018/teacher-reference`。目录已有内容时仍拒绝覆盖。`reference-checks.json`记录三份配置、实际指标、耗时及真实ID的独立数值复算。对照的是当前实际代码与数据，不以历史草稿的验证报告代替。
 
 教师程序重新从真实原文计数，按train文本核DF/IDF，读取已保存模型，独立算该记录的logit、sigmoid和贡献和；同时检查三方的ID、数据哈希和训练/复核协议相同。单条追踪说明实现可检查，不等于证明全部预测因果机制或算法最优。
 
@@ -42,4 +42,4 @@ ID、原文、原文哈希、按顺序的tokens、词表外词及次数，已知
 
 使用第10课相同的train 3877条、dev 807条，不复制或打开最终留出正文/标签。学生[DATA](../../../course-student-template/data/sms/DATA.md)和provenance记录当前数据哈希与历史来源；它们区分UCI目录的许可记录和保留在教师侧的原始英文notice。原notice包含有标签的历史例子，不加入学生包。未重新获取上游数据或改动划分。
 
-资料来自历史英语SMS，不按时间排序。词频改善不等于理解语义，也不能直接推出今天中文短信的部署效果；新用途需要匹配条件的新评价。公开语料及旧Git历史下，最终留出的保留是教学研究约定，不能宣称技术不可绕过。正式题干及全部选项解释只在教师草稿中，本文件和reference程序也不进入学生发布包。
+资料来自历史英语SMS，不按时间排序。词频改善不等于理解语义，也不能直接推出今天中文短信的部署效果；新用途需要匹配条件的新评价。公开语料及旧Git历史下，最终留出的保留是教学研究约定，不能宣称技术不可绕过。[正式题干及全部选项解释](questions.json)保存在教师题库中，另保留[历史审题稿](questions.draft-20261018.json)作追溯；本文件和reference程序也不进入学生发布包。
