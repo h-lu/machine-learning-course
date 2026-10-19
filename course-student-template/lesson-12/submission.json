@@ -1,0 +1,20 @@
+{
+  "lesson": "lesson-12",
+  "status": "not_started",
+  "report": "lesson-12/report.md",
+  "artifacts": [
+    "lesson-12/artifacts/baseline/config.json",
+    "lesson-12/artifacts/baseline/representation.json",
+    "lesson-12/artifacts/baseline/summary.json",
+    "lesson-12/artifacts/baseline/prediction_trace.json",
+    "lesson-12/artifacts/baseline/first_update.json",
+    "lesson-12/artifacts/baseline/curve.csv",
+    "lesson-12/artifacts/baseline/records.csv",
+    "lesson-12/artifacts/baseline/model.npz",
+    "lesson-12/artifacts/baseline/loss.svg"
+  ],
+  "run": [
+    "python3",
+    "lesson-12/analysis.py"
+  ]
+}
