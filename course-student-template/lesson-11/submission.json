@@ -3,14 +3,27 @@
   "status": "not_started",
   "report": "lesson-11/report.md",
   "artifacts": [
-    "lesson-11/artifacts/baseline/summary.json",
-    "lesson-11/artifacts/baseline/records.csv",
-    "lesson-11/artifacts/baseline/representation.json",
-    "lesson-11/artifacts/baseline/config.json",
-    "lesson-11/artifacts/baseline/first_update.json",
-    "lesson-11/artifacts/baseline/model.npz",
-    "lesson-11/artifacts/baseline/curve.csv",
-    "lesson-11/artifacts/baseline/prediction_trace.json"
+    "lesson-11/artifacts/comparison/comparison.csv",
+    "lesson-11/artifacts/comparison/first/config.json",
+    "lesson-11/artifacts/comparison/first/curve.csv",
+    "lesson-11/artifacts/comparison/first/first_update.json",
+    "lesson-11/artifacts/comparison/first/model.npz",
+    "lesson-11/artifacts/comparison/first/prediction_trace.json",
+    "lesson-11/artifacts/comparison/first/records.csv",
+    "lesson-11/artifacts/comparison/first/representation.json",
+    "lesson-11/artifacts/comparison/first/summary.json",
+    "lesson-11/artifacts/comparison/paired_predictions.csv",
+    "lesson-11/artifacts/comparison/second/config.json",
+    "lesson-11/artifacts/comparison/second/curve.csv",
+    "lesson-11/artifacts/comparison/second/first_update.json",
+    "lesson-11/artifacts/comparison/second/model.npz",
+    "lesson-11/artifacts/comparison/second/prediction_trace.json",
+    "lesson-11/artifacts/comparison/second/records.csv",
+    "lesson-11/artifacts/comparison/second/representation.json",
+    "lesson-11/artifacts/comparison/second/summary.json"
   ],
-  "run": ["python3", "lesson-11/analysis.py"]
+  "run": [
+    "python3",
+    "lesson-11/compare.py"
+  ]
 }

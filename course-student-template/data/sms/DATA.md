@@ -1,4 +1,24 @@
-# SMS package metadata
+# 本课短信数据：先读这三列
+
+每行是一条历史英语短信，课程将它用于垃圾短信识别。第11课沿用第10课的数据，不需要另找数据或导入个人短信。
+
+|列|含义|例子|
+|---|---|---|
+|id|短信编号，用来连接原文与两套预测|sms-00004|
+|text|英文原文，模型从这列提取特征|U dun say so early hor... U c already then say...|
+|label|已有分类标签；ham为正常短信，spam为垃圾短信|这条记录是ham|
+
+- `train.csv`：3877条（3365条ham、512条spam）。词表、IDF、人工特征的均值与标准差，以及分类器，都只用这份数据学习。
+- `dev.csv`：807条（684条ham、123条spam）。用来比较方案；模型预测只读取原文，标签用于核对预测。
+- `split_manifest.csv`：划分记录，不是另一份训练数据；不含原文和标签。最终留出文本和标签不在学生包中。
+
+`text_sha256` 用来核对原文是否变化，`group_id` 记录相同或近重复文本的分组，`split` 标明train或dev。这些是核对用字段，不加入特征。数据按分组划分，以免相同或近重复文本跨训练与开发集。
+
+输出 `records.csv` 只有编号、标签与预测等字段；要阅读短信原文，用id回到dev.csv。原文始终用英文，中文解释只帮助阅读，不替代模型输入。
+
+下面保留数据来源、许可及文件校验资料，分析时按需查阅。
+
+## 来源与校验记录
 
 Source: UCI SMS Spam Collection, Almeida and Hidalgo (2011), DOI 10.24432/C5CC84.
 Upstream catalog URL: https://archive.ics.uci.edu/dataset/228/sms+spam+collection

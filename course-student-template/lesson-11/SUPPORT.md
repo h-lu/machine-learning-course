@@ -1,120 +1,163 @@
-# 第11课操作参考
+# 第11课操作：从短信数据到两方案比较
 
-本页提供配置、运行和结果核对方法。概念见 [LEARN](LEARN.md)，任务要求见 [README](README.md)。
+所有命令在学生仓库根目录运行。沿用已有Python环境，需要NumPy；环境准备见[ENVIRONMENT](../ENVIRONMENT.md)。
 
-## 先读已有输出
+## 1. 先读一条数据
 
-在学生仓库根目录运行`python3 lesson-11/analysis.py`，生成一份人工特征基线。输出目录已有文件时程序停止；重跑使用新的`--output`路径。
+打开 `data/sms/dev.csv`，找到 `sms-00004`：
 
-|文件|用途|
-|---|---|
-|config.json|这次实际使用的表示、训练和复核设置|
-|representation.json|训练文本拟合出的表示参数；人工特征的均值/标准差，或词表、DF与IDF|
-|prediction_trace.json|一条真实开发短信的分词、未知词、非零值及预测贡献|
-|records.csv|按ID保存开发记录的概率、行动和真实标签，供同记录比较|
-|summary.json|开发集指标、划分与代码哈希、矩阵存储及维数|
-|model.npz|这份表示上重新训练的系数和截距|
-|curve.csv|固定步数内的训练目标与开发损失；不是自动选择停止点|
-|first_update.json|首轮完整批量更新，供需要时查训练实现；本课不用把训练步骤作为主研究|
+- `text`：U dun say so early hor... U c already then say...
+- `label`：ham，即正常短信。
+- `id`：sms-00004，用来在不同结果文件中定位同一条短信。
 
-先看表示类型，再找相应字段。默认`manual`不建立词表，追踪中的每项特征使用`raw_value`（原始值）、`training_mean`（训练均值）、`training_scale`（训练标准差）和标准化后的`value`；按“原始值减训练均值，再除以训练标准差”核对。这里没有词次数`count`、DF或IDF；`unknown_tokens` 对人工特征不适用。
+其余列用于核对文本与划分，不是模型输入。完整字段见[数据说明](../data/sms/DATA.md)。train用于学习，dev用于比较；不要将两者合并后拟合词表。
 
-`bow`和`tfidf`才使用固定词表、count、DF、IDF及未知词记录。BoW记录IDF便于查训练统计，但不把它乘入词次数；TF–IDF才乘IDF。两类表示最后都核对`value × weight`的贡献和、截距、得分与概率。
-
-## 运行第二套配置
-
-复制`lesson-11/config.json`到你自己命名的配置文件，只改计划研究的表示设置。例如选择`bow`或`tfidf`，以及自己有理由的`min_df`。使用新目录：
-
-```bash
-python3 lesson-11/analysis.py --config lesson-11/my-config.json --output lesson-11/artifacts/my-run
-```
-
-先保存 `my-config.json`，再执行命令。
-
-|配置|含义与限制|
-|---|---|
-|representation|`manual`为第10课六个人工特征；`bow`为原始词频；`tfidf`为词频乘平滑IDF|
-|min_df|词至少出现在多少条训练短信中；只对bow/tfidf使用，默认2|
-|max_features|最多保留多少词，默认1200，上限10000；先按训练DF降序取词，同DF按字母排序，最终坐标按字母排序|
-|token_pattern|`words_numbers`保留英文词和数字串；`words`只保留英文词；都会转小写，词内英文撇号保留|
-|normalization|bow/tfidf默认`l2`，每条非零行除以自己的长度；`none`保留未归一化的值。人工特征始终使用训练均值和标准差|
-|trace_id|留空为第一条dev记录；可填某个真实dev ID，重新核对你选的记录|
-
-人工特征沿用第10课，不受词表设置影响。空词表会报错，先检查拆词和min_df，而不是把开发文本加进去补词。未知词被忽略；全部未知或空输入得到零词向量，预测仍可由截距产生。
-
-<a id="复核learn中的真实tfidf记录"></a>
-## 复核LEARN中的真实TFIDF记录
-
-LEARN中的真实短信数字来自单独提供的参考配置；默认起点仍是人工特征。在学生仓库根目录执行：
+## 2. 一次运行，完成两套方案
 
 ```sh
-python3 lesson-11/analysis.py --config lesson-11/tfidf-reference.json --output lesson-11/artifacts/tfidf-reference
+python3 scripts/course.py start 11
+python3 lesson-11/compare.py
 ```
 
-使用新输出目录。下面从JSON读取完整精度复算；若改了目录，请同步修改路径：
+默认读取 `lesson-11/config.json`（人工特征）和 `lesson-11/tfidf-reference.json`（TF–IDF），各自训练一份逻辑回归。结果在 `lesson-11/artifacts/comparison/`：
 
-```python
+|文件或目录|先看什么|
+|---|---|
+|`comparison.csv`|两个方案各一行，比较整体结果|
+|`paired_predictions.csv`|同一条短信的两套概率与复核决定|
+|`first/`|人工特征的模型、转换和逐条结果|
+|`second/`|TF–IDF的模型、转换和逐条结果|
+
+`comparison.csv` 中，`reviewed` 是进入复核人数；`tp` 是找对的垃圾短信，`fp` 是误选的正常短信，`fn` 是漏掉的垃圾短信，`tn` 是正确放过的正常短信。`precision`、`recall` 用0至1保存，展示为百分数时乘100。
+
+固定示范应得到：
+
+|方案|TP|FP|FN|TN|查准率|召回率|
+|---|---:|---:|---:|---:|---:|---:|
+|manual|105|8|18|676|92.92%|85.37%|
+|tfidf|12|0|111|684|100%|9.76%|
+
+四类人数之和都是807。人工特征的查准率为105/(105+8)，召回率为105/(105+18)。TF–IDF虽然没有误选，却漏了111条垃圾短信，因此不能仅凭100%的查准率选择它。
+
+## 3. 找到同一条短信发生了什么变化
+
+打开 `paired_predictions.csv`：
+
+|列|含义|
+|---|---|
+|`id`、`label`|短信编号、已有真实标签|
+|`first_probability`、`second_probability`|两个方案预测为垃圾短信的概率|
+|`first_action`、`second_action`|是否进入复核：1进入，0不进入|
+|`changed`|两套复核决定不同为1，相同为0|
+
+默认示范有101条记录的决定不同。找到 `sms-00020`，它的真实标签是spam，两套概率约为0.999599和0.304169，复核决定分别是1和0。再按id到 `data/sms/dev.csv` 查原文。
+
+不要把两份文件分别按概率排序后逐行相减，那会把不同短信放在一起。比较程序已经按id配好记录。
+
+## 4. 追踪一个词怎样影响预测
+
+打开 `second/prediction_trace.json`。参考配置指定的是 `sms-00004`，这条正常短信中say出现两次。查看：
+
+- `tokens`：分词结果；`unknown_tokens`：没有进入训练词表的词，本例为hor。
+- `features`：非零坐标。每项含name、count、df、idf、value、weight和contribution。
+- `intercept`：截距；`logit`：得分；`probability`：概率。
+
+本例中，训练3877条短信有56条包含say，所以IDF＝ln(3878/57)+1≈5.220024。词次数2乘IDF约10.440047，再除以整条短信的L2长度17.150729，得到value≈0.608723。乘上分类系数weight≈−0.130808，贡献约−0.079626。
+
+IDF来自词在训练文本中的出现情况；weight是分类器利用训练标签学到的系数。两者不是同一种权重。
+
+下面的命令直接复算所有贡献，使用JSON的完整精度：
+
+```sh
+python3 - <<'PY'
 import json, math
 from pathlib import Path
-
-t = json.loads(Path("lesson-11/artifacts/tfidf-reference/prediction_trace.json").read_text())
-z = math.fsum(item["value"] * item["weight"] for item in t["features"]) + t["intercept"]
-p = 1 / (1 + math.exp(-z))
-assert math.isclose(z, t["logit"], abs_tol=1e-12)
-assert math.isclose(p, t["probability"], abs_tol=1e-12)
-print(t["id"], z, p, t["action"])
+p = Path('lesson-11/artifacts/comparison/second/prediction_trace.json')
+t = json.loads(p.read_text(encoding='utf-8'))
+z = math.fsum(x['value'] * x['weight'] for x in t['features']) + t['intercept']
+prob = 1 / (1 + math.exp(-z))
+assert math.isclose(z, t['logit'], abs_tol=1e-12)
+assert math.isclose(prob, t['probability'], abs_tol=1e-12)
+print(t['id'], z, prob, t['action'])
+PY
 ```
 
-表格使用约数，复算使用JSON中的完整精度，并允许浮点舍入误差。
+应看到得分约−2.458267、概率约0.078836、action为0。表中的约数不能替代JSON完整精度。
 
-## 直接调用小工具
+人工特征的追踪在 `first/prediction_trace.json`。它显示原始值raw_value、训练均值training_mean、训练标准差training_scale和标准化值value，没有词表或IDF。正式任务的词坐标手算请选BoW或TF–IDF输出。
 
-从学生仓库根目录启动Python，可以导入：
+## 5. 换成自己的比较
 
-```python
-from mlcourse.text_representations import fit_representation, transform, explain_text
+可以沿用人工特征与TF–IDF，也可比较BoW与TF–IDF。先复制配置文件并修改 `representation`，取值为 `manual`、`bow` 或 `tfidf`。例如把一份配置保存为 `lesson-11/my-bow.json`，只把representation改为bow，其他设置保留，然后运行：
 
-# 用三段人工文本练习转换。
-training = ["green tea", "green tea tea", "red coffee"]
-rep = fit_representation(training, kind="tfidf", min_df=1, max_features=10)
-matrix = transform(["green coffee", "gold"], rep)
-detail = explain_text("green coffee", rep)
+```sh
+python3 lesson-11/compare.py --first-config lesson-11/my-bow.json --second-config lesson-11/tfidf-reference.json --output lesson-11/artifacts/my-comparison
 ```
 
-`rep['names']`给坐标顺序，`detail['features']`给已出现词的count、df、idf、weighted_value和归一化后的value；`unknown_tokens`记录没进词表的词。`row_norm`是除法之前的加权行长度。真实短信在同样规则下处理，IDF不会因这次新输入而重新拟合。
+先创建并检查配置，再执行命令。程序会核对训练和复核设置一致，并拒绝覆盖已存在的输出目录。
 
-词表示使用稀疏存储，`matrix.row(i)`返回非零坐标与值；`matvec(w)`计算所有行与系数的内积。无需把数千维向量全抄到报告里。`to_dense()`只供小例检查，有单元格预算，不应对整个训练矩阵调用。
+词表示常用设置如下：
 
-## 怎样核对词表示的真实追踪
+|配置|含义|
+|---|---|
+|`min_df`|一个词至少出现在多少篇训练短信中，默认2|
+|`max_features`|最多保留多少词，默认1200；先按DF降序选取，同DF按字母排序，最终坐标按字母排序|
+|`token_pattern`|words_numbers保留英文词和数字串；words只保留英文词；都转小写|
+|`normalization`|l2把每条非零词向量除以自身长度；none不做这一步|
+|`trace_id`|要追踪的真实dev编号；空值为第一条dev短信|
 
-本节用于BoW或TF–IDF。在`prediction_trace.json`中按原文找到tokens；对一个词核对出现次数。DF是含这个词的训练短信条数，本身是计数；同一条短信中的重复出现不会让DF增加多次。N是训练短信总条数，两者按给出的公式计算IDF。TF–IDF将count乘IDF，BoW保留count；若配置为L2归一化，再除以row_norm。`value × weight`是该坐标对logit的贡献；所有贡献加intercept后，再经sigmoid得到概率。
+保持lr、steps、l2、spam_weight、seed、initial_scale、threshold和capacity_fraction相同。相同步数比较的是固定预算下的表现，不代表两种表示都达到各自最优；这里不要求把结果调整到“新方法更好”。
 
-此处weight是分类器学到的系数，idf是表示阶段学到的统计量，两者不是同一个权重。相同分类器协议会在两份表示上分别训练。
+只想单独运行一个方案时，仍可使用原工具：
 
-## 比较时先列相同条件
+```sh
+python3 lesson-11/analysis.py --config lesson-11/my-bow.json --output lesson-11/artifacts/bow-only
+```
 
-保持train/dev ID及数据哈希、标签、逻辑模型目标、L2与截距约定、lr、steps、spam_weight、seed、initial_scale、threshold和capacity_fraction相同。表示的坐标、尺度和维数可以不同；同样400步比较的是共同固定预算，不是双方各自最优的上限。
+## 6. 手算题怎样用程序核对
 
-用`records.csv`的ID对齐两份预测，不要按概率排序后把不同行相减。平均指标之外，挑你关心的失败类型检查记录证据。根据比较结果给出建议。
+下面只用三条人工文本，不读取真实短信或训练分类器：
 
-## 提交自己的比较程序
+```sh
+python3 - <<'PY'
+from mlcourse.text_representations import fit_representation, transform
+training = ['small box', 'big box', 'small bag']
+new_texts = ['big bag bag unknown', 'big box', 'box big', '', 'unknown']
+for kind in ['bow', 'tfidf']:
+    rep = fit_representation(training, kind=kind, min_df=1, max_features=4)
+    print(kind, '词表=', rep['names'], 'DF=', rep['df'])
+    for text, row in zip(new_texts, transform(new_texts, rep).to_dense()):
+        print(repr(text), row)
+PY
+```
 
-起点 `submission.json` 登记的是一次基线运行。若你的程序连续运行两份设置，将它登记为实际run，并把它每次生成的必要结果都列入artifacts；artifacts 只列程序生成的文件。原始运行目录要保留，自动复现另在临时副本进行。标签、评分和提交流程见[原流程](../docs/WORKFLOW.md)。
+词表应是bag、big、box、small，DF依次为1、1、2、2。第一条新文本只留下bag两次和big一次，二者IDF相同，所以两种表示归一化后恰好都是[0.894427, 0.447214, 0, 0]。big box包含不同DF的两个词，会展示不同的相对权重。空文本与只有unknown的文本都得到零向量。
 
+这里只对小例调用to_dense；真实词矩阵采用稀疏存储，不需要展开成数千列手抄。
 
-## 参考短信的完整坐标
+## 7. 填写报告并提交
 
-对应 LEARN 中的 `sms-00004`。本次配置使用 train 3877条、dev 807条，`min_df=2`、`max_features=1200`、`words_numbers` 和L2归一化；逻辑回归运行400步、学习率1、L2系数0.001，阈值0.5，`capacity_fraction=1.0`。实际列序以 `representation.json` 的 `names` 为准。
+用 `report.md` 填结果、手算和建议。默认 `submission.json` 已登记两方案比较的18个输出文件，不包含报告本身。默认复现命令是 `python3 lesson-11/compare.py`。
 
-|词|index|次数|训练DF|IDF|次数×IDF|归一化value|分类系数|贡献|
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-|already|90|1|62|5.11994011|5.11994011|0.29852608|-0.15021451|-0.04484295|
-|c|189|1|64|5.08868757|5.08868757|0.29670386|0.20474299|0.06074803|
-|dun|336|1|38|5.59951319|5.59951319|0.32648834|-0.11832412|-0.03863145|
-|early|342|1|21|6.17203238|6.17203238|0.35986996|-0.07477203|-0.02690821|
-|say|891|2|56|5.22002357|10.44004714|0.60872321|-0.13080820|-0.07962599|
-|so|946|1|303|3.54604713|3.54604713|0.20675780|-0.40148660|-0.08301049|
-|then|1011|1|156|4.20682903|4.20682903|0.24528572|-0.32210089|-0.07900675|
-|u|1068|2|587|2.88634789|5.77269578|0.33658602|-0.33725664|-0.11351587|
+如果用了自己的配置和输出目录，把 `run` 改为实际命令的参数列表；`artifacts` 中的目录也要对应修改。可用下面的命令列出自己的输出文件，把my-comparison改成实际目录：
 
-IDF、value及贡献在表中四舍五入。完整输出的贡献和为 −0.40479366225056856，截距为 −2.0534728606082324，得分为 −2.4582665228588008，概率为 0.07883613213614646。本次 `action=0` 由概率低于阈值决定。
+```sh
+python3 - <<'PY'
+from pathlib import Path
+import json
+p = Path('lesson-11/artifacts/my-comparison')
+print(json.dumps(sorted(str(x) for x in p.rglob('*') if x.is_file()), ensure_ascii=False, indent=2))
+PY
+```
+
+配置是你保存的输入，不列入生成产物清单；first、second目录中的config.json是程序保存的实际配置，属于输出。完成分析后才把status改成complete，运行：
+
+```sh
+python3 scripts/course.py check 11
+```
+
+标签检查会在临时副本删去登记的输出并按run重建，比较文件内容，不删除原作业。最终标签及提交步骤见[WORKFLOW](../docs/WORKFLOW.md)。
+
+## 其他输出按需查阅
+
+每个方案目录中还有representation.json（表示参数）、records.csv（逐条预测）、summary.json（指标）、model.npz（系数）、curve.csv（训练过程）和first_update.json（首次更新）。先完成比较与解释，再按需要查看；不必把每个文件都抄进报告。
