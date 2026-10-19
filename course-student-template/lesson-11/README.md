@@ -34,7 +34,7 @@ python3 lesson-11/compare.py
 
 再打开 `second/prediction_trace.json`，看一条短信的词怎样变成预测。完整操作、字段解释和示范数字见[SUPPORT](SUPPORT.md)。程序拒绝覆盖旧结果；再实验时换一个输出目录。
 
-## 你要完成的正式练习
+## 本课必做：完成两方案比较
 
 选两种表示：人工特征 `manual`、词袋 `bow`、TF–IDF `tfidf` 中任选两种，至少包含一种词表示。可以沿用示范组合，但要自己完成以下分析，不能只交程序输出。
 
