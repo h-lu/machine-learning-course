@@ -1,6 +1,6 @@
 # 第11课首次使用
 
-从[学生发布仓库](https://hblu.top/gitea/machine-learning-2026/course-student-release-2026)创建并克隆自己的私有仓库，先按[环境说明](../ENVIRONMENT.md)确认Python和NumPy可用。
+使用前面课程已建立的学生仓库，按[环境说明](../ENVIRONMENT.md)确认 Python 和 NumPy 可用。尚未建立仓库时，从[学生发布仓库](https://hblu.top/gitea/machine-learning-2026/course-student-release-2026)创建并克隆自己的私有仓库。
 
 在自己的学生仓库 `main` 工作树根目录操作。若缺少 `lesson-11/`，先取得本课材料：
 
