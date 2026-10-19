@@ -22,7 +22,7 @@
 - [第10课：短信概率怎样变成复核名单](lesson-10/README.md)
 - [第11课：同一条短信，换一种记法会怎样](lesson-11/README.md)
 
-已有仓库取得第11课请使用[第11课更新说明](docs/LESSON11_UPDATE.md)，只补本课及必要支持，保留个人已有文件；第10课继续使用[原更新说明](docs/LESSON10_UPDATE.md)。
+第11课的取得材料和开始步骤见[首次使用指引](docs/LESSON11_UPDATE.md)；第10课见[使用指引](docs/LESSON10_UPDATE.md)。
 
 ## 数据与作品
 
