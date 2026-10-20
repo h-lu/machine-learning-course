@@ -31,6 +31,8 @@ python3 lesson-12/analysis.py
 
 representation.json是训练得到的转换参数，model.npz是最终模型，config.json是本次实际设置。
 
+默认垃圾短信权重为1。若把垃圾短信权重设为c、正常短信仍为1，梯度按记录权重求和，再除以全部训练记录的权重之和；L2项按原约定另加。为公平比较，本课不要同时改变权重与学习率。
+
 ## 3. 核对真实第一次更新
 
 默认第一项是标准化后的字符数characters。运行：
@@ -39,7 +41,7 @@ representation.json是训练得到的转换参数，model.npz是最终模型，c
 python3 lesson-12/check_update.py --run lesson-12/artifacts/baseline --feature characters
 ```
 
-工具重新读取全部train，按公式汇总一个坐标和截距，并与保存的第一次更新对照。应得到：
+工具重新读取全部train，按公式汇总一个坐标和截距，并与保存的第一次更新对照。first_update中的step=0表示“从尚未更新的第0步出发”，更新后对应curve中的step=1。应得到：
 
 - 全体未除分母的贡献和约−483.523265，分母3877，梯度约−0.124716。
 - 系数由0更新到约0.124716；截距由0更新到约−0.367939。
