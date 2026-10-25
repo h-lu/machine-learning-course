@@ -1,0 +1,16 @@
+{
+  "representation": "tfidf",
+  "lr": 1.0,
+  "steps": 400,
+  "l2": 0.001,
+  "spam_weight": 1.0,
+  "seed": 0,
+  "initial_scale": 0.0,
+  "threshold": 0.5,
+  "capacity_fraction": 1.0,
+  "trace_id": null,
+  "min_df": 2,
+  "max_features": 1200,
+  "token_pattern": "words_numbers",
+  "normalization": "l2"
+}

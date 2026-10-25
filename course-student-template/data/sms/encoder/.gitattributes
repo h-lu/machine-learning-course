@@ -1,0 +1,4 @@
+# Upstream model card and license are preserved byte-for-byte.
+README.md -text -diff
+LICENSE.txt -text -diff
+*.onnx -text -diff
