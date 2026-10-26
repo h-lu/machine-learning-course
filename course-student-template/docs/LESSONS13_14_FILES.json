@@ -45,7 +45,7 @@
     "lesson-14/submission.json": "db1b1600192f580ec96a6203a1789334c532eb58050666d44f1f1c52dd3379b1",
     "mlcourse/sms_encoder.py": "89e0ed4e4e23850bb1859ef1b37df7232da38ea737b6707c017dea1f08fea317",
     "mlcourse/transfer13.py": "2ecf9874fde92e50820d9f99bef01e9d8a83fc95403add853dd0b550131e6b12",
-    "scripts/course_l1314.py": "0b153d841b2c80b47eddc87d2492a151591cfc55cc303cef9a7d8ccc3425c876",
+    "scripts/course_l1314.py": "1c5766a38d26c6d81dc88b05b5a7ea0d80cc5f2476c95ec9ab0092fd2ca31db2",
     "lesson-13/meaning_example.py": "fa2be9b39efab4f926edfeedfba2abe58c8a7d76fee72d0d547a58480da07ac7",
     "lesson-13/examples/meaning-comparison.json": "26c86d76464a110b3b6b75af75a4f109da1faa7fa53167290a41e274873bbd70",
     "lesson-13/figures/pretraining-transfer.svg": "d6eb93fb4aa8175b17c338a6b051647c56481f9d911ee924fa22212f1ab6a966",
@@ -53,12 +53,18 @@
     "docs/LESSONS09_14_CONTEXT.md": "465da1b5e7b87f16adb5ddc17416e27f3665b56238adb13a37ce83df1ec911a7"
   },
   "required_existing": {
-    "scripts/course.py": "bcdc83ee2be99e018d8511ca704316c9d0083d1ecb310f06f82a42b63061b7c2",
+    "scripts/course.py": [
+      "bcdc83ee2be99e018d8511ca704316c9d0083d1ecb310f06f82a42b63061b7c2",
+      "8e9e9c412ad866ebe9cc431ef19f8362186c837efe459ac1e5fa849e95014118"
+    ],
     "mlcourse/sms_course.py": "84bde9471f83371efbdd3d9df3cb696fd7beed4ed230da8fe47f885ae411b7bd",
     "mlcourse/text_representations.py": "066585e978e06d778b7646a2b62b39d7b60f3143e0cae7a5f78294633b0eb402",
     "data/sms/train.csv": "3d4c268e8bba99a5dd4bcd806b084d322ad0fb3f404db041109cc1f7d18b26fb",
     "data/sms/dev.csv": "21602715697e834fc1e69ea9eeb7ae2c280fb2a06833848f48940626e02ac5c6",
     "data/sms/provenance.json": "e2dde69a4be4e57244bc931bf763a6d12649fde086cb2bdab69dcf74cb660b05",
     "data/sms/split_manifest.csv": "686ee5e28cc33d749f25ca1d170e550b700f80629b2c262986751a0a11b9cd0d"
-  }
+  },
+  "compatible_existing_updater_sha256": [
+    "0b153d841b2c80b47eddc87d2492a151591cfc55cc303cef9a7d8ccc3425c876"
+  ]
 }
