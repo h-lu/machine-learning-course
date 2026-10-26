@@ -58,7 +58,7 @@ python3 lesson-10/analysis.py --config lesson-10/my_rule.json --output lesson-10
 
 在dev.csv按id找原文；用六项规则取得原始特征，再使用representation.json里的mean与scale标准化。
 
-按照prediction_trace.json中的feature_names顺序，逐项计算x×weights，再加intercept，应该得到logit。对logit使用逻辑函数，应该得到probability。
+按照prediction_trace.json中的feature_names顺序，逐项计算 $x\times weights$ ，再加intercept，应该得到logit。对logit使用逻辑函数，应该得到probability。
 
 显示的小数可能经过舍入，最后几位有小差异不一定是错误；核算应尽量使用文件中的完整数值。
 

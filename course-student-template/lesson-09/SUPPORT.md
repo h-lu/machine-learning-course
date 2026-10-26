@@ -70,7 +70,10 @@ python3 lesson-09/analysis.py --compare --trace-id 14774 --output lesson-09/arti
 
 然后按你的条件筛选，分别计算两种模型的MAE：
 
-**这一组的MAE = 选中小时的绝对误差合计 ÷ 选中小时数。**
+
+$$
+\text{这一组的MAE}=\frac{\text{选中小时的绝对误差合计}}{\text{选中小时数}}.
+$$
 
 例如，某模型在三个选中小时的误差是10、20、30次，MAE就是20次/小时。另一模型也必须用这三个小时，单独求平均。
 

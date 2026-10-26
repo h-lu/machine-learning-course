@@ -62,7 +62,7 @@ python3 lesson-11/compare.py
 - `features`：非零坐标。每项含name、count、df、idf、value、weight和contribution。
 - `intercept`：截距；`logit`：得分；`probability`：概率。
 
-本例中，训练3877条短信有56条包含say，所以IDF＝ln(3878/57)+1≈5.220024。词次数2乘IDF约10.440047，再除以整条短信的L2长度17.150729，得到value≈0.608723。乘上分类系数weight≈−0.130808，贡献约−0.079626。
+本例中，训练3877条短信有56条包含say，所以 $IDF=\ln(3878/57)+1\approx 5.220024$ 。词次数2乘IDF约10.440047，再除以整条短信的L2长度17.150729，得到 $value\approx 0.608723$ 。乘上分类系数 $weight\approx -0.130808$ ，贡献约−0.079626。
 
 IDF来自词在训练文本中的出现情况；weight是分类器利用训练标签学到的系数。两者不是同一种权重。
 
@@ -103,7 +103,7 @@ python3 lesson-11/compare.py --first-config lesson-11/my-bow.json --second-confi
 |`min_df`|一个词至少出现在多少篇训练短信中，默认2|
 |`max_features`|最多保留多少词，默认1200；先按DF降序选取，同DF按字母排序，最终坐标按字母排序|
 |`token_pattern`|words_numbers保留英文词和数字串；words只保留英文词；都转小写|
-|`normalization`|l2把每条非零词向量除以自身长度；none不做这一步|
+|`normalization`|l2把每条非零文档向量除以自身长度；none不做这一步|
 |`trace_id`|要追踪的真实dev编号；空值为第一条dev短信|
 
 保持lr、steps、l2、spam_weight、seed、initial_scale、threshold和capacity_fraction相同。相同步数比较的是固定预算下的表现，不代表两种表示都达到各自最优；这里不要求把结果调整到“新方法更好”。

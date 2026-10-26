@@ -8,7 +8,7 @@
 python3 lesson-12/small_example.py
 ```
 
-打开 `lesson-12/artifacts/small-example.json`，核对两条记录的p−y和乘x后的贡献。w梯度−0.5，b梯度0，学习率1使w更新为0.5，平均损失约从0.693147降至0.503204。这是人工两记录示范。
+打开 `lesson-12/artifacts/small-example.json`，核对两条记录的 $p-y$ 和乘x后的贡献。w梯度−0.5，b梯度0，学习率1使w更新为0.5，平均损失约从0.693147降至0.503204。这是人工两记录示范。
 
 ## 2. 跑一个真实SMS训练条件
 
