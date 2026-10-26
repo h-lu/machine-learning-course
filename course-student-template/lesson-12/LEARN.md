@@ -35,11 +35,12 @@ ln表示自然对数。暂时不必推导公式，只看它的作用： **越自
 用 $L$ 表示全部 $n$ 条训练记录的平均BCE， $x_i$ 、 $y_i$ 、 $p_i$ 分别是第 $i$ 条的特征、标签和当前预测概率。则：
 
 $$
+\begin{aligned}
 \frac{\partial L}{\partial w}
-=\frac{1}{n}\sum_{i=1}^{n}(p_i-y_i)x_i,
-\qquad
+&=\frac{1}{n}\sum_{i=1}^{n}(p_i-y_i)x_i,\\
 \frac{\partial L}{\partial b}
-=\frac{1}{n}\sum_{i=1}^{n}(p_i-y_i).
+&=\frac{1}{n}\sum_{i=1}^{n}(p_i-y_i).
+\end{aligned}
 $$
 
 也就是：先算每条记录的贡献，再取平均。
