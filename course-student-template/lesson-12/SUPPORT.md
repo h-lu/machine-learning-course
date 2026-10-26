@@ -89,19 +89,60 @@ compare_runs检查数据、表示和配置，要求只改lr或steps，生成并�
 默认submission登记一次基线的9个文件。正式比较需要自己的重建脚本。例如保留两份配置后，可将以下结构写入 `lesson-12/my_study.py`，按自己的目录修改：
 
 ```python
-import subprocess, sys
-for config, output in [
-    ('lesson-12/config.json', 'lesson-12/artifacts/study-a'),
-    ('lesson-12/my-config.json', 'lesson-12/artifacts/study-b'),
-]:
-    subprocess.run([sys.executable, 'lesson-12/analysis.py',
-                    '--config', config, '--output', output], check=True)
-subprocess.run([sys.executable, 'lesson-12/compare_runs.py',
-                '--first', 'lesson-12/artifacts/study-a',
-                '--second', 'lesson-12/artifacts/study-b',
-                '--output', 'lesson-12/artifacts/study-comparison.csv'], check=True)
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import tempfile
+
+ROOT = Path(__file__).resolve().parents[1]
+LESSON = ROOT / "lesson-12"
+DEST = LESSON / "artifacts" / "rebuild"
+FILES = ("config.json", "representation.json", "summary.json", "model.npz",
+         "records.csv", "prediction_trace.json", "first_update.json",
+         "curve.csv", "loss.svg")
+with tempfile.TemporaryDirectory(prefix="lesson12-") as temporary:
+    temp = Path(temporary)
+    for name, config in (("study-a", "config.json"), ("study-b", "my-config.json")):
+        fresh = temp / name
+        subprocess.run(
+            [sys.executable, str(LESSON / "analysis.py"),
+             "--config", str(LESSON / config), "--output", str(fresh)],
+            cwd=ROOT, check=True,
+        )
+        destination = DEST / name
+        destination.mkdir(parents=True, exist_ok=True)
+        for filename in FILES:
+            shutil.copyfile(fresh / filename, destination / filename)
+    comparison = temp / "study-comparison.csv"
+    subprocess.run(
+        [sys.executable, str(LESSON / "compare_runs.py"),
+         "--first", str(temp / "study-a"), "--second", str(temp / "study-b"),
+         "--output", str(comparison)], cwd=ROOT, check=True,
+    )
+    shutil.copyfile(comparison, DEST / "study-comparison.csv")
 ```
 
-在submission中把run改为 `["python3", "lesson-12/my_study.py"]`，artifacts列出两目录的所有生成文件及比较表。配置是输入，不列作生成产物。填写自己的报告与contract，完成后设complete再check。标记complete不会自动证明分析结论正确。
+脚本在临时新目录计算，再更新专用rebuild目录中的已知文件，不覆盖baseline或历史my-run。两份配置仍须事先保存，并且只改lr或steps之一。先连续运行两次，确认同一输入下都能重建：
+
+```sh
+python3 lesson-12/my_study.py
+python3 lesson-12/my_study.py
+```
+
+在submission中把run改为 `["python3", "lesson-12/my_study.py"]`，artifacts列出rebuild下两目录各9个生成文件及比较表，共19个产物。以下代码列出示例路径，检查后填入该字段：
+
+```python
+import json
+names = ["config.json", "representation.json", "summary.json", "model.npz",
+         "records.csv", "prediction_trace.json", "first_update.json",
+         "curve.csv", "loss.svg"]
+paths = [f"lesson-12/artifacts/rebuild/{case}/{name}"
+         for case in ("study-a", "study-b") for name in names]
+paths.append("lesson-12/artifacts/rebuild/study-comparison.csv")
+print(json.dumps(paths, ensure_ascii=False, indent=2))
+```
+
+配置是输入，不列作生成产物。填写自己的报告与contract，完成后设complete再check。标记complete不会自动证明分析结论正确。
 
 复现检查在临时副本中清除登记的输出再运行，原作业保留。沿用原标签和提交方式，不更改历史成绩。
