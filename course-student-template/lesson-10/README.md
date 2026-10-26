@@ -75,3 +75,5 @@ python3 lesson-10/analysis.py --output lesson-10/artifacts/check-02
 教师开放第十课后，沿用[提交流程](../docs/WORKFLOW.md)。填写contract.json与submission.json，写明自己的运行命令，列齐实际产生的报告和结果文件；只运行起点不代表已经完成标准任务。
 
 可参考[report.md](report.md)，也可以自定报告结构。课堂最终标签沿用v2-l10-final，修订与评分制度不变。课末按教师开放场次完成A题、AI辅助学习、B题；无需另交AI对话记录。
+
+前后课概念与数据边界可查[第9—14课衔接图](../docs/LESSONS09_14_CONTEXT.md)，不增加提交要求。

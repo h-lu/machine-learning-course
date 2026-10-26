@@ -26,3 +26,5 @@ train3877条用于训练，dev807条用于开发。英文原文、ID、近重复
 一份[报告](report.md)保存问题、预期、关键计算、比较、建议与局限，附配置及可复跑产物。contract.json记录计划，submission.json登记自己的run及所有结果。完成后执行 `python3 scripts/course_l1314.py check 13` 与 `python3 scripts/course_l1314.py ci 13`，沿用`v2-l13-final`和原评分。正式场次由教师开放，本地材料不启用题库。
 
 已有个人仓库取得新课及标签检查路由见[更新说明](../docs/LESSONS13_14_UPDATE.md)，保留自己的旧报告与成果。
+
+前后课概念与数据边界可查[第9—14课衔接图](../docs/LESSONS09_14_CONTEXT.md)，不增加提交要求。

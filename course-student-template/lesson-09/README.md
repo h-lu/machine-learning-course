@@ -125,3 +125,5 @@ python3 lesson-09/analysis.py --compare --output lesson-09/artifacts/first-compa
 - 普通CPU、约8GB内存即可，不需要付费服务或GPU。字段来源与使用限制见[Bike数据说明](../data/bike/LICENSE_AND_SOURCE.md)。
 
 学完后想再练一下，可以做[另一个小例](EXERCISES.md)。这是帮助理解的练习，不是增加一份正式作业。
+
+前后课概念与数据边界可查[第9—14课衔接图](../docs/LESSONS09_14_CONTEXT.md)，不增加提交要求。

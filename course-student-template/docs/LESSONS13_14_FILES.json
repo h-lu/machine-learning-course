@@ -19,7 +19,7 @@
     "lesson-13/EXERCISES.md": "567fb971d0273b23e26ccaa65a60d9490166f894478418933e2a60d4dafea31f",
     "lesson-13/HINTS.md": "79d400abd7bfe260f2648b69afa3d9fc7aad49539e40708bc738a51e11ef1539",
     "lesson-13/LEARN.md": "3f3994f5fd8626718d49a6a7db86435429f5b217444555484d569cf9aba19f95",
-    "lesson-13/README.md": "3f78e2c486479357ebc38577d250af89f84e30e9ac4f7cfc8c5d79c5dbc16cf7",
+    "lesson-13/README.md": "707140996f0a4a705b25e22de48e0f7069f2cc67fcd249b4a1f1c0e35934ba9d",
     "lesson-13/SUPPORT.md": "812d1140bfe13581a01c1a590842a0eab4a985c3992733ab1925da3c1b28a23e",
     "lesson-13/analysis.py": "43e3ce64fcb9680045a055de6db2ef5829dadb1e9e4a086c95472a826a2f9ce5",
     "lesson-13/config.json": "f9c1713ab83b4224b6ed0e0c0ecfd538f8de67dd1e95e5255e059d4f9cf73d16",
@@ -31,8 +31,8 @@
     "lesson-13/submission.json": "979eaaee8bbaccfd277ead0792c18e780b96482357f3675affd359356c3a8e40",
     "lesson-14/EXERCISES.md": "1f2a4b25366a4a52798ee2ff6a1ec4c4b8e0c922ea23317ceeb68cfba838a601",
     "lesson-14/HINTS.md": "0705a7ea9c685add679121a70aef6efbf449f9cd63d32e43d03845361054442e",
-    "lesson-14/LEARN.md": "3bbd1caf0b1c3f95921d77d9820744544851d005d75fbce3446e6f849e413b62",
-    "lesson-14/README.md": "8764ddd8e317d4953839261b515805e468f6e94186b8ecde805d43ddf9b3e380",
+    "lesson-14/LEARN.md": "58542692a529306eacfbbf24389269815cd20d4401858ecd3b18311db1ef67ee",
+    "lesson-14/README.md": "760aea0af3b7979ed1829ba60b117d51746a7a589e89bc2986d0fc77a629e5f1",
     "lesson-14/SUPPORT.md": "c42906bef8114ad2bcc5296573e7c7c434d9f39515297bfabdcdbe3b5843d94f",
     "lesson-14/analysis.py": "43e3ce64fcb9680045a055de6db2ef5829dadb1e9e4a086c95472a826a2f9ce5",
     "lesson-14/config.json": "557f7bb58bd2640a2159085091684ad953fce7a8edfef136bad820c57d6cf913",
@@ -49,7 +49,8 @@
     "lesson-13/meaning_example.py": "fa2be9b39efab4f926edfeedfba2abe58c8a7d76fee72d0d547a58480da07ac7",
     "lesson-13/examples/meaning-comparison.json": "26c86d76464a110b3b6b75af75a4f109da1faa7fa53167290a41e274873bbd70",
     "lesson-13/figures/pretraining-transfer.svg": "d6eb93fb4aa8175b17c338a6b051647c56481f9d911ee924fa22212f1ab6a966",
-    "lesson-13/figures/pretraining-transfer.png": "c27a1c3f124d850aa877301f6cdc67b43524042b55087b70b3ea700fc53ce28c"
+    "lesson-13/figures/pretraining-transfer.png": "c27a1c3f124d850aa877301f6cdc67b43524042b55087b70b3ea700fc53ce28c",
+    "docs/LESSONS09_14_CONTEXT.md": "465da1b5e7b87f16adb5ddc17416e27f3665b56238adb13a37ce83df1ec911a7"
   },
   "required_existing": {
     "scripts/course.py": "bcdc83ee2be99e018d8511ca704316c9d0083d1ecb310f06f82a42b63061b7c2",
