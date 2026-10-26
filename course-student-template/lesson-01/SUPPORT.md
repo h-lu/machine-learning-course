@@ -65,3 +65,6 @@ submission.json的默认清单只对应起点。lesson保留本课课号；repor
 status可为not_started（未开始）、in_progress（进行中）或complete（完成）。完成项目后改为complete，再运行 `python3 scripts/course.py check 01`；它只检查文件，不证明分析完成。
 
 用 `git add -f lesson-01/artifacts`保存结果，程序/配置也保存。CI只重新运行run中的命令并核对artifacts中的文件；其他试验给独立命令；不要只交截图。
+
+
+已完成结果如何安全重建并核对产物清单，见[第1—12课重建检查](../docs/REBUILD_CHECK.md)。本课的新实验仍保留新目录，不删除原证据。

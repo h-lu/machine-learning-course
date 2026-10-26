@@ -146,3 +146,6 @@ print(json.dumps(paths, ensure_ascii=False, indent=2))
 配置是输入，不列作生成产物。填写自己的报告与contract，完成后设complete再check。标记complete不会自动证明分析结论正确。
 
 复现检查在临时副本中清除登记的输出再运行，原作业保留。沿用原标签和提交方式，不更改历史成绩。
+
+
+已完成结果如何安全重建并核对产物清单，见[第1—12课重建检查](../docs/REBUILD_CHECK.md)。本课的新实验仍保留新目录，不删除原证据。

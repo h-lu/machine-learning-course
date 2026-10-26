@@ -26,6 +26,84 @@ print("已读取训练/验证记录：", len(train), len(validation))
 
 卡在选择时，核对选样程序或AI收到的候选表是否只含选择时可见的字段；除`cnt`外，也要排除`casual`、`registered`。先保存计划，再读取被选记录的标签；不要让实际标签反过来决定选择。 用LEARN小例核概念，再回自己选的真实范围；HINTS只提供检查方向，不给统一结论。默认起点无抽样策略、学习曲线或标签揭示答案。公开CSV含标签，课堂先选择是实验协议不是保密机制；用已有记录模拟标注预算，不等于实际采集了新数据。
 
+## 从可见输入到选定编号：一个两步接口示例
+
+下面只演示“先选编号、保存，再查看所选标签”的接口，不完成两策略训练比较。初始100条、预算2条和随机种子7仅是演示设置；正式任务需按自己的问题选择共同起点、预算与替代策略。
+
+保存为 `lesson-07/label_bridge.py`：
+
+```python
+from pathlib import Path
+import argparse
+import json
+import random
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from mlcourse.bike_starter import load_development
+
+parser = argparse.ArgumentParser()
+parser.add_argument("phase", choices=("choose", "reveal"))
+args = parser.parse_args()
+train, validation, audit = load_development(ROOT)
+folder = ROOT / "lesson-07" / "artifacts" / "bridge-demo"
+
+def save(name, value):
+    with (folder / name).open("x", encoding="utf-8") as f:
+        json.dump(value, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+def choose(visible, budget, seed):
+    # 此函数只接收允许看见的字段，不接收完整train记录。
+    return random.Random(seed).sample([row["instant"] for row in visible], budget)
+
+if args.phase == "choose":
+    folder.mkdir(parents=True, exist_ok=False)
+    initial = [row["instant"] for row in train[:100]]
+    initial_set = set(initial)
+    allowed = ("instant", "hr", "weathersit", "temp")
+    visible = [{key: row[key] for key in allowed}
+               for row in train if row["instant"] not in initial_set]
+    selected = choose(visible, budget=2, seed=7)
+    save("initial-ids.json", initial)
+    save("visible-candidates.json", visible)
+    save("selection.json", {"budget": 2, "seed": 7, "ids": selected})
+else:
+    selection = json.loads((folder / "selection.json").read_text(encoding="utf-8"))
+    initial = set(json.loads((folder / "initial-ids.json").read_text(encoding="utf-8")))
+    visible = json.loads((folder / "visible-candidates.json").read_text(encoding="utf-8"))
+    candidates = {row["instant"] for row in visible}
+    selected = selection["ids"]
+    indexed = {row["instant"]: row for row in train}
+    if len(selected) != selection["budget"] or len(set(selected)) != len(selected):
+        raise ValueError("Check budget and duplicate IDs")
+    if not set(selected) <= candidates or set(selected) & initial:
+        raise ValueError("Selected IDs must come from the candidate pool")
+    if not set(selected) <= set(indexed):
+        raise ValueError("Only training-period labels may be revealed")
+    save("revealed-labels.json", [{"instant": i, "cnt": indexed[i]["cnt"]}
+                                  for i in selected])
+```
+
+先在仓库根目录运行第一步：
+
+```sh
+python3 lesson-07/label_bridge.py choose
+```
+
+打开visible-candidates.json，确认只有编号、小时、天气类别和温度，没有cnt、casual、registered。这里假设这些输入在选择历史记录时已知，不是在预测未来时提前获知天气。核对selection中的两个编号，并在报告中写下选法后，再运行：
+
+```sh
+python3 lesson-07/label_bridge.py reveal
+```
+
+revealed-labels.json应只有选中的两条真实cnt，与保存的编号一致。验证记录未进入候选池；后续两种策略须共享初始集与评价集，并各自只使用初始标签和自己选中的新标签。
+
+示例拒绝覆盖bridge-demo及已保存文件，以保留选择顺序。做另一轮时改用新的目录，并事先固定计划。正式作品还需实现自己的第二种选法、重训、比较与可重建入口；这四个接口示范文件不等于完整作业。
+
+公开CSV本来包含标签，load_development也会返回训练标签。因此这段代码演示的是实验协议与选样函数的输入隔离，不是技术上隐藏公开数据。不得先浏览候选答案后再把结果写成“未看标签选择”。
+
 ## 卡在怎样保存与重跑
 
 `config.json`目前是空对象`{}`，不代表已经选定分析方法。你可以在自己的程序中定义并读取配置字段；只在配置中写入方法名称，不会让起点代码自动完成分析。`load_development`返回完整训练期标签；预算比较时，只使用初始集和本方案选中记录的标签。可选的`starter_baseline=true`会计算全部13,003条训练标签的总均值，不能作为只取得部分标签的预算实验的公平对照。`contract.json`记录研究问题（`question`）、使用者（`user`）、来源（`data_source`）、指标或审查规则（`metric`）、数据划分（`split_plan`）和观察结果前的预期（`initial_expectation`），请用自己的说明替换占位文字。
@@ -37,3 +115,6 @@ print("已读取训练/验证记录：", len(train), len(validation))
 使用已准备的Python与NumPy，命令示例为本机`python3`；你原环境若使用`python`或`py`，统一用已经成功的启动命令，不安装新环境。默认起点从学生仓库根目录的`data/bike/hour.csv`离线读取数据，只准备文件检查和样本预览，不能作为正式分析已完成证据。AI可帮助提出问题、写代码、核算和解释，不要求提交提示词记录、不要求所有人同路线或强制逐人答辩。
 
 数据/依赖错误保留命令、工作目录和完整报错；先用不同数据的完整小例继续理解，明确写未实跑，再找教师修复。用`--output`指定的目录若已存在，程序会拒绝覆盖；请换新目录保留旧结果。不指定`--output`时，默认的`artifacts/starter`允许重新生成。正式程序和输出由你决定；`submission.json`中的`run`必须能重新生成`artifacts`列出的分析结果。未列入清单的比较试验，另存配置和重跑命令。
+
+
+已完成结果如何安全重建并核对产物清单，见[第1—12课重建检查](../docs/REBUILD_CHECK.md)。本课的新实验仍保留新目录，不删除原证据。
