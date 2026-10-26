@@ -17,7 +17,7 @@ python lesson-08/analysis.py
 
 默认只有训练均值基线，没有候选或测试误差；它帮助确认数据和环境已通。程序失败时保留完整命令与报错，确认查看的是哪次输出。
 
-可选缺失值热身：`python scripts/lesson08.py warmup --output lesson-08/artifacts/warmup`。它只用人工排队训练记录演示 `13/9` 人的填补和规则预测，不是今天的真实模型比较。字段与计算见 [DATA](data/DATA.md#人工热身)。
+可选缺失值热身：`python scripts/lesson08.py warmup --output lesson-08/artifacts/warmup`。它只用人工排队训练记录演示 $13/9$ 人的填补和规则预测，不是今天的真实模型比较。字段与计算见 [DATA](data/DATA.md#人工热身)。
 
 ## 实现两个匹配的方案
 
