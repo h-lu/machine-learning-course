@@ -65,3 +65,37 @@ submission.json的默认清单只对应起点。lesson保留本课课号；repor
 status可为not_started（未开始）、in_progress（进行中）或complete（完成）。完成项目后改为complete，再运行 `python3 scripts/course.py check 03`；它只检查文件，不证明分析完成。
 
 用 `git add -f lesson-03/artifacts`保存结果，程序/配置也保存。CI只重新运行run中的命令并核对artifacts中的文件；其他试验给独立命令；不要只交截图。
+
+## 固定实际标准，只改提醒阈值
+
+如果研究的是提醒门槛，应将实际高需求标准与提醒阈值分别保存。下面只对已经得到的预测计数，不重新训练模型。四格表采用全部记录，实际标准始终为12分钟。
+
+```python
+# learning-example
+import json
+
+rows = [
+    {"prediction": 14, "actual": 9},
+    {"prediction": 8, "actual": 15},
+    {"prediction": 17, "actual": 18},
+]
+
+def evaluate_alerts(records, actual_threshold, alert_threshold):
+    counts = {"TP": 0, "FP": 0, "FN": 0, "TN": 0}
+    for row in records:
+        actual_high = row["actual"] >= actual_threshold
+        alert = row["prediction"] >= alert_threshold
+        outcome = "TP" if alert and actual_high else "FP" if alert else "FN" if actual_high else "TN"
+        counts[outcome] += 1
+    return counts
+
+results = {
+    str(threshold): evaluate_alerts(rows, actual_threshold=12, alert_threshold=threshold)
+    for threshold in [12, 16]
+}
+print(json.dumps(results, sort_keys=True))
+```
+
+阈值12的结果为TP=1、FP=1、FN=1、TN=0；阈值16为TP=1、FP=0、FN=1、TN=1。预测值、实际值与实际标准均未改变。
+
+用于自己的单车预测时，让 `actual` 对应记录中的 `cnt`，让 `prediction` 对应同一记录的模型预测；两个门槛使用每小时租借次数的单位，而不是照搬本例的分钟数。保留记录ID，先确认两次比较使用相同记录。本例不含每日容量，第6课再加入名额筛选。
