@@ -161,6 +161,3 @@ python3 scripts/course.py check 11
 ## 其他输出按需查阅
 
 每个方案目录中还有representation.json（表示参数）、records.csv（逐条预测）、summary.json（指标）、model.npz（系数）、curve.csv（训练过程）和first_update.json（首次更新）。先完成比较与解释，再按需要查看；不必把每个文件都抄进报告。
-
-
-已完成结果如何安全重建并核对产物清单，见[第1—12课重建检查](../docs/REBUILD_CHECK.md)。本课的新实验仍保留新目录，不删除原证据。

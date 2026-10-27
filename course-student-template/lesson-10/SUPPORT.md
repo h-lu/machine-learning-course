@@ -188,6 +188,3 @@ print(json.dumps(paths, ensure_ascii=False, indent=2))
 ```
 
 my-rules.json是输入，rules.json是这次输出保存的设置快照，不要混淆。完成自己的报告与contract后再设complete，并按README检查和提交。骨架不会替你解释两种安排的取舍，也不打开最终留出数据。
-
-
-已完成结果如何安全重建并核对产物清单，见[第1—12课重建检查](../docs/REBUILD_CHECK.md)。本课的新实验仍保留新目录，不删除原证据。
