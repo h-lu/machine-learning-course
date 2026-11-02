@@ -1,0 +1,21 @@
+{
+  "status": "prepared_not_deployed",
+  "version": "ml-lessons21-26-tools-20261103-v1",
+  "changed_lessons": [
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24"
+  ],
+  "question_count": 60,
+  "concept_count": 30,
+  "source": "new aligned S19–S24 questions for lessons 21–26",
+  "tests": {
+    "host": "hblu-5090",
+    "full_regression": {"tests": 91, "passed": 91},
+    "question_shape": {"lessons": 6, "concepts": 30, "questions": 60, "passed": true}
+  },
+  "review_method": "author self-check; no real student trial"
+}

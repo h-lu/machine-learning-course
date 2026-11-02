@@ -1,0 +1,52 @@
+{
+  "status": "prepared_not_deployed",
+  "prepared_at": "2026-11-03",
+  "base_version": "ml-lessons15-20-generative-20261102-v1",
+  "version": "ml-lessons21-26-tools-20261103-v1",
+  "changed_lessons": [
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24"
+  ],
+  "preserved_lessons": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30"
+  ],
+  "question_count": 60,
+  "concept_count": 30,
+  "files": {
+    "ml-check/deploy/lessons21-26-20261103/lessons.json": "ad24d1243f3a67c584a4e9c44abec437835b3aa89a54330c49c8a6875ed66f64",
+    "ml-check/deploy/lessons21-26-20261103/source/s19.json": "55a5f133a732177fa32a3df368d25597e214891106ef94a9d86d8f7cafeb4abe",
+    "ml-check/deploy/lessons21-26-20261103/source/s20.json": "16918980dbc7f4095b4247462ac52e765cc991707b765d679f8bea1634361778",
+    "ml-check/deploy/lessons21-26-20261103/source/s21.json": "587c9ebe512159b4fd49923ac5f3950eb147027666a92a9b0c59199e760bc4cc",
+    "ml-check/deploy/lessons21-26-20261103/source/s22.json": "d12edd7f9fe7ae0f1e5a4c5e2c6e6f098714b277cb1aaba828457e5bfadbbac9",
+    "ml-check/deploy/lessons21-26-20261103/source/s23.json": "54e3943f45e1ae2fb16ea13fc18a2053cd8ca894be7b731e35579fdb7da2a302",
+    "ml-check/deploy/lessons21-26-20261103/source/s24.json": "726af2eb69d0f461327a3f72557cbee5c9d6159349455d28dbea756363ed06d7"
+  },
+  "source": "new aligned S19–S24 questions for lessons 21–26"
+}
