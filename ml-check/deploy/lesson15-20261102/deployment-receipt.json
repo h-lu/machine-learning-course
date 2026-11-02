@@ -1,0 +1,11 @@
+{
+  "status": "deployed",
+  "health": {
+    "status": "ok",
+    "lesson_count": 32,
+    "bank_version": "ml-lesson15-neural-network-20261102-v1"
+  },
+  "historical_snapshots_preserved": 14,
+  "record_counts_unchanged": true,
+  "bank_sha256": "ac355ffbd9b951057c08e92fc7dd32e899944e8d1f9e3528702f43b5dc6d912e"
+}

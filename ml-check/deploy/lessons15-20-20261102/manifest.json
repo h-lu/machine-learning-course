@@ -1,0 +1,22 @@
+{
+  "status": "prepared",
+  "base_version": "ml-lesson15-neural-network-20261102-v1",
+  "version": "ml-lessons15-20-generative-20261102-v1",
+  "changed_lessons": [
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18"
+  ],
+  "preserved_lesson15": "S13",
+  "files": {
+    "ml-check/deploy/lessons15-20-20261102/archive/production-before.json": "ac355ffbd9b951057c08e92fc7dd32e899944e8d1f9e3528702f43b5dc6d912e",
+    "ml-check/deploy/lessons15-20-20261102/lessons.json": "fb1df196489fb44f5f83d6847507e8c394204777bbc0b0d871dbfeeb277366b3",
+    "ml-check/deploy/lessons15-20-20261102/source/lesson16.json": "21880b4a3baaffda9ab7a8f764d8361e77bc202bd16a85844577574a7ddfa5bd",
+    "ml-check/deploy/lessons15-20-20261102/source/lesson17.json": "67d7c92bfc69ce2a1261e8818910fde7e3e7dbd8fdb74fa7cf82b2c5d6aa3497",
+    "ml-check/deploy/lessons15-20-20261102/source/lesson18.json": "7aed6846645616b37f045d88e62294600e7dd59042bf0eafb4bf9be27b46aefe",
+    "ml-check/deploy/lessons15-20-20261102/source/lesson19.json": "5145cd4ca4e49518548c86ebbc64d8484b7d034e3fb8931b3eed586e36c340c8",
+    "ml-check/deploy/lessons15-20-20261102/source/lesson20.json": "b2a358f52726b0e9da195e7525f9f6ee22e7544904571d746ed4e4cd2dee4c00"
+  }
+}

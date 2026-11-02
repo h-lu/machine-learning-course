@@ -1,0 +1,17 @@
+{
+  "status": "deployed",
+  "base_version": "ml-lesson12-continuity-20261026-v1",
+  "version": "ml-lesson15-neural-network-20261102-v1",
+  "course_commit": "9d26061",
+  "lesson_number": 15,
+  "lesson_id": "S13",
+  "source": "ml-check/deploy/lesson15-20261102/source/questions.json",
+  "changed_lessons": [
+    "S13"
+  ],
+  "files": {
+    "ml-check/deploy/lesson15-20261102/archive/production-before.json": "770fb98b3ff771f92984c18d4e99d76c249f36457c8f62474d0152ac1113774a",
+    "ml-check/deploy/lesson15-20261102/lessons.json": "ac355ffbd9b951057c08e92fc7dd32e899944e8d1f9e3528702f43b5dc6d912e",
+    "ml-check/deploy/lesson15-20261102/source/questions.json": "9f787194d105ff3240a79d903b7099be0b5b6bb096af3b78c37c658874627a36"
+  }
+}
