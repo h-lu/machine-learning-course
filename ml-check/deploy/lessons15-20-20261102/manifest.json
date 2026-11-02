@@ -1,5 +1,7 @@
 {
-  "status": "prepared",
+  "status": "deployed",
+  "deployed_at": "2026-11-03",
+  "deployed_image": "ml-check:ml-lessons15-20-generative-20261103-v1",
   "base_version": "ml-lesson15-neural-network-20261102-v1",
   "version": "ml-lessons15-20-generative-20261102-v1",
   "changed_lessons": [

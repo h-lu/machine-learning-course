@@ -1,6 +1,8 @@
 {
   "status": "passed",
-  "publication": "prepared_not_deployed",
+  "publication": "deployed_2026-11-03",
+  "deployment_host": "hblu.top",
+  "deployment_image": "ml-check:ml-lessons15-20-generative-20261103-v1",
   "full_regression": {
     "tests": 91,
     "passed": 91,
