@@ -1,0 +1,19 @@
+{
+  "status": "deployed",
+  "deployment_receipt": "deployment-receipt.json",
+  "version": "ml-lessons27-32-feedback-20261104-v1",
+  "changed_lessons": ["S25", "S26", "S27", "S28", "S29", "S30"],
+  "normalized_loader_fields": ["S19", "S20", "S21", "S22", "S23", "S24"],
+  "question_count": 60,
+  "concept_count": 30,
+  "tests": {
+    "host": "hblu-5090",
+    "python": "3.14.4",
+    "full_regression": {"passed": 95, "failed": 0},
+    "added_tests": 4,
+    "warnings": "337 dependency deprecations in FastAPI/Starlette/AnyIO",
+    "command": "PYTHONPATH=. /home/hblu/.local/bin/pytest -q",
+    "working_directory": "ml-check"
+  },
+  "review_method": "AI作者逐题核对；题目与教材、实践字段及数值对应"
+}

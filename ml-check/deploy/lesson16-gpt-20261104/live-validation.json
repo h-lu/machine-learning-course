@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "host": "hblu-5090",
+  "health": {
+    "status": "ok",
+    "lesson_count": 32,
+    "bank_version": "ml-lesson16-gpt-20261104-v1"
+  },
+  "public_lessons_verified": 32,
+  "deployed_bank_matches_source": true,
+  "old_records_preserved": true,
+  "historical_snapshot_count": 15,
+  "formal_sessions_created_by_deployment": 0
+}

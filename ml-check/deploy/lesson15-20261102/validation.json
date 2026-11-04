@@ -1,0 +1,10 @@
+{
+  "command": "python3 -m unittest discover -s tests -v",
+  "cwd": "ml-check",
+  "tests": 85,
+  "result": "passed",
+  "new_lesson_tests": 6,
+  "changed_lesson": "S13 (第15课)",
+  "deployment": "deployed; see deployment-receipt.json",
+  "student_trial": "not performed"
+}

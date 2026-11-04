@@ -1,0 +1,58 @@
+{
+  "status": "deployed",
+  "deployed_at": "2026-11-04",
+  "deployment_receipt": "deployment-receipt.json",
+  "prepared_at": "2026-11-04",
+  "version": "ml-lessons27-32-feedback-20261104-v1",
+  "base_version": "ml-lessons21-26-tools-20261103-v1",
+  "changed_lessons": [
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30"
+  ],
+  "normalized_loader_fields": [
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24"
+  ],
+  "normalization": "S19—S24仅规范题号次序、补齐阶段时长和模块字段；题干、选项、答案保持。",
+  "preserved_lessons": [
+    "C01",
+    "C02",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18"
+  ],
+  "question_count": 60,
+  "concept_count": 30,
+  "files": {
+    "ml-check/deploy/lessons27-32-20261104/lessons.json": "6679e079ada31bc650480a92f0ddedf296283014aa82481e4a7d2f699d81b98d",
+    "ml-check/deploy/lessons27-32-20261104/source/s25.json": "0188b5148ff487c313bed8702c8f3183c6f4f770bfcc7c3a6b86de8757484da0",
+    "ml-check/deploy/lessons27-32-20261104/source/s26.json": "d0c0dda09137a8e3c034f0ca5b64ac0ccf81d4bcd5061c0ddc8253f2d51acdc0",
+    "ml-check/deploy/lessons27-32-20261104/source/s27.json": "4f43d8d7ec0e13d7515912ee0eb3a8b5ed51a48e3eeb7197c0eb11122344a107",
+    "ml-check/deploy/lessons27-32-20261104/source/s28.json": "f4d3385b296a3a48161ea8c3dcf2ba4b97035dde56dd78d6920887af2420ad95",
+    "ml-check/deploy/lessons27-32-20261104/source/s29.json": "8a1b2ded77c8bb2df5d21046623c37019278d34566c17498922f29435ae7e3c9",
+    "ml-check/deploy/lessons27-32-20261104/source/s30.json": "5af745dc54754b025727457259225b0f3e92353aaffd6647f0166dca5574ebbc"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "host": "hblu-5090",
+  "checks": [
+    {
+      "name": "1280 A new prompts",
+      "passed": true
+    },
+    {
+      "name": "1280 A answers hidden",
+      "passed": true
+    },
+    {
+      "name": "1280 A layout fits",
+      "passed": true
+    },
+    {
+      "name": "1280 A four options per question",
+      "passed": true
+    },
+    {
+      "name": "1280 B new prompts",
+      "passed": true
+    },
+    {
+      "name": "1280 B answers hidden",
+      "passed": true
+    },
+    {
+      "name": "1280 B layout fits",
+      "passed": true
+    },
+    {
+      "name": "1280 B four options per question",
+      "passed": true
+    },
+    {
+      "name": "390 A new prompts",
+      "passed": true
+    },
+    {
+      "name": "390 A answers hidden",
+      "passed": true
+    },
+    {
+      "name": "390 A layout fits",
+      "passed": true
+    },
+    {
+      "name": "390 A four options per question",
+      "passed": true
+    },
+    {
+      "name": "390 B new prompts",
+      "passed": true
+    },
+    {
+      "name": "390 B answers hidden",
+      "passed": true
+    },
+    {
+      "name": "390 B layout fits",
+      "passed": true
+    },
+    {
+      "name": "390 B four options per question",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

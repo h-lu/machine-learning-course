@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "publication": "deployed_2026-11-03",
+  "deployment_host": "hblu.top",
+  "deployment_image": "ml-check:ml-lessons15-20-generative-20261103-v1",
+  "full_regression": {
+    "tests": 91,
+    "passed": 91,
+    "seconds": 26.672
+  },
+  "final_question_revision": {
+    "targeted_tests": 6,
+    "passed": 6,
+    "seconds": 0.556
+  },
+  "new_questions": 50,
+  "preserved_approved_questions": 10,
+  "new_tutor_contexts": 25,
+  "total_bank_lessons": 32,
+  "changed_lessons": [
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18"
+  ],
+  "checks": [
+    "32 lessons parse successfully",
+    "only lessons16–20 change; approved lesson15 identical",
+    "all 50 new answer keys and 150 distractor choices scored",
+    "student views hide answer and explanation fields",
+    "historical bank snapshots remain readable",
+    "new question prompts and explanations absent from tutor contexts",
+    "manifest file hashes verified"
+  ],
+  "review_method": "author self-check; no real student trial",
+  "bank_sha256": "fb1df196489fb44f5f83d6847507e8c394204777bbc0b0d871dbfeeb277366b3"
+}

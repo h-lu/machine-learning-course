@@ -1,0 +1,12 @@
+{
+  "version": "ml-expert-review-32-20261104-v1",
+  "source_commit": "db562fb6cb4cd5d8e48ea107f44bb439a6449ea8",
+  "image": "ml-check:ml-expert-review-32-20261104-v1",
+  "url": "https://hblu.top/ml-check",
+  "validation_host": "hblu-5090",
+  "live_lessons_verified": 32,
+  "live_questions_verified": 320,
+  "responsive_page_checks": 128,
+  "historical_classrooms_preserved": true,
+  "production_sessions_created": 0
+}
