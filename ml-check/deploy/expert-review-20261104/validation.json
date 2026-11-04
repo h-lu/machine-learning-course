@@ -1,0 +1,9 @@
+{
+  "host": "hblu-5090",
+  "passed": true,
+  "unit_tests": 104,
+  "lessons": 32,
+  "questions": 320,
+  "correct_and_wrong_option_grading_verified": true,
+  "legacy_fixtures_preserved": true
+}
