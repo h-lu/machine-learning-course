@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "host": "hblu-5090",
+  "bank_version": "ml-lesson16-gpt-20261104-v1",
+  "historical_snapshots_loaded": 15,
+  "synthetic_full_flow": {
+    "A": "5/5",
+    "learning": "completed; no assessment text",
+    "B": "4/5",
+    "feedback": "matched"
+  },
+  "production_sessions_created": 0,
+  "production_application_used": true
+}

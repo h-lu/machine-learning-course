@@ -1,0 +1,10 @@
+{
+  "version": "ml-lesson16-gpt-20261104-v1",
+  "host": "hblu-5090",
+  "changed_lessons": ["S14"],
+  "regression": {"passed": 99, "failed": 0, "command": "PYTHONPATH=. /home/hblu/.local/bin/pytest -q", "working_directory": "ml-check"},
+  "numeric_checks": ["A/B向量逐项相加", "T=1与T=0.5的冒号概率", "T=2时三候选的概率与排序"],
+  "synthetic_classroom_flow": "runtime-validation.json",
+  "image": "image-receipt.json",
+  "review": "作者逐题核对：同一概念的A/B换情境、唯一最佳答案、全部干扰项解释、AI学习提示另举例子。"
+}

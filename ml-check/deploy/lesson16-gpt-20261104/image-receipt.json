@@ -1,0 +1,8 @@
+{
+  "image": "ml-check:ml-lesson16-gpt-20261104-v1",
+  "config_digest": "sha256:526371ee5a486a96f290f5321a6b394e6c7ea689412f1d4cd0b103f892adf679",
+  "base_image": "ml-check:ml-lessons27-32-feedback-20261104-v1",
+  "bank_sha256": "f812e0c1f2a7d278a8c912b49503dbbab37e9807db704cc93115f9ab5fef7b8b",
+  "build_host": "hblu-5090",
+  "changed_path": "/app/app/question_bank/lessons.json"
+}

@@ -1,0 +1,14 @@
+{
+  "version": "ml-lesson16-gpt-20261104-v1",
+  "base_version": "ml-lessons27-32-feedback-20261104-v1",
+  "base_sha256": "6679e079ada31bc650480a92f0ddedf296283014aa82481e4a7d2f699d81b98d",
+  "changed_lessons": [
+    "S14"
+  ],
+  "concept_count": 5,
+  "question_count": 10,
+  "files": {
+    "ml-check/deploy/lesson16-gpt-20261104/lessons.json": "f812e0c1f2a7d278a8c912b49503dbbab37e9807db704cc93115f9ab5fef7b8b",
+    "ml-check/deploy/lesson16-gpt-20261104/source/s14.json": "2d42bf5e8561394b2f764a523395170a29c940d970f659ad89dd361aa84b4387"
+  }
+}
