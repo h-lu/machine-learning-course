@@ -1,0 +1,30 @@
+{
+  "status": "deployed",
+  "date": "2026-11-04",
+  "branch": "codex/feedback-update-27-32",
+  "source_commit": "0a68d6b858d6e27f2c571dbeac63f054b048dcaa",
+  "url": "https://hblu.top/ml-check/",
+  "course_url": "https://hblu.top/ml/",
+  "course_source_commit": "55c8a6987296519fce3e1e08ed3f5273b27c53b7",
+  "version": "ml-lessons27-32-feedback-20261104-v1",
+  "lesson_count": 32,
+  "newly_published_lessons": ["S19", "S20", "S21", "S22", "S23", "S24", "S25", "S26", "S27", "S28", "S29", "S30"],
+  "bank_sha256": "6679e079ada31bc650480a92f0ddedf296283014aa82481e4a7d2f699d81b98d",
+  "image": "ml-check:ml-lessons27-32-feedback-20261104-v1",
+  "image_manifest_digest": "sha256:65d19644777d4731e53375e6a45284188faeca13c7ce5ec99097e4ca37fde452",
+  "image_config_digest": "sha256:a8cb6fb89a11abd2a06d03e465b3c9b58aab3d79da249fa883d29333c836805d",
+  "runtime_change": "生产镜像仅替换题库JSON，保留应用代码、依赖、配置与数据库。",
+  "build_and_test_host": "hblu-5090",
+  "verification": {
+    "regression_tests_passed": 95,
+    "synthetic_A_learning_B_result_flows_passed": 12,
+    "historical_snapshots_loaded": 15,
+    "live_course_files_api_and_history_checks_passed": 205,
+    "deployed_bank_matches_reviewed_bytes": true,
+    "health": {"status": "ok", "lesson_count": 32, "bank_version": "ml-lessons27-32-feedback-20261104-v1"},
+    "historical_records_preserved": true,
+    "formal_sessions_created_in_production": 0
+  },
+  "history": "已有账号、场次、答卷、学习完成记录与题库快照保留；新建场次使用新版题库。",
+  "rollback": "已保留旧站点、旧镜像、原Compose配置与私有数据库备份。"
+}

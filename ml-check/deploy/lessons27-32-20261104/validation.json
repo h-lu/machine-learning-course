@@ -1,5 +1,6 @@
 {
-  "status": "prepared_not_deployed",
+  "status": "deployed",
+  "deployment_receipt": "deployment-receipt.json",
   "version": "ml-lessons27-32-feedback-20261104-v1",
   "changed_lessons": ["S25", "S26", "S27", "S28", "S29", "S30"],
   "normalized_loader_fields": ["S19", "S20", "S21", "S22", "S23", "S24"],

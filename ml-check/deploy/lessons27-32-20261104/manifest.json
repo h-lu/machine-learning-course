@@ -1,5 +1,7 @@
 {
-  "status": "prepared_not_deployed",
+  "status": "deployed",
+  "deployed_at": "2026-11-04",
+  "deployment_receipt": "deployment-receipt.json",
   "prepared_at": "2026-11-04",
   "version": "ml-lessons27-32-feedback-20261104-v1",
   "base_version": "ml-lessons21-26-tools-20261103-v1",
